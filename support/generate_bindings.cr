@@ -15,20 +15,20 @@ require "../lib/bindgen/src/bindgen/find_path/generic_version"
 # spoved_logger :trace, bind: true, clear: true, dispatcher: :sync
 
 configurations = [
-#      OS       LIBC   ARCH      Qt   Patch   Clang target triplet      Ptr  Endian
-#  { "linux", "gnu", "x86_64", "5.5",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.6",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.7",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.8",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.9",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.10", "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.11", "2", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.12", "0", "x86_64-unknown-linux-gnu", 8, "little" },
-  { "linux", "gnu", "x86_64", "5.13", "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.14", "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  { "linux", "gnu", "x86_64", "5.15", "0", "x86_64-unknown-linux-gnu", 8, "little" },
-#  {"darwin", "unknown", "x86_64", "5.13", "x86_64-apple-darwin19.6.0", 8, "little"},
-#  {"darwin", "unknown", "x86_64", "5.15", "x86_64-apple-darwin19.6.0", 8, "little"},
+  #      OS       LIBC   ARCH      Qt   Patch   Clang target triplet      Ptr  Endian
+  #  { "linux", "gnu", "x86_64", "5.5",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.6",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.7",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.8",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.9",  "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.10", "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.11", "2", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.12", "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  {"linux", "gnu", "x86_64", "5.13", "0", "x86_64-unknown-linux-gnu", 8, "little"},
+  #  { "linux", "gnu", "x86_64", "5.14", "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  { "linux", "gnu", "x86_64", "5.15", "0", "x86_64-unknown-linux-gnu", 8, "little" },
+  #  {"darwin", "unknown", "x86_64", "5.13", "x86_64-apple-darwin19.6.0", 8, "little"},
+  #  {"darwin", "unknown", "x86_64", "5.15", "x86_64-apple-darwin19.6.0", 8, "little"},
 ]
 
 TEMPDIR = File.expand_path("#{__DIR__}/../download_cache")
@@ -101,26 +101,25 @@ def download_missing_qts(versions)
   # existence of file to assume that the file has been downloaded in full, which then
   # causes unclear tar errors if file is invalid or incomplete.
   urls = versions
-    #.reject{|v| File.file? v.archive_path}
-    .map{|v| v.download_urls}
+    # .reject{|v| File.file? v.archive_path}
+    .map { |v| v.download_urls }
 
   if urls.empty?
     report_step "All Qt sources already present"
     return
   end
 
-
-  #report_step "Downloading missing Qt sources (#{versions.map{|v|v.name}.join(", ")})"
-  report_step "Verifying and/or downloading Qt sources (#{versions.map{|v|v.name}.join(", ")})"
+  # report_step "Downloading missing Qt sources (#{versions.map{|v|v.name}.join(", ")})"
+  report_step "Verifying and/or downloading Qt sources (#{versions.map { |v| v.name }.join(", ")})"
 
   urls.each do |version_urls|
     version_urls.each_with_index do |url, idx|
-      arguments = [ "-C-", "--fail", "--remote-name-all", "--location", url ]
+      arguments = ["-C-", "--fail", "--remote-name-all", "--location", url]
 
       break if Dir.cd TEMPDIR do
-        report(idx, version_urls.size, "Trying: curl #{arguments}")
-        system("curl", arguments)
-      end
+                 report(idx, version_urls.size, "Trying: curl #{arguments}")
+                 system("curl", arguments)
+               end
     end
   end
 end
@@ -139,7 +138,7 @@ def unpack_qts(versions)
   files.each_with_index do |file, idx|
     switches = "-xf"
     report(idx, files.size, "Unpacking: tar -C #{TEMPDIR} #{switches} #{file}")
-    system("tar", [ "-C", TEMPDIR, switches, file ])
+    system("tar", ["-C", TEMPDIR, switches, file])
   end
 end
 

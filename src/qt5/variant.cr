@@ -105,6 +105,7 @@ module Qt
     # Max size of values to be inlined into the wrapper structure.  Values
     # exceeding this value will be transparently stored on the heap.
     INLINE_SIZE = 16 # sizeof(Void*) * 2
+
     # ^ That is supposed to be double the size of a pointer, but type notation
     #   don't accept constnat calculations yet.  So hardcode it for now.
     #   Tracking issue: Crystal issue #5427

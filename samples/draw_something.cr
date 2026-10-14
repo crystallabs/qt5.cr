@@ -60,7 +60,7 @@ class DrawArea < Qt::Widget
   # and thus, we'll open the file.
   def drop_event(evt)
     list = evt.mime_data.urls # Might be many, but we only care about the first
-    return if list.empty? # Sanity check: We did get any URLs, right?
+    return if list.empty?     # Sanity check: We did get any URLs, right?
     # Qt transmits URLs, but we want a local file path instead.
     load list.first.to_local_file
   end

@@ -7,14 +7,14 @@ module Qt
   class Painter
     # Creates a temporary drawer for *target*, yields it, and closes it again
     # after the block has returned.
-    def self.draw(target)
+    def self.draw(target, &)
       draw(target.as_paint_device) do |painter|
         yield painter
       end
     end
 
     # :ditto:
-    def self.draw(target : Qt::PaintDevice)
+    def self.draw(target : Qt::PaintDevice, &)
       painter = new(target)
       yield painter
     ensure
@@ -23,7 +23,7 @@ module Qt
 
     # Saves the current drawing context (rotation, scaling, etc.), yields, and
     # restores the drawing context afterwards to what it was before.
-    def restore_after
+    def restore_after(&)
       save
       yield
     ensure

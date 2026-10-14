@@ -4,9 +4,9 @@ module Qt
     #
     # Through this method, you can create a tab widget by writing:
     #
-    # ```cr
+    # ```
     # tab_widget = Qt::TabWidget{
-    #   "First" => first_tab,
+    #   "First"  => first_tab,
     #   "Second" => second_tab,
     # }
     # ```

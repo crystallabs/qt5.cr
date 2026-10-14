@@ -1,6 +1,5 @@
 module Qt
   class SpacerItem
-
     # Creates a new spacer expanding (by default) horizontally only, taking up
     # any space left in a `Layout`.
     def self.horizontal(policy = SizePolicy::Policy::Expanding)

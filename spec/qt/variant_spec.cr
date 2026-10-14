@@ -28,8 +28,8 @@ describe Qt::Variant do
       Qt.variant(true).type_id.should eq(Bool.crystal_instance_type_id)
       Qt.variant(123).type_id.should eq(Int32.crystal_instance_type_id)
       Qt.variant("Hello").type_id.should eq(String.crystal_instance_type_id)
-      Qt.variant([ "One", "Two" ]).type_id.should eq(Array(String).crystal_instance_type_id)
-      Qt.variant({ true, 1 }).type_id.should eq(Tuple(Bool, Int32).crystal_instance_type_id)
+      Qt.variant(["One", "Two"]).type_id.should eq(Array(String).crystal_instance_type_id)
+      Qt.variant({true, 1}).type_id.should eq(Tuple(Bool, Int32).crystal_instance_type_id)
     end
   end
 
@@ -237,7 +237,7 @@ describe Qt::Variant do
     end
 
     it "stores a generic Reference type as pointer" do
-      ary = %w[ one two three ]
+      ary = %w[one two three]
       data = Qt.variant(ary).to_unsafe
       ary_ptr = Pointer(Void).new(ary.object_id)
 
@@ -255,12 +255,12 @@ describe Qt::Variant do
     end
 
     it "stores a small generic value inline" do
-      value = { 1, 2 }
+      value = {1, 2}
       data = Qt.variant(value).to_unsafe
-      value_bytes = pointerof(value).as(UInt8*).to_slice(sizeof({ Int32, Int32 }))
+      value_bytes = pointerof(value).as(UInt8*).to_slice(sizeof({Int32, Int32}))
 
       data.type_id.should eq(value.crystal_type_id)
-      data.data.bytes.to_slice[0, sizeof({ Int32, Int32 })].should eq(value_bytes)
+      data.data.bytes.to_slice[0, sizeof({Int32, Int32})].should eq(value_bytes)
     end
 
     it "stores up to the INLINE_SIZE inline" do
@@ -286,7 +286,7 @@ describe Qt::Variant do
     end
 
     it "stores a large generic value on the heap" do
-      value = { "one", "two", "three" }
+      value = {"one", "two", "three"}
       data = Qt.variant(value).to_unsafe
 
       data.type_id.should eq(value.crystal_type_id)

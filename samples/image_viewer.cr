@@ -14,7 +14,7 @@ image_label = Qt::Label.new "Select an image!"
 # The scroll area is our central widget:  We put the image label into it, so the
 # user can scroll around.
 scroll_area = Qt::ScrollArea.new
-scroll_area.widget = image_label # Just stuff the label into the scroll area
+scroll_area.widget = image_label    # Just stuff the label into the scroll area
 scroll_area.widget_resizable = true # And tell it to resize our label for us
 window.central_widget = scroll_area
 
@@ -40,7 +40,7 @@ open_action.on_triggered do
   unless file_url.empty? # Did the user choose something?
     pixmap = Qt::Pixmap.new
     if pixmap.load file_url.to_local_file # Try to load it
-      image_label.pixmap = pixmap # And on success, display it.
+      image_label.pixmap = pixmap         # And on success, display it.
     end
   end
 end
