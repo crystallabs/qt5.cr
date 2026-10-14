@@ -181,7 +181,7 @@ end
 
 def configure_qts(versions)
   keep_modules = {"base"}
-  list = versions.reject { |v| File.executable? "#{v.path}/qtbase/bin/qmake" }
+  list = versions.reject { |v| Process.find_executable("#{v.path}/qtbase/bin/qmake") }
 
   if list.empty?
     report_step "All Qt sources already configured"

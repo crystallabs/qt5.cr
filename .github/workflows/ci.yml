@@ -40,6 +40,10 @@ jobs:
       - name: Install shards
         run: shards install
 
+      # src/qt5/binding/ holds the generated bindings, which aren't checked.
+      - name: Check formatting
+        run: crystal tool format --check src/qt5.cr src/qt5/*.cr spec samples support
+
       - name: Build clang tool
         working-directory: lib/bindgen/clang
         run: cmake -DLLVM_DIR="/usr/lib/llvm-$LLVM/lib/cmake/llvm" . && make
