@@ -142,8 +142,12 @@ which hides most deprecated declarations.  Those Qt keeps visible, like virtual
 functions, are ignored in `config/deprecated.yml` or `config/types.yml`.
 
 Building the bindings should thus print no `-Wdeprecated-declarations`
-warnings, and CI fails if it does.  `support/parse_deprecated.cr` regenerates
-`config/deprecated.yml` from these warnings.
+warnings, and CI fails if it does.  To regenerate `config/deprecated.yml` from
+these warnings, run `crystal support/parse_deprecated.cr -- --system`.
+
+`ignore_methods` matches method names, so it drops all overloads of a name.
+Only list methods there which Qt doesn't hide itself, or a non-deprecated
+overload like `QSpinBox::valueChanged(int)` goes missing.
 
 ## Naming scheme
 

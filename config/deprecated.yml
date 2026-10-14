@@ -2,144 +2,61 @@
 QTableWidgetItem:
   ignore_methods:
   - operator<
-  - backgroundColor
-  - setBackgroundColor
-  - textColor
-  - setTextColor
+QPolygon:
+  ignore_methods:
+  - putPoints
+  - setPoints
 QObject:
   ignore_methods:
   - trUtf8
-  - registerUserData
-  - setUserData
-  - userData
 QEventLoop:
   ignore_methods:
   - trUtf8
 QAbstractEventDispatcher:
   ignore_methods:
   - trUtf8
-QModelIndex:
-  ignore_methods:
-  - child
 QAbstractItemModel:
   ignore_methods:
   - trUtf8
 QIODevice:
   ignore_methods:
   - trUtf8
-QUrl:
-  ignore_methods:
-  - topLevelDomain
 QCoreApplication:
   ignore_methods:
   - trUtf8
-  - hasPendingEvents
-  - flush
-QDir:
-  ignore_methods:
-  - addResourceSearchPath
 QMimeData:
   ignore_methods:
   - trUtf8
 QSocketNotifier:
   ignore_methods:
   - trUtf8
-QStandardPaths:
-  ignore_methods:
-  - enableTestMode
 QTimer:
   ignore_methods:
   - trUtf8
-QColor:
-  ignore_methods:
-  - light
-  - dark
-QFont:
-  ignore_methods:
-  - setRawName
-  - rawName
-  - lastResortFamily
-  - lastResortFont
-QImage:
-  ignore_methods:
-  - byteCount
-  - alphaChannel
-  - transformed
-  - trueMatrix
-QPixmap:
-  ignore_methods:
-  - fill
-  - grabWindow
-  - grabWidget
-  - transformed
-  - trueMatrix
-QBrush:
-  ignore_methods:
-  - matrix
-  - setMatrix
-QTextOption:
-  ignore_methods:
-  - setTabStop
-  - tabStop
-QTextCharFormat:
-  ignore_methods:
-  - setAnchorName
-  - anchorName
 QTextDocument:
   ignore_methods:
   - trUtf8
-QPalette:
-  ignore_methods:
-  - foreground
-  - background
-QCursor:
-  ignore_methods:
-  - bitmap
-  - mask
 QWindow:
   ignore_methods:
   - trUtf8
-QBitmap:
-  ignore_methods:
-  - transformed
 QDrag:
   ignore_methods:
   - trUtf8
-  - start
 QFontMetrics:
   ignore_methods:
-  - width
   - charWidth
 QGuiApplication:
   ignore_methods:
   - trUtf8
-QPainter:
-  ignore_methods:
-  - initFrom
-  - setMatrix
-  - matrix
-  - deviceMatrix
-  - resetMatrix
-  - setWorldMatrix
-  - worldMatrix
-  - combinedMatrix
-  - setMatrixEnabled
-  - matrixEnabled
-  - drawRoundRect
-  - setRedirected
-  - restoreRedirected
-QPolygon:
-  ignore_methods:
-  - putPoints
-  - setPoints
 QScreen:
+  ignore_methods:
+  - trUtf8
+QStandardItemModel:
   ignore_methods:
   - trUtf8
 QWidget:
   ignore_methods:
   - trUtf8
-  - isEnabledToTLW
-  - getContentsMargins
 QAbstractButton:
   ignore_methods:
   - trUtf8
@@ -164,25 +81,18 @@ QFrame:
 QAbstractItemDelegate:
   ignore_methods:
   - trUtf8
-  - elidedText
 QAbstractScrollArea:
   ignore_methods:
   - trUtf8
 QAbstractItemView:
   ignore_methods:
   - trUtf8
-  - setHorizontalStepsPerItem
-  - horizontalStepsPerItem
-  - setVerticalStepsPerItem
-  - verticalStepsPerItem
 QAction:
   ignore_methods:
   - trUtf8
 QApplication:
   ignore_methods:
   - trUtf8
-  - colorSpec
-  - setColorSpec
 QLayout:
   ignore_methods:
   - trUtf8
@@ -201,42 +111,15 @@ QVBoxLayout:
 QButtonGroup:
   ignore_methods:
   - trUtf8
-  - buttonClicked
-  - buttonPressed
-  - buttonReleased
-  - buttonToggled
-QButtonGroup_CONNECT:
-  ignore_methods:
-  - buttonClicked
-  - buttonPressed
-  - buttonReleased
-  - buttonToggled
 QCheckBox:
   ignore_methods:
   - trUtf8
 QDialog:
   ignore_methods:
   - trUtf8
-  - setOrientation
-  - orientation
-  - setExtension
-  - extension
-  - showExtension
 QComboBox:
   ignore_methods:
   - trUtf8
-  - autoCompletion
-  - setAutoCompletion
-  - autoCompletionCaseSensitivity
-  - setAutoCompletionCaseSensitivity
-  - currentIndexChanged
-  - activated
-  - highlighted
-QComboBox_CONNECT:
-  ignore_methods:
-  - currentIndexChanged
-  - activated
-  - highlighted
 QPushButton:
   ignore_methods:
   - trUtf8
@@ -249,24 +132,6 @@ QDateTimeEdit:
 QDesktopWidget:
   ignore_methods:
   - trUtf8
-  - isVirtualDesktop
-  - numScreens
-  - screenCount
-  - primaryScreen
-  - screenNumber
-  - screen
-  - screenGeometry
-  - availableGeometry
-  - resized
-  - workAreaResized
-  - screenCountChanged
-  - primaryScreenChanged
-QDesktopWidget_CONNECT:
-  ignore_methods:
-  - resized
-  - workAreaResized
-  - screenCountChanged
-  - primaryScreenChanged
 QDial:
   ignore_methods:
   - trUtf8
@@ -276,24 +141,12 @@ QDockWidget:
 QFileDialog:
   ignore_methods:
   - trUtf8
-  - setNameFilterDetailsVisible
-  - isNameFilterDetailsVisible
-  - setResolveSymlinks
-  - resolveSymlinks
-  - setConfirmOverwrite
-  - confirmOverwrite
 QFormLayout:
   ignore_methods:
   - trUtf8
 QGesture:
   ignore_methods:
   - trUtf8
-QGraphicsItem:
-  ignore_methods:
-  - matrix
-  - sceneMatrix
-  - setMatrix
-  - resetMatrix
 QGraphicsObject:
   ignore_methods:
   - trUtf8
@@ -306,8 +159,6 @@ QGraphicsWidget:
 QGraphicsScene:
   ignore_methods:
   - trUtf8
-  - isSortCacheEnabled
-  - setSortCacheEnabled
 QGraphicsTransform:
   ignore_methods:
   - trUtf8
@@ -317,22 +168,22 @@ QScrollArea:
 QGraphicsView:
   ignore_methods:
   - trUtf8
-  - matrix
-  - setMatrix
-  - resetMatrix
 QGroupBox:
   ignore_methods:
   - trUtf8
 QLineEdit:
   ignore_methods:
   - trUtf8
-  - getTextMargins
 QLabel:
   ignore_methods:
   - trUtf8
-  - pixmap
-  - picture
 QLCDNumber:
+  ignore_methods:
+  - trUtf8
+QListView:
+  ignore_methods:
+  - trUtf8
+QListWidget:
   ignore_methods:
   - trUtf8
 QMainWindow:
@@ -347,8 +198,6 @@ QMenuBar:
 QTextEdit:
   ignore_methods:
   - trUtf8
-  - tabStopWidth
-  - setTabStopWidth
 QProgressBar:
   ignore_methods:
   - trUtf8
@@ -361,17 +210,9 @@ QScrollBar:
 QSpinBox:
   ignore_methods:
   - trUtf8
-  - valueChanged
-QSpinBox_CONNECT:
-  ignore_methods:
-  - valueChanged
 QDoubleSpinBox:
   ignore_methods:
   - trUtf8
-  - valueChanged
-QDoubleSpinBox_CONNECT:
-  ignore_methods:
-  - valueChanged
 QStackedLayout:
   ignore_methods:
   - trUtf8
@@ -387,24 +228,12 @@ QSystemTrayIcon:
 QTableView:
   ignore_methods:
   - trUtf8
-  - sortByColumn
 QTableWidget:
   ignore_methods:
   - trUtf8
-  - isItemSelected
-  - setItemSelected
 QToolBar:
   ignore_methods:
   - trUtf8
 QToolButton:
-  ignore_methods:
-  - trUtf8
-QListView:
-  ignore_methods:
-  - trUtf8
-QListWidget:
-  ignore_methods:
-  - trUtf8
-QStandardItemModel:
   ignore_methods:
   - trUtf8
