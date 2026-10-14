@@ -4,12 +4,16 @@
 # proceed to generate all bindings for all configured platforms.
 #
 # This script is what the `ready-to-use` branches are built by.
+#
+# With `--system`, it instead generates the binding for the Qt5 installed on
+# this system, as found by `qmake`.  Set `QMAKE` to choose a specific one.
 
 require "file_utils"
 require "colorize"
 require "ini"
 
 require "../lib/bindgen/src/bindgen/find_path/generic_version"
+require "../lib/bindgen/src/bindgen/variables"
 
 # require "spoved/logger"
 # spoved_logger :trace, bind: true, clear: true, dispatcher: :sync
@@ -80,6 +84,80 @@ class TargetPlatform
 
   def target
     "#{@os}-#{@libc}-#{@arch}-qt#{@qt}"
+  end
+
+  def env # Environment variables for `config/find_paths.yml`
+    {
+      "QTDIR" => @qt.path,
+      "QMAKE" => "#{@qt.path}/qtbase/bin/qmake",
+      # "QT_INCLUDE_DIR" => Auto configured,
+      "QT_LIBS_DIR"      => "#{@qt.path}/qtbase/libs",
+      "TARGET_TRIPLE"    => @triple,
+      "BINDING_PLATFORM" => target,
+    }
+  end
+
+  def args # Arguments to bindgen
+    [
+      "qt.yml",
+      "--var", "architecture=#{@arch}",
+      "--var", "libc=#{@libc}",
+      "--var", "os=#{@os}",
+      "--var", "pointersize=#{@pointer_size}",
+      "--var", "endian=#{@endian}",
+      "--debug",
+    ]
+  end
+end
+
+# The Qt5 installed on this system, as reported by `qmake -query`.  Bindgen's
+# built-in variables describe the platform, like in `decide_binding_slow.cr`.
+class SystemPlatform
+  getter qmake : String
+  getter qt : String
+
+  @query : Hash(String, String)
+
+  def initialize
+    ENV["QT_SELECT"] = "5" # For qtchooser's `qmake`
+    candidates = ENV["QMAKE"]?.try { |path| [path] } || ["qmake-qt5", "qmake"]
+    qmake = candidates.find { |name| Process.find_executable(name) }
+    abort "Can't find qmake: install Qt5 or set QMAKE" unless qmake
+    @qmake = Process.find_executable(qmake).not_nil!
+
+    @query = Hash(String, String).new
+    `#{Process.quote(@qmake)} -query`.each_line do |line|
+      key, _, value = line.partition(':')
+      @query[key] = value
+    end
+
+    version = @query["QT_VERSION"]? || abort "#{@qmake} -query didn't report QT_VERSION"
+    abort "#{@qmake} is Qt #{version}, not Qt5" unless version.starts_with?("5.")
+    @qt = version.split('.')[0..1].join('.') # "5.15.8" -> "5.15"
+  end
+
+  def target
+    vars = Bindgen::Variables.builtin
+    "#{vars["os"]}-#{vars["libc"]}-#{vars["architecture"]}-qt#{@qt}"
+  end
+
+  def triple
+    "the host"
+  end
+
+  def env
+    {
+      "QTDIR"            => @query["QT_INSTALL_PREFIX"],
+      "QMAKE"            => @qmake,
+      "QT_INCLUDE_DIR"   => @query["QT_INSTALL_HEADERS"],
+      "QT_LIBS_DIR"      => @query["QT_INSTALL_LIBS"],
+      "TARGET_TRIPLE"    => "", # Native build
+      "BINDING_PLATFORM" => target,
+    }
+  end
+
+  def args
+    ["qt.yml", "--debug"]
   end
 end
 
@@ -225,43 +303,30 @@ def configure_qts(versions)
 end
 
 # Kick off
-FileUtils.mkdir_p(TEMPDIR)
-platforms = configurations.map { |x| TargetPlatform.new(*x) }
-versions = platforms.map(&.qt).uniq
+if ARGV.includes?("--system")
+  platform = SystemPlatform.new
+  report_step "Using Qt#{platform.qt} of #{platform.qmake}"
+  platforms = [platform]
+else
+  FileUtils.mkdir_p(TEMPDIR)
+  platforms = configurations.map { |x| TargetPlatform.new(*x) }
+  versions = platforms.map(&.qt).uniq
 
-# Download and unpack Qt sources
-download_missing_qts(versions)
-unpack_qts(versions)
-configure_qts(versions)
+  # Download and unpack Qt sources
+  download_missing_qts(versions)
+  unpack_qts(versions)
+  configure_qts(versions)
+end
 
 # Run bindgen for all configured platforms
 report_step "Generating bindings for all platforms"
 platforms.each_with_index do |platform, idx|
-  env = { # Set environment variables for `config/find_paths.yml`
-    "QTDIR" => platform.qt.path,
-    "QMAKE" => "#{platform.qt.path}/qtbase/bin/qmake",
-    # "QT_INCLUDE_DIR" => Auto configured,
-    "QT_LIBS_DIR"      => "#{platform.qt.path}/qtbase/libs",
-    "TARGET_TRIPLE"    => platform.triple,
-    "BINDING_PLATFORM" => platform.target,
-  }
-
-  args = [ # Arguments to bindgen
-    "qt.yml",
-    "--var", "architecture=#{platform.arch}",
-    "--var", "libc=#{platform.libc}",
-    "--var", "os=#{platform.os}",
-    "--var", "pointersize=#{platform.pointer_size}",
-    "--var", "endian=#{platform.endian}",
-    "--debug",
-  ]
-
   report(idx, platforms.size, "Generating #{platform.target}")
   # Run bindgen
   bindgen = Process.run(
     command: "lib/bindgen/tool.sh",
-    args: args,
-    env: env,
+    args: platform.args,
+    env: platform.env,
     shell: false,
     output: STDOUT,
     error: STDERR,

@@ -24,6 +24,10 @@ detection part, making it quite slow to compile.
 supported Qt versions from the internet, and then generates all configured
 bindings using **bindgen**.
 
+With `--system`, it instead generates the binding for the Qt5 installed on the
+system, as found by `qmake`.  Set `QMAKE` to choose a specific installation.
+This needs neither `curl` nor `tar`.
+
 #### Dependencies
 
 * `curl`

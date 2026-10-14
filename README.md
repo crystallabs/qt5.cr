@@ -16,6 +16,7 @@ fork of [bindgen](https://github.com/Papierkorb/bindgen).
       * [Deprecated Qt API](#deprecated-qt-api)
       * [Naming scheme](#naming-scheme)
       * [(Re)generating all Qt5 binding versions](#regenerating-all-qt5-binding-versions)
+      * [(Re)generating the binding for the system's Qt5](#regenerating-the-binding-for-the-systems-qt5)
       * [(Re)generating a specific Qt5 binding version](#regenerating-a-specific-qt5-binding-version)
       * [Future things to do](#future-things-to-do)
    * [Platform Support](#platform-support)
@@ -180,6 +181,19 @@ Subsequent invocations of that script will use these cached assets.
 
 **The first run may take a long time, and each version of Qt5 will take up about
 4GB of disk space**.
+
+## (Re)generating the binding for the system's Qt5
+
+To generate the binding for the Qt5 installed on your system, without
+downloading Qt sources, run from the `qt5.cr` directory:
+
+```sh
+crystal support/generate_bindings.cr -- --system
+```
+
+It asks `qmake` (`qmake-qt5` or `qmake`, or `$QMAKE` if set) where Qt is
+installed and which version it is, and names the binding after the host, e.g.
+`linux-gnu-x86_64-qt5.15`.
 
 ## (Re)generating a specific Qt5 binding version
 
