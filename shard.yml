@@ -10,7 +10,7 @@ crystal: ">= 1.8.0, < 2.0.0"
 dependencies:
   bindgen:
     github: docelic/bindgen2
-    branch: master
+    commit: 7b9455a5381c335156c3928a2df2d5d6a991f795
 scripts:
   postinstall: shards
 
