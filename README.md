@@ -13,6 +13,7 @@ fork of [bindgen](https://github.com/Papierkorb/bindgen).
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
    * [Developer perspective](#developer-perspective)
       * [Generating the bindings](#generating-the-bindings)
+      * [Deprecated Qt API](#deprecated-qt-api)
       * [Naming scheme](#naming-scheme)
       * [(Re)generating all Qt5 binding versions](#regenerating-all-qt5-binding-versions)
       * [(Re)generating a specific Qt5 binding version](#regenerating-a-specific-qt5-binding-version)
@@ -130,6 +131,18 @@ checkout master` instead of modifying `shard.yml`.
 
 **Important**: For this you'll also have to meet the dependencies of bindgen.
 See `lib/bindgen/README.md` and `lib/bindgen/clang/README.md`.
+
+## Deprecated Qt API
+
+The bindings don't wrap API that Qt deprecated up to Qt 5.15.  The headers are
+parsed and the C++ wrappers built as C++17 with
+`QT_DISABLE_DEPRECATED_BEFORE=0x050F00` (see `qt.yml` and `ext/Makefile`),
+which hides most deprecated declarations.  Those Qt keeps visible, like virtual
+functions, are ignored in `config/deprecated.yml` or `config/types.yml`.
+
+Building the bindings should thus print no `-Wdeprecated-declarations`
+warnings, and CI fails if it does.  `support/parse_deprecated.cr` regenerates
+`config/deprecated.yml` from these warnings.
 
 ## Naming scheme
 

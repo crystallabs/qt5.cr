@@ -197,4 +197,5 @@ types: # Type rewrite rules
   QListWidgetItem:
     ignore_methods:
       - "operator<"
+      - setBackgroundColor # Deprecated, but virtual: not hidden by QT_DISABLE_DEPRECATED_BEFORE
   <<: deprecated.yml

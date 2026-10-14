@@ -399,3 +399,12 @@ QToolBar:
 QToolButton:
   ignore_methods:
   - trUtf8
+QListView:
+  ignore_methods:
+  - trUtf8
+QListWidget:
+  ignore_methods:
+  - trUtf8
+QStandardItemModel:
+  ignore_methods:
+  - trUtf8

@@ -26,14 +26,21 @@ else:
 
 parser: # Clang parser configuration
   if_TARGET_TRIPLE_is_: # TARGET_TRIPLE is empty.
-    flags: [ "-x", "c++", "-std=c++11", "-fPIC" ]
+    flags:
+      - "-x"
+      - "c++"
+      - "-std=c++17"
+      - "-fPIC"
+      # Hide the APIs Qt deprecated up to 5.15.  Must match `ext/Makefile`.
+      - "-DQT_DISABLE_DEPRECATED_BEFORE=0x050F00"
   else:
     flags:
       - "-x"
       - "c++"
       - "-stdlib=libc++"
-      - "-std=c++14"
+      - "-std=c++17"
       - "-fPIC"
+      - "-DQT_DISABLE_DEPRECATED_BEFORE=0x050F00"
       - "-target"
       - "{TARGET_TRIPLE}"
   files:
