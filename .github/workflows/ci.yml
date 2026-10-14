@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  bindings:
+    name: Qt5 with LLVM ${{ matrix.llvm }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # The oldest LLVM bindgen supports, and Ubuntu's default.
+        llvm: [14, 18]
+    env:
+      LLVM: ${{ matrix.llvm }}
+      QT_SELECT: 5
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v5
+
+      # install-crystal installs packages without refreshing the package
+      # index, which fails when the runner image's index has gone stale.
+      - name: Update package index
+        run: sudo apt-get update
+
+      - uses: crystal-lang/install-crystal@v1
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            qtbase5-dev libgc-dev \
+            "clang-$LLVM" "libclang-$LLVM-dev" "libclang-cpp$LLVM-dev" "llvm-$LLVM-dev" \
+            cmake libpcre2-dev libyaml-dev libevent-dev \
+            libxml2-dev libz3-dev libzstd-dev zlib1g-dev libncurses-dev
+
+      - name: Install shards
+        run: shards install
+
+      - name: Build clang tool
+        working-directory: lib/bindgen/clang
+        run: cmake -DLLVM_DIR="/usr/lib/llvm-$LLVM/lib/cmake/llvm" . && make
+
+      - name: Detect binding platform
+        run: |
+          detected="$(crystal run support/decide_binding_slow.cr -- 5.0.0)"
+          echo "BINDING_PLATFORM=${detected#* }" >> "$GITHUB_ENV"
+
+      # Deprecated Qt API is hidden by QT_DISABLE_DEPRECATED_BEFORE, or ignored
+      # in config/deprecated.yml.  A warning means a list needs updating.
+      - name: Generate bindings
+        run: |
+          set -o pipefail
+          lib/bindgen/tool.sh qt.yml --stats 2>&1 | tee generate.log
+          if grep "is deprecated" generate.log; then
+            echo "::error::The bindings use deprecated Qt API, see above."
+            exit 1
+          fi
+
+      - name: Run specs
+        run: crystal spec
+
+      - name: Build samples
+        run: |
+          mkdir -p bin
+          for sample in samples/*.cr; do
+            crystal build "$sample" -o "bin/$(basename "$sample" .cr)"
+          done
