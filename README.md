@@ -11,6 +11,7 @@ fork of [bindgen](https://github.com/Papierkorb/bindgen).
       * [Additional development dependencies](#additional-development-dependencies)
    * [User perspective](#user-perspective)
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
+      * [Object lifetime](#object-lifetime)
    * [Developer perspective](#developer-perspective)
       * [Generating the bindings](#generating-the-bindings)
       * [Deprecated Qt API](#deprecated-qt-api)
@@ -117,6 +118,30 @@ Therefore, in contrast to the behaviour of the C++ classes of Qt,
 `qt5.cr` resets the numeric locale to "C" after creating an
 application class instance (this follows an [advice from Qt
 itself](https://doc.qt.io/qt-5/qcoreapplication.html#locale-settings)).
+
+## Object lifetime
+
+Objects created from Crystal are collected by the GC once Crystal no longer
+refers to them.  Qt's references, like a layout's to its widgets, are invisible
+to the GC.  So the methods by which Qt takes ownership, like
+`Qt::Layout#add_widget`, `Qt::ListWidget#add_item` or
+`Qt::MainWindow#central_widget=`, keep their arguments alive:
+
+```crystal
+layout.add_widget Qt::Label.new("Stays alive")
+```
+
+They're kept alive until passed to `Qt::BindgenHelper.release`, e.g. after
+taking a widget out again:
+
+```crystal
+layout.remove_widget(label)
+Qt::BindgenHelper.release(label)
+```
+
+The methods are configured in `config/keep_alive.yml`.  Giving an object a
+parent by its constructor or `#parent=` doesn't keep it alive: keep a
+reference to it, or add it by one of these methods.
 
 # Developer perspective
 

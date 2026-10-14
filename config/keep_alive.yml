@@ -1,0 +1,118 @@
+# Methods taking ownership of their arguments, which Qt then refers to from
+# memory the GC doesn't scan.  Their wrappers pass these arguments to
+# `BindgenHelper.keep_alive`, so the GC doesn't destroy objects Qt still uses.
+# `Qt::BindgenHelper.release(object)` lets the GC collect one again.
+#
+# Merged after `deprecated.yml`, which it overrides: classes listed here repeat
+# their `ignore_methods` from there.  CI fails on deprecated API if one is lost.
+---
+QLayout:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^addWidget$": true
+    "^addItem$": true
+    "^replaceWidget$": [1]
+    "^setMenuBar$": true
+QBoxLayout:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^(add|insert)(Widget|Layout|Item|SpacerItem)$": true
+QGridLayout:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^add(Widget|Layout|Item)$": true
+QFormLayout:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^(add|insert)Row$": true
+    "^set(Widget|Layout|Item)$": true
+    "^addItem$": true
+QStackedLayout:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^(add|insert)Widget$": true
+    "^addItem$": true
+QWidget:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^setLayout$": true
+QMainWindow:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^set(CentralWidget|MenuBar|MenuWidget|StatusBar)$": true
+    "^addToolBar$": true
+    "^insertToolBar$": [1]
+    "^addDockWidget$": true
+QStatusBar:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^(add|insert)(Permanent)?Widget$": true
+QTabWidget:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^addTab$": [0]
+    "^insertTab$": [1]
+    "^setCornerWidget$": true
+QScrollArea:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^setWidget$": true
+QAbstractScrollArea:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^set(Viewport|CornerWidget|HorizontalScrollBar|VerticalScrollBar)$": true
+    "^addScrollBarWidget$": true
+QDockWidget:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^set(Widget|TitleBarWidget)$": true
+QMenuBar:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^setCornerWidget$": true
+QToolBar:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^addWidget$": true
+    "^insertWidget$": [1]
+QListWidget:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^(add|insert)Item$": true
+    "^setItemWidget$": [1]
+QTableWidget:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|CellWidget|ItemPrototype)$": true
+QComboBox:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^set(LineEdit|View)$": true
+QGraphicsScene:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^add(Item|Widget)$": [0]
+QStandardItemModel:
+  ignore_methods:
+  - trUtf8
+  keep_alive:
+    "^appendRow$": true
+    "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|ItemPrototype)$": true
