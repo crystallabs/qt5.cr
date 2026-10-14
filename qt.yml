@@ -46,6 +46,5 @@ parser: # Clang parser configuration
     - "{QT_INCLUDE_DIR}/QtCore/"
     - "{QT_INCLUDE_DIR}/QtGui/"
     - "{QT_INCLUDE_DIR}/QtWidgets/"
-    - "{LLVM_INCLUDES}"
     - "{EXT_INCLUDES}"
 

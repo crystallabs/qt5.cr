@@ -1,6 +1,7 @@
 # Qt5 bindings for Crystal
 
-Bindings for the Qt5 Framework using [bindgen](https://github.com/Papierkorb/bindgen).
+Bindings for the Qt5 Framework using [bindgen2](https://github.com/docelic/bindgen2), a modernized
+fork of [bindgen](https://github.com/Papierkorb/bindgen).
 
 # Table of Contents
 
@@ -67,10 +68,20 @@ on this under License below.)
 
 Using your system's package manager:
 
-* **ArchLinux** `pacman -S qt5-base`
-* **Debian/Ubuntu/Devuan** `apt-get install qtbase5-dev cmake llvm-dev clang libclang-dev libz-dev libstdc++-dev`
+* **ArchLinux** `pacman -S qt5-base gc cmake llvm clang pcre2`
+* **Debian/Ubuntu/Devuan** `apt-get install qtbase5-dev libgc-dev cmake llvm-dev clang libclang-dev libpcre2-dev libz-dev libstdc++-dev`
 
-You also need `cmake`.
+Bindgen needs LLVM and Clang 14 or newer, CMake 3.12 or newer and Crystal 1.8
+or newer.
+
+If linking Crystal programs fails with undefined references like
+`__isoc23_strtol` from `libgc.a`, your Crystal package bundles a `libgc` built
+for a newer glibc than your system has (e.g. recent Crystal on Debian 12).
+Link against the system's `libgc` instead:
+
+```sh
+export CRYSTAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+```
 
 # User perspective
 
@@ -118,6 +129,7 @@ These steps can be followed from a project using `qt5.cr`, or from within
 checkout master` instead of modifying `shard.yml`.
 
 **Important**: For this you'll also have to meet the dependencies of bindgen.
+See `lib/bindgen/README.md` and `lib/bindgen/clang/README.md`.
 
 ## Naming scheme
 
@@ -160,7 +172,7 @@ Subsequent invocations of that script will use these cached assets.
 
 1. Use the `master` branch of `qt5.cr` in your `shard.yml`
 3. Decide which version of Qt to use, and build the scheme (See above)
-4. Export the binding scheme: `export BINDING_PLATFORM=linux-gnu-x86_64-qt5.13`
+4. Export the binding scheme: `export BINDING_PLATFORM=linux-gnu-x86_64-qt5.15`
 5. If you're not using your system's Qt: `export QMAKE=/path/to/qmake`
 6. Run bindgen as usual: `lib/bindgen/tool.sh qt.yml --stats`
 7. Verify with `crystal spec`

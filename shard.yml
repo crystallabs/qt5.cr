@@ -5,11 +5,11 @@ description: Qt5 bindings for Crystal
 authors:
   - Stefan Merettig <stefan-merettig@nuriaproject.org>
 
-crystal: ">= 0.36.1, < 2.0.0"
+crystal: ">= 1.8.0, < 2.0.0"
 
 dependencies:
   bindgen:
-    github: Papierkorb/bindgen
+    github: docelic/bindgen2
     branch: master
 scripts:
   postinstall: shards
