@@ -1,7 +1,6 @@
 # Qt5 bindings for Crystal
 
-Bindings for the Qt5 Framework using [bindgen2](https://github.com/docelic/bindgen2), a modernized
-fork of [bindgen](https://github.com/Papierkorb/bindgen).
+Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bindgen).
 
 # Table of Contents
 
