@@ -1,5 +1,5 @@
 module Qt
-  WRAPPER_VERSION = "0.2.0"
+  WRAPPER_VERSION = "0.3.0"
 
   # Run-time version of the used Qt libraries.  The version may differ from the
   # version used at link-time.  See `Qt::QT_VERSION_STR` for the link-time
