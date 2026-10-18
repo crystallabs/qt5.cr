@@ -182,11 +182,6 @@ types: # Type rewrite rules
   "QTextOption::Tab": { ignore: true }
   "QFormLayout::TakeRowResult": { ignore: true }
 
-  # No support for associative containers yet
-  "QMap<int, QVariant>": { ignore: true }
-  "QMap<QDate, QTextCharFormat>": { ignore: true } # Use CalendarWidget#date_text_format(date)
-  "QHash<int, QByteArray>": { ignore: true }
-
   # Ignore private data structures
   QObjectPrivate: { ignore: true }
   QKeySequencePrivate: { ignore: true }
@@ -339,8 +334,6 @@ types: # Type rewrite rules
   # wrapper of it; ext/xml_helper.hpp returns the strings instead.
   QXmlStreamStringRef: { ignore: true }
   "std::nullptr_t": { ignore: true } # QDataStream >> nullptr_t; emitted as invalid Crystal otherwise
-  "QMap<QString, QVariant>": { ignore: true } # QVariantMap; no support for associative containers yet
-  "QHash<QString, QVariant>": { ignore: true } # QVariantHash
   QJsonValuePtr: { ignore: true } # Fake pointer classes of the JSON iterators
   QJsonValueRefPtr: { ignore: true }
   "QJsonObject::const_iterator": { ignore: true } # Use #keys and #value

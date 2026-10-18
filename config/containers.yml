@@ -23,3 +23,16 @@ containers:
   # `QPair<double, QVariant>` the methods are found to use.
   - class: QPair
     type: Pair
+  # The maps the methods use are instantiated automatically too, exchanged as
+  # a Hash: StandardItemModel#item_data is a Hash(Int32, Variant),
+  # AbstractItemModel#role_names a Hash(Int32, Bytes).
+  - class: QMap
+    type: Associative
+    count_method: contains
+    erase_method: remove
+    insert_method: insert
+  - class: QHash
+    type: Associative
+    count_method: contains
+    erase_method: remove
+    insert_method: insert

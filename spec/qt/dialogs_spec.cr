@@ -332,6 +332,11 @@ describe Qt::CalendarWidget do
     format.font_weight = Qt::Font::Weight::Bold.to_i
     calendar.set_date_text_format(Qt::Date.new(2026, 10, 18), format)
     calendar.date_text_format(Qt::Date.new(2026, 10, 18)).font_weight.should eq(Qt::Font::Weight::Bold.to_i)
+    formats = calendar.date_text_format # A QMap<QDate, QTextCharFormat>, Hash-like
+    formats.size.should eq(1)
+    formats.keys.should eq([Qt::Date.new(2026, 10, 18)])
+    formats[Qt::Date.new(2026, 10, 18)].font_weight.should eq(Qt::Font::Weight::Bold.to_i)
+    formats[Qt::Date.new(2026, 10, 19)]?.should be_nil
   end
 end
 

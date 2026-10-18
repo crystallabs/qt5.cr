@@ -198,6 +198,11 @@ describe Qt::JsonDocument do
     built.remove("x")
     built.contains("x").should be_false
     built.take("s").to_string.should eq("text")
+    map = built.to_variant_map # A QVariantMap, Hash-like
+    map.keys.should eq(["a"])
+    map["a"].to?(String).should be_nil # A list, unknown to Qt::Variant
+    Qt::JsonObject.from_variant_map({"n" => Qt.variant(5), "s" => Qt.variant("v")}).size.should eq(2)
+    Qt::JsonObject.from_variant_hash({"n" => Qt.variant(5)})["n"].to_int.should eq(5)
 
     error = Qt::JsonParseError.new
     Qt::JsonDocument.from_json("{bad".to_slice, error).null?.should be_true

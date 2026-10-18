@@ -123,6 +123,16 @@ describe "Qt::StandardItem" do
     model.item_from_index(model.index(0, 0)).not_nil!.text.should eq("parent")
     model.index_from_item(child).should eq(child.index)
     model.data(child.index).to(String).should eq("child")
+    roles = model.item_data(child.index) # A QMap<int, QVariant>, Hash-like
+    roles[DISPLAY].to(String).should eq("child")
+    roles[Qt::ItemDataRole::ToolTipRole.to_i]?.should be_nil
+    roles.keys.includes?(DISPLAY).should be_true
+    model.set_item_data(child.index, {Qt::ItemDataRole::ToolTipRole.to_i => Qt.variant("tip")}).should be_true
+    child.tool_tip.should eq("tip")
+    names = model.role_names # A QHash<int, QByteArray>
+    String.new(names[DISPLAY]).should eq("display")
+    names.has_key?(EDIT).should be_true
+    names.to_h.size.should eq(names.size)
     model.find_items("child", Qt::MatchFlags::MatchRecursive).map(&.text).should eq(["child"])
     model.find_items("child").should be_empty # Top level only
 

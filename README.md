@@ -342,8 +342,14 @@ see the comments there:
   casts it for `GraphicsLinearLayout#add_item` and friends.
 * A `QList<QPair<...>>`, like `GraphicsItemAnimation#pos_list`, is an
   `Enumerable` of tuples, through the `QPair` container rule.
-* `QMap<QDate, QTextCharFormat>` has no mapping yet and is ignored: use
-  `CalendarWidget#date_text_format(date)`.
+* `QMap` and `QHash` are associative containers, exchanged as a `Hash`-like
+  `Enumerable({K, V})` with `#[]`, `#[]?`, `#has_key?` and `#keys`:
+  `StandardItemModel#item_data(index)` is one of `Int32` to `Variant`,
+  `AbstractItemModel#role_names` of `Int32` to `Bytes`,
+  `CalendarWidget#date_text_format` of `Date` to `TextCharFormat`, and the
+  setters take a `Hash`: `model.set_item_data(index, {role => Qt.variant(x)})`.
+  `QVariantMap` and `QVariantHash` (`JsonObject#to_variant_map`) are
+  `Hash(String, Variant)`-like.
 * `QVector2D`, `QVector3D`, `QVector4D`, `QQuaternion`, `QRgba64` and
   `QPainterPath::Element` are copied structures passed by value, like
   `QPoint`, with property methods for their public fields: `element.x`.
@@ -375,8 +381,8 @@ see the comments there:
   `TextCodec.codec_for_name("UTF-8".to_slice)` is nilable.  Its stateful
   conversions (`ConverterState`) and the encoder and decoder classes aren't
   wrapped.
-* Types without a mapping yet, like `std::function` callbacks or the
-  associative containers, are ignored, which drops the methods using them.
+* Types without a mapping yet, like `std::function` callbacks or `QSet`,
+  are ignored, which drops the methods using them.
 
 ## Future things to do
 
