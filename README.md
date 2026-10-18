@@ -249,6 +249,13 @@ see the comments there:
   listed as classes, so the wrapper `Qt::StringList` has those methods.  The
   overloads taking `QStringView`, `QLatin1String` or a `QRegExp` are dropped,
   as the Crystal `String` maps to `QString`.
+* `QVariant` maps to `Qt::Variant`, which exchanges the types Qt knows in
+  their native form, so Qt can display, sort and store them: `Nil`, `Bool`,
+  `Int32`, `UInt32`, `Int64`, `UInt64`, `Float32`, `Float64`, `Char`, `String`,
+  `Bytes`, `Array(String)` (`QStringList`), `Point`, `PointF`, `Size`, `SizeF`,
+  `Rect` and `RectF`.  Any other Crystal value is wrapped as is and comes back
+  unchanged; a `QVariant` of another Qt type unpacks as unknown (`#to?`
+  returns `nil`).  See `Qt::Variant`.
 * `QByteArray` maps to `Bytes`, copied in both directions like `QString`:
   `String.new(Qt::Url.to_percent_encoding(text))`, `mime_data.set_data(type,
   bytes)`.  `QList<QByteArray>` is an `Enumerable(Bytes)`.

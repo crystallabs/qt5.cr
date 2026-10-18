@@ -229,7 +229,7 @@ describe Qt::Variant do
 
     it "stores a Reference as pointer" do
       string = "I'm a reference"
-      data = Qt.variant(string).to_unsafe
+      data = Qt::Variant.pack(string)
       string_ptr = Pointer(Void).new(string.object_id)
 
       data.type_id.should eq(string.crystal_type_id)
@@ -238,7 +238,7 @@ describe Qt::Variant do
 
     it "stores a generic Reference type as pointer" do
       ary = %w[one two three]
-      data = Qt.variant(ary).to_unsafe
+      data = Qt::Variant.pack(ary)
       ary_ptr = Pointer(Void).new(ary.object_id)
 
       data.type_id.should eq(ary.crystal_type_id)
