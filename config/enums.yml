@@ -277,6 +277,7 @@ enums:
   "QFont::StyleStrategy": Font::StyleStrategy
   "QFont::Weight": Font::Weight
   "Qt::ItemFlags": ItemFlags
+  "Qt::ItemDataRole": ItemDataRole
   "Qt::TtemFlag": ItemFlag
   "QAbstractItemModel::CheckIndexOptions": AbstractItemModel::CheckIndexOptions
   "QAbstractItemModel::CheckIndexOption": AbstractItemModel::CheckIndexOption
@@ -299,6 +300,17 @@ enums:
   "QAbstractItemView::DropIndicatorPosition": AbstractItemDelegate::DropIndicatorPosition
   "QAbstractItemView::ScrollMode": AbstractItemDelegate::ScrollMode
   "QItemSelectionModel::SelectionFlags": ItemSelectionModel::SelectionFlags
+  "QStandardItem::ItemType": StandardItem::ItemType
+  "QFileSystemModel::Roles": FileSystemModel::Roles
+  "QFileSystemModel::Option": FileSystemModel::Option
+  "QFileSystemModel::Options": FileSystemModel::Options
+  "QEasingCurve::Type": EasingCurve::Type
+  "QAbstractAnimation::Direction": AbstractAnimation::Direction
+  "QAbstractAnimation::State": AbstractAnimation::State
+  "QAbstractAnimation::DeletionPolicy": AbstractAnimation::DeletionPolicy
+  "QTimeLine::State": TimeLine::State
+  "QTimeLine::Direction": TimeLine::Direction
+  "QTimeLine::CurveShape": TimeLine::CurveShape
   "QItemSelectionModel::SelectionFlag": ItemSelectionModel::SelectionFlag
   "QCompleter::CompletionMode": Completer::CompletionMode
   "QCompleter::ModelSorting": Completer::ModelSorting

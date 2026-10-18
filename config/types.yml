@@ -154,7 +154,10 @@ types: # Type rewrite rules
   WId: { alias_for: "unsigned int" }
   QVariantList: { alias_for: "QList<QVariant>" }
   QFileInfoList: { alias_for: "QList<QFileInfo>" }
+  QModelIndexList: { alias_for: "QList<QModelIndex>" }
   "QTimeZone::OffsetDataList": { alias_for: "QVector<QTimeZone::OffsetData>" }
+  "QVariantAnimation::KeyValue": { alias_for: "QPair<qreal, QVariant>" }
+  "QVariantAnimation::KeyValues": { alias_for: "QVector<QPair<qreal, QVariant>>" }
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
@@ -220,6 +223,10 @@ types: # Type rewrite rules
   QTextStreamFunction: { ignore: true }
   "QTextStream &(QTextStream &)": { ignore: true }
   QTextStreamManipulator: { ignore: true }
+  # QEasingCurve's custom easing function is a C function pointer; the
+  # QVariantAnimation interpolators are too, and go through registerInterpolator.
+  "QEasingCurve::EasingFunction": { ignore: true }
+  "qreal (qreal)": { ignore: true }
   "std::__1::function<void (const QString &, const QByteArray &)>":
     ignore: true
   "std::function<void (const QString &, const QByteArray &)>":
@@ -271,6 +278,13 @@ types: # Type rewrite rules
   QListWidgetItem:
     ignore_methods:
       - "operator<"
+  # QAbstractListModel re-declares parent(), columnCount() and hasChildren()
+  # of QAbstractItemModel as private.  bindgen's virtual_override only checks
+  # the class itself for such private overrides, so the C++ override class of
+  # a class deriving from QAbstractListModel calls them and doesn't compile
+  # ("'parent' is a private member of 'QAbstractListModel'").  QStringListModel
+  # is a concrete leaf class: its virtuals aren't for overriding in Crystal.
+  QStringListModel: { sub_class: false }
   QPolygon:
     ignore_methods: # Variadic, which can't be wrapped
       - setPoints

@@ -152,5 +152,21 @@ QGraphicsTextItem:
     "^setDocument$": true
 QStandardItemModel:
   keep_alive:
-    "^appendRow$": true
+    "^(append|insert)(Row|Column)$": true
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|ItemPrototype)$": true
+QStandardItem:
+  keep_alive:
+    "^(append|insert)(Row|Rows|Column)$": true
+    "^setChild$": true
+QAbstractProxyModel:
+  keep_alive:
+    "^setSourceModel$": true
+QItemSelectionModel:
+  keep_alive:
+    "^setModel$": true
+QAnimationGroup:
+  keep_alive:
+    "^(add|insert)Animation$": true
+QPropertyAnimation:
+  keep_alive:
+    "^setTargetObject$": true

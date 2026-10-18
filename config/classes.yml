@@ -53,6 +53,28 @@ classes:
   QAbstractItemView: AbstractItemView
   QAbstractItemModel: AbstractItemModel
   QStandardItemModel: StandardItemModel
+  QStandardItem: StandardItem
+  QPersistentModelIndex: PersistentModelIndex
+  QAbstractListModel: AbstractListModel
+  QAbstractTableModel: AbstractTableModel
+  QStringListModel: StringListModel
+  QAbstractProxyModel: AbstractProxyModel
+  QSortFilterProxyModel: SortFilterProxyModel
+  QIdentityProxyModel: IdentityProxyModel
+  QItemSelectionRange: ItemSelectionRange
+  QItemSelection: ItemSelection
+  QItemSelectionModel: ItemSelectionModel
+  QFileSystemModel: FileSystemModel
+  QEasingCurve: EasingCurve
+  QAbstractAnimation: AbstractAnimation
+  QVariantAnimation: VariantAnimation
+  "QPair<qreal, QVariant>": VariantAnimationKeyValue # QVariantAnimation#keyValues
+  QPropertyAnimation: PropertyAnimation
+  QAnimationGroup: AnimationGroup
+  QParallelAnimationGroup: ParallelAnimationGroup
+  QSequentialAnimationGroup: SequentialAnimationGroup
+  QPauseAnimation: PauseAnimation
+  QTimeLine: TimeLine
   QTableView: TableView
   QTableWidget: TableWidget
   QTableWidgetItem: TableWidgetItem

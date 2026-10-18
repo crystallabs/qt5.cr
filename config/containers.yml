@@ -5,6 +5,7 @@ containers:
       - [ "qreal" ]
       - [ "QByteArray" ] # As Bytes, see types.yml
       - [ "QFileInfo" ] # QFileInfoList, of QDir#entryInfoList
+      - [ "QModelIndex" ] # QModelIndexList, of QItemSelectionModel#selectedIndexes
       - [ "QCommandLineOption" ] # QCommandLineParser#addOptions
       - [ "QMimeType" ] # QMimeDatabase#mimeTypesForFileName
       - [ "QPair<QString, QString>" ] # QUrlQuery#queryItems
@@ -14,3 +15,4 @@ containers:
       - [ "QRgb" ]
       - [ "int" ] # QVersionNumber#segments
       - [ "QTimeZone::OffsetData" ] # QTimeZone::OffsetDataList
+      - [ "QPair<qreal, QVariant>" ] # QVariantAnimation::KeyValues

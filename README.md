@@ -263,6 +263,15 @@ see the comments there:
 * `QFile`, `QDir`, `QTime` and the like keep their names, so `Qt::File`,
   `Qt::Dir` and `Qt::Time` shadow the standard library's inside `module Qt`:
   write `::File` and `::Time::Span` there.
+* The typedefs of lists, like `QFileInfoList` and `QModelIndexList`, are
+  aliases of their `QList`, so `dir.entry_info_list` is an
+  `Enumerable(Qt::FileInfo)`; `QItemSelection` derives from one, so
+  `Qt::ItemSelection` is an `Indexable(Qt::ItemSelectionRange)`.
+* `Qt::AbstractListModel`, `Qt::AbstractTableModel` and
+  `Qt::AbstractProxyModel` get the overloads of the pure virtuals Qt
+  defaults in `src/qt5/abstract_item_model.cr`, so a Crystal model only
+  implements what its C++ counterpart would (`row_count(parent)` and
+  `data(index, role)` for a list).
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 
