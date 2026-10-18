@@ -59,7 +59,6 @@ parser: # Clang parser configuration
     - QtWidgets/QtWidgets
     - "locale_helper.hpp"
     - "validator_helper.hpp"
-    - "matrix_helper.hpp"
     - "xml_helper.hpp"
   includes:
     - "{QT_INCLUDE_DIR}/"

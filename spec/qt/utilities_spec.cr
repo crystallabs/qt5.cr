@@ -184,6 +184,18 @@ describe "Qt::LibraryInfo" do
   end
 end
 
+describe Qt::Locale do
+  it "parses numbers, reporting the outcome through a bool pointer" do
+    locale = Qt::Locale.new("en_US")
+    locale.to_int("42").should eq(42) # The `bool *ok = nullptr` defaults to nil
+    ok = false
+    locale.to_int("42", pointerof(ok)).should eq(42)
+    ok.should be_true
+    locale.to_int("forty-two", pointerof(ok)).should eq(0)
+    ok.should be_false
+  end
+end
+
 describe "Qt::Collator" do
   it "compares strings by locale" do
     collator = Qt::Collator.new(Qt::Locale.new("en_US"))

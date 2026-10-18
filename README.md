@@ -296,11 +296,10 @@ see the comments there:
   aliases of their `QList`, so `dir.entry_info_list` is an
   `Enumerable(Qt::FileInfo)`; `QItemSelection` derives from one, so
   `Qt::ItemSelection` is an `Indexable(Qt::ItemSelectionRange)`.
-* `Qt::AbstractListModel`, `Qt::AbstractTableModel` and
-  `Qt::AbstractProxyModel` get the overloads of the pure virtuals Qt
-  defaults in `src/qt5/abstract_item_model.cr`, so a Crystal model only
-  implements what its C++ counterpart would (`row_count(parent)` and
-  `data(index, role)` for a list).
+* A Crystal model only implements what its C++ counterpart would:
+  `row_count(parent)` and `data(index, role)` for a `Qt::AbstractListModel`.
+  bindgen splits the overloads a default argument can't express off the
+  pure virtuals, calling C++ with the default.
 * `QAbstractTextDocumentLayout::PaintContext` and `Selection`,
   `QTextLayout::FormatRange`, bare structs of Qt classes, are wrapped as
   classes with property methods: `Qt::TextDocumentLayoutPaintContext`,
@@ -311,13 +310,14 @@ see the comments there:
   `Qt::FontDatabase.new.families`.
 * `Qt::TreeWidgetItemIterator` is an `Iterator(TreeWidgetItem)`:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
-* `QHeaderView`'s protected `initialize()` is dropped, as Crystal reserves the
-  name for constructors.
+* `QHeaderView`'s protected `initialize()` is `#cpp_initialize`, as Crystal
+  reserves the name for constructors.
 * `QValidator::validate` and `fixup` take the input by non-const reference,
   which bindgen can't pass a `String` (a `QString` by value) by, so
   `ext/validator_helper.hpp` calls them on a copy: `validator.validate("42")`
   returns the `Validator::State`, `#fixup` the fixed string.  Validators can't
-  be written in Crystal (`sub_class: false`), as `validate` is pure virtual.
+  be written in Crystal: as the pure virtual `validate` is dropped, bindgen
+  skips the C++ subclass (a warning, shown by `tool.sh --debug`).
 * The `QStyle` enum constants drop their prefixes:
   `Style::PixelMetric::ButtonMargin`, `Style::State::Enabled`.
 * `QGraphicsWidget` derives from `QGraphicsObject` and `QGraphicsLayoutItem`:
@@ -329,13 +329,10 @@ see the comments there:
   `CalendarWidget#date_text_format(date)`.
 * `QVector2D`, `QVector3D`, `QVector4D`, `QQuaternion`, `QRgba64` and
   `QPainterPath::Element` are copied structures passed by value, like
-  `QPoint`.  bindgen gives a copied structure no accessors for its public
-  fields, so `src/qt5/copied_fields.cr` adds them: `element.x`.
-* `QTransform#inverted`, `QMatrix#inverted` and `QMatrix4x4#inverted` take
-  `bool *invertible = nullptr`, which bindgen renders as `Bool*? = true`, so
-  `src/qt5/transform.cr` wraps them through `ext/matrix_helper.hpp`.  Other
-  such arguments, like the `ok` of `Locale#to_int`, only compile when `nil`
-  is passed explicitly.
+  `QPoint`, with property methods for their public fields: `element.x`.
+* A `bool *ok = nullptr` argument is `ok : Bool*? = nil`:
+  `locale.to_int("42")`, or `transform.inverted(pointerof(invertible))` to
+  learn the outcome.
 * `QMatrix3x3` (a `QGenericMatrix` instantiation) has no mapping, which drops
   `Matrix4x4#normal_matrix` and `Quaternion#to_rotation_matrix`.
   `QGradientStops` is a `QVector<QPair<qreal, QColor>>`, so `Gradient#stops`

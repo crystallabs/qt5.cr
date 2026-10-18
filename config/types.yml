@@ -153,12 +153,6 @@ types: # Type rewrite rules
   "QRandomGenerator64::result_type": { alias_for: "unsigned long long" } # quint64
   WId: { alias_for: "unsigned int" }
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
-  # bindgen looks through a typedef of a container instantiation, also one
-  # taken as a `const T &` argument (QAbstractItemModel#changePersistentIndexList),
-  # but not yet in the argument of a virtual method, which the override class
-  # passes to Crystal as an opaque pointer: `mime_data(indexes :
-  # Binding::QModelIndexList*)` instead of `Enumerable(ModelIndex)`.
-  QModelIndexList: { alias_for: "QList<QModelIndex>" } # QAbstractItemModel#mimeData
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
   # `config/classes.yml`) use these: C++ iterators have no use in Crystal, and
@@ -209,10 +203,6 @@ types: # Type rewrite rules
   # containers.yml, QSet has no mapping yet.
   "QSet<QByteArray>": { ignore: true }
 
-  # Ignore pure template types (the QDataStream operators name these)
-  "QList<T>": { ignore: true }
-  "QVector<T>": { ignore: true }
-  "QPair<T1, T2>": { ignore: true }
   "Func1": { ignore: true } # Fake types used in QObject::connect().
   "Func2": { ignore: true }
   "QtPrivate::FunctionPointer<Func1>::Object": { ignore: true }
@@ -278,19 +268,9 @@ types: # Type rewrite rules
   __CFTimeZone: {ignore: true}
   NSTimeZone: {ignore: true}
   FILE: {ignore: true} # C stdio handle of QFile#open and QTextStream
-  # bindgen can't pass a QString (the Crystal String, by value) by non-const
-  # reference, so it drops QValidator::validate and fixup: the helpers in
-  # ext/validator_helper.hpp call them, see src/qt5/validator.cr.  As validate
-  # is pure virtual, a subclass from Crystal would stay abstract in C++.
-  QValidator: { sub_class: false }
   QListWidgetItem:
     ignore_methods:
       - "operator<"
-  QHeaderView:
-    ignore_methods:
-      # bindgen wraps Qt's protected `initialize()` under that name, which
-      # Crystal reserves for constructors, so the wrapper doesn't compile.
-      - initialize
   QPolygon:
     ignore_methods: # Variadic, which can't be wrapped
       - setPoints
@@ -328,7 +308,7 @@ types: # Type rewrite rules
     generate_wrapper: true
     pass_by: Value
     kind: Struct
-  "QPainterPath::Element": # Field accessors in src/qt5/copied_fields.cr
+  "QPainterPath::Element":
     copy_structure: true
     generate_binding: true
     generate_wrapper: true
@@ -380,23 +360,10 @@ types: # Type rewrite rules
   QCborValue: { ignore: true }
   QCborArray: { ignore: true }
   QCborMap: { ignore: true }
-  "QGenericMatrix<N, M, T>": { ignore: true } # Template
   QFunctionPointer: { ignore: true } # QLibrary#resolve
   "QLoggingCategory::CategoryFilter": { ignore: true } # C function pointer
   "QLoggingCategory::AtomicBools": { ignore: true } # Private
   # A non-copyable bare struct with a C array; drops the stateful conversions
   # of QTextCodec, which TextCodec#to_unicode and #from_unicode don't need.
   "QTextCodec::ConverterState": { ignore: true }
-  # bindgen renders the `bool *invertible = nullptr` default of `inverted` as
-  # `Bool*? = true`, which doesn't compile when the default is used:
-  # ext/matrix_helper.hpp, src/qt5/transform.cr.
-  QTransform:
-    ignore_methods:
-      - inverted
-  QMatrix:
-    ignore_methods:
-      - inverted
-  QMatrix4x4:
-    ignore_methods:
-      - inverted
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above

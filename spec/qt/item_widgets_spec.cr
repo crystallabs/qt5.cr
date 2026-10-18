@@ -102,6 +102,7 @@ describe Qt::TreeWidget do
     header.resize_section(1, 120)
     header.section_size(1).should eq(120)
     header.set_section_resize_mode(0, Qt::HeaderView::ResizeMode::Fixed)
+    header.responds_to?(:cpp_initialize).should be_true # Qt's protected initialize()
     header.section_resize_mode(0).should eq(Qt::HeaderView::ResizeMode::Fixed)
     header.set_section_hidden(2, true)
     header.is_section_hidden(2).should be_true
