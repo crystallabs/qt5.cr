@@ -371,3 +371,63 @@ enums:
   "QCalendarWidget::VerticalHeaderFormat": CalendarWidget::VerticalHeaderFormat
   "QCalendarWidget::SelectionMode": CalendarWidget::SelectionMode
   "QActionGroup::ExclusionPolicy": ActionGroup::ExclusionPolicy
+  "QStyle::StateFlag": { destination: "Style::StateFlag", prefix: "State_" }
+  "QStyle::State": { destination: "Style::State", prefix: "State_" }
+  "QStyle::PrimitiveElement": { destination: "Style::PrimitiveElement", prefix: "PE_" }
+  "QStyle::ControlElement": { destination: "Style::ControlElement", prefix: "CE_" }
+  "QStyle::SubElement": { destination: "Style::SubElement", prefix: "SE_" }
+  "QStyle::ComplexControl": { destination: "Style::ComplexControl", prefix: "CC_" }
+  "QStyle::SubControl": { destination: "Style::SubControl", prefix: "SC_" }
+  "QStyle::SubControls": { destination: "Style::SubControls", prefix: "SC_" }
+  "QStyle::PixelMetric": { destination: "Style::PixelMetric", prefix: "PM_" }
+  "QStyle::ContentsType": { destination: "Style::ContentsType", prefix: "CT_" }
+  "QStyle::RequestSoftwareInputPanel": { destination: "Style::RequestSoftwareInputPanel", prefix: "RSIP_" }
+  "QStyle::StyleHint": { destination: "Style::StyleHint", prefix: "SH_" }
+  "QStyle::StandardPixmap": { destination: "Style::StandardPixmap", prefix: "SP_" }
+  "QStyleOption::OptionType": { destination: "StyleOption::OptionType", prefix: "SO_" }
+  "QStyleOptionFrame::FrameFeature": StyleOptionFrame::FrameFeature
+  "QStyleOptionFrame::FrameFeatures": StyleOptionFrame::FrameFeatures
+  "QStyleOptionHeader::SectionPosition": StyleOptionHeader::SectionPosition
+  "QStyleOptionHeader::SelectedPosition": StyleOptionHeader::SelectedPosition
+  "QStyleOptionHeader::SortIndicator": StyleOptionHeader::SortIndicator
+  "QStyleOptionButton::ButtonFeature": StyleOptionButton::ButtonFeature
+  "QStyleOptionButton::ButtonFeatures": StyleOptionButton::ButtonFeatures
+  "QStyleOptionTab::TabPosition": StyleOptionTab::TabPosition
+  "QStyleOptionTab::SelectedPosition": StyleOptionTab::SelectedPosition
+  "QStyleOptionTab::CornerWidget": StyleOptionTab::CornerWidget
+  "QStyleOptionTab::CornerWidgets": StyleOptionTab::CornerWidgets
+  "QStyleOptionTab::TabFeature": StyleOptionTab::TabFeature
+  "QStyleOptionTab::TabFeatures": StyleOptionTab::TabFeatures
+  "QStyleOptionToolBar::ToolBarPosition": StyleOptionToolBar::ToolBarPosition
+  "QStyleOptionToolBar::ToolBarFeature": StyleOptionToolBar::ToolBarFeature
+  "QStyleOptionToolBar::ToolBarFeatures": StyleOptionToolBar::ToolBarFeatures
+  "QStyleOptionMenuItem::MenuItemType": StyleOptionMenuItem::MenuItemType
+  "QStyleOptionMenuItem::CheckType": StyleOptionMenuItem::CheckType
+  "QStyleOptionViewItem::Position": StyleOptionViewItem::Position
+  "QStyleOptionViewItem::ViewItemFeature": StyleOptionViewItem::ViewItemFeature
+  "QStyleOptionViewItem::ViewItemFeatures": StyleOptionViewItem::ViewItemFeatures
+  "QStyleOptionViewItem::ViewItemPosition": StyleOptionViewItem::ViewItemPosition
+  "QStyleOptionToolBox::TabPosition": StyleOptionToolBox::TabPosition
+  "QStyleOptionToolBox::SelectedPosition": StyleOptionToolBox::SelectedPosition
+  "QStyleOptionToolButton::ToolButtonFeature": StyleOptionToolButton::ToolButtonFeature
+  "QStyleOptionToolButton::ToolButtonFeatures": StyleOptionToolButton::ToolButtonFeatures
+  "QStyleHintReturn::HintReturnType": { destination: "StyleHintReturn::HintReturnType", prefix: "SH_" }
+  "Qt::TabFocusBehavior": TabFocusBehavior
+  "QValidator::State": Validator::State
+  "QDoubleValidator::Notation": DoubleValidator::Notation
+  "QGraphicsEffect::ChangeFlag": GraphicsEffect::ChangeFlag
+  "QGraphicsEffect::ChangeFlags": GraphicsEffect::ChangeFlags
+  "QGraphicsEffect::PixmapPadMode": GraphicsEffect::PixmapPadMode
+  "QGraphicsBlurEffect::BlurHint": GraphicsBlurEffect::BlurHint
+  "QGraphicsBlurEffect::BlurHints": GraphicsBlurEffect::BlurHints
+  "QGraphicsSceneContextMenuEvent::Reason": GraphicsSceneContextMenuEvent::Reason
+  "QScroller::State": Scroller::State
+  "QScroller::ScrollerGestureType": Scroller::ScrollerGestureType
+  "QScroller::Input": Scroller::Input
+  "QScrollerProperties::OvershootPolicy": ScrollerProperties::OvershootPolicy
+  "QScrollerProperties::FrameRates": ScrollerProperties::FrameRates
+  "QScrollerProperties::ScrollMetric": ScrollerProperties::ScrollMetric
+  "Qt::CoordinateSystem": CoordinateSystem
+  "Qt::AnchorPoint": AnchorPoint
+  "Qt::Axis": { destination: "Axis", camelcase: false } # XAxis, not Xaxis
+  "Qt::ScrollPhase": ScrollPhase

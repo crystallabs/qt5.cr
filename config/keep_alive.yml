@@ -39,6 +39,10 @@ QWidget:
     "^setLayout$": true
     "^addAction$": true
     "^insertAction$": [1]
+    "^set(Style|GraphicsEffect)$": true
+QApplication:
+  keep_alive:
+    "^setStyle$": true
 QMainWindow:
   keep_alive:
     "^set(CentralWidget|MenuBar|MenuWidget|StatusBar)$": true
@@ -111,10 +115,10 @@ QTableWidget:
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|CellWidget|ItemPrototype)$": true
 QComboBox:
   keep_alive:
-    "^set(LineEdit|View|Model|ItemDelegate|Completer)$": true
+    "^set(LineEdit|View|Model|ItemDelegate|Completer|Validator)$": true
 QLineEdit:
   keep_alive:
-    "^setCompleter$": true
+    "^set(Completer|Validator)$": true
     "^addAction$": [0]
 QCompleter:
   keep_alive:
@@ -143,10 +147,35 @@ QGraphicsScene:
 QGraphicsItem:
   keep_alive:
     "^installSceneEventFilter$": true
+    "^setGraphicsEffect$": true
+QGraphicsItemGroup:
+  keep_alive:
+    "^addToGroup$": true
+QGraphicsProxyWidget:
+  keep_alive:
+    "^setWidget$": true
 QGraphicsWidget:
   keep_alive:
     "^addAction$": true
     "^insertAction$": [1]
+    "^setLayout$": true
+QGraphicsLinearLayout:
+  keep_alive:
+    "^addItem$": true
+    "^insertItem$": [1]
+QGraphicsGridLayout:
+  keep_alive:
+    "^addItem$": [0]
+QGraphicsAnchorLayout:
+  keep_alive:
+    "^add(Anchor|CornerAnchors)$": [0, 2]
+    "^addAnchors$": [0, 1]
+QGraphicsItemAnimation:
+  keep_alive:
+    "^set(Item|TimeLine)$": true
+QProxyStyle:
+  keep_alive:
+    "^setBaseStyle$": true
 QGraphicsTextItem:
   keep_alive:
     "^setDocument$": true

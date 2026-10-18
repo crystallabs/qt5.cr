@@ -289,6 +289,11 @@ types: # Type rewrite rules
   __CFTimeZone: {ignore: true}
   NSTimeZone: {ignore: true}
   FILE: {ignore: true} # C stdio handle of QFile#open and QTextStream
+  # bindgen can't pass a QString (the Crystal String, by value) by non-const
+  # reference, so it drops QValidator::validate and fixup: the helpers in
+  # ext/validator_helper.hpp call them, see src/qt5/validator.cr.  As validate
+  # is pure virtual, a subclass from Crystal would stay abstract in C++.
+  QValidator: { sub_class: false }
   QListWidgetItem:
     ignore_methods:
       - "operator<"

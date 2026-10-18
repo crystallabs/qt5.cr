@@ -3,3 +3,8 @@ functions:
     destination: "::"
   "^qt5cr_reset_numeric_locale":
     destination: "::"
+  # The parser matches the whole name, see ext/validator_helper.hpp
+  "^qt5cr_validator_validate$":
+    destination: "::"
+  "^qt5cr_validator_fixup$":
+    destination: "::"

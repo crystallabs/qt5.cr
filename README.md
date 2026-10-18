@@ -309,6 +309,18 @@ see the comments there:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
 * `QHeaderView`'s protected `initialize()` is dropped, as Crystal reserves the
   name for constructors.
+* `QValidator::validate` and `fixup` take the input by non-const reference,
+  which bindgen can't pass a `String` (a `QString` by value) by, so
+  `ext/validator_helper.hpp` calls them on a copy: `validator.validate("42")`
+  returns the `Validator::State`, `#fixup` the fixed string.  Validators can't
+  be written in Crystal (`sub_class: false`), as `validate` is pure virtual.
+* The `QStyle` enum constants drop their prefixes:
+  `Style::PixelMetric::ButtonMargin`, `Style::State::Enabled`.
+* `QGraphicsWidget` derives from `QGraphicsObject` and `QGraphicsLayoutItem`:
+  the wrapper has the layout item methods, and `#as_graphics_layout_item`
+  casts it for `GraphicsLinearLayout#add_item` and friends.
+* A `QList<QPair<...>>`, like `GraphicsItemAnimation#pos_list`, is an
+  `Enumerable` of tuples, through the `QPair` container rule.
 * `QMap<QDate, QTextCharFormat>` has no mapping yet and is ignored: use
   `CalendarWidget#date_text_format(date)`.
 * Types without a mapping yet, like `std::function` callbacks or the

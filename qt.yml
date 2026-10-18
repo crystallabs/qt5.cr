@@ -58,6 +58,7 @@ parser: # Clang parser configuration
     - QtGui/QtGui
     - QtWidgets/QtWidgets
     - "locale_helper.hpp"
+    - "validator_helper.hpp"
   includes:
     - "{QT_INCLUDE_DIR}/"
     - "{QT_INCLUDE_DIR}/QtCore/"

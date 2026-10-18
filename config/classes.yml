@@ -166,6 +166,25 @@ classes:
   QGraphicsRectItem: GraphicsRectItem
   QGraphicsSimpleTextItem: GraphicsSimpleTextItem
   QGraphicsPixmapItem: GraphicsPixmapItem
+  QGraphicsItemGroup: GraphicsItemGroup
+  QGraphicsLineItem: GraphicsLineItem
+  QGraphicsProxyWidget: GraphicsProxyWidget
+  QGraphicsLayoutItem: GraphicsLayoutItem
+  QGraphicsLayout: GraphicsLayout
+  QGraphicsLinearLayout: GraphicsLinearLayout
+  QGraphicsGridLayout: GraphicsGridLayout
+  QGraphicsAnchorLayout: GraphicsAnchorLayout
+  QGraphicsAnchor: GraphicsAnchor
+  QGraphicsEffect: GraphicsEffect
+  QGraphicsBlurEffect: GraphicsBlurEffect
+  QGraphicsColorizeEffect: GraphicsColorizeEffect
+  QGraphicsDropShadowEffect: GraphicsDropShadowEffect
+  QGraphicsOpacityEffect: GraphicsOpacityEffect
+  QGraphicsItemAnimation: GraphicsItemAnimation
+  QGraphicsRotation: GraphicsRotation
+  QGraphicsScale: GraphicsScale
+  QScroller: Scroller
+  QScrollerProperties: ScrollerProperties
   QPen: Pen
   QBrush: Brush
   QColor: Color
@@ -208,6 +227,14 @@ classes:
   QApplicationStateChangeEvent: ApplicationStateChangeEvent
   QGestureEvent: GestureEvent
   QGraphicsSceneEvent: GraphicsSceneEvent
+  QGraphicsSceneContextMenuEvent: GraphicsSceneContextMenuEvent
+  QGraphicsSceneDragDropEvent: GraphicsSceneDragDropEvent
+  QGraphicsSceneHelpEvent: GraphicsSceneHelpEvent
+  QGraphicsSceneHoverEvent: GraphicsSceneHoverEvent
+  QGraphicsSceneMouseEvent: GraphicsSceneMouseEvent
+  QGraphicsSceneMoveEvent: GraphicsSceneMoveEvent
+  QGraphicsSceneResizeEvent: GraphicsSceneResizeEvent
+  QGraphicsSceneWheelEvent: GraphicsSceneWheelEvent
   QIODevice: IODevice
   QFileDevice: FileDevice
   QFile: File
@@ -275,6 +302,39 @@ classes:
   QFont: Font
   QFontMetrics: FontMetrics
   QStyleOptionGraphicsItem: StyleOptionGraphicsItem
+  QStyle: Style
+  QCommonStyle: CommonStyle
+  QProxyStyle: ProxyStyle
+  QStyleFactory: StyleFactory
+  QStyleHints: StyleHints
+  QStyleHintReturn: StyleHintReturn
+  QStyleOption: StyleOption
+  QStyleOptionButton: StyleOptionButton
+  QStyleOptionFrame: StyleOptionFrame
+  QStyleOptionViewItem: StyleOptionViewItem
+  QStyleOptionComplex: StyleOptionComplex
+  QStyleOptionComboBox: StyleOptionComboBox
+  QStyleOptionSlider: StyleOptionSlider
+  QStyleOptionSpinBox: StyleOptionSpinBox
+  QStyleOptionTab: StyleOptionTab
+  QStyleOptionProgressBar: StyleOptionProgressBar
+  QStyleOptionHeader: StyleOptionHeader
+  QStyleOptionMenuItem: StyleOptionMenuItem
+  QStyleOptionToolButton: StyleOptionToolButton
+  QStyleOptionGroupBox: StyleOptionGroupBox
+  QStyleOptionDockWidget: StyleOptionDockWidget
+  QStyleOptionTitleBar: StyleOptionTitleBar
+  QStyleOptionFocusRect: StyleOptionFocusRect
+  QStyleOptionRubberBand: StyleOptionRubberBand
+  QStyleOptionSizeGrip: StyleOptionSizeGrip
+  QStyleOptionTabBarBase: StyleOptionTabBarBase
+  QStyleOptionTabWidgetFrame: StyleOptionTabWidgetFrame
+  QStyleOptionToolBar: StyleOptionToolBar
+  QStyleOptionToolBox: StyleOptionToolBox
+  QValidator: Validator
+  QIntValidator: IntValidator
+  QDoubleValidator: DoubleValidator
+  QRegularExpressionValidator: RegularExpressionValidator
   QListView: ListView
   QSize: Size
   QSizeF: SizeF
