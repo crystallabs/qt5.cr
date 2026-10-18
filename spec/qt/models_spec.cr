@@ -470,13 +470,11 @@ describe "Qt::VariantAnimation" do
   end
 end
 
-# A `Qt::Variant` argument arriving from C++, as `const QVariant &`, is still
-# passed to the Crystal `Proc` by value as the 20-byte `CrystalVariant`, which
-# the C ABI passes indirectly: it reads as garbage.  bindgen f0929c4 passes
-# such structures by pointer only when C++ takes them by value
-# (`TypeHelper#proc_by_pointer?` returns false for a reference).
+# A `Qt::Variant` argument arriving from C++, as `const QVariant &`, is passed
+# to the Crystal `Proc` by pointer: the 20-byte `CrystalVariant` behind it is
+# passed indirectly by the C ABI, which a `Proc` taking it by value misreads.
 describe "Qt::Variant arguments of callbacks" do
-  pending "arrive through a signal" do
+  it "arrive through a signal" do
     bar = Qt::ProgressBar.new
     animation = Qt::PropertyAnimation.new(bar, "value".to_slice)
     animation.start_value = Qt.variant(0)
@@ -495,7 +493,7 @@ describe "Qt::Variant arguments of callbacks" do
     bar.value.should eq(100)
   end
 
-  pending "arrive through a virtual override" do
+  it "arrive through a virtual override" do
     model = RecordingModel.new
     view = Qt::ListView.new
     view.model = model
