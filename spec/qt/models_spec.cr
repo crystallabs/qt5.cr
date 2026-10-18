@@ -40,6 +40,28 @@ private class GridModel < Qt::AbstractTableModel
   end
 end
 
+# An editable list model implemented in Crystal, recording what it is given.
+private class RecordingModel < Qt::AbstractListModel
+  getter values = [] of String
+
+  def initialize
+    super()
+  end
+
+  def row_count(parent : Qt::ModelIndex) : Int32
+    parent.valid? ? 0 : 1
+  end
+
+  def data(index : Qt::ModelIndex, role : Int32 = 0) : Qt::Variant
+    Qt.variant(@values.last? || "")
+  end
+
+  def set_data(index : Qt::ModelIndex, value : Qt::Variant, role : Int32 = 2) : Bool
+    @values << value.to(String)
+    true
+  end
+end
+
 private def rows_of(model, column = 0)
   (0...model.row_count).map { |row| model.data(model.index(row, column)).to(String) }
 end
@@ -420,6 +442,42 @@ describe "Qt::VariantAnimation" do
     points.easing_curve = Qt::EasingCurve.new(Qt::EasingCurve::Type::Linear)
     points.current_time = 50
     points.current_value.to(Qt::Point).should eq(Qt::Point.new(50, 25))
+  end
+end
+
+# A `Qt::Variant` argument arriving from C++, as `const QVariant &`, is still
+# passed to the Crystal `Proc` by value as the 20-byte `CrystalVariant`, which
+# the C ABI passes indirectly: it reads as garbage.  bindgen f0929c4 passes
+# such structures by pointer only when C++ takes them by value
+# (`TypeHelper#proc_by_pointer?` returns false for a reference).
+describe "Qt::Variant arguments of callbacks" do
+  pending "arrive through a signal" do
+    bar = Qt::ProgressBar.new
+    animation = Qt::PropertyAnimation.new(bar, "value".to_slice)
+    animation.start_value = Qt.variant(0)
+    animation.end_value = Qt.variant(100)
+    animation.duration = 60
+    values = [] of Int32
+    animation.on_value_changed { |v| values << v.to(Int32) }
+
+    run_until_quit do |loop|
+      animation.on_finished { loop.quit }
+      animation.start
+    end
+    values.should_not be_empty
+    values.last.should eq(100)
+    values.should eq(values.sort)
+    bar.value.should eq(100)
+  end
+
+  pending "arrive through a virtual override" do
+    model = RecordingModel.new
+    view = Qt::ListView.new
+    view.model = model
+    # `view.model` wraps the C++ pointer, so this goes through the virtual
+    view.model.set_data(model.index(0, 0), Qt.variant("x")).should be_true
+    model.values.should eq(["x"])
+    view.model.data(model.index(0, 0)).to(String).should eq("x")
   end
 end
 
