@@ -141,6 +141,20 @@ classes:
   QGestureEvent: GestureEvent
   QGraphicsSceneEvent: GraphicsSceneEvent
   QIODevice: IODevice
+  QFileDevice: FileDevice
+  QFile: File
+  QFileInfo: FileInfo
+  QTemporaryFile: TemporaryFile
+  QTemporaryDir: TemporaryDir
+  QSaveFile: SaveFile
+  QTextStream: TextStream
+  QDirIterator: DirIterator
+  QLockFile: LockFile
+  QFileSystemWatcher: FileSystemWatcher
+  QBuffer: Buffer
+  QDateTime: DateTime
+  QDate: Date
+  QTime: Time
   QGesture: Gesture
   QPainter: Painter
   # "QPainter::PixmapFragment": PainterPixmapFragment

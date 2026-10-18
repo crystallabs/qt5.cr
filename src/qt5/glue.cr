@@ -28,8 +28,8 @@ module Qt
     module TimeSpan
       NANO_PER_MILLI = 1_000_000
 
-      def self.unwrap(msec : Int64) : Time::Span
-        Time::Span.new(nanoseconds: msec * NANO_PER_MILLI)
+      def self.unwrap(msec : Int64) : ::Time::Span
+        ::Time::Span.new(nanoseconds: msec * NANO_PER_MILLI)
       end
 
       def self.wrap(duration : Time::Span) : Int64

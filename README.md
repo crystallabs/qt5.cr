@@ -259,6 +259,9 @@ see the comments there:
 * `QByteArray` maps to `Bytes`, copied in both directions like `QString`:
   `String.new(Qt::Url.to_percent_encoding(text))`, `mime_data.set_data(type,
   bytes)`.  `QList<QByteArray>` is an `Enumerable(Bytes)`.
+* `QFile`, `QDir`, `QTime` and the like keep their names, so `Qt::File`,
+  `Qt::Dir` and `Qt::Time` shadow the standard library's inside `module Qt`:
+  write `::File` and `::Time::Span` there.
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 

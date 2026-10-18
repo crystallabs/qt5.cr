@@ -150,6 +150,7 @@ types: # Type rewrite rules
   QRgb: { alias_for: "unsigned int" }
   WId: { alias_for: "unsigned int" }
   QVariantList: { alias_for: "QList<QVariant>" }
+  QFileInfoList: { alias_for: "QList<QFileInfo>" }
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
@@ -167,6 +168,7 @@ types: # Type rewrite rules
   # would take opaque pointers nobody can build.  The view ones all have a
   # QString twin.
   QStringView: { ignore: true }
+  QStringRef: { ignore: true }
   QLatin1String: { ignore: true }
   QRegExp: { ignore: true }
   QRegularExpression: { ignore: true }
@@ -193,6 +195,7 @@ types: # Type rewrite rules
   "QPixmap::DataPtr": { ignore: true }
   "QBrush::DataPtr": { ignore: true }
   QPenPrivate: { ignore: true }
+  QFileInfoPrivate: { ignore: true }
 
   # QByteArray maps to Bytes; QList<QByteArray> is instantiated in
   # containers.yml, QSet has no mapping yet.
@@ -207,6 +210,12 @@ types: # Type rewrite rules
   "T": { ignore: true }
   "void ()": { ignore: true }
   "void (void *)": { ignore: true }
+  # The QTextStream manipulators (Qt::endl etc.) are C function pointers,
+  # which bindgen cannot express; QTextStreamManipulator (qSetFieldWidth etc.)
+  # only wraps calls to the setters QTextStream has anyway.
+  QTextStreamFunction: { ignore: true }
+  "QTextStream &(QTextStream &)": { ignore: true }
+  QTextStreamManipulator: { ignore: true }
   "std::__1::function<void (const QString &, const QByteArray &)>":
     ignore: true
   "std::function<void (const QString &, const QByteArray &)>":
@@ -214,7 +223,7 @@ types: # Type rewrite rules
   "std::chrono::milliseconds":
     cpp_type: int64_t
     binding_type: Int64
-    crystal_type: Time::Span
+    crystal_type: "::Time::Span" # Qt::Time shadows Time inside module Qt
     generate_binding: false
     generate_wrapper: false
     pass_by: Value
@@ -229,6 +238,10 @@ types: # Type rewrite rules
   NSMenu: {ignore: true}
   CFURLRef: {ignore: true}
   NSURL: {ignore: true}
+  CFDateRef: {ignore: true} # QDateTime#toCFDate and friends
+  __CFDate: {ignore: true}
+  NSDate: {ignore: true}
+  FILE: {ignore: true} # C stdio handle of QFile#open and QTextStream
   QListWidgetItem:
     ignore_methods:
       - "operator<"

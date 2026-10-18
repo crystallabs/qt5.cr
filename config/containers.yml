@@ -4,6 +4,7 @@ containers:
     instantiations:
       - [ "qreal" ]
       - [ "QByteArray" ] # As Bytes, see types.yml
+      - [ "QFileInfo" ] # QFileInfoList, of QDir#entryInfoList
   - class: QVector
     type: Sequential
     instantiations:

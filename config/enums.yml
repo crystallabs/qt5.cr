@@ -205,6 +205,23 @@ enums:
   "Qt::DropActions": DropActions
   "Qt::DropAction": DropAction
   "QIODevice::OpenMode": IODevice::OpenMode
+  "QIODevice::OpenModeFlag": IODevice::OpenModeFlag
+  "QFileDevice::FileError": FileDevice::FileError
+  "QFileDevice::FileTime": FileDevice::FileTime
+  "QFileDevice::Permission": FileDevice::Permission
+  "QFileDevice::Permissions": FileDevice::Permissions
+  "QFileDevice::FileHandleFlag": FileDevice::FileHandleFlag
+  "QFileDevice::FileHandleFlags": FileDevice::FileHandleFlags
+  "QFileDevice::MemoryMapFlags": FileDevice::MemoryMapFlags
+  "QTextStream::RealNumberNotation": TextStream::RealNumberNotation
+  "QTextStream::FieldAlignment": TextStream::FieldAlignment
+  "QTextStream::Status": TextStream::Status
+  "QTextStream::NumberFlag": TextStream::NumberFlag
+  "QTextStream::NumberFlags": TextStream::NumberFlags
+  "QDirIterator::IteratorFlag": DirIterator::IteratorFlag
+  "QDirIterator::IteratorFlags": DirIterator::IteratorFlags
+  "QLockFile::LockError": LockFile::LockError
+  "Qt::DateFormat": { destination: "DateFormat", camelcase: false } # ISODate, not Isodate
   "QScrollEvent::ScrollState": ScrollEvent::ScrollState
   "Qt::ScreenOrientation": ScreenOrientation
   "Qt::GestureState": GestureState
