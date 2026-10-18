@@ -14,6 +14,18 @@ module: Qt
 # Drop the API Qt deprecated after 5.15, overload by overload.  The API
 # deprecated up to 5.15 is hidden by QT_DISABLE_DEPRECATED_BEFORE below.
 ignore_deprecated: true
+# Not yet: a method returning a pointer to a wrapped class would return nil
+# for a null pointer, so its result is `T?` (Qt returns null routinely, like
+# parentWidget() or currentItem()).  bindgen f0929c4 applies it to every
+# pointer converted to Crystal: a signal with a pointer argument, like
+# QStandardItemModel::itemChanged, declares its block as `Proc(StandardItem,
+# Void)` but calls it with a `StandardItem?` ("no overload matches
+# 'Proc(Qt::StandardItem, Nil)#call' with type (Qt::StandardItem | Nil)"), a
+# Crystal override of a virtual taking a pointer must accept `T?`, and the
+# elements of a container of pointers, like `QList<QStandardItem *>`, are
+# `T?` ("unsafe_fetch must return Qt::StandardItem but it is returning
+# (Qt::StandardItem | Nil)").  See `spec/qt/null_pointer_spec.cr`.
+# nilable_results: true
 if_os_is_darwin:
   library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ `pkg-config --libs Qt5Widgets` -lgccpp"
 else:
