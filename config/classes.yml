@@ -380,3 +380,31 @@ classes:
   QSurfaceFormat: SurfaceFormat
   QOffscreenSurface: OffscreenSurface
   QMarginsF: MarginsF
+  # Text and fonts
+  QFontDatabase: FontDatabase
+  QFontInfo: FontInfo
+  QFontMetricsF: FontMetricsF
+  QRawFont: RawFont
+  QGlyphRun: GlyphRun
+  QStaticText: StaticText
+  QTextInlineObject: TextInlineObject
+  QTextLayout: TextLayout
+  "QTextLayout::FormatRange": TextLayoutFormatRange
+  QTextLine: TextLine
+  QTextFragment: TextFragment
+  QTextFrame: TextFrame
+  "QTextFrame::iterator": TextFrameIterator
+  "QTextBlock::iterator": TextBlockIterator
+  QTextTable: TextTable
+  QTextTableCell: TextTableCell
+  QTextTableFormat: TextTableFormat
+  QTextTableCellFormat: TextTableCellFormat
+  QTextList: TextList
+  QTextObject: TextObject
+  QTextBlockGroup: TextBlockGroup
+  QTextImageFormat: TextImageFormat
+  QTextDocumentFragment: TextDocumentFragment
+  QTextDocumentWriter: TextDocumentWriter
+  QTextBoundaryFinder: TextBoundaryFinder
+  "QAbstractTextDocumentLayout::Selection": TextDocumentLayoutSelection
+  "QAbstractTextDocumentLayout::PaintContext": TextDocumentLayoutPaintContext

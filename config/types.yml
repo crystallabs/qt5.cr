@@ -184,19 +184,6 @@ types: # Type rewrite rules
   "QList<QInputMethodEvent::Attribute>": { ignore: true }
 
   "QList<QTextEdit::ExtraSelection>": { ignore: true }
-  # Bare structs of QPalette, QRectF and a QVector of {QTextCursor,
-  # QTextCharFormat}, which drops QAbstractTextDocumentLayout#draw and
-  # QPlainTextEdit#get_paint_context.
-  "QAbstractTextDocumentLayout::PaintContext": { ignore: true }
-  # ...so `draw`, a pure virtual, isn't wrapped, and a subclass from Crystal
-  # would stay abstract in C++: use QPlainTextDocumentLayout.
-  QAbstractTextDocumentLayout: { sub_class: false }
-  "QAbstractTextDocumentLayout::Selection": { ignore: true }
-  "QVector<QAbstractTextDocumentLayout::Selection>": { ignore: true }
-  # QTextLayout isn't bound; drops QTextBlock#text_formats.
-  "QTextLayout::FormatRange": { ignore: true }
-  "QVector<QTextLayout::FormatRange>": { ignore: true }
-  "QTextBlock::iterator": { ignore: true } # Over QTextFragment, which isn't bound
   "QList<QTextOption::Tab>": { ignore: true }
   "QTextOption::Tab": { ignore: true }
   "QFormLayout::TakeRowResult": { ignore: true }
@@ -355,6 +342,10 @@ types: # Type rewrite rules
   "QRegion::const_reverse_iterator": { ignore: true }
   "QPicture::DataPtr": { ignore: true }
   "QPixmapCache::KeyData": { ignore: true } # Private
+  # Text and fonts
+  QTextFrameLayoutData: { ignore: true } # Private layout data of QTextFrame
+  QTextDocumentPrivate: { ignore: true } # Private; drops a QTextFragment constructor
+  QTextEngine: { ignore: true } # Private; drops TextLayout#engine
   # bindgen renders the `bool *invertible = nullptr` default of `inverted` as
   # `Bool*? = true`, which doesn't compile when the default is used:
   # ext/matrix_helper.hpp, src/qt5/transform.cr.

@@ -301,10 +301,14 @@ see the comments there:
   defaults in `src/qt5/abstract_item_model.cr`, so a Crystal model only
   implements what its C++ counterpart would (`row_count(parent)` and
   `data(index, role)` for a list).
-* `QAbstractTextDocumentLayout::PaintContext`, a bare struct, is ignored, which
-  drops `draw`, the layout's pure virtual: the class gets `sub_class: false`,
-  as a subclass from Crystal would stay abstract in C++.  Use
-  `PlainTextDocumentLayout`, or `TextDocument#document_layout`.
+* `QAbstractTextDocumentLayout::PaintContext` and `Selection`,
+  `QTextLayout::FormatRange`, bare structs of Qt classes, are wrapped as
+  classes with property methods: `Qt::TextDocumentLayoutPaintContext`,
+  `Qt::TextLayoutFormatRange`.
+* `QTextFrame::iterator` and `QTextBlock::iterator` are Crystal `Iterator`s
+  (`src/qt5/text_iterators.cr`): `frame.begin.each { |frame_or_block| }`,
+  `block.begin.map(&.text)`.  `QFontDatabase` is an instance in Qt 5:
+  `Qt::FontDatabase.new.families`.
 * `Qt::TreeWidgetItemIterator` is an `Iterator(TreeWidgetItem)`:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
 * `QHeaderView`'s protected `initialize()` is dropped, as Crystal reserves the

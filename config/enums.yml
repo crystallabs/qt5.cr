@@ -462,3 +462,17 @@ enums:
   "QSurfaceFormat::RenderableType": SurfaceFormat::RenderableType
   "QSurfaceFormat::OpenGLContextProfile": SurfaceFormat::OpenGLContextProfile
   "QSurfaceFormat::ColorSpace": SurfaceFormat::ColorSpace
+  # Text and fonts
+  "QFontDatabase::SystemFont": FontDatabase::SystemFont
+  "QRawFont::AntialiasingType": RawFont::AntialiasingType
+  "QRawFont::LayoutFlag": RawFont::LayoutFlag
+  "QRawFont::LayoutFlags": RawFont::LayoutFlags
+  "QGlyphRun::GlyphRunFlag": GlyphRun::GlyphRunFlag
+  "QGlyphRun::GlyphRunFlags": GlyphRun::GlyphRunFlags
+  "QStaticText::PerformanceHint": StaticText::PerformanceHint
+  "QTextLayout::CursorMode": TextLayout::CursorMode
+  "QTextLine::Edge": TextLine::Edge
+  "QTextLine::CursorPosition": TextLine::CursorPosition
+  "QTextBoundaryFinder::BoundaryType": TextBoundaryFinder::BoundaryType
+  "QTextBoundaryFinder::BoundaryReason": TextBoundaryFinder::BoundaryReason
+  "QTextBoundaryFinder::BoundaryReasons": TextBoundaryFinder::BoundaryReasons

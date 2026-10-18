@@ -285,3 +285,6 @@ QImageReader:
 QImageWriter:
   keep_alive:
     "^setDevice$": true
+QTextDocumentWriter:
+  keep_alive:
+    "^setDevice$": true
