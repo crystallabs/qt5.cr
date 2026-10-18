@@ -170,7 +170,9 @@ functions, are ignored in `config/deprecated.yml` or `config/types.yml`.
 
 Building the bindings should thus print no `-Wdeprecated-declarations`
 warnings, and CI fails if it does.  To regenerate `config/deprecated.yml` from
-these warnings, run `crystal support/parse_deprecated.cr -- --system`.
+these warnings, run `crystal support/parse_deprecated.cr -- --system`, and
+regenerate the binding afterwards: the one built meanwhile includes the
+deprecated methods.
 
 `ignore_methods` matches method names, so it drops all overloads of a name.
 Only list methods there which Qt doesn't hide itself, or a non-deprecated

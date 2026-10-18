@@ -69,7 +69,22 @@ struct QtVersion
   end
 end
 
-class TargetPlatform
+# A platform to generate a binding for.
+abstract class Platform
+  # Name of the binding, like `linux-gnu-x86_64-qt5.15`.
+  abstract def target : String
+
+  # Environment variables for `config/find_paths.yml`.
+  abstract def env : Hash(String, String)
+
+  # Arguments to bindgen.
+  abstract def args : Array(String)
+
+  # Describes the Qt the binding is built from, for messages.
+  abstract def to_s(io : IO) : Nil
+end
+
+class TargetPlatform < Platform
   getter os : String
   getter libc : String
   getter arch : String
@@ -82,11 +97,11 @@ class TargetPlatform
     @qt = QtVersion.new(qt, patch)
   end
 
-  def target
+  def target : String
     "#{@os}-#{@libc}-#{@arch}-qt#{@qt}"
   end
 
-  def env # Environment variables for `config/find_paths.yml`
+  def env : Hash(String, String)
     {
       "QTDIR" => @qt.path,
       "QMAKE" => "#{@qt.path}/qtbase/bin/qmake",
@@ -97,7 +112,7 @@ class TargetPlatform
     }
   end
 
-  def args # Arguments to bindgen
+  def args : Array(String)
     [
       "qt.yml",
       "--var", "architecture=#{@arch}",
@@ -108,11 +123,15 @@ class TargetPlatform
       "--debug",
     ]
   end
+
+  def to_s(io : IO) : Nil
+    io << "Qt" << @qt << " for " << @triple
+  end
 end
 
 # The Qt5 installed on this system, as reported by `qmake -query`.  Bindgen's
 # built-in variables describe the platform, like in `decide_binding_slow.cr`.
-class SystemPlatform
+class SystemPlatform < Platform
   getter qmake : String
   getter qt : String
 
@@ -121,9 +140,12 @@ class SystemPlatform
   def initialize
     ENV["QT_SELECT"] = "5" # For qtchooser's `qmake`
     candidates = ENV["QMAKE"]?.try { |path| [path] } || ["qmake-qt5", "qmake"]
-    qmake = candidates.find { |name| Process.find_executable(name) }
-    abort "Can't find qmake: install Qt5 or set QMAKE" unless qmake
-    @qmake = Process.find_executable(qmake).not_nil!
+    qmake = candidates.each do |name|
+      if path = Process.find_executable(name)
+        break path
+      end
+    end
+    @qmake = qmake || abort "Can't find qmake: install Qt5 or set QMAKE"
 
     @query = Hash(String, String).new
     `#{Process.quote(@qmake)} -query`.each_line do |line|
@@ -136,16 +158,12 @@ class SystemPlatform
     @qt = version.split('.')[0..1].join('.') # "5.15.8" -> "5.15"
   end
 
-  def target
+  def target : String
     vars = Bindgen::Variables.builtin
     "#{vars["os"]}-#{vars["libc"]}-#{vars["architecture"]}-qt#{@qt}"
   end
 
-  def triple
-    "the host"
-  end
-
-  def env
+  def env : Hash(String, String)
     {
       "QTDIR"            => @query["QT_INSTALL_PREFIX"],
       "QMAKE"            => @qmake,
@@ -156,8 +174,12 @@ class SystemPlatform
     }
   end
 
-  def args
+  def args : Array(String)
     ["qt.yml", "--debug"]
+  end
+
+  def to_s(io : IO) : Nil
+    io << "Qt" << @qt << " of " << @qmake
   end
 end
 
@@ -303,14 +325,15 @@ def configure_qts(versions)
 end
 
 # Kick off
-if ARGV.includes?("--system")
+if system_qt = ARGV.includes?("--system")
   platform = SystemPlatform.new
   report_step "Using Qt#{platform.qt} of #{platform.qmake}"
-  platforms = [platform]
+  platforms = [platform] of Platform
 else
   FileUtils.mkdir_p(TEMPDIR)
-  platforms = configurations.map { |x| TargetPlatform.new(*x) }
-  versions = platforms.map(&.qt).uniq
+  targets = configurations.map { |x| TargetPlatform.new(*x) }
+  platforms = targets.map(&.as(Platform))
+  versions = targets.map(&.qt).uniq
 
   # Download and unpack Qt sources
   download_missing_qts(versions)
@@ -318,8 +341,8 @@ else
   configure_qts(versions)
 end
 
-# Run bindgen for all configured platforms
-report_step "Generating bindings for all platforms"
+# Run bindgen for all configured platforms, or the system one
+report_step(system_qt ? "Generating the binding for the system Qt5" : "Generating bindings for all platforms")
 platforms.each_with_index do |platform, idx|
   report(idx, platforms.size, "Generating #{platform.target}")
   # Run bindgen
@@ -333,7 +356,7 @@ platforms.each_with_index do |platform, idx|
   )
 
   unless bindgen.success?
-    STDERR.puts "Failed to build #{platform.target} using Qt#{platform.qt} on #{platform.triple} - Abort."
+    STDERR.puts "Failed to build #{platform.target} using #{platform} - Abort."
     exit 1
   end
 end
