@@ -301,6 +301,14 @@ see the comments there:
   defaults in `src/qt5/abstract_item_model.cr`, so a Crystal model only
   implements what its C++ counterpart would (`row_count(parent)` and
   `data(index, role)` for a list).
+* `QAbstractTextDocumentLayout::PaintContext`, a bare struct, is ignored, which
+  drops `draw`, the layout's pure virtual: the class gets `sub_class: false`,
+  as a subclass from Crystal would stay abstract in C++.  Use
+  `PlainTextDocumentLayout`, or `TextDocument#document_layout`.
+* `Qt::TreeWidgetItemIterator` is an `Iterator(TreeWidgetItem)`:
+  `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
+* `QHeaderView`'s protected `initialize()` is dropped, as Crystal reserves the
+  name for constructors.
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 

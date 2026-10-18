@@ -170,3 +170,43 @@ QAnimationGroup:
 QPropertyAnimation:
   keep_alive:
     "^setTargetObject$": true
+QTreeView:
+  keep_alive:
+    "^setHeader$": true
+QTreeWidget:
+  keep_alive:
+    "^(add|insert)TopLevelItems?$": true
+    "^setHeaderItem$": true
+    "^setItemWidget$": [2]
+QTreeWidgetItem:
+  keep_alive:
+    "^(add|insert)Child(ren)?$": true
+QDataWidgetMapper:
+  keep_alive:
+    "^set(Model|ItemDelegate)$": true
+    "^addMapping$": [0]
+QItemDelegate:
+  keep_alive:
+    "^setItemEditorFactory$": true
+QPlainTextEdit:
+  keep_alive:
+    "^setDocument$": true
+QAbstractTextDocumentLayout:
+  keep_alive:
+    "^setPaintDevice$": true
+    "^registerHandler$": [1]
+QSyntaxHighlighter:
+  keep_alive:
+    "^setDocument$": true
+QTextBlock:
+  keep_alive:
+    "^setUserData$": true
+QUndoStack:
+  keep_alive:
+    "^push$": true
+QUndoGroup:
+  keep_alive:
+    "^addStack$": true
+QUndoView:
+  keep_alive:
+    "^set(Stack|Group)$": true

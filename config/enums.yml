@@ -332,3 +332,12 @@ enums:
   "QLocale::NumberOptions": Locale::NumberOptions
   "QLocale::QuotationStyle": Locale::QuotationStyle
   "QLocale::Script": Locale::Script
+  "QHeaderView::ResizeMode": HeaderView::ResizeMode
+  "QTreeWidgetItem::ItemType": TreeWidgetItem::ItemType
+  "QTreeWidgetItem::ChildIndicatorPolicy": TreeWidgetItem::ChildIndicatorPolicy
+  "QTreeWidgetItemIterator::IteratorFlag": TreeWidgetItemIterator::IteratorFlag
+  "QTreeWidgetItemIterator::IteratorFlags": TreeWidgetItemIterator::IteratorFlags
+  "QDataWidgetMapper::SubmitPolicy": DataWidgetMapper::SubmitPolicy
+  "QPlainTextEdit::LineWrapMode": PlainTextEdit::LineWrapMode
+  "QTextDocument::ResourceType": TextDocument::ResourceType
+  "Qt::HitTestAccuracy": HitTestAccuracy
