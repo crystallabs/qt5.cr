@@ -125,7 +125,7 @@ QCompleter:
     "^set(Model|Widget|Popup)$": true
 QFileDialog:
   keep_alive:
-    "^setItemDelegate$": true
+    "^set(ItemDelegate|IconProvider)$": true
 QLabel:
   keep_alive:
     "^setBuddy$": true
@@ -318,3 +318,20 @@ QCborStreamReader:
 QCborStreamWriter:
   keep_alive:
     "^setDevice$": true
+QConcatenateTablesProxyModel:
+  keep_alive:
+    "^addSourceModel$": true
+QFileSystemModel:
+  keep_alive:
+    "^setIconProvider$": true
+QItemEditorFactory:
+  keep_alive:
+    "^registerEditor$": [1]
+    "^setDefaultFactory$": true
+QIcon:
+  keep_alive:
+    "^$": true # QIcon(QIconEngine *) takes ownership of the engine
+QStackedWidget:
+  keep_alive:
+    "^addWidget$": true
+    "^insertWidget$": [1]

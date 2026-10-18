@@ -63,6 +63,7 @@ parser: # Clang parser configuration
     - "meta_helper.hpp"
     - "cbor_helper.hpp"
     - "thread_helper.hpp"
+    - "item_editor_helper.hpp"
   includes:
     - "{QT_INCLUDE_DIR}/"
     - "{QT_INCLUDE_DIR}/QtCore/"

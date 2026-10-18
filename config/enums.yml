@@ -532,5 +532,10 @@ enums:
   "QSharedMemory::SharedMemoryError": SharedMemory::SharedMemoryError
   "QSystemSemaphore::AccessMode": SystemSemaphore::AccessMode
   "QSystemSemaphore::SystemSemaphoreError": SystemSemaphore::SystemSemaphoreError
+  # Remaining models, styles and providers
+  "QFileIconProvider::IconType": FileIconProvider::IconType
+  "QFileIconProvider::Option": FileIconProvider::Option
+  "QFileIconProvider::Options": FileIconProvider::Options
+  "QIconEngine::IconEngineHook": IconEngine::IconEngineHook
   "QTextCodec::ConversionFlag": TextCodec::ConversionFlag
   "QTextCodec::ConversionFlags": TextCodec::ConversionFlags

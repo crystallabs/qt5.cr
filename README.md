@@ -415,6 +415,24 @@ see the comments there:
   `CborStreamWriter#append(String)` over the unwrapped `QStringView` overload.
   Qt 5 declares the `QDataStream` operators of `QCborSimpleType` without
   exporting them, so the helper defines them for the binding to link.
+* `QStyleOptionTabV4` is the one V-suffixed style option still a class in
+  Qt 5 (`option.tab_index`); the others are deprecated typedefs of the
+  current classes.  `StyleHintReturnMask#region` and
+  `StyleHintReturnVariant#variant` are properties.
+* A Crystal `Qt::IconEngine` subclass implements `paint` and `clone`
+  (see `spec/qt/providers_spec.cr`).  `clone` is declared `IconEngine?`, as
+  every pointer result is, but the override must return an object, so it
+  declares `def clone : Qt::IconEngine`: the C++ side calls `to_unsafe` on the
+  result.  The same holds for any Crystal override of a virtual method
+  returning a pointer.
+* `QItemEditorCreatorBase` is abstract and declares no constructor, which
+  bindgen doesn't add for an abstract class, so a Crystal creator derives from
+  `Qt::ItemEditorCreator`, the concrete `Qt5crItemEditorCreator` of
+  `ext/item_editor_helper.hpp`, implementing `create_widget(parent)` and
+  `value_property_name` (`Bytes`), and registers with
+  `ItemEditorFactory#register_editor(Qt::MetaType::Type::Int.to_i, creator)`.
+  `QItemEditorCreator<T>` and `QStandardItemEditorCreator<T>` are templates
+  and aren't bound.
 * `QMutex` derives from `QBasicMutex`, which is listed so the methods are
   inherited.  `QRecursiveMutex` derives privately from `QMutex` in Qt 5 and
   re-exports `lock`, `tryLock` and `unlock` with using-declarations, which

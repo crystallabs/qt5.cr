@@ -498,3 +498,15 @@ classes:
   QWriteLocker: WriteLocker
   QSharedMemory: SharedMemory
   QSystemSemaphore: SystemSemaphore
+  # Remaining models, styles and providers
+  QConcatenateTablesProxyModel: ConcatenateTablesProxyModel
+  QTransposeProxyModel: TransposeProxyModel
+  QFileIconProvider: FileIconProvider
+  QItemEditorCreatorBase: ItemEditorCreatorBase
+  Qt5crItemEditorCreator: ItemEditorCreator # Concrete, see ext/item_editor_helper.hpp
+  QStyleHintReturnMask: StyleHintReturnMask
+  QStyleHintReturnVariant: StyleHintReturnVariant
+  QStyleOptionTabV4: StyleOptionTabV4 # The other V-suffixed options are deprecated typedefs in Qt 5
+  QIconEngine: IconEngine
+  QWidgetItemV2: WidgetItemV2
+  QStackedWidget: StackedWidget

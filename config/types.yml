@@ -441,4 +441,7 @@ types: # Type rewrite rules
   QSemaphore: # Likewise try_acquire() of tryAcquire(int n = 1)
     ignore_methods:
       - try_acquire
+  # Remaining models, styles and providers
+  "QIconEngine::ScaledPixmapArgument": { ignore: true } # Only virtual_hook's data
+  "QIconEngine::AvailableSizesArgument": { ignore: true }
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
