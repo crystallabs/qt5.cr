@@ -484,10 +484,7 @@ classes:
   QThreadPool: ThreadPool
   QRunnable: Runnable
   QBasicMutex: BasicMutex # Base of QMutex
-  # Not Mutex: bindgen's keep-alive glue (lib/bindgen/assets/glue.cr) names
-  # Crystal's `Mutex` unqualified inside the module, which Qt::Mutex would
-  # shadow.
-  QMutex: QMutex
+  QMutex: Mutex
   QRecursiveMutex: RecursiveMutex
   QMutexLocker: MutexLocker
   QSemaphore: Semaphore
@@ -503,7 +500,6 @@ classes:
   QTransposeProxyModel: TransposeProxyModel
   QFileIconProvider: FileIconProvider
   QItemEditorCreatorBase: ItemEditorCreatorBase
-  Qt5crItemEditorCreator: ItemEditorCreator # Concrete, see ext/item_editor_helper.hpp
   QStyleHintReturnMask: StyleHintReturnMask
   QStyleHintReturnVariant: StyleHintReturnVariant
   QStyleOptionTabV4: StyleOptionTabV4 # The other V-suffixed options are deprecated typedefs in Qt 5

@@ -333,7 +333,6 @@ types: # Type rewrite rules
   # The QXmlStream classes return QStringRef (ignored above) through this
   # wrapper of it; ext/xml_helper.hpp returns the strings instead.
   QXmlStreamStringRef: { ignore: true }
-  "std::nullptr_t": { ignore: true } # QDataStream >> nullptr_t; emitted as invalid Crystal otherwise
   QJsonValuePtr: { ignore: true } # Fake pointer classes of the JSON iterators
   QJsonValueRefPtr: { ignore: true }
   "QJsonObject::const_iterator": { ignore: true } # Use #keys and #value
@@ -362,10 +361,6 @@ types: # Type rewrite rules
   "void (QDataStream &, void *)": { ignore: true } # QMetaType::LoadOperator
   "void (int, void *)": { ignore: true } # QMetaType::Destructor
   "void *(int, void *, const void *)": { ignore: true } # QMetaType::Constructor
-  # The anonymous struct of `d` holds the tables, of no use from Crystal.
-  # bindgen names it `QMetaObject_Unnamed0` through a typedef, but types the
-  # `_self_` of its `operator=` wrapper as `QMetaObject::Unnamed0 *`, which
-  # C++ can't name, so the member gets no property methods.
   # Enum classes without enumerators, which a Crystal enum can't be: a tag
   # number and a negative integer's absolute value, exchanged as UInt64.
   QCborTag:
@@ -397,13 +392,6 @@ types: # Type rewrite rules
   QMetaObject:
     ignore_methods:
       - invokeMethod
-  # bindgen looks the `instance_variables` rules up by the Crystal name of the
-  # class, so this is keyed by it, not `QMetaObject`.  It drops the property
-  # methods of the tables of `d`, an anonymous struct bindgen names
-  # `QMetaObject_Unnamed0` through a typedef but whose `operator=` wrapper
-  # takes a `QMetaObject::Unnamed0 *`, which C++ can't name.
-  MetaObject:
-    instance_variables: false
   QMetaMethod:
     ignore_methods:
       - invoke
@@ -427,20 +415,17 @@ types: # Type rewrite rules
   # is never called from the thread.
   QThread: { sub_class: false }
   QRunnable: { sub_class: false }
-  # The std-style try_lock() aliases of tryLock() would be wrapped under the
-  # same Crystal name; try_lock_for and try_lock_until are templates.
-  QBasicMutex:
-    ignore_methods:
-      - try_lock
+  # bindgen drops a std-style alias whose Crystal signature equals the
+  # original's, like try_lock() of QBasicMutex::tryLock() and try_acquire()
+  # of QSemaphore::tryAcquire(int n = 1).  QMutex::tryLock(int timeout = 0)
+  # differs from try_lock() by the defaulted argument only, which Crystal
+  # takes as the same signature: the later def would replace it.
   QMutex:
     ignore_methods:
       - try_lock
   QRecursiveMutex:
     ignore_methods:
       - try_lock
-  QSemaphore: # Likewise try_acquire() of tryAcquire(int n = 1)
-    ignore_methods:
-      - try_acquire
   # Remaining models, styles and providers
   "QIconEngine::ScaledPixmapArgument": { ignore: true } # Only virtual_hook's data
   "QIconEngine::AvailableSizesArgument": { ignore: true }

@@ -421,31 +421,25 @@ see the comments there:
   `StyleHintReturnVariant#variant` are properties.
 * A Crystal `Qt::IconEngine` subclass implements `paint` and `clone`
   (see `spec/qt/providers_spec.cr`).  `clone` is declared `IconEngine?`, as
-  every pointer result is, but the override must return an object, so it
-  declares `def clone : Qt::IconEngine`: the C++ side calls `to_unsafe` on the
-  result.  The same holds for any Crystal override of a virtual method
-  returning a pointer.
-* `QItemEditorCreatorBase` is abstract and declares no constructor, which
-  bindgen doesn't add for an abstract class, so a Crystal creator derives from
-  `Qt::ItemEditorCreator`, the concrete `Qt5crItemEditorCreator` of
-  `ext/item_editor_helper.hpp`, implementing `create_widget(parent)` and
-  `value_property_name` (`Bytes`), and registers with
-  `ItemEditorFactory#register_editor(Qt::MetaType::Type::Int.to_i, creator)`.
+  every pointer result is; an override returning `nil` passes a null pointer
+  to C++, as for any Crystal override of a virtual method returning a pointer.
+* A Crystal creator derives from the abstract `Qt::ItemEditorCreatorBase`
+  (its implicit default constructor is wrapped), implementing
+  `create_widget(parent)` and `value_property_name` (`Bytes`), and registers
+  with `ItemEditorFactory#register_editor(Qt::MetaType::Type::Int.to_i, creator)`.
   `QItemEditorCreator<T>` and `QStandardItemEditorCreator<T>` are templates
   and aren't bound.
-* `QMutex` derives from `QBasicMutex`, which is listed so the methods are
-  inherited.  `QRecursiveMutex` derives privately from `QMutex` in Qt 5 and
-  re-exports `lock`, `tryLock` and `unlock` with using-declarations, which
-  bindgen doesn't wrap, so `src/qt5/recursive_mutex.cr` adds them through
-  `ext/thread_helper.hpp`.  The std-style `try_lock()` and `try_acquire()` aliases of
-  `tryLock()` and `tryAcquire()` are dropped, as both would be `#try_lock`;
-  `try_lock_for` and friends are templates.  `QMutex` is `Qt::QMutex`, as
-  bindgen's keep-alive glue names Crystal's `Mutex` unqualified inside the
-  module, which `Qt::Mutex` would shadow; its `RecursionMode` is
-  `Qt::MutexRecursionMode`, as the `QMutex` alias of `lib Binding` shadows the
-  class from inside the lib.  `QException`, which only serves throwing across
-  QtConcurrent threads, isn't bound: it would shadow `::Exception` inside the
-  module.
+* `QMutex` is `Qt::Mutex`, deriving from `QBasicMutex`, which is listed so
+  the methods are inherited.  `QRecursiveMutex` derives privately from
+  `QMutex` in Qt 5 and re-exports `lock`, `tryLock` and `unlock` with
+  using-declarations, which are wrapped.  `#try_lock(timeout = 0)` is
+  `tryLock(int)`: bindgen drops the std-style `try_lock()` and `try_acquire()`
+  aliases whose Crystal signature equals `tryLock()`'s and
+  `tryAcquire(int n = 1)`'s, and `config/types.yml` ignores the `try_lock()`
+  of `QMutex` and `QRecursiveMutex`, which Crystal would take as the same
+  signature as `try_lock(timeout = 0)`; `try_lock_for` and friends are
+  templates.  `QException`, which only serves throwing across QtConcurrent
+  threads, isn't bound: it would shadow `::Exception` inside the module.
 * The meta-object system exchanges names as `const char *`, an `UInt8*`:
   `String.new(meta_object.class_name)`,
   `meta_object.index_of_property("text".to_unsafe)`.  `Qt::Widget.
@@ -456,10 +450,9 @@ see the comments there:
   pairs) or are templates, so they are dropped;
   `Qt::MetaObject.invoke_method(object, "click")` (`ext/meta_helper.hpp`)
   invokes a method without arguments.  `MetaType::Type` keeps Qt's constant
-  names, `MetaType::Type::QString`.  The tables of `QMetaObject`'s public
-  `d`, an anonymous struct, get no property methods: bindgen looks the
-  `instance_variables` rules up by the Crystal class name, so the rule is
-  keyed `MetaObject` in `config/types.yml`.
+  names, `MetaType::Type::QString`.  `QMetaObject`'s public `d`, an
+  anonymous struct of moc-generated tables, gets no property method, as the
+  struct has no Crystal wrapper.
 * `QTextCodec` (Qt 5 only) is `Qt::TextCodec`: `TextStream#codec=` takes one,
   `TextCodec.codec_for_name("UTF-8".to_slice)` is nilable.
   `Qt::TextEncoder` and `Qt::TextDecoder` keep the conversion state between

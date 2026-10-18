@@ -42,9 +42,9 @@ describe Qt::ThreadPool do
   end
 end
 
-describe Qt::QMutex do
+describe Qt::Mutex do
   it "locks" do
-    mutex = Qt::QMutex.new
+    mutex = Qt::Mutex.new
     mutex.recursive?.should be_false
     mutex.try_lock.should be_true
     mutex.try_lock(10).should be_false
@@ -52,12 +52,14 @@ describe Qt::QMutex do
     mutex.lock
     mutex.unlock
 
-    recursive = Qt::RecursiveMutex.new
+    recursive = Qt::RecursiveMutex.new # Its lock, tryLock and unlock are using-declared
     recursive.lock
     recursive.try_lock.should be_true
+    recursive.try_lock(10).should be_true
     recursive.unlock
     recursive.unlock
-    Qt::QMutex.new(Qt::MutexRecursionMode::Recursive).recursive?.should be_true
+    recursive.unlock
+    Qt::Mutex.new(Qt::Mutex::RecursionMode::Recursive).recursive?.should be_true
 
     locker = Qt::MutexLocker.new(mutex)
     locker.mutex.not_nil!.to_unsafe.should eq(mutex.to_unsafe)
@@ -83,6 +85,8 @@ describe Qt::Semaphore do
     semaphore.available.should eq(2)
     semaphore.acquire
     semaphore.try_acquire(2).should be_false
+    semaphore.try_acquire.should be_true # n = 1
+    semaphore.release
     semaphore.try_acquire(1, 10).should be_true
     semaphore.available.should eq(0)
     semaphore.release(3)
@@ -92,7 +96,7 @@ describe Qt::Semaphore do
     releaser.cancel.not_nil!.to_unsafe.should eq(semaphore.to_unsafe)
 
     condition = Qt::WaitCondition.new
-    mutex = Qt::QMutex.new
+    mutex = Qt::Mutex.new
     mutex.lock
     condition.wait(mutex, Qt::DeadlineTimer.new(1_i64)).should be_false
     condition.wait(mutex, 1_u64).should be_false # Milliseconds

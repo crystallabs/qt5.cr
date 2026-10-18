@@ -16,5 +16,3 @@ functions:
     destination: "::"
   "^qt5cr_cbor_\\w+$": # See ext/cbor_helper.hpp
     destination: "::"
-  "^qt5cr_recursive_mutex_\\w+$": # See ext/thread_helper.hpp
-    destination: "::"

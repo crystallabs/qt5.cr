@@ -524,9 +524,7 @@ enums:
   "QCborError::Code": CborError::Code
   # Threads and IPC
   "QThread::Priority": Thread::Priority
-  # Not QMutex::RecursionMode: the `QMutex` alias of `lib Binding` shadows the
-  # class from inside the lib, where the functions name the enum.
-  "QMutex::RecursionMode": MutexRecursionMode
+  "QMutex::RecursionMode": Mutex::RecursionMode
   "QReadWriteLock::RecursionMode": ReadWriteLock::RecursionMode
   "QSharedMemory::AccessMode": SharedMemory::AccessMode
   "QSharedMemory::SharedMemoryError": SharedMemory::SharedMemoryError

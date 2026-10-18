@@ -1,15 +1,15 @@
 require "../spec_helper"
 
 # An icon engine written in Crystal paints the icon; `clone` returns a fresh
-# engine, as the QIcon copies take one each.  The override declares the
-# non-nil `IconEngine`: the abstract def is `IconEngine?` (a pointer result),
-# but the C++ side needs an object.
+# engine, as the QIcon copies take one each.  The abstract def is
+# `IconEngine?` (a pointer result); an override returning nil passes a null
+# pointer to C++.
 private class SquareIconEngine < Qt::IconEngine
   def paint(painter : Qt::Painter, rect : Qt::Rect, mode : Qt::Icon::Mode, state : Qt::Icon::State) : Void
     painter.fill_rect(rect, Qt::Color.new(0, 128, 0))
   end
 
-  def clone : Qt::IconEngine
+  def clone : Qt::IconEngine?
     SquareIconEngine.new
   end
 
@@ -19,10 +19,9 @@ private class SquareIconEngine < Qt::IconEngine
 end
 
 # An editor creator makes the editor widget for a type and names the property
-# holding its value.  QItemEditorCreatorBase is abstract without a
-# constructor, so Crystal derives from the concrete ItemEditorCreator of
-# ext/item_editor_helper.hpp.
-private class SpinBoxCreator < Qt::ItemEditorCreator
+# holding its value.  QItemEditorCreatorBase is abstract and declares no
+# constructor; its implicit default one is wrapped.
+private class SpinBoxCreator < Qt::ItemEditorCreatorBase
   def create_widget(parent : Qt::Widget) : Qt::Widget?
     Qt::SpinBox.new(parent)
   end
