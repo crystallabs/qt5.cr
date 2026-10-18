@@ -141,6 +141,25 @@ types: # Type rewrite rules
   QVariantList: { alias_for: "QList<QVariant>" }
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
+  # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
+  # `config/classes.yml`) use these: C++ iterators have no use in Crystal, and
+  # `QVector<QString>` (of `toVector`) isn't wrapped.
+  "QList<QString>::iterator": { ignore: true }
+  "QList<QString>::const_iterator": { ignore: true }
+  "QList<QString>::reverse_iterator": { ignore: true }
+  "QList<QString>::const_reverse_iterator": { ignore: true }
+  "QVector<QString>": { ignore: true }
+  "QList<QString>":
+    ignore_methods:
+      - "operator[]" # Unchecked in Qt; `Indexable#[]` raises on a bad index
+  # Qt's string views and regular expressions aren't wrapped: their overloads
+  # would take opaque pointers nobody can build.  The view ones all have a
+  # QString twin.
+  QStringView: { ignore: true }
+  QLatin1String: { ignore: true }
+  QRegExp: { ignore: true }
+  QRegularExpression: { ignore: true }
+
   # Structures with QVariant: Ignore for now.
   "QInputMethodEvent::Attribute": { ignore: true }
   "QList<QInputMethodEvent::Attribute>": { ignore: true }

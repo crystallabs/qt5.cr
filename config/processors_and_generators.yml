@@ -1,6 +1,5 @@
 processors:
   # Graph-refining processors:
-  - inheritance
   - default_constructor # Create default constructors where possible
   - copy_structs # Copy structures as marked
   - macros # Support for macro mapping
@@ -9,8 +8,14 @@ processors:
   - instance_properties # Add property methods for public instance members
   - filter_methods # Throw out filtered methods
   - auto_container_instantiation
+  # Before the containers: a container of an enum, like `QList<Qt::DayOfWeek>`,
+  # names it in an `include`, which Crystal resolves in file order.
   - enums # Add enums
   - instantiate_containers # Actually instantiate containers
+  - inheritance # Mirror the C++ hierarchy, also from containers (QPolygon)
+  # Again: the methods of the container instantiations listed in `classes:`
+  # and the ones `inheritance` copies from the bases come after the first run.
+  - filter_methods
   - qt # Qt specifics
   # Preliminary generation processors:
   - crystal_wrapper # Create Crystal wrappers

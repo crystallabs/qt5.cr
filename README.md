@@ -110,17 +110,20 @@ itself](https://doc.qt.io/qt-5/qcoreapplication.html#locale-settings)).
 
 `QStringList` is a `QList<QString>`: methods taking one accept any
 `Enumerable(String)`, and methods returning one return a `Qt::StringList`,
-which is an `Indexable(String)`:
+which is an `Indexable(String)` with Qt's own methods: `#filter`,
+`#replace_in_strings`, `#remove_duplicates`, `#sort(cs)`, `#join`, `#contains`,
+`#index_of`, `#remove_all`, `#take_first` and the rest of `QList`.
 
 ```crystal
 combo_box.add_items(["one", "two"])
 names = Qt::Dir.new(".").entry_list(["*.cr"], Qt::Dir::Filters::Files)
-names.sort!(Qt::CaseSensitivity::CaseInsensitive).to_a
+names.sort(Qt::CaseSensitivity::CaseInsensitive) # In place
+names.filter(".cr").to_a
 ```
 
-Qt's own `QStringList` methods are `#sort!`, `#remove_duplicates!`, `#filter`,
-`#replace_in_strings!` and `#includes?(str, cs)`, next to
-`Enumerable`'s `#join`, `#select`, `#sort` and `#uniq`, which return arrays.
+`#sort(cs = CaseSensitive)` sorts in place.  `#join` is `Enumerable`'s, which
+Crystal finds before the superclass holding Qt's, with the same result.
+Likewise, `Qt::Polygon` is an `Indexable(Qt::Point)`.
 
 ## Object lifetime
 

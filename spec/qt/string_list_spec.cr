@@ -33,18 +33,25 @@ describe "QStringList" do
 
   it "has the QStringList methods" do
     list = Qt::StringList.from(["Banana", "apple", "cherry", "apple"])
-    list.remove_duplicates!.should eq(1)
+    list.remove_duplicates.should eq(1)
     list.to_a.should eq(["Banana", "apple", "cherry"])
-    list.sort!.to_a.should eq(["Banana", "apple", "cherry"])
-    list.sort!(Qt::CaseSensitivity::CaseInsensitive).to_a.should eq(["apple", "Banana", "cherry"])
+    list.sort(Qt::CaseSensitivity::CaseInsensitive) # In place
+    list.to_a.should eq(["apple", "Banana", "cherry"])
+    list.sort
+    list.to_a.should eq(["Banana", "apple", "cherry"])
 
     list.filter("an").to_a.should eq(["Banana"])
     list.filter("AN", Qt::CaseSensitivity::CaseInsensitive).to_a.should eq(["Banana"])
-    list.includes?("APPLE", Qt::CaseSensitivity::CaseInsensitive).should be_true
-    list.includes?("APPLE").should be_false
+    list.contains("apple").should be_true
+    list.contains("APPLE").should be_false
+    list.index_of("cherry").should eq(2)
 
-    list.replace_in_strings!("a", "4").to_a.should eq(["4pple", "B4n4n4", "cherry"])
-    list.join("+").should eq("4pple+B4n4n4+cherry")
+    list.replace_in_strings("a", "4")
+    list.to_a.should eq(["B4n4n4", "4pple", "cherry"])
+    list.join("+").should eq("B4n4n4+4pple+cherry")
+    list.remove_all("cherry").should eq(1)
+    list.size.should eq(2)
+    expect_raises(IndexError) { list[2] }
   end
 
   it "builds wrapped lists directly" do
@@ -53,5 +60,27 @@ describe "QStringList" do
     list << "z"
     list.to_a.should eq(["x", "y", "z"])
     list.join(", ").should eq("x, y, z")
+  end
+end
+
+# `QPolygon` is a `QVector<QPoint>`, so its wrapper is an `Indexable(Qt::Point)`.
+describe "QPolygon" do
+  it "is a list of points" do
+    polygon = Qt::Polygon.new
+    polygon << Qt::Point.new(0, 0)
+    polygon << Qt::Point.new(4, 0)
+    polygon.size.should eq(2)
+    polygon.to_a.should eq([Qt::Point.new(0, 0), Qt::Point.new(4, 0)])
+
+    triangle = Qt::Polygon.new([Qt::Point.new(0, 0), Qt::Point.new(4, 0), Qt::Point.new(4, 4)])
+    triangle.size.should eq(3)
+    triangle[2].should eq(Qt::Point.new(4, 4))
+    triangle.bounding_rect.should eq(Qt::Rect.new(0, 0, 5, 5))
+
+    image = Qt::Image.new(8, 8, Qt::Image::Format::Rgb32)
+    image.fill(Qt::GlobalColor::White)
+    Qt::Painter.draw(image, &.draw_polygon(triangle))
+    (image.pixel(4, 2) & 0xFFFFFF).should eq(0x000000) # On the outline
+    (image.pixel(7, 7) & 0xFFFFFF).should eq(0xFFFFFF)
   end
 end

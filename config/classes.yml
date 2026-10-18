@@ -175,3 +175,6 @@ classes:
   QListWidgetItem: ListWidgetItem
   QMargins: Margins
   QLocale: Locale
+  "QList<QString>": StringList # QStringList, wrapped with its methods
+  # QStringList keeps its methods in this specialization, which it derives from
+  "QListSpecialMethods<QString>": StringListMethods
