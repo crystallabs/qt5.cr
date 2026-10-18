@@ -3,6 +3,7 @@ containers:
     type: Sequential
     instantiations:
       - [ "qreal" ]
+      - [ "QByteArray" ] # As Bytes, see types.yml
   - class: QVector
     type: Sequential
     instantiations:

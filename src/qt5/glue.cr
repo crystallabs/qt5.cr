@@ -11,6 +11,20 @@ module Qt
       end
     end
 
+    # `QByteArray` is exchanged as a `Binding::CrystalString` of its raw bytes.
+    module QByteArray
+      # The buffer was allocated for us by the GC, see `qbytearray_to_crystal`.
+      def self.unwrap(wrapped : Binding::CrystalString) : Bytes
+        return Bytes.empty if wrapped.size == 0
+        Bytes.new(wrapped.ptr.as(UInt8*), wrapped.size)
+      end
+
+      # Points into *bytes*, which the caller keeps alive during the call.
+      def self.wrap(bytes : Bytes) : Binding::CrystalString
+        Binding::CrystalString.new(ptr: bytes.to_unsafe.as(LibC::Char*), size: bytes.size)
+      end
+    end
+
     module TimeSpan
       NANO_PER_MILLI = 1_000_000
 

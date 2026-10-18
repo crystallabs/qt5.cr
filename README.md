@@ -19,6 +19,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [(Re)generating all Qt5 binding versions](#regenerating-all-qt5-binding-versions)
       * [(Re)generating the binding for the system's Qt5](#regenerating-the-binding-for-the-systems-qt5)
       * [(Re)generating a specific Qt5 binding version](#regenerating-a-specific-qt5-binding-version)
+      * [Type rules](#type-rules)
       * [Future things to do](#future-things-to-do)
    * [Platform Support](#platform-support)
    * [Contributing](#contributing)
@@ -235,6 +236,24 @@ installed and which version it is, and names the binding after the host, e.g.
 5. If you're not using your system's Qt: `export QMAKE=/path/to/qmake`
 6. Run bindgen as usual: `lib/bindgen/tool.sh qt.yml --stats`
 7. Verify with `crystal spec`
+
+## Type rules
+
+`config/types.yml` holds the rules Qt needs beyond bindgen's built-in types,
+see the comments there:
+
+* `QStringList` and `QVariantList` are aliases of `QList<QString>` and
+  `QList<QVariant>`, so methods take any `Enumerable(String)`:
+  `combo_box.add_items(["a", "b"])`.  `QList<QString>` and
+  `QListSpecialMethods<QString>`, which holds the `QStringList` methods, are
+  listed as classes, so the wrapper `Qt::StringList` has those methods.  The
+  overloads taking `QStringView`, `QLatin1String` or a `QRegExp` are dropped,
+  as the Crystal `String` maps to `QString`.
+* `QByteArray` maps to `Bytes`, copied in both directions like `QString`:
+  `String.new(Qt::Url.to_percent_encoding(text))`, `mime_data.set_data(type,
+  bytes)`.  `QList<QByteArray>` is an `Enumerable(Bytes)`.
+* Types without a mapping yet, like `std::function` callbacks or the
+  associative containers, are ignored, which drops the methods using them.
 
 ## Future things to do
 

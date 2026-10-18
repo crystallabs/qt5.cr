@@ -19,6 +19,17 @@ static CrystalString qstring_to_crystal(const QString &str) {
   return CrystalString{ buffer, size };
 }
 
+// Converts a QByteArray into a CrystalString of its raw bytes, which Crystal
+// turns into a `Bytes`.  The copy is GC-allocated, so the `Bytes` uses it
+// directly.
+static CrystalString qbytearray_to_crystal(const QByteArray &bytes) {
+  int size = bytes.size();
+  char *buffer = static_cast<char *>(GC_MALLOC_ATOMIC(size));
+  memcpy(buffer, bytes.constData(), size);
+
+  return CrystalString{ buffer, size };
+}
+
 // Wraps run-time information on a Crystal type.  Basically a C++ representation
 // to store Crystals tagged unions of any type of up to 16KiB in size.
 // Used to marshal to and from QVariant.

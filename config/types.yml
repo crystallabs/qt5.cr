@@ -10,6 +10,17 @@ types: # Type rewrite rules
     builtin: true
     pass_by: Value
     wrapper_pass_by: Value
+  QByteArray: # Map as Bytes, exchanged as a {pointer, size} pair like QString
+    converter: Qt::Converter::QByteArray
+    crystal_type: Bytes
+    cpp_type: CrystalString
+    binding_type: CrystalString
+    to_cpp: "QByteArray(%.ptr, %.size)"
+    from_cpp: "qbytearray_to_crystal(%)"
+    kind: Struct
+    builtin: true
+    pass_by: Value
+    wrapper_pass_by: Value
   QChar: # Map as Crystal Char
     cpp_type: int32_t
     binding_type: Int32
@@ -183,8 +194,8 @@ types: # Type rewrite rules
   "QBrush::DataPtr": { ignore: true }
   QPenPrivate: { ignore: true }
 
-  # Waiting for a reasonable pass-through implementation of QByteArray
-  "QList<QByteArray>": { ignore: true }
+  # QByteArray maps to Bytes; QList<QByteArray> is instantiated in
+  # containers.yml, QSet has no mapping yet.
   "QSet<QByteArray>": { ignore: true }
 
   # Ignore pure template types
