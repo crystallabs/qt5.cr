@@ -221,6 +221,8 @@ types: # Type rewrite rules
   QListWidgetItem:
     ignore_methods:
       - "operator<"
-      - setBackgroundColor # Deprecated, but virtual: not hidden by QT_DISABLE_DEPRECATED_BEFORE
-  <<: deprecated.yml
+  QPolygon:
+    ignore_methods: # Variadic, which can't be wrapped
+      - setPoints
+      - putPoints
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above

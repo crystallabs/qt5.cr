@@ -169,21 +169,15 @@ See `lib/bindgen/README.md` and `lib/bindgen/clang/README.md`.
 
 ## Deprecated Qt API
 
-The bindings don't wrap API that Qt deprecated up to Qt 5.15.  The headers are
-parsed and the C++ wrappers built as C++17 with
-`QT_DISABLE_DEPRECATED_BEFORE=0x050F00` (see `qt.yml` and `ext/Makefile`),
-which hides most deprecated declarations.  Those Qt keeps visible, like virtual
-functions, are ignored in `config/deprecated.yml` or `config/types.yml`.
+The bindings don't wrap deprecated Qt API.  The headers are parsed and the C++
+wrappers built as C++17 with `QT_DISABLE_DEPRECATED_BEFORE=0x050F00` (see
+`qt.yml` and `ext/Makefile`), which hides the declarations Qt deprecated up to
+5.15.  What Qt deprecated later is declared `[[deprecated]]`, which bindgen's
+`ignore_deprecated: true` drops overload by overload, so a non-deprecated
+overload like `QSpinBox::valueChanged(int)` stays.
 
 Building the bindings should thus print no `-Wdeprecated-declarations`
-warnings, and CI fails if it does.  To regenerate `config/deprecated.yml` from
-these warnings, run `crystal support/parse_deprecated.cr -- --system`, and
-regenerate the binding afterwards: the one built meanwhile includes the
-deprecated methods.
-
-`ignore_methods` matches method names, so it drops all overloads of a name.
-Only list methods there which Qt doesn't hide itself, or a non-deprecated
-overload like `QSpinBox::valueChanged(int)` goes missing.
+warnings, and CI fails if it does.
 
 ## Naming scheme
 

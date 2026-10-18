@@ -10,6 +10,10 @@
 # These bindings will, as configured, bind to Qt dynamically.
 
 module: Qt
+
+# Drop the API Qt deprecated after 5.15, overload by overload.  The API
+# deprecated up to 5.15 is hidden by QT_DISABLE_DEPRECATED_BEFORE below.
+ignore_deprecated: true
 if_os_is_darwin:
   library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ `pkg-config --libs Qt5Widgets` -lgccpp"
 else:

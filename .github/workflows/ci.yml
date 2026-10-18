@@ -53,8 +53,8 @@ jobs:
           detected="$(crystal run support/decide_binding_slow.cr -- 5.0.0)"
           echo "BINDING_PLATFORM=${detected#* }" >> "$GITHUB_ENV"
 
-      # Deprecated Qt API is hidden by QT_DISABLE_DEPRECATED_BEFORE, or ignored
-      # in config/deprecated.yml.  A warning means a list needs updating.
+      # Deprecated Qt API is hidden by QT_DISABLE_DEPRECATED_BEFORE, or dropped
+      # by bindgen's ignore_deprecated.  A warning means one of them failed.
       - name: Generate bindings
         run: |
           set -o pipefail

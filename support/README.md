@@ -32,15 +32,3 @@ This needs neither `curl` nor `tar`.
 * `curl`
 * `tar` with support for `tar.xz` archives
 * **bindgen** and its dependencies (See `lib/bindgen/README.md`)
-
-### `parse_deprecated.cr`
-
-Regenerates `config/deprecated.yml`, which lists the methods Qt deprecated, so
-that bindgen doesn't wrap them.  It generates the binding with every method
-through `generate_bindings.cr` (arguments, like `--system`, are passed on), and
-collects the methods the C++ compiler warns about.  Both GCC's and Clang's
-warnings are understood:  For Clang, the class is taken from the enclosing
-wrapper function in the generated `ext/qt_binding_*.cpp`.
-
-If generating fails, or a deprecation warning can't be attributed to a class,
-the previous `config/deprecated.yml` is restored.
