@@ -415,17 +415,6 @@ types: # Type rewrite rules
   # is never called from the thread.
   QThread: { sub_class: false }
   QRunnable: { sub_class: false }
-  # bindgen drops a std-style alias whose Crystal signature equals the
-  # original's, like try_lock() of QBasicMutex::tryLock() and try_acquire()
-  # of QSemaphore::tryAcquire(int n = 1).  QMutex::tryLock(int timeout = 0)
-  # differs from try_lock() by the defaulted argument only, which Crystal
-  # takes as the same signature: the later def would replace it.
-  QMutex:
-    ignore_methods:
-      - try_lock
-  QRecursiveMutex:
-    ignore_methods:
-      - try_lock
   # Remaining models, styles and providers
   "QIconEngine::ScaledPixmapArgument": { ignore: true } # Only virtual_hook's data
   "QIconEngine::AvailableSizesArgument": { ignore: true }

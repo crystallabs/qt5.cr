@@ -434,10 +434,8 @@ see the comments there:
   `QMutex` in Qt 5 and re-exports `lock`, `tryLock` and `unlock` with
   using-declarations, which are wrapped.  `#try_lock(timeout = 0)` is
   `tryLock(int)`: bindgen drops the std-style `try_lock()` and `try_acquire()`
-  aliases whose Crystal signature equals `tryLock()`'s and
-  `tryAcquire(int n = 1)`'s, and `config/types.yml` ignores the `try_lock()`
-  of `QMutex` and `QRecursiveMutex`, which Crystal would take as the same
-  signature as `try_lock(timeout = 0)`; `try_lock_for` and friends are
+  aliases, whose Crystal signatures equal or overlap the originals';
+  `try_lock_for` and friends are
   templates.  `QException`, which only serves throwing across QtConcurrent
   threads, isn't bound: it would shadow `::Exception` inside the module.
 * The meta-object system exchanges names as `const char *`, an `UInt8*`:
