@@ -29,8 +29,13 @@ unless errors.empty? # Cheap error output.
   exit 1
 end
 
+# `find_paths` sets QT_VERSION while searching for qmake.  If QMAKE was given
+# instead, it doesn't search, so ask qmake.
+qt_version = ENV["QT_VERSION"]? || `#{Process.quote(ENV["QMAKE"])} -query QT_VERSION`.strip
+abort "#{ENV["QMAKE"]} is Qt #{qt_version}, not Qt5" unless qt_version.starts_with?("5.")
+
 # Remove patch version: "5.9.2" -> "5.9"
-detected_version = ENV["QT_VERSION"].split('.')[0..1].join('.')
+detected_version = qt_version.split('.')[0..1].join('.')
 vars = Bindgen::Variables.builtin
 
 use_binding = "#{vars["os"]}-#{vars["libc"]}-#{vars["architecture"]}-qt#{detected_version}"

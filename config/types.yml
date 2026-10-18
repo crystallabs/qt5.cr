@@ -191,7 +191,11 @@ types: # Type rewrite rules
     to_cpp: "std::chrono::milliseconds(%)"
     from_cpp: "(%.count())"
     converter: Qt::Converter::TimeSpan
-  CGRect: {ignore: true}
+  CGRect: {ignore: true} # Apple types Qt exposes on macOS
+  CGSize: {ignore: true}
+  CGPoint: {ignore: true}
+  CGImage: {ignore: true}
+  NSMenu: {ignore: true}
   CFURLRef: {ignore: true}
   NSURL: {ignore: true}
   QListWidgetItem:
