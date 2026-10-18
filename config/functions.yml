@@ -12,3 +12,7 @@ functions:
     destination: "::"
   "^qt5cr_data_stream_\\w+$":
     destination: "::"
+  "^qt5cr_invoke_method$": # See ext/meta_helper.hpp
+    destination: "::"
+  "^qt5cr_cbor_\\w+$": # See ext/cbor_helper.hpp
+    destination: "::"

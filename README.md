@@ -376,10 +376,38 @@ see the comments there:
   is a copied structure: `PointingDeviceUniqueId.from_numeric_id(42)`.
 * `QJsonObject#[]` returns a `JsonValue` copy; `QJsonArray#[]` a
   `JsonValueRef`, whose `#assign!` writes through.  `QJsonObject#insert`
-  returns a `JsonObjectIterator`.  The CBOR classes aren't bound.
+  returns a `JsonObjectIterator`.  Likewise `CborMap#insert` returns a
+  `CborMapIterator` with `#key` and `#value` (a `CborValueRef`); the pair
+  of references the iterator dereferences to isn't default constructible,
+  which a pair container needs, so it is ignored.  `QCborTag` and
+  `QCborNegativeInteger`, `enum class`es without enumerators, are `UInt64`:
+  `CborValue.new(Qt::CborKnownTags::Url, value).tag` is `32`, and
+  `CborStreamWriter#append(UInt64)` appends a tag, so append integers as
+  `Int64`.  `CborValue.new(Qt::CborValue::Type::Null)` replaces the `nullptr`
+  constructor.  `QCborStreamReader::readString` returns a `StringResult<T>`
+  bindgen doesn't instantiate, so `ext/cbor_helper.hpp` adds
+  `reader.read_all_string` and `#read_all_byte_array` (Qt 6's names), and
+  `CborStreamWriter#append(String)` over the unwrapped `QStringView` overload.
+  Qt 5 declares the `QDataStream` operators of `QCborSimpleType` without
+  exporting them, so the helper defines them for the binding to link.
+* The meta-object system exchanges names as `const char *`, an `UInt8*`:
+  `String.new(meta_object.class_name)`,
+  `meta_object.index_of_property("text".to_unsafe)`.  `Qt::Widget.
+  static_meta_object` is a copy of the class's `QMetaObject`, which the
+  pointer comparison of `MetaObject#inherits` doesn't match: pass an
+  instance's `meta_object`.  `QMetaObject::invokeMethod` and
+  `QMetaMethod::invoke` take `QGenericArgument`s (type name and `void *`
+  pairs) or are templates, so they are dropped;
+  `Qt::MetaObject.invoke_method(object, "click")` (`ext/meta_helper.hpp`)
+  invokes a method without arguments.  `MetaType::Type` keeps Qt's constant
+  names, `MetaType::Type::QString`.  The tables of `QMetaObject`'s public
+  `d`, an anonymous struct, get no property methods: bindgen looks the
+  `instance_variables` rules up by the Crystal class name, so the rule is
+  keyed `MetaObject` in `config/types.yml`.
 * `QTextCodec` (Qt 5 only) is `Qt::TextCodec`: `TextStream#codec=` takes one,
-  `TextCodec.codec_for_name("UTF-8".to_slice)` is nilable.  Its stateful
-  conversions (`ConverterState`) and the encoder and decoder classes aren't
+  `TextCodec.codec_for_name("UTF-8".to_slice)` is nilable.
+  `Qt::TextEncoder` and `Qt::TextDecoder` keep the conversion state between
+  calls; the codec's own stateful conversions (`ConverterState`) aren't
   wrapped.
 * Types without a mapping yet, like `std::function` callbacks or `QSet`,
   are ignored, which drops the methods using them.

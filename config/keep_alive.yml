@@ -309,3 +309,12 @@ QBasicTimer:
 QTextStream:
   keep_alive:
     "^setCodec$": true
+QObjectCleanupHandler:
+  keep_alive:
+    "^add$": true
+QCborStreamReader:
+  keep_alive:
+    "^setDevice$": true
+QCborStreamWriter:
+  keep_alive:
+    "^setDevice$": true

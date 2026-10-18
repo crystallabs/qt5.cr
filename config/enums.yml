@@ -314,7 +314,7 @@ enums:
   "QItemSelectionModel::SelectionFlag": ItemSelectionModel::SelectionFlag
   "QCompleter::CompletionMode": Completer::CompletionMode
   "QCompleter::ModelSorting": Completer::ModelSorting
-  "QMetaType::Type": MetaType::Type
+  "QMetaType::Type": { destination: MetaType::Type, camelcase: false } # QString, not Qstring
   "QListView::Flow": ListView::Flow
   "QListView::Movement": ListView::Movement
   "QListView::ResizeMode": ListView::ResizeMode
@@ -509,5 +509,18 @@ enums:
   "QLibrary::LoadHints": Library::LoadHints
   "QResource::Compression": Resource::Compression
   QtMsgType: MsgType # QLoggingCategory
+  # Meta-objects and CBOR
+  "QMetaMethod::Access": MetaMethod::Access
+  "QMetaMethod::MethodType": MetaMethod::MethodType
+  "QMetaMethod::Attributes": MetaMethod::Attributes
+  "QMetaType::TypeFlags": MetaType::TypeFlags
+  "QCborValue::Type": CborValue::Type
+  "QCborValue::EncodingOptions": CborValue::EncodingOptions
+  "QCborValue::DiagnosticNotationOptions": CborValue::DiagnosticNotationOptions
+  "QCborStreamReader::Type": CborStreamReader::Type
+  "QCborStreamReader::StringResultCode": CborStreamReader::StringResultCode
+  "QCborSimpleType": CborSimpleType
+  "QCborKnownTags": CborKnownTags
+  "QCborError::Code": CborError::Code
   "QTextCodec::ConversionFlag": TextCodec::ConversionFlag
   "QTextCodec::ConversionFlags": TextCodec::ConversionFlags

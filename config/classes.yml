@@ -454,3 +454,27 @@ classes:
   QLoggingCategory: LoggingCategory
   QMessageAuthenticationCode: MessageAuthenticationCode
   QTextCodec: TextCodec # Qt 5 only; TextStream#codec
+  # Meta-objects and CBOR
+  QMetaObject: MetaObject
+  QMetaMethod: MetaMethod
+  QMetaProperty: MetaProperty
+  QMetaEnum: MetaEnum
+  QMetaClassInfo: MetaClassInfo
+  QMetaType: MetaType
+  QCborValue: CborValue
+  QCborMap: CborMap
+  "QCborMap::Iterator": CborMapIterator # Returned by CborMap#insert
+  "QCborMap::ConstIterator": CborMapConstIterator
+  QCborArray: CborArray
+  QCborStreamReader: CborStreamReader
+  QCborStreamWriter: CborStreamWriter
+  QCborParserError: CborParserError
+  QCborError: CborError
+  QCborValueRef: CborValueRef
+  QByteArrayMatcher: ByteArrayMatcher
+  QStringMatcher: StringMatcher
+  QException: Exception
+  QObjectCleanupHandler: ObjectCleanupHandler
+  QAnimationDriver: AnimationDriver
+  QTextEncoder: TextEncoder # Qt 5 only, like QTextCodec
+  QTextDecoder: TextDecoder

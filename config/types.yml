@@ -347,16 +347,79 @@ types: # Type rewrite rules
   "QBitArray::DataPtr": { ignore: true }
   # QDataStream's friend operators name these, which have no mapping.
   qfloat16: { ignore: true }
-  # The CBOR classes aren't bound; Qt 5 declares the QDataStream operators of
-  # QCborSimpleType without exporting them, so the binding wouldn't link.
-  QCborSimpleType: { ignore: true }
-  QCborValue: { ignore: true }
-  QCborArray: { ignore: true }
-  QCborMap: { ignore: true }
   QFunctionPointer: { ignore: true } # QLibrary#resolve
   "QLoggingCategory::CategoryFilter": { ignore: true } # C function pointer
   "QLoggingCategory::AtomicBools": { ignore: true } # Private
   # A non-copyable bare struct with a C array; drops the stateful conversions
   # of QTextCodec, which TextCodec#to_unicode and #from_unicode don't need.
   "QTextCodec::ConverterState": { ignore: true }
+  # Meta-objects and CBOR
+  # The moc-generated tables of QMetaObject's public `d` (an anonymous struct
+  # in Qt 5) and the function pointers QMetaType registers types with.
+  "QMetaObject::SuperData": { ignore: true }
+  "void (QObject *, QMetaObject::Call, int, void **)": { ignore: true } # StaticMetacallFunction
+  "void (QDataStream &, const void *)": { ignore: true } # QMetaType::SaveOperator
+  "void (QDataStream &, void *)": { ignore: true } # QMetaType::LoadOperator
+  "void (int, void *)": { ignore: true } # QMetaType::Destructor
+  "void *(int, void *, const void *)": { ignore: true } # QMetaType::Constructor
+  # The anonymous struct of `d` holds the tables, of no use from Crystal.
+  # bindgen names it `QMetaObject_Unnamed0` through a typedef, but types the
+  # `_self_` of its `operator=` wrapper as `QMetaObject::Unnamed0 *`, which
+  # C++ can't name, so the member gets no property methods.
+  # Enum classes without enumerators, which a Crystal enum can't be: a tag
+  # number and a negative integer's absolute value, exchanged as UInt64.
+  QCborTag:
+    cpp_type: quint64
+    binding_type: UInt64
+    crystal_type: UInt64
+    builtin: true
+    to_cpp: "QCborTag(%)"
+    from_cpp: "quint64(%)"
+    kind: Struct
+    pass_by: Value
+    generate_binding: false
+    generate_wrapper: false
+  QCborNegativeInteger:
+    cpp_type: quint64
+    binding_type: UInt64
+    crystal_type: UInt64
+    builtin: true
+    to_cpp: "QCborNegativeInteger(%)"
+    from_cpp: "quint64(%)"
+    kind: Struct
+    pass_by: Value
+    generate_binding: false
+    generate_wrapper: false
+  # The invoke overloads take QGenericArgument/QGenericReturnArgument, type
+  # name and void pointer pairs Crystal can't fill; the typed ones are
+  # templates.  MetaObject.invoke_method(object, name) of
+  # ext/meta_helper.hpp invokes a method without arguments.
+  QMetaObject:
+    ignore_methods:
+      - invokeMethod
+  # bindgen looks the `instance_variables` rules up by the Crystal name of the
+  # class, so this is keyed by it, not `QMetaObject`.  It drops the property
+  # methods of the tables of `d`, an anonymous struct bindgen names
+  # `QMetaObject_Unnamed0` through a typedef but whose `operator=` wrapper
+  # takes a `QMetaObject::Unnamed0 *`, which C++ can't name.
+  MetaObject:
+    instance_variables: false
+  QMetaMethod:
+    ignore_methods:
+      - invoke
+      - invokeOnGadget
+  "QMetaMethod::Data": { ignore: true }
+  QGenericArgument: { ignore: true } # Drops the MetaObject#new_instance overloads taking arguments
+  QGenericReturnArgument: { ignore: true }
+  # The pairs of references the map iterators dereference to aren't default
+  # constructible, which the pair container wrapper needs; use
+  # CborMapIterator#key and #value.
+  "QPair<const QCborValueRef, QCborValueRef>": { ignore: true }
+  "QPair<const QCborValueRef, const QCborValueRef>": { ignore: true }
+  "QCborMap::key_value_iterator": { ignore: true } # Use #keys and #value
+  "QCborMap::const_key_value_iterator": { ignore: true }
+  "QCborArray::Iterator": { ignore: true } # Use #at and #size
+  "QCborArray::ConstIterator": { ignore: true }
+  "QCborArray::iterator": { ignore: true }
+  "QCborArray::const_iterator": { ignore: true }
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
