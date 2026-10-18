@@ -31,6 +31,22 @@ describe "QStringList" do
     end
   end
 
+  it "has the QStringList methods" do
+    list = Qt::StringList.from(["Banana", "apple", "cherry", "apple"])
+    list.remove_duplicates!.should eq(1)
+    list.to_a.should eq(["Banana", "apple", "cherry"])
+    list.sort!.to_a.should eq(["Banana", "apple", "cherry"])
+    list.sort!(Qt::CaseSensitivity::CaseInsensitive).to_a.should eq(["apple", "Banana", "cherry"])
+
+    list.filter("an").to_a.should eq(["Banana"])
+    list.filter("AN", Qt::CaseSensitivity::CaseInsensitive).to_a.should eq(["Banana"])
+    list.includes?("APPLE", Qt::CaseSensitivity::CaseInsensitive).should be_true
+    list.includes?("APPLE").should be_false
+
+    list.replace_in_strings!("a", "4").to_a.should eq(["4pple", "B4n4n4", "cherry"])
+    list.join("+").should eq("4pple+B4n4n4+cherry")
+  end
+
   it "builds wrapped lists directly" do
     list = Qt::QList.of(String).from(["x", "y"])
     list.size.should eq(2)

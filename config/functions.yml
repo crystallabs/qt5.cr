@@ -3,3 +3,6 @@ functions:
     destination: "::"
   "^qt5cr_reset_numeric_locale":
     destination: "::"
+  # The QStringList methods, see ext/string_list_helper.hpp
+  "^qt5cr_string_list_(.*)":
+    destination: StringListHelper
