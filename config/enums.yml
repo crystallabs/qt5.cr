@@ -222,6 +222,30 @@ enums:
   "QDirIterator::IteratorFlags": DirIterator::IteratorFlags
   "QLockFile::LockError": LockFile::LockError
   "Qt::DateFormat": { destination: "DateFormat", camelcase: false } # ISODate, not Isodate
+  "QTimeZone::TimeType": TimeZone::TimeType
+  "QTimeZone::NameType": TimeZone::NameType
+  "QCalendar::System": Calendar::System
+  "QUuid::Variant": Uuid::Variant
+  "QUuid::Version": Uuid::Version
+  "QUuid::StringFormat": Uuid::StringFormat
+  "QCryptographicHash::Algorithm": CryptographicHash::Algorithm
+  "QElapsedTimer::ClockType": ElapsedTimer::ClockType
+  "QDeadlineTimer::ForeverConstant": DeadlineTimer::ForeverConstant
+  "QCommandLineParser::SingleDashWordOptionMode": CommandLineParser::SingleDashWordOptionMode
+  "QCommandLineParser::OptionsAfterPositionalArgumentsMode": CommandLineParser::OptionsAfterPositionalArgumentsMode
+  "QCommandLineOption::Flag": CommandLineOption::Flag
+  "QCommandLineOption::Flags": CommandLineOption::Flags
+  "QLibraryInfo::LibraryLocation": LibraryInfo::LibraryLocation
+  "QLibraryInfo::PathGroup": LibraryInfo::PathGroup
+  "QMimeDatabase::MatchMode": MimeDatabase::MatchMode
+  "QOperatingSystemVersion::OSType": OperatingSystemVersion::OSType
+  "QSysInfo::Sizes": SysInfo::Sizes
+  "QSysInfo::Endian": SysInfo::Endian
+  "QRegularExpression::PatternOption": RegularExpression::PatternOption
+  "QRegularExpression::PatternOptions": RegularExpression::PatternOptions
+  "QRegularExpression::MatchType": RegularExpression::MatchType
+  "QRegularExpression::MatchOption": RegularExpression::MatchOption
+  "QRegularExpression::MatchOptions": RegularExpression::MatchOptions
   "QScrollEvent::ScrollState": ScrollEvent::ScrollState
   "Qt::ScreenOrientation": ScreenOrientation
   "Qt::GestureState": GestureState

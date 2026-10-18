@@ -32,8 +32,19 @@ module Qt
         ::Time::Span.new(nanoseconds: msec * NANO_PER_MILLI)
       end
 
-      def self.wrap(duration : Time::Span) : Int64
+      def self.wrap(duration : ::Time::Span) : Int64
         duration.total_milliseconds.to_i64
+      end
+    end
+
+    # Converts `std::chrono::nanoseconds` (as its count) to `Time::Span`
+    module TimeSpanNanoseconds
+      def self.unwrap(nsec : Int64) : ::Time::Span
+        ::Time::Span.new(nanoseconds: nsec)
+      end
+
+      def self.wrap(duration : ::Time::Span) : Int64
+        duration.total_nanoseconds.to_i64
       end
     end
   end

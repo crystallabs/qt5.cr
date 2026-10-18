@@ -155,6 +155,32 @@ classes:
   QDateTime: DateTime
   QDate: Date
   QTime: Time
+  QTimeZone: TimeZone
+  "QTimeZone::OffsetData": TimeZoneOffsetData
+  QCalendar: Calendar
+  "QCalendar::YearMonthDay": Calendar::YearMonthDay
+  QUuid: Uuid
+  QUrlQuery: UrlQuery
+  "QPair<QString, QString>": StringPair # QUrlQuery#queryItems
+  QVersionNumber: VersionNumber
+  QCryptographicHash: CryptographicHash
+  QRandomGenerator: RandomGenerator
+  QRandomGenerator64: RandomGenerator64
+  QElapsedTimer: ElapsedTimer
+  QDeadlineTimer: DeadlineTimer
+  QCommandLineParser: CommandLineParser
+  QCommandLineOption: CommandLineOption
+  QLibraryInfo: LibraryInfo
+  QCollator: Collator
+  QCollatorSortKey: CollatorSortKey
+  QTranslator: Translator
+  QMimeDatabase: MimeDatabase
+  QMimeType: MimeType
+  QOperatingSystemVersion: OperatingSystemVersion
+  QSysInfo: SysInfo
+  QRegularExpression: RegularExpression
+  QRegularExpressionMatch: RegularExpressionMatch
+  QRegularExpressionMatchIterator: RegularExpressionMatchIterator
   QGesture: Gesture
   QPainter: Painter
   # "QPainter::PixmapFragment": PainterPixmapFragment

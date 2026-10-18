@@ -47,6 +47,7 @@ types: # Type rewrite rules
     generate_wrapper: false
     generate_binding: false
   QVariant::DataPtr: { ignore: true }
+  "QUrlQuery::DataPtr": { ignore: true } # A QSharedDataPointer
   "QMetaObject::Connection":
     crystal_type: SignalConnection
     cpp_type: "QMetaObject::Connection"
@@ -148,9 +149,12 @@ types: # Type rewrite rules
 
   # Typedefs
   QRgb: { alias_for: "unsigned int" }
+  "QRandomGenerator::result_type": { alias_for: "unsigned int" } # quint32
+  "QRandomGenerator64::result_type": { alias_for: "unsigned long long" } # quint64
   WId: { alias_for: "unsigned int" }
   QVariantList: { alias_for: "QList<QVariant>" }
   QFileInfoList: { alias_for: "QList<QFileInfo>" }
+  "QTimeZone::OffsetDataList": { alias_for: "QVector<QTimeZone::OffsetData>" }
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
@@ -170,8 +174,7 @@ types: # Type rewrite rules
   QStringView: { ignore: true }
   QStringRef: { ignore: true }
   QLatin1String: { ignore: true }
-  QRegExp: { ignore: true }
-  QRegularExpression: { ignore: true }
+  QRegExp: { ignore: true } # QRegularExpression is wrapped instead
 
   # Structures with QVariant: Ignore for now.
   "QInputMethodEvent::Attribute": { ignore: true }
@@ -196,6 +199,7 @@ types: # Type rewrite rules
   "QBrush::DataPtr": { ignore: true }
   QPenPrivate: { ignore: true }
   QFileInfoPrivate: { ignore: true }
+  QMimeTypePrivate: { ignore: true }
 
   # QByteArray maps to Bytes; QList<QByteArray> is instantiated in
   # containers.yml, QSet has no mapping yet.
@@ -231,6 +235,22 @@ types: # Type rewrite rules
     to_cpp: "std::chrono::milliseconds(%)"
     from_cpp: "(%.count())"
     converter: Qt::Converter::TimeSpan
+  "std::chrono::nanoseconds": # QDeadlineTimer#remainingTimeAsDuration
+    cpp_type: int64_t
+    binding_type: Int64
+    crystal_type: "::Time::Span"
+    generate_binding: false
+    generate_wrapper: false
+    pass_by: Value
+    builtin: true
+    to_cpp: "std::chrono::nanoseconds(%)"
+    from_cpp: "(%.count())"
+    converter: Qt::Converter::TimeSpanNanoseconds
+  # The seeding from a std::seed_seq (QRandomGenerator) can't be expressed;
+  # seed with an integer instead.  QRandomGenerator::System is the private
+  # tag of the constructor behind QRandomGenerator::system().
+  "std::seed_seq": { ignore: true }
+  "QRandomGenerator::System": { ignore: true }
   CGRect: {ignore: true} # Apple types Qt exposes on macOS
   CGSize: {ignore: true}
   CGPoint: {ignore: true}
@@ -241,6 +261,12 @@ types: # Type rewrite rules
   CFDateRef: {ignore: true} # QDateTime#toCFDate and friends
   __CFDate: {ignore: true}
   NSDate: {ignore: true}
+  CFUUIDRef: {ignore: true} # QUuid#toCFUUID and friends
+  __CFUUID: {ignore: true}
+  NSUUID: {ignore: true}
+  CFTimeZoneRef: {ignore: true} # QTimeZone#toCFTimeZone and friends
+  __CFTimeZone: {ignore: true}
+  NSTimeZone: {ignore: true}
   FILE: {ignore: true} # C stdio handle of QFile#open and QTextStream
   QListWidgetItem:
     ignore_methods:

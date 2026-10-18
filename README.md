@@ -247,8 +247,9 @@ see the comments there:
   `combo_box.add_items(["a", "b"])`.  `QList<QString>` and
   `QListSpecialMethods<QString>`, which holds the `QStringList` methods, are
   listed as classes, so the wrapper `Qt::StringList` has those methods.  The
-  overloads taking `QStringView`, `QLatin1String` or a `QRegExp` are dropped,
-  as the Crystal `String` maps to `QString`.
+  overloads taking `QStringView`, `QLatin1String` or the old `QRegExp` are
+  dropped, as the Crystal `String` maps to `QString` and `QRegularExpression`
+  is wrapped.
 * `QVariant` maps to `Qt::Variant`, which exchanges the types Qt knows in
   their native form, so Qt can display, sort and store them: `Nil`, `Bool`,
   `Int32`, `UInt32`, `Int64`, `UInt64`, `Float32`, `Float64`, `Char`, `String`,

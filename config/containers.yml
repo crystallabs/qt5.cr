@@ -5,7 +5,12 @@ containers:
       - [ "qreal" ]
       - [ "QByteArray" ] # As Bytes, see types.yml
       - [ "QFileInfo" ] # QFileInfoList, of QDir#entryInfoList
+      - [ "QCommandLineOption" ] # QCommandLineParser#addOptions
+      - [ "QMimeType" ] # QMimeDatabase#mimeTypesForFileName
+      - [ "QPair<QString, QString>" ] # QUrlQuery#queryItems
   - class: QVector
     type: Sequential
     instantiations:
       - [ "QRgb" ]
+      - [ "int" ] # QVersionNumber#segments
+      - [ "QTimeZone::OffsetData" ] # QTimeZone::OffsetDataList
