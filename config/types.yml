@@ -203,4 +203,4 @@ types: # Type rewrite rules
       - "operator<"
       - setBackgroundColor # Deprecated, but virtual: not hidden by QT_DISABLE_DEPRECATED_BEFORE
   <<: deprecated.yml
-  <<: keep_alive.yml
+  <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
