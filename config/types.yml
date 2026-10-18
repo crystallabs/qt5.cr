@@ -279,12 +279,15 @@ types: # Type rewrite rules
   QListWidgetItem:
     ignore_methods:
       - "operator<"
-  # QAbstractListModel re-declares parent(), columnCount() and hasChildren()
-  # of QAbstractItemModel as private.  bindgen's virtual_override only checks
-  # the class itself for such private overrides, so the C++ override class of
-  # a class deriving from QAbstractListModel calls them and doesn't compile
-  # ("'parent' is a private member of 'QAbstractListModel'").  QStringListModel
-  # is a concrete leaf class: its virtuals aren't for overriding in Crystal.
+  # QAbstractListModel re-declares columnCount(parent) of QAbstractItemModel
+  # as private.  bindgen's virtual_override skips that one in the C++ override
+  # class of a class deriving from QAbstractListModel, but not the overload
+  # the default argument of the pure virtual splits off, so it emits `int
+  # columnCount() const override` calling `QStringListModel::columnCount()`
+  # ("non-virtual member function marked 'override' hides virtual member
+  # function", "'columnCount' is a private member of 'QAbstractListModel'").
+  # QStringListModel is a concrete leaf class: its virtuals aren't for
+  # overriding in Crystal.
   QStringListModel: { sub_class: false }
   QPolygon:
     ignore_methods: # Variadic, which can't be wrapped

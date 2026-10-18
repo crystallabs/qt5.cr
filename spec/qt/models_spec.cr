@@ -20,6 +20,26 @@ private class WordsModel < Qt::AbstractListModel
   end
 end
 
+# A read-only table model implemented in Crystal.
+private class GridModel < Qt::AbstractTableModel
+  def initialize(@rows : Int32, @columns : Int32)
+    super()
+  end
+
+  def row_count(parent : Qt::ModelIndex) : Int32
+    parent.valid? ? 0 : @rows
+  end
+
+  def column_count(parent : Qt::ModelIndex) : Int32
+    parent.valid? ? 0 : @columns
+  end
+
+  def data(index : Qt::ModelIndex, role : Int32 = 0) : Qt::Variant
+    return Qt.variant(nil) unless role == DISPLAY
+    Qt.variant("#{index.row},#{index.column}")
+  end
+end
+
 private def rows_of(model, column = 0)
   (0...model.row_count).map { |row| model.data(model.index(row, column)).to(String) }
 end
@@ -125,10 +145,32 @@ describe "Qt::AbstractListModel" do
     model.index(2, 0).valid?.should be_true
     model.index(3, 0).valid?.should be_false
     model.has_index(0, 0).should be_true
+    # The private overrides of QAbstractListModel, called through the base
+    model.parent(model.index(1, 0)).valid?.should be_false
+    model.has_children?.should be_true
+    model.has_children(model.index(1, 0)).should be_false
 
     view = Qt::ListView.new
     view.model = model
     view.model.row_count.should eq(3)
+    view.model.column_count.should eq(1)
+  end
+end
+
+describe "Qt::AbstractTableModel" do
+  it "is implemented in Crystal" do
+    model = GridModel.new(2, 3)
+    model.row_count.should eq(2)
+    model.column_count.should eq(3)
+    model.column_count(model.index(0, 0)).should eq(0)
+    model.parent(model.index(1, 2)).valid?.should be_false
+    rows_of(model, 2).should eq(["0,2", "1,2"])
+    model.index(1, 3).valid?.should be_false
+
+    view = Qt::TableView.new
+    view.model = model
+    view.model.column_count.should eq(3)
+    view.model.data(view.model.index(1, 1)).to(String).should eq("1,1")
   end
 end
 
