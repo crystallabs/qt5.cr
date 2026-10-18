@@ -40,6 +40,18 @@ private class GridModel < Qt::AbstractTableModel
   end
 end
 
+# A subclass of a concrete model, overriding one of its virtuals.
+private class ShoutingModel < Qt::StringListModel
+  def initialize(strings : Enumerable(String))
+    super(strings)
+  end
+
+  def data(index : Qt::ModelIndex, role : Int32 = 0) : Qt::Variant
+    value = superclass.data(index, role)
+    role == DISPLAY ? Qt.variant(value.to(String).upcase) : value
+  end
+end
+
 # An editable list model implemented in Crystal, recording what it is given.
 private class RecordingModel < Qt::AbstractListModel
   getter values = [] of String
@@ -154,6 +166,19 @@ describe "Qt::StringListModel" do
     model.string_list = ["x"]
     rows_of(model).should eq(["x"])
     (model.flags(model.index(0, 0)) & Qt::ItemFlags::ItemIsEditable).should eq(Qt::ItemFlags::ItemIsEditable)
+  end
+
+  it "is subclassed in Crystal" do
+    model = ShoutingModel.new(["pear", "apple"])
+    model.row_count.should eq(2)
+    model.column_count.should eq(1)
+    rows_of(model).should eq(["PEAR", "APPLE"])
+    model.data(model.index(1, 0), EDIT).to(String).should eq("apple")
+    model.string_list.to_a.should eq(["pear", "apple"])
+
+    view = Qt::ListView.new
+    view.model = model
+    view.model.data(view.model.index(0, 0)).to(String).should eq("PEAR") # Through the virtual
   end
 end
 

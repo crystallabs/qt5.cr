@@ -152,14 +152,13 @@ types: # Type rewrite rules
   "QRandomGenerator::result_type": { alias_for: "unsigned int" } # quint32
   "QRandomGenerator64::result_type": { alias_for: "unsigned long long" } # quint64
   WId: { alias_for: "unsigned int" }
-  # bindgen looks through a typedef of a container instantiation returned by
-  # value, like QFileInfoList or QTimeZone::OffsetDataList, but not one taken
-  # as a `const T &` argument (`Type#decayed` loses the type the typedef
-  # names), which would be bound as an opaque pointer.  These are such.
-  QModelIndexList: { alias_for: "QList<QModelIndex>" } # QAbstractItemModel#mimeData
-  "QVariantAnimation::KeyValue": { alias_for: "QPair<qreal, QVariant>" }
-  "QVariantAnimation::KeyValues": { alias_for: "QVector<QPair<qreal, QVariant>>" } # setKeyValues
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
+  # bindgen looks through a typedef of a container instantiation, also one
+  # taken as a `const T &` argument (QAbstractItemModel#changePersistentIndexList),
+  # but not yet in the argument of a virtual method, which the override class
+  # passes to Crystal as an opaque pointer: `mime_data(indexes :
+  # Binding::QModelIndexList*)` instead of `Enumerable(ModelIndex)`.
+  QModelIndexList: { alias_for: "QList<QModelIndex>" } # QAbstractItemModel#mimeData
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see
   # `config/classes.yml`) use these: C++ iterators have no use in Crystal, and
@@ -279,16 +278,6 @@ types: # Type rewrite rules
   QListWidgetItem:
     ignore_methods:
       - "operator<"
-  # QAbstractListModel re-declares columnCount(parent) of QAbstractItemModel
-  # as private.  bindgen's virtual_override skips that one in the C++ override
-  # class of a class deriving from QAbstractListModel, but not the overload
-  # the default argument of the pure virtual splits off, so it emits `int
-  # columnCount() const override` calling `QStringListModel::columnCount()`
-  # ("non-virtual member function marked 'override' hides virtual member
-  # function", "'columnCount' is a private member of 'QAbstractListModel'").
-  # QStringListModel is a concrete leaf class: its virtuals aren't for
-  # overriding in Crystal.
-  QStringListModel: { sub_class: false }
   QPolygon:
     ignore_methods: # Variadic, which can't be wrapped
       - setPoints
