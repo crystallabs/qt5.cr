@@ -340,6 +340,27 @@ see the comments there:
   `Matrix4x4#normal_matrix` and `Quaternion#to_rotation_matrix`.
   `QGradientStops` is a `QVector<QPair<qreal, QColor>>`, so `Gradient#stops`
   is an `Enumerable({Float64, Color})` and the setter takes an array of tuples.
+* The QXmlStream classes return names, values and text as `QStringRef`, which
+  has no mapping (a reference into a temporary `QString` would dangle), so
+  `src/qt5/xml_stream.cr` wraps the helpers of `ext/xml_helper.hpp`:
+  `reader.name`, `attribute.value`, `reader.attributes.value("id")`.
+  `QXmlStreamAttributes` is a `QVector<QXmlStreamAttribute>`, so
+  `reader.attributes.map(&.name)` works.
+* `QDataStream` reads `QString` and `QByteArray` through free `operator>>`,
+  which take them by non-const reference: `src/qt5/data_stream.cr` adds
+  `stream.read(String)`, `stream.read(Bytes)` and `stream.read(Int32)` over
+  the wrapped `>>(Int32*)`; `stream << "text"` and `<< bytes` are wrapped as
+  is.  The `>>` of a copied structure (`QPoint &`) is dropped like
+  `QValidator::validate` above.
+* `QTouchEvent::TouchPoint` is `Qt::TouchPoint`; `QPointingDeviceUniqueId`
+  is a copied structure: `PointingDeviceUniqueId.from_numeric_id(42)`.
+* `QJsonObject#[]` returns a `JsonValue` copy; `QJsonArray#[]` a
+  `JsonValueRef`, whose `#assign!` writes through.  `QJsonObject#insert`
+  returns a `JsonObjectIterator`.  The CBOR classes aren't bound.
+* `QTextCodec` (Qt 5 only) is `Qt::TextCodec`: `TextStream#codec=` takes one,
+  `TextCodec.codec_for_name("UTF-8".to_slice)` is nilable.  Its stateful
+  conversions (`ConverterState`) and the encoder and decoder classes aren't
+  wrapped.
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 

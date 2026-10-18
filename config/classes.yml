@@ -408,3 +408,49 @@ classes:
   QTextBoundaryFinder: TextBoundaryFinder
   "QAbstractTextDocumentLayout::Selection": TextDocumentLayoutSelection
   "QAbstractTextDocumentLayout::PaintContext": TextDocumentLayoutPaintContext
+  # Events, devices and input
+  QHoverEvent: HoverEvent
+  QWheelEvent: WheelEvent
+  QTabletEvent: TabletEvent
+  QTouchEvent: TouchEvent
+  "QTouchEvent::TouchPoint": TouchPoint
+  QNativeGestureEvent: NativeGestureEvent
+  QContextMenuEvent: ContextMenuEvent
+  QChildEvent: ChildEvent
+  QWindowStateChangeEvent: WindowStateChangeEvent
+  QTouchDevice: TouchDevice
+  QPointingDeviceUniqueId: PointingDeviceUniqueId
+  QPanGesture: PanGesture
+  QPinchGesture: PinchGesture
+  QSwipeGesture: SwipeGesture
+  QTapGesture: TapGesture
+  QTapAndHoldGesture: TapAndHoldGesture
+  QGestureRecognizer: GestureRecognizer
+  QInputMethod: InputMethod
+  QBasicTimer: BasicTimer
+  QSignalMapper: SignalMapper
+  QProcessEnvironment: ProcessEnvironment
+  QBitArray: BitArray
+  QJsonDocument: JsonDocument
+  QJsonObject: JsonObject
+  "QJsonObject::iterator": JsonObjectIterator
+  QJsonArray: JsonArray
+  QJsonValue: JsonValue
+  QJsonValueRef: JsonValueRef
+  QJsonParseError: JsonParseError
+  QXmlStreamReader: XmlStreamReader
+  QXmlStreamWriter: XmlStreamWriter
+  QXmlStreamAttribute: XmlStreamAttribute
+  QXmlStreamAttributes: XmlStreamAttributes # A QVector<QXmlStreamAttribute>
+  QXmlStreamNamespaceDeclaration: XmlStreamNamespaceDeclaration
+  QXmlStreamNotationDeclaration: XmlStreamNotationDeclaration
+  QXmlStreamEntityDeclaration: XmlStreamEntityDeclaration
+  QXmlStreamEntityResolver: XmlStreamEntityResolver
+  QDataStream: DataStream
+  QStorageInfo: StorageInfo
+  QLibrary: Library
+  QResource: Resource
+  QFileSelector: FileSelector
+  QLoggingCategory: LoggingCategory
+  QMessageAuthenticationCode: MessageAuthenticationCode
+  QTextCodec: TextCodec # Qt 5 only; TextStream#codec

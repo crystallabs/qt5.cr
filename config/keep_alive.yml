@@ -287,4 +287,25 @@ QImageWriter:
     "^setDevice$": true
 QTextDocumentWriter:
   keep_alive:
+    "^set(Device|Codec)$": true
+QSignalMapper:
+  keep_alive:
+    "^setMapping$": true
+QGestureRecognizer:
+  keep_alive:
+    "^registerRecognizer$": true
+QXmlStreamReader:
+  keep_alive:
+    "^set(Device|EntityResolver)$": true
+QXmlStreamWriter:
+  keep_alive:
+    "^set(Device|Codec)$": true
+QDataStream:
+  keep_alive:
     "^setDevice$": true
+QBasicTimer:
+  keep_alive:
+    "^start$": true
+QTextStream:
+  keep_alive:
+    "^setCodec$": true

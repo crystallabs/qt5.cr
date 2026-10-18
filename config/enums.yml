@@ -476,3 +476,38 @@ enums:
   "QTextBoundaryFinder::BoundaryType": TextBoundaryFinder::BoundaryType
   "QTextBoundaryFinder::BoundaryReason": TextBoundaryFinder::BoundaryReason
   "QTextBoundaryFinder::BoundaryReasons": TextBoundaryFinder::BoundaryReasons
+  # Events, devices and input
+  "QTouchEvent::TouchPoint::InfoFlag": TouchPoint::InfoFlag
+  "QTouchEvent::TouchPoint::InfoFlags": TouchPoint::InfoFlags
+  "Qt::TouchPointState": TouchPointState
+  "Qt::TouchPointStates": TouchPointStates
+  "QTouchDevice::DeviceType": TouchDevice::DeviceType
+  "QTouchDevice::CapabilityFlag": TouchDevice::CapabilityFlag
+  "QTouchDevice::Capabilities": TouchDevice::Capabilities
+  "QTabletEvent::TabletDevice": TabletEvent::TabletDevice
+  "QTabletEvent::PointerType": TabletEvent::PointerType
+  "Qt::NativeGestureType": NativeGestureType
+  "QContextMenuEvent::Reason": ContextMenuEvent::Reason
+  "QPinchGesture::ChangeFlag": PinchGesture::ChangeFlag
+  "QPinchGesture::ChangeFlags": PinchGesture::ChangeFlags
+  "QSwipeGesture::SwipeDirection": SwipeGesture::SwipeDirection
+  "QGestureRecognizer::ResultFlag": GestureRecognizer::ResultFlag
+  "QGestureRecognizer::Result": GestureRecognizer::Result
+  "QInputMethod::Action": InputMethod::Action
+  "QJsonDocument::JsonFormat": JsonDocument::JsonFormat
+  "QJsonDocument::DataValidation": JsonDocument::DataValidation
+  "QJsonValue::Type": JsonValue::Type
+  "QJsonParseError::ParseError": JsonParseError::ParseError
+  "QXmlStreamReader::TokenType": XmlStreamReader::TokenType
+  "QXmlStreamReader::ReadElementTextBehaviour": XmlStreamReader::ReadElementTextBehaviour
+  "QXmlStreamReader::Error": XmlStreamReader::Error
+  "QDataStream::Version": DataStream::Version
+  "QDataStream::ByteOrder": DataStream::ByteOrder
+  "QDataStream::Status": DataStream::Status
+  "QDataStream::FloatingPointPrecision": DataStream::FloatingPointPrecision
+  "QLibrary::LoadHint": Library::LoadHint
+  "QLibrary::LoadHints": Library::LoadHints
+  "QResource::Compression": Resource::Compression
+  QtMsgType: MsgType # QLoggingCategory
+  "QTextCodec::ConversionFlag": TextCodec::ConversionFlag
+  "QTextCodec::ConversionFlags": TextCodec::ConversionFlags

@@ -209,8 +209,10 @@ types: # Type rewrite rules
   # containers.yml, QSet has no mapping yet.
   "QSet<QByteArray>": { ignore: true }
 
-  # Ignore pure template types
+  # Ignore pure template types (the QDataStream operators name these)
   "QList<T>": { ignore: true }
+  "QVector<T>": { ignore: true }
+  "QPair<T1, T2>": { ignore: true }
   "Func1": { ignore: true } # Fake types used in QObject::connect().
   "Func2": { ignore: true }
   "QtPrivate::FunctionPointer<Func1>::Object": { ignore: true }
@@ -346,6 +348,45 @@ types: # Type rewrite rules
   QTextFrameLayoutData: { ignore: true } # Private layout data of QTextFrame
   QTextDocumentPrivate: { ignore: true } # Private; drops a QTextFragment constructor
   QTextEngine: { ignore: true } # Private; drops TextLayout#engine
+  # Events, devices and input
+  QPointingDeviceUniqueId: # A qint64
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  # The QXmlStream classes return QStringRef (ignored above) through this
+  # wrapper of it; ext/xml_helper.hpp returns the strings instead.
+  QXmlStreamStringRef: { ignore: true }
+  "std::nullptr_t": { ignore: true } # QDataStream >> nullptr_t; emitted as invalid Crystal otherwise
+  "QMap<QString, QVariant>": { ignore: true } # QVariantMap; no support for associative containers yet
+  "QHash<QString, QVariant>": { ignore: true } # QVariantHash
+  QJsonValuePtr: { ignore: true } # Fake pointer classes of the JSON iterators
+  QJsonValueRefPtr: { ignore: true }
+  "QJsonObject::const_iterator": { ignore: true } # Use #keys and #value
+  "QJsonArray::iterator": { ignore: true } # Use #at and #size
+  "QJsonArray::const_iterator": { ignore: true }
+  "std::initializer_list<QPair<QString, QJsonValue>>": { ignore: true }
+  "std::initializer_list<QJsonValue>": { ignore: true }
+  QBitRef: { ignore: true } # Returned by the non-const operator[]; use #set_bit
+  "QByteArray::Data": { ignore: true } # QBitArray#data_ptr, a typedef of QByteArray::DataPtr
+  "QByteArray::DataPtr": { ignore: true }
+  "QBitArray::DataPtr": { ignore: true }
+  # QDataStream's friend operators name these, which have no mapping.
+  qfloat16: { ignore: true }
+  # The CBOR classes aren't bound; Qt 5 declares the QDataStream operators of
+  # QCborSimpleType without exporting them, so the binding wouldn't link.
+  QCborSimpleType: { ignore: true }
+  QCborValue: { ignore: true }
+  QCborArray: { ignore: true }
+  QCborMap: { ignore: true }
+  "QGenericMatrix<N, M, T>": { ignore: true } # Template
+  QFunctionPointer: { ignore: true } # QLibrary#resolve
+  "QLoggingCategory::CategoryFilter": { ignore: true } # C function pointer
+  "QLoggingCategory::AtomicBools": { ignore: true } # Private
+  # A non-copyable bare struct with a C array; drops the stateful conversions
+  # of QTextCodec, which TextCodec#to_unicode and #from_unicode don't need.
+  "QTextCodec::ConverterState": { ignore: true }
   # bindgen renders the `bool *invertible = nullptr` default of `inverted` as
   # `Bool*? = true`, which doesn't compile when the default is used:
   # ext/matrix_helper.hpp, src/qt5/transform.cr.
