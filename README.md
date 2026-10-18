@@ -12,6 +12,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
       * [String lists](#string-lists)
       * [Object lifetime](#object-lifetime)
+      * [Threads](#threads)
       * [Null pointers](#null-pointers)
       * [Downcasts](#downcasts)
    * [Developer perspective](#developer-perspective)
@@ -154,6 +155,30 @@ Qt::BindgenHelper.release(label)
 The methods are configured in `config/keep_alive.yml`.  Giving an object a
 parent by its constructor or `#parent=` doesn't keep it alive: keep a
 reference to it, or add it by one of these methods.
+
+## Threads
+
+`Qt::Thread`, `Qt::ThreadPool` and the locks are bound, but **a Qt thread
+must not call into Crystal**: the Crystal runtime and its GC only know the
+threads they start, so a Crystal method run from a Qt thread corrupts the
+program.  A thread started from Crystal runs Qt code only, like the event loop
+`QThread::run` starts by default, and the queued signals it emits are
+delivered in the main thread:
+
+```crystal
+thread = Qt::Thread.new
+thread.on_finished { puts "done" } # Called from the main event loop
+thread.start
+thread.quit
+thread.wait
+```
+
+`QThread` and `QRunnable` are the one place a Crystal override of a virtual
+method is unsupported: they get no C++ subclass, so a Crystal `run` is never
+called (and a Crystal `Qt::Runnable` subclass can't be instantiated).  Use
+Crystal's own `Thread` or fibers for Crystal work.  The locks exclude Qt
+threads from Qt data: `mutex.lock`, `semaphore.acquire(2)`,
+`condition.wait(mutex, Qt::DeadlineTimer.new(100))`.
 
 ## Null pointers
 
@@ -390,6 +415,19 @@ see the comments there:
   `CborStreamWriter#append(String)` over the unwrapped `QStringView` overload.
   Qt 5 declares the `QDataStream` operators of `QCborSimpleType` without
   exporting them, so the helper defines them for the binding to link.
+* `QMutex` derives from `QBasicMutex`, which is listed so the methods are
+  inherited.  `QRecursiveMutex` derives privately from `QMutex` in Qt 5 and
+  re-exports `lock`, `tryLock` and `unlock` with using-declarations, which
+  bindgen doesn't wrap, so `src/qt5/recursive_mutex.cr` adds them through
+  `ext/thread_helper.hpp`.  The std-style `try_lock()` and `try_acquire()` aliases of
+  `tryLock()` and `tryAcquire()` are dropped, as both would be `#try_lock`;
+  `try_lock_for` and friends are templates.  `QMutex` is `Qt::QMutex`, as
+  bindgen's keep-alive glue names Crystal's `Mutex` unqualified inside the
+  module, which `Qt::Mutex` would shadow; its `RecursionMode` is
+  `Qt::MutexRecursionMode`, as the `QMutex` alias of `lib Binding` shadows the
+  class from inside the lib.  `QException`, which only serves throwing across
+  QtConcurrent threads, isn't bound: it would shadow `::Exception` inside the
+  module.
 * The meta-object system exchanges names as `const char *`, an `UInt8*`:
   `String.new(meta_object.class_name)`,
   `meta_object.index_of_property("text".to_unsafe)`.  `Qt::Widget.

@@ -473,8 +473,28 @@ classes:
   QCborValueRef: CborValueRef
   QByteArrayMatcher: ByteArrayMatcher
   QStringMatcher: StringMatcher
-  QException: Exception
   QObjectCleanupHandler: ObjectCleanupHandler
   QAnimationDriver: AnimationDriver
   QTextEncoder: TextEncoder # Qt 5 only, like QTextCodec
   QTextDecoder: TextDecoder
+  # Threads and IPC.  Qt threads must not call into Crystal, see the README:
+  # QThread and QRunnable aren't sub-classed in C++ (types.yml), so a Crystal
+  # override of `run` is never called.
+  QThread: Thread
+  QThreadPool: ThreadPool
+  QRunnable: Runnable
+  QBasicMutex: BasicMutex # Base of QMutex
+  # Not Mutex: bindgen's keep-alive glue (lib/bindgen/assets/glue.cr) names
+  # Crystal's `Mutex` unqualified inside the module, which Qt::Mutex would
+  # shadow.
+  QMutex: QMutex
+  QRecursiveMutex: RecursiveMutex
+  QMutexLocker: MutexLocker
+  QSemaphore: Semaphore
+  QSemaphoreReleaser: SemaphoreReleaser
+  QWaitCondition: WaitCondition
+  QReadWriteLock: ReadWriteLock
+  QReadLocker: ReadLocker
+  QWriteLocker: WriteLocker
+  QSharedMemory: SharedMemory
+  QSystemSemaphore: SystemSemaphore

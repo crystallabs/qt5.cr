@@ -422,4 +422,23 @@ types: # Type rewrite rules
   "QCborArray::ConstIterator": { ignore: true }
   "QCborArray::iterator": { ignore: true }
   "QCborArray::const_iterator": { ignore: true }
+  # Threads and IPC.  Qt threads must not call into Crystal (see the README),
+  # so QThread and QRunnable get no C++ subclass: a Crystal override of `run`
+  # is never called from the thread.
+  QThread: { sub_class: false }
+  QRunnable: { sub_class: false }
+  # The std-style try_lock() aliases of tryLock() would be wrapped under the
+  # same Crystal name; try_lock_for and try_lock_until are templates.
+  QBasicMutex:
+    ignore_methods:
+      - try_lock
+  QMutex:
+    ignore_methods:
+      - try_lock
+  QRecursiveMutex:
+    ignore_methods:
+      - try_lock
+  QSemaphore: # Likewise try_acquire() of tryAcquire(int n = 1)
+    ignore_methods:
+      - try_acquire
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
