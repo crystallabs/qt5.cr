@@ -18,10 +18,11 @@ scroll_area.widget = image_label    # Just stuff the label into the scroll area
 scroll_area.widget_resizable = true # And tell it to resize our label for us
 window.central_widget = scroll_area
 
-# Now, we add a File menu, with "Open" and "Quit" options
-file_menu = window.menu_bar.add_menu "File"
-open_action = file_menu.add_action "Open"
-quit_action = file_menu.add_action "Quit"
+# Now, we add a File menu, with "Open" and "Quit" options.  A method returning
+# a Qt pointer returns `nil` when it's null; these never are, so unwrap them.
+file_menu = window.menu_bar.not_nil!.add_menu("File").not_nil!
+open_action = file_menu.add_action("Open").not_nil!
+quit_action = file_menu.add_action("Quit").not_nil!
 
 # Also, add shortcuts - These are window-wide by default!
 open_action.shortcut = Qt::KeySequence.from_string("Ctrl+O")

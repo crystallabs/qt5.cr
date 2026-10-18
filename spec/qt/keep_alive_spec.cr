@@ -36,7 +36,7 @@ describe "objects used by Qt" do
 
     layout.count.should eq(5)
     list.count.should eq(5)
-    5.times { |i| list.item(i).text.should eq("item #{i}") }
+    5.times { |i| list.item(i).not_nil!.text.should eq("item #{i}") }
     tabs.count.should eq(5)
   end
 
@@ -46,7 +46,7 @@ describe "objects used by Qt" do
     assign(view, button)
     churn
 
-    view.model.row_count.should eq(3)
-    button.menu.title.should eq("menu")
+    view.model.not_nil!.row_count.should eq(3)
+    button.menu.not_nil!.title.should eq("menu")
   end
 end

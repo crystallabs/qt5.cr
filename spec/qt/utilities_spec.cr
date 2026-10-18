@@ -103,9 +103,9 @@ describe "Qt::RandomGenerator" do
     a.bounded(10).should be < 10
     a.bounded(5, 8).should be >= 5
     a.generate_double.should be < 1.0
-    Qt::RandomGenerator.global.generate64.should be_a(UInt64)
+    Qt::RandomGenerator.global.not_nil!.generate64.should be_a(UInt64)
     Qt::RandomGenerator.max.should eq(UInt32::MAX)
-    Qt::RandomGenerator64.global.generate.should be_a(UInt64)
+    Qt::RandomGenerator64.global.not_nil!.generate.should be_a(UInt64)
   end
 end
 

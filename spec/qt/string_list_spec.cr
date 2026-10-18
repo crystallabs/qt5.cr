@@ -12,7 +12,7 @@ describe "QStringList" do
     list = Qt::ListWidget.new
     list.add_items({"a", "b"})
     list.count.should eq(2)
-    list.item(1).text.should eq("b")
+    list.item(1).not_nil!.text.should eq("b")
   end
 
   it "is returned from Qt" do

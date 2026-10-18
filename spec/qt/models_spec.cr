@@ -102,19 +102,25 @@ describe "Qt::StandardItem" do
 
     model.row_count.should eq(2)
     model.column_count.should eq(2)
-    model.item(0).text.should eq("parent")
-    model.item(1, 1).text.should eq("b")
-    model.horizontal_header_item(1).text.should eq("Other")
+    model.item(0).should_not be_nil
+    model.item(0).not_nil!.text.should eq("parent")
+    model.item(1, 1).not_nil!.text.should eq("b")
+    model.item(0, 1).should be_nil # No item there
+    model.item(2).should be_nil    # Nor a row
+    model.horizontal_header_item(1).not_nil!.text.should eq("Other")
     parent.row_count.should eq(2)
     parent.column_count.should eq(2)
-    parent.child(0).text.should eq("child")
-    parent.child(1, 1).text.should eq("right")
+    parent.child(0).not_nil!.text.should eq("child")
+    parent.child(1, 1).not_nil!.text.should eq("right")
+    parent.child(0, 1).should be_nil # No sibling of "child"
+    parent.child(5).should be_nil
     parent.has_children?.should be_true
-    child.parent.text.should eq("parent")
+    child.parent.not_nil!.text.should eq("parent")
+    parent.parent.should be_nil # A top-level item
     child.row.should eq(0)
     child.index.parent.should eq(parent.index)
     child.model.should eq(model)
-    model.item_from_index(model.index(0, 0)).text.should eq("parent")
+    model.item_from_index(model.index(0, 0)).not_nil!.text.should eq("parent")
     model.index_from_item(child).should eq(child.index)
     model.data(child.index).to(String).should eq("child")
     model.find_items("child", Qt::MatchFlags::MatchRecursive).map(&.text).should eq(["child"])
@@ -137,14 +143,15 @@ describe "Qt::StandardItem" do
     child.text = "again"
     changed.should eq(["again"])
 
-    parent.take_child(0).text.should eq("again")
+    parent.take_child(0).not_nil!.text.should eq("again")
+    parent.take_child(0).should be_nil # Taken already
     parent.row_count.should eq(2)
     parent.sort_children(0)
     model.take_row(1).map(&.text).should eq(["a", "b"])
     model.row_count.should eq(1)
     model.clear
     model.row_count.should eq(0)
-    model.invisible_root_item.row_count.should eq(0)
+    model.invisible_root_item.not_nil!.row_count.should eq(0)
   end
 end
 
@@ -178,7 +185,8 @@ describe "Qt::StringListModel" do
 
     view = Qt::ListView.new
     view.model = model
-    view.model.data(view.model.index(0, 0)).to(String).should eq("PEAR") # Through the virtual
+    view_model = view.model.not_nil!
+    view_model.data(view_model.index(0, 0)).to(String).should eq("PEAR") # Through the virtual
   end
 end
 
@@ -198,9 +206,10 @@ describe "Qt::AbstractListModel" do
     model.has_children(model.index(1, 0)).should be_false
 
     view = Qt::ListView.new
+    view.model.should be_nil
     view.model = model
-    view.model.row_count.should eq(3)
-    view.model.column_count.should eq(1)
+    view.model.not_nil!.row_count.should eq(3)
+    view.model.not_nil!.column_count.should eq(1)
   end
 end
 
@@ -216,8 +225,9 @@ describe "Qt::AbstractTableModel" do
 
     view = Qt::TableView.new
     view.model = model
-    view.model.column_count.should eq(3)
-    view.model.data(view.model.index(1, 1)).to(String).should eq("1,1")
+    view_model = view.model.not_nil!
+    view_model.column_count.should eq(3)
+    view_model.data(view_model.index(1, 1)).to(String).should eq("1,1")
   end
 end
 
@@ -310,7 +320,7 @@ describe "Qt::ItemSelectionModel" do
 
     view = Qt::ListView.new
     view.model = model
-    view.selection_model.model.should eq(model)
+    view.selection_model.not_nil!.model.should eq(model)
     view.selection_model = selection_model
     view.selection_model.should eq(selection_model)
   end
@@ -498,9 +508,10 @@ describe "Qt::Variant arguments of callbacks" do
     view = Qt::ListView.new
     view.model = model
     # `view.model` wraps the C++ pointer, so this goes through the virtual
-    view.model.set_data(model.index(0, 0), Qt.variant("x")).should be_true
+    view_model = view.model.not_nil!
+    view_model.set_data(model.index(0, 0), Qt.variant("x")).should be_true
     model.values.should eq(["x"])
-    view.model.data(model.index(0, 0)).to(String).should eq("x")
+    view_model.data(model.index(0, 0)).to(String).should eq("x")
   end
 end
 
@@ -522,7 +533,7 @@ describe "Qt::SequentialAnimationGroup" do
       group.add_animation(animation)
       animation
     end
-    pause = group.add_pause(30)
+    pause = group.add_pause(30).not_nil!
     pause.should be_a(Qt::PauseAnimation)
     pause.duration.should eq(30)
     group.animation_count.should eq(3)
@@ -555,7 +566,7 @@ describe "Qt::SequentialAnimationGroup" do
     group.current_time.should eq(150)
 
     parallel = Qt::ParallelAnimationGroup.new
-    parallel.add_animation(group.take_animation(0))
+    parallel.add_animation(group.take_animation(0).not_nil!)
     parallel.add_animation(Qt::PauseAnimation.new(200))
     parallel.duration.should eq(200)
     group.animation_count.should eq(2)

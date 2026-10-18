@@ -12,6 +12,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
       * [String lists](#string-lists)
       * [Object lifetime](#object-lifetime)
+      * [Null pointers](#null-pointers)
    * [Developer perspective](#developer-perspective)
       * [Generating the bindings](#generating-the-bindings)
       * [Deprecated Qt API](#deprecated-qt-api)
@@ -152,6 +153,34 @@ Qt::BindgenHelper.release(label)
 The methods are configured in `config/keep_alive.yml`.  Giving an object a
 parent by its constructor or `#parent=` doesn't keep it alive: keep a
 reference to it, or add it by one of these methods.
+
+## Null pointers
+
+A method returning a pointer to a Qt object returns `nil` when the pointer is
+null, so its result is a union with `Nil`: `Qt::Widget#parent_widget` is a
+`Qt::Widget?`, `Qt::ListWidget#item` a `Qt::ListWidgetItem?`, and so are
+`Qt::AbstractItemView#model`, `Qt::StandardItem#child` or
+`Qt::AnimationGroup#take_animation`.  Check the result, or unwrap it with
+`not_nil!` where it can't be null, like the menu bar a `Qt::MainWindow` creates
+on demand and the menu added to it:
+
+```crystal
+if item = list.item(row)
+  puts item.text
+end
+
+menu = window.menu_bar.not_nil!.add_menu("File").not_nil!
+```
+
+Only method results are nilable.  A method returning a reference, like
+`Qt::Widget#font`, always returns an object, as does a cast like
+`Qt::Widget#as_paint_device`.  The elements of a returned list, like
+`Qt::StandardItemModel#take_row`, are the objects themselves, and so is the
+argument a signal or an overridden virtual method receives: a block of
+`Qt::StandardItemModel#on_item_changed` gets a `Qt::StandardItem`, and an
+override of `Qt::Widget#mouse_press_event` takes a `Qt::MouseEvent`, as
+declared (see `samples/virtual_override.cr`).  This is bindgen's
+`nilable_results` option, set in `qt.yml`.
 
 # Developer perspective
 

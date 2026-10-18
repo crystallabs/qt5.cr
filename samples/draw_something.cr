@@ -52,15 +52,17 @@ class DrawArea < Qt::Widget
   # it!  For this to work, you have to accept the proposal in the
   # `#drag_enter_event`...
   def drag_enter_event(evt)
-    # We only care about files, not plain image data.
-    evt.accept_proposed_action if evt.mime_data.has_urls?
+    # We only care about files, not plain image data.  The MIME data is a Qt
+    # pointer, so it's `nil` when there's none.
+    evt.accept_proposed_action if evt.mime_data.try(&.has_urls?)
   end
 
   # This event is *only* called if you accepted the proposal!  The user let go
   # and thus, we'll open the file.
   def drop_event(evt)
-    list = evt.mime_data.urls # Might be many, but we only care about the first
-    return if list.empty?     # Sanity check: We did get any URLs, right?
+    return unless mime_data = evt.mime_data
+    list = mime_data.urls # Might be many, but we only care about the first
+    return if list.empty? # Sanity check: We did get any URLs, right?
     # Qt transmits URLs, but we want a local file path instead.
     load list.first.to_local_file
   end
@@ -85,12 +87,13 @@ draw_area = DrawArea.new
 window.window_title = "Draw Something!"
 window.central_widget = draw_area
 
-# Add a File menu with a Open, Save and Quit action.
-file_menu = window.menu_bar.add_menu("File")
-open_action = file_menu.add_action "Open"
-save_action = file_menu.add_action "Save"
+# Add a File menu with a Open, Save and Quit action.  A method returning a Qt
+# pointer returns `nil` when it's null; these never are, so unwrap them.
+file_menu = window.menu_bar.not_nil!.add_menu("File").not_nil!
+open_action = file_menu.add_action("Open").not_nil!
+save_action = file_menu.add_action("Save").not_nil!
 file_menu.add_separator
-quit_action = file_menu.add_action "Quit"
+quit_action = file_menu.add_action("Quit").not_nil!
 
 # On "Quit", exit the application.
 quit_action.on_triggered do

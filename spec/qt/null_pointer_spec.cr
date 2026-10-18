@@ -1,10 +1,10 @@
 require "../spec_helper"
 
 # A method returning a pointer to a wrapped class returns nil for a null
-# pointer with `nilable_results` in `qt.yml`, which bindgen f0929c4 can't yet
-# enable for Qt (see there).  Without it, such a result wraps the null pointer.
+# pointer (`nilable_results` in `qt.yml`).  A reference, the argument of a
+# callback, the elements of a container and a `#as_X` cast aren't nilable.
 describe "Null pointers" do
-  pending "are returned as nil" do
+  it "are returned as nil" do
     list = Qt::ListWidget.new
     list.item(0).should be_nil
     list.add_item("one")
