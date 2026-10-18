@@ -68,7 +68,6 @@ classes:
   QEasingCurve: EasingCurve
   QAbstractAnimation: AbstractAnimation
   QVariantAnimation: VariantAnimation
-  "QPair<qreal, QVariant>": VariantAnimationKeyValue # QVariantAnimation#keyValues
   QPropertyAnimation: PropertyAnimation
   QAnimationGroup: AnimationGroup
   QParallelAnimationGroup: ParallelAnimationGroup
@@ -183,7 +182,6 @@ classes:
   "QCalendar::YearMonthDay": Calendar::YearMonthDay
   QUuid: Uuid
   QUrlQuery: UrlQuery
-  "QPair<QString, QString>": StringPair # QUrlQuery#queryItems
   QVersionNumber: VersionNumber
   QCryptographicHash: CryptographicHash
   QRandomGenerator: RandomGenerator

@@ -18,7 +18,11 @@ module Qt
     end
 
     # A list has one column, and no children below its items.
-    def column_count(parent : ModelIndex = ModelIndex.new) : Int32
+    def column_count : Int32
+      column_count(ModelIndex.new)
+    end
+
+    def column_count(parent : ModelIndex) : Int32
       parent.valid? ? 0 : 1
     end
 

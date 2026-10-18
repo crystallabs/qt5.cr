@@ -8,11 +8,19 @@ containers:
       - [ "QModelIndex" ] # QModelIndexList, of QItemSelectionModel#selectedIndexes
       - [ "QCommandLineOption" ] # QCommandLineParser#addOptions
       - [ "QMimeType" ] # QMimeDatabase#mimeTypesForFileName
-      - [ "QPair<QString, QString>" ] # QUrlQuery#queryItems
+      - [ "QPair<QString, QString>" ] # QUrlQuery#queryItems, as {String, String}
   - class: QVector
     type: Sequential
     instantiations:
       - [ "QRgb" ]
       - [ "int" ] # QVersionNumber#segments
       - [ "QTimeZone::OffsetData" ] # QTimeZone::OffsetDataList
-      - [ "QPair<qreal, QVariant>" ] # QVariantAnimation::KeyValues
+      - [ "QPair<qreal, QVariant>" ] # QVariantAnimation::KeyValues, as {Float64, Variant}
+  # Qt 5's QPair is a class template of its own, converted to and from a Tuple.
+  # Only the pairs a method takes or returns directly are found automatically,
+  # so those nested in the lists above are listed.
+  - class: QPair
+    type: Pair
+    instantiations:
+      - [ "QString", "QString" ]
+      - [ "qreal", "QVariant" ]

@@ -40,8 +40,6 @@
 #ifndef BINDGEN_HELPER_HPP
 #define BINDGEN_HELPER_HPP
 
-#define GC_NEW_ABORTS_ON_OOM
-
 #include <gc/gc.h> // Boehm GC
 #include <string.h>
 #include <stdlib.h> // abort()
@@ -166,6 +164,15 @@ CrystalArray bindgen_array_to_view(T (&arr)[N]) noexcept {
  */
 template<typename T>
 using bindgen_type = T;
+
+/* The address of `value`, also of a temporary, which lives until the end of
+ * the full expression: a `CrystalProc` receives structures by pointer, and
+ * only reads them.
+ */
+template <typename T>
+T *bindgen_address(const T &value) {
+  return const_cast<T *>(&value);
+}
 
 /* Wrapper for a Crystal `Proc`. */
 template<typename T, typename ... Args>
@@ -302,6 +309,25 @@ void bindgen_map_store(M &map, const typename M::key_type &key, const typename M
   } else {
     map.emplace(key, value);
   }
+}
+
+/* The members of a pair `P`, like `std::pair` or `QPair`, which are fields
+ * and not methods.
+ */
+template <typename P>
+const typename P::first_type &bindgen_pair_first(const P &pair) {
+  return pair.first;
+}
+
+template <typename P>
+const typename P::second_type &bindgen_pair_second(const P &pair) {
+  return pair.second;
+}
+
+template <typename P>
+void bindgen_pair_set(P &pair, const typename P::first_type &first, const typename P::second_type &second) {
+  pair.first = first;
+  pair.second = second;
 }
 
 /* Copy of all entries of an associative container `M`, taken at once.  The

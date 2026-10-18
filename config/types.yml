@@ -152,12 +152,13 @@ types: # Type rewrite rules
   "QRandomGenerator::result_type": { alias_for: "unsigned int" } # quint32
   "QRandomGenerator64::result_type": { alias_for: "unsigned long long" } # quint64
   WId: { alias_for: "unsigned int" }
-  QVariantList: { alias_for: "QList<QVariant>" }
-  QFileInfoList: { alias_for: "QList<QFileInfo>" }
-  QModelIndexList: { alias_for: "QList<QModelIndex>" }
-  "QTimeZone::OffsetDataList": { alias_for: "QVector<QTimeZone::OffsetData>" }
+  # bindgen looks through a typedef of a container instantiation returned by
+  # value, like QFileInfoList or QTimeZone::OffsetDataList, but not one taken
+  # as a `const T &` argument (`Type#decayed` loses the type the typedef
+  # names), which would be bound as an opaque pointer.  These are such.
+  QModelIndexList: { alias_for: "QList<QModelIndex>" } # QAbstractItemModel#mimeData
   "QVariantAnimation::KeyValue": { alias_for: "QPair<qreal, QVariant>" }
-  "QVariantAnimation::KeyValues": { alias_for: "QVector<QPair<qreal, QVariant>>" }
+  "QVariantAnimation::KeyValues": { alias_for: "QVector<QPair<qreal, QVariant>>" } # setKeyValues
   QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
   # The methods of `QList<QString>` (wrapped as `Qt::StringList`, see

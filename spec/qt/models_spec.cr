@@ -363,8 +363,11 @@ describe "Qt::VariantAnimation" do
 
     animation.set_key_value_at(0.5, Qt.variant(2.0))
     animation.key_value_at(0.5).to(Float64).should eq(2.0)
-    animation.key_values.map(&.first).should eq([0.0, 0.5, 1.0])
-    animation.key_values.map(&.second.to(Float64)).should eq([0.0, 2.0, 10.0])
+    animation.key_values.map(&.[0]).should eq([0.0, 0.5, 1.0])
+    animation.key_values.map(&.[1].to(Float64)).should eq([0.0, 2.0, 10.0])
+    animation.key_values = [{0.0, Qt.variant(1.0)}, {1.0, Qt.variant(3.0)}]
+    animation.key_value_at(1.0).to(Float64).should eq(3.0)
+    animation.key_values = [{0.0, Qt.variant(0.0)}, {0.5, Qt.variant(2.0)}, {1.0, Qt.variant(10.0)}]
     animation.current_time = 250
     animation.current_value.to(Float64).should eq(1.0)
 

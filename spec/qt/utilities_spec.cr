@@ -34,9 +34,9 @@ describe "Qt::UrlQuery" do
     query.has_query_item("x").should be_true
     query.query_item_value("x").should eq("1")
     query.all_query_item_values("x").to_a.should eq(["1", "2"])
-    query.query_items.map { |pair| {pair.first, pair.second} }.should eq([{"name", "a b"}, {"x", "1"}, {"x", "2"}])
+    query.query_items.to_a.should eq([{"name", "a b"}, {"x", "1"}, {"x", "2"}])
 
-    query.query_items = [Qt::StringPair.new("k", "v")]
+    query.query_items = [{"k", "v"}]
     query.query.should eq("k=v")
     query.remove_query_item("k")
     query.empty?.should be_true
