@@ -1,6 +1,7 @@
-# Methods taking ownership of their arguments, which Qt then refers to from
-# memory the GC doesn't scan.  Their wrappers pass these arguments to
-# `BindgenHelper.keep_alive`, so the GC doesn't destroy objects Qt still uses.
+# Methods taking ownership of, or keeping a pointer to, their arguments, which
+# Qt then refers to from memory the GC doesn't scan.  Their wrappers pass these
+# arguments to `BindgenHelper.keep_alive`, so the GC doesn't destroy objects Qt
+# still uses.
 # `Qt::BindgenHelper.release(object)` lets the GC collect one again.
 #
 # Deep-merged (`<<+:`) into `types:` after `deprecated.yml`, so classes listed
@@ -27,9 +28,17 @@ QStackedLayout:
   keep_alive:
     "^(add|insert)Widget$": true
     "^addItem$": true
+QObject:
+  keep_alive:
+    "^installEventFilter$": true
+QCoreApplication:
+  keep_alive:
+    "^postEvent$": [1]
 QWidget:
   keep_alive:
     "^setLayout$": true
+    "^addAction$": true
+    "^insertAction$": [1]
 QMainWindow:
   keep_alive:
     "^set(CentralWidget|MenuBar|MenuWidget|StatusBar)$": true
@@ -57,10 +66,42 @@ QDockWidget:
 QMenuBar:
   keep_alive:
     "^setCornerWidget$": true
+    "^addMenu$": [0]
+    "^insertMenu$": [1]
+QMenu:
+  keep_alive:
+    "^addMenu$": [0]
+    "^insertMenu$": [1]
+    "^setDefaultAction$": true
+QAction:
+  keep_alive:
+    "^setMenu$": true
+QPushButton:
+  keep_alive:
+    "^setMenu$": true
+QToolButton:
+  keep_alive:
+    "^set(Menu|DefaultAction)$": true
+QButtonGroup:
+  keep_alive:
+    "^addButton$": true
+QSystemTrayIcon:
+  keep_alive:
+    "^setContextMenu$": true
 QToolBar:
   keep_alive:
     "^addWidget$": true
     "^insertWidget$": [1]
+QAbstractItemView:
+  keep_alive:
+    "^set(Model|ItemDelegate|ItemDelegateForRow|ItemDelegateForColumn)$": true
+    "^setIndexWidget$": [1]
+QTableView:
+  keep_alive:
+    "^setModel$": true
+QStyledItemDelegate:
+  keep_alive:
+    "^setItemEditorFactory$": true
 QListWidget:
   keep_alive:
     "^(add|insert)Item$": true
@@ -70,10 +111,45 @@ QTableWidget:
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|CellWidget|ItemPrototype)$": true
 QComboBox:
   keep_alive:
-    "^set(LineEdit|View)$": true
+    "^set(LineEdit|View|Model|ItemDelegate|Completer)$": true
+QLineEdit:
+  keep_alive:
+    "^setCompleter$": true
+    "^addAction$": [0]
+QCompleter:
+  keep_alive:
+    "^set(Model|Widget|Popup)$": true
+QFileDialog:
+  keep_alive:
+    "^setItemDelegate$": true
+QLabel:
+  keep_alive:
+    "^setBuddy$": true
+QTabBar:
+  keep_alive:
+    "^setTabButton$": [2]
+QTextEdit:
+  keep_alive:
+    "^setDocument$": true
+QDrag:
+  keep_alive:
+    "^setMimeData$": true
+QGraphicsView:
+  keep_alive:
+    "^setScene$": true
 QGraphicsScene:
   keep_alive:
     "^add(Item|Widget)$": [0]
+QGraphicsItem:
+  keep_alive:
+    "^installSceneEventFilter$": true
+QGraphicsWidget:
+  keep_alive:
+    "^addAction$": true
+    "^insertAction$": [1]
+QGraphicsTextItem:
+  keep_alive:
+    "^setDocument$": true
 QStandardItemModel:
   keep_alive:
     "^appendRow$": true

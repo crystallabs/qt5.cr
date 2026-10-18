@@ -122,12 +122,15 @@ itself](https://doc.qt.io/qt-5/qcoreapplication.html#locale-settings)).
 
 Objects created from Crystal are collected by the GC once Crystal no longer
 refers to them.  Qt's references, like a layout's to its widgets, are invisible
-to the GC.  So the methods by which Qt takes ownership, like
-`Qt::Layout#add_widget`, `Qt::ListWidget#add_item` or
-`Qt::MainWindow#central_widget=`, keep their arguments alive:
+to the GC.  So the methods by which Qt takes ownership of an object or keeps a
+pointer to it, like `Qt::Layout#add_widget`, `Qt::ListWidget#add_item`,
+`Qt::MainWindow#central_widget=`, `Qt::AbstractItemView#model=` or
+`Qt::PushButton#menu=`, keep their arguments alive:
 
 ```crystal
 layout.add_widget Qt::Label.new("Stays alive")
+view.model = Qt::StandardItemModel.new # Stays alive too
+button.menu = Qt::Menu.new             # And so does this
 ```
 
 They're kept alive until passed to `Qt::BindgenHelper.release`, e.g. after
