@@ -37,32 +37,19 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
 
 # Installation
 
-If you just want to develop a Crystal app which uses Qt5, use the `master-ready-to-use`
-branch. It contains pre-built/pre-generated bindings for certain platform and Qt
-combinations. If that branch contains the pre-generated bindings for your platform,
-which you can verify in the
-[subdirectory `ext/`](https://github.com/Papierkorb/qt5.cr/tree/master-ready-to-use/ext),
-you won't need bindgen at all.
+Add the shard to your `shard.yml`:
 
 ```yaml
 dependencies:
   qt5:
-    github: Papierkorb/qt5.cr
-    branch: master-ready-to-use
+    github: crystallabs/qt5.cr
 ```
 
-If you want the bindings to be generated for the current system, or if you want
-to generate bindings for new platform and Qt combinations, use the master
-branch:
+Then generate the binding for the Qt5 installed on your system, see
+[(Re)generating the binding for the system's Qt5](#regenerating-the-binding-for-the-systems-qt5).
+This needs bindgen and its dependencies, listed below.
 
-```yaml
-dependencies:
-  qt5:
-    github: Papierkorb/qt5.cr
-    branch: master
-```
-
-In any case, your users will be required to have the Qt5 libraries on their system
+Your users will be required to have the Qt5 libraries on their system
 because this project defaults to binding to Qt libraries dynamically. (See more
 on this under License below.)
 
@@ -198,14 +185,12 @@ The naming scheme is not strictly enforced.  However, it should always end with
 
 ## (Re)generating all Qt5 binding versions
 
-The `master-ready-to-use` branch contains a number of prebuilt bindings.
-The following process was used to build them:
+To generate bindings for several Qt5 versions from their sources:
 
-1. Cd into the `qt5.cr` directory, switch to the master branch
+1. Cd into the `qt5.cr` directory
 2. Edit `support/generate_bindings.cr` and enable all versions for which you want
 to generate the bindings
 3. Run `crystal support/generate_bindings.cr`
-4. Commit the files in `ext/` to the `master-ready-to-use` branch
 
 The build process will automatically download, unpack, build, and generate all
 configured versions of Qt5.  It'll store the downloaded and unpacked Qt5 versions
