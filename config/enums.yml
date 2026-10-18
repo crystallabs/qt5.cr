@@ -341,3 +341,33 @@ enums:
   "QPlainTextEdit::LineWrapMode": PlainTextEdit::LineWrapMode
   "QTextDocument::ResourceType": TextDocument::ResourceType
   "Qt::HitTestAccuracy": HitTestAccuracy
+  "QColorDialog::ColorDialogOption": ColorDialog::Option
+  "QColorDialog::ColorDialogOptions": ColorDialog::Options
+  "QFontDialog::FontDialogOption": FontDialog::Option
+  "QFontDialog::FontDialogOptions": FontDialog::Options
+  "QInputDialog::InputDialogOption": InputDialog::Option
+  "QInputDialog::InputDialogOptions": InputDialog::Options
+  "QInputDialog::InputMode": InputDialog::InputMode
+  "QWizard::WizardButton": Wizard::Button
+  "QWizard::WizardPixmap": Wizard::Pixmap
+  "QWizard::WizardStyle": Wizard::Style
+  "QWizard::WizardOption": Wizard::Option
+  "QWizard::WizardOptions": Wizard::Options
+  "QDialogButtonBox::ButtonRole": DialogButtonBox::ButtonRole
+  "QDialogButtonBox::StandardButton": DialogButtonBox::StandardButton
+  "QDialogButtonBox::StandardButtons": DialogButtonBox::StandardButtons
+  "QDialogButtonBox::ButtonLayout": DialogButtonBox::ButtonLayout
+  "QMdiArea::AreaOption": MdiArea::AreaOption
+  "QMdiArea::AreaOptions": MdiArea::AreaOptions
+  "QMdiArea::WindowOrder": MdiArea::WindowOrder
+  "QMdiArea::ViewMode": MdiArea::ViewMode
+  "QMdiSubWindow::SubWindowOption": MdiSubWindow::Option
+  "QMdiSubWindow::SubWindowOptions": MdiSubWindow::Options
+  "QRubberBand::Shape": RubberBand::Shape
+  "QFontComboBox::FontFilter": FontComboBox::FontFilter
+  "QFontComboBox::FontFilters": FontComboBox::FontFilters
+  "QFontDatabase::WritingSystem": FontDatabase::WritingSystem # QFontComboBox#writing_system
+  "QCalendarWidget::HorizontalHeaderFormat": CalendarWidget::HorizontalHeaderFormat
+  "QCalendarWidget::VerticalHeaderFormat": CalendarWidget::VerticalHeaderFormat
+  "QCalendarWidget::SelectionMode": CalendarWidget::SelectionMode
+  "QActionGroup::ExclusionPolicy": ActionGroup::ExclusionPolicy

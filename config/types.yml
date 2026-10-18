@@ -203,6 +203,7 @@ types: # Type rewrite rules
 
   # No support for associative containers yet
   "QMap<int, QVariant>": { ignore: true }
+  "QMap<QDate, QTextCharFormat>": { ignore: true } # Use CalendarWidget#date_text_format(date)
   "QHash<int, QByteArray>": { ignore: true }
 
   # Ignore private data structures

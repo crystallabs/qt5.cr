@@ -31,6 +31,34 @@ classes:
   QMainWindow: MainWindow
   QDockWidget: DockWidget
   QDialog: Dialog
+  QSplitter: Splitter
+  QSplitterHandle: SplitterHandle
+  QColorDialog: ColorDialog
+  QFontDialog: FontDialog
+  QInputDialog: InputDialog
+  QProgressDialog: ProgressDialog
+  QErrorMessage: ErrorMessage
+  QWizard: Wizard
+  QWizardPage: WizardPage
+  QDialogButtonBox: DialogButtonBox
+  QMdiArea: MdiArea
+  QMdiSubWindow: MdiSubWindow
+  QSplashScreen: SplashScreen
+  QToolBox: ToolBox
+  QSizeGrip: SizeGrip
+  QRubberBand: RubberBand
+  QFocusFrame: FocusFrame
+  QKeySequenceEdit: KeySequenceEdit
+  QFontComboBox: FontComboBox
+  QDateEdit: DateEdit
+  QTimeEdit: TimeEdit
+  QCalendarWidget: CalendarWidget
+  QCommandLinkButton: CommandLinkButton
+  QShortcut: Shortcut
+  QActionGroup: ActionGroup
+  QWidgetAction: WidgetAction
+  QToolTip: ToolTip
+  QWhatsThis: WhatsThis
   QLabel: Label
   QLCDNumber: LcdNumber
   QPushButton: PushButton

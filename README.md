@@ -309,6 +309,8 @@ see the comments there:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
 * `QHeaderView`'s protected `initialize()` is dropped, as Crystal reserves the
   name for constructors.
+* `QMap<QDate, QTextCharFormat>` has no mapping yet and is ignored: use
+  `CalendarWidget#date_text_format(date)`.
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 

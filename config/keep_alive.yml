@@ -210,3 +210,40 @@ QUndoGroup:
 QUndoView:
   keep_alive:
     "^set(Stack|Group)$": true
+QSplitter:
+  keep_alive:
+    "^addWidget$": true
+    "^(insert|replace)Widget$": [1]
+QWizard:
+  keep_alive:
+    "^addPage$": true
+    "^set(Page|Button)$": [1]
+    "^setSideWidget$": true
+QWizardPage:
+  keep_alive:
+    "^registerField$": [1]
+QDialogButtonBox:
+  keep_alive:
+    "^addButton$": true
+QMdiArea:
+  keep_alive:
+    "^addSubWindow$": [0]
+QMdiSubWindow:
+  keep_alive:
+    "^set(Widget|SystemMenu)$": true
+QToolBox:
+  keep_alive:
+    "^addItem$": [0]
+    "^insertItem$": [1]
+QFocusFrame:
+  keep_alive:
+    "^setWidget$": true
+QProgressDialog:
+  keep_alive:
+    "^set(Bar|CancelButton|Label)$": true
+QActionGroup:
+  keep_alive:
+    "^addAction$": true
+QWidgetAction:
+  keep_alive:
+    "^setDefaultWidget$": true
