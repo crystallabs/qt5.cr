@@ -139,6 +139,7 @@ types: # Type rewrite rules
   QRgb: { alias_for: "unsigned int" }
   WId: { alias_for: "unsigned int" }
   QVariantList: { alias_for: "QList<QVariant>" }
+  QStringList: { alias_for: "QList<QString>" } # A subclass of it, convertible both ways
 
   # Structures with QVariant: Ignore for now.
   "QInputMethodEvent::Attribute": { ignore: true }
