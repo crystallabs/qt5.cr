@@ -8,3 +8,5 @@ functions:
     destination: "::"
   "^qt5cr_validator_fixup$":
     destination: "::"
+  "^qt5cr_\\w+_inverted$": # See ext/matrix_helper.hpp
+    destination: "::"

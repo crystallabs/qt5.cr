@@ -276,3 +276,12 @@ QActionGroup:
 QWidgetAction:
   keep_alive:
     "^setDefaultWidget$": true
+QMovie:
+  keep_alive:
+    "^setDevice$": true
+QImageReader:
+  keep_alive:
+    "^setDevice$": true
+QImageWriter:
+  keep_alive:
+    "^setDevice$": true

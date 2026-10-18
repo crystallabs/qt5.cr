@@ -345,3 +345,38 @@ classes:
   "QList<QString>": StringList # QStringList, wrapped with its methods
   # QStringList keeps its methods in this specialization, which it derives from
   "QListSpecialMethods<QString>": StringListMethods
+  # Painting and geometry
+  QPainterPath: PainterPath
+  "QPainterPath::Element": PainterPathElement
+  QPainterPathStroker: PainterPathStroker
+  QTransform: Transform
+  QMatrix: Matrix # The 2D affine matrix QTransform replaced; Qt 5 only
+  QMatrix4x4: Matrix4x4
+  QVector2D: Vector2D
+  QVector3D: Vector3D
+  QVector4D: Vector4D
+  QQuaternion: Quaternion
+  QGradient: Gradient
+  QLinearGradient: LinearGradient
+  QRadialGradient: RadialGradient
+  QConicalGradient: ConicalGradient
+  QRegion: Region
+  QColorSpace: ColorSpace
+  QColorTransform: ColorTransform # ColorSpace#transformation_to_color_space
+  QPicture: Picture
+  QPixmapCache: PixmapCache
+  "QPixmapCache::Key": PixmapCacheKey
+  QImageReader: ImageReader
+  QImageWriter: ImageWriter
+  QMovie: Movie
+  QRgba64: Rgba64
+  QPagedPaintDevice: PagedPaintDevice
+  QPageSize: PageSize
+  QPageLayout: PageLayout
+  QPdfWriter: PdfWriter
+  QBackingStore: BackingStore
+  QPaintDeviceWindow: PaintDeviceWindow
+  QRasterWindow: RasterWindow
+  QSurfaceFormat: SurfaceFormat
+  QOffscreenSurface: OffscreenSurface
+  QMarginsF: MarginsF

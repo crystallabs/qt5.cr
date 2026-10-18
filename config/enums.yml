@@ -431,3 +431,34 @@ enums:
   "Qt::AnchorPoint": AnchorPoint
   "Qt::Axis": { destination: "Axis", camelcase: false } # XAxis, not Xaxis
   "Qt::ScrollPhase": ScrollPhase
+  # Painting and geometry
+  "QPainterPath::ElementType": PainterPath::ElementType
+  "QTransform::TransformationType": Transform::TransformationType
+  "QGradient::Type": Gradient::Type
+  "QGradient::Spread": Gradient::Spread
+  "QGradient::CoordinateMode": Gradient::CoordinateMode
+  "QGradient::InterpolationMode": Gradient::InterpolationMode
+  "QRegion::RegionType": Region::RegionType
+  "QColorSpace::NamedColorSpace": ColorSpace::NamedColorSpace
+  "QColorSpace::Primaries": ColorSpace::Primaries
+  "QColorSpace::TransferFunction": ColorSpace::TransferFunction
+  "QImageReader::ImageReaderError": ImageReader::ImageReaderError
+  "QImageWriter::ImageWriterError": ImageWriter::ImageWriterError
+  "QImageIOHandler::ImageOption": ImageIOHandler::ImageOption
+  "QImageIOHandler::Transformation": ImageIOHandler::Transformation
+  "QImageIOHandler::Transformations": ImageIOHandler::Transformations
+  "QMovie::MovieState": Movie::MovieState
+  "QMovie::CacheMode": Movie::CacheMode
+  "QPagedPaintDevice::PdfVersion": PagedPaintDevice::PdfVersion
+  "QPageSize::PageSizeId": PageSize::PageSizeId
+  "QPageSize::Unit": PageSize::Unit
+  "QPageSize::SizeMatchPolicy": PageSize::SizeMatchPolicy
+  "QPageLayout::Unit": PageLayout::Unit
+  "QPageLayout::Orientation": PageLayout::Orientation
+  "QPageLayout::Mode": PageLayout::Mode
+  "QSurfaceFormat::FormatOption": SurfaceFormat::FormatOption
+  "QSurfaceFormat::FormatOptions": SurfaceFormat::FormatOptions
+  "QSurfaceFormat::SwapBehavior": SurfaceFormat::SwapBehavior
+  "QSurfaceFormat::RenderableType": SurfaceFormat::RenderableType
+  "QSurfaceFormat::OpenGLContextProfile": SurfaceFormat::OpenGLContextProfile
+  "QSurfaceFormat::ColorSpace": SurfaceFormat::ColorSpace

@@ -323,6 +323,19 @@ see the comments there:
   `Enumerable` of tuples, through the `QPair` container rule.
 * `QMap<QDate, QTextCharFormat>` has no mapping yet and is ignored: use
   `CalendarWidget#date_text_format(date)`.
+* `QVector2D`, `QVector3D`, `QVector4D`, `QQuaternion`, `QRgba64` and
+  `QPainterPath::Element` are copied structures passed by value, like
+  `QPoint`.  bindgen gives a copied structure no accessors for its public
+  fields, so `src/qt5/copied_fields.cr` adds them: `element.x`.
+* `QTransform#inverted`, `QMatrix#inverted` and `QMatrix4x4#inverted` take
+  `bool *invertible = nullptr`, which bindgen renders as `Bool*? = true`, so
+  `src/qt5/transform.cr` wraps them through `ext/matrix_helper.hpp`.  Other
+  such arguments, like the `ok` of `Locale#to_int`, only compile when `nil`
+  is passed explicitly.
+* `QMatrix3x3` (a `QGenericMatrix` instantiation) has no mapping, which drops
+  `Matrix4x4#normal_matrix` and `Quaternion#to_rotation_matrix`.
+  `QGradientStops` is a `QVector<QPair<qreal, QColor>>`, so `Gradient#stops`
+  is an `Enumerable({Float64, Color})` and the setter takes an array of tuples.
 * Types without a mapping yet, like `std::function` callbacks or the
   associative containers, are ignored, which drops the methods using them.
 

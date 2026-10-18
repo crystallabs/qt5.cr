@@ -306,4 +306,65 @@ types: # Type rewrite rules
     ignore_methods: # Variadic, which can't be wrapped
       - setPoints
       - putPoints
+  # Painting and geometry.  The small value classes are copied structures,
+  # passed by value like QPoint.  (Each rule is spelled out: bindgen keeps
+  # per-type state in the rule, so a YAML alias would share it.)
+  QVector2D:
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  QVector3D:
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  QVector4D:
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  QQuaternion:
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  QRgba64:
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  "QPainterPath::Element": # Field accessors in src/qt5/copied_fields.cr
+    copy_structure: true
+    generate_binding: true
+    generate_wrapper: true
+    pass_by: Value
+    kind: Struct
+  "Qt::Initialization": { ignore: true } # Qt::Uninitialized constructor tag
+  # A typedef of QGenericMatrix<3, 3, float>, a template bindgen can't
+  # instantiate; drops Matrix4x4#normal_matrix and Quaternion#to_rotation_matrix.
+  QMatrix3x3: { ignore: true }
+  "QGradient::QGradientData": { ignore: true } # Private union
+  "QRegion::QRegionData": { ignore: true } # Private
+  "QRegion::const_iterator": { ignore: true } # Use #rect_count and #bounding_rect
+  "QRegion::const_reverse_iterator": { ignore: true }
+  "QPicture::DataPtr": { ignore: true }
+  "QPixmapCache::KeyData": { ignore: true } # Private
+  # bindgen renders the `bool *invertible = nullptr` default of `inverted` as
+  # `Bool*? = true`, which doesn't compile when the default is used:
+  # ext/matrix_helper.hpp, src/qt5/transform.cr.
+  QTransform:
+    ignore_methods:
+      - inverted
+  QMatrix:
+    ignore_methods:
+      - inverted
+  QMatrix4x4:
+    ignore_methods:
+      - inverted
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
