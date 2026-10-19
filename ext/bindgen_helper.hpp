@@ -213,11 +213,45 @@ struct CrystalGCCleanupWrapper: public T, public gc_cleanup
   // Copy constructors aren't inherited.
   CrystalGCCleanupWrapper(const T &other) : T(other) { }
 
+  ~CrystalGCCleanupWrapper() override { bindgen_destroyed = true; }
+
+  /* C++ code owning this object, like a Qt parent, destroys it with `delete`.
+   * This runs the destructor, but leaves the memory to the GC: When the object
+   * and its owner became unreachable in the same collection, the GC queued the
+   * finalizers of both already, and the one of the object would run on freed,
+   * cleared memory.  `bindgen_cleanup` skips a destroyed object instead, and
+   * the GC reclaims the memory once nothing refers to it.
+   */
+  static void operator delete(void *) { }
+  static void operator delete(void *, GCPlacement) { }
+
   /* The objects this one depends on, see `bindgen_depends_on`: One pointer, or
    * a pointer to a GC-allocated array of them.  Only there for the GC to find
    * them when it scans this object.
    */
   void *bindgen_dependencies = nullptr;
+
+  // Set by the destructor, so the finalizer skips an object C++ destroyed.
+  bool bindgen_destroyed = false;
+
+private:
+  /* The finalizer, replacing `gc_cleanup::cleanup`, which can't tell an object
+   * C++ destroyed from a live one.
+   */
+  static void bindgen_cleanup(void *base, void *displacement) {
+    auto *self = reinterpret_cast<CrystalGCCleanupWrapper *>(static_cast<char *>(base) + reinterpret_cast<ptrdiff_t>(displacement));
+    if (!self->bindgen_destroyed) self->~CrystalGCCleanupWrapper();
+  }
+
+  // Registers `bindgen_cleanup` once `gc_cleanup` registered its own.
+  struct Finalizer {
+    Finalizer(CrystalGCCleanupWrapper *self) {
+      void *base = GC_base(self);
+      if (base == nullptr) return; // Not on the GC heap
+      void *displacement = reinterpret_cast<void *>(reinterpret_cast<char *>(self) - static_cast<char *>(base));
+      GC_register_finalizer_ignore_self(base, bindgen_cleanup, displacement, nullptr, nullptr);
+    }
+  } bindgen_finalizer{this};
 };
 
 /* Makes the GC destroy *object* before its *dependencies*: Objects it refers to

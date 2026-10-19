@@ -314,7 +314,7 @@ enums:
   "QItemSelectionModel::SelectionFlag": ItemSelectionModel::SelectionFlag
   "QCompleter::CompletionMode": Completer::CompletionMode
   "QCompleter::ModelSorting": Completer::ModelSorting
-  "QMetaType::Type": { destination: MetaType::Type, camelcase: false } # QString, not Qstring
+  "QMetaType::Type": { destination: "MetaType::Type", camelcase: false } # QString, not Qstring
   "QListView::Flow": ListView::Flow
   "QListView::Movement": ListView::Movement
   "QListView::ResizeMode": ListView::ResizeMode
