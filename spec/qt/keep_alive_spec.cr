@@ -18,6 +18,31 @@ private def assign(view, button)
   button.menu = Qt::Menu.new("menu")
 end
 
+# Builds a tree of four items, two of them top-level.
+private def build_tree
+  tree = Qt::TreeWidget.new
+  root = Qt::TreeWidgetItem.new(tree, ["root"])
+  Qt::TreeWidgetItem.new(root, ["child"])
+  other = Qt::TreeWidgetItem.new(tree, ["other"])
+  Qt::TreeWidgetItem.new(other, ["grandchild"])
+  tree
+end
+
+# Iterates *tree* with iterators over the tree, over an item, and with flags,
+# keeping none of them.  Returns the number of items seen.  The iterators
+# unregister from the tree's model when destroyed, from memory the GC doesn't
+# scan.  Without `depends_on:` in `config/keep_alive.yml`, the GC may destroy
+# the tree first, and crashes in the iterators' finalizers.
+private def iterate(tree)
+  all = Qt::TreeWidgetItemIterator.new(tree).size
+  Qt::TreeWidgetItemIterator.new(tree.top_level_item(1).not_nil!).size.should eq(2)
+  Qt::TreeWidgetItemIterator.new(tree, Qt::TreeWidgetItemIterator::IteratorFlags::NoChildren).size.should eq(2)
+  copy = Qt::TreeWidgetItemIterator.new(Qt::TreeWidgetItemIterator.new(tree))
+  copy.succ!.value.not_nil!.text(0).should eq("child")
+  copy.pred!.value.not_nil!.text(0).should eq("root")
+  all
+end
+
 private def churn
   10.times do
     GC.collect
@@ -48,5 +73,24 @@ describe "objects used by Qt" do
 
     view.model.not_nil!.row_count.should eq(3)
     button.menu.not_nil!.title.should eq("menu")
+  end
+end
+
+describe "objects destroyed before others" do
+  it "destroys the iterators of a tree before the tree" do
+    tree = build_tree
+    iterate(tree).should eq(4)
+    churn
+    tree.top_level_item_count.should eq(2)
+
+    3.times { iterate(build_tree).should eq(4) }
+    churn
+    build_tree.top_level_item_count.should eq(2)
+  end
+
+  it "keeps the application alive for Qt" do
+    churn
+    # Reads the arguments Qt keeps a pointer to in the application wrapper
+    Qt::CommandLineParser.new.help_text.should contain("Usage")
   end
 end

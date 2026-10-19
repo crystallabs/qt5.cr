@@ -4,6 +4,10 @@
 # still uses.
 # `Qt::BindgenHelper.release(object)` lets the GC collect one again.
 #
+# `depends_on:` marks the constructors whose object uses an argument when
+# destroyed, like an iterator unregistering from its container: the GC destroys
+# the object before the argument, and releases the argument with it.
+#
 # Deep-merged (`<<+:`) into `types:` after `deprecated.yml`, so classes listed
 # in both keep their `ignore_methods` from there.
 ---
@@ -309,6 +313,8 @@ QBasicTimer:
 QTextStream:
   keep_alive:
     "^setCodec$": true
+  depends_on:
+    "^$": true # The stream flushes to its device when destroyed
 QObjectCleanupHandler:
   keep_alive:
     "^add$": true
@@ -335,3 +341,25 @@ QStackedWidget:
   keep_alive:
     "^addWidget$": true
     "^insertWidget$": [1]
+QTreeWidgetItemIterator:
+  depends_on:
+    "^$": true # The iterator unregisters from the model of its tree widget when destroyed; a copy depends on the iterator it copies
+  ignore_methods: # Their by-value results are copies without a dependency; `TreeWidgetItemIterator#succ!` and `#pred!` use `operator+=` and `operator-=`
+    - "operator++"
+    - "operator--"
+    - "operator=" # Retargets an iterator without updating its dependency
+QPainter:
+  depends_on:
+    "^$": true # The painter ends painting on its device when destroyed
+QMutexLocker:
+  depends_on:
+    "^$": true # The locker unlocks its mutex when destroyed
+QReadLocker:
+  depends_on:
+    "^$": true
+QWriteLocker:
+  depends_on:
+    "^$": true
+QPersistentModelIndex:
+  depends_on:
+    "^$": true # The index unregisters from its model when destroyed, reached through the model index it is made of

@@ -61,6 +61,7 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 
 #ifdef __cplusplus
 #include <gc/gc_cpp.h>
+#include <initializer_list>
 #include <string>
 #include <type_traits>
 #include <utility>
@@ -211,7 +212,33 @@ struct CrystalGCCleanupWrapper: public T, public gc_cleanup
 
   // Copy constructors aren't inherited.
   CrystalGCCleanupWrapper(const T &other) : T(other) { }
+
+  /* The objects this one depends on, see `bindgen_depends_on`: One pointer, or
+   * a pointer to a GC-allocated array of them.  Only there for the GC to find
+   * them when it scans this object.
+   */
+  void *bindgen_dependencies = nullptr;
 };
+
+/* Makes the GC destroy *object* before its *dependencies*: Objects it refers to
+ * from memory the GC doesn't scan, like through a d-pointer, and uses in its
+ * destructor, like an iterator unregistering from its container.  Stored in the
+ * object, they stay alive as long as it does, and as the GC finalizes an object
+ * before the objects it points to, they're finalized only after it.
+ * Generated into the constructors configured in `depends_on:`.
+ */
+template <typename T>
+CrystalGCCleanupWrapper<T> *bindgen_depends_on(CrystalGCCleanupWrapper<T> *object, std::initializer_list<const void *> dependencies) {
+  if (dependencies.size() == 1) {
+    object->bindgen_dependencies = const_cast<void *>(*dependencies.begin());
+  } else if (dependencies.size() > 1) {
+    void **list = static_cast<void **>(GC_MALLOC(sizeof(void *) * dependencies.size()));
+    void **slot = list;
+    for (const void *dependency : dependencies) *slot++ = const_cast<void *>(dependency);
+    object->bindgen_dependencies = list;
+  }
+  return object;
+}
 
 // Unions can't be inherited from, these are allocated as they are.  This
 // doesn't run their destructor: bindgen uses `bindgen_gc_finalizer` instead.

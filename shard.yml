@@ -10,7 +10,7 @@ crystal: ">= 1.8.0, < 2.0.0"
 dependencies:
   bindgen:
     github: crystallabs/bindgen
-    version: ~> 0.11
+    version: ~> 0.13.1
 scripts:
   postinstall: shards
 

@@ -8,6 +8,18 @@ module Qt
   class TreeWidgetItemIterator
     include Iterator(TreeWidgetItem)
 
+    # Advances to the next item, like C++'s `++it`.
+    def succ! : self
+      add!(1)
+      self
+    end
+
+    # Goes back to the previous item, like C++'s `--it`.
+    def pred! : self
+      sub!(1)
+      self
+    end
+
     # Returns the current item, or `nil` past the last one.
     def value : TreeWidgetItem?
       deref
