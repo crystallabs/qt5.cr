@@ -281,9 +281,8 @@ describe Qt::FontComboBox do
   it "lists fonts" do
     combo = Qt::FontComboBox.new
     combo.count.should be > 0
-    family = combo.item_text(combo.count - 1) # Whatever the system has
-    combo.current_font = Qt::Font.new(family)
-    combo.current_font.family.should eq(family)
+    combo.current_index = combo.count - 1 # Whatever the system has
+    combo.current_font.family.should eq(combo.current_text)
     combo.font_filters = Qt::FontComboBox::FontFilters::MonospacedFonts
     combo.font_filters.should eq(Qt::FontComboBox::FontFilters::MonospacedFonts)
     combo.count.should be <= Qt::FontDatabase.new.families.size
