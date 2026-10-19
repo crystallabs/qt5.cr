@@ -256,14 +256,19 @@ end
 describe "Qt::OperatingSystemVersion" do
   it "describes the running system" do
     current = Qt::OperatingSystemVersion.current
-    current.major_version.should be > 0
-    current.name.should_not be_empty
     current.type.should eq(Qt::OperatingSystemVersion.current_type)
     {% if flag?(:darwin) %}
+      current.major_version.should be > 0
+      current.name.should_not be_empty
       current.type.should eq(Qt::OperatingSystemVersion::OSType::MacOS)
       (current >= Qt::OperatingSystemVersion.mac_os_sierra).should be_true
+      (Qt::OperatingSystemVersion.new(current.type, 1, 0) < current).should be_true
+    {% else %}
+      current.type.should eq(Qt::OperatingSystemVersion::OSType::Unknown) # Qt 5 knows no version of Linux
     {% end %}
-    (Qt::OperatingSystemVersion.new(current.type, 1, 0) < current).should be_true
+    sierra = Qt::OperatingSystemVersion.mac_os_sierra
+    sierra.major_version.should eq(10)
+    (Qt::OperatingSystemVersion.new(sierra.type, 10, 11) < sierra).should be_true
   end
 end
 

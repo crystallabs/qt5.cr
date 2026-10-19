@@ -102,14 +102,14 @@ describe Qt::TextLayout do
   end
 
   it "sizes static text" do
-    text = Qt::StaticText.new("Static")
-    text.text.should eq("Static")
+    text = Qt::StaticText.new("Static text")
+    text.text.should eq("Static text")
     text.text_format = Qt::TextFormatEnum::PlainText
     text.performance_hint = Qt::StaticText::PerformanceHint::AggressiveCaching
     text.prepare(Qt::Transform.new, Qt::Font.new("Helvetica", 12))
     text.size.width.should be > 0
     text.size.height.should be > 0
-    text.text_width = 20.0
+    text.text_width = 20.0 # Wraps between the words
     text.text_width.should eq(20.0)
     text.size.height.should be > Qt::FontMetricsF.new(Qt::Font.new("Helvetica", 12)).height
   end

@@ -392,7 +392,7 @@ describe Qt::BitArray do
     code.result.should eq(mac)
 
     Qt::Library.new("no such library").load.should be_false
-    Qt::Library.is_library("foo.dylib").should be_true
+    Qt::Library.is_library("foo.so").should be_true # A library suffix on Linux and macOS
     Qt::Library.is_library("foo.txt").should be_false
     Qt::Resource.new(":/no/such/resource").valid?.should be_false
     selector = Qt::FileSelector.new

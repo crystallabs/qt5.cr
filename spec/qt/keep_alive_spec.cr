@@ -18,14 +18,16 @@ private def assign(view, button)
   button.menu = Qt::Menu.new("menu")
 end
 
-# Builds a tree of four items, two of them top-level.
+# Builds a tree of four items, two of them top-level.  Returns the tree and
+# its items: Qt owns the items, but doesn't keep them alive for the GC, which
+# would take them out of the tree.
 private def build_tree
   tree = Qt::TreeWidget.new
   root = Qt::TreeWidgetItem.new(tree, ["root"])
-  Qt::TreeWidgetItem.new(root, ["child"])
+  child = Qt::TreeWidgetItem.new(root, ["child"])
   other = Qt::TreeWidgetItem.new(tree, ["other"])
-  Qt::TreeWidgetItem.new(other, ["grandchild"])
-  tree
+  grandchild = Qt::TreeWidgetItem.new(other, ["grandchild"])
+  {tree, [root, child, other, grandchild]}
 end
 
 # Iterates *tree* with iterators over the tree, over an item, and with flags,
@@ -78,14 +80,15 @@ end
 
 describe "objects destroyed before others" do
   it "destroys the iterators of a tree before the tree" do
-    tree = build_tree
+    tree, items = build_tree
     iterate(tree).should eq(4)
     churn
     tree.top_level_item_count.should eq(2)
+    items.size.should eq(4)
 
-    3.times { iterate(build_tree).should eq(4) }
+    3.times { iterate(build_tree[0]).should eq(4) }
     churn
-    build_tree.top_level_item_count.should eq(2)
+    build_tree[0].top_level_item_count.should eq(2)
   end
 
   it "keeps the application alive for Qt" do
