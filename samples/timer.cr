@@ -18,9 +18,9 @@ timer.on_timeout do
   counter_label.text = "You've been staring for #{counter} seconds."
 end
 
-# We'll go with an interval of a second.  `Time::Span` is mapped, so you should
-# feel right at home with this:
-timer.start(60)
+# We'll go with an interval of a second.  `Timer#start` also takes a
+# `Time::Span`, so you should feel right at home with this:
+timer.start(1.second)
 
 # And now, start it!
 counter_label.show
