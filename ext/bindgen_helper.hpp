@@ -205,6 +205,39 @@ struct CrystalProc {
   }
 };
 
+/* Functions called with the address of a wrapped object as C++ destroys it:
+ * `delete` by C++ code owning it, like a Qt parent.  The generated module
+ * registers `BindgenHelper.release`, so an object C++ deletes is released
+ * from `keep_alive` without the program telling.  One list serves all bindings
+ * of a program, as the definitions are weak and the linker keeps one of them:
+ * each binding releases only the addresses it knows.  The list has no
+ * destructor, as objects may be destroyed at exit, after static destructors.
+ */
+typedef void (*BindgenDestroyedHook)(void *);
+
+struct BindgenDestroyedHooks {
+  BindgenDestroyedHook hooks[16];
+  int count;
+};
+
+extern "C" __attribute__((weak)) BindgenDestroyedHooks *bindgen_destroyed_hooks() {
+  static BindgenDestroyedHooks hooks; // Zero-initialized
+  return &hooks;
+}
+
+extern "C" __attribute__((weak)) void bindgen_add_destroyed_hook(BindgenDestroyedHook hook) {
+  BindgenDestroyedHooks *hooks = bindgen_destroyed_hooks();
+  if (hooks->count == static_cast<int>(sizeof(hooks->hooks) / sizeof(hooks->hooks[0]))) {
+    bindgen_fatal_panic("Too many bindings registered a destroyed hook");
+  }
+  hooks->hooks[hooks->count++] = hook;
+}
+
+static void bindgen_notify_destroyed(void *object) {
+  BindgenDestroyedHooks *hooks = bindgen_destroyed_hooks();
+  for (int i = 0; i < hooks->count; ++i) hooks->hooks[i](object);
+}
+
 template <typename T>
 struct CrystalGCCleanupWrapper: public T, public gc_cleanup
 {
@@ -213,7 +246,16 @@ struct CrystalGCCleanupWrapper: public T, public gc_cleanup
   // Copy constructors aren't inherited.
   CrystalGCCleanupWrapper(const T &other) : T(other) { }
 
-  ~CrystalGCCleanupWrapper() override { bindgen_destroyed = true; }
+  /* Tells the hooks when C++ destroys the object.  The GC finalizer marked the
+   * object before: It finalizes only an unreachable object, which nothing keeps
+   * alive, so there's nothing to tell.  The objects this destructor deletes in
+   * turn, like the children of a Qt parent, are told about.
+   */
+  ~CrystalGCCleanupWrapper() override {
+    if (bindgen_destroyed) return;
+    bindgen_destroyed = true;
+    bindgen_notify_destroyed(static_cast<T *>(this));
+  }
 
   /* C++ code owning this object, like a Qt parent, destroys it with `delete`.
    * This runs the destructor, but leaves the memory to the GC: When the object
@@ -231,7 +273,9 @@ struct CrystalGCCleanupWrapper: public T, public gc_cleanup
    */
   void *bindgen_dependencies = nullptr;
 
-  // Set by the destructor, so the finalizer skips an object C++ destroyed.
+  /* Set by the destructor, so the finalizer skips an object C++ destroyed,
+   * and by the finalizer, so the destructor doesn't tell the hooks.
+   */
   bool bindgen_destroyed = false;
 
 private:
@@ -240,7 +284,9 @@ private:
    */
   static void bindgen_cleanup(void *base, void *displacement) {
     auto *self = reinterpret_cast<CrystalGCCleanupWrapper *>(static_cast<char *>(base) + reinterpret_cast<ptrdiff_t>(displacement));
-    if (!self->bindgen_destroyed) self->~CrystalGCCleanupWrapper();
+    if (self->bindgen_destroyed) return;
+    self->bindgen_destroyed = true;
+    self->~CrystalGCCleanupWrapper();
   }
 
   // Registers `bindgen_cleanup` once `gc_cleanup` registered its own.

@@ -144,8 +144,10 @@ view.model = Qt::StandardItemModel.new # Stays alive too
 button.menu = Qt::Menu.new             # And so does this
 ```
 
-They're kept alive until passed to `Qt::BindgenHelper.release`, e.g. after
-taking a widget out again:
+Objects created from Crystal are kept alive until Qt deletes them, like a
+parent deletes its children, or until passed to `Qt::BindgenHelper.release`,
+e.g. after taking a widget out again without deleting it.  An object Qt created
+itself, which Crystal only wraps, is kept until released:
 
 ```crystal
 layout.remove_widget(label)
@@ -161,9 +163,10 @@ reference to it, or add it by one of these methods.
 `Qt::Thread`, `Qt::ThreadPool` and the locks are bound, but **a Qt thread
 must not call into Crystal**: the Crystal runtime and its GC only know the
 threads they start, so a Crystal method run from a Qt thread corrupts the
-program.  A thread started from Crystal runs Qt code only, like the event loop
-`QThread::run` starts by default, and the queued signals it emits are
-delivered in the main thread:
+program.  Deleting a wrapped object counts, as its destructor calls into
+Crystal to release it from `keep_alive`.  A thread started from Crystal runs Qt
+code only, like the event loop `QThread::run` starts by default, and the queued
+signals it emits are delivered in the main thread:
 
 ```crystal
 thread = Qt::Thread.new

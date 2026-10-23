@@ -45,6 +45,17 @@ private def iterate(tree)
   all
 end
 
+# Builds a window with a label in its layout, and returns both.  The layout
+# keeps the label alive, and Qt made the window its parent: deleting the window
+# deletes the label, which releases it.
+private def label_of_a_window
+  window = Qt::Widget.new
+  layout = Qt::VBoxLayout.new(window)
+  label = Qt::Label.new("label")
+  layout.add_widget(label)
+  {window, label}
+end
+
 private def churn
   10.times do
     GC.collect
@@ -95,5 +106,16 @@ describe "objects destroyed before others" do
     churn
     # Reads the arguments Qt keeps a pointer to in the application wrapper
     Qt::CommandLineParser.new.help_text.should contain("Usage")
+  end
+end
+
+describe "objects deleted by Qt" do
+  it "are released when their parent deletes them" do
+    window, label = label_of_a_window
+    Qt::BindgenHelper.kept_alive?(label).should be_true
+
+    window.delete_later
+    Qt::CoreApplication.send_posted_events(nil, Qt::Event::Type::DeferredDelete.value.to_i)
+    Qt::BindgenHelper.kept_alive?(label).should be_false
   end
 end
