@@ -1,7 +1,7 @@
 module Qt
   # Qt reads `QString` and `QByteArray` through free `operator>>`, which take
   # them by non-const reference, which bindgen can't pass a `String` by, so
-  # these come from `ext/xml_helper.hpp`.  The numbers are read through
+  # these come from `ext/data_stream_helper.hpp`.  The numbers are read through
   # `#read`:
   #
   # ```

@@ -60,6 +60,7 @@ parser: # Clang parser configuration
     - "locale_helper.hpp"
     - "validator_helper.hpp"
     - "xml_helper.hpp"
+    - "data_stream_helper.hpp"
     - "meta_helper.hpp"
     - "cbor_helper.hpp"
   includes:
