@@ -351,6 +351,12 @@ downloading Qt sources, run from the `qt5.cr` directory:
 crystal support/generate_bindings.cr -- --system
 ```
 
+On macOS, export the variables of the [macOS](#macos) section first.  Without
+`SDKROOT` the parser can't find the SDK's frameworks (`OpenGL/gl.h`) and
+silently generates a broken binding, with constructors missing and `d_ptr`
+accessors added, which then fails to compile; without `CPPFLAGS` compiling it
+can't find `gc/gc.h`.
+
 It asks `qmake` (`qmake-qt5` or `qmake`, or `$QMAKE` if set) where Qt is
 installed and which version it is, and names the binding after the host, e.g.
 `linux-gnu-x86_64-qt5.15`.
