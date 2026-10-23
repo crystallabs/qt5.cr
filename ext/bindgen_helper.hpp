@@ -44,6 +44,7 @@
 #include <string.h>
 #include <stdlib.h> // abort()
 #include <stdio.h> // fprintf()
+#include <stdint.h> // uintptr_t
 
 // Helper structure to transfer a `String` between C/C++ and Crystal.
 typedef struct CrystalString { // C compatibility
@@ -238,8 +239,59 @@ static void bindgen_notify_destroyed(void *object) {
   for (int i = 0; i < hooks->count; ++i) hooks->hooks[i](object);
 }
 
+/* The bookkeeping of an object constructed from Crystal, the first base of
+ * `CrystalGCCleanupWrapper<T>`.  Being its first dynamic base, it's its primary
+ * base (Itanium C++ ABI), at the start of the allocation for every `T`, also a
+ * dynamic one and the shadow subclass of `Processor::VirtualOverride`.  So the
+ * glue of a method, which only has the `T *` of an object, finds it through
+ * `GC_base`, see `bindgen_gc_object`.
+ */
+struct BindgenGCObject {
+  BindgenGCObject() { }
+  virtual ~BindgenGCObject() { }
+
+  // Belongs to this object: a copy starts without dependencies.
+  BindgenGCObject(const BindgenGCObject &) { }
+  BindgenGCObject &operator=(const BindgenGCObject &) { return *this; }
+
+  /* The objects this one depends on, see `bindgen_depends_on`: One pointer, or
+   * a pointer to a GC-allocated array of them.  Only there for the GC to find
+   * them when it scans this object.
+   */
+  void *bindgen_dependencies = nullptr;
+
+  /* Set by the destructor, so the finalizer skips an object C++ destroyed,
+   * and by the finalizer, so the destructor doesn't tell the hooks.
+   */
+  bool bindgen_destroyed = false;
+
+  /* Tells a `BindgenGCObject` from other memory at the start of an allocation,
+   * like a class allocated as it is or a Crystal object embedding a structure:
+   * Its own address, scrambled so the GC doesn't take it for a pointer.
+   */
+  uintptr_t bindgen_check = bindgen_check_for(this);
+
+  static uintptr_t bindgen_check_for(const BindgenGCObject *object) {
+    return reinterpret_cast<uintptr_t>(object) ^ static_cast<uintptr_t>(0x5a17c0debe11a5edULL);
+  }
+};
+
+/* The `BindgenGCObject` of the object at *self*, which may point into it, like
+ * at the `T` of a `CrystalGCCleanupWrapper<T>`, or null if the object isn't one
+ * constructed from Crystal.
+ */
+static BindgenGCObject *bindgen_gc_object(const void *self) {
+  void *base = GC_base(const_cast<void *>(self));
+  if (base == nullptr) return nullptr; // Not created by the binding
+  if (GC_size(base) < sizeof(BindgenGCObject)) return nullptr;
+
+  auto *object = static_cast<BindgenGCObject *>(base);
+  if (object->bindgen_check != BindgenGCObject::bindgen_check_for(object)) return nullptr;
+  return object;
+}
+
 template <typename T>
-struct CrystalGCCleanupWrapper: public T, public gc_cleanup
+struct CrystalGCCleanupWrapper: public BindgenGCObject, public T, public gc_cleanup
 {
   using T::T;
 
@@ -267,16 +319,9 @@ struct CrystalGCCleanupWrapper: public T, public gc_cleanup
   static void operator delete(void *) { }
   static void operator delete(void *, GCPlacement) { }
 
-  /* The objects this one depends on, see `bindgen_depends_on`: One pointer, or
-   * a pointer to a GC-allocated array of them.  Only there for the GC to find
-   * them when it scans this object.
-   */
-  void *bindgen_dependencies = nullptr;
-
-  /* Set by the destructor, so the finalizer skips an object C++ destroyed,
-   * and by the finalizer, so the destructor doesn't tell the hooks.
-   */
-  bool bindgen_destroyed = false;
+  // `T` may declare members of these names too.
+  using BindgenGCObject::bindgen_dependencies;
+  using BindgenGCObject::bindgen_destroyed;
 
 private:
   /* The finalizer, replacing `gc_cleanup::cleanup`, which can't tell an object
@@ -300,6 +345,30 @@ private:
   } bindgen_finalizer{this};
 };
 
+// Stores *dependencies* in *object*, replacing those it had.  Null pointers are
+// left out.
+static void bindgen_set_dependencies(BindgenGCObject *object, std::initializer_list<const void *> dependencies) {
+  size_t count = 0;
+  const void *last = nullptr;
+  for (const void *dependency : dependencies) {
+    if (dependency) {
+      ++count;
+      last = dependency;
+    }
+  }
+
+  if (count <= 1) {
+    object->bindgen_dependencies = const_cast<void *>(last);
+  } else {
+    void **list = static_cast<void **>(GC_MALLOC(sizeof(void *) * count));
+    void **slot = list;
+    for (const void *dependency : dependencies) {
+      if (dependency) *slot++ = const_cast<void *>(dependency);
+    }
+    object->bindgen_dependencies = list;
+  }
+}
+
 /* Makes the GC destroy *object* before its *dependencies*: Objects it refers to
  * from memory the GC doesn't scan, like through a d-pointer, and uses in its
  * destructor, like an iterator unregistering from its container.  Stored in the
@@ -309,15 +378,19 @@ private:
  */
 template <typename T>
 CrystalGCCleanupWrapper<T> *bindgen_depends_on(CrystalGCCleanupWrapper<T> *object, std::initializer_list<const void *> dependencies) {
-  if (dependencies.size() == 1) {
-    object->bindgen_dependencies = const_cast<void *>(*dependencies.begin());
-  } else if (dependencies.size() > 1) {
-    void **list = static_cast<void **>(GC_MALLOC(sizeof(void *) * dependencies.size()));
-    void **slot = list;
-    for (const void *dependency : dependencies) *slot++ = const_cast<void *>(dependency);
-    object->bindgen_dependencies = list;
-  }
+  bindgen_set_dependencies(object, dependencies);
   return object;
+}
+
+/* Same, for a method configured in `depends_on:`, called on *self* before the
+ * method runs: The object depends on the *dependencies* from then on, instead
+ * of those it had.  Does nothing for an object not constructed from Crystal,
+ * which the GC doesn't finalize.
+ */
+static void bindgen_depends_on(const void *self, std::initializer_list<const void *> dependencies) {
+  if (BindgenGCObject *object = bindgen_gc_object(self)) {
+    bindgen_set_dependencies(object, dependencies);
+  }
 }
 
 // Unions can't be inherited from, these are allocated as they are.  This

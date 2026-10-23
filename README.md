@@ -183,9 +183,11 @@ layout.remove_widget(label)
 Qt::BindgenHelper.release(label)
 ```
 
-The methods are configured in `config/keep_alive.yml`.  Giving an object a
-parent by its constructor or `#parent=` doesn't keep it alive: keep a
-reference to it, or add it by one of these methods.
+The methods are configured in `config/keep_alive.yml`.  An object given a
+parent, by its constructor or `#parent=`, is kept alive too, as the parent owns
+it: `Qt::Label.new("Stays alive", window)`.  Setting the parent to `nil`
+releases it.  This is bindgen's `Qt` processor at work, for the classes
+deriving from `QObject`, `QGraphicsItem` or `QGraphicsLayoutItem`.
 
 ## Threads
 
