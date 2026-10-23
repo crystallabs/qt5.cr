@@ -1,0 +1,79 @@
+# Names and nilability of methods, per class: `rename:` names a method, and
+# its overrides in Crystal; `nilable:` makes a pointer result `T` or `T?`
+# regardless of `nilable_results` (`false` where Qt never returns null, like a
+# menu bar it creates on demand), and the listed pointer arguments accept
+# `nil` where Qt accepts a null pointer.  Keys are C++ names, signatures or
+# `/regex/` like `ignore_methods`.
+#
+# Deep-merged (`<<+:`) into `types:` after `keep_alive.yml`, so classes listed
+# there keep their rules.
+---
+QWidget:
+  rename:
+    raise: raise_ # Would shadow Crystal's raise in widgets written in Crystal
+  nilable:
+    window: false
+    style: false
+    setStyle: [0] # Resets to the application style
+    setFocusProxy: [0]
+QWindow:
+  rename:
+    raise: raise_
+QMainWindow:
+  nilable:
+    menuBar: false
+    statusBar: false
+QMenuBar:
+  nilable:
+    addMenu: false
+    addSeparator: false
+    insertMenu: false
+    insertSeparator: false
+QMenu:
+  nilable:
+    "/^addAction\\((const QIcon &, )?const QString &/": false # Not the void addAction(QAction *)
+    addMenu: false
+    addSection: false
+    addSeparator: false
+    insertMenu: false
+    insertSection: false
+    insertSeparator: false
+QToolBar:
+  nilable:
+    addSeparator: false
+    addWidget: false
+    insertSeparator: false
+    insertWidget: false
+QAbstractScrollArea:
+  nilable:
+    viewport: false
+    horizontalScrollBar: false
+    verticalScrollBar: false
+QAbstractItemView:
+  nilable:
+    setModel: [0]
+QTableView:
+  nilable:
+    horizontalHeader: false
+    verticalHeader: false
+QTreeView:
+  nilable:
+    header: false
+QTreeWidget:
+  nilable:
+    headerItem: false
+    invisibleRootItem: false
+QStandardItemModel:
+  nilable:
+    invisibleRootItem: false
+QTextEdit:
+  nilable:
+    document: false
+QLineEdit:
+  nilable:
+    setValidator: [0] # Removes the validator
+    setCompleter: [0]
+QComboBox:
+  nilable:
+    setValidator: [0]
+    setCompleter: [0]

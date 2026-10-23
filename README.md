@@ -279,15 +279,19 @@ null, so its result is a union with `Nil`: `Qt::Widget#parent_widget` is a
 `Qt::Widget?`, `Qt::ListWidget#item` a `Qt::ListWidgetItem?`, and so are
 `Qt::AbstractItemView#model`, `Qt::StandardItem#child` or
 `Qt::AnimationGroup#take_animation`.  Check the result, or unwrap it with
-`not_nil!` where it can't be null, like the menu bar a `Qt::MainWindow` creates
-on demand and the menu added to it:
+`not_nil!` where it can't be null.  Results Qt documents as never null, like
+the menu bar a `Qt::MainWindow` creates on demand, the menu added to it, a
+scroll area's viewport or a tree widget's header item, are configured as
+non-nilable in `config/methods.yml` (bindgen's `nilable:` rule), which also
+lets `nil` into pointer arguments Qt accepts null for, like
+`view.model = nil` or `edit.validator = nil`:
 
 ```crystal
 if item = list.item(row)
   puts item.text
 end
 
-menu = window.menu_bar.not_nil!.add_menu("File").not_nil!
+menu = window.menu_bar.add_menu("File")
 ```
 
 Only method results are nilable.  A method returning a reference, like
@@ -465,7 +469,9 @@ see the comments there:
 * `Qt::TreeWidgetItemIterator` is an `Iterator(TreeWidgetItem)`:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
 * `QHeaderView`'s protected `initialize()` is `#cpp_initialize`, as Crystal
-  reserves the name for constructors.
+  reserves the name for constructors, and `QWidget::raise` is `#raise_`, as
+  it would shadow Crystal's `raise` in a widget written in Crystal
+  (`config/methods.yml`).
 * A `QString` taken by non-const reference or pointer is an out argument,
   returned with the result (bindgen's SPEC.md §2.2.5):
   `state, input, pos = validator.validate("42", 0)`, `validator.fixup("4 2")`

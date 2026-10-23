@@ -415,3 +415,4 @@ types: # Type rewrite rules
   # Remaining models, styles and providers
   "QIconEngine::AvailableSizesArgument": { ignore: true }
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above
+  <<+: methods.yml # Deep merge: adds `rename` and `nilable` to classes listed above
