@@ -20,14 +20,13 @@ module Qt
       Qt.qt5cr_data_stream_read_bytes(self)
     end
 
-    {% for type in [Bool, Int8, UInt8, Int16, UInt16, Int32, UInt32, Int64, UInt64, Float32, Float64] %}
-      # Reads a `{{type}}` written by `#<<`.
-      def read(type : {{type}}.class) : {{type}}
-        value = uninitialized {{type}}
-        self >> pointerof(value)
-        value
-      end
-    {% end %}
+    # Reads a value written by `#<<`: a number, a `Bool`, or a copied
+    # structure like `Qt::Point`, which `>>` takes by pointer.
+    def read(type : T.class) : T forall T
+      value = uninitialized T
+      self >> pointerof(value)
+      value
+    end
 
     # Reads a `String` written by `#<<`.
     def read(type : String.class) : String

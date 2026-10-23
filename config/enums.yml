@@ -419,6 +419,7 @@ enums:
   "QStyleHintReturn::HintReturnType": { destination: "StyleHintReturn::HintReturnType", prefix: "SH_" }
   "Qt::TabFocusBehavior": TabFocusBehavior
   "QValidator::State": Validator::State
+  "QLineF::IntersectionType": LineF::IntersectionType # LineF#intersects writes the point
   "QDoubleValidator::Notation": DoubleValidator::Notation
   "QGraphicsEffect::ChangeFlag": GraphicsEffect::ChangeFlag
   "QGraphicsEffect::ChangeFlags": GraphicsEffect::ChangeFlags

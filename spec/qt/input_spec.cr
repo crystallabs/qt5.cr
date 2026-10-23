@@ -317,7 +317,7 @@ describe Qt::DataStream do
     stream.version = Qt::DataStream::Version::Qt_5_15.to_i
     stream.byte_order = Qt::DataStream::ByteOrder::BigEndian
     stream << 42 << -7_i64 << 2.5 << true << "héllo" << Bytes[1, 2, 3]
-    stream << Qt::Point.new(3, 4)
+    stream << Qt::Point.new(3, 4) << Qt::Point.new(5, 6)
     stream << Qt::Date.new(2024, 2, 29)
     stream.status.should eq(Qt::DataStream::Status::Ok)
     buffer.close
@@ -332,7 +332,10 @@ describe Qt::DataStream do
     reader.read(Bool).should be_true
     reader.read(String).should eq("héllo")
     reader.read(Bytes).should eq(Bytes[1, 2, 3])
-    reader.skip_raw_data(8).should eq(8) # The point: `>> Point` takes it by non-const reference
+    reader.read(Qt::Point).should eq(Qt::Point.new(3, 4))
+    point = Qt::Point.new
+    reader >> pointerof(point)
+    point.should eq(Qt::Point.new(5, 6))
     date = Qt::Date.new
     reader >> date
     date.should eq(Qt::Date.new(2024, 2, 29))

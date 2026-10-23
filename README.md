@@ -517,9 +517,11 @@ see the comments there:
   `reader.attributes.map(&.name)` works.
 * `QDataStream` reads `QString` and `QByteArray` through free `operator>>`,
   which take them by non-const reference: `src/qt5/data_stream.cr` adds
-  `stream.read(String)`, `stream.read(Bytes)` and `stream.read(Int32)` over
-  the wrapped `>>(Int32*)`; `stream << "text"` and `<< bytes` are wrapped as
-  is.  The `>>` of a copied structure (`QPoint &`) is dropped.
+  `stream.read(String)` and `stream.read(Bytes)` over helpers, and
+  `stream.read(Int32)` or `stream.read(Qt::Point)` over the wrapped
+  `>>(Int32*)` and `>>(Point*)`, which take a pointer to the Crystal value:
+  `stream >> pointerof(point)`.  `stream << "text"`, `<< bytes` and
+  `<< point` are wrapped as is.
 * `QTouchEvent::TouchPoint` is `Qt::TouchPoint`; `QPointingDeviceUniqueId`
   is a copied structure: `PointingDeviceUniqueId.from_numeric_id(42)`.
 * `QJsonObject#[]` returns a `JsonValue` copy; `QJsonArray#[]` a

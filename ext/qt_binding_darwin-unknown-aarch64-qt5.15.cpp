@@ -13261,16 +13261,32 @@ extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QPoint_R(QDataStr
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QPoint_R(QDataStream * _self_, QPoint & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QPointF_R(QDataStream * _self_, const QPointF unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QPointF_R(QDataStream * _self_, QPointF & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QLine_R(QDataStream * _self_, const QLine unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QLine_R(QDataStream * _self_, QLine & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QLineF_R(QDataStream * _self_, const QLineF unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QLineF_R(QDataStream * _self_, QLineF & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QMargins_R(QDataStream * _self_, const QMargins & unnamed_arg_0) {
@@ -13293,16 +13309,32 @@ extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QSize_R(QDataStre
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QSize_R(QDataStream * _self_, QSize & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QSizeF_R(QDataStream * _self_, const QSizeF unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QSizeF_R(QDataStream * _self_, QSizeF & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QRect_R(QDataStream * _self_, const QRect unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QRect_R(QDataStream * _self_, QRect & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QRectF_R(QDataStream * _self_, const QRectF unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QRectF_R(QDataStream * _self_, QRectF & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QTimeZone_R(QDataStream * _self_, const QTimeZone & tz) {
@@ -13339,6 +13371,10 @@ extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QKeySequence_R(QDataStr
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QVector2D_R(QDataStream * _self_, const QVector2D unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QVector2D_R(QDataStream * _self_, QVector2D & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QFont_R(QDataStream * _self_, const QFont & unnamed_arg_0) {
@@ -13465,12 +13501,24 @@ extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QVector3D_R(QData
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QVector3D_R(QDataStream * _self_, QVector3D & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QVector4D_R(QDataStream * _self_, const QVector4D unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
 }
 
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QVector4D_R(QDataStream * _self_, QVector4D & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
+}
+
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QQuaternion_R(QDataStream * _self_, const QQuaternion unnamed_arg_0) {
   return &(((*_self_) << (unnamed_arg_0)));
+}
+
+extern "C" QDataStream * bg_QDataStream__OPERATOR_rshift_QQuaternion_R(QDataStream * _self_, QQuaternion & unnamed_arg_0) {
+  return &(((*_self_) >> (unnamed_arg_0)));
 }
 
 extern "C" QDataStream * bg_QDataStream__OPERATOR_lshift_const_QMatrix4x4_R(QDataStream * _self_, const QMatrix4x4 & unnamed_arg_0) {
@@ -18491,6 +18539,10 @@ extern "C" QLineF bg_QLineF_unitVector_(QLineF * _self_) {
 
 extern "C" QLineF bg_QLineF_normalVector_(QLineF * _self_) {
   return _self_->normalVector();
+}
+
+extern "C" QLineF::IntersectionType bg_QLineF_intersects_const_QLineF_R_QPointF_X(QLineF * _self_, const QLineF l, QPointF * intersectionPoint) {
+  return _self_->intersects(l, intersectionPoint);
 }
 
 extern "C" QPointF bg_QLineF_pointAt_qreal(QLineF * _self_, qreal t) {
@@ -43792,6 +43844,10 @@ extern "C" CrystalVariant bg_QQuaternion__CONVERT_QVariant_(QQuaternion * _self_
   return qvariant_to_crystal(_self_->operator QVariant());
 }
 
+extern "C" void bg_QQuaternion_getAxisAndAngle_QVector3D_X_float_X(QQuaternion * _self_, QVector3D * axis, float * angle) {
+  _self_->getAxisAndAngle(axis, angle);
+}
+
 extern "C" QQuaternion bg_QQuaternion_fromAxisAndAngle_STATIC_const_QVector3D_R_float(const QVector3D axis, float angle) {
   return QQuaternion::fromAxisAndAngle(axis, angle);
 }
@@ -43818,6 +43874,10 @@ extern "C" void bg_QQuaternion_getEulerAngles_float_X_float_X_float_X(QQuaternio
 
 extern "C" QQuaternion bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(float pitch, float yaw, float roll) {
   return QQuaternion::fromEulerAngles(pitch, yaw, roll);
+}
+
+extern "C" void bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(QQuaternion * _self_, QVector3D * xAxis, QVector3D * yAxis, QVector3D * zAxis) {
+  _self_->getAxes(xAxis, yAxis, zAxis);
 }
 
 extern "C" QQuaternion bg_QQuaternion_fromAxes_STATIC_const_QVector3D_R_const_QVector3D_R_const_QVector3D_R(const QVector3D xAxis, const QVector3D yAxis, const QVector3D zAxis) {
@@ -46306,6 +46366,18 @@ extern "C" void bg_QPainter_drawText_int_int_const_QString_R(QPainter * _self_, 
 
 extern "C" void bg_QPainter_drawText_const_QPointF_R_const_QString_R_int_int(QPainter * _self_, const QPointF p, const CrystalString str, int tf, int justificationPadding) {
   _self_->drawText(p, ([&]() { auto &&bg_value = (str); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), tf, justificationPadding);
+}
+
+extern "C" void bg_QPainter_drawText_const_QRectF_R_int_const_QString_R_QRectF_X(QPainter * _self_, const QRectF r, int flags, const CrystalString text, QRectF * br) {
+  _self_->drawText(r, flags, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), br);
+}
+
+extern "C" void bg_QPainter_drawText_const_QRect_R_int_const_QString_R_QRect_X(QPainter * _self_, const QRect r, int flags, const CrystalString text, QRect * br) {
+  _self_->drawText(r, flags, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), br);
+}
+
+extern "C" void bg_QPainter_drawText_int_int_int_int_int_const_QString_R_QRect_X(QPainter * _self_, int x, int y, int w, int h, int flags, const CrystalString text, QRect * br) {
+  _self_->drawText(x, y, w, h, flags, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), br);
 }
 
 extern "C" void bg_QPainter_drawText_const_QRectF_R_const_QString_R(QPainter * _self_, const QRectF r, const CrystalString text) {
@@ -97976,6 +98048,10 @@ extern "C" void bg_QGraphicsEffect_drawSource_QPainter_X(QGraphicsEffect * _self
   _self_->drawSource(painter);
 }
 
+extern "C" QPixmap * bg_QGraphicsEffect_sourcePixmap_Qt__CoordinateSystem_QPoint_X_QGraphicsEffect__PixmapPadMode(QGraphicsEffect * _self_, Qt::CoordinateSystem system, QPoint * offset, QGraphicsEffect::PixmapPadMode mode) {
+  return new (UseGC, bindgen_gc_finalizer<QPixmap>()) QPixmap (_self_->sourcePixmap(system, offset, mode));
+}
+
 extern "C" QGraphicsEffectSource * bg_QGraphicsEffect_source_(QGraphicsEffect * _self_) {
   return _self_->source();
 }
@@ -110003,6 +110079,10 @@ extern "C" void bg_QItemDelegate_drawCheck_QPainter_X_const_QStyleOptionViewItem
 
 extern "C" void bg_QItemDelegate_drawBackground_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(QItemDelegate * _self_, QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) {
   _self_->drawBackground(painter, option, index);
+}
+
+extern "C" void bg_QItemDelegate_doLayout_const_QStyleOptionViewItem_R_QRect_X_QRect_X_QRect_X_bool(QItemDelegate * _self_, const QStyleOptionViewItem & option, QRect * checkRect, QRect * iconRect, QRect * textRect, bool hint) {
+  _self_->doLayout(option, checkRect, iconRect, textRect, hint);
 }
 
 extern "C" QRect bg_QItemDelegate_rect_const_QStyleOptionViewItem_R_const_QModelIndex_R_int(QItemDelegate * _self_, const QStyleOptionViewItem & option, const QModelIndex & index, int role) {

@@ -482,6 +482,63 @@ module Qt
       end
     end
   
+    # Wrapper for an instantiated optional type, like `std::optional`.
+    #
+    # Optionals convert to and from a `T?`, the value or `nil`, so wrapped
+    # methods take and return those; this wrapper is only seen when built
+    # directly, by `.from` or `Optional.of(T).new`.
+    module OptionalContainer(T)
+      # `#unsafe_has_value`, `#unsafe_value` and `#unsafe_emplace` will be
+      # implemented by the wrapper class.
+  
+      # Is there a value?
+      def has_value? : Bool
+        unsafe_has_value
+      end
+  
+      # The value, or `nil` if there is none.
+      def to_nilable : T?
+        unsafe_value if unsafe_has_value
+      end
+  
+      # Sets the value.
+      def value=(value : T) : T
+        unsafe_emplace(value)
+        value
+      end
+  
+      def to_s(io)
+        to_nilable.to_s(io)
+      end
+  
+      def inspect(io)
+        io << "<Wrapped "
+        to_nilable.inspect(io)
+        io << ">"
+      end
+  
+      # Note: Crystal has no dependent types, so this module must refer to its
+      # own type parameters.
+      private module ClassMethods(T)
+        # Wraps the *value* into an optional of this type, empty for `nil`, if
+        # it's not already one.
+        def from(value : T?) : self
+          optional = new
+          optional.value = value unless value.nil?
+          optional
+        end
+  
+        # :ditto:
+        def from(value : self) : self
+          value
+        end
+      end
+  
+      macro included
+        extend ClassMethods(T)
+      end
+    end
+  
     # Wrapper for an instantiated, associative container type.
     #
     # This offers a subset of the methods known from `Hash`, and is `Enumerable`
@@ -11615,17 +11672,25 @@ module Qt
     fun bg_QDataStream__OPERATOR_lshift_const_QVersionNumber_R(_self_ : QDataStream*, version : QVersionNumber*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QVersionNumber_R(_self_ : QDataStream*, version : QVersionNumber*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QPoint_R(_self_ : QDataStream*, unnamed_arg_0 : QPoint) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QPoint_R(_self_ : QDataStream*, unnamed_arg_0 : QPoint*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QPointF_R(_self_ : QDataStream*, unnamed_arg_0 : QPointF) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QPointF_R(_self_ : QDataStream*, unnamed_arg_0 : QPointF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QLine_R(_self_ : QDataStream*, unnamed_arg_0 : QLine) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QLine_R(_self_ : QDataStream*, unnamed_arg_0 : QLine*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QLineF_R(_self_ : QDataStream*, unnamed_arg_0 : QLineF) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QLineF_R(_self_ : QDataStream*, unnamed_arg_0 : QLineF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QMargins_R(_self_ : QDataStream*, unnamed_arg_0 : QMargins*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QMargins_R(_self_ : QDataStream*, unnamed_arg_0 : QMargins*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QMarginsF_R(_self_ : QDataStream*, unnamed_arg_0 : QMarginsF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QMarginsF_R(_self_ : QDataStream*, unnamed_arg_0 : QMarginsF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QSize_R(_self_ : QDataStream*, unnamed_arg_0 : QSize) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QSize_R(_self_ : QDataStream*, unnamed_arg_0 : QSize*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QSizeF_R(_self_ : QDataStream*, unnamed_arg_0 : QSizeF) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QSizeF_R(_self_ : QDataStream*, unnamed_arg_0 : QSizeF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QRect_R(_self_ : QDataStream*, unnamed_arg_0 : QRect) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QRect_R(_self_ : QDataStream*, unnamed_arg_0 : QRect*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QRectF_R(_self_ : QDataStream*, unnamed_arg_0 : QRectF) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QRectF_R(_self_ : QDataStream*, unnamed_arg_0 : QRectF*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QTimeZone_R(_self_ : QDataStream*, tz : QTimeZone*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QTimeZone_R(_self_ : QDataStream*, tz : QTimeZone*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QColor_R(_self_ : QDataStream*, unnamed_arg_0 : QColor*) : QDataStream*
@@ -11635,6 +11700,7 @@ module Qt
     fun bg_QDataStream__OPERATOR_lshift_const_QKeySequence_R(_self_ : QDataStream*, ks : QKeySequence*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QKeySequence_R(_self_ : QDataStream*, ks : QKeySequence*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QVector2D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector2D) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QVector2D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector2D*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QFont_R(_self_ : QDataStream*, unnamed_arg_0 : QFont*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QFont_R(_self_ : QDataStream*, unnamed_arg_0 : QFont*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QPolygon_R(_self_ : QDataStream*, polygon : QPolygon*) : QDataStream*
@@ -11666,8 +11732,11 @@ module Qt
     fun bg_QDataStream__OPERATOR_lshift_const_QColorSpace_R(_self_ : QDataStream*, unnamed_arg_0 : QColorSpace*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QColorSpace_R(_self_ : QDataStream*, unnamed_arg_0 : QColorSpace*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QVector3D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector3D) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QVector3D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector3D*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QVector4D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector4D) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QVector4D_R(_self_ : QDataStream*, unnamed_arg_0 : Vector4D*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QQuaternion_R(_self_ : QDataStream*, unnamed_arg_0 : Quaternion) : QDataStream*
+    fun bg_QDataStream__OPERATOR_rshift_QQuaternion_R(_self_ : QDataStream*, unnamed_arg_0 : Quaternion*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QMatrix4x4_R(_self_ : QDataStream*, unnamed_arg_0 : QMatrix4x4*) : QDataStream*
     fun bg_QDataStream__OPERATOR_rshift_QMatrix4x4_R(_self_ : QDataStream*, unnamed_arg_0 : QMatrix4x4*) : QDataStream*
     fun bg_QDataStream__OPERATOR_lshift_const_QPainterPath_R(_self_ : QDataStream*, unnamed_arg_0 : QPainterPath*) : QDataStream*
@@ -12704,6 +12773,7 @@ module Qt
     fun bg_QLineF_angleTo_const_QLineF_R(_self_ : QLineF*, l : QLineF) : Float64
     fun bg_QLineF_unitVector_(_self_ : QLineF*) : QLineF
     fun bg_QLineF_normalVector_(_self_ : QLineF*) : QLineF
+    fun bg_QLineF_intersects_const_QLineF_R_QPointF_X(_self_ : QLineF*, l : QLineF, intersection_point : QPointF*) : ::Qt::LineF::IntersectionType
     fun bg_QLineF_pointAt_qreal(_self_ : QLineF*, t : Float64) : QPointF
     fun bg_QLineF_translate_const_QPointF_R(_self_ : QLineF*, p : QPointF) : Void
     fun bg_QLineF_translate_qreal_qreal(_self_ : QLineF*, dx : Float64, dy : Float64) : Void
@@ -18238,6 +18308,7 @@ module Qt
     fun bg_QQuaternion__OPERATOR_div_assign_float(_self_ : Quaternion*, divisor : Float32) : Quaternion
     fun bg_QQuaternion_toVector4D_(_self_ : Quaternion*) : Vector4D
     fun bg_QQuaternion__CONVERT_QVariant_(_self_ : Quaternion*) : CrystalVariant
+    fun bg_QQuaternion_getAxisAndAngle_QVector3D_X_float_X(_self_ : Quaternion*, axis : Vector3D*, angle : Float32*) : Void
     fun bg_QQuaternion_fromAxisAndAngle_STATIC_const_QVector3D_R_float(axis : Vector3D, angle : Float32) : Quaternion
     fun bg_QQuaternion_getAxisAndAngle_float_X_float_X_float_X_float_X(_self_ : Quaternion*, x : Float32*, y : Float32*, z : Float32*, angle : Float32*) : Void
     fun bg_QQuaternion_fromAxisAndAngle_STATIC_float_float_float_float(x : Float32, y : Float32, z : Float32, angle : Float32) : Quaternion
@@ -18245,6 +18316,7 @@ module Qt
     fun bg_QQuaternion_fromEulerAngles_STATIC_const_QVector3D_R(euler_angles : Vector3D) : Quaternion
     fun bg_QQuaternion_getEulerAngles_float_X_float_X_float_X(_self_ : Quaternion*, pitch : Float32*, yaw : Float32*, roll : Float32*) : Void
     fun bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(pitch : Float32, yaw : Float32, roll : Float32) : Quaternion
+    fun bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(_self_ : Quaternion*, x_axis : Vector3D*, y_axis : Vector3D*, z_axis : Vector3D*) : Void
     fun bg_QQuaternion_fromAxes_STATIC_const_QVector3D_R_const_QVector3D_R_const_QVector3D_R(x_axis : Vector3D, y_axis : Vector3D, z_axis : Vector3D) : Quaternion
     fun bg_QQuaternion_fromDirection_STATIC_const_QVector3D_R_const_QVector3D_R(direction : Vector3D, up : Vector3D) : Quaternion
     fun bg_QQuaternion_rotationTo_STATIC_const_QVector3D_R_const_QVector3D_R(from : Vector3D, to : Vector3D) : Quaternion
@@ -18787,6 +18859,9 @@ module Qt
     fun bg_QPainter_drawText_const_QPoint_R_const_QString_R(_self_ : QPainter*, p : QPoint, s : CrystalString) : Void
     fun bg_QPainter_drawText_int_int_const_QString_R(_self_ : QPainter*, x : Int32, y : Int32, s : CrystalString) : Void
     fun bg_QPainter_drawText_const_QPointF_R_const_QString_R_int_int(_self_ : QPainter*, p : QPointF, str : CrystalString, tf : Int32, justification_padding : Int32) : Void
+    fun bg_QPainter_drawText_const_QRectF_R_int_const_QString_R_QRectF_X(_self_ : QPainter*, r : QRectF, flags : Int32, text : CrystalString, br : QRectF*) : Void
+    fun bg_QPainter_drawText_const_QRect_R_int_const_QString_R_QRect_X(_self_ : QPainter*, r : QRect, flags : Int32, text : CrystalString, br : QRect*) : Void
+    fun bg_QPainter_drawText_int_int_int_int_int_const_QString_R_QRect_X(_self_ : QPainter*, x : Int32, y : Int32, w : Int32, h : Int32, flags : Int32, text : CrystalString, br : QRect*) : Void
     fun bg_QPainter_drawText_const_QRectF_R_const_QString_R(_self_ : QPainter*, r : QRectF, text : CrystalString) : Void
     fun bg_QPainter_drawText_const_QRectF_R_const_QString_R_const_QTextOption_R(_self_ : QPainter*, r : QRectF, text : CrystalString, o : QTextOption*) : Void
     fun bg_QPainter_boundingRect_const_QRectF_R_int_const_QString_R(_self_ : QPainter*, rect : QRectF, flags : Int32, text : CrystalString) : QRectF
@@ -28078,6 +28153,7 @@ module Qt
     fun bg_QGraphicsEffect_sourceIsPixmap_(_self_ : QGraphicsEffect*) : Bool
     fun bg_QGraphicsEffect_sourceBoundingRect_Qt__CoordinateSystem(_self_ : QGraphicsEffect*, system : ::Qt::CoordinateSystem) : QRectF
     fun bg_QGraphicsEffect_drawSource_QPainter_X(_self_ : QGraphicsEffect*, painter : QPainter*) : Void
+    fun bg_QGraphicsEffect_sourcePixmap_Qt__CoordinateSystem_QPoint_X_QGraphicsEffect__PixmapPadMode(_self_ : QGraphicsEffect*, system : ::Qt::CoordinateSystem, offset : QPoint*, mode : ::Qt::GraphicsEffect::PixmapPadMode) : QPixmap*
     fun bg_QGraphicsEffect_source_(_self_ : QGraphicsEffect*) : QGraphicsEffectSource*
     fun bg_QGraphicsEffect_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QObject_event_QEvent_X(_self_ : QGraphicsEffect*, event : QEvent*) : Bool
@@ -30196,6 +30272,7 @@ module Qt
     fun bg_QItemDelegate_drawFocus_QPainter_X_const_QStyleOptionViewItem_R_const_QRect_R(_self_ : QItemDelegate*, painter : QPainter*, option : QStyleOptionViewItem*, rect : QRect) : Void
     fun bg_QItemDelegate_drawCheck_QPainter_X_const_QStyleOptionViewItem_R_const_QRect_R_Qt__CheckState(_self_ : QItemDelegate*, painter : QPainter*, option : QStyleOptionViewItem*, rect : QRect, state : ::Qt::CheckState) : Void
     fun bg_QItemDelegate_drawBackground_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(_self_ : QItemDelegate*, painter : QPainter*, option : QStyleOptionViewItem*, index : QModelIndex*) : Void
+    fun bg_QItemDelegate_doLayout_const_QStyleOptionViewItem_R_QRect_X_QRect_X_QRect_X_bool(_self_ : QItemDelegate*, option : QStyleOptionViewItem*, check_rect : QRect*, icon_rect : QRect*, text_rect : QRect*, hint : Bool) : Void
     fun bg_QItemDelegate_rect_const_QStyleOptionViewItem_R_const_QModelIndex_R_int(_self_ : QItemDelegate*, option : QStyleOptionViewItem*, index : QModelIndex*, role : Int32) : QRect
     fun bg_QItemDelegate_eventFilter_QObject_X_QEvent_X(_self_ : QItemDelegate*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QItemDelegate_editorEvent_QEvent_X_QAbstractItemModel_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(_self_ : QItemDelegate*, event : QEvent*, model : QAbstractItemModel*, option : QStyleOptionViewItem*, index : QModelIndex*) : Bool
@@ -54394,16 +54471,32 @@ module Qt
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QPoint_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Point*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QPoint_R(self, unnamed_arg_0.as(Pointer(Binding::QPoint))))
+    end
+    
     def <<(unnamed_arg_0 : PointF) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QPointF_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : PointF*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QPointF_R(self, unnamed_arg_0.as(Pointer(Binding::QPointF))))
     end
     
     def <<(unnamed_arg_0 : Line) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QLine_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Line*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QLine_R(self, unnamed_arg_0.as(Pointer(Binding::QLine))))
+    end
+    
     def <<(unnamed_arg_0 : LineF) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QLineF_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : LineF*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QLineF_R(self, unnamed_arg_0.as(Pointer(Binding::QLineF))))
     end
     
     def <<(unnamed_arg_0 : Margins) : DataStream
@@ -54426,16 +54519,32 @@ module Qt
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QSize_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Size*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QSize_R(self, unnamed_arg_0.as(Pointer(Binding::QSize))))
+    end
+    
     def <<(unnamed_arg_0 : SizeF) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QSizeF_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : SizeF*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QSizeF_R(self, unnamed_arg_0.as(Pointer(Binding::QSizeF))))
     end
     
     def <<(unnamed_arg_0 : Rect) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QRect_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Rect*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QRect_R(self, unnamed_arg_0.as(Pointer(Binding::QRect))))
+    end
+    
     def <<(unnamed_arg_0 : RectF) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QRectF_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : RectF*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QRectF_R(self, unnamed_arg_0.as(Pointer(Binding::QRectF))))
     end
     
     def <<(tz : TimeZone) : DataStream
@@ -54472,6 +54581,10 @@ module Qt
     
     def <<(unnamed_arg_0 : Vector2D) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QVector2D_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : Vector2D*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QVector2D_R(self, unnamed_arg_0.as(Pointer(Binding::Vector2D))))
     end
     
     def <<(unnamed_arg_0 : Font) : DataStream
@@ -54598,12 +54711,24 @@ module Qt
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QVector3D_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Vector3D*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QVector3D_R(self, unnamed_arg_0.as(Pointer(Binding::Vector3D))))
+    end
+    
     def <<(unnamed_arg_0 : Vector4D) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QVector4D_R(self, unnamed_arg_0))
     end
     
+    def >>(unnamed_arg_0 : Vector4D*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QVector4D_R(self, unnamed_arg_0.as(Pointer(Binding::Vector4D))))
+    end
+    
     def <<(unnamed_arg_0 : Quaternion) : DataStream
       DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_lshift_const_QQuaternion_R(self, unnamed_arg_0))
+    end
+    
+    def >>(unnamed_arg_0 : Quaternion*) : DataStream
+      DataStream.new(unwrap: Binding.bg_QDataStream__OPERATOR_rshift_QQuaternion_R(self, unnamed_arg_0.as(Pointer(Binding::Quaternion))))
     end
     
     def <<(unnamed_arg_0 : Matrix4x4) : DataStream
@@ -62031,6 +62156,10 @@ module Qt
       LineF.new(unwrap: Binding.bg_QLineF_normalVector_(pointerof(@unwrap)))
     end
     
+    def intersects(l : LineF, intersection_point : PointF*) : LineF::IntersectionType
+      Binding.bg_QLineF_intersects_const_QLineF_R_QPointF_X(pointerof(@unwrap), l, intersection_point.as(Pointer(Binding::QPointF)))
+    end
+    
     def point_at(t : Float64) : PointF
       PointF.new(unwrap: Binding.bg_QLineF_pointAt_qreal(pointerof(@unwrap), t))
     end
@@ -62096,6 +62225,11 @@ module Qt
       LineF.new(unwrap: Binding.bg_QLineF__OPERATOR_mul_const_QTransform_R(pointerof(@unwrap), m))
     end
     
+    enum IntersectionType : UInt32
+      NoIntersection = 0
+      BoundedIntersection = 1
+      UnboundedIntersection = 2
+    end
     def to_unsafe
       @unwrap
     end
@@ -95202,6 +95336,10 @@ module Qt
       Qt::Variant.new(Binding.bg_QQuaternion__CONVERT_QVariant_(pointerof(@unwrap)))
     end
     
+    def get_axis_and_angle(axis : Vector3D*, angle : Float32*) : Void
+      Binding.bg_QQuaternion_getAxisAndAngle_QVector3D_X_float_X(pointerof(@unwrap), axis.as(Pointer(Binding::Vector3D)), angle)
+    end
+    
     def self.from_axis_and_angle(axis : Vector3D, angle : Float32) : Quaternion
       Quaternion.new(unwrap: Binding.bg_QQuaternion_fromAxisAndAngle_STATIC_const_QVector3D_R_float(axis, angle))
     end
@@ -95228,6 +95366,10 @@ module Qt
     
     def self.from_euler_angles(pitch : Float32, yaw : Float32, roll : Float32) : Quaternion
       Quaternion.new(unwrap: Binding.bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(pitch, yaw, roll))
+    end
+    
+    def get_axes(x_axis : Vector3D*, y_axis : Vector3D*, z_axis : Vector3D*) : Void
+      Binding.bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(pointerof(@unwrap), x_axis.as(Pointer(Binding::Vector3D)), y_axis.as(Pointer(Binding::Vector3D)), z_axis.as(Pointer(Binding::Vector3D)))
     end
     
     def self.from_axes(x_axis : Vector3D, y_axis : Vector3D, z_axis : Vector3D) : Quaternion
@@ -98602,6 +98744,18 @@ module Qt
     
     def draw_text(p : PointF, str : String, tf : Int32, justification_padding : Int32) : Void
       Binding.bg_QPainter_drawText_const_QPointF_R_const_QString_R_int_int(self, p, Qt::Converter::QString.wrap(str), tf, justification_padding)
+    end
+    
+    def draw_text(r : RectF, flags : Int32, text : String, br : RectF*? = nil) : Void
+      Binding.bg_QPainter_drawText_const_QRectF_R_int_const_QString_R_QRectF_X(self, r, flags, Qt::Converter::QString.wrap(text), (br || Pointer(RectF).null).as(Pointer(Binding::QRectF)))
+    end
+    
+    def draw_text(r : Rect, flags : Int32, text : String, br : Rect*? = nil) : Void
+      Binding.bg_QPainter_drawText_const_QRect_R_int_const_QString_R_QRect_X(self, r, flags, Qt::Converter::QString.wrap(text), (br || Pointer(Rect).null).as(Pointer(Binding::QRect)))
+    end
+    
+    def draw_text(x : Int32, y : Int32, w : Int32, h : Int32, flags : Int32, text : String, br : Rect*? = nil) : Void
+      Binding.bg_QPainter_drawText_int_int_int_int_int_const_QString_R_QRect_X(self, x, y, w, h, flags, Qt::Converter::QString.wrap(text), (br || Pointer(Rect).null).as(Pointer(Binding::QRect)))
     end
     
     def draw_text(r : RectF, text : String) : Void
@@ -176265,6 +176419,10 @@ module Qt
       Binding.bg_QGraphicsEffect_drawSource_QPainter_X(self, (painter.try(&.to_unsafe) || Pointer(Binding::QPainter).null))
     end
     
+    protected def source_pixmap(system : CoordinateSystem = CoordinateSystem::LogicalCoordinates, offset : Point*? = nil, mode : GraphicsEffect::PixmapPadMode = GraphicsEffect::PixmapPadMode::PadToEffectiveBoundingRect) : Pixmap
+      Pixmap.new(unwrap: Binding.bg_QGraphicsEffect_sourcePixmap_Qt__CoordinateSystem_QPoint_X_QGraphicsEffect__PixmapPadMode(self, system, (offset || Pointer(Point).null).as(Pointer(Binding::QPoint)), mode))
+    end
+    
     def source() : Binding::QGraphicsEffectSource*
       Binding.bg_QGraphicsEffect_source_(self)
     end
@@ -192954,6 +193112,10 @@ module Qt
     
     protected def draw_background(painter : Painter, option : StyleOptionViewItem, index : ModelIndex) : Void
       Binding.bg_QItemDelegate_drawBackground_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(self, (painter.try(&.to_unsafe) || Pointer(Binding::QPainter).null), option, index)
+    end
+    
+    protected def do_layout(option : StyleOptionViewItem, check_rect : Rect*, icon_rect : Rect*, text_rect : Rect*, hint : Bool) : Void
+      Binding.bg_QItemDelegate_doLayout_const_QStyleOptionViewItem_R_QRect_X_QRect_X_QRect_X_bool(self, option, check_rect.as(Pointer(Binding::QRect)), icon_rect.as(Pointer(Binding::QRect)), text_rect.as(Pointer(Binding::QRect)), hint)
     end
     
     protected def rect(option : StyleOptionViewItem, index : ModelIndex, role : Int32) : Rect

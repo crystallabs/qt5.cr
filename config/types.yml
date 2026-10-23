@@ -363,6 +363,9 @@ types: # Type rewrite rules
   QRegularExpression:
     ignore_methods: # The match keeps the view of the temporary QString: use match(String)
       - "/^(match|globalMatch)\\((const QStringRef &|QStringView)/"
+  QRawFont:
+    ignore_methods: # Writes an array of points through the pointer, not one
+      - "/^advancesForGlyphIndexes\\(const quint32 \\*/"
   QTextDecoder:
     ignore_methods:
       # Writes the string through the pointer, like the overload returning
