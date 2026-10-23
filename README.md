@@ -8,6 +8,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
    * [Project Goals](#project-goals)
    * [Installation](#installation)
       * [Additional development dependencies](#additional-development-dependencies)
+      * [macOS](#macos)
    * [User perspective](#user-perspective)
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
       * [Locale](#locale)
@@ -62,6 +63,7 @@ Using your system's package manager:
 
 * **ArchLinux** `pacman -S qt5-base gc cmake llvm clang pcre2`
 * **Debian/Ubuntu/Devuan** `apt-get install qtbase5-dev libgc-dev cmake llvm-dev clang libclang-dev libpcre2-dev libz-dev libstdc++-dev`
+* **macOS** `brew install qt@5 bdw-gc llvm cmake pkgconf`
 
 Bindgen needs LLVM and Clang 14 or newer, CMake 3.12 or newer and Crystal 1.8
 or newer.
@@ -74,6 +76,30 @@ Link against the system's `libgc` instead:
 ```sh
 export CRYSTAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 ```
+
+## macOS
+
+Homebrew's `qt@5` is keg-only: put its `qmake` on the `PATH` (or set `QMAKE`)
+and point `pkg-config` at it.  Building the bindings also needs the SDK and
+Homebrew's include and library directories:
+
+```sh
+export PATH=/opt/homebrew/opt/qt@5/bin:$PATH
+export PKG_CONFIG_PATH=/opt/homebrew/opt/qt@5/lib/pkgconfig
+export SDKROOT="$(xcrun --show-sdk-path)"
+export CPPFLAGS=-I/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+```
+
+Build bindgen's clang tool with Homebrew's LLVM:
+
+```sh
+cd lib/bindgen/clang && cmake -DLLVM_DIR=/opt/homebrew/opt/llvm/lib/cmake/llvm . && make
+```
+
+If linking the tool fails with `ld: could not parse bitcode object file`, the
+Xcode linker is older than Homebrew's LLVM, whose static libraries hold
+bitcode.  Link LLVM dynamically instead: `BINDGEN_DYNAMIC=1 cmake ...`.
 
 # User perspective
 
@@ -474,7 +500,7 @@ see the comments there:
 | System                   | Status           | Qt version | Notes                       |
 | ------------------------ | ---------------- | ---------- | --------------------------- |
 | Ubuntu 24.04             | **Works**        | 5.15       | CI, with LLVM 14 and 18     |
-| macOS (Homebrew `qt@5`)  | **Works**        | 5.15       |                             |
+| macOS (Homebrew `qt@5`)  | **Works**        | 5.15       | CI                          |
 | ArchLinux                | Should work      | 5.15       | Help wanted                 |
 | Windows                  | Untested         | ?          | Help wanted                 |
 

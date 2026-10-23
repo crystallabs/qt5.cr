@@ -8,15 +8,28 @@ on:
 
 jobs:
   bindings:
-    name: Qt5 with LLVM ${{ matrix.llvm }}
-    runs-on: ubuntu-24.04
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        # The oldest LLVM bindgen supports, and Ubuntu's default.
-        llvm: [14, 18]
+        # Ubuntu's Qt 5.15 with the oldest LLVM bindgen supports and with
+        # Ubuntu's default, and Homebrew's qt@5 (also 5.15).
+        include:
+          - name: Ubuntu 24.04 Qt 5.15, LLVM 14
+            os: ubuntu-24.04
+            llvm: 14
+            llvm_dir: /usr/lib/llvm-14/lib/cmake/llvm
+          - name: Ubuntu 24.04 Qt 5.15, LLVM 18
+            os: ubuntu-24.04
+            llvm: 18
+            llvm_dir: /usr/lib/llvm-18/lib/cmake/llvm
+          - name: macOS Homebrew Qt 5.15
+            os: macos-15
+            llvm_dir: /opt/homebrew/opt/llvm/lib/cmake/llvm
     env:
       LLVM: ${{ matrix.llvm }}
+      LLVM_DIR: ${{ matrix.llvm_dir }}
       QT_SELECT: 5
       QT_QPA_PLATFORM: offscreen
     steps:
@@ -25,11 +38,13 @@ jobs:
       # install-crystal installs packages without refreshing the package
       # index, which fails when the runner image's index has gone stale.
       - name: Update package index
+        if: runner.os == 'Linux'
         run: sudo apt-get update
 
       - uses: crystal-lang/install-crystal@v1
 
       - name: Install dependencies
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get install -y --no-install-recommends \
             qtbase5-dev libgc-dev \
@@ -37,16 +52,35 @@ jobs:
             cmake libpcre2-dev libyaml-dev libevent-dev \
             libxml2-dev libz3-dev libzstd-dev zlib1g-dev libncurses-dev
 
+      # Homebrew's qt@5 is keg-only: its qmake goes on the PATH, where
+      # `find_paths` looks for it, and pkg-config is pointed at it for the
+      # `pkg-config --libs Qt5Widgets` of qt.yml.  Its include directory links
+      # the framework headers.  See the README's macOS section.  Homebrew's
+      # LLVM static libraries hold bitcode newer than the runner's Xcode linker
+      # reads, so bindgen's parser links LLVM dynamically.
+      - name: Install dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew install qt@5 bdw-gc llvm cmake pkgconf
+          echo "/opt/homebrew/opt/qt@5/bin" >> "$GITHUB_PATH"
+          {
+            echo "SDKROOT=$(xcrun --show-sdk-path)"
+            echo "CPPFLAGS=-I/opt/homebrew/include"
+            echo "LIBRARY_PATH=/opt/homebrew/lib"
+            echo "PKG_CONFIG_PATH=/opt/homebrew/opt/qt@5/lib/pkgconfig"
+            echo "BINDGEN_DYNAMIC=1"
+          } >> "$GITHUB_ENV"
+
       - name: Install shards
         run: shards install
 
-      # src/qt5/binding/ holds the generated bindings, which aren't checked.
+      # src/qt5/binding/ holds the generated bindings, which aren't formatted.
       - name: Check formatting
         run: crystal tool format --check src/qt5.cr src/qt5/*.cr spec samples support
 
       - name: Build clang tool
         working-directory: lib/bindgen/clang
-        run: cmake -DLLVM_DIR="/usr/lib/llvm-$LLVM/lib/cmake/llvm" . && make
+        run: cmake -DLLVM_DIR="$LLVM_DIR" . && make
 
       - name: Detect binding platform
         run: |
