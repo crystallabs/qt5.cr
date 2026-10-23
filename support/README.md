@@ -27,6 +27,10 @@ With `--system`, it instead generates the binding for the Qt5 installed on the
 system, as found by `qmake`.  Set `QMAKE` to choose a specific installation.
 This needs neither `curl` nor `tar`.
 
+The generated `src/qt5/binding/binding_*.cr` and `ext/qt_binding_*.cpp` of
+the platforms CI builds are committed, see the README's "Generating the
+bindings".  After regenerating them, commit both files of the platform.
+
 #### Dependencies
 
 * `curl`

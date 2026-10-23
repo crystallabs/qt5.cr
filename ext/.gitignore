@@ -1,4 +1,4 @@
 *.o
 *.a
-qt_binding*.cpp
-binding*.a
+# The override binding, see support/decide_binding_fast.cr
+qt_binding_.cpp

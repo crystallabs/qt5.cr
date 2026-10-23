@@ -98,6 +98,25 @@ jobs:
             exit 1
           fi
 
+      # The bindings for the CI platforms are committed, so users don't need
+      # bindgen's dependencies.  When this warns, download the artifact and
+      # commit its files.
+      - name: Check the committed binding
+        run: |
+          if [ -n "$(git status --porcelain -- src/qt5/binding ext)" ]; then
+            echo "::warning::The committed binding for $BINDING_PLATFORM is missing or out of date, see the binding-$BINDING_PLATFORM artifact."
+          fi
+
+      # Both Linux entries generate the same platform's binding, so only the
+      # LLVM 18 one uploads it.
+      - uses: actions/upload-artifact@v4
+        if: matrix.llvm != 14
+        with:
+          name: binding-${{ env.BINDING_PLATFORM }}
+          path: |
+            src/qt5/binding/binding_${{ env.BINDING_PLATFORM }}.cr
+            ext/qt_binding_${{ env.BINDING_PLATFORM }}.cpp
+
       - name: Run specs
         run: crystal spec
 

@@ -1,1 +1,2 @@
-binding_*.cr
+# The override binding, see support/decide_binding_fast.cr
+binding_.cr

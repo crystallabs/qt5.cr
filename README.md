@@ -49,7 +49,11 @@ dependencies:
     github: crystallabs/qt5.cr
 ```
 
-Then generate the binding for the Qt5 installed on your system, see
+The generated bindings for the platforms CI builds (see
+[Platform Support](#platform-support)) are included, so on those you only need
+Qt5 and its development files: the binding's C++ part is compiled on first
+use, which needs a C++ compiler and `make`.  On other platforms, generate the
+binding for the Qt5 installed on your system first, see
 [(Re)generating the binding for the system's Qt5](#regenerating-the-binding-for-the-systems-qt5).
 This needs bindgen and its dependencies, listed below.
 
@@ -59,7 +63,8 @@ on this under License below.)
 
 ## Additional development dependencies
 
-Using your system's package manager:
+Using your system's package manager (LLVM, Clang and CMake are only needed to
+generate a binding):
 
 * **ArchLinux** `pacman -S qt5-base gc cmake llvm clang pcre2`
 * **Debian/Ubuntu/Devuan** `apt-get install qtbase5-dev libgc-dev cmake llvm-dev clang libclang-dev libpcre2-dev libz-dev libstdc++-dev`
@@ -263,6 +268,11 @@ from within `qt5.cr` itself.
 
 **Important**: For this you'll also have to meet the dependencies of bindgen.
 See `lib/bindgen/README.md` and `lib/bindgen/clang/README.md`.
+
+The generated `src/qt5/binding/binding_*.cr` and `ext/qt_binding_*.cpp` of the
+platforms CI builds are committed.  CI regenerates them on every run, warns
+when the committed ones are out of date, and uploads the fresh ones as the
+`binding-<platform>` workflow artifact: download it and commit its two files.
 
 ## Deprecated Qt API
 
