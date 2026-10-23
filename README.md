@@ -191,6 +191,16 @@ deriving from `QObject`, `QGraphicsItem` or `QGraphicsLayoutItem`.
 
 ## Threads
 
+Qt objects belong to the thread that created them, and widgets to the main
+thread.  Crystal's default runtime since 1.21 may resume a fiber in another OS
+thread after a blocking call, like a slow file write, which breaks Qt: timers
+fail and creating a window deadlocks.  So `src/qt5/main_thread.cr` keeps a
+thread blocked in a call attached to its scheduler, as Crystal did before 1.21;
+the fibers of the default context wait for the call instead of running
+meanwhile.  Don't resize the default execution context: Qt must be called from
+the main thread.  `-Dwithout_mt` disables execution contexts altogether, and
+`-Dqt5_allow_mt` leaves them untouched.
+
 `Qt::Thread`, `Qt::ThreadPool` and the locks are bound, but **a Qt thread
 must not call into Crystal**: the Crystal runtime and its GC only know the
 threads they start, so a Crystal method run from a Qt thread corrupts the
