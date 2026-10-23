@@ -80,14 +80,14 @@ describe Qt::Validator do
     validator = Qt::IntValidator.new(1, 100)
     validator.bottom.should eq(1)
     validator.top.should eq(100)
-    validator.validate("50").should eq(Qt::Validator::State::Acceptable)
-    validator.validate("500").should eq(Qt::Validator::State::Intermediate)
-    validator.validate("").should eq(Qt::Validator::State::Intermediate)
-    validator.validate("-1").should eq(Qt::Validator::State::Invalid)
-    validator.validate("x").should eq(Qt::Validator::State::Invalid)
+    validator.validate("50", 0)[0].should eq(Qt::Validator::State::Acceptable)
+    validator.validate("500", 0)[0].should eq(Qt::Validator::State::Intermediate)
+    validator.validate("", 0)[0].should eq(Qt::Validator::State::Intermediate)
+    validator.validate("-1", 0)[0].should eq(Qt::Validator::State::Invalid)
+    validator.validate("x", 0)[0].should eq(Qt::Validator::State::Invalid)
     validator.set_range(0, 5)
-    validator.validate("50").should eq(Qt::Validator::State::Invalid) # Can't become valid by typing on
-    validator.validate("5").should eq(Qt::Validator::State::Acceptable)
+    validator.validate("50", 0)[0].should eq(Qt::Validator::State::Invalid) # Can't become valid by typing on
+    validator.validate("5", 0)[0].should eq(Qt::Validator::State::Acceptable)
     validator.locale = Qt::Locale.new("C")
     validator.fixup("1,0").should eq("10") # Drops the group separators
 
@@ -107,17 +107,17 @@ describe Qt::Validator do
     validator.notation = Qt::DoubleValidator::Notation::StandardNotation
     validator.notation.should eq(Qt::DoubleValidator::Notation::StandardNotation)
     validator.locale = Qt::Locale.new("C")
-    validator.validate("0.5").should eq(Qt::Validator::State::Acceptable)
-    validator.validate("0.555").should eq(Qt::Validator::State::Invalid)
-    validator.validate("5").should eq(Qt::Validator::State::Intermediate)
+    validator.validate("0.5", 0)[0].should eq(Qt::Validator::State::Acceptable)
+    validator.validate("0.555", 0)[0].should eq(Qt::Validator::State::Invalid)
+    validator.validate("5", 0)[0].should eq(Qt::Validator::State::Intermediate)
   end
 
   it "validates with a regular expression" do
     validator = Qt::RegularExpressionValidator.new(Qt::RegularExpression.new("[a-z]+"))
     validator.regular_expression.pattern.should eq("[a-z]+")
-    validator.validate("abc").should eq(Qt::Validator::State::Acceptable)
-    validator.validate("ABC").should eq(Qt::Validator::State::Invalid)
-    validator.validate("").should eq(Qt::Validator::State::Intermediate)
+    validator.validate("abc", 0)[0].should eq(Qt::Validator::State::Acceptable)
+    validator.validate("ABC", 0)[0].should eq(Qt::Validator::State::Invalid)
+    validator.validate("", 0)[0].should eq(Qt::Validator::State::Intermediate)
   end
 end
 

@@ -4,7 +4,6 @@
 #include <QtGui/QtGui>
 #include <QtWidgets/QtWidgets>
 #include <locale_helper.hpp>
-#include <validator_helper.hpp>
 #include <xml_helper.hpp>
 #include <data_stream_helper.hpp>
 #include <meta_helper.hpp>
@@ -812,8 +811,8 @@ extern "C" CrystalString bg_QObject_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QObject::tr(s));
 }
 
-extern "C" CrystalString bg_QObject_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QObject::tr(s, c));
+extern "C" CrystalString bg_QObject_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QObject::tr(s, c, n));
 }
 
 extern "C" QObject * bg_QObject__CONSTRUCT_QObject_X(QObject * parent) {
@@ -912,8 +911,8 @@ extern "C" bool bg_QObject_disconnect_(QObject * _self_) {
   return _self_->disconnect();
 }
 
-extern "C" bool bg_QObject_disconnect_const_char_X(QObject * _self_, const char * signal) {
-  return _self_->disconnect(signal);
+extern "C" bool bg_QObject_disconnect_const_char_X_const_QObject_X(QObject * _self_, const char * signal, const QObject * receiver) {
+  return _self_->disconnect(signal, receiver);
 }
 
 extern "C" bool bg_QObject_disconnect_const_char_X_const_QObject_X_const_char_X(QObject * _self_, const char * signal, const QObject * receiver, const char * member) {
@@ -1966,8 +1965,8 @@ extern "C" CrystalString bg_QAbstractAnimation_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QAbstractAnimation::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractAnimation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractAnimation::tr(s, c));
+extern "C" CrystalString bg_QAbstractAnimation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractAnimation::tr(s, c, n));
 }
 
 extern "C" QAbstractAnimation * bg_QAbstractAnimation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -2276,8 +2275,8 @@ extern "C" CrystalString bg_QAnimationDriver_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QAnimationDriver::tr(s));
 }
 
-extern "C" CrystalString bg_QAnimationDriver_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAnimationDriver::tr(s, c));
+extern "C" CrystalString bg_QAnimationDriver_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAnimationDriver::tr(s, c, n));
 }
 
 extern "C" QAnimationDriver * bg_QAnimationDriver__CONSTRUCT_QObject_X(QObject * parent) {
@@ -2482,8 +2481,8 @@ extern "C" CrystalString bg_QEventLoop_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QEventLoop::tr(s));
 }
 
-extern "C" CrystalString bg_QEventLoop_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QEventLoop::tr(s, c));
+extern "C" CrystalString bg_QEventLoop_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QEventLoop::tr(s, c, n));
 }
 
 extern "C" QEventLoop * bg_QEventLoop__CONSTRUCT_QObject_X(QObject * parent) {
@@ -2804,8 +2803,8 @@ extern "C" CrystalString bg_QAbstractEventDispatcher_tr_STATIC_const_char_X(cons
   return qstring_to_crystal(QAbstractEventDispatcher::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractEventDispatcher_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractEventDispatcher::tr(s, c));
+extern "C" CrystalString bg_QAbstractEventDispatcher_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractEventDispatcher::tr(s, c, n));
 }
 
 extern "C" QAbstractEventDispatcher * bg_QAbstractEventDispatcher__CONSTRUCT_QObject_X(QObject * parent) {
@@ -3595,8 +3594,8 @@ extern "C" CrystalString bg_QAbstractItemModel_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QAbstractItemModel::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractItemModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractItemModel::tr(s, c));
+extern "C" CrystalString bg_QAbstractItemModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractItemModel::tr(s, c, n));
 }
 
 extern "C" QAbstractItemModel * bg_QAbstractItemModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -3843,16 +3842,16 @@ extern "C" void bg_QAbstractItemModel_layoutChanged_(QAbstractItemModel * _self_
   _self_->layoutChanged();
 }
 
-extern "C" void bg_QAbstractItemModel_layoutChanged_const_QList_QPersistentModelIndex__R(QAbstractItemModel * _self_, const Container_QList_QPersistentModelIndex_ * parents) {
-  _self_->layoutChanged(*(parents));
+extern "C" void bg_QAbstractItemModel_layoutChanged_const_QList_QPersistentModelIndex__R_QAbstractItemModel__LayoutChangeHint(QAbstractItemModel * _self_, const Container_QList_QPersistentModelIndex_ * parents, QAbstractItemModel::LayoutChangeHint hint) {
+  _self_->layoutChanged(*(parents), hint);
 }
 
 extern "C" void bg_QAbstractItemModel_layoutAboutToBeChanged_(QAbstractItemModel * _self_) {
   _self_->layoutAboutToBeChanged();
 }
 
-extern "C" void bg_QAbstractItemModel_layoutAboutToBeChanged_const_QList_QPersistentModelIndex__R(QAbstractItemModel * _self_, const Container_QList_QPersistentModelIndex_ * parents) {
-  _self_->layoutAboutToBeChanged(*(parents));
+extern "C" void bg_QAbstractItemModel_layoutAboutToBeChanged_const_QList_QPersistentModelIndex__R_QAbstractItemModel__LayoutChangeHint(QAbstractItemModel * _self_, const Container_QList_QPersistentModelIndex_ * parents, QAbstractItemModel::LayoutChangeHint hint) {
+  _self_->layoutAboutToBeChanged(*(parents), hint);
 }
 
 extern "C" bool bg_QAbstractItemModel_submit_(QAbstractItemModel * _self_) {
@@ -3975,16 +3974,16 @@ extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }, type));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R__QAbstractItemModel__LayoutChangeHint_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *, QAbstractItemModel::LayoutChangeHint> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &, QAbstractItemModel::LayoutChangeHint))&QAbstractItemModel::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents, QAbstractItemModel::LayoutChangeHint hint){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents), hint); }, type));
 }
 
 extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutAboutToBeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutAboutToBeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }, type));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R__QAbstractItemModel__LayoutChangeHint_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *, QAbstractItemModel::LayoutChangeHint> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &, QAbstractItemModel::LayoutChangeHint))&QAbstractItemModel::layoutAboutToBeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents, QAbstractItemModel::LayoutChangeHint hint){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents), hint); }, type));
 }
 
 extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
@@ -4616,8 +4615,8 @@ extern "C" CrystalString bg_QAbstractTableModel_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QAbstractTableModel::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractTableModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractTableModel::tr(s, c));
+extern "C" CrystalString bg_QAbstractTableModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractTableModel::tr(s, c, n));
 }
 
 extern "C" QAbstractTableModel * bg_QAbstractTableModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -5120,8 +5119,8 @@ extern "C" CrystalString bg_QAbstractListModel_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QAbstractListModel::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractListModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractListModel::tr(s, c));
+extern "C" CrystalString bg_QAbstractListModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractListModel::tr(s, c, n));
 }
 
 extern "C" QAbstractListModel * bg_QAbstractListModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -5701,8 +5700,8 @@ extern "C" CrystalString bg_QAbstractProxyModel_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QAbstractProxyModel::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractProxyModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractProxyModel::tr(s, c));
+extern "C" CrystalString bg_QAbstractProxyModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractProxyModel::tr(s, c, n));
 }
 
 extern "C" QAbstractProxyModel * bg_QAbstractProxyModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -6107,8 +6106,8 @@ extern "C" CrystalString bg_QAnimationGroup_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QAnimationGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QAnimationGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAnimationGroup::tr(s, c));
+extern "C" CrystalString bg_QAnimationGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAnimationGroup::tr(s, c, n));
 }
 
 extern "C" QAnimationGroup * bg_QAnimationGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -6617,8 +6616,8 @@ extern "C" CrystalString bg_QIODevice_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QIODevice::tr(s));
 }
 
-extern "C" CrystalString bg_QIODevice_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QIODevice::tr(s, c));
+extern "C" CrystalString bg_QIODevice_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QIODevice::tr(s, c, n));
 }
 
 extern "C" QIODevice * bg_QIODevice__CONSTRUCT_() {
@@ -7223,8 +7222,8 @@ extern "C" CrystalString bg_QBuffer_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QBuffer::tr(s));
 }
 
-extern "C" CrystalString bg_QBuffer_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QBuffer::tr(s, c));
+extern "C" CrystalString bg_QBuffer_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QBuffer::tr(s, c, n));
 }
 
 extern "C" QBuffer * bg_QBuffer__CONSTRUCT_QObject_X(QObject * parent) {
@@ -8649,6 +8648,13 @@ extern "C" void bg_QTextStream_skipWhiteSpace_(QTextStream * _self_) {
 
 extern "C" CrystalString bg_QTextStream_readLine_qint64(QTextStream * _self_, qint64 maxlen) {
   return qstring_to_crystal(_self_->readLine(maxlen));
+}
+
+extern "C" bool bg_QTextStream_readLineInto_QString_X_qint64(QTextStream * _self_, CrystalString * line, qint64 maxlen) {
+  QString line_{};
+  bool _result_ = _self_->readLineInto(&line_, maxlen);
+  *line = qstring_to_crystal(std::move(line_));
+  return _result_;
 }
 
 extern "C" CrystalString bg_QTextStream_readAll_(QTextStream * _self_) {
@@ -11793,8 +11799,8 @@ extern "C" CrystalString bg_QCoreApplication_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QCoreApplication::tr(s));
 }
 
-extern "C" CrystalString bg_QCoreApplication_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCoreApplication::tr(s, c));
+extern "C" CrystalString bg_QCoreApplication_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCoreApplication::tr(s, c, n));
 }
 
 extern "C" QCoreApplication * bg_QCoreApplication__CONSTRUCT_int_R_char_XX_int(int & argc, char ** argv, int unnamed_arg_2) {
@@ -11953,8 +11959,8 @@ extern "C" CrystalString bg_QCoreApplication_translate_STATIC_const_char_X_const
   return qstring_to_crystal(QCoreApplication::translate(context, key));
 }
 
-extern "C" CrystalString bg_QCoreApplication_translate_STATIC_const_char_X_const_char_X_const_char_X(const char * context, const char * key, const char * disambiguation) {
-  return qstring_to_crystal(QCoreApplication::translate(context, key, disambiguation));
+extern "C" CrystalString bg_QCoreApplication_translate_STATIC_const_char_X_const_char_X_const_char_X_int(const char * context, const char * key, const char * disambiguation, int n) {
+  return qstring_to_crystal(QCoreApplication::translate(context, key, disambiguation, n));
 }
 
 extern "C" void bg_QCoreApplication_installNativeEventFilter_QAbstractNativeEventFilter_X(QCoreApplication * _self_, QAbstractNativeEventFilter * filterObj) {
@@ -12049,8 +12055,8 @@ extern "C" CrystalString bg_QCommandLineParser_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QCommandLineParser::tr(sourceText));
 }
 
-extern "C" CrystalString bg_QCommandLineParser_tr_STATIC_const_char_X_const_char_X(const char * sourceText, const char * disambiguation) {
-  return qstring_to_crystal(QCommandLineParser::tr(sourceText, disambiguation));
+extern "C" CrystalString bg_QCommandLineParser_tr_STATIC_const_char_X_const_char_X_int(const char * sourceText, const char * disambiguation, int n) {
+  return qstring_to_crystal(QCommandLineParser::tr(sourceText, disambiguation, n));
 }
 
 extern "C" QCommandLineParser * bg_QCommandLineParser__CONSTRUCT_() {
@@ -12636,8 +12642,8 @@ extern "C" CrystalString bg_QConcatenateTablesProxyModel_tr_STATIC_const_char_X(
   return qstring_to_crystal(QConcatenateTablesProxyModel::tr(s));
 }
 
-extern "C" CrystalString bg_QConcatenateTablesProxyModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QConcatenateTablesProxyModel::tr(s, c));
+extern "C" CrystalString bg_QConcatenateTablesProxyModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QConcatenateTablesProxyModel::tr(s, c, n));
 }
 
 extern "C" QConcatenateTablesProxyModel * bg_QConcatenateTablesProxyModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -14002,8 +14008,8 @@ extern "C" CrystalString bg_QFileDevice_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFileDevice::tr(s));
 }
 
-extern "C" CrystalString bg_QFileDevice_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFileDevice::tr(s, c));
+extern "C" CrystalString bg_QFileDevice_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFileDevice::tr(s, c, n));
 }
 
 extern "C" QFileDevice::FileError bg_QFileDevice_error_(QFileDevice * _self_) {
@@ -14484,8 +14490,8 @@ extern "C" CrystalString bg_QFile_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFile::tr(s));
 }
 
-extern "C" CrystalString bg_QFile_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFile::tr(s, c));
+extern "C" CrystalString bg_QFile_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFile::tr(s, c, n));
 }
 
 extern "C" QFile * bg_QFile__CONSTRUCT_() {
@@ -14550,6 +14556,13 @@ extern "C" bool bg_QFile_remove_STATIC_const_QString_R(const CrystalString fileN
 
 extern "C" bool bg_QFile_moveToTrash_(QFile * _self_) {
   return _self_->moveToTrash();
+}
+
+extern "C" bool bg_QFile_moveToTrash_STATIC_const_QString_R_QString_X(const CrystalString fileName, CrystalString * pathInTrash) {
+  QString pathInTrash_{};
+  bool _result_ = QFile::moveToTrash(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &pathInTrash_);
+  *pathInTrash = qstring_to_crystal(std::move(pathInTrash_));
+  return _result_;
 }
 
 extern "C" bool bg_QFile_rename_const_QString_R(QFile * _self_, const CrystalString newName) {
@@ -15474,8 +15487,8 @@ extern "C" CrystalString bg_QFileSelector_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QFileSelector::tr(s));
 }
 
-extern "C" CrystalString bg_QFileSelector_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFileSelector::tr(s, c));
+extern "C" CrystalString bg_QFileSelector_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFileSelector::tr(s, c, n));
 }
 
 extern "C" QFileSelector * bg_QFileSelector__CONSTRUCT_QObject_X(QObject * parent) {
@@ -15632,8 +15645,8 @@ extern "C" CrystalString bg_QFileSystemWatcher_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QFileSystemWatcher::tr(s));
 }
 
-extern "C" CrystalString bg_QFileSystemWatcher_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFileSystemWatcher::tr(s, c));
+extern "C" CrystalString bg_QFileSystemWatcher_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFileSystemWatcher::tr(s, c, n));
 }
 
 extern "C" QFileSystemWatcher * bg_QFileSystemWatcher__CONSTRUCT_QObject_X(QObject * parent) {
@@ -16221,8 +16234,8 @@ extern "C" CrystalString bg_QIdentityProxyModel_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QIdentityProxyModel::tr(s));
 }
 
-extern "C" CrystalString bg_QIdentityProxyModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QIdentityProxyModel::tr(s, c));
+extern "C" CrystalString bg_QIdentityProxyModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QIdentityProxyModel::tr(s, c, n));
 }
 
 extern "C" QIdentityProxyModel * bg_QIdentityProxyModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -16715,8 +16728,8 @@ extern "C" CrystalString bg_QItemSelectionModel_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QItemSelectionModel::tr(s));
 }
 
-extern "C" CrystalString bg_QItemSelectionModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QItemSelectionModel::tr(s, c));
+extern "C" CrystalString bg_QItemSelectionModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QItemSelectionModel::tr(s, c, n));
 }
 
 extern "C" QItemSelectionModel * bg_QItemSelectionModel__CONSTRUCT_QAbstractItemModel_X(QAbstractItemModel * model) {
@@ -17777,8 +17790,8 @@ extern "C" CrystalString bg_QLibrary_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QLibrary::tr(s));
 }
 
-extern "C" CrystalString bg_QLibrary_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QLibrary::tr(s, c));
+extern "C" CrystalString bg_QLibrary_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QLibrary::tr(s, c, n));
 }
 
 extern "C" QLibrary * bg_QLibrary__CONSTRUCT_QObject_X(QObject * parent) {
@@ -18519,6 +18532,15 @@ extern "C" int bg_QLockFile_staleLockTime_(QLockFile * _self_) {
 
 extern "C" bool bg_QLockFile_isLocked_(QLockFile * _self_) {
   return _self_->isLocked();
+}
+
+extern "C" bool bg_QLockFile_getLockInfo_qint64_X_QString_X_QString_X(QLockFile * _self_, qint64 * pid, CrystalString * hostname, CrystalString * appname) {
+  QString hostname_{};
+  QString appname_{};
+  bool _result_ = _self_->getLockInfo(pid, &hostname_, &appname_);
+  *hostname = qstring_to_crystal(std::move(hostname_));
+  *appname = qstring_to_crystal(std::move(appname_));
+  return _result_;
 }
 
 extern "C" bool bg_QLockFile_removeStaleLockFile_(QLockFile * _self_) {
@@ -19333,8 +19355,8 @@ extern "C" CrystalString bg_QMimeData_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMimeData::tr(s));
 }
 
-extern "C" CrystalString bg_QMimeData_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMimeData::tr(s, c));
+extern "C" CrystalString bg_QMimeData_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMimeData::tr(s, c, n));
 }
 
 extern "C" QMimeData * bg_QMimeData__CONSTRUCT_() {
@@ -19707,8 +19729,8 @@ extern "C" CrystalString bg_QObjectCleanupHandler_tr_STATIC_const_char_X(const c
   return qstring_to_crystal(QObjectCleanupHandler::tr(s));
 }
 
-extern "C" CrystalString bg_QObjectCleanupHandler_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QObjectCleanupHandler::tr(s, c));
+extern "C" CrystalString bg_QObjectCleanupHandler_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QObjectCleanupHandler::tr(s, c, n));
 }
 
 extern "C" QObjectCleanupHandler * bg_QObjectCleanupHandler__CONSTRUCT_() {
@@ -20045,8 +20067,8 @@ extern "C" CrystalString bg_QParallelAnimationGroup_tr_STATIC_const_char_X(const
   return qstring_to_crystal(QParallelAnimationGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QParallelAnimationGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QParallelAnimationGroup::tr(s, c));
+extern "C" CrystalString bg_QParallelAnimationGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QParallelAnimationGroup::tr(s, c, n));
 }
 
 extern "C" QParallelAnimationGroup * bg_QParallelAnimationGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -20267,8 +20289,8 @@ extern "C" CrystalString bg_QPauseAnimation_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QPauseAnimation::tr(s));
 }
 
-extern "C" CrystalString bg_QPauseAnimation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPauseAnimation::tr(s, c));
+extern "C" CrystalString bg_QPauseAnimation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPauseAnimation::tr(s, c, n));
 }
 
 extern "C" QPauseAnimation * bg_QPauseAnimation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -20676,8 +20698,8 @@ extern "C" CrystalString bg_QProcess_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QProcess::tr(s));
 }
 
-extern "C" CrystalString bg_QProcess_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QProcess::tr(s, c));
+extern "C" CrystalString bg_QProcess_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QProcess::tr(s, c, n));
 }
 
 extern "C" QProcess * bg_QProcess__CONSTRUCT_QObject_X(QObject * parent) {
@@ -21190,8 +21212,8 @@ extern "C" CrystalString bg_QVariantAnimation_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QVariantAnimation::tr(s));
 }
 
-extern "C" CrystalString bg_QVariantAnimation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QVariantAnimation::tr(s, c));
+extern "C" CrystalString bg_QVariantAnimation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QVariantAnimation::tr(s, c, n));
 }
 
 extern "C" QVariantAnimation * bg_QVariantAnimation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -21496,8 +21518,8 @@ extern "C" CrystalString bg_QPropertyAnimation_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QPropertyAnimation::tr(s));
 }
 
-extern "C" CrystalString bg_QPropertyAnimation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPropertyAnimation::tr(s, c));
+extern "C" CrystalString bg_QPropertyAnimation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPropertyAnimation::tr(s, c, n));
 }
 
 extern "C" QPropertyAnimation * bg_QPropertyAnimation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -23097,8 +23119,8 @@ extern "C" CrystalString bg_QSaveFile_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSaveFile::tr(s));
 }
 
-extern "C" CrystalString bg_QSaveFile_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSaveFile::tr(s, c));
+extern "C" CrystalString bg_QSaveFile_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSaveFile::tr(s, c, n));
 }
 
 extern "C" QSaveFile * bg_QSaveFile__CONSTRUCT_const_QString_R(const CrystalString name) {
@@ -23375,8 +23397,8 @@ extern "C" CrystalString bg_QSequentialAnimationGroup_tr_STATIC_const_char_X(con
   return qstring_to_crystal(QSequentialAnimationGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QSequentialAnimationGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSequentialAnimationGroup::tr(s, c));
+extern "C" CrystalString bg_QSequentialAnimationGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSequentialAnimationGroup::tr(s, c, n));
 }
 
 extern "C" QSequentialAnimationGroup * bg_QSequentialAnimationGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -23577,32 +23599,32 @@ extern "C" CrystalString bg_QSettings_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSettings::tr(s));
 }
 
-extern "C" CrystalString bg_QSettings_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSettings::tr(s, c));
+extern "C" CrystalString bg_QSettings_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSettings::tr(s, c, n));
 }
 
 extern "C" QSettings * bg_QSettings__CONSTRUCT_const_QString_R(const CrystalString organization) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QSettings * bg_QSettings__CONSTRUCT_const_QString_R_const_QString_R(const CrystalString organization, const CrystalString application) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QSettings * bg_QSettings__CONSTRUCT_const_QString_R_const_QString_R_QObject_X(const CrystalString organization, const CrystalString application, QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), parent);
 }
 
 extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Scope_const_QString_R(QSettings::Scope scope, const CrystalString organization) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Scope_const_QString_R_const_QString_R(QSettings::Scope scope, const CrystalString organization, const CrystalString application) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Scope_const_QString_R_const_QString_R_QObject_X(QSettings::Scope scope, const CrystalString organization, const CrystalString application, QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), parent);
 }
 
 extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Format_QSettings__Scope_const_QString_R(QSettings::Format format, QSettings::Scope scope, const CrystalString organization) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(format, scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Format_QSettings__Scope_const_QString_R_const_QString_R(QSettings::Format format, QSettings::Scope scope, const CrystalString organization, const CrystalString application) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(format, scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QSettings * bg_QSettings__CONSTRUCT_QSettings__Format_QSettings__Scope_const_QString_R_const_QString_R_QObject_X(QSettings::Format format, QSettings::Scope scope, const CrystalString organization, const CrystalString application, QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QSettings>(format, scope, ([&]() { auto &&bg_value = (organization); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (application); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), parent);
 }
 
 extern "C" QSettings * bg_QSettings__CONSTRUCT_const_QString_R_QSettings__Format_QObject_X(const CrystalString fileName, QSettings::Format format, QObject * parent) {
@@ -23891,8 +23913,8 @@ extern "C" CrystalString bg_QSharedMemory_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QSharedMemory::tr(s));
 }
 
-extern "C" CrystalString bg_QSharedMemory_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSharedMemory::tr(s, c));
+extern "C" CrystalString bg_QSharedMemory_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSharedMemory::tr(s, c, n));
 }
 
 extern "C" QSharedMemory * bg_QSharedMemory__CONSTRUCT_QObject_X(QObject * parent) {
@@ -24093,8 +24115,8 @@ extern "C" CrystalString bg_QSignalMapper_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QSignalMapper::tr(s));
 }
 
-extern "C" CrystalString bg_QSignalMapper_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSignalMapper::tr(s, c));
+extern "C" CrystalString bg_QSignalMapper_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSignalMapper::tr(s, c, n));
 }
 
 extern "C" QSignalMapper * bg_QSignalMapper__CONSTRUCT_QObject_X(QObject * parent) {
@@ -24307,8 +24329,8 @@ extern "C" CrystalString bg_QSocketNotifier_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QSocketNotifier::tr(s));
 }
 
-extern "C" CrystalString bg_QSocketNotifier_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSocketNotifier::tr(s, c));
+extern "C" CrystalString bg_QSocketNotifier_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSocketNotifier::tr(s, c, n));
 }
 
 extern "C" QSocketNotifier * bg_QSocketNotifier__CONSTRUCT_qintptr_QSocketNotifier__Type_QObject_X(qintptr socket, QSocketNotifier::Type unnamed_arg_1, QObject * parent) {
@@ -24902,8 +24924,8 @@ extern "C" CrystalString bg_QSortFilterProxyModel_tr_STATIC_const_char_X(const c
   return qstring_to_crystal(QSortFilterProxyModel::tr(s));
 }
 
-extern "C" CrystalString bg_QSortFilterProxyModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSortFilterProxyModel::tr(s, c));
+extern "C" CrystalString bg_QSortFilterProxyModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSortFilterProxyModel::tr(s, c, n));
 }
 
 extern "C" QSortFilterProxyModel * bg_QSortFilterProxyModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -25978,8 +26000,8 @@ extern "C" CrystalString bg_QStringListModel_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QStringListModel::tr(s));
 }
 
-extern "C" CrystalString bg_QStringListModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStringListModel::tr(s, c));
+extern "C" CrystalString bg_QStringListModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStringListModel::tr(s, c, n));
 }
 
 extern "C" QStringListModel * bg_QStringListModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -26500,8 +26522,8 @@ extern "C" CrystalString bg_QTemporaryFile_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QTemporaryFile::tr(s));
 }
 
-extern "C" CrystalString bg_QTemporaryFile_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTemporaryFile::tr(s, c));
+extern "C" CrystalString bg_QTemporaryFile_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTemporaryFile::tr(s, c, n));
 }
 
 extern "C" QTemporaryFile * bg_QTemporaryFile__CONSTRUCT_() {
@@ -26784,8 +26806,8 @@ extern "C" CrystalString bg_QThread_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QThread::tr(s));
 }
 
-extern "C" CrystalString bg_QThread_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QThread::tr(s, c));
+extern "C" CrystalString bg_QThread_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QThread::tr(s, c, n));
 }
 
 extern "C" void * bg_QThread_currentThreadId_STATIC_() {
@@ -27046,8 +27068,8 @@ extern "C" CrystalString bg_QThreadPool_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QThreadPool::tr(s));
 }
 
-extern "C" CrystalString bg_QThreadPool_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QThreadPool::tr(s, c));
+extern "C" CrystalString bg_QThreadPool_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QThreadPool::tr(s, c, n));
 }
 
 extern "C" QThreadPool * bg_QThreadPool__CONSTRUCT_QObject_X(QObject * parent) {
@@ -27258,8 +27280,8 @@ extern "C" CrystalString bg_QTimeLine_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTimeLine::tr(s));
 }
 
-extern "C" CrystalString bg_QTimeLine_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTimeLine::tr(s, c));
+extern "C" CrystalString bg_QTimeLine_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTimeLine::tr(s, c, n));
 }
 
 extern "C" QTimeLine * bg_QTimeLine__CONSTRUCT_int_QObject_X(int duration, QObject * parent) {
@@ -27532,8 +27554,8 @@ extern "C" CrystalString bg_QTimer_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTimer::tr(s));
 }
 
-extern "C" CrystalString bg_QTimer_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTimer::tr(s, c));
+extern "C" CrystalString bg_QTimer_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTimer::tr(s, c, n));
 }
 
 extern "C" QTimer * bg_QTimer__CONSTRUCT_QObject_X(QObject * parent) {
@@ -27865,7 +27887,7 @@ struct BgJumptable_QTranslator {
   CrystalProc<void *, const char *> bg_QTranslator_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QTranslator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, const char *, const char *> bg_QTranslator_translate_const_char_X_const_char_X;
-  CrystalProc<CrystalString *, const char *, const char *, const char *> bg_QTranslator_translate_const_char_X_const_char_X_const_char_X;
+  CrystalProc<CrystalString *, const char *, const char *, const char *, int> bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int;
   CrystalProc<bool> bg_QTranslator_isEmpty_;
   CrystalProc<bool, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -27902,6 +27924,15 @@ struct BgInherit_QTranslator : public QTranslator {
       return _self_->bgJump.bg_QTranslator_qt_metacall_QMetaObject__Call_int_void_XX(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
     } else {
       return QTranslator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
+    }
+  }
+  
+  QString translate(const char * context, const char * sourceText, const char * disambiguation, int n) const override {
+    const BgInherit_QTranslator *_self_ = this;
+    if (_self_->bgJump.bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int.isValid()) {
+      return ([&]() { auto &&bg_value = (*_self_->bgJump.bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int(context, sourceText, disambiguation, n)); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      return QTranslator::translate(context, sourceText, disambiguation, n);
     }
   }
   
@@ -27994,8 +28025,8 @@ extern "C" CrystalString bg_QTranslator_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTranslator::tr(s));
 }
 
-extern "C" CrystalString bg_QTranslator_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTranslator::tr(s, c));
+extern "C" CrystalString bg_QTranslator_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTranslator::tr(s, c, n));
 }
 
 extern "C" QTranslator * bg_QTranslator__CONSTRUCT_QObject_X(QObject * parent) {
@@ -28006,8 +28037,8 @@ extern "C" CrystalString bg_QTranslator_translate_const_char_X_const_char_X(QTra
   return qstring_to_crystal(_self_->translate(context, sourceText));
 }
 
-extern "C" CrystalString bg_QTranslator_translate_const_char_X_const_char_X_const_char_X(QTranslator * _self_, const char * context, const char * sourceText, const char * disambiguation) {
-  return qstring_to_crystal(_self_->translate(context, sourceText, disambiguation));
+extern "C" CrystalString bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int(QTranslator * _self_, const char * context, const char * sourceText, const char * disambiguation, int n) {
+  return qstring_to_crystal(_self_->translate(context, sourceText, disambiguation, n));
 }
 
 extern "C" bool bg_QTranslator_isEmpty_(QTranslator * _self_) {
@@ -28064,6 +28095,10 @@ extern "C" bool bg_QTranslator_load_const_uchar_X_int_const_QString_R(QTranslato
 
 extern "C" const QMetaObject * bg_QTranslator_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTranslator::staticMetaObject);
+}
+
+extern "C" CrystalString bg_QTranslator_translate_SUPER_const_char_X_const_char_X_const_char_X_int(QTranslator * _self_, const char * context, const char * sourceText, const char * disambiguation, int n) {
+  return qstring_to_crystal(_self_->QTranslator::translate(context, sourceText, disambiguation, n));
 }
 
 extern "C" bool bg_QTranslator_isEmpty_SUPER_(QTranslator * _self_) {
@@ -28595,8 +28630,8 @@ extern "C" CrystalString bg_QTransposeProxyModel_tr_STATIC_const_char_X(const ch
   return qstring_to_crystal(QTransposeProxyModel::tr(s));
 }
 
-extern "C" CrystalString bg_QTransposeProxyModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTransposeProxyModel::tr(s, c));
+extern "C" CrystalString bg_QTransposeProxyModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTransposeProxyModel::tr(s, c, n));
 }
 
 extern "C" QTransposeProxyModel * bg_QTransposeProxyModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -31270,16 +31305,16 @@ extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModi
   return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers);
 }
 
-extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModifiers_const_QString_R(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const CrystalString text) {
-  return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModifiers_const_QString_R_bool_ushort(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, const CrystalString text, bool autorep, ushort count) {
+  return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), autorep, count);
 }
 
 extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModifiers_quint32_quint32_quint32(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers) {
   return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers);
 }
 
-extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModifiers_quint32_quint32_quint32_const_QString_R(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const CrystalString text) {
-  return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QKeyEvent * bg_QKeyEvent__CONSTRUCT_QEvent__Type_int_Qt__KeyboardModifiers_quint32_quint32_quint32_const_QString_R_bool_ushort(QEvent::Type type, int key, Qt::KeyboardModifiers modifiers, quint32 nativeScanCode, quint32 nativeVirtualKey, quint32 nativeModifiers, const CrystalString text, bool autorep, ushort count) {
+  return new (UseGC) CrystalGCWrapper<QKeyEvent>(type, key, modifiers, nativeScanCode, nativeVirtualKey, nativeModifiers, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), autorep, count);
 }
 
 extern "C" int bg_QKeyEvent_key_(QKeyEvent * _self_) {
@@ -34474,16 +34509,16 @@ extern "C" bool bg_QImage_save_const_QString_R(QImage * _self_, const CrystalStr
   return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" bool bg_QImage_save_const_QString_R_const_char_X(QImage * _self_, const CrystalString fileName, const char * format) {
-  return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), format);
+extern "C" bool bg_QImage_save_const_QString_R_const_char_X_int(QImage * _self_, const CrystalString fileName, const char * format, int quality) {
+  return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), format, quality);
 }
 
 extern "C" bool bg_QImage_save_QIODevice_X(QImage * _self_, QIODevice * device) {
   return _self_->save(device);
 }
 
-extern "C" bool bg_QImage_save_QIODevice_X_const_char_X(QImage * _self_, QIODevice * device, const char * format) {
-  return _self_->save(device, format);
+extern "C" bool bg_QImage_save_QIODevice_X_const_char_X_int(QImage * _self_, QIODevice * device, const char * format, int quality) {
+  return _self_->save(device, format, quality);
 }
 
 extern "C" QImage * bg_QImage_fromData_STATIC_const_uchar_X_int(const uchar * data, int size) {
@@ -34802,16 +34837,16 @@ extern "C" bool bg_QPixmap_save_const_QString_R(QPixmap * _self_, const CrystalS
   return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" bool bg_QPixmap_save_const_QString_R_const_char_X(QPixmap * _self_, const CrystalString fileName, const char * format) {
-  return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), format);
+extern "C" bool bg_QPixmap_save_const_QString_R_const_char_X_int(QPixmap * _self_, const CrystalString fileName, const char * format, int quality) {
+  return _self_->save(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), format, quality);
 }
 
 extern "C" bool bg_QPixmap_save_QIODevice_X(QPixmap * _self_, QIODevice * device) {
   return _self_->save(device);
 }
 
-extern "C" bool bg_QPixmap_save_QIODevice_X_const_char_X(QPixmap * _self_, QIODevice * device, const char * format) {
-  return _self_->save(device, format);
+extern "C" bool bg_QPixmap_save_QIODevice_X_const_char_X_int(QPixmap * _self_, QIODevice * device, const char * format, int quality) {
+  return _self_->save(device, format, quality);
 }
 
 extern "C" bool bg_QPixmap_convertFromImage_const_QImage_R(QPixmap * _self_, const QImage & img) {
@@ -37898,8 +37933,8 @@ extern "C" CrystalString bg_QTextDocument_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QTextDocument::tr(s));
 }
 
-extern "C" CrystalString bg_QTextDocument_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextDocument::tr(s, c));
+extern "C" CrystalString bg_QTextDocument_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextDocument::tr(s, c, n));
 }
 
 extern "C" QTextDocument * bg_QTextDocument__CONSTRUCT_QObject_X(QObject * parent) {
@@ -38796,8 +38831,8 @@ extern "C" CrystalString bg_QAbstractTextDocumentLayout_tr_STATIC_const_char_X(c
   return qstring_to_crystal(QAbstractTextDocumentLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractTextDocumentLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractTextDocumentLayout::tr(s, c));
+extern "C" CrystalString bg_QAbstractTextDocumentLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractTextDocumentLayout::tr(s, c, n));
 }
 
 extern "C" QAbstractTextDocumentLayout * bg_QAbstractTextDocumentLayout__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -39398,16 +39433,16 @@ extern "C" void bg_QIcon_paint_QPainter_X_const_QRect_R(QIcon * _self_, QPainter
   _self_->paint(painter, rect);
 }
 
-extern "C" void bg_QIcon_paint_QPainter_X_const_QRect_R_Qt__Alignment(QIcon * _self_, QPainter * painter, const QRect rect, Qt::Alignment alignment) {
-  _self_->paint(painter, rect, alignment);
+extern "C" void bg_QIcon_paint_QPainter_X_const_QRect_R_Qt__Alignment_QIcon__Mode_QIcon__State(QIcon * _self_, QPainter * painter, const QRect rect, Qt::Alignment alignment, QIcon::Mode mode, QIcon::State state) {
+  _self_->paint(painter, rect, alignment, mode, state);
 }
 
 extern "C" void bg_QIcon_paint_QPainter_X_int_int_int_int(QIcon * _self_, QPainter * painter, int x, int y, int w, int h) {
   _self_->paint(painter, x, y, w, h);
 }
 
-extern "C" void bg_QIcon_paint_QPainter_X_int_int_int_int_Qt__Alignment(QIcon * _self_, QPainter * painter, int x, int y, int w, int h, Qt::Alignment alignment) {
-  _self_->paint(painter, x, y, w, h, alignment);
+extern "C" void bg_QIcon_paint_QPainter_X_int_int_int_int_Qt__Alignment_QIcon__Mode_QIcon__State(QIcon * _self_, QPainter * painter, int x, int y, int w, int h, Qt::Alignment alignment, QIcon::Mode mode, QIcon::State state) {
+  _self_->paint(painter, x, y, w, h, alignment, mode, state);
 }
 
 extern "C" bool bg_QIcon_isNull_(QIcon * _self_) {
@@ -39434,8 +39469,8 @@ extern "C" void bg_QIcon_addFile_const_QString_R(QIcon * _self_, const CrystalSt
   _self_->addFile(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" void bg_QIcon_addFile_const_QString_R_const_QSize_R(QIcon * _self_, const CrystalString fileName, const QSize size) {
-  _self_->addFile(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), size);
+extern "C" void bg_QIcon_addFile_const_QString_R_const_QSize_R_QIcon__Mode_QIcon__State(QIcon * _self_, const CrystalString fileName, const QSize size, QIcon::Mode mode, QIcon::State state) {
+  _self_->addFile(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), size, mode, state);
 }
 
 extern "C" Container_QList_QSize_ * bg_QIcon_availableSizes_QIcon__Mode_QIcon__State(QIcon * _self_, QIcon::Mode mode, QIcon::State state) {
@@ -39924,8 +39959,8 @@ extern "C" CrystalString bg_QWindow_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QWindow::tr(s));
 }
 
-extern "C" CrystalString bg_QWindow_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QWindow::tr(s, c));
+extern "C" CrystalString bg_QWindow_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QWindow::tr(s, c, n));
 }
 
 extern "C" QWindow * bg_QWindow__CONSTRUCT_QScreen_X(QScreen * screen) {
@@ -40921,8 +40956,8 @@ extern "C" CrystalString bg_QClipboard_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QClipboard::tr(s));
 }
 
-extern "C" CrystalString bg_QClipboard_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QClipboard::tr(s, c));
+extern "C" CrystalString bg_QClipboard_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QClipboard::tr(s, c, n));
 }
 
 extern "C" void bg_QClipboard_clear_QClipboard__Mode(QClipboard * _self_, QClipboard::Mode mode) {
@@ -40951,6 +40986,13 @@ extern "C" bool bg_QClipboard_ownsFindBuffer_(QClipboard * _self_) {
 
 extern "C" CrystalString bg_QClipboard_text_QClipboard__Mode(QClipboard * _self_, QClipboard::Mode mode) {
   return qstring_to_crystal(_self_->text(mode));
+}
+
+extern "C" CrystalString bg_QClipboard_text_QString_R_QClipboard__Mode(QClipboard * _self_, CrystalString * subtype, QClipboard::Mode mode) {
+  QString subtype_ = ([&]() { auto &&bg_value = (*subtype); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  CrystalString _result_ = qstring_to_crystal(_self_->text(subtype_, mode));
+  *subtype = qstring_to_crystal(std::move(subtype_));
+  return _result_;
 }
 
 extern "C" void bg_QClipboard_setText_const_QString_R_QClipboard__Mode(QClipboard * _self_, const CrystalString unnamed_arg_0, QClipboard::Mode mode) {
@@ -41279,8 +41321,8 @@ extern "C" CrystalString bg_QDrag_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QDrag::tr(s));
 }
 
-extern "C" CrystalString bg_QDrag_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDrag::tr(s, c));
+extern "C" CrystalString bg_QDrag_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDrag::tr(s, c, n));
 }
 
 extern "C" QDrag * bg_QDrag__CONSTRUCT_QObject_X(QObject * dragSource) {
@@ -41759,8 +41801,8 @@ extern "C" CrystalString bg_QInputMethod_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QInputMethod::tr(s));
 }
 
-extern "C" CrystalString bg_QInputMethod_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QInputMethod::tr(s, c));
+extern "C" CrystalString bg_QInputMethod_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QInputMethod::tr(s, c, n));
 }
 
 extern "C" QTransform * bg_QInputMethod_inputItemTransform_(QInputMethod * _self_) {
@@ -42053,8 +42095,8 @@ extern "C" CrystalString bg_QGuiApplication_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QGuiApplication::tr(s));
 }
 
-extern "C" CrystalString bg_QGuiApplication_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGuiApplication::tr(s, c));
+extern "C" CrystalString bg_QGuiApplication_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGuiApplication::tr(s, c, n));
 }
 
 extern "C" QGuiApplication * bg_QGuiApplication__CONSTRUCT_int_R_char_XX_int(int & argc, char ** argv, int unnamed_arg_2) {
@@ -42703,8 +42745,8 @@ extern "C" CrystalString bg_QImageReader_tr_STATIC_const_char_X(const char * sou
   return qstring_to_crystal(QImageReader::tr(sourceText));
 }
 
-extern "C" CrystalString bg_QImageReader_tr_STATIC_const_char_X_const_char_X(const char * sourceText, const char * disambiguation) {
-  return qstring_to_crystal(QImageReader::tr(sourceText, disambiguation));
+extern "C" CrystalString bg_QImageReader_tr_STATIC_const_char_X_const_char_X_int(const char * sourceText, const char * disambiguation, int n) {
+  return qstring_to_crystal(QImageReader::tr(sourceText, disambiguation, n));
 }
 
 extern "C" QImageReader * bg_QImageReader__CONSTRUCT_() {
@@ -42923,8 +42965,8 @@ extern "C" CrystalString bg_QImageWriter_tr_STATIC_const_char_X(const char * sou
   return qstring_to_crystal(QImageWriter::tr(sourceText));
 }
 
-extern "C" CrystalString bg_QImageWriter_tr_STATIC_const_char_X_const_char_X(const char * sourceText, const char * disambiguation) {
-  return qstring_to_crystal(QImageWriter::tr(sourceText, disambiguation));
+extern "C" CrystalString bg_QImageWriter_tr_STATIC_const_char_X_const_char_X_int(const char * sourceText, const char * disambiguation, int n) {
+  return qstring_to_crystal(QImageWriter::tr(sourceText, disambiguation, n));
 }
 
 extern "C" QImageWriter * bg_QImageWriter__CONSTRUCT_() {
@@ -44065,8 +44107,8 @@ extern "C" CrystalString bg_QMovie_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMovie::tr(s));
 }
 
-extern "C" CrystalString bg_QMovie_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMovie::tr(s, c));
+extern "C" CrystalString bg_QMovie_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMovie::tr(s, c, n));
 }
 
 extern "C" QMovie * bg_QMovie__CONSTRUCT_QObject_X(QObject * parent) {
@@ -44077,16 +44119,16 @@ extern "C" QMovie * bg_QMovie__CONSTRUCT_QIODevice_X(QIODevice * device) {
   return bindgen_depends_on(new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(device), {device});
 }
 
-extern "C" QMovie * bg_QMovie__CONSTRUCT_QIODevice_X_const_QByteArray_R(QIODevice * device, const CrystalString format) {
-  return bindgen_depends_on(new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(device, ([&]() { auto &&bg_value = (format); return QByteArray(bg_value.ptr, bg_value.size); }())), {device});
+extern "C" QMovie * bg_QMovie__CONSTRUCT_QIODevice_X_const_QByteArray_R_QObject_X(QIODevice * device, const CrystalString format, QObject * parent) {
+  return bindgen_depends_on(new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(device, ([&]() { auto &&bg_value = (format); return QByteArray(bg_value.ptr, bg_value.size); }()), parent), {device});
 }
 
 extern "C" QMovie * bg_QMovie__CONSTRUCT_const_QString_R(const CrystalString fileName) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMovie * bg_QMovie__CONSTRUCT_const_QString_R_const_QByteArray_R(const CrystalString fileName, const CrystalString format) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (format); return QByteArray(bg_value.ptr, bg_value.size); }()));
+extern "C" QMovie * bg_QMovie__CONSTRUCT_const_QString_R_const_QByteArray_R_QObject_X(const CrystalString fileName, const CrystalString format, QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QMovie>(([&]() { auto &&bg_value = (fileName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (format); return QByteArray(bg_value.ptr, bg_value.size); }()), parent);
 }
 
 extern "C" Container_QList_QByteArray_ * bg_QMovie_supportedFormats_STATIC_() {
@@ -44429,8 +44471,8 @@ extern "C" CrystalString bg_QOffscreenSurface_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QOffscreenSurface::tr(s));
 }
 
-extern "C" CrystalString bg_QOffscreenSurface_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QOffscreenSurface::tr(s, c));
+extern "C" CrystalString bg_QOffscreenSurface_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QOffscreenSurface::tr(s, c, n));
 }
 
 extern "C" QOffscreenSurface * bg_QOffscreenSurface__CONSTRUCT_QScreen_X_QObject_X(QScreen * screen, QObject * parent) {
@@ -44925,8 +44967,8 @@ extern "C" CrystalString bg_QPaintDeviceWindow_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QPaintDeviceWindow::tr(s));
 }
 
-extern "C" CrystalString bg_QPaintDeviceWindow_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPaintDeviceWindow::tr(s, c));
+extern "C" CrystalString bg_QPaintDeviceWindow_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPaintDeviceWindow::tr(s, c, n));
 }
 
 extern "C" void bg_QPaintDeviceWindow_update_const_QRect_R(QPaintDeviceWindow * _self_, const QRect rect) {
@@ -45077,16 +45119,16 @@ extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSize_R(const QSize pointSi
   return new (UseGC) CrystalGCWrapper<QPageSize>(pointSize);
 }
 
-extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSize_R_const_QString_R(const QSize pointSize, const CrystalString name) {
-  return new (UseGC) CrystalGCWrapper<QPageSize>(pointSize, ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSize_R_const_QString_R_QPageSize__SizeMatchPolicy(const QSize pointSize, const CrystalString name, QPageSize::SizeMatchPolicy matchPolicy) {
+  return new (UseGC) CrystalGCWrapper<QPageSize>(pointSize, ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), matchPolicy);
 }
 
 extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSizeF_R_QPageSize__Unit(const QSizeF size, QPageSize::Unit units) {
   return new (UseGC) CrystalGCWrapper<QPageSize>(size, units);
 }
 
-extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSizeF_R_QPageSize__Unit_const_QString_R(const QSizeF size, QPageSize::Unit units, const CrystalString name) {
-  return new (UseGC) CrystalGCWrapper<QPageSize>(size, units, ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" QPageSize * bg_QPageSize__CONSTRUCT_const_QSizeF_R_QPageSize__Unit_const_QString_R_QPageSize__SizeMatchPolicy(const QSizeF size, QPageSize::Unit units, const CrystalString name, QPageSize::SizeMatchPolicy matchPolicy) {
+  return new (UseGC) CrystalGCWrapper<QPageSize>(size, units, ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), matchPolicy);
 }
 
 extern "C" QPageSize * bg_QPageSize__COPY_const_QPageSize_R(const QPageSize & other) {
@@ -46969,8 +47011,8 @@ extern "C" CrystalString bg_QPdfWriter_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QPdfWriter::tr(s));
 }
 
-extern "C" CrystalString bg_QPdfWriter_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPdfWriter::tr(s, c));
+extern "C" CrystalString bg_QPdfWriter_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPdfWriter::tr(s, c, n));
 }
 
 extern "C" QPdfWriter * bg_QPdfWriter__CONSTRUCT_const_QString_R(const CrystalString filename) {
@@ -47742,8 +47784,8 @@ extern "C" CrystalString bg_QRasterWindow_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QRasterWindow::tr(s));
 }
 
-extern "C" CrystalString bg_QRasterWindow_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QRasterWindow::tr(s, c));
+extern "C" CrystalString bg_QRasterWindow_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QRasterWindow::tr(s, c, n));
 }
 
 extern "C" QRasterWindow * bg_QRasterWindow__CONSTRUCT_QWindow_X(QWindow * parent) {
@@ -47888,8 +47930,8 @@ extern "C" CrystalString bg_QScreen_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QScreen::tr(s));
 }
 
-extern "C" CrystalString bg_QScreen_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QScreen::tr(s, c));
+extern "C" CrystalString bg_QScreen_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QScreen::tr(s, c, n));
 }
 
 extern "C" QPlatformScreen * bg_QScreen_handle_(QScreen * _self_) {
@@ -49056,8 +49098,8 @@ extern "C" CrystalString bg_QStandardItemModel_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QStandardItemModel::tr(s));
 }
 
-extern "C" CrystalString bg_QStandardItemModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStandardItemModel::tr(s, c));
+extern "C" CrystalString bg_QStandardItemModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStandardItemModel::tr(s, c, n));
 }
 
 extern "C" QStandardItemModel * bg_QStandardItemModel__CONSTRUCT_QObject_X(QObject * parent) {
@@ -49320,8 +49362,8 @@ extern "C" Container_QList_QStandardItem_X_ * bg_QStandardItemModel_findItems_co
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QStandardItem_X_>()) Container_QList_QStandardItem_X_ (_self_->findItems(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
-extern "C" Container_QList_QStandardItem_X_ * bg_QStandardItemModel_findItems_const_QString_R_Qt__MatchFlags(QStandardItemModel * _self_, const CrystalString text, Qt::MatchFlags flags) {
-  return new (UseGC, bindgen_gc_finalizer<Container_QList_QStandardItem_X_>()) Container_QList_QStandardItem_X_ (_self_->findItems(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), flags));
+extern "C" Container_QList_QStandardItem_X_ * bg_QStandardItemModel_findItems_const_QString_R_Qt__MatchFlags_int(QStandardItemModel * _self_, const CrystalString text, Qt::MatchFlags flags, int column) {
+  return new (UseGC, bindgen_gc_finalizer<Container_QList_QStandardItem_X_>()) Container_QList_QStandardItem_X_ (_self_->findItems(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), flags, column));
 }
 
 extern "C" int bg_QStandardItemModel_sortRole_(QStandardItemModel * _self_) {
@@ -49658,8 +49700,8 @@ extern "C" CrystalString bg_QStyleHints_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QStyleHints::tr(s));
 }
 
-extern "C" CrystalString bg_QStyleHints_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStyleHints::tr(s, c));
+extern "C" CrystalString bg_QStyleHints_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStyleHints::tr(s, c, n));
 }
 
 extern "C" void bg_QStyleHints_setMouseDoubleClickInterval_int(QStyleHints * _self_, int mouseDoubleClickInterval) {
@@ -50016,8 +50058,8 @@ extern "C" CrystalString bg_QTextObject_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTextObject::tr(s));
 }
 
-extern "C" CrystalString bg_QTextObject_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextObject::tr(s, c));
+extern "C" CrystalString bg_QTextObject_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextObject::tr(s, c, n));
 }
 
 extern "C" QTextObject * bg_QTextObject__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -50208,8 +50250,8 @@ extern "C" CrystalString bg_QTextBlockGroup_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QTextBlockGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QTextBlockGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextBlockGroup::tr(s, c));
+extern "C" CrystalString bg_QTextBlockGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextBlockGroup::tr(s, c, n));
 }
 
 extern "C" QTextBlockGroup * bg_QTextBlockGroup__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -50378,8 +50420,8 @@ extern "C" CrystalString bg_QTextFrame_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTextFrame::tr(s));
 }
 
-extern "C" CrystalString bg_QTextFrame_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextFrame::tr(s, c));
+extern "C" CrystalString bg_QTextFrame_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextFrame::tr(s, c, n));
 }
 
 extern "C" QTextFrame * bg_QTextFrame__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -50886,8 +50928,8 @@ extern "C" CrystalString bg_QSyntaxHighlighter_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QSyntaxHighlighter::tr(s));
 }
 
-extern "C" CrystalString bg_QSyntaxHighlighter_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSyntaxHighlighter::tr(s, c));
+extern "C" CrystalString bg_QSyntaxHighlighter_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSyntaxHighlighter::tr(s, c, n));
 }
 
 extern "C" QSyntaxHighlighter * bg_QSyntaxHighlighter__CONSTRUCT_QObject_X(QObject * parent) {
@@ -51226,8 +51268,8 @@ extern "C" CrystalString bg_QTextList_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTextList::tr(s));
 }
 
-extern "C" CrystalString bg_QTextList_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextList::tr(s, c));
+extern "C" CrystalString bg_QTextList_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextList::tr(s, c, n));
 }
 
 extern "C" QTextList * bg_QTextList__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -51476,8 +51518,8 @@ extern "C" CrystalString bg_QTextTable_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTextTable::tr(s));
 }
 
-extern "C" CrystalString bg_QTextTable_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextTable::tr(s, c));
+extern "C" CrystalString bg_QTextTable_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextTable::tr(s, c, n));
 }
 
 extern "C" QTextTable * bg_QTextTable__CONSTRUCT_QTextDocument_X(QTextDocument * doc) {
@@ -51568,6 +51610,139 @@ extern "C" void bg_BgInherit_QTextTable_JUMPTABLE_BgJumptable_QTextTable_R(BgInh
   _self_->bgJump = (table);
 }
 
+struct BgJumptable_QValidator {
+  CrystalProc<const QMetaObject *> bg_QValidator_metaObject_;
+  CrystalProc<void *, const char *> bg_QValidator_qt_metacast_const_char_X;
+  CrystalProc<int, QMetaObject::Call, int, void **> bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QValidator_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QValidator_fixup_QString_R;
+  CrystalProc<bool, QEvent *> bg_QObject_event_QEvent_X;
+  CrystalProc<bool, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
+  CrystalProc<void, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
+  CrystalProc<void, QChildEvent *> bg_QObject_childEvent_QChildEvent_X;
+  CrystalProc<void, QEvent *> bg_QObject_customEvent_QEvent_X;
+  CrystalProc<void, const QMetaMethod *> bg_QObject_connectNotify_const_QMetaMethod_R;
+  CrystalProc<void, const QMetaMethod *> bg_QObject_disconnectNotify_const_QMetaMethod_R;
+};
+struct BgInherit_QValidator : public QValidator {
+  using QValidator::QValidator;
+  BgJumptable_QValidator bgJump;
+  const QMetaObject * metaObject() const override {
+    const BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_metaObject_.isValid()) {
+      return _self_->bgJump.bg_QValidator_metaObject_();
+    } else {
+      return QValidator::metaObject();
+    }
+  }
+  
+  void * qt_metacast(const char * unnamed_arg_0) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_qt_metacast_const_char_X.isValid()) {
+      return _self_->bgJump.bg_QValidator_qt_metacast_const_char_X(unnamed_arg_0);
+    } else {
+      return QValidator::qt_metacast(unnamed_arg_0);
+    }
+  }
+  
+  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX.isValid()) {
+      return _self_->bgJump.bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
+    } else {
+      return QValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
+    }
+  }
+  
+  QValidator::State validate(QString & unnamed_arg_0, int & unnamed_arg_1) const override {
+    const BgInherit_QValidator *_self_ = this;
+    if (bindgen_likely(_self_->bgJump.bg_QValidator_validate_QString_R_int_R.isValid())) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      int unnamed_arg_1_ = unnamed_arg_1;
+      QValidator::State _result_ = _self_->bgJump.bg_QValidator_validate_QString_R_int_R(&unnamed_arg_0_, &unnamed_arg_1_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      unnamed_arg_1 = unnamed_arg_1_;
+      return _result_;
+    } else {
+      bindgen_fatal_panic("No implementation for pure method QValidator::validate");
+    }
+  }
+  
+  void fixup(QString & unnamed_arg_0) const override {
+    const BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_fixup_QString_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      _self_->bgJump.bg_QValidator_fixup_QString_R(&unnamed_arg_0_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QValidator::fixup(unnamed_arg_0);
+    }
+  }
+  
+  bool event(QEvent * event) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_event_QEvent_X.isValid()) {
+      return _self_->bgJump.bg_QObject_event_QEvent_X(event);
+    } else {
+      return QValidator::event(event);
+    }
+  }
+  
+  bool eventFilter(QObject * watched, QEvent * event) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_eventFilter_QObject_X_QEvent_X.isValid()) {
+      return _self_->bgJump.bg_QObject_eventFilter_QObject_X_QEvent_X(watched, event);
+    } else {
+      return QValidator::eventFilter(watched, event);
+    }
+  }
+  
+  void timerEvent(QTimerEvent * event) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_timerEvent_QTimerEvent_X.isValid()) {
+      _self_->bgJump.bg_QObject_timerEvent_QTimerEvent_X(event);
+    } else {
+      QValidator::timerEvent(event);
+    }
+  }
+  
+  void childEvent(QChildEvent * event) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_childEvent_QChildEvent_X.isValid()) {
+      _self_->bgJump.bg_QObject_childEvent_QChildEvent_X(event);
+    } else {
+      QValidator::childEvent(event);
+    }
+  }
+  
+  void customEvent(QEvent * event) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_customEvent_QEvent_X.isValid()) {
+      _self_->bgJump.bg_QObject_customEvent_QEvent_X(event);
+    } else {
+      QValidator::customEvent(event);
+    }
+  }
+  
+  void connectNotify(const QMetaMethod & signal) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_connectNotify_const_QMetaMethod_R.isValid()) {
+      _self_->bgJump.bg_QObject_connectNotify_const_QMetaMethod_R(&(signal));
+    } else {
+      QValidator::connectNotify(signal);
+    }
+  }
+  
+  void disconnectNotify(const QMetaMethod & signal) override {
+    BgInherit_QValidator *_self_ = this;
+    if (_self_->bgJump.bg_QObject_disconnectNotify_const_QMetaMethod_R.isValid()) {
+      _self_->bgJump.bg_QObject_disconnectNotify_const_QMetaMethod_R(&(signal));
+    } else {
+      QValidator::disconnectNotify(signal);
+    }
+  }
+  
+};
 extern "C" const QMetaObject * bg_QValidator_metaObject_(QValidator * _self_) {
   return _self_->metaObject();
 }
@@ -51584,8 +51759,12 @@ extern "C" CrystalString bg_QValidator_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QValidator::tr(s));
 }
 
-extern "C" CrystalString bg_QValidator_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QValidator::tr(s, c));
+extern "C" CrystalString bg_QValidator_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QValidator::tr(s, c, n));
+}
+
+extern "C" QValidator * bg_QValidator__CONSTRUCT_QObject_X(QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QValidator>(parent);
 }
 
 extern "C" void bg_QValidator_setLocale_const_QLocale_R(QValidator * _self_, const QLocale & locale) {
@@ -51596,8 +51775,25 @@ extern "C" QLocale * bg_QValidator_locale_(QValidator * _self_) {
   return new (UseGC, bindgen_gc_finalizer<QLocale>()) QLocale (_self_->locale());
 }
 
+extern "C" QValidator::State bg_QValidator_validate_QString_R_int_R(QValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
+}
+
+extern "C" void bg_QValidator_fixup_QString_R(QValidator * _self_, CrystalString * unnamed_arg_0) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(unnamed_arg_0_);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+}
+
 extern "C" void bg_QValidator_changed_(QValidator * _self_) {
   _self_->changed();
+}
+
+extern "C" QValidator * bg_QValidator__CONSTRUCT_QValidatorPrivate_R_QObject_X(QValidatorPrivate & d, QObject * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QValidator>(d, parent);
 }
 
 extern "C" const QMetaObject * bg_QValidator_staticMetaObject_STATIC_GETTER_() {
@@ -51608,10 +51804,22 @@ extern "C" QMetaObject::Connection * bg_QValidator_CONNECT_changed_Qt__Connectio
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QValidator::*)())&QValidator::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
+extern "C" void bg_QValidator_fixup_SUPER_QString_R(QValidator * _self_, CrystalString * unnamed_arg_0) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QValidator::fixup(unnamed_arg_0_);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+}
+
+extern "C" void bg_BgInherit_QValidator_JUMPTABLE_BgJumptable_QValidator_R(BgInherit_QValidator * _self_, const BgJumptable_QValidator & table) {
+  _self_->bgJump = (table);
+}
+
 struct BgJumptable_QIntValidator {
   CrystalProc<const QMetaObject *> bg_QIntValidator_metaObject_;
   CrystalProc<void *, const char *> bg_QIntValidator_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QIntValidator_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QIntValidator_fixup_QString_R;
   CrystalProc<void, int, int> bg_QIntValidator_setRange_int_int;
   CrystalProc<bool, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -51648,6 +51856,31 @@ struct BgInherit_QIntValidator : public QIntValidator {
       return _self_->bgJump.bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
     } else {
       return QIntValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
+    }
+  }
+  
+  QValidator::State validate(QString & unnamed_arg_0, int & unnamed_arg_1) const override {
+    const BgInherit_QIntValidator *_self_ = this;
+    if (_self_->bgJump.bg_QIntValidator_validate_QString_R_int_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      int unnamed_arg_1_ = unnamed_arg_1;
+      QValidator::State _result_ = _self_->bgJump.bg_QIntValidator_validate_QString_R_int_R(&unnamed_arg_0_, &unnamed_arg_1_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      unnamed_arg_1 = unnamed_arg_1_;
+      return _result_;
+    } else {
+      return QIntValidator::validate(unnamed_arg_0, unnamed_arg_1);
+    }
+  }
+  
+  void fixup(QString & unnamed_arg_0) const override {
+    const BgInherit_QIntValidator *_self_ = this;
+    if (_self_->bgJump.bg_QIntValidator_fixup_QString_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      _self_->bgJump.bg_QIntValidator_fixup_QString_R(&unnamed_arg_0_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QIntValidator::fixup(unnamed_arg_0);
     }
   }
   
@@ -51740,8 +51973,8 @@ extern "C" CrystalString bg_QIntValidator_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QIntValidator::tr(s));
 }
 
-extern "C" CrystalString bg_QIntValidator_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QIntValidator::tr(s, c));
+extern "C" CrystalString bg_QIntValidator_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QIntValidator::tr(s, c, n));
 }
 
 extern "C" QIntValidator * bg_QIntValidator__CONSTRUCT_QObject_X(QObject * parent) {
@@ -51750,6 +51983,19 @@ extern "C" QIntValidator * bg_QIntValidator__CONSTRUCT_QObject_X(QObject * paren
 
 extern "C" QIntValidator * bg_QIntValidator__CONSTRUCT_int_int_QObject_X(int bottom, int top, QObject * parent) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QIntValidator>(bottom, top, parent);
+}
+
+extern "C" QValidator::State bg_QIntValidator_validate_QString_R_int_R(QIntValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
+}
+
+extern "C" void bg_QIntValidator_fixup_QString_R(QIntValidator * _self_, CrystalString * unnamed_arg_0) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(unnamed_arg_0_);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
 }
 
 extern "C" void bg_QIntValidator_setBottom_int(QIntValidator * _self_, int unnamed_arg_0) {
@@ -51792,6 +52038,19 @@ extern "C" QMetaObject::Connection * bg_QIntValidator_CONNECT_topChanged_Qt__Con
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIntValidator::*)(int))&QIntValidator::topChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int top){ _proc_(top); }, type));
 }
 
+extern "C" QValidator::State bg_QIntValidator_validate_SUPER_QString_R_int_R(QIntValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QIntValidator::validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
+}
+
+extern "C" void bg_QIntValidator_fixup_SUPER_QString_R(QIntValidator * _self_, CrystalString * unnamed_arg_0) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QIntValidator::fixup(unnamed_arg_0_);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+}
+
 extern "C" void bg_QIntValidator_setRange_SUPER_int_int(QIntValidator * _self_, int bottom, int top) {
   _self_->QIntValidator::setRange(bottom, top);
 }
@@ -51804,7 +52063,9 @@ struct BgJumptable_QDoubleValidator {
   CrystalProc<const QMetaObject *> bg_QDoubleValidator_metaObject_;
   CrystalProc<void *, const char *> bg_QDoubleValidator_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QDoubleValidator_qt_metacall_QMetaObject__Call_int_void_XX;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QDoubleValidator_validate_QString_R_int_R;
   CrystalProc<void, double, double, int> bg_QDoubleValidator_setRange_double_double_int;
+  CrystalProc<void, CrystalString *> bg_QValidator_fixup_QString_R;
   CrystalProc<bool, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -51843,12 +52104,37 @@ struct BgInherit_QDoubleValidator : public QDoubleValidator {
     }
   }
   
+  QValidator::State validate(QString & unnamed_arg_0, int & unnamed_arg_1) const override {
+    const BgInherit_QDoubleValidator *_self_ = this;
+    if (_self_->bgJump.bg_QDoubleValidator_validate_QString_R_int_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      int unnamed_arg_1_ = unnamed_arg_1;
+      QValidator::State _result_ = _self_->bgJump.bg_QDoubleValidator_validate_QString_R_int_R(&unnamed_arg_0_, &unnamed_arg_1_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      unnamed_arg_1 = unnamed_arg_1_;
+      return _result_;
+    } else {
+      return QDoubleValidator::validate(unnamed_arg_0, unnamed_arg_1);
+    }
+  }
+  
   void setRange(double bottom, double top, int decimals) override {
     BgInherit_QDoubleValidator *_self_ = this;
     if (_self_->bgJump.bg_QDoubleValidator_setRange_double_double_int.isValid()) {
       _self_->bgJump.bg_QDoubleValidator_setRange_double_double_int(bottom, top, decimals);
     } else {
       QDoubleValidator::setRange(bottom, top, decimals);
+    }
+  }
+  
+  void fixup(QString & unnamed_arg_0) const override {
+    const BgInherit_QDoubleValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_fixup_QString_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      _self_->bgJump.bg_QValidator_fixup_QString_R(&unnamed_arg_0_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QDoubleValidator::fixup(unnamed_arg_0);
     }
   }
   
@@ -51932,8 +52218,8 @@ extern "C" CrystalString bg_QDoubleValidator_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QDoubleValidator::tr(s));
 }
 
-extern "C" CrystalString bg_QDoubleValidator_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDoubleValidator::tr(s, c));
+extern "C" CrystalString bg_QDoubleValidator_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDoubleValidator::tr(s, c, n));
 }
 
 extern "C" QDoubleValidator * bg_QDoubleValidator__CONSTRUCT_QObject_X(QObject * parent) {
@@ -51942,6 +52228,13 @@ extern "C" QDoubleValidator * bg_QDoubleValidator__CONSTRUCT_QObject_X(QObject *
 
 extern "C" QDoubleValidator * bg_QDoubleValidator__CONSTRUCT_double_double_int_QObject_X(double bottom, double top, int decimals, QObject * parent) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QDoubleValidator>(bottom, top, decimals, parent);
+}
+
+extern "C" QValidator::State bg_QDoubleValidator_validate_QString_R_int_R(QDoubleValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
 }
 
 extern "C" void bg_QDoubleValidator_setRange_double_double_int(QDoubleValidator * _self_, double bottom, double top, int decimals) {
@@ -52016,6 +52309,13 @@ extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_notationChanged
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(QDoubleValidator::Notation))&QDoubleValidator::notationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QDoubleValidator::Notation notation){ _proc_(notation); }, type));
 }
 
+extern "C" QValidator::State bg_QDoubleValidator_validate_SUPER_QString_R_int_R(QDoubleValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QDoubleValidator::validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
+}
+
 extern "C" void bg_QDoubleValidator_setRange_SUPER_double_double_int(QDoubleValidator * _self_, double bottom, double top, int decimals) {
   _self_->QDoubleValidator::setRange(bottom, top, decimals);
 }
@@ -52028,6 +52328,8 @@ struct BgJumptable_QRegularExpressionValidator {
   CrystalProc<const QMetaObject *> bg_QRegularExpressionValidator_metaObject_;
   CrystalProc<void *, const char *> bg_QRegularExpressionValidator_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QRegularExpressionValidator_qt_metacall_QMetaObject__Call_int_void_XX;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QRegularExpressionValidator_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QValidator_fixup_QString_R;
   CrystalProc<bool, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -52063,6 +52365,31 @@ struct BgInherit_QRegularExpressionValidator : public QRegularExpressionValidato
       return _self_->bgJump.bg_QRegularExpressionValidator_qt_metacall_QMetaObject__Call_int_void_XX(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
     } else {
       return QRegularExpressionValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
+    }
+  }
+  
+  QValidator::State validate(QString & unnamed_arg_0, int & unnamed_arg_1) const override {
+    const BgInherit_QRegularExpressionValidator *_self_ = this;
+    if (_self_->bgJump.bg_QRegularExpressionValidator_validate_QString_R_int_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      int unnamed_arg_1_ = unnamed_arg_1;
+      QValidator::State _result_ = _self_->bgJump.bg_QRegularExpressionValidator_validate_QString_R_int_R(&unnamed_arg_0_, &unnamed_arg_1_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      unnamed_arg_1 = unnamed_arg_1_;
+      return _result_;
+    } else {
+      return QRegularExpressionValidator::validate(unnamed_arg_0, unnamed_arg_1);
+    }
+  }
+  
+  void fixup(QString & unnamed_arg_0) const override {
+    const BgInherit_QRegularExpressionValidator *_self_ = this;
+    if (_self_->bgJump.bg_QValidator_fixup_QString_R.isValid()) {
+      CrystalString unnamed_arg_0_ = qstring_to_crystal(unnamed_arg_0);
+      _self_->bgJump.bg_QValidator_fixup_QString_R(&unnamed_arg_0_);
+      unnamed_arg_0 = ([&]() { auto &&bg_value = (unnamed_arg_0_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QRegularExpressionValidator::fixup(unnamed_arg_0);
     }
   }
   
@@ -52146,8 +52473,8 @@ extern "C" CrystalString bg_QRegularExpressionValidator_tr_STATIC_const_char_X(c
   return qstring_to_crystal(QRegularExpressionValidator::tr(s));
 }
 
-extern "C" CrystalString bg_QRegularExpressionValidator_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QRegularExpressionValidator::tr(s, c));
+extern "C" CrystalString bg_QRegularExpressionValidator_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QRegularExpressionValidator::tr(s, c, n));
 }
 
 extern "C" QRegularExpressionValidator * bg_QRegularExpressionValidator__CONSTRUCT_QObject_X(QObject * parent) {
@@ -52156,6 +52483,13 @@ extern "C" QRegularExpressionValidator * bg_QRegularExpressionValidator__CONSTRU
 
 extern "C" QRegularExpressionValidator * bg_QRegularExpressionValidator__CONSTRUCT_const_QRegularExpression_R_QObject_X(const QRegularExpression & re, QObject * parent) {
   return new (UseGC) CrystalGCWrapper<BgInherit_QRegularExpressionValidator>(re, parent);
+}
+
+extern "C" QValidator::State bg_QRegularExpressionValidator_validate_QString_R_int_R(QRegularExpressionValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
 }
 
 extern "C" QRegularExpression * bg_QRegularExpressionValidator_regularExpression_(QRegularExpressionValidator * _self_) {
@@ -52176,6 +52510,13 @@ extern "C" const QMetaObject * bg_QRegularExpressionValidator_staticMetaObject_S
 
 extern "C" QMetaObject::Connection * bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_Qt__ConnectionType_CrystalProc_void__const_QRegularExpression_R_(QRegularExpressionValidator * _self_, Qt::ConnectionType type, CrystalProc<void, const QRegularExpression *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QRegularExpressionValidator::*)(const QRegularExpression &))&QRegularExpressionValidator::regularExpressionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRegularExpression & re){ _proc_(&(re)); }, type));
+}
+
+extern "C" QValidator::State bg_QRegularExpressionValidator_validate_SUPER_QString_R_int_R(QRegularExpressionValidator * _self_, CrystalString * unnamed_arg_0, int & unnamed_arg_1) {
+  QString unnamed_arg_0_ = ([&]() { auto &&bg_value = (*unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QRegularExpressionValidator::validate(unnamed_arg_0_, unnamed_arg_1);
+  *unnamed_arg_0 = qstring_to_crystal(std::move(unnamed_arg_0_));
+  return _result_;
 }
 
 extern "C" void bg_BgInherit_QRegularExpressionValidator_JUMPTABLE_BgJumptable_QRegularExpressionValidator_R(BgInherit_QRegularExpressionValidator * _self_, const BgJumptable_QRegularExpressionValidator & table) {
@@ -52806,8 +53147,8 @@ extern "C" CrystalString bg_QWidget_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QWidget::tr(s, c));
+extern "C" CrystalString bg_QWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QWidget::tr(s, c, n));
 }
 
 extern "C" QWidget * bg_QWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -54776,8 +55117,8 @@ extern "C" CrystalString bg_QAbstractButton_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QAbstractButton::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractButton_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractButton::tr(s, c));
+extern "C" CrystalString bg_QAbstractButton_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractButton::tr(s, c, n));
 }
 
 extern "C" QAbstractButton * bg_QAbstractButton__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -55048,6 +55389,8 @@ struct BgJumptable_QAbstractSpinBox {
   CrystalProc<QSize *> bg_QAbstractSpinBox_minimumSizeHint_;
   CrystalProc<bool, QEvent *> bg_QAbstractSpinBox_event_QEvent_X;
   CrystalProc<CrystalVariant *, Qt::InputMethodQuery> bg_QAbstractSpinBox_inputMethodQuery_Qt__InputMethodQuery;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QAbstractSpinBox_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QAbstractSpinBox_fixup_QString_R;
   CrystalProc<void, int> bg_QAbstractSpinBox_stepBy_int;
   CrystalProc<void> bg_QAbstractSpinBox_clear_;
   CrystalProc<void, QResizeEvent *> bg_QAbstractSpinBox_resizeEvent_QResizeEvent_X;
@@ -55157,6 +55500,31 @@ struct BgInherit_QAbstractSpinBox : public QAbstractSpinBox {
       return crystal_to_qvariant(*_self_->bgJump.bg_QAbstractSpinBox_inputMethodQuery_Qt__InputMethodQuery(unnamed_arg_0));
     } else {
       return QAbstractSpinBox::inputMethodQuery(unnamed_arg_0);
+    }
+  }
+  
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QAbstractSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QAbstractSpinBox_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QAbstractSpinBox_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QAbstractSpinBox::validate(input, pos);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QAbstractSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QAbstractSpinBox_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QAbstractSpinBox_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QAbstractSpinBox::fixup(input);
     }
   }
   
@@ -55582,8 +55950,8 @@ extern "C" CrystalString bg_QAbstractSpinBox_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QAbstractSpinBox::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractSpinBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractSpinBox::tr(s, c));
+extern "C" CrystalString bg_QAbstractSpinBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractSpinBox::tr(s, c, n));
 }
 
 extern "C" QAbstractSpinBox * bg_QAbstractSpinBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -55696,6 +56064,19 @@ extern "C" bool bg_QAbstractSpinBox_event_QEvent_X(QAbstractSpinBox * _self_, QE
 
 extern "C" CrystalVariant bg_QAbstractSpinBox_inputMethodQuery_Qt__InputMethodQuery(QAbstractSpinBox * _self_, Qt::InputMethodQuery unnamed_arg_0) {
   return qvariant_to_crystal(_self_->inputMethodQuery(unnamed_arg_0));
+}
+
+extern "C" QValidator::State bg_QAbstractSpinBox_validate_QString_R_int_R(QAbstractSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
+extern "C" void bg_QAbstractSpinBox_fixup_QString_R(QAbstractSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_QAbstractSpinBox_stepBy_int(QAbstractSpinBox * _self_, int steps) {
@@ -55828,6 +56209,19 @@ extern "C" bool bg_QAbstractSpinBox_event_SUPER_QEvent_X(QAbstractSpinBox * _sel
 
 extern "C" CrystalVariant bg_QAbstractSpinBox_inputMethodQuery_SUPER_Qt__InputMethodQuery(QAbstractSpinBox * _self_, Qt::InputMethodQuery unnamed_arg_0) {
   return qvariant_to_crystal(_self_->QAbstractSpinBox::inputMethodQuery(unnamed_arg_0));
+}
+
+extern "C" QValidator::State bg_QAbstractSpinBox_validate_SUPER_QString_R_int_R(QAbstractSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QAbstractSpinBox::validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
+extern "C" void bg_QAbstractSpinBox_fixup_SUPER_QString_R(QAbstractSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QAbstractSpinBox::fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_QAbstractSpinBox_stepBy_SUPER_int(QAbstractSpinBox * _self_, int steps) {
@@ -56432,8 +56826,8 @@ extern "C" CrystalString bg_QAbstractSlider_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QAbstractSlider::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractSlider_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractSlider::tr(s, c));
+extern "C" CrystalString bg_QAbstractSlider_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractSlider::tr(s, c, n));
 }
 
 extern "C" QAbstractSlider * bg_QAbstractSlider__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -57174,8 +57568,8 @@ extern "C" CrystalString bg_QSlider_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSlider::tr(s));
 }
 
-extern "C" CrystalString bg_QSlider_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSlider::tr(s, c));
+extern "C" CrystalString bg_QSlider_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSlider::tr(s, c, n));
 }
 
 extern "C" QSlider * bg_QSlider__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -57622,8 +58016,8 @@ extern "C" CrystalString bg_QStyle_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QStyle::tr(s));
 }
 
-extern "C" CrystalString bg_QStyle_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStyle::tr(s, c));
+extern "C" CrystalString bg_QStyle_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStyle::tr(s, c, n));
 }
 
 extern "C" QStyle * bg_QStyle__CONSTRUCT_QStylePrivate_R(QStylePrivate & dd) {
@@ -58368,8 +58762,8 @@ extern "C" CrystalString bg_QTabBar_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTabBar::tr(s));
 }
 
-extern "C" CrystalString bg_QTabBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTabBar::tr(s, c));
+extern "C" CrystalString bg_QTabBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTabBar::tr(s, c, n));
 }
 
 extern "C" QTabBar * bg_QTabBar__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -59332,8 +59726,8 @@ extern "C" CrystalString bg_QTabWidget_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTabWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QTabWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTabWidget::tr(s, c));
+extern "C" CrystalString bg_QTabWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTabWidget::tr(s, c, n));
 }
 
 extern "C" QTabWidget * bg_QTabWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -60180,8 +60574,8 @@ extern "C" CrystalString bg_QRubberBand_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QRubberBand::tr(s));
 }
 
-extern "C" CrystalString bg_QRubberBand_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QRubberBand::tr(s, c));
+extern "C" CrystalString bg_QRubberBand_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QRubberBand::tr(s, c, n));
 }
 
 extern "C" QRubberBand * bg_QRubberBand__CONSTRUCT_QRubberBand__Shape_QWidget_X(QRubberBand::Shape unnamed_arg_0, QWidget * unnamed_arg_1) {
@@ -60788,8 +61182,8 @@ extern "C" CrystalString bg_QFrame_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFrame::tr(s));
 }
 
-extern "C" CrystalString bg_QFrame_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFrame::tr(s, c));
+extern "C" CrystalString bg_QFrame_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFrame::tr(s, c, n));
 }
 
 extern "C" QFrame * bg_QFrame__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -62778,8 +63172,8 @@ extern "C" CrystalString bg_QAbstractItemDelegate_tr_STATIC_const_char_X(const c
   return qstring_to_crystal(QAbstractItemDelegate::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractItemDelegate_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractItemDelegate::tr(s, c));
+extern "C" CrystalString bg_QAbstractItemDelegate_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractItemDelegate::tr(s, c, n));
 }
 
 extern "C" QAbstractItemDelegate * bg_QAbstractItemDelegate__CONSTRUCT_QObject_X(QObject * parent) {
@@ -63442,8 +63836,8 @@ extern "C" CrystalString bg_QAbstractScrollArea_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QAbstractScrollArea::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractScrollArea_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractScrollArea::tr(s, c));
+extern "C" CrystalString bg_QAbstractScrollArea_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractScrollArea::tr(s, c, n));
 }
 
 extern "C" QAbstractScrollArea * bg_QAbstractScrollArea__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -64643,8 +65037,8 @@ extern "C" CrystalString bg_QAbstractItemView_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QAbstractItemView::tr(s));
 }
 
-extern "C" CrystalString bg_QAbstractItemView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAbstractItemView::tr(s, c));
+extern "C" CrystalString bg_QAbstractItemView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAbstractItemView::tr(s, c, n));
 }
 
 extern "C" QAbstractItemView * bg_QAbstractItemView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -65561,8 +65955,8 @@ extern "C" CrystalString bg_QAction_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QAction::tr(s));
 }
 
-extern "C" CrystalString bg_QAction_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QAction::tr(s, c));
+extern "C" CrystalString bg_QAction_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QAction::tr(s, c, n));
 }
 
 extern "C" QAction * bg_QAction__CONSTRUCT_QObject_X(QObject * parent) {
@@ -65975,8 +66369,8 @@ extern "C" CrystalString bg_QActionGroup_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QActionGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QActionGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QActionGroup::tr(s, c));
+extern "C" CrystalString bg_QActionGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QActionGroup::tr(s, c, n));
 }
 
 extern "C" QActionGroup * bg_QActionGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -66209,8 +66603,8 @@ extern "C" CrystalString bg_QApplication_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QApplication::tr(s));
 }
 
-extern "C" CrystalString bg_QApplication_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QApplication::tr(s, c));
+extern "C" CrystalString bg_QApplication_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QApplication::tr(s, c, n));
 }
 
 extern "C" QApplication * bg_QApplication__CONSTRUCT_int_R_char_XX_int(int & argc, char ** argv, int unnamed_arg_2) {
@@ -67804,8 +68198,8 @@ extern "C" CrystalString bg_QLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QLayout::tr(s, c));
+extern "C" CrystalString bg_QLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QLayout::tr(s, c, n));
 }
 
 extern "C" QLayout * bg_QLayout__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -68426,8 +68820,8 @@ extern "C" CrystalString bg_QGridLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QGridLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QGridLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGridLayout::tr(s, c));
+extern "C" CrystalString bg_QGridLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGridLayout::tr(s, c, n));
 }
 
 extern "C" QGridLayout * bg_QGridLayout__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -68984,8 +69378,8 @@ extern "C" CrystalString bg_QBoxLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QBoxLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QBoxLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QBoxLayout::tr(s, c));
+extern "C" CrystalString bg_QBoxLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QBoxLayout::tr(s, c, n));
 }
 
 extern "C" QBoxLayout * bg_QBoxLayout__CONSTRUCT_QBoxLayout__Direction_QWidget_X(QBoxLayout::Direction unnamed_arg_0, QWidget * parent) {
@@ -69494,8 +69888,8 @@ extern "C" CrystalString bg_QHBoxLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QHBoxLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QHBoxLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QHBoxLayout::tr(s, c));
+extern "C" CrystalString bg_QHBoxLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QHBoxLayout::tr(s, c, n));
 }
 
 extern "C" QHBoxLayout * bg_QHBoxLayout__CONSTRUCT_() {
@@ -69816,8 +70210,8 @@ extern "C" CrystalString bg_QVBoxLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QVBoxLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QVBoxLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QVBoxLayout::tr(s, c));
+extern "C" CrystalString bg_QVBoxLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QVBoxLayout::tr(s, c, n));
 }
 
 extern "C" QVBoxLayout * bg_QVBoxLayout__CONSTRUCT_() {
@@ -69958,8 +70352,8 @@ extern "C" CrystalString bg_QButtonGroup_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QButtonGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QButtonGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QButtonGroup::tr(s, c));
+extern "C" CrystalString bg_QButtonGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QButtonGroup::tr(s, c, n));
 }
 
 extern "C" QButtonGroup * bg_QButtonGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -70600,8 +70994,8 @@ extern "C" CrystalString bg_QCalendarWidget_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QCalendarWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QCalendarWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCalendarWidget::tr(s, c));
+extern "C" CrystalString bg_QCalendarWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCalendarWidget::tr(s, c, n));
 }
 
 extern "C" QCalendarWidget * bg_QCalendarWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -71426,8 +71820,8 @@ extern "C" CrystalString bg_QCheckBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QCheckBox::tr(s));
 }
 
-extern "C" CrystalString bg_QCheckBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCheckBox::tr(s, c));
+extern "C" CrystalString bg_QCheckBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCheckBox::tr(s, c, n));
 }
 
 extern "C" QCheckBox * bg_QCheckBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -72100,8 +72494,8 @@ extern "C" CrystalString bg_QDialog_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDialog::tr(s, c));
+extern "C" CrystalString bg_QDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDialog::tr(s, c, n));
 }
 
 extern "C" QDialog * bg_QDialog__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -72850,8 +73244,8 @@ extern "C" CrystalString bg_QColorDialog_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QColorDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QColorDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QColorDialog::tr(s, c));
+extern "C" CrystalString bg_QColorDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QColorDialog::tr(s, c, n));
 }
 
 extern "C" QColorDialog * bg_QColorDialog__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -72906,8 +73300,8 @@ extern "C" QColor * bg_QColorDialog_getColor_STATIC_() {
   return new (UseGC, bindgen_gc_finalizer<QColor>()) QColor (QColorDialog::getColor());
 }
 
-extern "C" QColor * bg_QColorDialog_getColor_STATIC_const_QColor_R(const QColor & initial) {
-  return new (UseGC, bindgen_gc_finalizer<QColor>()) QColor (QColorDialog::getColor(initial));
+extern "C" QColor * bg_QColorDialog_getColor_STATIC_const_QColor_R_QWidget_X(const QColor & initial, QWidget * parent) {
+  return new (UseGC, bindgen_gc_finalizer<QColor>()) QColor (QColorDialog::getColor(initial, parent));
 }
 
 extern "C" QColor * bg_QColorDialog_getColor_STATIC_const_QColor_R_QWidget_X_const_QString_R(const QColor & initial, QWidget * parent, const CrystalString title) {
@@ -73929,8 +74323,8 @@ extern "C" CrystalString bg_QColumnView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QColumnView::tr(s));
 }
 
-extern "C" CrystalString bg_QColumnView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QColumnView::tr(s, c));
+extern "C" CrystalString bg_QColumnView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QColumnView::tr(s, c, n));
 }
 
 extern "C" void bg_QColumnView_updatePreviewWidget_const_QModelIndex_R(QColumnView * _self_, const QModelIndex & index) {
@@ -74669,8 +75063,8 @@ extern "C" CrystalString bg_QComboBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QComboBox::tr(s));
 }
 
-extern "C" CrystalString bg_QComboBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QComboBox::tr(s, c));
+extern "C" CrystalString bg_QComboBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QComboBox::tr(s, c, n));
 }
 
 extern "C" QComboBox * bg_QComboBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -75723,8 +76117,8 @@ extern "C" CrystalString bg_QPushButton_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QPushButton::tr(s));
 }
 
-extern "C" CrystalString bg_QPushButton_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPushButton::tr(s, c));
+extern "C" CrystalString bg_QPushButton_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPushButton::tr(s, c, n));
 }
 
 extern "C" QPushButton * bg_QPushButton__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -76397,8 +76791,8 @@ extern "C" CrystalString bg_QCommandLinkButton_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QCommandLinkButton::tr(s));
 }
 
-extern "C" CrystalString bg_QCommandLinkButton_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCommandLinkButton::tr(s, c));
+extern "C" CrystalString bg_QCommandLinkButton_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCommandLinkButton::tr(s, c, n));
 }
 
 extern "C" QCommandLinkButton * bg_QCommandLinkButton__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -76821,8 +77215,8 @@ extern "C" CrystalString bg_QCommonStyle_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QCommonStyle::tr(s));
 }
 
-extern "C" CrystalString bg_QCommonStyle_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCommonStyle::tr(s, c));
+extern "C" CrystalString bg_QCommonStyle_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCommonStyle::tr(s, c, n));
 }
 
 extern "C" QCommonStyle * bg_QCommonStyle__CONSTRUCT_() {
@@ -77127,8 +77521,8 @@ extern "C" CrystalString bg_QCompleter_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QCompleter::tr(s));
 }
 
-extern "C" CrystalString bg_QCompleter_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QCompleter::tr(s, c));
+extern "C" CrystalString bg_QCompleter_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QCompleter::tr(s, c, n));
 }
 
 extern "C" QCompleter * bg_QCompleter__CONSTRUCT_QObject_X(QObject * parent) {
@@ -77475,8 +77869,8 @@ extern "C" CrystalString bg_QDataWidgetMapper_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QDataWidgetMapper::tr(s));
 }
 
-extern "C" CrystalString bg_QDataWidgetMapper_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDataWidgetMapper::tr(s, c));
+extern "C" CrystalString bg_QDataWidgetMapper_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDataWidgetMapper::tr(s, c, n));
 }
 
 extern "C" QDataWidgetMapper * bg_QDataWidgetMapper__CONSTRUCT_QObject_X(QObject * parent) {
@@ -77619,6 +78013,8 @@ struct BgJumptable_QDateTimeEdit {
   CrystalProc<void, QWheelEvent *> bg_QDateTimeEdit_wheelEvent_QWheelEvent_X;
   CrystalProc<void, QFocusEvent *> bg_QDateTimeEdit_focusInEvent_QFocusEvent_X;
   CrystalProc<bool, bool> bg_QDateTimeEdit_focusNextPrevChild_bool;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QDateTimeEdit_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QDateTimeEdit_fixup_QString_R;
   CrystalProc<QDateTime &, const CrystalString *> bg_QDateTimeEdit_dateTimeFromText_const_QString_R;
   CrystalProc<CrystalString *, const QDateTime *> bg_QDateTimeEdit_textFromDateTime_const_QDateTime_R;
   CrystalProc<QAbstractSpinBox::StepEnabled> bg_QDateTimeEdit_stepEnabled_;
@@ -77762,6 +78158,31 @@ struct BgInherit_QDateTimeEdit : public QDateTimeEdit {
       return _self_->bgJump.bg_QDateTimeEdit_focusNextPrevChild_bool(next);
     } else {
       return QDateTimeEdit::focusNextPrevChild(next);
+    }
+  }
+  
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QDateTimeEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QDateTimeEdit::validate(input, pos);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QDateTimeEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QDateTimeEdit_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QDateTimeEdit::fixup(input);
     }
   }
   
@@ -78169,8 +78590,8 @@ extern "C" CrystalString bg_QDateTimeEdit_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QDateTimeEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QDateTimeEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDateTimeEdit::tr(s, c));
+extern "C" CrystalString bg_QDateTimeEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDateTimeEdit::tr(s, c, n));
 }
 
 extern "C" QDateTimeEdit * bg_QDateTimeEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -78417,6 +78838,19 @@ extern "C" bool bg_QDateTimeEdit_focusNextPrevChild_bool(QDateTimeEdit * _self_,
   return _self_->focusNextPrevChild(next);
 }
 
+extern "C" QValidator::State bg_QDateTimeEdit_validate_QString_R_int_R(QDateTimeEdit * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
+extern "C" void bg_QDateTimeEdit_fixup_QString_R(QDateTimeEdit * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
+}
+
 extern "C" QDateTime * bg_QDateTimeEdit_dateTimeFromText_const_QString_R(QDateTimeEdit * _self_, const CrystalString text) {
   return new (UseGC, bindgen_gc_finalizer<QDateTime>()) QDateTime (_self_->dateTimeFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
@@ -78497,6 +78931,19 @@ extern "C" bool bg_QDateTimeEdit_focusNextPrevChild_SUPER_bool(QDateTimeEdit * _
   return _self_->QDateTimeEdit::focusNextPrevChild(next);
 }
 
+extern "C" QValidator::State bg_QDateTimeEdit_validate_SUPER_QString_R_int_R(QDateTimeEdit * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QDateTimeEdit::validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
+extern "C" void bg_QDateTimeEdit_fixup_SUPER_QString_R(QDateTimeEdit * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QDateTimeEdit::fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
+}
+
 extern "C" QDateTime * bg_QDateTimeEdit_dateTimeFromText_SUPER_const_QString_R(QDateTimeEdit * _self_, const CrystalString text) {
   return new (UseGC, bindgen_gc_finalizer<QDateTime>()) QDateTime (_self_->QDateTimeEdit::dateTimeFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
@@ -78533,6 +78980,8 @@ struct BgJumptable_QTimeEdit {
   CrystalProc<void, QWheelEvent *> bg_QDateTimeEdit_wheelEvent_QWheelEvent_X;
   CrystalProc<void, QFocusEvent *> bg_QDateTimeEdit_focusInEvent_QFocusEvent_X;
   CrystalProc<bool, bool> bg_QDateTimeEdit_focusNextPrevChild_bool;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QDateTimeEdit_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QDateTimeEdit_fixup_QString_R;
   CrystalProc<QDateTime &, const CrystalString *> bg_QDateTimeEdit_dateTimeFromText_const_QString_R;
   CrystalProc<CrystalString *, const QDateTime *> bg_QDateTimeEdit_textFromDateTime_const_QDateTime_R;
   CrystalProc<QAbstractSpinBox::StepEnabled> bg_QDateTimeEdit_stepEnabled_;
@@ -78676,6 +79125,31 @@ struct BgInherit_QTimeEdit : public QTimeEdit {
       return _self_->bgJump.bg_QDateTimeEdit_focusNextPrevChild_bool(next);
     } else {
       return QTimeEdit::focusNextPrevChild(next);
+    }
+  }
+  
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QTimeEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QTimeEdit::validate(input, pos);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QTimeEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QDateTimeEdit_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QTimeEdit::fixup(input);
     }
   }
   
@@ -79083,8 +79557,8 @@ extern "C" CrystalString bg_QTimeEdit_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTimeEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QTimeEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTimeEdit::tr(s, c));
+extern "C" CrystalString bg_QTimeEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTimeEdit::tr(s, c, n));
 }
 
 extern "C" QTimeEdit * bg_QTimeEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -79123,6 +79597,8 @@ struct BgJumptable_QDateEdit {
   CrystalProc<void, QWheelEvent *> bg_QDateTimeEdit_wheelEvent_QWheelEvent_X;
   CrystalProc<void, QFocusEvent *> bg_QDateTimeEdit_focusInEvent_QFocusEvent_X;
   CrystalProc<bool, bool> bg_QDateTimeEdit_focusNextPrevChild_bool;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QDateTimeEdit_validate_QString_R_int_R;
+  CrystalProc<void, CrystalString *> bg_QDateTimeEdit_fixup_QString_R;
   CrystalProc<QDateTime &, const CrystalString *> bg_QDateTimeEdit_dateTimeFromText_const_QString_R;
   CrystalProc<CrystalString *, const QDateTime *> bg_QDateTimeEdit_textFromDateTime_const_QDateTime_R;
   CrystalProc<QAbstractSpinBox::StepEnabled> bg_QDateTimeEdit_stepEnabled_;
@@ -79266,6 +79742,31 @@ struct BgInherit_QDateEdit : public QDateEdit {
       return _self_->bgJump.bg_QDateTimeEdit_focusNextPrevChild_bool(next);
     } else {
       return QDateEdit::focusNextPrevChild(next);
+    }
+  }
+  
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QDateEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QDateTimeEdit_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QDateEdit::validate(input, pos);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QDateEdit *_self_ = this;
+    if (_self_->bgJump.bg_QDateTimeEdit_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QDateTimeEdit_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QDateEdit::fixup(input);
     }
   }
   
@@ -79673,8 +80174,8 @@ extern "C" CrystalString bg_QDateEdit_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QDateEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QDateEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDateEdit::tr(s, c));
+extern "C" CrystalString bg_QDateEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDateEdit::tr(s, c, n));
 }
 
 extern "C" QDateEdit * bg_QDateEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -80213,8 +80714,8 @@ extern "C" CrystalString bg_QDesktopWidget_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QDesktopWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QDesktopWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDesktopWidget::tr(s, c));
+extern "C" CrystalString bg_QDesktopWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDesktopWidget::tr(s, c, n));
 }
 
 extern "C" QDesktopWidget * bg_QDesktopWidget__CONSTRUCT_() {
@@ -80771,8 +81272,8 @@ extern "C" CrystalString bg_QDial_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QDial::tr(s));
 }
 
-extern "C" CrystalString bg_QDial_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDial::tr(s, c));
+extern "C" CrystalString bg_QDial_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDial::tr(s, c, n));
 }
 
 extern "C" QDial * bg_QDial__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -81403,8 +81904,8 @@ extern "C" CrystalString bg_QDialogButtonBox_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QDialogButtonBox::tr(s));
 }
 
-extern "C" CrystalString bg_QDialogButtonBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDialogButtonBox::tr(s, c));
+extern "C" CrystalString bg_QDialogButtonBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDialogButtonBox::tr(s, c, n));
 }
 
 extern "C" QDialogButtonBox * bg_QDialogButtonBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -82127,8 +82628,8 @@ extern "C" CrystalString bg_QDockWidget_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QDockWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QDockWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDockWidget::tr(s, c));
+extern "C" CrystalString bg_QDockWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDockWidget::tr(s, c, n));
 }
 
 extern "C" QDockWidget * bg_QDockWidget__CONSTRUCT_const_QString_R_QWidget_X(const CrystalString title, QWidget * parent) {
@@ -82841,8 +83342,8 @@ extern "C" CrystalString bg_QErrorMessage_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QErrorMessage::tr(s));
 }
 
-extern "C" CrystalString bg_QErrorMessage_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QErrorMessage::tr(s, c));
+extern "C" CrystalString bg_QErrorMessage_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QErrorMessage::tr(s, c, n));
 }
 
 extern "C" QErrorMessage * bg_QErrorMessage__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -83447,8 +83948,8 @@ extern "C" CrystalString bg_QFileDialog_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFileDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QFileDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFileDialog::tr(s, c));
+extern "C" CrystalString bg_QFileDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFileDialog::tr(s, c, n));
 }
 
 extern "C" QFileDialog * bg_QFileDialog__CONSTRUCT_QWidget_X_Qt__WindowFlags(QWidget * parent, Qt::WindowFlags f) {
@@ -83723,8 +84224,18 @@ extern "C" CrystalString bg_QFileDialog_getOpenFileName_STATIC_QWidget_X_const_Q
   return qstring_to_crystal(QFileDialog::getOpenFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
-extern "C" CrystalString bg_QFileDialog_getOpenFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter) {
-  return qstring_to_crystal(QFileDialog::getOpenFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" CrystalString bg_QFileDialog_getOpenFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  CrystalString _result_ = qstring_to_crystal(QFileDialog::getOpenFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" CrystalString bg_QFileDialog_getOpenFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  CrystalString _result_ = qstring_to_crystal(QFileDialog::getOpenFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X(QWidget * parent) {
@@ -83739,8 +84250,25 @@ extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X_const_QString_R
   return new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getOpenFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir));
 }
 
-extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter) {
-  return new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getOpenFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getOpenFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getOpenFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" QUrl * bg_QFileDialog_getOpenFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options_const_QStringList_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options, const QList<QString> * supportedSchemes) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getOpenFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options, *(supportedSchemes)));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" CrystalString bg_QFileDialog_getSaveFileName_STATIC_QWidget_X(QWidget * parent) {
@@ -83755,8 +84283,18 @@ extern "C" CrystalString bg_QFileDialog_getSaveFileName_STATIC_QWidget_X_const_Q
   return qstring_to_crystal(QFileDialog::getSaveFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
-extern "C" CrystalString bg_QFileDialog_getSaveFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter) {
-  return qstring_to_crystal(QFileDialog::getSaveFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" CrystalString bg_QFileDialog_getSaveFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  CrystalString _result_ = qstring_to_crystal(QFileDialog::getSaveFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" CrystalString bg_QFileDialog_getSaveFileName_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  CrystalString _result_ = qstring_to_crystal(QFileDialog::getSaveFileName(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X(QWidget * parent) {
@@ -83771,8 +84309,25 @@ extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X_const_QString_R
   return new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getSaveFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir));
 }
 
-extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter) {
-  return new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getSaveFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getSaveFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getSaveFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" QUrl * bg_QFileDialog_getSaveFileUrl_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options_const_QStringList_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options, const QList<QString> * supportedSchemes) {
+  QString selectedFilter_{};
+  QUrl * _result_ = new (UseGC, bindgen_gc_finalizer<QUrl>()) QUrl (QFileDialog::getSaveFileUrl(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options, *(supportedSchemes)));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" CrystalString bg_QFileDialog_getExistingDirectory_STATIC_QWidget_X(QWidget * parent) {
@@ -83823,8 +84378,18 @@ extern "C" QList<QString> * bg_QFileDialog_getOpenFileNames_STATIC_QWidget_X_con
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QFileDialog::getOpenFileNames(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
-extern "C" QList<QString> * bg_QFileDialog_getOpenFileNames_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter) {
-  return new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QFileDialog::getOpenFileNames(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" QList<QString> * bg_QFileDialog_getOpenFileNames_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  QList<QString> * _result_ = new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QFileDialog::getOpenFileNames(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" QList<QString> * bg_QFileDialog_getOpenFileNames_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const CrystalString dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  QList<QString> * _result_ = new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QFileDialog::getOpenFileNames(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (dir); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X(QWidget * parent) {
@@ -83839,8 +84404,25 @@ extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (QFileDialog::getOpenFileUrls(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir));
 }
 
-extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter) {
-  return new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (QFileDialog::getOpenFileUrls(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter) {
+  QString selectedFilter_{};
+  Container_QList_QUrl_ * _result_ = new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (QFileDialog::getOpenFileUrls(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options) {
+  QString selectedFilter_{};
+  Container_QList_QUrl_ * _result_ = new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (QFileDialog::getOpenFileUrls(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
+}
+
+extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options_const_QStringList_R(QWidget * parent, const CrystalString caption, const QUrl & dir, const CrystalString filter, CrystalString * selectedFilter, QFileDialog::Options options, const QList<QString> * supportedSchemes) {
+  QString selectedFilter_{};
+  Container_QList_QUrl_ * _result_ = new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (QFileDialog::getOpenFileUrls(parent, ([&]() { auto &&bg_value = (caption); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), dir, ([&]() { auto &&bg_value = (filter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), &selectedFilter_, options, *(supportedSchemes)));
+  *selectedFilter = qstring_to_crystal(std::move(selectedFilter_));
+  return _result_;
 }
 
 extern "C" void bg_QFileDialog_saveFileContent_STATIC_const_QByteArray_R(const CrystalString fileContent) {
@@ -84402,8 +84984,8 @@ extern "C" CrystalString bg_QFileSystemModel_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QFileSystemModel::tr(s));
 }
 
-extern "C" CrystalString bg_QFileSystemModel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFileSystemModel::tr(s, c));
+extern "C" CrystalString bg_QFileSystemModel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFileSystemModel::tr(s, c, n));
 }
 
 extern "C" void bg_QFileSystemModel_rootPathChanged_const_QString_R(QFileSystemModel * _self_, const CrystalString newPath) {
@@ -85262,8 +85844,8 @@ extern "C" CrystalString bg_QFocusFrame_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFocusFrame::tr(s));
 }
 
-extern "C" CrystalString bg_QFocusFrame_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFocusFrame::tr(s, c));
+extern "C" CrystalString bg_QFocusFrame_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFocusFrame::tr(s, c, n));
 }
 
 extern "C" QFocusFrame * bg_QFocusFrame__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -85846,8 +86428,8 @@ extern "C" CrystalString bg_QFontComboBox_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QFontComboBox::tr(s));
 }
 
-extern "C" CrystalString bg_QFontComboBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFontComboBox::tr(s, c));
+extern "C" CrystalString bg_QFontComboBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFontComboBox::tr(s, c, n));
 }
 
 extern "C" QFontComboBox * bg_QFontComboBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -86472,8 +87054,8 @@ extern "C" CrystalString bg_QFontDialog_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFontDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QFontDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFontDialog::tr(s, c));
+extern "C" CrystalString bg_QFontDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFontDialog::tr(s, c, n));
 }
 
 extern "C" QFontDialog * bg_QFontDialog__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -86888,8 +87470,8 @@ extern "C" CrystalString bg_QFormLayout_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QFormLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QFormLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QFormLayout::tr(s, c));
+extern "C" CrystalString bg_QFormLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QFormLayout::tr(s, c, n));
 }
 
 extern "C" QFormLayout * bg_QFormLayout__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -87310,8 +87892,8 @@ extern "C" CrystalString bg_QGesture_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGesture::tr(s, c));
+extern "C" CrystalString bg_QGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGesture::tr(s, c, n));
 }
 
 extern "C" QGesture * bg_QGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -87484,8 +88066,8 @@ extern "C" CrystalString bg_QPanGesture_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QPanGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QPanGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPanGesture::tr(s, c));
+extern "C" CrystalString bg_QPanGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPanGesture::tr(s, c, n));
 }
 
 extern "C" QPanGesture * bg_QPanGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -87650,8 +88232,8 @@ extern "C" CrystalString bg_QPinchGesture_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QPinchGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QPinchGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPinchGesture::tr(s, c));
+extern "C" CrystalString bg_QPinchGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPinchGesture::tr(s, c, n));
 }
 
 extern "C" QPinchGesture * bg_QPinchGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -87876,8 +88458,8 @@ extern "C" CrystalString bg_QSwipeGesture_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QSwipeGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QSwipeGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSwipeGesture::tr(s, c));
+extern "C" CrystalString bg_QSwipeGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSwipeGesture::tr(s, c, n));
 }
 
 extern "C" QSwipeGesture * bg_QSwipeGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -88030,8 +88612,8 @@ extern "C" CrystalString bg_QTapGesture_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTapGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QTapGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTapGesture::tr(s, c));
+extern "C" CrystalString bg_QTapGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTapGesture::tr(s, c, n));
 }
 
 extern "C" QTapGesture * bg_QTapGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -88176,8 +88758,8 @@ extern "C" CrystalString bg_QTapAndHoldGesture_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QTapAndHoldGesture::tr(s));
 }
 
-extern "C" CrystalString bg_QTapAndHoldGesture_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTapAndHoldGesture::tr(s, c));
+extern "C" CrystalString bg_QTapAndHoldGesture_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTapAndHoldGesture::tr(s, c, n));
 }
 
 extern "C" QTapAndHoldGesture * bg_QTapAndHoldGesture__CONSTRUCT_QObject_X(QObject * parent) {
@@ -89052,8 +89634,8 @@ extern "C" void bg_QGraphicsItem_ensureVisible_(QGraphicsItem * _self_) {
   _self_->ensureVisible();
 }
 
-extern "C" void bg_QGraphicsItem_ensureVisible_const_QRectF_R(QGraphicsItem * _self_, const QRectF rect) {
-  _self_->ensureVisible(rect);
+extern "C" void bg_QGraphicsItem_ensureVisible_const_QRectF_R_int_int(QGraphicsItem * _self_, const QRectF rect, int xmargin, int ymargin) {
+  _self_->ensureVisible(rect, xmargin, ymargin);
 }
 
 extern "C" void bg_QGraphicsItem_ensureVisible_qreal_qreal_qreal_qreal_int_int(QGraphicsItem * _self_, qreal x, qreal y, qreal w, qreal h, int xmargin, int ymargin) {
@@ -90244,8 +90826,8 @@ extern "C" CrystalString bg_QGraphicsObject_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QGraphicsObject::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsObject_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsObject::tr(s, c));
+extern "C" CrystalString bg_QGraphicsObject_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsObject::tr(s, c, n));
 }
 
 extern "C" QGraphicsObject * bg_QGraphicsObject__CONSTRUCT_QGraphicsItem_X(QGraphicsItem * parent) {
@@ -90656,8 +91238,8 @@ extern "C" void bg_QGraphicsObject_ensureVisible_(QGraphicsObject * _self_) {
   _self_->ensureVisible();
 }
 
-extern "C" void bg_QGraphicsObject_ensureVisible_const_QRectF_R(QGraphicsObject * _self_, const QRectF rect) {
-  _self_->ensureVisible(rect);
+extern "C" void bg_QGraphicsObject_ensureVisible_const_QRectF_R_int_int(QGraphicsObject * _self_, const QRectF rect, int xmargin, int ymargin) {
+  _self_->ensureVisible(rect, xmargin, ymargin);
 }
 
 extern "C" void bg_QGraphicsObject_ensureVisible_qreal_qreal_qreal_qreal_int_int(QGraphicsObject * _self_, qreal x, qreal y, qreal w, qreal h, int xmargin, int ymargin) {
@@ -95000,8 +95582,8 @@ extern "C" CrystalString bg_QGraphicsTextItem_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QGraphicsTextItem::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsTextItem_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsTextItem::tr(s, c));
+extern "C" CrystalString bg_QGraphicsTextItem_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsTextItem::tr(s, c, n));
 }
 
 extern "C" QGraphicsTextItem * bg_QGraphicsTextItem__CONSTRUCT_QGraphicsItem_X(QGraphicsItem * parent) {
@@ -96782,8 +97364,8 @@ extern "C" CrystalString bg_QGraphicsAnchor_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QGraphicsAnchor::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsAnchor_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsAnchor::tr(s, c));
+extern "C" CrystalString bg_QGraphicsAnchor_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsAnchor::tr(s, c, n));
 }
 
 extern "C" void bg_QGraphicsAnchor_setSpacing_qreal(QGraphicsAnchor * _self_, qreal spacing) {
@@ -97163,8 +97745,8 @@ extern "C" CrystalString bg_QGraphicsEffect_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QGraphicsEffect::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsEffect_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsEffect::tr(s, c));
+extern "C" CrystalString bg_QGraphicsEffect_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsEffect::tr(s, c, n));
 }
 
 extern "C" QGraphicsEffect * bg_QGraphicsEffect__CONSTRUCT_QObject_X(QObject * parent) {
@@ -97399,8 +97981,8 @@ extern "C" CrystalString bg_QGraphicsColorizeEffect_tr_STATIC_const_char_X(const
   return qstring_to_crystal(QGraphicsColorizeEffect::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsColorizeEffect_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsColorizeEffect::tr(s, c));
+extern "C" CrystalString bg_QGraphicsColorizeEffect_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsColorizeEffect::tr(s, c, n));
 }
 
 extern "C" QGraphicsColorizeEffect * bg_QGraphicsColorizeEffect__CONSTRUCT_QObject_X(QObject * parent) {
@@ -97607,8 +98189,8 @@ extern "C" CrystalString bg_QGraphicsBlurEffect_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QGraphicsBlurEffect::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsBlurEffect_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsBlurEffect::tr(s, c));
+extern "C" CrystalString bg_QGraphicsBlurEffect_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsBlurEffect::tr(s, c, n));
 }
 
 extern "C" QGraphicsBlurEffect * bg_QGraphicsBlurEffect__CONSTRUCT_QObject_X(QObject * parent) {
@@ -97823,8 +98405,8 @@ extern "C" CrystalString bg_QGraphicsDropShadowEffect_tr_STATIC_const_char_X(con
   return qstring_to_crystal(QGraphicsDropShadowEffect::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsDropShadowEffect_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsDropShadowEffect::tr(s, c));
+extern "C" CrystalString bg_QGraphicsDropShadowEffect_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsDropShadowEffect::tr(s, c, n));
 }
 
 extern "C" QGraphicsDropShadowEffect * bg_QGraphicsDropShadowEffect__CONSTRUCT_QObject_X(QObject * parent) {
@@ -98079,8 +98661,8 @@ extern "C" CrystalString bg_QGraphicsOpacityEffect_tr_STATIC_const_char_X(const 
   return qstring_to_crystal(QGraphicsOpacityEffect::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsOpacityEffect_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsOpacityEffect::tr(s, c));
+extern "C" CrystalString bg_QGraphicsOpacityEffect_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsOpacityEffect::tr(s, c, n));
 }
 
 extern "C" QGraphicsOpacityEffect * bg_QGraphicsOpacityEffect__CONSTRUCT_QObject_X(QObject * parent) {
@@ -98598,8 +99180,8 @@ extern "C" CrystalString bg_QGraphicsItemAnimation_tr_STATIC_const_char_X(const 
   return qstring_to_crystal(QGraphicsItemAnimation::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsItemAnimation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsItemAnimation::tr(s, c));
+extern "C" CrystalString bg_QGraphicsItemAnimation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsItemAnimation::tr(s, c, n));
 }
 
 extern "C" QGraphicsItemAnimation * bg_QGraphicsItemAnimation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -99388,8 +99970,8 @@ extern "C" CrystalString bg_QGraphicsWidget_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QGraphicsWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsWidget::tr(s, c));
+extern "C" CrystalString bg_QGraphicsWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsWidget::tr(s, c, n));
 }
 
 extern "C" QGraphicsWidget * bg_QGraphicsWidget__CONSTRUCT_QGraphicsItem_X(QGraphicsItem * parent) {
@@ -100623,8 +101205,8 @@ extern "C" CrystalString bg_QGraphicsProxyWidget_tr_STATIC_const_char_X(const ch
   return qstring_to_crystal(QGraphicsProxyWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsProxyWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsProxyWidget::tr(s, c));
+extern "C" CrystalString bg_QGraphicsProxyWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsProxyWidget::tr(s, c, n));
 }
 
 extern "C" QGraphicsProxyWidget * bg_QGraphicsProxyWidget__CONSTRUCT_QGraphicsItem_X(QGraphicsItem * parent) {
@@ -101245,8 +101827,8 @@ extern "C" CrystalString bg_QGraphicsScene_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QGraphicsScene::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsScene_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsScene::tr(s, c));
+extern "C" CrystalString bg_QGraphicsScene_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsScene::tr(s, c, n));
 }
 
 extern "C" QGraphicsScene * bg_QGraphicsScene__CONSTRUCT_QObject_X(QObject * parent) {
@@ -101289,8 +101871,8 @@ extern "C" void bg_QGraphicsScene_render_QPainter_X_const_QRectF_R(QGraphicsScen
   _self_->render(painter, target);
 }
 
-extern "C" void bg_QGraphicsScene_render_QPainter_X_const_QRectF_R_const_QRectF_R(QGraphicsScene * _self_, QPainter * painter, const QRectF target, const QRectF source) {
-  _self_->render(painter, target, source);
+extern "C" void bg_QGraphicsScene_render_QPainter_X_const_QRectF_R_const_QRectF_R_Qt__AspectRatioMode(QGraphicsScene * _self_, QPainter * painter, const QRectF target, const QRectF source, Qt::AspectRatioMode aspectRatioMode) {
+  _self_->render(painter, target, source, aspectRatioMode);
 }
 
 extern "C" QGraphicsScene::ItemIndexMethod bg_QGraphicsScene_itemIndexMethod_(QGraphicsScene * _self_) {
@@ -102489,8 +103071,8 @@ extern "C" CrystalString bg_QGraphicsTransform_tr_STATIC_const_char_X(const char
   return qstring_to_crystal(QGraphicsTransform::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsTransform_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsTransform::tr(s, c));
+extern "C" CrystalString bg_QGraphicsTransform_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsTransform::tr(s, c, n));
 }
 
 extern "C" QGraphicsTransform * bg_QGraphicsTransform__CONSTRUCT_QObject_X(QObject * parent) {
@@ -102649,8 +103231,8 @@ extern "C" CrystalString bg_QGraphicsScale_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QGraphicsScale::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsScale_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsScale::tr(s, c));
+extern "C" CrystalString bg_QGraphicsScale_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsScale::tr(s, c, n));
 }
 
 extern "C" QGraphicsScale * bg_QGraphicsScale__CONSTRUCT_QObject_X(QObject * parent) {
@@ -102877,8 +103459,8 @@ extern "C" CrystalString bg_QGraphicsRotation_tr_STATIC_const_char_X(const char 
   return qstring_to_crystal(QGraphicsRotation::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsRotation_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsRotation::tr(s, c));
+extern "C" CrystalString bg_QGraphicsRotation_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsRotation::tr(s, c, n));
 }
 
 extern "C" QGraphicsRotation * bg_QGraphicsRotation__CONSTRUCT_QObject_X(QObject * parent) {
@@ -103505,8 +104087,8 @@ extern "C" CrystalString bg_QScrollArea_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QScrollArea::tr(s));
 }
 
-extern "C" CrystalString bg_QScrollArea_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QScrollArea::tr(s, c));
+extern "C" CrystalString bg_QScrollArea_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QScrollArea::tr(s, c, n));
 }
 
 extern "C" QScrollArea * bg_QScrollArea__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -104199,8 +104781,8 @@ extern "C" CrystalString bg_QGraphicsView_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QGraphicsView::tr(s));
 }
 
-extern "C" CrystalString bg_QGraphicsView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGraphicsView::tr(s, c));
+extern "C" CrystalString bg_QGraphicsView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGraphicsView::tr(s, c, n));
 }
 
 extern "C" QGraphicsView * bg_QGraphicsView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -104411,8 +104993,8 @@ extern "C" void bg_QGraphicsView_render_QPainter_X_const_QRectF_R(QGraphicsView 
   _self_->render(painter, target);
 }
 
-extern "C" void bg_QGraphicsView_render_QPainter_X_const_QRectF_R_const_QRect_R(QGraphicsView * _self_, QPainter * painter, const QRectF target, const QRect source) {
-  _self_->render(painter, target, source);
+extern "C" void bg_QGraphicsView_render_QPainter_X_const_QRectF_R_const_QRect_R_Qt__AspectRatioMode(QGraphicsView * _self_, QPainter * painter, const QRectF target, const QRect source, Qt::AspectRatioMode aspectRatioMode) {
+  _self_->render(painter, target, source, aspectRatioMode);
 }
 
 extern "C" Container_QList_QGraphicsItem_X_ * bg_QGraphicsView_items_(QGraphicsView * _self_) {
@@ -105287,8 +105869,8 @@ extern "C" CrystalString bg_QGroupBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QGroupBox::tr(s));
 }
 
-extern "C" CrystalString bg_QGroupBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QGroupBox::tr(s, c));
+extern "C" CrystalString bg_QGroupBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QGroupBox::tr(s, c, n));
 }
 
 extern "C" QGroupBox * bg_QGroupBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -106400,8 +106982,8 @@ extern "C" CrystalString bg_QHeaderView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QHeaderView::tr(s));
 }
 
-extern "C" CrystalString bg_QHeaderView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QHeaderView::tr(s, c));
+extern "C" CrystalString bg_QHeaderView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QHeaderView::tr(s, c, n));
 }
 
 extern "C" QHeaderView * bg_QHeaderView__CONSTRUCT_Qt__Orientation_QWidget_X(Qt::Orientation orientation, QWidget * parent) {
@@ -107524,8 +108106,8 @@ extern "C" CrystalString bg_QLineEdit_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QLineEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QLineEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QLineEdit::tr(s, c));
+extern "C" CrystalString bg_QLineEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QLineEdit::tr(s, c, n));
 }
 
 extern "C" QLineEdit * bg_QLineEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -108586,8 +109168,8 @@ extern "C" CrystalString bg_QInputDialog_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QInputDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QInputDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QInputDialog::tr(s, c));
+extern "C" CrystalString bg_QInputDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QInputDialog::tr(s, c, n));
 }
 
 extern "C" QInputDialog * bg_QInputDialog__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -108774,8 +109356,8 @@ extern "C" CrystalString bg_QInputDialog_getText_STATIC_QWidget_X_const_QString_
   return qstring_to_crystal(QInputDialog::getText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), echo));
 }
 
-extern "C" CrystalString bg_QInputDialog_getText_STATIC_QWidget_X_const_QString_R_const_QString_R_QLineEdit__EchoMode_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString label, QLineEdit::EchoMode echo, const CrystalString text) {
-  return qstring_to_crystal(QInputDialog::getText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), echo, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" CrystalString bg_QInputDialog_getText_STATIC_QWidget_X_const_QString_R_const_QString_R_QLineEdit__EchoMode_const_QString_R_bool_X(QWidget * parent, const CrystalString title, const CrystalString label, QLineEdit::EchoMode echo, const CrystalString text, bool * ok) {
+  return qstring_to_crystal(QInputDialog::getText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), echo, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ok));
 }
 
 extern "C" CrystalString bg_QInputDialog_getText_STATIC_QWidget_X_const_QString_R_const_QString_R_QLineEdit__EchoMode_const_QString_R_bool_X_Qt__WindowFlags(QWidget * parent, const CrystalString title, const CrystalString label, QLineEdit::EchoMode echo, const CrystalString text, bool * ok, Qt::WindowFlags flags) {
@@ -108790,8 +109372,8 @@ extern "C" CrystalString bg_QInputDialog_getMultiLineText_STATIC_QWidget_X_const
   return qstring_to_crystal(QInputDialog::getMultiLineText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
-extern "C" CrystalString bg_QInputDialog_getMultiLineText_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString label, const CrystalString text) {
-  return qstring_to_crystal(QInputDialog::getMultiLineText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+extern "C" CrystalString bg_QInputDialog_getMultiLineText_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_bool_X(QWidget * parent, const CrystalString title, const CrystalString label, const CrystalString text, bool * ok) {
+  return qstring_to_crystal(QInputDialog::getMultiLineText(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (label); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ok));
 }
 
 extern "C" CrystalString bg_QInputDialog_getMultiLineText_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_bool_X_Qt__WindowFlags(QWidget * parent, const CrystalString title, const CrystalString label, const CrystalString text, bool * ok, Qt::WindowFlags flags) {
@@ -109184,8 +109766,8 @@ extern "C" CrystalString bg_QItemDelegate_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QItemDelegate::tr(s));
 }
 
-extern "C" CrystalString bg_QItemDelegate_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QItemDelegate::tr(s, c));
+extern "C" CrystalString bg_QItemDelegate_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QItemDelegate::tr(s, c, n));
 }
 
 extern "C" QItemDelegate * bg_QItemDelegate__CONSTRUCT_QObject_X(QObject * parent) {
@@ -109969,8 +110551,8 @@ extern "C" CrystalString bg_QKeySequenceEdit_tr_STATIC_const_char_X(const char *
   return qstring_to_crystal(QKeySequenceEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QKeySequenceEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QKeySequenceEdit::tr(s, c));
+extern "C" CrystalString bg_QKeySequenceEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QKeySequenceEdit::tr(s, c, n));
 }
 
 extern "C" QKeySequenceEdit * bg_QKeySequenceEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -110565,8 +111147,8 @@ extern "C" CrystalString bg_QLabel_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QLabel::tr(s));
 }
 
-extern "C" CrystalString bg_QLabel_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QLabel::tr(s, c));
+extern "C" CrystalString bg_QLabel_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QLabel::tr(s, c, n));
 }
 
 extern "C" QLabel * bg_QLabel__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -111365,8 +111947,8 @@ extern "C" CrystalString bg_QLCDNumber_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QLCDNumber::tr(s));
 }
 
-extern "C" CrystalString bg_QLCDNumber_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QLCDNumber::tr(s, c));
+extern "C" CrystalString bg_QLCDNumber_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QLCDNumber::tr(s, c, n));
 }
 
 extern "C" QLCDNumber * bg_QLCDNumber__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -112426,8 +113008,8 @@ extern "C" CrystalString bg_QListView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QListView::tr(s));
 }
 
-extern "C" CrystalString bg_QListView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QListView::tr(s, c));
+extern "C" CrystalString bg_QListView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QListView::tr(s, c, n));
 }
 
 extern "C" QListView * bg_QListView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -114067,8 +114649,8 @@ extern "C" CrystalString bg_QListWidget_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QListWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QListWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QListWidget::tr(s, c));
+extern "C" CrystalString bg_QListWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QListWidget::tr(s, c, n));
 }
 
 extern "C" QListWidget * bg_QListWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -114893,8 +115475,8 @@ extern "C" CrystalString bg_QMainWindow_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMainWindow::tr(s));
 }
 
-extern "C" CrystalString bg_QMainWindow_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMainWindow::tr(s, c));
+extern "C" CrystalString bg_QMainWindow_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMainWindow::tr(s, c, n));
 }
 
 extern "C" QMainWindow * bg_QMainWindow__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -115717,8 +116299,8 @@ extern "C" CrystalString bg_QMdiArea_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMdiArea::tr(s));
 }
 
-extern "C" CrystalString bg_QMdiArea_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMdiArea::tr(s, c));
+extern "C" CrystalString bg_QMdiArea_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMdiArea::tr(s, c, n));
 }
 
 extern "C" QMdiArea * bg_QMdiArea__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -116473,8 +117055,8 @@ extern "C" CrystalString bg_QMdiSubWindow_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QMdiSubWindow::tr(s));
 }
 
-extern "C" CrystalString bg_QMdiSubWindow_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMdiSubWindow::tr(s, c));
+extern "C" CrystalString bg_QMdiSubWindow_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMdiSubWindow::tr(s, c, n));
 }
 
 extern "C" QMdiSubWindow * bg_QMdiSubWindow__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -117261,8 +117843,8 @@ extern "C" CrystalString bg_QMenu_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMenu::tr(s));
 }
 
-extern "C" CrystalString bg_QMenu_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMenu::tr(s, c));
+extern "C" CrystalString bg_QMenu_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMenu::tr(s, c, n));
 }
 
 extern "C" QMenu * bg_QMenu__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -118149,8 +118731,8 @@ extern "C" CrystalString bg_QMenuBar_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMenuBar::tr(s));
 }
 
-extern "C" CrystalString bg_QMenuBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMenuBar::tr(s, c));
+extern "C" CrystalString bg_QMenuBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMenuBar::tr(s, c, n));
 }
 
 extern "C" QMenuBar * bg_QMenuBar__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -118975,8 +119557,8 @@ extern "C" CrystalString bg_QMessageBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QMessageBox::tr(s));
 }
 
-extern "C" CrystalString bg_QMessageBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QMessageBox::tr(s, c));
+extern "C" CrystalString bg_QMessageBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QMessageBox::tr(s, c, n));
 }
 
 extern "C" QMessageBox * bg_QMessageBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -118987,8 +119569,8 @@ extern "C" QMessageBox * bg_QMessageBox__CONSTRUCT_QMessageBox__Icon_const_QStri
   return new (UseGC) CrystalGCWrapper<BgInherit_QMessageBox>(icon, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMessageBox * bg_QMessageBox__CONSTRUCT_QMessageBox__Icon_const_QString_R_const_QString_R_QMessageBox__StandardButtons(QMessageBox::Icon icon, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QMessageBox>(icon, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons);
+extern "C" QMessageBox * bg_QMessageBox__CONSTRUCT_QMessageBox__Icon_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QWidget_X(QMessageBox::Icon icon, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QWidget * parent) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QMessageBox>(icon, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons, parent);
 }
 
 extern "C" QMessageBox * bg_QMessageBox__CONSTRUCT_QMessageBox__Icon_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QWidget_X_Qt__WindowFlags(QMessageBox::Icon icon, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QWidget * parent, Qt::WindowFlags flags) {
@@ -119123,32 +119705,32 @@ extern "C" QMessageBox::StandardButton bg_QMessageBox_information_STATIC_QWidget
   return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMessageBox::StandardButton bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons) {
-  return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons);
+extern "C" QMessageBox::StandardButton bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+  return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons, defaultButton);
 }
 
 extern "C" QMessageBox::StandardButton bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text) {
   return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMessageBox::StandardButton bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons) {
-  return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons);
+extern "C" QMessageBox::StandardButton bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+  return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons, defaultButton);
 }
 
 extern "C" QMessageBox::StandardButton bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text) {
   return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMessageBox::StandardButton bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons) {
-  return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons);
+extern "C" QMessageBox::StandardButton bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+  return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons, defaultButton);
 }
 
 extern "C" QMessageBox::StandardButton bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text) {
   return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" QMessageBox::StandardButton bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons) {
-  return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons);
+extern "C" QMessageBox::StandardButton bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButtons_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+  return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), buttons, defaultButton);
 }
 
 extern "C" void bg_QMessageBox_about_STATIC_QWidget_X_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text) {
@@ -119183,8 +119765,8 @@ extern "C" int bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const
   return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" int bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text) {
-  return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" int bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R_int_int(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text, int defaultButtonNumber, int escapeButtonNumber) {
+  return QMessageBox::information(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), defaultButtonNumber, escapeButtonNumber);
 }
 
 extern "C" QMessageBox::StandardButton bg_QMessageBox_information_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButton_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButton button0, QMessageBox::StandardButton button1) {
@@ -119203,8 +119785,8 @@ extern "C" int bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QS
   return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" int bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text) {
-  return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" int bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R_int_int(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text, int defaultButtonNumber, int escapeButtonNumber) {
+  return QMessageBox::question(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), defaultButtonNumber, escapeButtonNumber);
 }
 
 extern "C" int bg_QMessageBox_question_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButton_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButton button0, QMessageBox::StandardButton button1) {
@@ -119223,8 +119805,8 @@ extern "C" int bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QSt
   return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" int bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text) {
-  return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" int bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R_int_int(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text, int defaultButtonNumber, int escapeButtonNumber) {
+  return QMessageBox::warning(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), defaultButtonNumber, escapeButtonNumber);
 }
 
 extern "C" int bg_QMessageBox_warning_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButton_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButton button0, QMessageBox::StandardButton button1) {
@@ -119243,8 +119825,8 @@ extern "C" int bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QS
   return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
-extern "C" int bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text) {
-  return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+extern "C" int bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R_const_QString_R_const_QString_R_const_QString_R_int_int(QWidget * parent, const CrystalString title, const CrystalString text, const CrystalString button0Text, const CrystalString button1Text, const CrystalString button2Text, int defaultButtonNumber, int escapeButtonNumber) {
+  return QMessageBox::critical(parent, ([&]() { auto &&bg_value = (title); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button0Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button1Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (button2Text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), defaultButtonNumber, escapeButtonNumber);
 }
 
 extern "C" int bg_QMessageBox_critical_STATIC_QWidget_X_const_QString_R_const_QString_R_QMessageBox__StandardButton_QMessageBox__StandardButton(QWidget * parent, const CrystalString title, const CrystalString text, QMessageBox::StandardButton button0, QMessageBox::StandardButton button1) {
@@ -119957,8 +120539,8 @@ extern "C" CrystalString bg_QTextEdit_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTextEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QTextEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextEdit::tr(s, c));
+extern "C" CrystalString bg_QTextEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextEdit::tr(s, c, n));
 }
 
 extern "C" QTextEdit * bg_QTextEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -121271,8 +121853,8 @@ extern "C" CrystalString bg_QPlainTextEdit_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QPlainTextEdit::tr(s));
 }
 
-extern "C" CrystalString bg_QPlainTextEdit_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPlainTextEdit::tr(s, c));
+extern "C" CrystalString bg_QPlainTextEdit_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPlainTextEdit::tr(s, c, n));
 }
 
 extern "C" QPlainTextEdit * bg_QPlainTextEdit__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -122117,8 +122699,8 @@ extern "C" CrystalString bg_QPlainTextDocumentLayout_tr_STATIC_const_char_X(cons
   return qstring_to_crystal(QPlainTextDocumentLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QPlainTextDocumentLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QPlainTextDocumentLayout::tr(s, c));
+extern "C" CrystalString bg_QPlainTextDocumentLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QPlainTextDocumentLayout::tr(s, c, n));
 }
 
 extern "C" QPlainTextDocumentLayout * bg_QPlainTextDocumentLayout__CONSTRUCT_QTextDocument_X(QTextDocument * document) {
@@ -122727,8 +123309,8 @@ extern "C" CrystalString bg_QProgressBar_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QProgressBar::tr(s));
 }
 
-extern "C" CrystalString bg_QProgressBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QProgressBar::tr(s, c));
+extern "C" CrystalString bg_QProgressBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QProgressBar::tr(s, c, n));
 }
 
 extern "C" QProgressBar * bg_QProgressBar__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -123441,8 +124023,8 @@ extern "C" CrystalString bg_QProgressDialog_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QProgressDialog::tr(s));
 }
 
-extern "C" CrystalString bg_QProgressDialog_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QProgressDialog::tr(s, c));
+extern "C" CrystalString bg_QProgressDialog_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QProgressDialog::tr(s, c, n));
 }
 
 extern "C" QProgressDialog * bg_QProgressDialog__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -123973,8 +124555,8 @@ extern "C" CrystalString bg_QProxyStyle_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QProxyStyle::tr(s));
 }
 
-extern "C" CrystalString bg_QProxyStyle_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QProxyStyle::tr(s, c));
+extern "C" CrystalString bg_QProxyStyle_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QProxyStyle::tr(s, c, n));
 }
 
 extern "C" QProxyStyle * bg_QProxyStyle__CONSTRUCT_QStyle_X(QStyle * style) {
@@ -124735,8 +125317,8 @@ extern "C" CrystalString bg_QRadioButton_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QRadioButton::tr(s));
 }
 
-extern "C" CrystalString bg_QRadioButton_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QRadioButton::tr(s, c));
+extern "C" CrystalString bg_QRadioButton_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QRadioButton::tr(s, c, n));
 }
 
 extern "C" QRadioButton * bg_QRadioButton__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -125329,8 +125911,8 @@ extern "C" CrystalString bg_QScrollBar_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QScrollBar::tr(s));
 }
 
-extern "C" CrystalString bg_QScrollBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QScrollBar::tr(s, c));
+extern "C" CrystalString bg_QScrollBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QScrollBar::tr(s, c, n));
 }
 
 extern "C" QScrollBar * bg_QScrollBar__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -125485,8 +126067,8 @@ extern "C" CrystalString bg_QScroller_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QScroller::tr(s));
 }
 
-extern "C" CrystalString bg_QScroller_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QScroller::tr(s, c));
+extern "C" CrystalString bg_QScroller_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QScroller::tr(s, c, n));
 }
 
 extern "C" bool bg_QScroller_hasScroller_STATIC_QObject_X(QObject * target) {
@@ -125731,8 +126313,8 @@ extern "C" CrystalString bg_QShortcut_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QShortcut::tr(s));
 }
 
-extern "C" CrystalString bg_QShortcut_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QShortcut::tr(s, c));
+extern "C" CrystalString bg_QShortcut_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QShortcut::tr(s, c, n));
 }
 
 extern "C" QShortcut * bg_QShortcut__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -125747,8 +126329,8 @@ extern "C" QShortcut * bg_QShortcut__CONSTRUCT_const_QKeySequence_R_QWidget_X_co
   return new (UseGC) CrystalGCWrapper<BgInherit_QShortcut>(key, parent, member);
 }
 
-extern "C" QShortcut * bg_QShortcut__CONSTRUCT_const_QKeySequence_R_QWidget_X_const_char_X_const_char_X(const QKeySequence & key, QWidget * parent, const char * member, const char * ambiguousMember) {
-  return new (UseGC) CrystalGCWrapper<BgInherit_QShortcut>(key, parent, member, ambiguousMember);
+extern "C" QShortcut * bg_QShortcut__CONSTRUCT_const_QKeySequence_R_QWidget_X_const_char_X_const_char_X_Qt__ShortcutContext(const QKeySequence & key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext shortcutContext) {
+  return new (UseGC) CrystalGCWrapper<BgInherit_QShortcut>(key, parent, member, ambiguousMember, shortcutContext);
 }
 
 extern "C" void bg_QShortcut_setKey_const_QKeySequence_R(QShortcut * _self_, const QKeySequence & key) {
@@ -126343,8 +126925,8 @@ extern "C" CrystalString bg_QSizeGrip_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSizeGrip::tr(s));
 }
 
-extern "C" CrystalString bg_QSizeGrip_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSizeGrip::tr(s, c));
+extern "C" CrystalString bg_QSizeGrip_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSizeGrip::tr(s, c, n));
 }
 
 extern "C" QSizeGrip * bg_QSizeGrip__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -126452,8 +127034,10 @@ struct BgJumptable_QSpinBox {
   CrystalProc<void *, const char *> bg_QSpinBox_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QSpinBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, QEvent *> bg_QSpinBox_event_QEvent_X;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QSpinBox_validate_QString_R_int_R;
   CrystalProc<int, const CrystalString *> bg_QSpinBox_valueFromText_const_QString_R;
   CrystalProc<CrystalString *, int> bg_QSpinBox_textFromValue_int;
+  CrystalProc<void, CrystalString *> bg_QSpinBox_fixup_QString_R;
   CrystalProc<QSize *> bg_QAbstractSpinBox_sizeHint_;
   CrystalProc<QSize *> bg_QAbstractSpinBox_minimumSizeHint_;
   CrystalProc<CrystalVariant *, Qt::InputMethodQuery> bg_QAbstractSpinBox_inputMethodQuery_Qt__InputMethodQuery;
@@ -126542,6 +127126,20 @@ struct BgInherit_QSpinBox : public QSpinBox {
     }
   }
   
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QSpinBox_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QSpinBox_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QSpinBox::validate(input, pos);
+    }
+  }
+  
   int valueFromText(const QString & text) const override {
     const BgInherit_QSpinBox *_self_ = this;
     if (_self_->bgJump.bg_QSpinBox_valueFromText_const_QString_R.isValid()) {
@@ -126557,6 +127155,17 @@ struct BgInherit_QSpinBox : public QSpinBox {
       return ([&]() { auto &&bg_value = (*_self_->bgJump.bg_QSpinBox_textFromValue_int(val)); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
     } else {
       return QSpinBox::textFromValue(val);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QSpinBox_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QSpinBox_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QSpinBox::fixup(input);
     }
   }
   
@@ -127009,8 +127618,8 @@ extern "C" CrystalString bg_QSpinBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSpinBox::tr(s));
 }
 
-extern "C" CrystalString bg_QSpinBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSpinBox::tr(s, c));
+extern "C" CrystalString bg_QSpinBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSpinBox::tr(s, c, n));
 }
 
 extern "C" QSpinBox * bg_QSpinBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -127089,12 +127698,25 @@ extern "C" bool bg_QSpinBox_event_QEvent_X(QSpinBox * _self_, QEvent * event) {
   return _self_->event(event);
 }
 
+extern "C" QValidator::State bg_QSpinBox_validate_QString_R_int_R(QSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
 extern "C" int bg_QSpinBox_valueFromText_const_QString_R(QSpinBox * _self_, const CrystalString text) {
   return _self_->valueFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
 extern "C" CrystalString bg_QSpinBox_textFromValue_int(QSpinBox * _self_, int val) {
   return qstring_to_crystal(_self_->textFromValue(val));
+}
+
+extern "C" void bg_QSpinBox_fixup_QString_R(QSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_QSpinBox_setValue_int(QSpinBox * _self_, int val) {
@@ -127125,12 +127747,25 @@ extern "C" bool bg_QSpinBox_event_SUPER_QEvent_X(QSpinBox * _self_, QEvent * eve
   return _self_->QSpinBox::event(event);
 }
 
+extern "C" QValidator::State bg_QSpinBox_validate_SUPER_QString_R_int_R(QSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QSpinBox::validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
 extern "C" int bg_QSpinBox_valueFromText_SUPER_const_QString_R(QSpinBox * _self_, const CrystalString text) {
   return _self_->QSpinBox::valueFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
 extern "C" CrystalString bg_QSpinBox_textFromValue_SUPER_int(QSpinBox * _self_, int val) {
   return qstring_to_crystal(_self_->QSpinBox::textFromValue(val));
+}
+
+extern "C" void bg_QSpinBox_fixup_SUPER_QString_R(QSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QSpinBox::fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_BgInherit_QSpinBox_JUMPTABLE_BgJumptable_QSpinBox_R(BgInherit_QSpinBox * _self_, const BgJumptable_QSpinBox & table) {
@@ -127141,8 +127776,10 @@ struct BgJumptable_QDoubleSpinBox {
   CrystalProc<const QMetaObject *> bg_QDoubleSpinBox_metaObject_;
   CrystalProc<void *, const char *> bg_QDoubleSpinBox_qt_metacast_const_char_X;
   CrystalProc<int, QMetaObject::Call, int, void **> bg_QDoubleSpinBox_qt_metacall_QMetaObject__Call_int_void_XX;
+  CrystalProc<QValidator::State, CrystalString *, int *> bg_QDoubleSpinBox_validate_QString_R_int_R;
   CrystalProc<double, const CrystalString *> bg_QDoubleSpinBox_valueFromText_const_QString_R;
   CrystalProc<CrystalString *, double> bg_QDoubleSpinBox_textFromValue_double;
+  CrystalProc<void, CrystalString *> bg_QDoubleSpinBox_fixup_QString_R;
   CrystalProc<QSize *> bg_QAbstractSpinBox_sizeHint_;
   CrystalProc<QSize *> bg_QAbstractSpinBox_minimumSizeHint_;
   CrystalProc<bool, QEvent *> bg_QAbstractSpinBox_event_QEvent_X;
@@ -127223,6 +127860,20 @@ struct BgInherit_QDoubleSpinBox : public QDoubleSpinBox {
     }
   }
   
+  QValidator::State validate(QString & input, int & pos) const override {
+    const BgInherit_QDoubleSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QDoubleSpinBox_validate_QString_R_int_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      int pos_ = pos;
+      QValidator::State _result_ = _self_->bgJump.bg_QDoubleSpinBox_validate_QString_R_int_R(&input_, &pos_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+      pos = pos_;
+      return _result_;
+    } else {
+      return QDoubleSpinBox::validate(input, pos);
+    }
+  }
+  
   double valueFromText(const QString & text) const override {
     const BgInherit_QDoubleSpinBox *_self_ = this;
     if (_self_->bgJump.bg_QDoubleSpinBox_valueFromText_const_QString_R.isValid()) {
@@ -127238,6 +127889,17 @@ struct BgInherit_QDoubleSpinBox : public QDoubleSpinBox {
       return ([&]() { auto &&bg_value = (*_self_->bgJump.bg_QDoubleSpinBox_textFromValue_double(val)); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
     } else {
       return QDoubleSpinBox::textFromValue(val);
+    }
+  }
+  
+  void fixup(QString & input) const override {
+    const BgInherit_QDoubleSpinBox *_self_ = this;
+    if (_self_->bgJump.bg_QDoubleSpinBox_fixup_QString_R.isValid()) {
+      CrystalString input_ = qstring_to_crystal(input);
+      _self_->bgJump.bg_QDoubleSpinBox_fixup_QString_R(&input_);
+      input = ([&]() { auto &&bg_value = (input_); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+    } else {
+      QDoubleSpinBox::fixup(input);
     }
   }
   
@@ -127699,8 +128361,8 @@ extern "C" CrystalString bg_QDoubleSpinBox_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QDoubleSpinBox::tr(s));
 }
 
-extern "C" CrystalString bg_QDoubleSpinBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QDoubleSpinBox::tr(s, c));
+extern "C" CrystalString bg_QDoubleSpinBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QDoubleSpinBox::tr(s, c, n));
 }
 
 extern "C" QDoubleSpinBox * bg_QDoubleSpinBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -127775,12 +128437,25 @@ extern "C" void bg_QDoubleSpinBox_setDecimals_int(QDoubleSpinBox * _self_, int p
   _self_->setDecimals(prec);
 }
 
+extern "C" QValidator::State bg_QDoubleSpinBox_validate_QString_R_int_R(QDoubleSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
 extern "C" double bg_QDoubleSpinBox_valueFromText_const_QString_R(QDoubleSpinBox * _self_, const CrystalString text) {
   return _self_->valueFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
 extern "C" CrystalString bg_QDoubleSpinBox_textFromValue_double(QDoubleSpinBox * _self_, double val) {
   return qstring_to_crystal(_self_->textFromValue(val));
+}
+
+extern "C" void bg_QDoubleSpinBox_fixup_QString_R(QDoubleSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_QDoubleSpinBox_setValue_double(QDoubleSpinBox * _self_, double val) {
@@ -127807,12 +128482,25 @@ extern "C" QMetaObject::Connection * bg_QDoubleSpinBox_CONNECT_textChanged_Qt__C
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleSpinBox::*)(const QString &))&QDoubleSpinBox::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
+extern "C" QValidator::State bg_QDoubleSpinBox_validate_SUPER_QString_R_int_R(QDoubleSpinBox * _self_, CrystalString * input, int & pos) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  QValidator::State _result_ = _self_->QDoubleSpinBox::validate(input_, pos);
+  *input = qstring_to_crystal(std::move(input_));
+  return _result_;
+}
+
 extern "C" double bg_QDoubleSpinBox_valueFromText_SUPER_const_QString_R(QDoubleSpinBox * _self_, const CrystalString text) {
   return _self_->QDoubleSpinBox::valueFromText(([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
 }
 
 extern "C" CrystalString bg_QDoubleSpinBox_textFromValue_SUPER_double(QDoubleSpinBox * _self_, double val) {
   return qstring_to_crystal(_self_->QDoubleSpinBox::textFromValue(val));
+}
+
+extern "C" void bg_QDoubleSpinBox_fixup_SUPER_QString_R(QDoubleSpinBox * _self_, CrystalString * input) {
+  QString input_ = ([&]() { auto &&bg_value = (*input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+  _self_->QDoubleSpinBox::fixup(input_);
+  *input = qstring_to_crystal(std::move(input_));
 }
 
 extern "C" void bg_BgInherit_QDoubleSpinBox_JUMPTABLE_BgJumptable_QDoubleSpinBox_R(BgInherit_QDoubleSpinBox * _self_, const BgJumptable_QDoubleSpinBox & table) {
@@ -128341,8 +129029,8 @@ extern "C" CrystalString bg_QSplashScreen_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QSplashScreen::tr(s));
 }
 
-extern "C" CrystalString bg_QSplashScreen_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSplashScreen::tr(s, c));
+extern "C" CrystalString bg_QSplashScreen_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSplashScreen::tr(s, c, n));
 }
 
 extern "C" QSplashScreen * bg_QSplashScreen__CONSTRUCT_() {
@@ -128963,8 +129651,8 @@ extern "C" CrystalString bg_QSplitter_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QSplitter::tr(s));
 }
 
-extern "C" CrystalString bg_QSplitter_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSplitter::tr(s, c));
+extern "C" CrystalString bg_QSplitter_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSplitter::tr(s, c, n));
 }
 
 extern "C" QSplitter * bg_QSplitter__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -129667,8 +130355,8 @@ extern "C" CrystalString bg_QSplitterHandle_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QSplitterHandle::tr(s));
 }
 
-extern "C" CrystalString bg_QSplitterHandle_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSplitterHandle::tr(s, c));
+extern "C" CrystalString bg_QSplitterHandle_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSplitterHandle::tr(s, c, n));
 }
 
 extern "C" QSplitterHandle * bg_QSplitterHandle__CONSTRUCT_Qt__Orientation_QSplitter_X(Qt::Orientation o, QSplitter * parent) {
@@ -130065,8 +130753,8 @@ extern "C" CrystalString bg_QStackedLayout_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QStackedLayout::tr(s));
 }
 
-extern "C" CrystalString bg_QStackedLayout_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStackedLayout::tr(s, c));
+extern "C" CrystalString bg_QStackedLayout_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStackedLayout::tr(s, c, n));
 }
 
 extern "C" QStackedLayout * bg_QStackedLayout__CONSTRUCT_() {
@@ -130733,8 +131421,8 @@ extern "C" CrystalString bg_QStackedWidget_tr_STATIC_const_char_X(const char * s
   return qstring_to_crystal(QStackedWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QStackedWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStackedWidget::tr(s, c));
+extern "C" CrystalString bg_QStackedWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStackedWidget::tr(s, c, n));
 }
 
 extern "C" QStackedWidget * bg_QStackedWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -131325,8 +132013,8 @@ extern "C" CrystalString bg_QStatusBar_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QStatusBar::tr(s));
 }
 
-extern "C" CrystalString bg_QStatusBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStatusBar::tr(s, c));
+extern "C" CrystalString bg_QStatusBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStatusBar::tr(s, c, n));
 }
 
 extern "C" QStatusBar * bg_QStatusBar__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -131671,8 +132359,8 @@ extern "C" CrystalString bg_QStyledItemDelegate_tr_STATIC_const_char_X(const cha
   return qstring_to_crystal(QStyledItemDelegate::tr(s));
 }
 
-extern "C" CrystalString bg_QStyledItemDelegate_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QStyledItemDelegate::tr(s, c));
+extern "C" CrystalString bg_QStyledItemDelegate_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QStyledItemDelegate::tr(s, c, n));
 }
 
 extern "C" QStyledItemDelegate * bg_QStyledItemDelegate__CONSTRUCT_QObject_X(QObject * parent) {
@@ -131913,8 +132601,8 @@ extern "C" CrystalString bg_QSystemTrayIcon_tr_STATIC_const_char_X(const char * 
   return qstring_to_crystal(QSystemTrayIcon::tr(s));
 }
 
-extern "C" CrystalString bg_QSystemTrayIcon_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QSystemTrayIcon::tr(s, c));
+extern "C" CrystalString bg_QSystemTrayIcon_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QSystemTrayIcon::tr(s, c, n));
 }
 
 extern "C" QSystemTrayIcon * bg_QSystemTrayIcon__CONSTRUCT_QObject_X(QObject * parent) {
@@ -132950,8 +133638,8 @@ extern "C" CrystalString bg_QTableView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTableView::tr(s));
 }
 
-extern "C" CrystalString bg_QTableView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTableView::tr(s, c));
+extern "C" CrystalString bg_QTableView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTableView::tr(s, c, n));
 }
 
 extern "C" QTableView * bg_QTableView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -134625,8 +135313,8 @@ extern "C" CrystalString bg_QTableWidget_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QTableWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QTableWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTableWidget::tr(s, c));
+extern "C" CrystalString bg_QTableWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTableWidget::tr(s, c, n));
 }
 
 extern "C" QTableWidget * bg_QTableWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -135693,8 +136381,8 @@ extern "C" CrystalString bg_QTextBrowser_tr_STATIC_const_char_X(const char * s) 
   return qstring_to_crystal(QTextBrowser::tr(s));
 }
 
-extern "C" CrystalString bg_QTextBrowser_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTextBrowser::tr(s, c));
+extern "C" CrystalString bg_QTextBrowser_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTextBrowser::tr(s, c, n));
 }
 
 extern "C" QTextBrowser * bg_QTextBrowser__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -136449,8 +137137,8 @@ extern "C" CrystalString bg_QToolBar_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QToolBar::tr(s));
 }
 
-extern "C" CrystalString bg_QToolBar_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QToolBar::tr(s, c));
+extern "C" CrystalString bg_QToolBar_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QToolBar::tr(s, c, n));
 }
 
 extern "C" QToolBar * bg_QToolBar__CONSTRUCT_const_QString_R_QWidget_X(const CrystalString title, QWidget * parent) {
@@ -137217,8 +137905,8 @@ extern "C" CrystalString bg_QToolBox_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QToolBox::tr(s));
 }
 
-extern "C" CrystalString bg_QToolBox_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QToolBox::tr(s, c));
+extern "C" CrystalString bg_QToolBox_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QToolBox::tr(s, c, n));
 }
 
 extern "C" QToolBox * bg_QToolBox__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -137907,8 +138595,8 @@ extern "C" CrystalString bg_QToolButton_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QToolButton::tr(s));
 }
 
-extern "C" CrystalString bg_QToolButton_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QToolButton::tr(s, c));
+extern "C" CrystalString bg_QToolButton_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QToolButton::tr(s, c, n));
 }
 
 extern "C" QToolButton * bg_QToolButton__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -139088,8 +139776,8 @@ extern "C" CrystalString bg_QTreeView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTreeView::tr(s));
 }
 
-extern "C" CrystalString bg_QTreeView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTreeView::tr(s, c));
+extern "C" CrystalString bg_QTreeView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTreeView::tr(s, c, n));
 }
 
 extern "C" QTreeView * bg_QTreeView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -141055,8 +141743,8 @@ extern "C" CrystalString bg_QTreeWidget_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QTreeWidget::tr(s));
 }
 
-extern "C" CrystalString bg_QTreeWidget_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QTreeWidget::tr(s, c));
+extern "C" CrystalString bg_QTreeWidget_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QTreeWidget::tr(s, c, n));
 }
 
 extern "C" QTreeWidget * bg_QTreeWidget__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -141509,8 +142197,8 @@ extern "C" CrystalString bg_QUndoGroup_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QUndoGroup::tr(s));
 }
 
-extern "C" CrystalString bg_QUndoGroup_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QUndoGroup::tr(s, c));
+extern "C" CrystalString bg_QUndoGroup_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QUndoGroup::tr(s, c, n));
 }
 
 extern "C" QUndoGroup * bg_QUndoGroup__CONSTRUCT_QObject_X(QObject * parent) {
@@ -141885,8 +142573,8 @@ extern "C" CrystalString bg_QUndoStack_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QUndoStack::tr(s));
 }
 
-extern "C" CrystalString bg_QUndoStack_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QUndoStack::tr(s, c));
+extern "C" CrystalString bg_QUndoStack_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QUndoStack::tr(s, c, n));
 }
 
 extern "C" QUndoStack * bg_QUndoStack__CONSTRUCT_QObject_X(QObject * parent) {
@@ -142990,8 +143678,8 @@ extern "C" CrystalString bg_QUndoView_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QUndoView::tr(s));
 }
 
-extern "C" CrystalString bg_QUndoView_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QUndoView::tr(s, c));
+extern "C" CrystalString bg_QUndoView_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QUndoView::tr(s, c, n));
 }
 
 extern "C" QUndoView * bg_QUndoView__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -143216,8 +143904,8 @@ extern "C" CrystalString bg_QWidgetAction_tr_STATIC_const_char_X(const char * s)
   return qstring_to_crystal(QWidgetAction::tr(s));
 }
 
-extern "C" CrystalString bg_QWidgetAction_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QWidgetAction::tr(s, c));
+extern "C" CrystalString bg_QWidgetAction_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QWidgetAction::tr(s, c, n));
 }
 
 extern "C" QWidgetAction * bg_QWidgetAction__CONSTRUCT_QObject_X(QObject * parent) {
@@ -143886,8 +144574,8 @@ extern "C" CrystalString bg_QWizard_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QWizard::tr(s));
 }
 
-extern "C" CrystalString bg_QWizard_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QWizard::tr(s, c));
+extern "C" CrystalString bg_QWizard_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QWizard::tr(s, c, n));
 }
 
 extern "C" QWizard * bg_QWizard__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -144732,8 +145420,8 @@ extern "C" CrystalString bg_QWizardPage_tr_STATIC_const_char_X(const char * s) {
   return qstring_to_crystal(QWizardPage::tr(s));
 }
 
-extern "C" CrystalString bg_QWizardPage_tr_STATIC_const_char_X_const_char_X(const char * s, const char * c) {
-  return qstring_to_crystal(QWizardPage::tr(s, c));
+extern "C" CrystalString bg_QWizardPage_tr_STATIC_const_char_X_const_char_X_int(const char * s, const char * c, int n) {
+  return qstring_to_crystal(QWizardPage::tr(s, c, n));
 }
 
 extern "C" QWizardPage * bg_QWizardPage__CONSTRUCT_QWidget_X(QWidget * parent) {
@@ -144886,14 +145574,6 @@ extern "C" QTextStreamManipulator * bg____qSetRealNumberPrecision_STATIC_int(int
 
 extern "C" void bg____qt5cr_reset_numeric_locale_STATIC_() {
   ::qt5cr_reset_numeric_locale();
-}
-
-extern "C" QValidator::State bg____qt5cr_validator_validate_STATIC_const_QValidator_X_const_QString_R_int(const QValidator * validator, const CrystalString input, int pos) {
-  return ::qt5cr_validator_validate(validator, ([&]() { auto &&bg_value = (input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), pos);
-}
-
-extern "C" CrystalString bg____qt5cr_validator_fixup_STATIC_const_QValidator_X_const_QString_R(const QValidator * validator, const CrystalString input) {
-  return qstring_to_crystal(::qt5cr_validator_fixup(validator, ([&]() { auto &&bg_value = (input); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
 extern "C" CrystalString bg____qt5cr_xml_reader_documentVersion_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {

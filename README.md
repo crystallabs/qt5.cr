@@ -466,12 +466,15 @@ see the comments there:
   `Qt::TreeWidgetItemIterator.new(tree).each { |item| ... }`.
 * `QHeaderView`'s protected `initialize()` is `#cpp_initialize`, as Crystal
   reserves the name for constructors.
-* `QValidator::validate` and `fixup` take the input by non-const reference,
-  which bindgen can't pass a `String` (a `QString` by value) by, so
-  `ext/validator_helper.hpp` calls them on a copy: `validator.validate("42")`
-  returns the `Validator::State`, `#fixup` the fixed string.  Validators can't
-  be written in Crystal: as the pure virtual `validate` is dropped, bindgen
-  skips the C++ subclass (a warning, shown by `tool.sh --debug`).
+* A `QString` taken by non-const reference or pointer is an out argument,
+  returned with the result (bindgen's SPEC.md §2.2.5):
+  `state, input, pos = validator.validate("42", 0)`, `validator.fixup("4 2")`
+  returns the fixed string, `FileDialog.get_open_file_name(parent, caption,
+  dir, filter)` returns `{file_name, selected_filter}`, `TextStream#read_line_into`
+  `{Bool, String}` and `LockFile#lock_info` `{Bool, Int64, String, String}`.
+  A validator or spin box written in Crystal returns the same tuple from its
+  `validate`.  `QTextStream::setString` and `QBuffer::setBuffer` keep the
+  pointer instead, and are ignored.
 * The `QStyle` enum constants drop their prefixes:
   `Style::PixelMetric::ButtonMargin`, `Style::State::Enabled`.
 * `QGraphicsWidget` derives from `QGraphicsObject` and `QGraphicsLayoutItem`:
@@ -507,8 +510,7 @@ see the comments there:
   which take them by non-const reference: `src/qt5/data_stream.cr` adds
   `stream.read(String)`, `stream.read(Bytes)` and `stream.read(Int32)` over
   the wrapped `>>(Int32*)`; `stream << "text"` and `<< bytes` are wrapped as
-  is.  The `>>` of a copied structure (`QPoint &`) is dropped like
-  `QValidator::validate` above.
+  is.  The `>>` of a copied structure (`QPoint &`) is dropped.
 * `QTouchEvent::TouchPoint` is `Qt::TouchPoint`; `QPointingDeviceUniqueId`
   is a copied structure: `PointingDeviceUniqueId.from_numeric_id(42)`.
 * `QJsonObject#[]` returns a `JsonValue` copy; `QJsonArray#[]` a

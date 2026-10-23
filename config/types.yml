@@ -336,6 +336,19 @@ types: # Type rewrite rules
   # A non-copyable bare struct with a C array; drops the stateful conversions
   # of QTextCodec, which TextCodec#to_unicode and #from_unicode don't need.
   "QTextCodec::ConverterState": { ignore: true }
+  QTextDecoder:
+    ignore_methods:
+      # Writes the string through the pointer, like the overload returning
+      # it, which would take the same Crystal arguments (SPEC.md §2.2.5).
+      - "toUnicode(QString *, const char *, int)"
+  # These keep the pointer beyond the call, which bindgen can't tell from an
+  # out argument it would return the value of.
+  QTextStream:
+    ignore_methods:
+      - setString
+  QBuffer:
+    ignore_methods:
+      - setBuffer
   # Meta-objects and CBOR
   # The moc-generated tables of QMetaObject's public `d` (an anonymous struct
   # in Qt 5) and the function pointers QMetaType registers types with.

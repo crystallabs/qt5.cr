@@ -6,11 +6,6 @@ functions:
     destination: "::"
   "^qt5cr_reset_numeric_locale":
     destination: "::"
-  # The parser matches the whole name, see ext/validator_helper.hpp
-  "^qt5cr_validator_validate$":
-    destination: "::"
-  "^qt5cr_validator_fixup$":
-    destination: "::"
   "^qt5cr_xml_\\w+$": # See ext/xml_helper.hpp
     destination: "::"
   "^qt5cr_data_stream_\\w+$": # See ext/data_stream_helper.hpp
