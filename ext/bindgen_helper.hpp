@@ -239,6 +239,17 @@ static void bindgen_notify_destroyed(void *object) {
   for (int i = 0; i < hooks->count; ++i) hooks->hooks[i](object);
 }
 
+/* The key of the wrapped object at `object` in the table of kept objects of
+ * `BindgenHelper`: the start of its GC allocation, so a pointer to a secondary
+ * base of it, like the `QPaintDevice` of a `QWidget`, finds the same entry as
+ * the object and as the destroyed hooks; the pointer itself for an object not
+ * on the GC heap.  Weak, like the hooks: one definition serves all bindings.
+ */
+extern "C" __attribute__((weak)) void *bindgen_kept_key(void *object) {
+  void *base = GC_base(object);
+  return base ? base : object;
+}
+
 /* The bookkeeping of an object constructed from Crystal, the first base of
  * `CrystalGCCleanupWrapper<T>`.  Being its first dynamic base, it's its primary
  * base (Itanium C++ ABI), at the start of the allocation for every `T`, also a

@@ -134,3 +134,27 @@ describe "objects deleted by Qt" do
     Qt::BindgenHelper.kept_alive?(label).should be_false
   end
 end
+
+describe "objects handed back by Qt" do
+  it "are released by the method removing or taking them" do
+    layout = Qt::VBoxLayout.new
+    label = Qt::Label.new("label")
+    layout.add_widget(label)
+    Qt::BindgenHelper.kept_alive?(label).should be_true
+    layout.remove_widget(label)
+    Qt::BindgenHelper.kept_alive?(label).should be_false
+
+    spacer = Qt::SpacerItem.new(1, 1)
+    layout.add_item(spacer)
+    Qt::BindgenHelper.kept_alive?(spacer).should be_true
+    layout.take_at(0)
+    Qt::BindgenHelper.kept_alive?(spacer).should be_false
+
+    list = Qt::ListWidget.new
+    item = Qt::ListWidgetItem.new("item")
+    list.add_item(item)
+    Qt::BindgenHelper.kept_alive?(item).should be_true
+    list.take_item(0)
+    Qt::BindgenHelper.kept_alive?(item).should be_false
+  end
+end

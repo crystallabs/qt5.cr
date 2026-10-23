@@ -42,3 +42,14 @@ describe "connection type" do
     texts.should eq(["done"])
   end
 end
+
+describe "signal arguments defaulting to nullptr" do
+  it "are nilable in the block" do
+    object = Qt::Object.new
+    types = [] of String
+    object.on_destroyed { |o| types << typeof(o).to_s << o.class.to_s }
+    object.delete_later
+    Qt::CoreApplication.send_posted_events(nil, Qt::Event::Type::DeferredDelete.value.to_i)
+    types.should eq(["(Qt::Object | Nil)", "Qt::Object"])
+  end
+end

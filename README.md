@@ -174,20 +174,32 @@ button.menu = Qt::Menu.new             # And so does this
 ```
 
 Objects created from Crystal are kept alive until Qt deletes them, like a
-parent deletes its children, or until passed to `Qt::BindgenHelper.release`,
-e.g. after taking a widget out again without deleting it.  An object Qt created
-itself, which Crystal only wraps, is kept until released:
+parent deletes its children, or until the method handing them back without
+deleting them releases them, like `Qt::Layout#remove_widget` or `#take_at`,
+`Qt::ListWidget#take_item`, `Qt::Widget#remove_action` or
+`Qt::GraphicsScene#remove_item`:
 
 ```crystal
-layout.remove_widget(label)
-Qt::BindgenHelper.release(label)
+layout.remove_widget(label) # The GC may collect the label again
+item = list.take_item(0)    # And the item, once `item` is gone
 ```
 
-The methods are configured in `config/keep_alive.yml`.  An object given a
-parent, by its constructor or `#parent=`, is kept alive too, as the parent owns
-it: `Qt::Label.new("Stays alive", window)`.  Setting the parent to `nil`
-releases it.  This is bindgen's `Qt` processor at work, for the classes
-deriving from `QObject`, `QGraphicsItem` or `QGraphicsLayoutItem`.
+Where no method hands the object back, like `Qt::TabWidget#remove_tab(index)`,
+pass it to `Qt::BindgenHelper.release`.  An object Qt created itself, which
+Crystal only wraps, is kept until released, by such a method or by hand:
+
+```crystal
+page = tabs.widget(0)
+tabs.remove_tab(0)
+Qt::BindgenHelper.release(page)
+```
+
+The methods are configured in `config/keep_alive.yml`, by `keep_alive:` and
+`release:`.  An object given a parent, by its constructor or `#parent=`, is
+kept alive too, as the parent owns it: `Qt::Label.new("Stays alive", window)`.
+Setting the parent to `nil` releases it.  This is bindgen's `Qt` processor at
+work, for the classes deriving from `QObject`, `QGraphicsItem` or
+`QGraphicsLayoutItem`.
 
 ## Threads
 

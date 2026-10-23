@@ -37,6 +37,11 @@ module Qt
     # Registers a function C++ calls with the address of a wrapped object it
     # destroys.  Defined in `bindgen_helper.hpp`.
     fun bindgen_add_destroyed_hook(hook : Void* -> Void) : Void
+  
+    # The key of a wrapped object in `BindgenHelper`'s table of kept objects:
+    # the start of its GC allocation, or the pointer itself off the GC heap.
+    # Defined in `bindgen_helper.hpp`.
+    fun bindgen_kept_key(object : Void*) : Void*
   end
   
   # Helpers for bindings.  Required.
@@ -72,9 +77,9 @@ module Qt
       String.new(string.ptr, string.size)
     end
   
-    # Objects kept alive by `.keep_alive`, by the address of their C++ object.
-    # Getters return a new wrapper each time, so any wrapper of the C++ object
-    # finds it.  The GC scans the pointers stored in the hash.
+    # Objects kept alive by `.keep_alive`, by the key of their C++ object, see
+    # `.kept_key`.  Getters return a new wrapper each time, so any wrapper of the
+    # C++ object finds it.  The GC scans the pointers stored in the hash.
     @@kept_alive = {} of UInt64 => Void*
   
     # Guards `@@kept_alive`.  Reentrant, as a GC finalizer may run C++ code
@@ -91,6 +96,16 @@ module Qt
     @@pending_releases = Pointer(UInt64).null
     @@pending_release_capacity = 0
     @@pending_release_count = 0
+  
+    # The key of the C++ object at *pointer* in `@@kept_alive`: the start of its
+    # GC allocation with C++ glue, so a wrapper of a secondary base of the object,
+    # like `widget.as_paint_device`, and the hook of its destruction find the
+    # entry of the object; the address itself for an object off the GC heap, or
+    # without C++ glue.
+    private def self.kept_key(pointer : Pointer) : UInt64
+      pointer = Binding.bindgen_kept_key(pointer.as(Void*))
+      pointer.address
+    end
   
     # Changes `@@kept_alive` in the block, then does the queued releases.  Call
     # with `@@kept_alive_mutex` locked.
@@ -126,7 +141,7 @@ module Qt
     # neither is collected.  If its C++ object is kept alive already, the wrapper
     # kept first stays.  Returns *object*.
     def self.keep_alive(object : Reference)
-      address = object.to_unsafe.address
+      address = kept_key(object.to_unsafe)
       @@kept_alive_mutex.synchronize do
         change_kept_alive do
           @@kept_alive[address] = object.as(Void*) unless @@kept_alive.has_key?(address)
@@ -149,11 +164,15 @@ module Qt
       object
     end
   
+    # `Nil` version, does nothing.
+    def self.release(nothing : Nil) : Nil
+    end
+  
     # Releases the C++ object at *pointer*, like `.release(object)`.  For code
     # which only has the pointer: C++ calls this as it destroys a wrapped object,
     # which may happen in a GC finalizer.
     def self.release(pointer : Pointer) : Nil
-      address = pointer.address
+      address = kept_key(pointer)
       @@kept_alive_mutex.synchronize do
         if @@kept_alive_busy
           queue_release(address)
@@ -166,7 +185,7 @@ module Qt
     # Returns if *object*, or another wrapper of its C++ object, is kept alive by
     # `.keep_alive`.
     def self.kept_alive?(object : Reference) : Bool
-      @@kept_alive_mutex.synchronize { @@kept_alive.has_key?(object.to_unsafe.address) }
+      @@kept_alive_mutex.synchronize { @@kept_alive.has_key?(kept_key(object.to_unsafe)) }
     end
   
     # C++ releases the objects it destroys: `CrystalGCCleanupWrapper` in
@@ -37930,6 +37949,7 @@ module Qt
     
     def remove_event_filter(obj : Object) : Void
       Binding.bg_QObject_removeEventFilter_QObject_X(self, (obj.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+    BindgenHelper.release(obj)
     end
     
     def self.connect(sender : Object, signal : UInt8*, receiver : Object, member : UInt8*, unnamed_arg_4 : ConnectionType = ConnectionType::AutoConnection) : SignalConnection
@@ -38483,7 +38503,7 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_destroyed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+    def on_destroyed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object?, Void)) : SignalConnection
       SignalConnection.new(unwrap: Binding.bg_QObject_CONNECT_destroyed_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(arg0.try {|ptr| Object.new(unwrap: ptr) unless ptr.null?}) end)))
     end
     
@@ -42965,10 +42985,13 @@ module Qt
     
     def remove_animation(animation : AbstractAnimation) : Void
       Binding.bg_QAnimationGroup_removeAnimation_QAbstractAnimation_X(self, (animation.try(&.to_unsafe) || Pointer(Binding::QAbstractAnimation).null))
+    BindgenHelper.release(animation)
     end
     
     def take_animation(index : Int32) : AbstractAnimation?
-      Binding.bg_QAnimationGroup_takeAnimation_int(self, index).try {|ptr| AbstractAnimationImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QAnimationGroup_takeAnimation_int(self, index).try {|ptr| AbstractAnimationImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def clear() : Void
@@ -50464,7 +50487,9 @@ module Qt
     end
     
     def self.remove_translator(message_file : Translator) : Bool
-      Binding.bg_QCoreApplication_removeTranslator_STATIC_QTranslator_X((message_file.try(&.to_unsafe) || Pointer(Binding::QTranslator).null))
+      result = Binding.bg_QCoreApplication_removeTranslator_STATIC_QTranslator_X((message_file.try(&.to_unsafe) || Pointer(Binding::QTranslator).null))
+    BindgenHelper.release(message_file)
+    result
     end
     
     def self.translate(context : UInt8*, key : UInt8*) : String
@@ -50991,6 +51016,7 @@ module Qt
     
     def remove_source_model(source_model : AbstractItemModel) : Void
       Binding.bg_QConcatenateTablesProxyModel_removeSourceModel_QAbstractItemModel_X(self, (source_model.try(&.to_unsafe) || Pointer(Binding::QAbstractItemModel).null))
+    BindgenHelper.release(source_model)
     end
     
     def map_from_source(source_index : ModelIndex) : ModelIndex
@@ -59862,6 +59888,7 @@ module Qt
     
     def remove(object : Object) : Void
       Binding.bg_QObjectCleanupHandler_remove_QObject_X(self, (object.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+    BindgenHelper.release(object)
     end
     
     def empty?() : Bool
@@ -65332,6 +65359,7 @@ module Qt
     
     def remove_mappings(sender : Object) : Void
       Binding.bg_QSignalMapper_removeMappings_QObject_X(self, (sender.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+    BindgenHelper.release(sender)
     end
     
     def mapping(id : Int32) : Object?
@@ -65645,7 +65673,7 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSocketDescriptor, SocketNotifier::Type, Void)) : SignalConnection
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSocketDescriptor*, SocketNotifier::Type, Void)) : SignalConnection
       SignalConnection.new(unwrap: Binding.bg_QSocketNotifier_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSocketDescriptor*, ::Qt::SocketNotifier::Type, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
@@ -82572,6 +82600,7 @@ module Qt
     
     def unregister_handler(object_type : Int32, component : Object? = nil) : Void
       Binding.bg_QAbstractTextDocumentLayout_unregisterHandler_int_QObject_X(self, object_type, (component.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+    BindgenHelper.release(component)
     end
     
     def handler_for_object(object_type : Int32) : Binding::QTextObjectInterface*
@@ -86929,11 +86958,11 @@ module Qt
       SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_layoutDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::LayoutDirection, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_commit_data_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
+    def on_commit_data_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager*, Void)) : SignalConnection
       SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_commitDataRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_save_state_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
+    def on_save_state_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager*, Void)) : SignalConnection
       SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_saveStateRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
@@ -93931,7 +93960,9 @@ module Qt
     end
     
     def take_child(row : Int32, column : Int32 = 0) : StandardItem?
-      Binding.bg_QStandardItem_takeChild_int_int(self, row, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QStandardItem_takeChild_int_int(self, row, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def take_row(row : Int32) : Enumerable(StandardItem)
@@ -94638,7 +94669,9 @@ module Qt
     end
     
     def take_item(row : Int32, column : Int32 = 0) : StandardItem?
-      Binding.bg_QStandardItemModel_takeItem_int_int(self, row, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QStandardItemModel_takeItem_int_int(self, row, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def take_row(row : Int32) : Enumerable(StandardItem)
@@ -94650,11 +94683,15 @@ module Qt
     end
     
     def take_horizontal_header_item(column : Int32) : StandardItem?
-      Binding.bg_QStandardItemModel_takeHorizontalHeaderItem_int(self, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QStandardItemModel_takeHorizontalHeaderItem_int(self, column).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def take_vertical_header_item(row : Int32) : StandardItem?
-      Binding.bg_QStandardItemModel_takeVerticalHeaderItem_int(self, row).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QStandardItemModel_takeVerticalHeaderItem_int(self, row).try {|ptr| StandardItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def item_prototype() : StandardItem?
@@ -99826,6 +99863,7 @@ module Qt
     
     def remove_action(action : Action) : Void
       Binding.bg_QWidget_removeAction_QAction_X(self, (action.try(&.to_unsafe) || Pointer(Binding::QAction).null))
+    BindgenHelper.release(action)
     end
     
     def actions() : Enumerable(Action)
@@ -113675,6 +113713,7 @@ module Qt
     
     def remove_action(a : Action) : Void
       Binding.bg_QActionGroup_removeAction_QAction_X(self, (a.try(&.to_unsafe) || Pointer(Binding::QAction).null))
+    BindgenHelper.release(a)
     end
     
     def actions() : Enumerable(Action)
@@ -115450,10 +115489,12 @@ module Qt
     abstract def add_item(unnamed_arg_0 : LayoutItem) : Void
     def remove_widget(w : Widget) : Void
       Binding.bg_QLayout_removeWidget_QWidget_X(self, (w.try(&.to_unsafe) || Pointer(Binding::QWidget).null))
+    BindgenHelper.release(w)
     end
     
     def remove_item(unnamed_arg_0 : LayoutItem) : Void
       Binding.bg_QLayout_removeItem_QLayoutItem_X(self, (unnamed_arg_0.try(&.to_unsafe) || Pointer(Binding::QLayoutItem).null))
+    BindgenHelper.release(unnamed_arg_0)
     end
     
     def expanding_directions() : Orientations
@@ -115493,12 +115534,16 @@ module Qt
     
     def replace_widget(from : Widget, to : Widget) : LayoutItem?
       BindgenHelper.keep_alive(to)
-    Binding.bg_QLayout_replaceWidget_QWidget_X_QWidget_X(self, (from.try(&.to_unsafe) || Pointer(Binding::QWidget).null), (to.try(&.to_unsafe) || Pointer(Binding::QWidget).null)).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    result = Binding.bg_QLayout_replaceWidget_QWidget_X_QWidget_X(self, (from.try(&.to_unsafe) || Pointer(Binding::QWidget).null), (to.try(&.to_unsafe) || Pointer(Binding::QWidget).null)).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(from)
+    result
     end
     
     def replace_widget(from : Widget, to : Widget, options : FindChildOptions) : LayoutItem?
       BindgenHelper.keep_alive(to)
-    Binding.bg_QLayout_replaceWidget_QWidget_X_QWidget_X_Qt__FindChildOptions(self, (from.try(&.to_unsafe) || Pointer(Binding::QWidget).null), (to.try(&.to_unsafe) || Pointer(Binding::QWidget).null), options).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    result = Binding.bg_QLayout_replaceWidget_QWidget_X_QWidget_X_Qt__FindChildOptions(self, (from.try(&.to_unsafe) || Pointer(Binding::QWidget).null), (to.try(&.to_unsafe) || Pointer(Binding::QWidget).null), options).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(from)
+    result
     end
     
     def total_height_for_width(w : Int32) : Int32
@@ -116184,7 +116229,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QGridLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QGridLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32
@@ -116639,7 +116686,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32
@@ -117073,7 +117122,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32
@@ -117495,7 +117546,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QBoxLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32
@@ -117763,6 +117816,7 @@ module Qt
     
     def remove_button(unnamed_arg_0 : AbstractButton) : Void
       Binding.bg_QButtonGroup_removeButton_QAbstractButton_X(self, (unnamed_arg_0.try(&.to_unsafe) || Pointer(Binding::QAbstractButton).null))
+    BindgenHelper.release(unnamed_arg_0)
     end
     
     def buttons() : Enumerable(AbstractButton)
@@ -131447,6 +131501,7 @@ module Qt
     
     def remove_button(button : AbstractButton) : Void
       Binding.bg_QDialogButtonBox_removeButton_QAbstractButton_X(self, (button.try(&.to_unsafe) || Pointer(Binding::QAbstractButton).null))
+    BindgenHelper.release(button)
     end
     
     def clear() : Void
@@ -138626,7 +138681,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QFormLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QFormLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def geometry=(unnamed_arg_0 : Rect) : Void
@@ -141131,6 +141188,7 @@ module Qt
     
     def remove_scene_event_filter(filter_item : GraphicsItem) : Void
       Binding.bg_QGraphicsItem_removeSceneEventFilter_QGraphicsItem_X(self, (filter_item.try(&.to_unsafe) || Pointer(Binding::QGraphicsItem).null))
+    BindgenHelper.release(filter_item)
     end
     
     protected def update_micro_focus() : Void
@@ -142911,6 +142969,7 @@ module Qt
     
     def remove_scene_event_filter(filter_item : GraphicsItem) : Void
       Binding.bg_QGraphicsObject_removeSceneEventFilter_QGraphicsItem_X(self, (filter_item.try(&.to_unsafe) || Pointer(Binding::QGraphicsItem).null))
+    BindgenHelper.release(filter_item)
     end
     
     protected def scene_event_filter(watched : GraphicsItem, event : Event) : Bool
@@ -148344,6 +148403,7 @@ module Qt
     
     def remove_from_group(item : GraphicsItem) : Void
       Binding.bg_QGraphicsItemGroup_removeFromGroup_QGraphicsItem_X(self, (item.try(&.to_unsafe) || Pointer(Binding::QGraphicsItem).null))
+    BindgenHelper.release(item)
     end
     
     def bounding_rect() : RectF
@@ -150906,6 +150966,7 @@ module Qt
     
     def remove_item(item : GraphicsLayoutItem) : Void
       Binding.bg_QGraphicsGridLayout_removeItem_QGraphicsLayoutItem_X(self, (item.try(&.to_unsafe) || Pointer(Binding::QGraphicsLayoutItem).null))
+    BindgenHelper.release(item)
     end
     
     def invalidate() : Void
@@ -151402,6 +151463,7 @@ module Qt
     
     def remove_item(item : GraphicsLayoutItem) : Void
       Binding.bg_QGraphicsLinearLayout_removeItem_QGraphicsLayoutItem_X(self, (item.try(&.to_unsafe) || Pointer(Binding::QGraphicsLayoutItem).null))
+    BindgenHelper.release(item)
     end
     
     def remove_at(index : Int32) : Void
@@ -151984,6 +152046,7 @@ module Qt
     
     def remove_action(action : Action) : Void
       Binding.bg_QGraphicsWidget_removeAction_QAction_X(self, (action.try(&.to_unsafe) || Pointer(Binding::QAction).null))
+    BindgenHelper.release(action)
     end
     
     def actions() : Enumerable(Action)
@@ -154086,6 +154149,7 @@ module Qt
     
     def remove_item(item : GraphicsItem) : Void
       Binding.bg_QGraphicsScene_removeItem_QGraphicsItem_X(self, (item.try(&.to_unsafe) || Pointer(Binding::QGraphicsItem).null))
+    BindgenHelper.release(item)
     end
     
     def focus_item() : GraphicsItem?
@@ -155977,7 +156041,9 @@ module Qt
     end
     
     def take_widget() : Widget?
-      Binding.bg_QScrollArea_takeWidget_(self).try {|ptr| Widget.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QScrollArea_takeWidget_(self).try {|ptr| Widget.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def widget_resizable() : Bool
@@ -167387,7 +167453,9 @@ module Qt
     end
     
     def take_item(row : Int32) : ListWidgetItem?
-      Binding.bg_QListWidget_takeItem_int(self, row).try {|ptr| ListWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QListWidget_takeItem_int(self, row).try {|ptr| ListWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32
@@ -168727,7 +168795,9 @@ module Qt
     end
     
     def take_central_widget() : Widget?
-      Binding.bg_QMainWindow_takeCentralWidget_(self).try {|ptr| Widget.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QMainWindow_takeCentralWidget_(self).try {|ptr| Widget.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def set_corner(corner : Corner, area : DockWidgetArea) : Void
@@ -168767,6 +168837,7 @@ module Qt
     
     def remove_tool_bar(toolbar : ToolBar) : Void
       Binding.bg_QMainWindow_removeToolBar_QToolBar_X(self, (toolbar.try(&.to_unsafe) || Pointer(Binding::QToolBar).null))
+    BindgenHelper.release(toolbar)
     end
     
     def remove_tool_bar_break(before : ToolBar) : Void
@@ -168811,6 +168882,7 @@ module Qt
     
     def remove_dock_widget(dockwidget : DockWidget) : Void
       Binding.bg_QMainWindow_removeDockWidget_QDockWidget_X(self, (dockwidget.try(&.to_unsafe) || Pointer(Binding::QDockWidget).null))
+    BindgenHelper.release(dockwidget)
     end
     
     def restore_dock_widget(dockwidget : DockWidget) : Bool
@@ -169471,6 +169543,7 @@ module Qt
     
     def remove_sub_window(widget : Widget) : Void
       Binding.bg_QMdiArea_removeSubWindow_QWidget_X(self, (widget.try(&.to_unsafe) || Pointer(Binding::QWidget).null))
+    BindgenHelper.release(widget)
     end
     
     def background() : Brush
@@ -173081,6 +173154,7 @@ module Qt
     
     def remove_button(button : AbstractButton) : Void
       Binding.bg_QMessageBox_removeButton_QAbstractButton_X(self, (button.try(&.to_unsafe) || Pointer(Binding::QAbstractButton).null))
+    BindgenHelper.release(button)
     end
     
     def open() : Void
@@ -186336,7 +186410,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QStackedLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QStackedLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def geometry=(unnamed_arg_0 : Rect) : Void
@@ -186727,6 +186803,7 @@ module Qt
     
     def remove_widget(w : Widget) : Void
       Binding.bg_QStackedWidget_removeWidget_QWidget_X(self, (w.try(&.to_unsafe) || Pointer(Binding::QWidget).null))
+    BindgenHelper.release(w)
     end
     
     def current_widget() : Widget?
@@ -187339,6 +187416,7 @@ module Qt
     
     def remove_widget(widget : Widget) : Void
       Binding.bg_QStatusBar_removeWidget_QWidget_X(self, (widget.try(&.to_unsafe) || Pointer(Binding::QWidget).null))
+    BindgenHelper.release(widget)
     end
     
     def size_grip_enabled=(unnamed_arg_0 : Bool) : Void
@@ -190674,7 +190752,9 @@ module Qt
     end
     
     def take_item(row : Int32, column : Int32) : TableWidgetItem?
-      Binding.bg_QTableWidget_takeItem_int_int(self, row, column).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QTableWidget_takeItem_int_int(self, row, column).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def vertical_header_item(row : Int32) : TableWidgetItem?
@@ -190687,7 +190767,9 @@ module Qt
     end
     
     def take_vertical_header_item(row : Int32) : TableWidgetItem?
-      Binding.bg_QTableWidget_takeVerticalHeaderItem_int(self, row).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QTableWidget_takeVerticalHeaderItem_int(self, row).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def horizontal_header_item(column : Int32) : TableWidgetItem?
@@ -190700,7 +190782,9 @@ module Qt
     end
     
     def take_horizontal_header_item(column : Int32) : TableWidgetItem?
-      Binding.bg_QTableWidget_takeHorizontalHeaderItem_int(self, column).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QTableWidget_takeHorizontalHeaderItem_int(self, column).try {|ptr| TableWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def vertical_header_labels=(labels : Enumerable(String)) : Void
@@ -197070,10 +197154,13 @@ module Qt
     
     def remove_child(child : TreeWidgetItem) : Void
       Binding.bg_QTreeWidgetItem_removeChild_QTreeWidgetItem_X(self, (child.try(&.to_unsafe) || Pointer(Binding::QTreeWidgetItem).null))
+    BindgenHelper.release(child)
     end
     
     def take_child(index : Int32) : TreeWidgetItem?
-      Binding.bg_QTreeWidgetItem_takeChild_int(self, index).try {|ptr| TreeWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QTreeWidgetItem_takeChild_int(self, index).try {|ptr| TreeWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def add_children(children : Enumerable(TreeWidgetItem)) : Void
@@ -197427,7 +197514,9 @@ module Qt
     end
     
     def take_top_level_item(index : Int32) : TreeWidgetItem?
-      Binding.bg_QTreeWidget_takeTopLevelItem_int(self, index).try {|ptr| TreeWidgetItem.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QTreeWidget_takeTopLevelItem_int(self, index).try {|ptr| TreeWidgetItem.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def index_of_top_level_item(item : TreeWidgetItem) : Int32
@@ -198521,6 +198610,7 @@ module Qt
     
     def remove_stack(stack : UndoStack) : Void
       Binding.bg_QUndoGroup_removeStack_QUndoStack_X(self, (stack.try(&.to_unsafe) || Pointer(Binding::QUndoStack).null))
+    BindgenHelper.release(stack)
     end
     
     def stacks() : Enumerable(UndoStack)
@@ -202644,7 +202734,9 @@ module Qt
     end
     
     def unregister_timers(object : Object) : Bool
-      Binding.bg_QAbstractEventDispatcher_unregisterTimers_QObject_X(self, (object.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+      result = Binding.bg_QAbstractEventDispatcher_unregisterTimers_QObject_X(self, (object.try(&.to_unsafe) || Pointer(Binding::QObject).null))
+    BindgenHelper.release(object)
+    result
     end
     
     def registered_timers(object : Object) : Enumerable(EventDispatcherTimerInfo)
@@ -204131,7 +204223,9 @@ module Qt
     end
     
     def take_at(index : Int32) : LayoutItem?
-      Binding.bg_QLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+      result = Binding.bg_QLayout_takeAt_int(self, index).try {|ptr| LayoutItemImpl.new(unwrap: ptr) unless ptr.null?}
+    BindgenHelper.release(result)
+    result
     end
     
     def count() : Int32

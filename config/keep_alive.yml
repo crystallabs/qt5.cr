@@ -2,7 +2,10 @@
 # Qt then refers to from memory the GC doesn't scan.  Their wrappers pass these
 # arguments to `BindgenHelper.keep_alive`, so the GC doesn't destroy objects Qt
 # still uses.
-# `Qt::BindgenHelper.release(object)` lets the GC collect one again.
+# `release:` marks the methods handing such an object back, which C++ stops
+# using without deleting it: their wrappers pass it to `BindgenHelper.release`,
+# so the GC may collect it again.  `Qt::BindgenHelper.release(object)` does so
+# by hand.
 #
 # `depends_on:` marks the constructors whose object uses an argument when
 # destroyed, like an iterator unregistering from its container: the GC destroys
@@ -18,6 +21,10 @@ QLayout:
     "^replaceWidget$": [1]
     "^setMenuBar$": true
     "^addChild(Widget|Layout)$": true # Protected, for layouts written in Crystal
+  release:
+    "^takeAt$": true # The item, not the widget of a widget item, which stays its parent widget's child
+    "^remove(Widget|Item)$": true
+    "^replaceWidget$": [0]
 QBoxLayout:
   keep_alive:
     "^(add|insert)(Widget|Layout|Item|SpacerItem)$": true
@@ -29,6 +36,7 @@ QFormLayout:
     "^(add|insert)Row$": true
     "^set(Widget|Layout|Item)$": true
     "^addItem$": true
+  # takeRow returns a struct of items, which no rule releases
 QStackedLayout:
   keep_alive:
     "^(add|insert)Widget$": true
@@ -36,11 +44,15 @@ QStackedLayout:
 QObject:
   keep_alive:
     "^installEventFilter$": true
+  release:
+    "^removeEventFilter$": true
 QCoreApplication:
   keep_alive:
     "^postEvent$": [1]
     "^setEventDispatcher$": true
     "^installTranslator$": true
+  release:
+    "^removeTranslator$": true
 QThread:
   keep_alive:
     "^setEventDispatcher$": true
@@ -50,6 +62,8 @@ QWidget:
     "^addAction$": true
     "^insertAction$": [1]
     "^set(Style|GraphicsEffect|FocusProxy)$": true
+  release:
+    "^removeAction$": true # For QMenu, QToolBar, QLineEdit too
 QApplication:
   keep_alive:
     "^setStyle$": true
@@ -61,17 +75,25 @@ QMainWindow:
     "^addDockWidget$": true
     "^(tabify|split)DockWidget$": [1]
     "^restoreDockWidget$": true
+  release:
+    "^takeCentralWidget$": true
+    "^remove(ToolBar|DockWidget)$": true
 QStatusBar:
   keep_alive:
     "^(add|insert)(Permanent)?Widget$": true
+  release:
+    "^removeWidget$": true
 QTabWidget:
   keep_alive:
     "^addTab$": [0]
     "^insertTab$": [1]
     "^set(CornerWidget|TabBar)$": true
+  # removeTab(int) hands neither the page back nor takes it, so no rule releases it
 QScrollArea:
   keep_alive:
     "^setWidget$": true
+  release:
+    "^takeWidget$": true
 QAbstractScrollArea:
   keep_alive:
     "^set(Viewport|CornerWidget|HorizontalScrollBar|VerticalScrollBar)$": true
@@ -101,6 +123,8 @@ QToolButton:
 QButtonGroup:
   keep_alive:
     "^addButton$": true
+  release:
+    "^removeButton$": true
 QSystemTrayIcon:
   keep_alive:
     "^setContextMenu$": true
@@ -122,9 +146,13 @@ QListWidget:
   keep_alive:
     "^(add|insert)Item$": true
     "^setItemWidget$": [1]
+  release:
+    "^takeItem$": true # removeItemWidget deletes the widget
 QTableWidget:
   keep_alive:
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|CellWidget|ItemPrototype)$": true
+  release:
+    "^take(Item|HorizontalHeaderItem|VerticalHeaderItem)$": true # removeCellWidget deletes the widget
 QComboBox:
   keep_alive:
     "^set(LineEdit|View|Model|ItemDelegate|Completer|Validator)$": true
@@ -145,6 +173,7 @@ QLabel:
 QTabBar:
   keep_alive:
     "^setTabButton$": [2]
+  # removeTab(int) hands nothing back, so no rule releases the button
 QTextEdit:
   keep_alive:
     "^setDocument$": true
@@ -164,13 +193,19 @@ QGraphicsScene:
   keep_alive:
     "^add(Item|Widget)$": [0]
     "^setStyle$": true
+  release:
+    "^removeItem$": true
 QGraphicsItem:
   keep_alive:
     "^installSceneEventFilter$": true
     "^set(GraphicsEffect|Group)$": true
+  release:
+    "^removeSceneEventFilter$": true
 QGraphicsItemGroup:
   keep_alive:
     "^addToGroup$": true
+  release:
+    "^removeFromGroup$": true
 QGraphicsProxyWidget:
   keep_alive:
     "^setWidget$": true
@@ -179,13 +214,19 @@ QGraphicsWidget:
     "^addAction$": true
     "^insertAction$": [1]
     "^set(Layout|Style)$": true
+  release:
+    "^removeAction$": true
 QGraphicsLinearLayout:
   keep_alive:
     "^addItem$": true
     "^insertItem$": [1]
+  release:
+    "^removeItem$": true # removeAt(int) hands nothing back, so no rule releases its item
 QGraphicsGridLayout:
   keep_alive:
     "^addItem$": [0]
+  release:
+    "^removeItem$": true
 QGraphicsAnchorLayout:
   keep_alive:
     "^add(Anchor|CornerAnchors)$": [0, 2]
@@ -204,10 +245,14 @@ QStandardItemModel:
   keep_alive:
     "^(append|insert)(Row|Column)$": true
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|ItemPrototype)$": true
+  release:
+    "^take(Item|HorizontalHeaderItem|VerticalHeaderItem)$": true # takeRow and takeColumn return lists, which no rule releases
 QStandardItem:
   keep_alive:
     "^(append|insert)(Row|Rows|Column)$": true
     "^setChild$": true
+  release:
+    "^takeChild$": true # takeRow and takeColumn return lists, which no rule releases
 QAbstractProxyModel:
   keep_alive:
     "^setSourceModel$": true
@@ -219,6 +264,9 @@ QItemSelectionModel:
 QAnimationGroup:
   keep_alive:
     "^(add|insert)Animation$": true
+  release:
+    "^takeAnimation$": true
+    "^removeAnimation$": true
 QPropertyAnimation:
   keep_alive:
     "^setTargetObject$": true
@@ -231,9 +279,14 @@ QTreeWidget:
     "^(add|insert)TopLevelItems?$": true
     "^setHeaderItem$": true
     "^setItemWidget$": [2]
+  release:
+    "^takeTopLevelItem$": true
 QTreeWidgetItem:
   keep_alive:
     "^(add|insert)Child(ren)?$": true
+  release:
+    "^takeChild$": true # takeChildren returns a list, which no rule releases
+    "^removeChild$": true
 QDataWidgetMapper:
   keep_alive:
     "^set(Model|ItemDelegate)$": true
@@ -248,6 +301,8 @@ QAbstractTextDocumentLayout:
   keep_alive:
     "^setPaintDevice$": true
     "^registerHandler$": [1]
+  release:
+    "^unregisterHandler$": [1]
 QSyntaxHighlighter:
   keep_alive:
     "^setDocument$": true
@@ -260,6 +315,8 @@ QUndoStack:
 QUndoGroup:
   keep_alive:
     "^addStack$": true
+  release:
+    "^removeStack$": true
 QUndoView:
   keep_alive:
     "^set(Stack|Group)$": true
@@ -269,25 +326,33 @@ QSplitter:
   keep_alive:
     "^addWidget$": true
     "^(insert|replace)Widget$": [1]
+  # replaceWidget returns the widget replaced, but a rule releasing the result releases the new widget too
 QWizard:
   keep_alive:
     "^addPage$": true
     "^set(Page|Button)$": [1]
     "^setSideWidget$": true
+  # removePage(int) hands nothing back, so no rule releases the page
 QWizardPage:
   keep_alive:
     "^registerField$": [1]
 QDialogButtonBox:
   keep_alive:
     "^addButton$": true
+  release:
+    "^removeButton$": true
 QMessageBox:
   keep_alive:
     "^setCheckBox$": true
     "^addButton$": [0]
     "^set(Default|Escape)Button$": true
+  release:
+    "^removeButton$": true
 QMdiArea:
   keep_alive:
     "^addSubWindow$": [0]
+  release:
+    "^removeSubWindow$": true
 QMdiSubWindow:
   keep_alive:
     "^set(Widget|SystemMenu)$": true
@@ -295,6 +360,7 @@ QToolBox:
   keep_alive:
     "^addItem$": [0]
     "^insertItem$": [1]
+  # removeItem(int) hands nothing back, so no rule releases the widget
 QFocusFrame:
   keep_alive:
     "^setWidget$": true
@@ -304,6 +370,8 @@ QProgressDialog:
 QActionGroup:
   keep_alive:
     "^addAction$": true
+  release:
+    "^removeAction$": true
 QWidgetAction:
   keep_alive:
     "^setDefaultWidget$": true
@@ -328,6 +396,8 @@ QTextDocumentWriter:
 QSignalMapper:
   keep_alive:
     "^setMapping$": true
+  release:
+    "^removeMappings$": true
 QGestureRecognizer:
   keep_alive:
     "^registerRecognizer$": true
@@ -359,6 +429,8 @@ QTextStream:
 QObjectCleanupHandler:
   keep_alive:
     "^add$": true
+  release:
+    "^remove$": true
 QCborStreamReader:
   depends_on:
     "^$": true # Reads or writes the device as long as it lives
@@ -370,6 +442,8 @@ QCborStreamWriter:
 QConcatenateTablesProxyModel:
   keep_alive:
     "^addSourceModel$": true
+  release:
+    "^removeSourceModel$": true
 QFileSystemModel:
   keep_alive:
     "^setIconProvider$": true
@@ -384,6 +458,8 @@ QStackedWidget:
   keep_alive:
     "^addWidget$": true
     "^insertWidget$": [1]
+  release:
+    "^removeWidget$": true
 QColumnView:
   keep_alive:
     "^setPreviewWidget$": true
@@ -405,6 +481,8 @@ QGraphicsLayoutItem:
 QAbstractEventDispatcher:
   keep_alive:
     "^registerTimer$": true # Unlike QObject::startTimer, nothing unregisters the object
+  release:
+    "^unregisterTimers$": true
 QWidgetItem:
   depends_on:
     "^$": true # The item refers to its widget; QWidgetItemV2 inherits the rule
