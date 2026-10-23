@@ -89,6 +89,21 @@ describe "objects used by Qt" do
   end
 end
 
+describe "objects used by Qt through an override" do
+  it "aren't collected either" do
+    # QTreeView::setModel and QSortFilterProxyModel::setSourceModel re-declare
+    # the setters of their base classes, whose keep_alive rules cover them.
+    tree = Qt::TreeView.new
+    proxy = Qt::SortFilterProxyModel.new
+    tree.model = Qt::StandardItemModel.new(3, 1)
+    proxy.source_model = Qt::StandardItemModel.new(4, 1)
+    churn
+
+    tree.model.not_nil!.row_count.should eq(3)
+    proxy.row_count.should eq(4)
+  end
+end
+
 describe "objects destroyed before others" do
   it "destroys the iterators of a tree before the tree" do
     tree, items = build_tree
