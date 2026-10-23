@@ -10,6 +10,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [Additional development dependencies](#additional-development-dependencies)
    * [User perspective](#user-perspective)
       * [Sample Crystal-Qt5 code](#sample-crystal-qt5-code)
+      * [Locale](#locale)
       * [String lists](#string-lists)
       * [Object lifetime](#object-lifetime)
       * [Threads](#threads)
@@ -29,9 +30,6 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [Contributors](#contributors)
    * [License](#license)
       * [A note on Qt's license](#a-note-on-qts-license)
-
-<!-- Added by: docelic, at: Fri 29 May 2020 12:21:22 AM CEST -->
-
 <!--te-->
 
 # Project Goals
@@ -232,12 +230,10 @@ with RTTI (`ext/Makefile`), as Qt itself is.
 ## Generating the bindings
 
 If you want to work on `qt5.cr` itself or you want to generate bindings for new
-versions, then as mentioned you need to use branch `master` and run the
-generation yourself.
+versions, run the generation yourself as described below.
 
-These steps can be followed from a project using `qt5.cr`, or from within
-`qt5.cr` itself.  For the latter, you can just go to `lib/bindgen` and do `git
-checkout master` instead of modifying `shard.yml`.
+These steps can be followed from a project using `qt5.cr` (in `lib/qt5`), or
+from within `qt5.cr` itself.
 
 **Important**: For this you'll also have to meet the dependencies of bindgen.
 See `lib/bindgen/README.md` and `lib/bindgen/clang/README.md`.
@@ -304,12 +300,11 @@ installed and which version it is, and names the binding after the host, e.g.
 
 ## (Re)generating a specific Qt5 binding version
 
-1. Use the `master` branch of `qt5.cr` in your `shard.yml`
-3. Decide which version of Qt to use, and build the scheme (See above)
-4. Export the binding scheme: `export BINDING_PLATFORM=linux-gnu-x86_64-qt5.15`
-5. If you're not using your system's Qt: `export QMAKE=/path/to/qmake`
-6. Run bindgen as usual: `lib/bindgen/tool.sh qt.yml --stats`
-7. Verify with `crystal spec`
+1. Decide which version of Qt to use, and build the scheme (See above)
+2. Export the binding scheme: `export BINDING_PLATFORM=linux-gnu-x86_64-qt5.15`
+3. If you're not using your system's Qt: `export QMAKE=/path/to/qmake`
+4. Run bindgen as usual: `lib/bindgen/tool.sh qt.yml --stats`
+5. Verify with `crystal spec`
 
 ## Type rules
 
@@ -467,39 +462,35 @@ see the comments there:
 * Forwarding `qHash()` of wrapped types (to `Object#hash`)
 * Integration with **LibEvent**: Right now, Qt blocks the whole thread.
 * The rest of the billion Qt classes of interest
-* Everything in the **to be done** category
 * Integration for the `Qt Designer` UI designer
 * Integration for `Qt Linguist`
   * Localization/Translation for your applications!
 * UI test library, with adapter for `spec`
-  * Also, actual tests - Let's catch whacko bugs right in the CI!
 * Automated copy (and adaption) of the Qt documentation, for easy Crystal-specific docs
   * The Qt Docs license should allow this if done correctly
 
 # Platform Support
 
-| System            | Status           | Qt version | OOTB?   |
-| ----------------- | ---------------- | ---------- | ------- |
-| ArchLinux         | **Works always** | 5.12       | **YES** |
-| Ubuntu 17.04      | **Works**        | 5.9        | **YES** |
-| Ubuntu 16.04      | **Works**        | 5.5        | **YES** |
-| MacOS             | Help wanted      | ?          | ?       |
-| Windows           | Help wanted      | ?          | ?       |
-| Other systems     | Help wanted      | ?          | ?       |
+| System                   | Status           | Qt version | Notes                       |
+| ------------------------ | ---------------- | ---------- | --------------------------- |
+| Ubuntu 24.04             | **Works**        | 5.15       | CI, with LLVM 14 and 18     |
+| macOS (Homebrew `qt@5`)  | **Works**        | 5.15       |                             |
+| ArchLinux                | Should work      | 5.15       | Help wanted                 |
+| Windows                  | Untested         | ?          | Help wanted                 |
 
-**Ready-to-use Qt versions:** 5.5 to 5.12
-
-(This list needs updating)
+The bindings target Qt 5.15 and hide the API it deprecates (see
+[Deprecated Qt API](#deprecated-qt-api)), so older Qt 5 versions are untested.
 
 # Contributing
 
 1. Open a new issue on the project to discuss what you're going to do and possibly receive comments
-3. Read bindgen's `STYLEGUIDE.md` for some tips
-4. Then do the rest, PR and all.  You know the drill :)
+2. Read bindgen's `STYLEGUIDE.md` for some tips
+3. Then do the rest, PR and all.  You know the drill :)
 
 ## Contributors
 
 - [Papierkorb](https://github.com/Papierkorb) Stefan Merettig - creator
+- [docelic](https://github.com/docelic) Davor Ocelic - maintainer
 
 # License
 

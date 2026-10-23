@@ -3,6 +3,7 @@ version: 0.5.0
 description: Qt5 bindings for Crystal
 
 authors:
+  - Davor Ocelic <docelic@crystallabs.io>
   - Stefan Merettig <stefan-merettig@nuriaproject.org>
 
 crystal: ">= 1.8.0, < 2.0.0"
