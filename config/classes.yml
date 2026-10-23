@@ -3,7 +3,7 @@ classes:
   QTimer: Timer
   "QMetaObject::Connection": SignalConnection
   QAbstractEventDispatcher: AbstractEventDispatcher
-  QAbstractEventDispatcher::TimerInfo: EventDispatcherTimerInfo
+  "QAbstractEventDispatcher::TimerInfo": EventDispatcherTimerInfo
   QSocketNotifier: SocketNotifier
   QPaintDevice: PaintDevice
   QWidget: Widget
@@ -211,7 +211,7 @@ classes:
   QShowEvent: ShowEvent
   QHideEvent: HideEvent
   QInputMethodEvent: InputMethodEvent
-  # "QInputMethodEvent::Attribute": InputMethodEventAttribute # Bare struct, contains QVariant
+  "QInputMethodEvent::Attribute": InputMethodEventAttribute
   QInputMethodQueryEvent: InputMethodQueryEvent
   QDrag: Drag
   QDropEvent: DropEvent
@@ -247,6 +247,7 @@ classes:
   QTemporaryDir: TemporaryDir
   QSaveFile: SaveFile
   QTextStream: TextStream
+  QTextStreamManipulator: TextStreamManipulator
   QDirIterator: DirIterator
   QLockFile: LockFile
   QFileSystemWatcher: FileSystemWatcher
@@ -281,7 +282,7 @@ classes:
   QRegularExpressionMatchIterator: RegularExpressionMatchIterator
   QGesture: Gesture
   QPainter: Painter
-  # "QPainter::PixmapFragment": PainterPixmapFragment
+  "QPainter::PixmapFragment": PainterPixmapFragment
   QLine: Line
   QLineF: LineF
   QPolygon: Polygon
@@ -511,5 +512,6 @@ classes:
   QStyleHintReturnVariant: StyleHintReturnVariant
   QStyleOptionTabV4: StyleOptionTabV4 # The other V-suffixed options are deprecated typedefs in Qt 5
   QIconEngine: IconEngine
+  "QIconEngine::ScaledPixmapArgument": IconEngineScaledPixmapArgument
   QWidgetItemV2: WidgetItemV2
   QStackedWidget: StackedWidget

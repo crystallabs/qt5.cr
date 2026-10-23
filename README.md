@@ -405,12 +405,17 @@ see the comments there:
   pure virtuals, calling C++ with the default.
 * `QAbstractTextDocumentLayout::PaintContext` and `Selection`,
   `QTextLayout::FormatRange`, `QTextEdit::ExtraSelection`,
-  `QFormLayout::TakeRowResult` and `QTextOption::Tab`, bare structs of Qt
-  classes, are wrapped as classes with property methods:
-  `Qt::TextDocumentLayoutPaintContext`, `Qt::TextLayoutFormatRange`,
-  `Qt::TextEditExtraSelection.new(cursor: cursor, format: format)`,
-  `form_layout.take_row(0).field_item`, `Qt::TextOptionTab.new(40.0,
-  Qt::TextOption::TabType::RightTab)`.
+  `QFormLayout::TakeRowResult`, `QTextOption::Tab`,
+  `QInputMethodEvent::Attribute`, `QPainter::PixmapFragment`,
+  `QAbstractEventDispatcher::TimerInfo`, `QIconEngine::ScaledPixmapArgument`
+  and `QTextStreamManipulator`, bare structs of Qt classes, are wrapped as
+  classes with property methods: `Qt::TextDocumentLayoutPaintContext`,
+  `Qt::TextLayoutFormatRange`, `Qt::TextEditExtraSelection.new(cursor:
+  cursor, format: format)`, `form_layout.take_row(0).field_item`,
+  `Qt::TextOptionTab.new(40.0, Qt::TextOption::TabType::RightTab)`,
+  `input_method_event.attributes.map(&.value)`,
+  `Qt::PainterPixmapFragment.create(pos, source_rect)`,
+  `stream << Qt.q_set_field_width(5) << 42`.
 * `QSettings::registerFormat` is dropped, as its `ReadFunc` and `WriteFunc`
   are C function pointers; `Qt::Settings::Format::IniFormat` and the native
   format need none.

@@ -1,6 +1,9 @@
 functions:
   "^qVersion$":
     destination: "::"
+  # The QTextStreamManipulator makers: Qt.q_set_field_width(8).exec(stream)
+  "^qSet(?:FieldWidth|PadChar|RealNumberPrecision)$":
+    destination: "::"
   "^qt5cr_reset_numeric_locale":
     destination: "::"
   # The parser matches the whole name, see ext/validator_helper.hpp

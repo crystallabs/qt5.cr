@@ -127,6 +127,39 @@ describe "input events" do
   end
 end
 
+describe Qt::InputMethodEvent do
+  it "carries preedit attributes" do
+    cursor = Qt::InputMethodEventAttribute.new(Qt::InputMethodEvent::AttributeType::Cursor, 2, 1, Qt.variant(7))
+    cursor.start.should eq(2)
+    cursor.length = 0
+    cursor.length.should eq(0)
+    selection = Qt::InputMethodEventAttribute.new(Qt::InputMethodEvent::AttributeType::Selection, 0, 3)
+    event = Qt::InputMethodEvent.new("abc", [cursor, selection])
+    event.preedit_string.should eq("abc")
+    attributes = event.attributes.to_a
+    attributes.map(&.type).should eq([Qt::InputMethodEvent::AttributeType::Cursor, Qt::InputMethodEvent::AttributeType::Selection])
+    attributes[0].value.to(Int32).should eq(7)
+    attributes[1].length.should eq(3)
+  end
+end
+
+describe Qt::AbstractEventDispatcher do
+  it "lists a timer's info" do
+    timer = Qt::Timer.new
+    timer.start(1000)
+    infos = Qt::AbstractEventDispatcher.instance.not_nil!.registered_timers(timer).to_a
+    infos.size.should eq(1)
+    infos[0].timer_id.should eq(timer.timer_id)
+    infos[0].interval.should eq(1000)
+    timer.stop
+
+    info = Qt::EventDispatcherTimerInfo.new(1, 50, Qt::TimerType::CoarseTimer)
+    info.interval = 60
+    info.interval.should eq(60)
+    info.timer_type.should eq(Qt::TimerType::CoarseTimer)
+  end
+end
+
 describe Qt::BasicTimer do
   it "ticks a widget's timer_event" do
     widget = RecordingWidget.new

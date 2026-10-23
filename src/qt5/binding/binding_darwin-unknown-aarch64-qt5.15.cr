@@ -765,6 +765,7 @@ module Qt
     alias ContainerQListQAbstractEventDispatcherTimerInfo = Void
     alias QAbstractNativeEventFilter = Void
     alias QAbstractEventDispatcherPrivate = Void
+    alias QAbstractEventDispatcher_TimerInfo = Void
     alias QModelIndex = Void
     alias QPersistentModelIndex = Void
     alias ContainerQMapIntQVariant = Void
@@ -792,6 +793,7 @@ module Qt
     alias QTimeZone = Void
     alias QTextStream = Void
     alias QTextCodec = Void
+    alias QTextStreamManipulator = Void
     alias QCborError = Void
     alias QRegularExpressionMatch = Void
     alias QRegularExpressionMatchIterator = Void
@@ -978,6 +980,8 @@ module Qt
     alias ContainerQListQKeySequence = Void
     alias QTouchDevice = Void
     alias ContainerQListConstQTouchDeviceX = Void
+    alias ContainerQListQInputMethodEventAttribute = Void
+    alias QInputMethodEvent_Attribute = Void
     alias ContainerQListQTouchEventTouchPoint = Void
     alias QTouchEvent_TouchPoint = Void
     alias QPaintDevice = Void
@@ -1051,6 +1055,7 @@ module Qt
     alias QPlatformNativeInterface = Void
     alias QSessionManager = Void
     alias QGuiApplicationPrivate = Void
+    alias QIconEngine_ScaledPixmapArgument = Void
     alias QImageWriter = Void
     alias QPlatformOffscreenSurface = Void
     alias QPaintDeviceWindowPrivate = Void
@@ -1061,6 +1066,7 @@ module Qt
     alias ContainerQVectorQLine = Void
     alias ContainerQVectorQRectF = Void
     alias ContainerQVectorQRect = Void
+    alias QPainter_PixmapFragment = Void
     alias QStaticText = Void
     alias QTextItem = Void
     alias ContainerQListQPolygonF = Void
@@ -1251,11 +1257,6 @@ module Qt
       yp : Float64
       w : Float64
       h : Float64
-    end
-    struct EventDispatcherTimerInfo
-      timer_id : Int32
-      interval : Int32
-      timer_type : TimerType
     end
     struct Vector2D
       v : Float32[2]
@@ -9361,6 +9362,14 @@ module Qt
     fun bg_QObject_connectNotify_SUPER_const_QMetaMethod_R(_self_ : QAbstractEventDispatcher*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_SUPER_const_QMetaMethod_R(_self_ : QAbstractEventDispatcher*, signal : QMetaMethod*) : Void
     fun bg_BgInherit_QAbstractEventDispatcher_JUMPTABLE_BgJumptable_QAbstractEventDispatcher_R(_self_ : QAbstractEventDispatcher*, table : BgJumptable_QAbstractEventDispatcher*) : Void
+    fun bg_QAbstractEventDispatcher__TimerInfo__CONSTRUCT_int_int_Qt__TimerType(id : Int32, i : Int32, t : ::Qt::TimerType) : QAbstractEventDispatcher_TimerInfo*
+    fun bg_QAbstractEventDispatcher__TimerInfo__COPY_const_QAbstractEventDispatcher__TimerInfo_R(unnamed_arg_0 : QAbstractEventDispatcher_TimerInfo*) : QAbstractEventDispatcher_TimerInfo*
+    fun bg_QAbstractEventDispatcher__TimerInfo_timerId_GETTER_(_self_ : QAbstractEventDispatcher_TimerInfo*) : Int32
+    fun bg_QAbstractEventDispatcher__TimerInfo_timerId_SETTER_int(_self_ : QAbstractEventDispatcher_TimerInfo*, timer_id : Int32) : Void
+    fun bg_QAbstractEventDispatcher__TimerInfo_interval_GETTER_(_self_ : QAbstractEventDispatcher_TimerInfo*) : Int32
+    fun bg_QAbstractEventDispatcher__TimerInfo_interval_SETTER_int(_self_ : QAbstractEventDispatcher_TimerInfo*, interval : Int32) : Void
+    fun bg_QAbstractEventDispatcher__TimerInfo_timerType_GETTER_(_self_ : QAbstractEventDispatcher_TimerInfo*) : ::Qt::TimerType
+    fun bg_QAbstractEventDispatcher__TimerInfo_timerType_SETTER_Qt__TimerType(_self_ : QAbstractEventDispatcher_TimerInfo*, timer_type : ::Qt::TimerType) : Void
     fun bg_QModelIndex__CONSTRUCT_() : QModelIndex*
     fun bg_QModelIndex_row_(_self_ : QModelIndex*) : Int32
     fun bg_QModelIndex_column_(_self_ : QModelIndex*) : Int32
@@ -10462,6 +10471,9 @@ module Qt
     fun bg_QTextStream__OPERATOR_lshift_const_QByteArray_R(_self_ : QTextStream*, array : CrystalString) : QTextStream*
     fun bg_QTextStream__OPERATOR_lshift_const_char_X(_self_ : QTextStream*, c : UInt8*) : QTextStream*
     fun bg_QTextStream__OPERATOR_lshift_const_void_X(_self_ : QTextStream*, ptr : Void*) : QTextStream*
+    fun bg_QTextStream__OPERATOR_lshift_QTextStreamManipulator(_self_ : QTextStream*, m : QTextStreamManipulator*) : QTextStream*
+    fun bg_QTextStreamManipulator_exec_QTextStream_R(_self_ : QTextStreamManipulator*, s : QTextStream*) : Void
+    fun bg_QTextStreamManipulator__COPY_const_QTextStreamManipulator_R(unnamed_arg_0 : QTextStreamManipulator*) : QTextStreamManipulator*
     fun bg_QCborError__CONVERT_QCborError__Code_(_self_ : QCborError*) : ::Qt::CborError::Code
     fun bg_QCborError_toString_(_self_ : QCborError*) : CrystalString
     fun bg_QCborError__COPY_const_QCborError_R(unnamed_arg_0 : QCborError*) : QCborError*
@@ -15288,13 +15300,27 @@ module Qt
     fun bg_QContextMenuEvent_reas_GETTER_(_self_ : QContextMenuEvent*) : UInt32
     fun bg_QContextMenuEvent_reas_SETTER_uint(_self_ : QContextMenuEvent*, reas : UInt32) : Void
     fun bg_QInputMethodEvent__CONSTRUCT_() : QInputMethodEvent*
+    fun bg_QInputMethodEvent__CONSTRUCT_const_QString_R_const_QList_QInputMethodEvent__Attribute__R(preedit_text : CrystalString, attributes : ContainerQListQInputMethodEventAttribute*) : QInputMethodEvent*
     fun bg_QInputMethodEvent_setCommitString_const_QString_R_int_int(_self_ : QInputMethodEvent*, commit_string : CrystalString, replace_from : Int32, replace_length : Int32) : Void
+    fun bg_QInputMethodEvent_attributes_(_self_ : QInputMethodEvent*) : ContainerQListQInputMethodEventAttribute*
     fun bg_QInputMethodEvent_preeditString_(_self_ : QInputMethodEvent*) : CrystalString
     fun bg_QInputMethodEvent_commitString_(_self_ : QInputMethodEvent*) : CrystalString
     fun bg_QInputMethodEvent_replacementStart_(_self_ : QInputMethodEvent*) : Int32
     fun bg_QInputMethodEvent_replacementLength_(_self_ : QInputMethodEvent*) : Int32
     fun bg_QInputMethodEvent__COPY_const_QInputMethodEvent_R(other : QInputMethodEvent*) : QInputMethodEvent*
     fun bg_QInputMethodEvent__OPERATOR_assign_const_QInputMethodEvent_R(_self_ : QInputMethodEvent*, unnamed_arg_0 : QInputMethodEvent*) : QInputMethodEvent*
+    fun bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int_QVariant(typ : ::Qt::InputMethodEvent::AttributeType, s : Int32, l : Int32, val : CrystalVariant) : QInputMethodEvent_Attribute*
+    fun bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int(typ : ::Qt::InputMethodEvent::AttributeType, s : Int32, l : Int32) : QInputMethodEvent_Attribute*
+    fun bg_QInputMethodEvent__Attribute__COPY_const_QInputMethodEvent__Attribute_R(unnamed_arg_0 : QInputMethodEvent_Attribute*) : QInputMethodEvent_Attribute*
+    fun bg_QInputMethodEvent__Attribute__OPERATOR_assign_const_QInputMethodEvent__Attribute_R(_self_ : QInputMethodEvent_Attribute*, unnamed_arg_0 : QInputMethodEvent_Attribute*) : QInputMethodEvent_Attribute*
+    fun bg_QInputMethodEvent__Attribute_type_GETTER_(_self_ : QInputMethodEvent_Attribute*) : ::Qt::InputMethodEvent::AttributeType
+    fun bg_QInputMethodEvent__Attribute_type_SETTER_QInputMethodEvent__AttributeType(_self_ : QInputMethodEvent_Attribute*, type : ::Qt::InputMethodEvent::AttributeType) : Void
+    fun bg_QInputMethodEvent__Attribute_start_GETTER_(_self_ : QInputMethodEvent_Attribute*) : Int32
+    fun bg_QInputMethodEvent__Attribute_start_SETTER_int(_self_ : QInputMethodEvent_Attribute*, start : Int32) : Void
+    fun bg_QInputMethodEvent__Attribute_length_GETTER_(_self_ : QInputMethodEvent_Attribute*) : Int32
+    fun bg_QInputMethodEvent__Attribute_length_SETTER_int(_self_ : QInputMethodEvent_Attribute*, length : Int32) : Void
+    fun bg_QInputMethodEvent__Attribute_value_GETTER_(_self_ : QInputMethodEvent_Attribute*) : CrystalVariant
+    fun bg_QInputMethodEvent__Attribute_value_SETTER_QVariant(_self_ : QInputMethodEvent_Attribute*, value : CrystalVariant) : Void
     fun bg_QInputMethodQueryEvent__CONSTRUCT_Qt__InputMethodQueries(queries : ::Qt::InputMethodQueries) : QInputMethodQueryEvent*
     fun bg_QInputMethodQueryEvent_queries_(_self_ : QInputMethodQueryEvent*) : ::Qt::InputMethodQueries
     fun bg_QInputMethodQueryEvent_setValue_Qt__InputMethodQuery_const_QVariant_R(_self_ : QInputMethodQueryEvent*, query : ::Qt::InputMethodQuery, value : CrystalVariant) : Void
@@ -17800,6 +17826,20 @@ module Qt
     fun bg_QIconEngine_iconName_SUPER_(_self_ : QIconEngine*) : CrystalString
     fun bg_QIconEngine_virtual_hook_SUPER_int_void_X(_self_ : QIconEngine*, id : Int32, data : Void*) : Void
     fun bg_BgInherit_QIconEngine_JUMPTABLE_BgJumptable_QIconEngine_R(_self_ : QIconEngine*, table : BgJumptable_QIconEngine*) : Void
+    fun bg_QIconEngine__ScaledPixmapArgument__COPY_const_QIconEngine__ScaledPixmapArgument_R(unnamed_arg_0 : QIconEngine_ScaledPixmapArgument*) : QIconEngine_ScaledPixmapArgument*
+    fun bg_QIconEngine__ScaledPixmapArgument__OPERATOR_assign_const_QIconEngine__ScaledPixmapArgument_R(_self_ : QIconEngine_ScaledPixmapArgument*, unnamed_arg_0 : QIconEngine_ScaledPixmapArgument*) : QIconEngine_ScaledPixmapArgument*
+    fun bg_QIconEngine__ScaledPixmapArgument__CONSTRUCT_() : QIconEngine_ScaledPixmapArgument*
+    fun bg_QIconEngine__ScaledPixmapArgument__AGGREGATE_QSize_QIcon__Mode_QIcon__State_qreal_QPixmap(size : QSize, mode : ::Qt::Icon::Mode, state : ::Qt::Icon::State, scale : Float64, pixmap : QPixmap*) : QIconEngine_ScaledPixmapArgument*
+    fun bg_QIconEngine__ScaledPixmapArgument_size_GETTER_(_self_ : QIconEngine_ScaledPixmapArgument*) : QSize
+    fun bg_QIconEngine__ScaledPixmapArgument_size_SETTER_QSize(_self_ : QIconEngine_ScaledPixmapArgument*, size : QSize) : Void
+    fun bg_QIconEngine__ScaledPixmapArgument_mode_GETTER_(_self_ : QIconEngine_ScaledPixmapArgument*) : ::Qt::Icon::Mode
+    fun bg_QIconEngine__ScaledPixmapArgument_mode_SETTER_QIcon__Mode(_self_ : QIconEngine_ScaledPixmapArgument*, mode : ::Qt::Icon::Mode) : Void
+    fun bg_QIconEngine__ScaledPixmapArgument_state_GETTER_(_self_ : QIconEngine_ScaledPixmapArgument*) : ::Qt::Icon::State
+    fun bg_QIconEngine__ScaledPixmapArgument_state_SETTER_QIcon__State(_self_ : QIconEngine_ScaledPixmapArgument*, state : ::Qt::Icon::State) : Void
+    fun bg_QIconEngine__ScaledPixmapArgument_scale_GETTER_(_self_ : QIconEngine_ScaledPixmapArgument*) : Float64
+    fun bg_QIconEngine__ScaledPixmapArgument_scale_SETTER_qreal(_self_ : QIconEngine_ScaledPixmapArgument*, scale : Float64) : Void
+    fun bg_QIconEngine__ScaledPixmapArgument_pixmap_GETTER_(_self_ : QIconEngine_ScaledPixmapArgument*) : QPixmap*
+    fun bg_QIconEngine__ScaledPixmapArgument_pixmap_SETTER_QPixmap(_self_ : QIconEngine_ScaledPixmapArgument*, pixmap : QPixmap*) : Void
     fun bg_QImageReader_tr_STATIC_const_char_X(source_text : UInt8*) : CrystalString
     fun bg_QImageReader_tr_STATIC_const_char_X_const_char_X(source_text : UInt8*, disambiguation : UInt8*) : CrystalString
     fun bg_QImageReader__CONSTRUCT_() : QImageReader*
@@ -18543,6 +18583,8 @@ module Qt
     fun bg_QPainter_drawPixmap_int_int_const_QPixmap_R(_self_ : QPainter*, x : Int32, y : Int32, pm : QPixmap*) : Void
     fun bg_QPainter_drawPixmap_const_QRect_R_const_QPixmap_R(_self_ : QPainter*, r : QRect, pm : QPixmap*) : Void
     fun bg_QPainter_drawPixmap_int_int_int_int_const_QPixmap_R(_self_ : QPainter*, x : Int32, y : Int32, w : Int32, h : Int32, pm : QPixmap*) : Void
+    fun bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R(_self_ : QPainter*, fragments : QPainter_PixmapFragment*, fragment_count : Int32, pixmap : QPixmap*) : Void
+    fun bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R_QPainter__PixmapFragmentHints(_self_ : QPainter*, fragments : QPainter_PixmapFragment*, fragment_count : Int32, pixmap : QPixmap*, hints : ::Qt::Painter::PixmapFragmentHints) : Void
     fun bg_QPainter_drawImage_const_QRectF_R_const_QImage_R_const_QRectF_R(_self_ : QPainter*, target_rect : QRectF, image : QImage*, source_rect : QRectF) : Void
     fun bg_QPainter_drawImage_const_QRectF_R_const_QImage_R_const_QRectF_R_Qt__ImageConversionFlags(_self_ : QPainter*, target_rect : QRectF, image : QImage*, source_rect : QRectF, flags : ::Qt::ImageConversionFlags) : Void
     fun bg_QPainter_drawImage_const_QRect_R_const_QImage_R_const_QRect_R(_self_ : QPainter*, target_rect : QRect, image : QImage*, source_rect : QRect) : Void
@@ -18603,6 +18645,30 @@ module Qt
     fun bg_QPainter_beginNativePainting_(_self_ : QPainter*) : Void
     fun bg_QPainter_endNativePainting_(_self_ : QPainter*) : Void
     fun bg_QPainter_staticMetaObject_STATIC_GETTER_() : QMetaObject*
+    fun bg_QPainter__PixmapFragment_create_STATIC_const_QPointF_R_const_QRectF_R_qreal_qreal_qreal_qreal(pos : QPointF, source_rect : QRectF, scale_x : Float64, scale_y : Float64, rotation : Float64, opacity : Float64) : QPainter_PixmapFragment*
+    fun bg_QPainter__PixmapFragment__CONSTRUCT_() : QPainter_PixmapFragment*
+    fun bg_QPainter__PixmapFragment__COPY_const_QPainter__PixmapFragment_R(unnamed_arg_0 : QPainter_PixmapFragment*) : QPainter_PixmapFragment*
+    fun bg_QPainter__PixmapFragment__AGGREGATE_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal(x : Float64, y : Float64, source_left : Float64, source_top : Float64, width : Float64, height : Float64, scale_x : Float64, scale_y : Float64, rotation : Float64, opacity : Float64) : QPainter_PixmapFragment*
+    fun bg_QPainter__PixmapFragment_x_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_x_SETTER_qreal(_self_ : QPainter_PixmapFragment*, x : Float64) : Void
+    fun bg_QPainter__PixmapFragment_y_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_y_SETTER_qreal(_self_ : QPainter_PixmapFragment*, y : Float64) : Void
+    fun bg_QPainter__PixmapFragment_sourceLeft_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_sourceLeft_SETTER_qreal(_self_ : QPainter_PixmapFragment*, source_left : Float64) : Void
+    fun bg_QPainter__PixmapFragment_sourceTop_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_sourceTop_SETTER_qreal(_self_ : QPainter_PixmapFragment*, source_top : Float64) : Void
+    fun bg_QPainter__PixmapFragment_width_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_width_SETTER_qreal(_self_ : QPainter_PixmapFragment*, width : Float64) : Void
+    fun bg_QPainter__PixmapFragment_height_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_height_SETTER_qreal(_self_ : QPainter_PixmapFragment*, height : Float64) : Void
+    fun bg_QPainter__PixmapFragment_scaleX_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_scaleX_SETTER_qreal(_self_ : QPainter_PixmapFragment*, scale_x : Float64) : Void
+    fun bg_QPainter__PixmapFragment_scaleY_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_scaleY_SETTER_qreal(_self_ : QPainter_PixmapFragment*, scale_y : Float64) : Void
+    fun bg_QPainter__PixmapFragment_rotation_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_rotation_SETTER_qreal(_self_ : QPainter_PixmapFragment*, rotation : Float64) : Void
+    fun bg_QPainter__PixmapFragment_opacity_GETTER_(_self_ : QPainter_PixmapFragment*) : Float64
+    fun bg_QPainter__PixmapFragment_opacity_SETTER_qreal(_self_ : QPainter_PixmapFragment*, opacity : Float64) : Void
     fun bg_QPainterPath__CONSTRUCT_() : QPainterPath*
     fun bg_QPainterPath__CONSTRUCT_const_QPointF_R(start_point : QPointF) : QPainterPath*
     fun bg_QPainterPath__COPY_const_QPainterPath_R(other : QPainterPath*) : QPainterPath*
@@ -36380,6 +36446,9 @@ module Qt
     fun bg_QObject_disconnectNotify_SUPER_const_QMetaMethod_R(_self_ : QWizardPage*, signal : QMetaMethod*) : Void
     fun bg_BgInherit_QWizardPage_JUMPTABLE_BgJumptable_QWizardPage_R(_self_ : QWizardPage*, table : BgJumptable_QWizardPage*) : Void
     fun bg____qVersion_STATIC_() : UInt8*
+    fun bg____qSetFieldWidth_STATIC_int(width : Int32) : QTextStreamManipulator*
+    fun bg____qSetPadChar_STATIC_QChar(ch : Int32) : QTextStreamManipulator*
+    fun bg____qSetRealNumberPrecision_STATIC_int(precision : Int32) : QTextStreamManipulator*
     fun bg____qt5cr_reset_numeric_locale_STATIC_() : Void
     fun bg____qt5cr_validator_validate_STATIC_const_QValidator_X_const_QString_R_int(validator : QValidator*, input : CrystalString, pos : Int32) : ::Qt::Validator::State
     fun bg____qt5cr_validator_fixup_STATIC_const_QValidator_X_const_QString_R(validator : QValidator*, input : CrystalString) : CrystalString
@@ -36473,6 +36542,10 @@ module Qt
     fun bg_Container_QList_QMimeType__at_int(_self_ : ContainerQListQMimeType*, index : Int32) : QMimeType*
     fun bg_Container_QList_QMimeType__push_back_QMimeType(_self_ : ContainerQListQMimeType*, value : QMimeType*) : Void
     fun bg_Container_QList_QMimeType__size_(_self_ : ContainerQListQMimeType*) : Int32
+    fun bg_Container_QList_QInputMethodEvent__Attribute___CONSTRUCT_() : ContainerQListQInputMethodEventAttribute*
+    fun bg_Container_QList_QInputMethodEvent__Attribute__at_int(_self_ : ContainerQListQInputMethodEventAttribute*, index : Int32) : QInputMethodEvent_Attribute*
+    fun bg_Container_QList_QInputMethodEvent__Attribute__push_back_QInputMethodEvent__Attribute(_self_ : ContainerQListQInputMethodEventAttribute*, value : QInputMethodEvent_Attribute*) : Void
+    fun bg_Container_QList_QInputMethodEvent__Attribute__size_(_self_ : ContainerQListQInputMethodEventAttribute*) : Int32
     fun bg_QList_QString___OPERATOR_assign_const_QList_QString__R(_self_ : ContainerQListQString*, l : ContainerQListQString*) : ContainerQListQString*
     fun bg_QList_QString__swap_QList_QString__R(_self_ : ContainerQListQString*, other : ContainerQListQString*) : Void
     fun bg_QList_QString___OPERATOR_eq_const_QList_QString__R(_self_ : ContainerQListQString*, l : ContainerQListQString*) : Bool
@@ -36539,8 +36612,8 @@ module Qt
     fun bg_Container_QList_QObject_X__push_back_QObject_X(_self_ : ContainerQListQObjectX*, value : QObject*) : Void
     fun bg_Container_QList_QObject_X__size_(_self_ : ContainerQListQObjectX*) : Int32
     fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo___CONSTRUCT_() : ContainerQListQAbstractEventDispatcherTimerInfo*
-    fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(_self_ : ContainerQListQAbstractEventDispatcherTimerInfo*, index : Int32) : EventDispatcherTimerInfo
-    fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo__push_back_QAbstractEventDispatcher__TimerInfo(_self_ : ContainerQListQAbstractEventDispatcherTimerInfo*, value : EventDispatcherTimerInfo) : Void
+    fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(_self_ : ContainerQListQAbstractEventDispatcherTimerInfo*, index : Int32) : QAbstractEventDispatcher_TimerInfo*
+    fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo__push_back_QAbstractEventDispatcher__TimerInfo(_self_ : ContainerQListQAbstractEventDispatcherTimerInfo*, value : QAbstractEventDispatcher_TimerInfo*) : Void
     fun bg_Container_QList_QAbstractEventDispatcher__TimerInfo__size_(_self_ : ContainerQListQAbstractEventDispatcherTimerInfo*) : Int32
     fun bg_Container_QList_QVariant___CONSTRUCT_() : ContainerQListQVariant*
     fun bg_Container_QList_QVariant__at_int(_self_ : ContainerQListQVariant*, index : Int32) : CrystalVariant
@@ -39371,7 +39444,7 @@ module Qt
     abstract def register_timer(timer_id : Int32, interval : Int32, timer_type : TimerType, object : Object) : Void
     abstract def unregister_timer(timer_id : Int32) : Bool
     abstract def unregister_timers(object : Object) : Bool
-    abstract def registered_timers(object : Object) : Enumerable(Binding::EventDispatcherTimerInfo)
+    abstract def registered_timers(object : Object) : Enumerable(EventDispatcherTimerInfo)
     abstract def remaining_time(timer_id : Int32) : Int32
     abstract def wake_up() : Void
     abstract def interrupt() : Void
@@ -39581,7 +39654,51 @@ module Qt
     end
     
   end
-  module QAbstractEventDispatcher
+  class EventDispatcherTimerInfo
+    @unwrap : Binding::QAbstractEventDispatcher_TimerInfo*
+    
+    def initialize(id : Int32, i : Int32, t : TimerType)
+      result = Binding.bg_QAbstractEventDispatcher__TimerInfo__CONSTRUCT_int_int_Qt__TimerType(id, i, t)
+    @unwrap = result
+    end
+    
+    def initialize(unnamed_arg_0 : EventDispatcherTimerInfo)
+      result = Binding.bg_QAbstractEventDispatcher__TimerInfo__COPY_const_QAbstractEventDispatcher__TimerInfo_R(unnamed_arg_0)
+    @unwrap = result
+    end
+    
+    def timer_id() : Int32
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_timerId_GETTER_(self)
+    end
+    
+    def timer_id=(timer_id : Int32) : Void
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_timerId_SETTER_int(self, timer_id)
+    end
+    
+    def interval() : Int32
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_interval_GETTER_(self)
+    end
+    
+    def interval=(interval : Int32) : Void
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_interval_SETTER_int(self, interval)
+    end
+    
+    def timer_type() : TimerType
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_timerType_GETTER_(self)
+    end
+    
+    def timer_type=(timer_type : TimerType) : Void
+      Binding.bg_QAbstractEventDispatcher__TimerInfo_timerType_SETTER_Qt__TimerType(self, timer_type)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QAbstractEventDispatcher_TimerInfo*)
+      result = unwrap
+    @unwrap = result
+    end
+    
   end
   class ModelIndex
     @unwrap : Binding::QModelIndex*
@@ -46626,6 +46743,10 @@ module Qt
       TextStream.new(unwrap: Binding.bg_QTextStream__OPERATOR_lshift_const_void_X(self, ptr))
     end
     
+    def <<(m : TextStreamManipulator) : TextStream
+      TextStream.new(unwrap: Binding.bg_QTextStream__OPERATOR_lshift_QTextStreamManipulator(self, m))
+    end
+    
     enum RealNumberNotation : UInt32
       SmartNotation = 0
       FixedNotation = 1
@@ -46662,6 +46783,27 @@ module Qt
       @unwrap
     end
     def initialize(unwrap : Binding::QTextStream*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  class TextStreamManipulator
+    @unwrap : Binding::QTextStreamManipulator*
+    
+    def exec(s : TextStream) : Void
+      Binding.bg_QTextStreamManipulator_exec_QTextStream_R(self, s)
+    end
+    
+    def initialize(unnamed_arg_0 : TextStreamManipulator)
+      result = Binding.bg_QTextStreamManipulator__COPY_const_QTextStreamManipulator_R(unnamed_arg_0)
+    @unwrap = result
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QTextStreamManipulator*)
       result = unwrap
     @unwrap = result
     end
@@ -74077,8 +74219,17 @@ module Qt
     @unwrap = result
     end
     
+    def initialize(preedit_text : String, attributes : Enumerable(InputMethodEventAttribute))
+      result = Binding.bg_QInputMethodEvent__CONSTRUCT_const_QString_R_const_QList_QInputMethodEvent__Attribute__R(Qt::Converter::QString.wrap(preedit_text), BindgenHelper.wrap_container(Container_QList_QInputMethodEvent__Attribute_, attributes).to_unsafe)
+    @unwrap = result
+    end
+    
     def set_commit_string(commit_string : String, replace_from : Int32 = 0, replace_length : Int32 = 0) : Void
       Binding.bg_QInputMethodEvent_setCommitString_const_QString_R_int_int(self, Qt::Converter::QString.wrap(commit_string), replace_from, replace_length)
+    end
+    
+    def attributes() : Enumerable(InputMethodEventAttribute)
+      Container_QList_QInputMethodEvent__Attribute_.new(unwrap: Binding.bg_QInputMethodEvent_attributes_(self))
     end
     
     def preedit_string() : String
@@ -74122,6 +74273,69 @@ module Qt
     end
     
     def initialize(unwrap : Binding::QInputMethodEvent*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  class InputMethodEventAttribute
+    @unwrap : Binding::QInputMethodEvent_Attribute*
+    
+    def initialize(typ : InputMethodEvent::AttributeType, s : Int32, l : Int32, val : Variant)
+      result = Binding.bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int_QVariant(typ, s, l, (val.to_unsafe))
+    @unwrap = result
+    end
+    
+    def initialize(typ : InputMethodEvent::AttributeType, s : Int32, l : Int32)
+      result = Binding.bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int(typ, s, l)
+    @unwrap = result
+    end
+    
+    def initialize(unnamed_arg_0 : InputMethodEventAttribute)
+      result = Binding.bg_QInputMethodEvent__Attribute__COPY_const_QInputMethodEvent__Attribute_R(unnamed_arg_0)
+    @unwrap = result
+    end
+    
+    def assign!(unnamed_arg_0 : InputMethodEventAttribute) : InputMethodEventAttribute
+      InputMethodEventAttribute.new(unwrap: Binding.bg_QInputMethodEvent__Attribute__OPERATOR_assign_const_QInputMethodEvent__Attribute_R(self, unnamed_arg_0))
+    end
+    
+    def type() : InputMethodEvent::AttributeType
+      Binding.bg_QInputMethodEvent__Attribute_type_GETTER_(self)
+    end
+    
+    def type=(type : InputMethodEvent::AttributeType) : Void
+      Binding.bg_QInputMethodEvent__Attribute_type_SETTER_QInputMethodEvent__AttributeType(self, type)
+    end
+    
+    def start() : Int32
+      Binding.bg_QInputMethodEvent__Attribute_start_GETTER_(self)
+    end
+    
+    def start=(start : Int32) : Void
+      Binding.bg_QInputMethodEvent__Attribute_start_SETTER_int(self, start)
+    end
+    
+    def length() : Int32
+      Binding.bg_QInputMethodEvent__Attribute_length_GETTER_(self)
+    end
+    
+    def length=(length : Int32) : Void
+      Binding.bg_QInputMethodEvent__Attribute_length_SETTER_int(self, length)
+    end
+    
+    def value() : Variant
+      Qt::Variant.new(Binding.bg_QInputMethodEvent__Attribute_value_GETTER_(self))
+    end
+    
+    def value=(value : Variant) : Void
+      Binding.bg_QInputMethodEvent__Attribute_value_SETTER_QVariant(self, (value.to_unsafe))
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QInputMethodEvent_Attribute*)
       result = unwrap
     @unwrap = result
     end
@@ -86906,6 +87120,77 @@ module Qt
       Superclass.new(self)
     end
   end
+  class IconEngineScaledPixmapArgument
+    @unwrap : Binding::QIconEngine_ScaledPixmapArgument*
+    
+    def initialize(unnamed_arg_0 : IconEngineScaledPixmapArgument)
+      result = Binding.bg_QIconEngine__ScaledPixmapArgument__COPY_const_QIconEngine__ScaledPixmapArgument_R(unnamed_arg_0)
+    @unwrap = result
+    end
+    
+    def assign!(unnamed_arg_0 : IconEngineScaledPixmapArgument) : IconEngineScaledPixmapArgument
+      IconEngineScaledPixmapArgument.new(unwrap: Binding.bg_QIconEngine__ScaledPixmapArgument__OPERATOR_assign_const_QIconEngine__ScaledPixmapArgument_R(self, unnamed_arg_0))
+    end
+    
+    def initialize()
+      result = Binding.bg_QIconEngine__ScaledPixmapArgument__CONSTRUCT_()
+    @unwrap = result
+    end
+    
+    def initialize(*, size : Size, mode : Icon::Mode, state : Icon::State, scale : Float64, pixmap : Pixmap)
+      result = Binding.bg_QIconEngine__ScaledPixmapArgument__AGGREGATE_QSize_QIcon__Mode_QIcon__State_qreal_QPixmap(size, mode, state, scale, pixmap)
+    @unwrap = result
+    end
+    
+    def size() : Size
+      Size.new(unwrap: Binding.bg_QIconEngine__ScaledPixmapArgument_size_GETTER_(self))
+    end
+    
+    def size=(size : Size) : Void
+      Binding.bg_QIconEngine__ScaledPixmapArgument_size_SETTER_QSize(self, size)
+    end
+    
+    def mode() : Icon::Mode
+      Binding.bg_QIconEngine__ScaledPixmapArgument_mode_GETTER_(self)
+    end
+    
+    def mode=(mode : Icon::Mode) : Void
+      Binding.bg_QIconEngine__ScaledPixmapArgument_mode_SETTER_QIcon__Mode(self, mode)
+    end
+    
+    def state() : Icon::State
+      Binding.bg_QIconEngine__ScaledPixmapArgument_state_GETTER_(self)
+    end
+    
+    def state=(state : Icon::State) : Void
+      Binding.bg_QIconEngine__ScaledPixmapArgument_state_SETTER_QIcon__State(self, state)
+    end
+    
+    def scale() : Float64
+      Binding.bg_QIconEngine__ScaledPixmapArgument_scale_GETTER_(self)
+    end
+    
+    def scale=(scale : Float64) : Void
+      Binding.bg_QIconEngine__ScaledPixmapArgument_scale_SETTER_qreal(self, scale)
+    end
+    
+    def pixmap() : Pixmap
+      Pixmap.new(unwrap: Binding.bg_QIconEngine__ScaledPixmapArgument_pixmap_GETTER_(self))
+    end
+    
+    def pixmap=(pixmap : Pixmap) : Void
+      Binding.bg_QIconEngine__ScaledPixmapArgument_pixmap_SETTER_QPixmap(self, pixmap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QIconEngine_ScaledPixmapArgument*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
   class ImageReader
     @unwrap : Binding::QImageReader*
     
@@ -90779,6 +91064,14 @@ module Qt
       Binding.bg_QPainter_drawPixmap_int_int_int_int_const_QPixmap_R(self, x, y, w, h, pm)
     end
     
+    def draw_pixmap_fragments(fragments : PainterPixmapFragment, fragment_count : Int32, pixmap : Pixmap) : Void
+      Binding.bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R(self, (fragments.try(&.to_unsafe) || Pointer(Binding::QPainter_PixmapFragment).null), fragment_count, pixmap)
+    end
+    
+    def draw_pixmap_fragments(fragments : PainterPixmapFragment, fragment_count : Int32, pixmap : Pixmap, hints : Painter::PixmapFragmentHints) : Void
+      Binding.bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R_QPainter__PixmapFragmentHints(self, (fragments.try(&.to_unsafe) || Pointer(Binding::QPainter_PixmapFragment).null), fragment_count, pixmap, hints)
+    end
+    
     def draw_image(target_rect : RectF, image : Image, source_rect : RectF) : Void
       Binding.bg_QPainter_drawImage_const_QRectF_R_const_QImage_R_const_QRectF_R(self, target_rect, image, source_rect)
     end
@@ -91085,6 +91378,117 @@ module Qt
       @unwrap
     end
     def initialize(unwrap : Binding::QPainter*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  class PainterPixmapFragment
+    @unwrap : Binding::QPainter_PixmapFragment*
+    
+    def self.create(pos : PointF, source_rect : RectF, scale_x : Float64 = 1.0f64, scale_y : Float64 = 1.0f64, rotation : Float64 = 0.0f64, opacity : Float64 = 1.0f64) : PainterPixmapFragment
+      PainterPixmapFragment.new(unwrap: Binding.bg_QPainter__PixmapFragment_create_STATIC_const_QPointF_R_const_QRectF_R_qreal_qreal_qreal_qreal(pos, source_rect, scale_x, scale_y, rotation, opacity))
+    end
+    
+    def initialize()
+      result = Binding.bg_QPainter__PixmapFragment__CONSTRUCT_()
+    @unwrap = result
+    end
+    
+    def initialize(unnamed_arg_0 : PainterPixmapFragment)
+      result = Binding.bg_QPainter__PixmapFragment__COPY_const_QPainter__PixmapFragment_R(unnamed_arg_0)
+    @unwrap = result
+    end
+    
+    def initialize(*, x : Float64, y : Float64, source_left : Float64, source_top : Float64, width : Float64, height : Float64, scale_x : Float64, scale_y : Float64, rotation : Float64, opacity : Float64)
+      result = Binding.bg_QPainter__PixmapFragment__AGGREGATE_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal(x, y, source_left, source_top, width, height, scale_x, scale_y, rotation, opacity)
+    @unwrap = result
+    end
+    
+    def x() : Float64
+      Binding.bg_QPainter__PixmapFragment_x_GETTER_(self)
+    end
+    
+    def x=(x : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_x_SETTER_qreal(self, x)
+    end
+    
+    def y() : Float64
+      Binding.bg_QPainter__PixmapFragment_y_GETTER_(self)
+    end
+    
+    def y=(y : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_y_SETTER_qreal(self, y)
+    end
+    
+    def source_left() : Float64
+      Binding.bg_QPainter__PixmapFragment_sourceLeft_GETTER_(self)
+    end
+    
+    def source_left=(source_left : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_sourceLeft_SETTER_qreal(self, source_left)
+    end
+    
+    def source_top() : Float64
+      Binding.bg_QPainter__PixmapFragment_sourceTop_GETTER_(self)
+    end
+    
+    def source_top=(source_top : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_sourceTop_SETTER_qreal(self, source_top)
+    end
+    
+    def width() : Float64
+      Binding.bg_QPainter__PixmapFragment_width_GETTER_(self)
+    end
+    
+    def width=(width : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_width_SETTER_qreal(self, width)
+    end
+    
+    def height() : Float64
+      Binding.bg_QPainter__PixmapFragment_height_GETTER_(self)
+    end
+    
+    def height=(height : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_height_SETTER_qreal(self, height)
+    end
+    
+    def scale_x() : Float64
+      Binding.bg_QPainter__PixmapFragment_scaleX_GETTER_(self)
+    end
+    
+    def scale_x=(scale_x : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_scaleX_SETTER_qreal(self, scale_x)
+    end
+    
+    def scale_y() : Float64
+      Binding.bg_QPainter__PixmapFragment_scaleY_GETTER_(self)
+    end
+    
+    def scale_y=(scale_y : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_scaleY_SETTER_qreal(self, scale_y)
+    end
+    
+    def rotation() : Float64
+      Binding.bg_QPainter__PixmapFragment_rotation_GETTER_(self)
+    end
+    
+    def rotation=(rotation : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_rotation_SETTER_qreal(self, rotation)
+    end
+    
+    def opacity() : Float64
+      Binding.bg_QPainter__PixmapFragment_opacity_GETTER_(self)
+    end
+    
+    def opacity=(opacity : Float64) : Void
+      Binding.bg_QPainter__PixmapFragment_opacity_SETTER_qreal(self, opacity)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QPainter_PixmapFragment*)
       result = unwrap
     @unwrap = result
     end
@@ -202243,7 +202647,7 @@ module Qt
       Binding.bg_QAbstractEventDispatcher_unregisterTimers_QObject_X(self, (object.try(&.to_unsafe) || Pointer(Binding::QObject).null))
     end
     
-    def registered_timers(object : Object) : Enumerable(Binding::EventDispatcherTimerInfo)
+    def registered_timers(object : Object) : Enumerable(EventDispatcherTimerInfo)
       Container_QList_QAbstractEventDispatcher__TimerInfo_.new(unwrap: Binding.bg_QAbstractEventDispatcher_registeredTimers_QObject_X(self, (object.try(&.to_unsafe) || Pointer(Binding::QObject).null)))
     end
     
@@ -204115,6 +204519,18 @@ module Qt
     Binding.bg____qVersion_STATIC_()
   end
   
+  def self.q_set_field_width(width : Int32) : TextStreamManipulator
+    TextStreamManipulator.new(unwrap: Binding.bg____qSetFieldWidth_STATIC_int(width))
+  end
+  
+  def self.q_set_pad_char(ch : Char) : TextStreamManipulator
+    TextStreamManipulator.new(unwrap: Binding.bg____qSetPadChar_STATIC_QChar((ch.ord)))
+  end
+  
+  def self.q_set_real_number_precision(precision : Int32) : TextStreamManipulator
+    TextStreamManipulator.new(unwrap: Binding.bg____qSetRealNumberPrecision_STATIC_int(precision))
+  end
+  
   def self.qt5cr_reset_numeric_locale() : Void
     Binding.bg____qt5cr_reset_numeric_locale_STATIC_()
   end
@@ -205795,9 +206211,10 @@ module Qt
       {% elsif types == {ModelIndex} %} {{ Container_QList_QModelIndex_ }}
       {% elsif types == {CommandLineOption} %} {{ Container_QList_QCommandLineOption_ }}
       {% elsif types == {MimeType} %} {{ Container_QList_QMimeType_ }}
+      {% elsif types == {InputMethodEventAttribute} %} {{ Container_QList_QInputMethodEvent__Attribute_ }}
       {% elsif types == {String} %} {{ StringList }}
       {% elsif types == {Object} %} {{ Container_QList_QObject_X_ }}
-      {% elsif types == {Binding::EventDispatcherTimerInfo} %} {{ Container_QList_QAbstractEventDispatcher__TimerInfo_ }}
+      {% elsif types == {EventDispatcherTimerInfo} %} {{ Container_QList_QAbstractEventDispatcher__TimerInfo_ }}
       {% elsif types == {Variant} %} {{ Container_QList_QVariant_ }}
       {% elsif types == {PersistentModelIndex} %} {{ Container_QList_QPersistentModelIndex_ }}
       {% elsif types == {DayOfWeek} %} {{ Container_QList_Qt__DayOfWeek_ }}
@@ -206357,6 +206774,38 @@ module Qt
     end
     
   end
+  class Container_QList_QInputMethodEvent__Attribute_
+    include BindgenHelper::SequentialContainer(InputMethodEventAttribute)
+    include QList(InputMethodEventAttribute)
+    
+    @unwrap : Binding::ContainerQListQInputMethodEventAttribute*
+    
+    def initialize()
+      result = Binding.bg_Container_QList_QInputMethodEvent__Attribute___CONSTRUCT_()
+    @unwrap = result
+    end
+    
+    def unsafe_at(index : Int32) : InputMethodEventAttribute
+      InputMethodEventAttribute.new(unwrap: Binding.bg_Container_QList_QInputMethodEvent__Attribute__at_int(self, index))
+    end
+    
+    def push(value : InputMethodEventAttribute) : Void
+      Binding.bg_Container_QList_QInputMethodEvent__Attribute__push_back_QInputMethodEvent__Attribute(self, value)
+    end
+    
+    def size() : Int32
+      Binding.bg_Container_QList_QInputMethodEvent__Attribute__size_(self)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::ContainerQListQInputMethodEventAttribute*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
   class StringList < StringListMethods
     include BindgenHelper::SequentialContainer(String)
     include QList(String)
@@ -206650,8 +207099,8 @@ module Qt
     
   end
   class Container_QList_QAbstractEventDispatcher__TimerInfo_
-    include BindgenHelper::SequentialContainer(Binding::EventDispatcherTimerInfo)
-    include QList(Binding::EventDispatcherTimerInfo)
+    include BindgenHelper::SequentialContainer(EventDispatcherTimerInfo)
+    include QList(EventDispatcherTimerInfo)
     
     @unwrap : Binding::ContainerQListQAbstractEventDispatcherTimerInfo*
     
@@ -206660,11 +207109,11 @@ module Qt
     @unwrap = result
     end
     
-    def unsafe_at(index : Int32) : Binding::EventDispatcherTimerInfo
-      Binding.bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(self, index)
+    def unsafe_at(index : Int32) : EventDispatcherTimerInfo
+      EventDispatcherTimerInfo.new(unwrap: Binding.bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(self, index))
     end
     
-    def push(value : Binding::EventDispatcherTimerInfo) : Void
+    def push(value : EventDispatcherTimerInfo) : Void
       Binding.bg_Container_QList_QAbstractEventDispatcher__TimerInfo__push_back_QAbstractEventDispatcher__TimerInfo(self, value)
     end
     

@@ -327,6 +327,25 @@ describe Qt::Picture do
   end
 end
 
+describe Qt::PainterPixmapFragment do
+  it "draws a fragment of a pixmap" do
+    fragment = Qt::PainterPixmapFragment.create(Qt::PointF.new(8.0, 8.0), Qt::RectF.new(0.0, 0.0, 4.0, 4.0))
+    fragment.width.should eq(4.0)
+    fragment.scale_x.should eq(1.0)
+    fragment.opacity = 1.0
+    fragment.opacity.should eq(1.0)
+
+    pixmap = Qt::Pixmap.new(4, 4)
+    pixmap.fill(Qt::Color.new(255, 0, 0))
+    image = white_image
+    painter = Qt::Painter.new(image)
+    painter.draw_pixmap_fragments(fragment, 1, pixmap)
+    painter.end
+    image.pixel_color(8, 8).name.should eq("#ff0000") # Centered on the position
+    image.pixel_color(2, 2).name.should eq("#ffffff")
+  end
+end
+
 describe Qt::Rgba64 do
   it "holds 16 bit channels" do
     color = Qt::Rgba64.from_rgba(255_u8, 0_u8, 128_u8, 255_u8)

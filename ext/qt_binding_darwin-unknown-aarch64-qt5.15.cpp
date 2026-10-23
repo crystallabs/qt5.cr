@@ -90,6 +90,7 @@ typedef QList<QVariant> Container_QList_QVariant_;
 typedef QList<QAbstractEventDispatcher::TimerInfo> Container_QList_QAbstractEventDispatcher__TimerInfo_;
 typedef QList<QObject *> Container_QList_QObject_X_;
 typedef QList<QString> Container_QList_QString_;
+typedef QList<QInputMethodEvent::Attribute> Container_QList_QInputMethodEvent__Attribute_;
 typedef QList<QMimeType> Container_QList_QMimeType_;
 typedef QList<QCommandLineOption> Container_QList_QCommandLineOption_;
 typedef QList<QModelIndex> Container_QList_QModelIndex_;
@@ -2921,6 +2922,38 @@ extern "C" void bg_QAbstractEventDispatcher_closingDown_SUPER_(QAbstractEventDis
 
 extern "C" void bg_BgInherit_QAbstractEventDispatcher_JUMPTABLE_BgJumptable_QAbstractEventDispatcher_R(BgInherit_QAbstractEventDispatcher * _self_, const BgJumptable_QAbstractEventDispatcher & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" QAbstractEventDispatcher::TimerInfo * bg_QAbstractEventDispatcher__TimerInfo__CONSTRUCT_int_int_Qt__TimerType(int id, int i, Qt::TimerType t) {
+  return new (UseGC) CrystalGCWrapper<QAbstractEventDispatcher::TimerInfo>(id, i, t);
+}
+
+extern "C" QAbstractEventDispatcher::TimerInfo * bg_QAbstractEventDispatcher__TimerInfo__COPY_const_QAbstractEventDispatcher__TimerInfo_R(const QAbstractEventDispatcher::TimerInfo & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QAbstractEventDispatcher::TimerInfo>(unnamed_arg_0);
+}
+
+extern "C" int bg_QAbstractEventDispatcher__TimerInfo_timerId_GETTER_(QAbstractEventDispatcher::TimerInfo * _self_) {
+  return _self_->timerId;
+}
+
+extern "C" void bg_QAbstractEventDispatcher__TimerInfo_timerId_SETTER_int(QAbstractEventDispatcher::TimerInfo * _self_, int timerId) {
+  _self_->timerId = timerId;
+}
+
+extern "C" int bg_QAbstractEventDispatcher__TimerInfo_interval_GETTER_(QAbstractEventDispatcher::TimerInfo * _self_) {
+  return _self_->interval;
+}
+
+extern "C" void bg_QAbstractEventDispatcher__TimerInfo_interval_SETTER_int(QAbstractEventDispatcher::TimerInfo * _self_, int interval) {
+  _self_->interval = interval;
+}
+
+extern "C" Qt::TimerType bg_QAbstractEventDispatcher__TimerInfo_timerType_GETTER_(QAbstractEventDispatcher::TimerInfo * _self_) {
+  return _self_->timerType;
+}
+
+extern "C" void bg_QAbstractEventDispatcher__TimerInfo_timerType_SETTER_Qt__TimerType(QAbstractEventDispatcher::TimerInfo * _self_, Qt::TimerType timerType) {
+  _self_->timerType = timerType;
 }
 
 extern "C" QModelIndex * bg_QModelIndex__CONSTRUCT_() {
@@ -8764,6 +8797,18 @@ extern "C" QTextStream * bg_QTextStream__OPERATOR_lshift_const_char_X(QTextStrea
 
 extern "C" QTextStream * bg_QTextStream__OPERATOR_lshift_const_void_X(QTextStream * _self_, const void * ptr) {
   return &(((*_self_) << (ptr)));
+}
+
+extern "C" QTextStream * bg_QTextStream__OPERATOR_lshift_QTextStreamManipulator(QTextStream * _self_, QTextStreamManipulator & m) {
+  return &(((*_self_) << (m)));
+}
+
+extern "C" void bg_QTextStreamManipulator_exec_QTextStream_R(QTextStreamManipulator * _self_, QTextStream & s) {
+  _self_->exec(s);
+}
+
+extern "C" QTextStreamManipulator * bg_QTextStreamManipulator__COPY_const_QTextStreamManipulator_R(const QTextStreamManipulator & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QTextStreamManipulator>(unnamed_arg_0);
 }
 
 extern "C" QCborError::Code bg_QCborError__CONVERT_QCborError__Code_(QCborError * _self_) {
@@ -31569,8 +31614,16 @@ extern "C" QInputMethodEvent * bg_QInputMethodEvent__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QInputMethodEvent>();
 }
 
+extern "C" QInputMethodEvent * bg_QInputMethodEvent__CONSTRUCT_const_QString_R_const_QList_QInputMethodEvent__Attribute__R(const CrystalString preeditText, const Container_QList_QInputMethodEvent__Attribute_ * attributes) {
+  return new (UseGC) CrystalGCWrapper<QInputMethodEvent>(([&]() { auto &&bg_value = (preeditText); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), *(attributes));
+}
+
 extern "C" void bg_QInputMethodEvent_setCommitString_const_QString_R_int_int(QInputMethodEvent * _self_, const CrystalString commitString, int replaceFrom, int replaceLength) {
   _self_->setCommitString(([&]() { auto &&bg_value = (commitString); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), replaceFrom, replaceLength);
+}
+
+extern "C" const Container_QList_QInputMethodEvent__Attribute_ * bg_QInputMethodEvent_attributes_(QInputMethodEvent * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<Container_QList_QInputMethodEvent__Attribute_>()) Container_QList_QInputMethodEvent__Attribute_ (_self_->attributes());
 }
 
 extern "C" const CrystalString bg_QInputMethodEvent_preeditString_(QInputMethodEvent * _self_) {
@@ -31595,6 +31648,54 @@ extern "C" QInputMethodEvent * bg_QInputMethodEvent__COPY_const_QInputMethodEven
 
 extern "C" QInputMethodEvent * bg_QInputMethodEvent__OPERATOR_assign_const_QInputMethodEvent_R(QInputMethodEvent * _self_, const QInputMethodEvent & unnamed_arg_0) {
   return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" QInputMethodEvent::Attribute * bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int_QVariant(QInputMethodEvent::AttributeType typ, int s, int l, CrystalVariant val) {
+  return new (UseGC) CrystalGCWrapper<QInputMethodEvent::Attribute>(typ, s, l, crystal_to_qvariant(val));
+}
+
+extern "C" QInputMethodEvent::Attribute * bg_QInputMethodEvent__Attribute__CONSTRUCT_QInputMethodEvent__AttributeType_int_int(QInputMethodEvent::AttributeType typ, int s, int l) {
+  return new (UseGC) CrystalGCWrapper<QInputMethodEvent::Attribute>(typ, s, l);
+}
+
+extern "C" QInputMethodEvent::Attribute * bg_QInputMethodEvent__Attribute__COPY_const_QInputMethodEvent__Attribute_R(const QInputMethodEvent::Attribute & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QInputMethodEvent::Attribute>(unnamed_arg_0);
+}
+
+extern "C" QInputMethodEvent::Attribute * bg_QInputMethodEvent__Attribute__OPERATOR_assign_const_QInputMethodEvent__Attribute_R(QInputMethodEvent::Attribute * _self_, const QInputMethodEvent::Attribute & unnamed_arg_0) {
+  return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" QInputMethodEvent::AttributeType bg_QInputMethodEvent__Attribute_type_GETTER_(QInputMethodEvent::Attribute * _self_) {
+  return _self_->type;
+}
+
+extern "C" void bg_QInputMethodEvent__Attribute_type_SETTER_QInputMethodEvent__AttributeType(QInputMethodEvent::Attribute * _self_, QInputMethodEvent::AttributeType type) {
+  _self_->type = type;
+}
+
+extern "C" int bg_QInputMethodEvent__Attribute_start_GETTER_(QInputMethodEvent::Attribute * _self_) {
+  return _self_->start;
+}
+
+extern "C" void bg_QInputMethodEvent__Attribute_start_SETTER_int(QInputMethodEvent::Attribute * _self_, int start) {
+  _self_->start = start;
+}
+
+extern "C" int bg_QInputMethodEvent__Attribute_length_GETTER_(QInputMethodEvent::Attribute * _self_) {
+  return _self_->length;
+}
+
+extern "C" void bg_QInputMethodEvent__Attribute_length_SETTER_int(QInputMethodEvent::Attribute * _self_, int length) {
+  _self_->length = length;
+}
+
+extern "C" CrystalVariant bg_QInputMethodEvent__Attribute_value_GETTER_(QInputMethodEvent::Attribute * _self_) {
+  return qvariant_to_crystal(_self_->value);
+}
+
+extern "C" void bg_QInputMethodEvent__Attribute_value_SETTER_QVariant(QInputMethodEvent::Attribute * _self_, CrystalVariant value) {
+  _self_->value = crystal_to_qvariant(value);
 }
 
 extern "C" QInputMethodQueryEvent * bg_QInputMethodQueryEvent__CONSTRUCT_Qt__InputMethodQueries(Qt::InputMethodQueries queries) {
@@ -42438,6 +42539,62 @@ extern "C" void bg_BgInherit_QIconEngine_JUMPTABLE_BgJumptable_QIconEngine_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" QIconEngine::ScaledPixmapArgument * bg_QIconEngine__ScaledPixmapArgument__COPY_const_QIconEngine__ScaledPixmapArgument_R(const QIconEngine::ScaledPixmapArgument & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QIconEngine::ScaledPixmapArgument>(unnamed_arg_0);
+}
+
+extern "C" QIconEngine::ScaledPixmapArgument * bg_QIconEngine__ScaledPixmapArgument__OPERATOR_assign_const_QIconEngine__ScaledPixmapArgument_R(QIconEngine::ScaledPixmapArgument * _self_, const QIconEngine::ScaledPixmapArgument & unnamed_arg_0) {
+  return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" QIconEngine::ScaledPixmapArgument * bg_QIconEngine__ScaledPixmapArgument__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QIconEngine::ScaledPixmapArgument>();
+}
+
+extern "C" QIconEngine::ScaledPixmapArgument * bg_QIconEngine__ScaledPixmapArgument__AGGREGATE_QSize_QIcon__Mode_QIcon__State_qreal_QPixmap(QSize size, QIcon::Mode mode, QIcon::State state, qreal scale, QPixmap & pixmap) {
+  return new (UseGC, bindgen_gc_finalizer<QIconEngine::ScaledPixmapArgument>()) QIconEngine::ScaledPixmapArgument {size, mode, state, scale, pixmap};
+}
+
+extern "C" QSize bg_QIconEngine__ScaledPixmapArgument_size_GETTER_(QIconEngine::ScaledPixmapArgument * _self_) {
+  return _self_->size;
+}
+
+extern "C" void bg_QIconEngine__ScaledPixmapArgument_size_SETTER_QSize(QIconEngine::ScaledPixmapArgument * _self_, QSize size) {
+  _self_->size = size;
+}
+
+extern "C" QIcon::Mode bg_QIconEngine__ScaledPixmapArgument_mode_GETTER_(QIconEngine::ScaledPixmapArgument * _self_) {
+  return _self_->mode;
+}
+
+extern "C" void bg_QIconEngine__ScaledPixmapArgument_mode_SETTER_QIcon__Mode(QIconEngine::ScaledPixmapArgument * _self_, QIcon::Mode mode) {
+  _self_->mode = mode;
+}
+
+extern "C" QIcon::State bg_QIconEngine__ScaledPixmapArgument_state_GETTER_(QIconEngine::ScaledPixmapArgument * _self_) {
+  return _self_->state;
+}
+
+extern "C" void bg_QIconEngine__ScaledPixmapArgument_state_SETTER_QIcon__State(QIconEngine::ScaledPixmapArgument * _self_, QIcon::State state) {
+  _self_->state = state;
+}
+
+extern "C" qreal bg_QIconEngine__ScaledPixmapArgument_scale_GETTER_(QIconEngine::ScaledPixmapArgument * _self_) {
+  return _self_->scale;
+}
+
+extern "C" void bg_QIconEngine__ScaledPixmapArgument_scale_SETTER_qreal(QIconEngine::ScaledPixmapArgument * _self_, qreal scale) {
+  _self_->scale = scale;
+}
+
+extern "C" QPixmap * bg_QIconEngine__ScaledPixmapArgument_pixmap_GETTER_(QIconEngine::ScaledPixmapArgument * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QPixmap>()) QPixmap (_self_->pixmap);
+}
+
+extern "C" void bg_QIconEngine__ScaledPixmapArgument_pixmap_SETTER_QPixmap(QIconEngine::ScaledPixmapArgument * _self_, QPixmap & pixmap) {
+  _self_->pixmap = pixmap;
+}
+
 extern "C" CrystalString bg_QImageReader_tr_STATIC_const_char_X(const char * sourceText) {
   return qstring_to_crystal(QImageReader::tr(sourceText));
 }
@@ -45730,6 +45887,14 @@ extern "C" void bg_QPainter_drawPixmap_int_int_int_int_const_QPixmap_R(QPainter 
   _self_->drawPixmap(x, y, w, h, pm);
 }
 
+extern "C" void bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R(QPainter * _self_, const QPainter::PixmapFragment * fragments, int fragmentCount, const QPixmap & pixmap) {
+  _self_->drawPixmapFragments(fragments, fragmentCount, pixmap);
+}
+
+extern "C" void bg_QPainter_drawPixmapFragments_const_QPainter__PixmapFragment_X_int_const_QPixmap_R_QPainter__PixmapFragmentHints(QPainter * _self_, const QPainter::PixmapFragment * fragments, int fragmentCount, const QPixmap & pixmap, QPainter::PixmapFragmentHints hints) {
+  _self_->drawPixmapFragments(fragments, fragmentCount, pixmap, hints);
+}
+
 extern "C" void bg_QPainter_drawImage_const_QRectF_R_const_QImage_R_const_QRectF_R(QPainter * _self_, const QRectF targetRect, const QImage & image, const QRectF sourceRect) {
   _self_->drawImage(targetRect, image, sourceRect);
 }
@@ -45968,6 +46133,102 @@ extern "C" void bg_QPainter_endNativePainting_(QPainter * _self_) {
 
 extern "C" const QMetaObject * bg_QPainter_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QPainter::staticMetaObject);
+}
+
+extern "C" QPainter::PixmapFragment * bg_QPainter__PixmapFragment_create_STATIC_const_QPointF_R_const_QRectF_R_qreal_qreal_qreal_qreal(const QPointF pos, const QRectF sourceRect, qreal scaleX, qreal scaleY, qreal rotation, qreal opacity) {
+  return new (UseGC, bindgen_gc_finalizer<QPainter::PixmapFragment>()) QPainter::PixmapFragment (QPainter::PixmapFragment::create(pos, sourceRect, scaleX, scaleY, rotation, opacity));
+}
+
+extern "C" QPainter::PixmapFragment * bg_QPainter__PixmapFragment__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QPainter::PixmapFragment>();
+}
+
+extern "C" QPainter::PixmapFragment * bg_QPainter__PixmapFragment__COPY_const_QPainter__PixmapFragment_R(const QPainter::PixmapFragment & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QPainter::PixmapFragment>(unnamed_arg_0);
+}
+
+extern "C" QPainter::PixmapFragment * bg_QPainter__PixmapFragment__AGGREGATE_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal(qreal x, qreal y, qreal sourceLeft, qreal sourceTop, qreal width, qreal height, qreal scaleX, qreal scaleY, qreal rotation, qreal opacity) {
+  return new (UseGC, bindgen_gc_finalizer<QPainter::PixmapFragment>()) QPainter::PixmapFragment {x, y, sourceLeft, sourceTop, width, height, scaleX, scaleY, rotation, opacity};
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_x_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->x;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_x_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal x) {
+  _self_->x = x;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_y_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->y;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_y_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal y) {
+  _self_->y = y;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_sourceLeft_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->sourceLeft;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_sourceLeft_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal sourceLeft) {
+  _self_->sourceLeft = sourceLeft;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_sourceTop_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->sourceTop;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_sourceTop_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal sourceTop) {
+  _self_->sourceTop = sourceTop;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_width_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->width;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_width_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal width) {
+  _self_->width = width;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_height_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->height;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_height_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal height) {
+  _self_->height = height;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_scaleX_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->scaleX;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_scaleX_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal scaleX) {
+  _self_->scaleX = scaleX;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_scaleY_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->scaleY;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_scaleY_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal scaleY) {
+  _self_->scaleY = scaleY;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_rotation_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->rotation;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_rotation_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal rotation) {
+  _self_->rotation = rotation;
+}
+
+extern "C" qreal bg_QPainter__PixmapFragment_opacity_GETTER_(QPainter::PixmapFragment * _self_) {
+  return _self_->opacity;
+}
+
+extern "C" void bg_QPainter__PixmapFragment_opacity_SETTER_qreal(QPainter::PixmapFragment * _self_, qreal opacity) {
+  _self_->opacity = opacity;
 }
 
 extern "C" QPainterPath * bg_QPainterPath__CONSTRUCT_() {
@@ -144503,6 +144764,18 @@ extern "C" const char * bg____qVersion_STATIC_() {
   return ::qVersion();
 }
 
+extern "C" QTextStreamManipulator * bg____qSetFieldWidth_STATIC_int(int width) {
+  return new (UseGC, bindgen_gc_finalizer<QTextStreamManipulator>()) QTextStreamManipulator (::qSetFieldWidth(width));
+}
+
+extern "C" QTextStreamManipulator * bg____qSetPadChar_STATIC_QChar(int32_t ch) {
+  return new (UseGC, bindgen_gc_finalizer<QTextStreamManipulator>()) QTextStreamManipulator (::qSetPadChar(QChar(ch)));
+}
+
+extern "C" QTextStreamManipulator * bg____qSetRealNumberPrecision_STATIC_int(int precision) {
+  return new (UseGC, bindgen_gc_finalizer<QTextStreamManipulator>()) QTextStreamManipulator (::qSetRealNumberPrecision(precision));
+}
+
 extern "C" void bg____qt5cr_reset_numeric_locale_STATIC_() {
   ::qt5cr_reset_numeric_locale();
 }
@@ -144875,6 +145148,22 @@ extern "C" int bg_Container_QList_QMimeType__size_(Container_QList_QMimeType_ * 
   return _self_->size();
 }
 
+extern "C" Container_QList_QInputMethodEvent__Attribute_ * bg_Container_QList_QInputMethodEvent__Attribute___CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<Container_QList_QInputMethodEvent__Attribute_>();
+}
+
+extern "C" QInputMethodEvent::Attribute * bg_Container_QList_QInputMethodEvent__Attribute__at_int(Container_QList_QInputMethodEvent__Attribute_ * _self_, int index) {
+  return new (UseGC, bindgen_gc_finalizer<QInputMethodEvent::Attribute>()) QInputMethodEvent::Attribute (_self_->at(index));
+}
+
+extern "C" void bg_Container_QList_QInputMethodEvent__Attribute__push_back_QInputMethodEvent__Attribute(Container_QList_QInputMethodEvent__Attribute_ * _self_, QInputMethodEvent::Attribute & value) {
+  _self_->push_back(value);
+}
+
+extern "C" int bg_Container_QList_QInputMethodEvent__Attribute__size_(Container_QList_QInputMethodEvent__Attribute_ * _self_) {
+  return _self_->size();
+}
+
 extern "C" QList<QString> * bg_QList_QString___OPERATOR_assign_const_QList_QString__R(QList<QString> * _self_, const QList<QString> * l) {
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (((*_self_) = (*(l))));
 }
@@ -145139,11 +145428,11 @@ extern "C" Container_QList_QAbstractEventDispatcher__TimerInfo_ * bg_Container_Q
   return new (UseGC) CrystalGCWrapper<Container_QList_QAbstractEventDispatcher__TimerInfo_>();
 }
 
-extern "C" QAbstractEventDispatcher::TimerInfo bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(Container_QList_QAbstractEventDispatcher__TimerInfo_ * _self_, int index) {
-  return _self_->at(index);
+extern "C" QAbstractEventDispatcher::TimerInfo * bg_Container_QList_QAbstractEventDispatcher__TimerInfo__at_int(Container_QList_QAbstractEventDispatcher__TimerInfo_ * _self_, int index) {
+  return new (UseGC, bindgen_gc_finalizer<QAbstractEventDispatcher::TimerInfo>()) QAbstractEventDispatcher::TimerInfo (_self_->at(index));
 }
 
-extern "C" void bg_Container_QList_QAbstractEventDispatcher__TimerInfo__push_back_QAbstractEventDispatcher__TimerInfo(Container_QList_QAbstractEventDispatcher__TimerInfo_ * _self_, QAbstractEventDispatcher::TimerInfo value) {
+extern "C" void bg_Container_QList_QAbstractEventDispatcher__TimerInfo__push_back_QAbstractEventDispatcher__TimerInfo(Container_QList_QAbstractEventDispatcher__TimerInfo_ * _self_, QAbstractEventDispatcher::TimerInfo & value) {
   _self_->push_back(value);
 }
 

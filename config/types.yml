@@ -120,21 +120,6 @@ types: # Type rewrite rules
     crystal_type: RectF
     pass_by: Value
     kind: Struct
-  "QPainter::PixmapFragment":
-    ignore: true
-    # copy_structure: true
-    # binding_type: QPainterPixmapFragment
-    # generate_binding: false
-    # generate_wrapper: false
-    # crystal_type: PainterPixmapFragment
-    # pass_by: Pointer
-  "QAbstractEventDispatcher::TimerInfo":
-    binding_type: EventDispatcherTimerInfo
-    generate_binding: false
-    generate_wrapper: false
-    copy_structure: true
-    pass_by: Value
-    kind: Struct
 
   "QUrl::FormattingOptions":
     crystal_type: Url::FormattingOptions
@@ -173,10 +158,6 @@ types: # Type rewrite rules
   QLatin1String: { ignore: true }
   QRegExp: { ignore: true } # QRegularExpression is wrapped instead
 
-  # Structures with QVariant: Ignore for now.
-  "QInputMethodEvent::Attribute": { ignore: true }
-  "QList<QInputMethodEvent::Attribute>": { ignore: true }
-
   # Ignore private data structures
   QObjectPrivate: { ignore: true }
   QKeySequencePrivate: { ignore: true }
@@ -201,11 +182,13 @@ types: # Type rewrite rules
   "void ()": { ignore: true }
   "void (void *)": { ignore: true }
   # The QTextStream manipulators (Qt::endl etc.) are C function pointers,
-  # which bindgen cannot express; QTextStreamManipulator (qSetFieldWidth etc.)
-  # only wraps calls to the setters QTextStream has anyway.
+  # which bindgen cannot express.
   QTextStreamFunction: { ignore: true }
   "QTextStream &(QTextStream &)": { ignore: true }
-  QTextStreamManipulator: { ignore: true }
+  # The QTextStreamManipulator constructors take QTextStream member function
+  # pointers; Qt.q_set_field_width and the others make one instead.
+  QTSMFI: { ignore: true }
+  QTSMFC: { ignore: true }
   # QEasingCurve's custom easing function is a C function pointer; the
   # QVariantAnimation interpolators are too, and go through registerInterpolator.
   "QEasingCurve::EasingFunction": { ignore: true }
@@ -417,6 +400,5 @@ types: # Type rewrite rules
   QThread: { sub_class: false }
   QRunnable: { sub_class: false }
   # Remaining models, styles and providers
-  "QIconEngine::ScaledPixmapArgument": { ignore: true } # Only virtual_hook's data
   "QIconEngine::AvailableSizesArgument": { ignore: true }
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above

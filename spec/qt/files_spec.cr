@@ -208,6 +208,17 @@ describe "Qt::TextStream" do
     String.new(buffer.data).should eq("..0xFF")
   end
 
+  it "takes manipulators" do
+    buffer = Qt::Buffer.new
+    buffer.open(Qt::IODevice::OpenMode::WriteOnly)
+    stream = Qt::TextStream.new(buffer)
+    stream << Qt.q_set_field_width(5) << Qt.q_set_pad_char('*') << 42
+    Qt.q_set_field_width(0).exec(stream)
+    stream << Qt.q_set_real_number_precision(3) << ' ' << 3.14159
+    stream.flush
+    String.new(buffer.data).should eq("***42 3.14")
+  end
+
   it "reads a byte array" do
     stream = Qt::TextStream.new("one\ntwo\n".to_slice)
     stream.read_line.should eq("one")

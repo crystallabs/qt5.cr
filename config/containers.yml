@@ -8,6 +8,7 @@ containers:
       - [ "QModelIndex" ] # QModelIndexList, of QItemSelectionModel#selectedIndexes
       - [ "QCommandLineOption" ] # QCommandLineParser#addOptions
       - [ "QMimeType" ] # QMimeDatabase#mimeTypesForFileName
+      - [ "QInputMethodEvent::Attribute" ] # QInputMethodEvent#attributes
   - class: QVector
     type: Sequential
     instantiations:

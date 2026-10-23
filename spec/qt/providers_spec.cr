@@ -121,6 +121,19 @@ describe Qt::IconEngine do
   end
 end
 
+describe Qt::IconEngineScaledPixmapArgument do
+  it "holds virtual_hook's arguments" do
+    argument = Qt::IconEngineScaledPixmapArgument.new
+    argument.size = Qt::Size.new(4, 4)
+    argument.scale = 2.0
+    argument.mode = Qt::Icon::Mode::Disabled
+    argument.size.should eq(Qt::Size.new(4, 4))
+    argument.scale.should eq(2.0)
+    argument.mode.should eq(Qt::Icon::Mode::Disabled)
+    argument.pixmap.null?.should be_true
+  end
+end
+
 describe Qt::StyleOptionTabV4 do
   it "holds the version 4 field" do
     option = Qt::StyleOptionTabV4.new
