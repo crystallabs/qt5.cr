@@ -3028,6 +3028,10 @@ extern "C" QModelIndex * bg_QModelIndex__OPERATOR_assign_const_QModelIndex_R(QMo
   return &(((*_self_) = (unnamed_arg_0)));
 }
 
+extern "C" uint bg_QModelIndex_qHash_(QModelIndex * _self_) {
+  return qHash(*_self_);
+}
+
 extern "C" QPersistentModelIndex * bg_QPersistentModelIndex__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QPersistentModelIndex>();
 }
@@ -3114,6 +3118,10 @@ extern "C" const QAbstractItemModel * bg_QPersistentModelIndex_model_(QPersisten
 
 extern "C" bool bg_QPersistentModelIndex_isValid_(QPersistentModelIndex * _self_) {
   return _self_->isValid();
+}
+
+extern "C" uint bg_QPersistentModelIndex_qHash_uint(QPersistentModelIndex * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 struct BgJumptable_QAbstractItemModel {
@@ -6311,6 +6319,10 @@ extern "C" QBitArray * bg_QBitArray_fromBits_STATIC_const_char_X_qsizetype(const
   return new (UseGC, bindgen_gc_finalizer<QBitArray>()) QBitArray (QBitArray::fromBits(data, len));
 }
 
+extern "C" uint bg_QBitArray_qHash_uint(QBitArray * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QBitArray * bg_QBitArray__OPERATOR_bit_and_const_QBitArray_R(QBitArray * _self_, const QBitArray & unnamed_arg_0) {
   return new (UseGC, bindgen_gc_finalizer<QBitArray>()) QBitArray (((*_self_) & (unnamed_arg_0)));
 }
@@ -7811,6 +7823,10 @@ extern "C" CrystalString bg_QLocale_createSeparatedList_const_QStringList_R(QLoc
   return qstring_to_crystal(_self_->createSeparatedList(*(strl)));
 }
 
+extern "C" uint bg_QLocale_qHash_uint(QLocale * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" const QMetaObject * bg_QLocale_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QLocale::staticMetaObject);
 }
@@ -8175,6 +8191,10 @@ extern "C" QDate * bg_QDate__COPY_const_QDate_R(const QDate & unnamed_arg_0) {
   return new (UseGC) CrystalGCWrapper<QDate>(unnamed_arg_0);
 }
 
+extern "C" uint bg_QDate_qHash_uint(QDate * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QTime * bg_QTime__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QTime>();
 }
@@ -8285,6 +8305,10 @@ extern "C" bool bg_QTime_isValid_STATIC_int_int_int_int(int h, int m, int s, int
 
 extern "C" QTime * bg_QTime__COPY_const_QTime_R(const QTime & unnamed_arg_0) {
   return new (UseGC) CrystalGCWrapper<QTime>(unnamed_arg_0);
+}
+
+extern "C" uint bg_QTime_qHash_uint(QTime * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QDateTime * bg_QDateTime__CONSTRUCT_() {
@@ -8521,6 +8545,10 @@ extern "C" qint64 bg_QDateTime_currentMSecsSinceEpoch_STATIC_() {
 
 extern "C" qint64 bg_QDateTime_currentSecsSinceEpoch_STATIC_() {
   return QDateTime::currentSecsSinceEpoch();
+}
+
+extern "C" uint bg_QDateTime_qHash_uint(QDateTime * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QTextStream * bg_QTextStream__CONSTRUCT_() {
@@ -8941,6 +8969,10 @@ extern "C" bool bg_QRegularExpression__OPERATOR_eq_const_QRegularExpression_R(QR
 
 extern "C" bool bg_QRegularExpression__OPERATOR_ne_const_QRegularExpression_R(QRegularExpression * _self_, const QRegularExpression & re) {
   return ((*_self_) != (re));
+}
+
+extern "C" uint bg_QRegularExpression_qHash_uint(QRegularExpression * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QRegularExpressionMatch * bg_QRegularExpressionMatch__CONSTRUCT_() {
@@ -9387,6 +9419,10 @@ extern "C" void bg_QUrl_setIdnWhitelist_STATIC_const_QStringList_R(const QList<Q
   QUrl::setIdnWhitelist(*(unnamed_arg_0));
 }
 
+extern "C" uint bg_QUrl_qHash_uint(QUrl * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QUuid * bg_QUuid__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QUuid>();
 }
@@ -9481,6 +9517,10 @@ extern "C" QUuid::Version bg_QUuid_version_(QUuid * _self_) {
 
 extern "C" QUuid * bg_QUuid__COPY_const_QUuid_R(const QUuid & unnamed_arg_0) {
   return new (UseGC) CrystalGCWrapper<QUuid>(unnamed_arg_0);
+}
+
+extern "C" uint bg_QUuid_qHash_uint(QUuid * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" bool bg_QUuid__OPERATOR_le_const_QUuid_R(QUuid * _self_, const QUuid & rhs) {
@@ -9907,6 +9947,10 @@ extern "C" CrystalString bg_QCborValue_toDiagnosticNotation_QCborValue__Diagnost
   return qstring_to_crystal(_self_->toDiagnosticNotation(opts));
 }
 
+extern "C" uint bg_QCborValue_qHash_uint(QCborValue * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" const QMetaObject * bg_QCborValue_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QCborValue::staticMetaObject);
 }
@@ -10315,6 +10359,10 @@ extern "C" QJsonArray * bg_QCborArray_toJsonArray_(QCborArray * _self_) {
   return new (UseGC, bindgen_gc_finalizer<QJsonArray>()) QJsonArray (_self_->toJsonArray());
 }
 
+extern "C" uint bg_QCborArray_qHash_uint(QCborArray * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QCborMap * bg_QCborMap__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QCborMap>();
 }
@@ -10533,6 +10581,10 @@ extern "C" Container_QHash_QString__QVariant_ * bg_QCborMap_toVariantHash_(QCbor
 
 extern "C" QJsonObject * bg_QCborMap_toJsonObject_(QCborMap * _self_) {
   return new (UseGC, bindgen_gc_finalizer<QJsonObject>()) QJsonObject (_self_->toJsonObject());
+}
+
+extern "C" uint bg_QCborMap_qHash_uint(QCborMap * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QCborMap::Iterator * bg_QCborMap__Iterator__CONSTRUCT_() {
@@ -16477,6 +16529,10 @@ extern "C" Container_QList_QModelIndex_ * bg_QItemSelectionRange_indexes_(QItemS
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QModelIndex_>()) Container_QList_QModelIndex_ (_self_->indexes());
 }
 
+extern "C" uint bg_QItemSelectionRange_qHash_(QItemSelectionRange * _self_) {
+  return qHash(*_self_);
+}
+
 struct BgJumptable_QItemSelectionModel {
   CrystalProc<const QMetaObject *> bg_QItemSelectionModel_metaObject_;
   CrystalProc<void *, const char *> bg_QItemSelectionModel_qt_metacast_const_char_X;
@@ -17023,6 +17079,10 @@ extern "C" bool bg_QJsonValue__OPERATOR_ne_const_QJsonValue_R(QJsonValue * _self
   return ((*_self_) != (other));
 }
 
+extern "C" uint bg_QJsonValue_qHash_uint(QJsonValue * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QJsonValueRef * bg_QJsonValueRef__COPY_const_QJsonValueRef_R(const QJsonValueRef & unnamed_arg_0) {
   return new (UseGC) CrystalGCWrapper<QJsonValueRef>(unnamed_arg_0);
 }
@@ -17271,6 +17331,10 @@ extern "C" bool bg_QJsonArray_empty_(QJsonArray * _self_) {
   return _self_->empty();
 }
 
+extern "C" uint bg_QJsonArray_qHash_uint(QJsonArray * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" CrystalString bg_QJsonParseError_errorString_(QJsonParseError * _self_) {
   return qstring_to_crystal(_self_->errorString());
 }
@@ -17497,6 +17561,10 @@ extern "C" QJsonObject::iterator * bg_QJsonObject_insert_const_QString_R_const_Q
 
 extern "C" bool bg_QJsonObject_empty_(QJsonObject * _self_) {
   return _self_->empty();
+}
+
+extern "C" uint bg_QJsonObject_qHash_uint(QJsonObject * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QJsonObject::iterator * bg_QJsonObject__iterator__CONSTRUCT_() {
@@ -17863,6 +17931,10 @@ extern "C" QVersionNumber * bg_QVersionNumber__COPY_const_QVersionNumber_R(const
 
 extern "C" QVersionNumber * bg_QVersionNumber__OPERATOR_assign_const_QVersionNumber_R(QVersionNumber * _self_, const QVersionNumber & unnamed_arg_0) {
   return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" uint bg_QVersionNumber_qHash_uint(QVersionNumber * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" bool bg_QVersionNumber__OPERATOR_gt_const_QVersionNumber_R(QVersionNumber * _self_, const QVersionNumber & rhs) {
@@ -19455,6 +19527,10 @@ extern "C" bool bg_QMimeType_inherits_const_QString_R(QMimeType * _self_, const 
 
 extern "C" CrystalString bg_QMimeType_filterString_(QMimeType * _self_) {
   return qstring_to_crystal(_self_->filterString());
+}
+
+extern "C" uint bg_QMimeType_qHash_uint(QMimeType * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" const QMetaObject * bg_QMimeType_staticMetaObject_STATIC_GETTER_() {
@@ -28847,6 +28923,10 @@ extern "C" int32_t bg_QUrlQuery_defaultQueryPairDelimiter_STATIC_() {
   return static_cast<int32_t>(QUrlQuery::defaultQueryPairDelimiter().unicode());
 }
 
+extern "C" uint bg_QUrlQuery_qHash_uint(QUrlQuery * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QWaitCondition * bg_QWaitCondition__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QWaitCondition>();
 }
@@ -30232,6 +30312,10 @@ extern "C" bool bg_QKeySequence__OPERATOR_ge_const_QKeySequence_R(QKeySequence *
 
 extern "C" bool bg_QKeySequence_isDetached_(QKeySequence * _self_) {
   return _self_->isDetached();
+}
+
+extern "C" uint bg_QKeySequence_qHash_uint(QKeySequence * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" const QMetaObject * bg_QKeySequence_staticMetaObject_STATIC_GETTER_() {
@@ -32114,6 +32198,10 @@ extern "C" bool bg_QPointingDeviceUniqueId__OPERATOR_ne_QPointingDeviceUniqueId(
   return ((*_self_) != (rhs));
 }
 
+extern "C" uint bg_QPointingDeviceUniqueId_qHash_uint(QPointingDeviceUniqueId * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" const QMetaObject * bg_QPointingDeviceUniqueId_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QPointingDeviceUniqueId::staticMetaObject);
 }
@@ -32802,6 +32890,10 @@ extern "C" void bg_QFont_resolve_uint(QFont * _self_, uint mask) {
   _self_->resolve(mask);
 }
 
+extern "C" uint bg_QFont_qHash_uint(QFont * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" const QMetaObject * bg_QFont_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFont::staticMetaObject);
 }
@@ -33150,6 +33242,10 @@ extern "C" CrystalVariant bg_QMatrix__CONVERT_QVariant_(QMatrix * _self_) {
   return qvariant_to_crystal(_self_->operator QVariant());
 }
 
+extern "C" uint bg_QMatrix_qHash_uint(QMatrix * _self_, uint seed) {
+  return qHash(*_self_, seed);
+}
+
 extern "C" QTransform * bg_QTransform__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QTransform>();
 }
@@ -33392,6 +33488,10 @@ extern "C" QTransform * bg_QTransform_fromTranslate_STATIC_qreal_qreal(qreal dx,
 
 extern "C" QTransform * bg_QTransform_fromScale_STATIC_qreal_qreal(qreal dx, qreal dy) {
   return new (UseGC, bindgen_gc_finalizer<QTransform>()) QTransform (QTransform::fromScale(dx, dy));
+}
+
+extern "C" uint bg_QTransform_qHash_uint(QTransform * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QTransform * bg_QTransform__OPERATOR_mul_qreal(QTransform * _self_, qreal n) {
@@ -36808,6 +36908,10 @@ extern "C" CrystalString bg_QRawFont_fontTable_const_char_X(QRawFont * _self_, c
 
 extern "C" QRawFont * bg_QRawFont_fromFont_STATIC_const_QFont_R_QFontDatabase__WritingSystem(const QFont & font, QFontDatabase::WritingSystem writingSystem) {
   return new (UseGC, bindgen_gc_finalizer<QRawFont>()) QRawFont (QRawFont::fromFont(font, writingSystem));
+}
+
+extern "C" uint bg_QRawFont_qHash_uint(QRawFont * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" QGlyphRun * bg_QGlyphRun__CONSTRUCT_() {
@@ -52180,6 +52284,10 @@ extern "C" QSizePolicy * bg_QSizePolicy__COPY_const_QSizePolicy_R(const QSizePol
 
 extern "C" QSizePolicy * bg_QSizePolicy__OPERATOR_assign_const_QSizePolicy_R(QSizePolicy * _self_, const QSizePolicy & unnamed_arg_0) {
   return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" uint bg_QSizePolicy_qHash_uint(QSizePolicy * _self_, uint seed) {
+  return qHash(*_self_, seed);
 }
 
 extern "C" const QMetaObject * bg_QSizePolicy_staticMetaObject_STATIC_GETTER_() {

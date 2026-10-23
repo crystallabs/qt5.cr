@@ -9460,6 +9460,7 @@ module Qt
     fun bg_QModelIndex__OPERATOR_lt_const_QModelIndex_R(_self_ : QModelIndex*, other : QModelIndex*) : Bool
     fun bg_QModelIndex__COPY_const_QModelIndex_R(unnamed_arg_0 : QModelIndex*) : QModelIndex*
     fun bg_QModelIndex__OPERATOR_assign_const_QModelIndex_R(_self_ : QModelIndex*, unnamed_arg_0 : QModelIndex*) : QModelIndex*
+    fun bg_QModelIndex_qHash_(_self_ : QModelIndex*) : UInt32
     fun bg_QPersistentModelIndex__CONSTRUCT_() : QPersistentModelIndex*
     fun bg_QPersistentModelIndex__CONSTRUCT_const_QModelIndex_R(index : QModelIndex*) : QPersistentModelIndex*
     fun bg_QPersistentModelIndex__COPY_const_QPersistentModelIndex_R(other : QPersistentModelIndex*) : QPersistentModelIndex*
@@ -9482,6 +9483,7 @@ module Qt
     fun bg_QPersistentModelIndex_flags_(_self_ : QPersistentModelIndex*) : ::Qt::ItemFlags
     fun bg_QPersistentModelIndex_model_(_self_ : QPersistentModelIndex*) : QAbstractItemModel*
     fun bg_QPersistentModelIndex_isValid_(_self_ : QPersistentModelIndex*) : Bool
+    fun bg_QPersistentModelIndex_qHash_uint(_self_ : QPersistentModelIndex*, seed : UInt32) : UInt32
     fun bg_QAbstractItemModel_metaObject_(_self_ : QAbstractItemModel*) : QMetaObject*
     fun bg_QAbstractItemModel_qt_metacast_const_char_X(_self_ : QAbstractItemModel*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QAbstractItemModel_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QAbstractItemModel*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -10016,6 +10018,7 @@ module Qt
     fun bg_QBitArray_truncate_int(_self_ : QBitArray*, pos : Int32) : Void
     fun bg_QBitArray_bits_(_self_ : QBitArray*) : UInt8*
     fun bg_QBitArray_fromBits_STATIC_const_char_X_qsizetype(data : UInt8*, len : Int64) : QBitArray*
+    fun bg_QBitArray_qHash_uint(_self_ : QBitArray*, seed : UInt32) : UInt32
     fun bg_QBitArray__OPERATOR_bit_and_const_QBitArray_R(_self_ : QBitArray*, unnamed_arg_0 : QBitArray*) : QBitArray*
     fun bg_QBitArray__OPERATOR_bit_or_const_QBitArray_R(_self_ : QBitArray*, unnamed_arg_0 : QBitArray*) : QBitArray*
     fun bg_QBitArray__OPERATOR_bit_xor_const_QBitArray_R(_self_ : QBitArray*, unnamed_arg_0 : QBitArray*) : QBitArray*
@@ -10296,6 +10299,7 @@ module Qt
     fun bg_QLocale_numberOptions_(_self_ : QLocale*) : ::Qt::Locale::NumberOptions
     fun bg_QLocale_quoteString_const_QString_R_QLocale__QuotationStyle(_self_ : QLocale*, str : CrystalString, style : ::Qt::Locale::QuotationStyle) : CrystalString
     fun bg_QLocale_createSeparatedList_const_QStringList_R(_self_ : QLocale*, strl : ContainerQListQString*) : CrystalString
+    fun bg_QLocale_qHash_uint(_self_ : QLocale*, seed : UInt32) : UInt32
     fun bg_QLocale_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QCalendar__CONSTRUCT_() : QCalendar*
     fun bg_QCalendar__CONSTRUCT_QCalendar__System(system : ::Qt::Calendar::System) : QCalendar*
@@ -10387,6 +10391,7 @@ module Qt
     fun bg_QDate_fromJulianDay_STATIC_qint64(jd_ : Int64) : QDate*
     fun bg_QDate_toJulianDay_(_self_ : QDate*) : Int64
     fun bg_QDate__COPY_const_QDate_R(unnamed_arg_0 : QDate*) : QDate*
+    fun bg_QDate_qHash_uint(_self_ : QDate*, seed : UInt32) : UInt32
     fun bg_QTime__CONSTRUCT_() : QTime*
     fun bg_QTime__CONSTRUCT_int_int_int_int(h : Int32, m : Int32, s : Int32, ms : Int32) : QTime*
     fun bg_QTime_isNull_(_self_ : QTime*) : Bool
@@ -10415,6 +10420,7 @@ module Qt
     fun bg_QTime_fromString_STATIC_const_QString_R_const_QString_R(s : CrystalString, format : CrystalString) : QTime*
     fun bg_QTime_isValid_STATIC_int_int_int_int(h : Int32, m : Int32, s : Int32, ms : Int32) : Bool
     fun bg_QTime__COPY_const_QTime_R(unnamed_arg_0 : QTime*) : QTime*
+    fun bg_QTime_qHash_uint(_self_ : QTime*, seed : UInt32) : UInt32
     fun bg_QDateTime__CONSTRUCT_() : QDateTime*
     fun bg_QDateTime__CONSTRUCT_const_QDate_R_const_QTime_R_Qt__TimeSpec(unnamed_arg_0 : QDate*, unnamed_arg_1 : QTime*, spec : ::Qt::TimeSpec) : QDateTime*
     fun bg_QDateTime__CONSTRUCT_const_QDate_R_const_QTime_R_Qt__TimeSpec_int(date : QDate*, time : QTime*, spec : ::Qt::TimeSpec, offset_seconds : Int32) : QDateTime*
@@ -10474,6 +10480,7 @@ module Qt
     fun bg_QDateTime_fromSecsSinceEpoch_STATIC_qint64_const_QTimeZone_R(secs : Int64, time_zone : QTimeZone*) : QDateTime*
     fun bg_QDateTime_currentMSecsSinceEpoch_STATIC_() : Int64
     fun bg_QDateTime_currentSecsSinceEpoch_STATIC_() : Int64
+    fun bg_QDateTime_qHash_uint(_self_ : QDateTime*, seed : UInt32) : UInt32
     fun bg_QTextStream__CONSTRUCT_() : QTextStream*
     fun bg_QTextStream__CONSTRUCT_QIODevice_X(device : QIODevice*) : QTextStream*
     fun bg_QTextStream__CONSTRUCT_const_QByteArray_R(array : CrystalString) : QTextStream*
@@ -10579,6 +10586,7 @@ module Qt
     fun bg_QRegularExpression_anchoredPattern_STATIC_const_QString_R(expression : CrystalString) : CrystalString
     fun bg_QRegularExpression__OPERATOR_eq_const_QRegularExpression_R(_self_ : QRegularExpression*, re : QRegularExpression*) : Bool
     fun bg_QRegularExpression__OPERATOR_ne_const_QRegularExpression_R(_self_ : QRegularExpression*, re : QRegularExpression*) : Bool
+    fun bg_QRegularExpression_qHash_uint(_self_ : QRegularExpression*, seed : UInt32) : UInt32
     fun bg_QRegularExpressionMatch__CONSTRUCT_() : QRegularExpressionMatch*
     fun bg_QRegularExpressionMatch__COPY_const_QRegularExpressionMatch_R(match : QRegularExpressionMatch*) : QRegularExpressionMatch*
     fun bg_QRegularExpressionMatch__OPERATOR_assign_const_QRegularExpressionMatch_R(_self_ : QRegularExpressionMatch*, match : QRegularExpressionMatch*) : QRegularExpressionMatch*
@@ -10690,6 +10698,7 @@ module Qt
     fun bg_QUrl_toStringList_STATIC_const_QList_QUrl__R_QUrl__FormattingOptions(uris : ContainerQListQUrl*, options : Url::FormattingOptions) : ContainerQListQString*
     fun bg_QUrl_fromStringList_STATIC_const_QStringList_R_QUrl__ParsingMode(uris : ContainerQListQString*, mode : ::Qt::Url::ParsingMode) : ContainerQListQUrl*
     fun bg_QUrl_setIdnWhitelist_STATIC_const_QStringList_R(unnamed_arg_0 : ContainerQListQString*) : Void
+    fun bg_QUrl_qHash_uint(_self_ : QUrl*, seed : UInt32) : UInt32
     fun bg_QUuid__CONSTRUCT_() : QUuid*
     fun bg_QUuid__CONSTRUCT_uint_ushort_ushort_uchar_uchar_uchar_uchar_uchar_uchar_uchar_uchar(l : UInt32, w1 : UInt16, w2 : UInt16, b1 : UInt8, b2 : UInt8, b3 : UInt8, b4 : UInt8, b5 : UInt8, b6 : UInt8, b7 : UInt8, b8 : UInt8) : QUuid*
     fun bg_QUuid__CONSTRUCT_const_QString_R(unnamed_arg_0 : CrystalString) : QUuid*
@@ -10714,6 +10723,7 @@ module Qt
     fun bg_QUuid_variant_(_self_ : QUuid*) : ::Qt::Uuid::Variant
     fun bg_QUuid_version_(_self_ : QUuid*) : ::Qt::Uuid::Version
     fun bg_QUuid__COPY_const_QUuid_R(unnamed_arg_0 : QUuid*) : QUuid*
+    fun bg_QUuid_qHash_uint(_self_ : QUuid*, seed : UInt32) : UInt32
     fun bg_QUuid__OPERATOR_le_const_QUuid_R(_self_ : QUuid*, rhs : QUuid*) : Bool
     fun bg_QUuid__OPERATOR_ge_const_QUuid_R(_self_ : QUuid*, rhs : QUuid*) : Bool
     fun bg_QUuid_data1_GETTER_(_self_ : QUuid*) : UInt32
@@ -10820,6 +10830,7 @@ module Qt
     fun bg_QCborValue_toCbor_QCborStreamWriter_R_QCborValue__EncodingOptions(_self_ : QCborValue*, writer : QCborStreamWriter*, opt : ::Qt::CborValue::EncodingOptions) : Void
     fun bg_QCborValue_toDiagnosticNotation_(_self_ : QCborValue*) : CrystalString
     fun bg_QCborValue_toDiagnosticNotation_QCborValue__DiagnosticNotationOptions(_self_ : QCborValue*, opts : ::Qt::CborValue::DiagnosticNotationOptions) : CrystalString
+    fun bg_QCborValue_qHash_uint(_self_ : QCborValue*, seed : UInt32) : UInt32
     fun bg_QCborValue_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QCborValueRef__CONVERT_QCborValue_(_self_ : QCborValueRef*) : QCborValue*
     fun bg_QCborValueRef__COPY_const_QCborValueRef_R(unnamed_arg_0 : QCborValueRef*) : QCborValueRef*
@@ -10922,6 +10933,7 @@ module Qt
     fun bg_QCborArray_fromJsonArray_STATIC_const_QJsonArray_R(array : QJsonArray*) : QCborArray*
     fun bg_QCborArray_toVariantList_(_self_ : QCborArray*) : ContainerQListQVariant*
     fun bg_QCborArray_toJsonArray_(_self_ : QCborArray*) : QJsonArray*
+    fun bg_QCborArray_qHash_uint(_self_ : QCborArray*, seed : UInt32) : UInt32
     fun bg_QCborMap__CONSTRUCT_() : QCborMap*
     fun bg_QCborMap__COPY_const_QCborMap_R(other : QCborMap*) : QCborMap*
     fun bg_QCborMap__OPERATOR_assign_const_QCborMap_R(_self_ : QCborMap*, other : QCborMap*) : QCborMap*
@@ -10977,6 +10989,7 @@ module Qt
     fun bg_QCborMap_toVariantMap_(_self_ : QCborMap*) : ContainerQMapQStringQVariant*
     fun bg_QCborMap_toVariantHash_(_self_ : QCborMap*) : ContainerQHashQStringQVariant*
     fun bg_QCborMap_toJsonObject_(_self_ : QCborMap*) : QJsonObject*
+    fun bg_QCborMap_qHash_uint(_self_ : QCborMap*, seed : UInt32) : UInt32
     fun bg_QCborMap__Iterator__CONSTRUCT_() : QCborMap_Iterator*
     fun bg_QCborMap__Iterator__COPY_const_QCborMap__Iterator_R(unnamed_arg_0 : QCborMap_Iterator*) : QCborMap_Iterator*
     fun bg_QCborMap__Iterator__OPERATOR_assign_const_QCborMap__Iterator_R(_self_ : QCborMap_Iterator*, other : QCborMap_Iterator*) : QCborMap_Iterator*
@@ -12209,6 +12222,7 @@ module Qt
     fun bg_QItemSelectionRange_isValid_(_self_ : QItemSelectionRange*) : Bool
     fun bg_QItemSelectionRange_isEmpty_(_self_ : QItemSelectionRange*) : Bool
     fun bg_QItemSelectionRange_indexes_(_self_ : QItemSelectionRange*) : ContainerQListQModelIndex*
+    fun bg_QItemSelectionRange_qHash_(_self_ : QItemSelectionRange*) : UInt32
     fun bg_QItemSelectionModel_metaObject_(_self_ : QItemSelectionModel*) : QMetaObject*
     fun bg_QItemSelectionModel_qt_metacast_const_char_X(_self_ : QItemSelectionModel*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QItemSelectionModel_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QItemSelectionModel*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -12318,6 +12332,7 @@ module Qt
     fun bg_QJsonValue__OPERATOR_at_int(_self_ : QJsonValue*, i : Int32) : QJsonValue*
     fun bg_QJsonValue__OPERATOR_eq_const_QJsonValue_R(_self_ : QJsonValue*, other : QJsonValue*) : Bool
     fun bg_QJsonValue__OPERATOR_ne_const_QJsonValue_R(_self_ : QJsonValue*, other : QJsonValue*) : Bool
+    fun bg_QJsonValue_qHash_uint(_self_ : QJsonValue*, seed : UInt32) : UInt32
     fun bg_QJsonValueRef__COPY_const_QJsonValueRef_R(unnamed_arg_0 : QJsonValueRef*) : QJsonValueRef*
     fun bg_QJsonValueRef__CONSTRUCT_QJsonArray_X_int(array : QJsonArray*, idx : Int32) : QJsonValueRef*
     fun bg_QJsonValueRef__CONSTRUCT_QJsonObject_X_int(object : QJsonObject*, idx : Int32) : QJsonValueRef*
@@ -12380,6 +12395,7 @@ module Qt
     fun bg_QJsonArray_pop_front_(_self_ : QJsonArray*) : Void
     fun bg_QJsonArray_pop_back_(_self_ : QJsonArray*) : Void
     fun bg_QJsonArray_empty_(_self_ : QJsonArray*) : Bool
+    fun bg_QJsonArray_qHash_uint(_self_ : QJsonArray*, seed : UInt32) : UInt32
     fun bg_QJsonParseError_errorString_(_self_ : QJsonParseError*) : CrystalString
     fun bg_QJsonParseError__CONSTRUCT_() : QJsonParseError*
     fun bg_QJsonParseError__COPY_const_QJsonParseError_R(unnamed_arg_0 : QJsonParseError*) : QJsonParseError*
@@ -12437,6 +12453,7 @@ module Qt
     fun bg_QJsonObject_find_const_QString_R(_self_ : QJsonObject*, key : CrystalString) : QJsonObject_Iterator*
     fun bg_QJsonObject_insert_const_QString_R_const_QJsonValue_R(_self_ : QJsonObject*, key : CrystalString, value : QJsonValue*) : QJsonObject_Iterator*
     fun bg_QJsonObject_empty_(_self_ : QJsonObject*) : Bool
+    fun bg_QJsonObject_qHash_uint(_self_ : QJsonObject*, seed : UInt32) : UInt32
     fun bg_QJsonObject__iterator__CONSTRUCT_() : QJsonObject_Iterator*
     fun bg_QJsonObject__iterator__CONSTRUCT_QJsonObject_X_int(obj : QJsonObject*, index : Int32) : QJsonObject_Iterator*
     fun bg_QJsonObject__iterator_key_(_self_ : QJsonObject_Iterator*) : CrystalString
@@ -12516,6 +12533,7 @@ module Qt
     fun bg_QVersionNumber_fromString_STATIC_const_QString_R_int_X(string : CrystalString, suffix_index : Int32*) : QVersionNumber*
     fun bg_QVersionNumber__COPY_const_QVersionNumber_R(unnamed_arg_0 : QVersionNumber*) : QVersionNumber*
     fun bg_QVersionNumber__OPERATOR_assign_const_QVersionNumber_R(_self_ : QVersionNumber*, unnamed_arg_0 : QVersionNumber*) : QVersionNumber*
+    fun bg_QVersionNumber_qHash_uint(_self_ : QVersionNumber*, seed : UInt32) : UInt32
     fun bg_QVersionNumber__OPERATOR_gt_const_QVersionNumber_R(_self_ : QVersionNumber*, rhs : QVersionNumber*) : Bool
     fun bg_QVersionNumber__OPERATOR_ge_const_QVersionNumber_R(_self_ : QVersionNumber*, rhs : QVersionNumber*) : Bool
     fun bg_QVersionNumber__OPERATOR_lt_const_QVersionNumber_R(_self_ : QVersionNumber*, rhs : QVersionNumber*) : Bool
@@ -12894,6 +12912,7 @@ module Qt
     fun bg_QMimeType_preferredSuffix_(_self_ : QMimeType*) : CrystalString
     fun bg_QMimeType_inherits_const_QString_R(_self_ : QMimeType*, mime_type_name : CrystalString) : Bool
     fun bg_QMimeType_filterString_(_self_ : QMimeType*) : CrystalString
+    fun bg_QMimeType_qHash_uint(_self_ : QMimeType*, seed : UInt32) : UInt32
     fun bg_QMimeType_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QMimeDatabase__CONSTRUCT_() : QMimeDatabase*
     fun bg_QMimeDatabase_mimeTypeForName_const_QString_R(_self_ : QMimeDatabase*, name_or_alias : CrystalString) : QMimeType*
@@ -14687,6 +14706,7 @@ module Qt
     fun bg_QUrlQuery_removeAllQueryItems_const_QString_R(_self_ : QUrlQuery*, key : CrystalString) : Void
     fun bg_QUrlQuery_defaultQueryValueDelimiter_STATIC_() : Int32
     fun bg_QUrlQuery_defaultQueryPairDelimiter_STATIC_() : Int32
+    fun bg_QUrlQuery_qHash_uint(_self_ : QUrlQuery*, seed : UInt32) : UInt32
     fun bg_QWaitCondition__CONSTRUCT_() : QWaitCondition*
     fun bg_QWaitCondition_wait_QMutex_X(_self_ : QWaitCondition*, locked_mutex : QMutex*) : Bool
     fun bg_QWaitCondition_wait_QMutex_X_QDeadlineTimer(_self_ : QWaitCondition*, locked_mutex : QMutex*, deadline : QDeadlineTimer*) : Bool
@@ -15027,6 +15047,7 @@ module Qt
     fun bg_QKeySequence__OPERATOR_le_const_QKeySequence_R(_self_ : QKeySequence*, other : QKeySequence*) : Bool
     fun bg_QKeySequence__OPERATOR_ge_const_QKeySequence_R(_self_ : QKeySequence*, other : QKeySequence*) : Bool
     fun bg_QKeySequence_isDetached_(_self_ : QKeySequence*) : Bool
+    fun bg_QKeySequence_qHash_uint(_self_ : QKeySequence*, seed : UInt32) : UInt32
     fun bg_QKeySequence_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QVector2D__CONSTRUCT_() : Vector2D
     fun bg_QVector2D__CONSTRUCT_float_float(xpos : Float32, ypos : Float32) : Vector2D
@@ -15497,6 +15518,7 @@ module Qt
     fun bg_QPointingDeviceUniqueId__COPY_const_QPointingDeviceUniqueId_R(unnamed_arg_0 : PointingDeviceUniqueId) : PointingDeviceUniqueId
     fun bg_QPointingDeviceUniqueId__OPERATOR_eq_QPointingDeviceUniqueId(_self_ : PointingDeviceUniqueId*, rhs : PointingDeviceUniqueId) : Bool
     fun bg_QPointingDeviceUniqueId__OPERATOR_ne_QPointingDeviceUniqueId(_self_ : PointingDeviceUniqueId*, rhs : PointingDeviceUniqueId) : Bool
+    fun bg_QPointingDeviceUniqueId_qHash_uint(_self_ : PointingDeviceUniqueId*, seed : UInt32) : UInt32
     fun bg_QPointingDeviceUniqueId_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QTouchEvent__CONSTRUCT_QEvent__Type_QTouchDevice_X(event_type : ::Qt::Event::Type, device : QTouchDevice*) : QTouchEvent*
     fun bg_QTouchEvent__CONSTRUCT_QEvent__Type_QTouchDevice_X_Qt__KeyboardModifiers(event_type : ::Qt::Event::Type, device : QTouchDevice*, modifiers : ::Qt::KeyboardModifiers) : QTouchEvent*
@@ -15669,6 +15691,7 @@ module Qt
     fun bg_QFont_resolve_const_QFont_R(_self_ : QFont*, unnamed_arg_0 : QFont*) : QFont*
     fun bg_QFont_resolve_(_self_ : QFont*) : UInt32
     fun bg_QFont_resolve_uint(_self_ : QFont*, mask : UInt32) : Void
+    fun bg_QFont_qHash_uint(_self_ : QFont*, seed : UInt32) : UInt32
     fun bg_QFont_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QPolygon__CONSTRUCT_() : QPolygon*
     fun bg_QPolygon__CONSTRUCT_int(size : Int32) : QPolygon*
@@ -15756,6 +15779,7 @@ module Qt
     fun bg_QMatrix__OPERATOR_mul_assign_const_QMatrix_R(_self_ : QMatrix*, unnamed_arg_0 : QMatrix*) : QMatrix*
     fun bg_QMatrix__OPERATOR_mul_const_QMatrix_R(_self_ : QMatrix*, o : QMatrix*) : QMatrix*
     fun bg_QMatrix__CONVERT_QVariant_(_self_ : QMatrix*) : CrystalVariant
+    fun bg_QMatrix_qHash_uint(_self_ : QMatrix*, seed : UInt32) : UInt32
     fun bg_QTransform__CONSTRUCT_() : QTransform*
     fun bg_QTransform__CONSTRUCT_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal_qreal(h11 : Float64, h12 : Float64, h13 : Float64, h21 : Float64, h22 : Float64, h23 : Float64, h31 : Float64, h32 : Float64, h33 : Float64) : QTransform*
     fun bg_QTransform__CONSTRUCT_qreal_qreal_qreal_qreal_qreal_qreal(h11 : Float64, h12 : Float64, h21 : Float64, h22 : Float64, dx : Float64, dy : Float64) : QTransform*
@@ -15817,6 +15841,7 @@ module Qt
     fun bg_QTransform__OPERATOR_sub_assign_qreal(_self_ : QTransform*, div : Float64) : QTransform*
     fun bg_QTransform_fromTranslate_STATIC_qreal_qreal(dx : Float64, dy : Float64) : QTransform*
     fun bg_QTransform_fromScale_STATIC_qreal_qreal(dx : Float64, dy : Float64) : QTransform*
+    fun bg_QTransform_qHash_uint(_self_ : QTransform*, seed : UInt32) : UInt32
     fun bg_QTransform__OPERATOR_mul_qreal(_self_ : QTransform*, n : Float64) : QTransform*
     fun bg_QTransform__OPERATOR_div_qreal(_self_ : QTransform*, n : Float64) : QTransform*
     fun bg_QTransform__OPERATOR_add_qreal(_self_ : QTransform*, n : Float64) : QTransform*
@@ -16661,6 +16686,7 @@ module Qt
     fun bg_QRawFont_supportedWritingSystems_(_self_ : QRawFont*) : ContainerQListQFontDatabaseWritingSystem*
     fun bg_QRawFont_fontTable_const_char_X(_self_ : QRawFont*, tag_name : UInt8*) : CrystalString
     fun bg_QRawFont_fromFont_STATIC_const_QFont_R_QFontDatabase__WritingSystem(font : QFont*, writing_system : ::Qt::FontDatabase::WritingSystem) : QRawFont*
+    fun bg_QRawFont_qHash_uint(_self_ : QRawFont*, seed : UInt32) : UInt32
     fun bg_QGlyphRun__CONSTRUCT_() : QGlyphRun*
     fun bg_QGlyphRun__COPY_const_QGlyphRun_R(other : QGlyphRun*) : QGlyphRun*
     fun bg_QGlyphRun__OPERATOR_assign_const_QGlyphRun_R(_self_ : QGlyphRun*, other : QGlyphRun*) : QGlyphRun*
@@ -19923,6 +19949,7 @@ module Qt
     fun bg_QSizePolicy_transposed_(_self_ : QSizePolicy*) : QSizePolicy*
     fun bg_QSizePolicy__COPY_const_QSizePolicy_R(unnamed_arg_0 : QSizePolicy*) : QSizePolicy*
     fun bg_QSizePolicy__OPERATOR_assign_const_QSizePolicy_R(_self_ : QSizePolicy*, unnamed_arg_0 : QSizePolicy*) : QSizePolicy*
+    fun bg_QSizePolicy_qHash_uint(_self_ : QSizePolicy*, seed : UInt32) : UInt32
     fun bg_QSizePolicy_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QWidget_metaObject_(_self_ : QWidget*) : QMetaObject*
     fun bg_QWidget_qt_metacast_const_char_X(_self_ : QWidget*, unnamed_arg_0 : UInt8*) : Void*
@@ -40173,6 +40200,13 @@ module Qt
       ModelIndex.new(unwrap: Binding.bg_QModelIndex__OPERATOR_assign_const_QModelIndex_R(self, unnamed_arg_0))
     end
     
+    def q_hash() : UInt32
+      Binding.bg_QModelIndex_qHash_(self)
+    end
+    
+    def hash(hasher)
+      q_hash.hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -40277,6 +40311,13 @@ module Qt
       Binding.bg_QPersistentModelIndex_isValid_(self)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QPersistentModelIndex_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -44819,6 +44860,10 @@ module Qt
       BitArray.new(unwrap: Binding.bg_QBitArray_fromBits_STATIC_const_char_X_qsizetype(data, len))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QBitArray_qHash_uint(self, seed)
+    end
+    
     def &(unnamed_arg_0 : BitArray) : BitArray
       BitArray.new(unwrap: Binding.bg_QBitArray__OPERATOR_bit_and_const_QBitArray_R(self, unnamed_arg_0))
     end
@@ -44831,6 +44876,9 @@ module Qt
       BitArray.new(unwrap: Binding.bg_QBitArray__OPERATOR_bit_xor_const_QBitArray_R(self, unnamed_arg_0))
     end
     
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -46660,6 +46708,10 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QLocale_createSeparatedList_const_QStringList_R(self, BindgenHelper.wrap_container(StringList, strl).to_unsafe))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QLocale_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QLocale_staticMetaObject_STATIC_GETTER_())
     end
@@ -47480,6 +47532,9 @@ module Qt
       StandardQuotation = 0
       AlternateQuotation = 1
     end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -47899,6 +47954,21 @@ module Qt
     @unwrap = result
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QDate_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -48027,6 +48097,21 @@ module Qt
     @unwrap = result
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QTime_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -48281,6 +48366,21 @@ module Qt
       Binding.bg_QDateTime_currentSecsSinceEpoch_STATIC_()
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QDateTime_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -48698,6 +48798,14 @@ module Qt
       UnsupportedType = 1026
       NoError = 0
     end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -48815,6 +48923,10 @@ module Qt
       Binding.bg_QRegularExpression__OPERATOR_ne_const_QRegularExpression_R(self, re)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QRegularExpression_qHash_uint(self, seed)
+    end
+    
     enum PatternOption : UInt32
       NoPatternOption = 0
       CaseInsensitiveOption = 1
@@ -48856,6 +48968,9 @@ module Qt
       NoMatchOption = 0
       AnchoredMatchOption = 1
       DontCheckSubjectStringMatchOption = 2
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
     end
     def to_unsafe
       @unwrap
@@ -49347,6 +49462,10 @@ module Qt
       Binding.bg_QUrl_setIdnWhitelist_STATIC_const_QStringList_R(BindgenHelper.wrap_container(StringList, unnamed_arg_0).to_unsafe)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QUrl_qHash_uint(self, seed)
+    end
+    
     enum ParsingMode : UInt32
       TolerantMode = 0
       StrictMode = 1
@@ -49396,6 +49515,17 @@ module Qt
     enum UserInputResolutionOptions : UInt32
       DefaultResolution = 0
       AssumeLocalFile = 1
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -49512,6 +49642,10 @@ module Qt
     @unwrap = result
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QUuid_qHash_uint(self, seed)
+    end
+    
     def <=(rhs : Uuid) : Bool
       Binding.bg_QUuid__OPERATOR_le_const_QUuid_R(self, rhs)
     end
@@ -49568,6 +49702,17 @@ module Qt
       WithBraces = 0
       WithoutBraces = 1
       Id128 = 3
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -50007,6 +50152,10 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QCborValue_toDiagnosticNotation_QCborValue__DiagnosticNotationOptions(self, opts))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QCborValue_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QCborValue_staticMetaObject_STATIC_GETTER_())
     end
@@ -50043,6 +50192,17 @@ module Qt
       RegularExpression = 65571
       Uuid = 65573
       Invalid = -1
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -50306,6 +50466,14 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QCborValueRef_toDiagnosticNotation_QCborValue__DiagnosticNotationOptions(self, opt))
     end
     
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -50477,6 +50645,13 @@ module Qt
       JsonArray.new(unwrap: Binding.bg_QCborArray_toJsonArray_(self))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QCborArray_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -50712,6 +50887,13 @@ module Qt
       JsonObject.new(unwrap: Binding.bg_QCborMap_toJsonObject_(self))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QCborMap_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -59053,6 +59235,13 @@ module Qt
       Container_QList_QModelIndex_.new(unwrap: Binding.bg_QItemSelectionRange_indexes_(self))
     end
     
+    def q_hash() : UInt32
+      Binding.bg_QItemSelectionRange_qHash_(self)
+    end
+    
+    def hash(hasher)
+      q_hash.hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -59793,6 +59982,10 @@ module Qt
       Binding.bg_QJsonValue__OPERATOR_ne_const_QJsonValue_R(self, other)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QJsonValue_qHash_uint(self, seed)
+    end
+    
     enum Type : UInt32
       Null = 0
       Bool = 1
@@ -59801,6 +59994,17 @@ module Qt
       Array = 4
       Object = 5
       Undefined = 128
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -59934,6 +60138,14 @@ module Qt
       Binding.bg_QJsonValueRef__OPERATOR_ne_const_QJsonValueRef_R(self, rhs)
     end
     
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -60081,6 +60293,13 @@ module Qt
       Binding.bg_QJsonArray_empty_(self)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QJsonArray_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -60383,6 +60602,13 @@ module Qt
       Binding.bg_QJsonObject_empty_(self)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QJsonObject_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -61010,6 +61236,10 @@ module Qt
       VersionNumber.new(unwrap: Binding.bg_QVersionNumber__OPERATOR_assign_const_QVersionNumber_R(self, unnamed_arg_0))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QVersionNumber_qHash_uint(self, seed)
+    end
+    
     def >(rhs : VersionNumber) : Bool
       Binding.bg_QVersionNumber__OPERATOR_gt_const_QVersionNumber_R(self, rhs)
     end
@@ -61037,6 +61267,17 @@ module Qt
     INLINE_SEGMENT_MARKER = 0u32
     INLINE_SEGMENT_START_IDX = 1u32
     INLINE_SEGMENT_COUNT = 7u32
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -62976,10 +63217,17 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QMimeType_filterString_(self))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QMimeType_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QMimeType_staticMetaObject_STATIC_GETTER_())
     end
     
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -76394,6 +76642,21 @@ module Qt
       (Binding.bg_QUrlQuery_defaultQueryPairDelimiter_STATIC_().chr)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QUrlQuery_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
+    end
     def to_unsafe
       @unwrap
     end
@@ -78039,6 +78302,10 @@ module Qt
       Binding.bg_QKeySequence_isDetached_(self)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QKeySequence_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QKeySequence_staticMetaObject_STATIC_GETTER_())
     end
@@ -78124,6 +78391,17 @@ module Qt
       NoMatch = 0
       PartialMatch = 1
       ExactMatch = 2
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -80729,10 +81007,17 @@ module Qt
       Binding.bg_QPointingDeviceUniqueId__OPERATOR_ne_QPointingDeviceUniqueId(pointerof(@unwrap), rhs)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QPointingDeviceUniqueId_qHash_uint(pointerof(@unwrap), seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QPointingDeviceUniqueId_staticMetaObject_STATIC_GETTER_())
     end
     
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -81557,6 +81842,10 @@ module Qt
       Binding.bg_QFont_resolve_uint(self, mask)
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QFont_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QFont_staticMetaObject_STATIC_GETTER_())
     end
@@ -81634,6 +81923,17 @@ module Qt
     enum SpacingType : UInt32
       PercentageSpacing = 0
       AbsoluteSpacing = 1
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
+    def to_s(io : IO) : Nil
+      io << to_string
+    end
+    def inspect(io : IO) : Nil
+      io << "#<" << self.class.name << ' '
+      to_s(io)
+      io << '>'
     end
     def to_unsafe
       @unwrap
@@ -81803,6 +82103,13 @@ module Qt
       Qt::Variant.new(Binding.bg_QMatrix__CONVERT_QVariant_(self))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QMatrix_qHash_uint(self, seed)
+    end
+    
+    def hash(hasher)
+      q_hash(0).hash(hasher)
+    end
     def to_unsafe
       @unwrap
     end
@@ -82064,6 +82371,10 @@ module Qt
       Transform.new(unwrap: Binding.bg_QTransform_fromScale_STATIC_qreal_qreal(dx, dy))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QTransform_qHash_uint(self, seed)
+    end
+    
     def *(n : Float64) : Transform
       Transform.new(unwrap: Binding.bg_QTransform__OPERATOR_mul_qreal(self, n))
     end
@@ -82087,6 +82398,9 @@ module Qt
       TxRotate = 4
       TxShear = 8
       TxProject = 16
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
     end
     def to_unsafe
       @unwrap
@@ -86277,6 +86591,10 @@ module Qt
       RawFont.new(unwrap: Binding.bg_QRawFont_fromFont_STATIC_const_QFont_R_QFontDatabase__WritingSystem(font, writing_system))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QRawFont_qHash_uint(self, seed)
+    end
+    
     enum AntialiasingType : UInt32
       PixelAntialiasing = 0
       SubPixelAntialiasing = 1
@@ -86291,6 +86609,9 @@ module Qt
       SeparateAdvances = 0
       KernedAdvances = 1
       UseDesignMetrics = 2
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
     end
     def to_unsafe
       @unwrap
@@ -106690,6 +107011,10 @@ module Qt
       SizePolicy.new(unwrap: Binding.bg_QSizePolicy__OPERATOR_assign_const_QSizePolicy_R(self, unnamed_arg_0))
     end
     
+    def q_hash(seed : UInt32 = 0u32) : UInt32
+      Binding.bg_QSizePolicy_qHash_uint(self, seed)
+    end
+    
     def self.static_meta_object() : MetaObject
       MetaObject.new(unwrap: Binding.bg_QSizePolicy_staticMetaObject_STATIC_GETTER_())
     end
@@ -106743,6 +107068,9 @@ module Qt
       SpinBox = 4096
       TabWidget = 8192
       ToolButton = 16384
+    end
+    def hash(hasher)
+      q_hash(0).hash(hasher)
     end
     def to_unsafe
       @unwrap

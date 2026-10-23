@@ -20,6 +20,10 @@ ignore_deprecated: true
 # which a Crystal override takes as declared, the elements of a container
 # of pointers and the `#as_X` casts.  See `spec/qt/null_pointer_spec.cr`.
 nilable_results: true
+
+# Free functions bound as methods of the class of their first parameter:
+# qHash(const QPoint &, size_t) is Point#q_hash, forwarded to #hash.
+member_functions: [qHash]
 if_os_is_darwin:
   library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ `pkg-config --libs Qt5Widgets` -lgccpp"
 else:

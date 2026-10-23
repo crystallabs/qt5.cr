@@ -573,7 +573,6 @@ see the comments there:
 
 ## Future things to do
 
-* Forwarding `qHash()` of wrapped types (to `Object#hash`)
 * Integration with **LibEvent**: Right now, Qt blocks the whole thread.
 * The rest of the billion Qt classes of interest
 * Integration for the `Qt Designer` UI designer
