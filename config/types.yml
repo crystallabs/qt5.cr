@@ -336,6 +336,12 @@ types: # Type rewrite rules
   # A non-copyable bare struct with a C array; drops the stateful conversions
   # of QTextCodec, which TextCodec#to_unicode and #from_unicode don't need.
   "QTextCodec::ConverterState": { ignore: true }
+  # Template members, which the parser doesn't report: their instantiations
+  # are declared, and the generated C++ instantiates them.
+  QMutex: &try_lock_for # try_lock_for takes any std::chrono::duration
+    declare_methods:
+      - "bool try_lock_for(std::chrono::milliseconds duration)"
+  QRecursiveMutex: *try_lock_for
   QTextDecoder:
     ignore_methods:
       # Writes the string through the pointer, like the overload returning

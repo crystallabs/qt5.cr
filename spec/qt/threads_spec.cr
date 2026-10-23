@@ -50,6 +50,7 @@ describe Qt::Mutex do
     mutex.recursive?.should be_false
     mutex.try_lock.should be_true
     mutex.try_lock(10).should be_false
+    mutex.try_lock_for(10.milliseconds).should be_false # Declared: a template
     mutex.unlock
     mutex.lock
     mutex.unlock

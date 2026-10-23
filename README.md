@@ -555,8 +555,10 @@ see the comments there:
   using-declarations, which are wrapped.  `#try_lock(timeout = 0)` is
   `tryLock(int)`: bindgen drops the std-style `try_lock()` and `try_acquire()`
   aliases, whose Crystal signatures equal or overlap the originals';
-  `try_lock_for` and friends are
-  templates.  `QException`, which only serves throwing across QtConcurrent
+  `try_lock_for` is a template over the duration type: `config/types.yml`
+  declares its `std::chrono::milliseconds` instantiation (bindgen's
+  `declare_methods:`), so `mutex.try_lock_for(10.milliseconds)` works;
+  `try_lock_until` isn't bound.  `QException`, which only serves throwing across QtConcurrent
   threads, isn't bound: it would shadow `::Exception` inside the module.
 * The meta-object system exchanges names as `const char *`, an `UInt8*`:
   `String.new(meta_object.class_name)`,

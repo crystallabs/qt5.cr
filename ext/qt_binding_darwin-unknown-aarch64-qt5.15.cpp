@@ -240,6 +240,10 @@ extern "C" bool bg_QMutex_isRecursive_(QMutex * _self_) {
   return _self_->isRecursive();
 }
 
+extern "C" bool bg_QMutex_try_lock_for_std__chrono__milliseconds(QMutex * _self_, int64_t duration) {
+  return _self_->try_lock_for(std::chrono::milliseconds(duration));
+}
+
 extern "C" QRecursiveMutex * bg_QRecursiveMutex__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QRecursiveMutex>();
 }
@@ -254,6 +258,10 @@ extern "C" bool bg_QRecursiveMutex_tryLock_int(QRecursiveMutex * _self_, int tim
 
 extern "C" void bg_QRecursiveMutex_unlock_(QRecursiveMutex * _self_) {
   _self_->unlock();
+}
+
+extern "C" bool bg_QRecursiveMutex_try_lock_for_std__chrono__milliseconds(QRecursiveMutex * _self_, int64_t duration) {
+  return _self_->try_lock_for(std::chrono::milliseconds(duration));
 }
 
 extern "C" QMutexLocker * bg_QMutexLocker__CONSTRUCT_QBasicMutex_X(QBasicMutex * m) {

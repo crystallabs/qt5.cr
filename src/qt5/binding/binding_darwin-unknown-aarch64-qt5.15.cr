@@ -8931,10 +8931,12 @@ module Qt
     fun bg_QMutex_tryLock_int(_self_ : QMutex*, timeout : Int32) : Bool
     fun bg_QMutex_unlock_(_self_ : QMutex*) : Void
     fun bg_QMutex_isRecursive_(_self_ : QMutex*) : Bool
+    fun bg_QMutex_try_lock_for_std__chrono__milliseconds(_self_ : QMutex*, duration : Int64) : Bool
     fun bg_QRecursiveMutex__CONSTRUCT_() : QRecursiveMutex*
     fun bg_QRecursiveMutex_lock_(_self_ : QRecursiveMutex*) : Void
     fun bg_QRecursiveMutex_tryLock_int(_self_ : QRecursiveMutex*, timeout : Int32) : Bool
     fun bg_QRecursiveMutex_unlock_(_self_ : QRecursiveMutex*) : Void
+    fun bg_QRecursiveMutex_try_lock_for_std__chrono__milliseconds(_self_ : QRecursiveMutex*, duration : Int64) : Bool
     fun bg_QMutexLocker__CONSTRUCT_QBasicMutex_X(m : QBasicMutex*) : QMutexLocker*
     fun bg_QMutexLocker__CONSTRUCT_QRecursiveMutex_X(m : QRecursiveMutex*) : QMutexLocker*
     fun bg_QMutexLocker_unlock_(_self_ : QMutexLocker*) : Void
@@ -37316,6 +37318,10 @@ module Qt
       Binding.bg_QMutex_isRecursive_(self)
     end
     
+    def try_lock_for(duration : ::Time::Span) : Bool
+      Binding.bg_QMutex_try_lock_for_std__chrono__milliseconds(self, Qt::Converter::TimeSpan.wrap(duration))
+    end
+    
     enum RecursionMode : UInt32
       NonRecursive = 0
       Recursive = 1
@@ -37345,6 +37351,10 @@ module Qt
     
     def unlock() : Void
       Binding.bg_QRecursiveMutex_unlock_(self)
+    end
+    
+    def try_lock_for(duration : ::Time::Span) : Bool
+      Binding.bg_QRecursiveMutex_try_lock_for_std__chrono__milliseconds(self, Qt::Converter::TimeSpan.wrap(duration))
     end
     
     def to_unsafe
