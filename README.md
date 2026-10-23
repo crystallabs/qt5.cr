@@ -421,10 +421,14 @@ see the comments there:
   `QList<QVariant>`, so methods take any `Enumerable(String)`:
   `combo_box.add_items(["a", "b"])`.  `QList<QString>` and
   `QListSpecialMethods<QString>`, which holds the `QStringList` methods, are
-  listed as classes, so the wrapper `Qt::StringList` has those methods.  The
-  overloads taking `QStringView`, `QLatin1String` or the old `QRegExp` are
-  dropped, as the Crystal `String` maps to `QString` and `QRegularExpression`
-  is wrapped.
+  listed as classes, so the wrapper `Qt::StringList` has those methods.
+  `QStringView`, `QStringRef` and `QLatin1String` map to `String` too, as
+  views of a temporary `QString` living for the call, and a view returned is
+  copied, so `XmlStreamReader#name` is a `String`; an overload taking a view
+  next to one taking a `QString` is dropped (bindgen's `shadowed_by:`).  The
+  overloads taking the old `QRegExp` are dropped, as `QRegularExpression` is
+  wrapped, and so are `RegularExpression#match` of a view, whose match would
+  keep it.
 * `QVariant` maps to `Qt::Variant`, which exchanges the types Qt knows in
   their native form, so Qt can display, sort and store them: `Nil`, `Bool`,
   `Int32`, `UInt32`, `Int64`, `UInt64`, `Float32`, `Float64`, `Char`, `String`,
@@ -506,10 +510,9 @@ see the comments there:
   `Matrix4x4#normal_matrix` and `Quaternion#to_rotation_matrix`.
   `QGradientStops` is a `QVector<QPair<qreal, QColor>>`, so `Gradient#stops`
   is an `Enumerable({Float64, Color})` and the setter takes an array of tuples.
-* The QXmlStream classes return names, values and text as `QStringRef`, which
-  has no mapping (a reference into a temporary `QString` would dangle), so
-  `src/qt5/xml_stream.cr` wraps the helpers of `ext/xml_helper.hpp`:
-  `reader.name`, `attribute.value`, `reader.attributes.value("id")`.
+* The QXmlStream classes return names, values and text as `QStringRef`,
+  copied into a `String`: `reader.name`, `attribute.value`,
+  `reader.attributes.value("id")`.
   `QXmlStreamAttributes` is a `QVector<QXmlStreamAttribute>`, so
   `reader.attributes.map(&.name)` works.
 * `QDataStream` reads `QString` and `QByteArray` through free `operator>>`,
@@ -531,8 +534,7 @@ see the comments there:
   `Int64`.  `CborValue.new(Qt::CborValue::Type::Null)` replaces the `nullptr`
   constructor.  `QCborStreamReader::readString` returns a `StringResult<T>`
   bindgen doesn't instantiate, so `ext/cbor_helper.hpp` adds
-  `reader.read_all_string` and `#read_all_byte_array` (Qt 6's names), and
-  `CborStreamWriter#append(String)` over the unwrapped `QStringView` overload.
+  `reader.read_all_string` and `#read_all_byte_array` (Qt 6's names).
   Qt 5 declares the `QDataStream` operators of `QCborSimpleType` without
   exporting them, so the helper defines them for the binding to link.
 * `QStyleOptionTabV4` is the one V-suffixed style option still a class in

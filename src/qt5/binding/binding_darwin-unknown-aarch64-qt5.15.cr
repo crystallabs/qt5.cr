@@ -9006,6 +9006,7 @@ module Qt
     fun bg_QStringMatcher_setPattern_const_QString_R(_self_ : QStringMatcher*, pattern : CrystalString) : Void
     fun bg_QStringMatcher_setCaseSensitivity_Qt__CaseSensitivity(_self_ : QStringMatcher*, cs : ::Qt::CaseSensitivity) : Void
     fun bg_QStringMatcher_indexIn_const_QString_R_int(_self_ : QStringMatcher*, str : CrystalString, from : Int32) : Int32
+    fun bg_QStringMatcher_indexIn_QStringView_qsizetype(_self_ : QStringMatcher*, str : CrystalString, from : Int64) : Int64
     fun bg_QStringMatcher_pattern_(_self_ : QStringMatcher*) : CrystalString
     fun bg_QStringMatcher_caseSensitivity_(_self_ : QStringMatcher*) : ::Qt::CaseSensitivity
     fun bg_QMetaType_unregisterType_STATIC_int(type : Int32) : Bool
@@ -10262,8 +10263,10 @@ module Qt
     fun bg_QLocale_toString_const_QDate_R_QLocale__FormatType(_self_ : QLocale*, date : QDate*, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QLocale_toString_const_QTime_R_QLocale__FormatType(_self_ : QLocale*, time : QTime*, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QLocale_toString_const_QDateTime_R_QLocale__FormatType(_self_ : QLocale*, date_time : QDateTime*, format : ::Qt::Locale::FormatType) : CrystalString
+    fun bg_QLocale_toString_const_QDate_R_QStringView_QCalendar(_self_ : QLocale*, date : QDate*, format_str : CrystalString, cal : QCalendar*) : CrystalString
     fun bg_QLocale_toString_const_QDate_R_QLocale__FormatType_QCalendar(_self_ : QLocale*, date : QDate*, format : ::Qt::Locale::FormatType, cal : QCalendar*) : CrystalString
     fun bg_QLocale_toString_const_QDateTime_R_QLocale__FormatType_QCalendar(_self_ : QLocale*, date_time : QDateTime*, format : ::Qt::Locale::FormatType, cal : QCalendar*) : CrystalString
+    fun bg_QLocale_toString_const_QDateTime_R_QStringView_QCalendar(_self_ : QLocale*, date_time : QDateTime*, format_str : CrystalString, cal : QCalendar*) : CrystalString
     fun bg_QLocale_dateFormat_QLocale__FormatType(_self_ : QLocale*, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QLocale_timeFormat_QLocale__FormatType(_self_ : QLocale*, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QLocale_dateTimeFormat_QLocale__FormatType(_self_ : QLocale*, format : ::Qt::Locale::FormatType) : CrystalString
@@ -10337,6 +10340,7 @@ module Qt
     fun bg_QLocale_staticMetaObject_STATIC_GETTER_() : QMetaObject*
     fun bg_QCalendar__CONSTRUCT_() : QCalendar*
     fun bg_QCalendar__CONSTRUCT_QCalendar__System(system : ::Qt::Calendar::System) : QCalendar*
+    fun bg_QCalendar__CONSTRUCT_QStringView(name : CrystalString) : QCalendar*
     fun bg_QCalendar_isValid_(_self_ : QCalendar*) : Bool
     fun bg_QCalendar_daysInMonth_int_int(_self_ : QCalendar*, month : Int32, year : Int32) : Int32
     fun bg_QCalendar_daysInYear_int(_self_ : QCalendar*, year : Int32) : Int32
@@ -10361,6 +10365,7 @@ module Qt
     fun bg_QCalendar_standaloneMonthName_const_QLocale_R_int_int_QLocale__FormatType(_self_ : QCalendar*, locale : QLocale*, month : Int32, year : Int32, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QCalendar_weekDayName_const_QLocale_R_int_QLocale__FormatType(_self_ : QCalendar*, locale : QLocale*, day : Int32, format : ::Qt::Locale::FormatType) : CrystalString
     fun bg_QCalendar_standaloneWeekDayName_const_QLocale_R_int_QLocale__FormatType(_self_ : QCalendar*, locale : QLocale*, day : Int32, format : ::Qt::Locale::FormatType) : CrystalString
+    fun bg_QCalendar_dateTimeToString_QStringView_const_QDateTime_R_const_QDate_R_const_QTime_R_const_QLocale_R(_self_ : QCalendar*, format : CrystalString, datetime : QDateTime*, date_only : QDate*, time_only : QTime*, locale : QLocale*) : CrystalString
     fun bg_QCalendar_availableCalendars_STATIC_() : ContainerQListQString*
     fun bg_QCalendar__COPY_const_QCalendar_R(unnamed_arg_0 : QCalendar*) : QCalendar*
     fun bg_QCalendar__YearMonthDay__CONSTRUCT_() : QCalendar_YearMonthDay*
@@ -10634,7 +10639,11 @@ module Qt
     fun bg_QRegularExpressionMatch_isValid_(_self_ : QRegularExpressionMatch*) : Bool
     fun bg_QRegularExpressionMatch_lastCapturedIndex_(_self_ : QRegularExpressionMatch*) : Int32
     fun bg_QRegularExpressionMatch_captured_int(_self_ : QRegularExpressionMatch*, nth : Int32) : CrystalString
+    fun bg_QRegularExpressionMatch_capturedRef_int(_self_ : QRegularExpressionMatch*, nth : Int32) : CrystalString
+    fun bg_QRegularExpressionMatch_capturedView_int(_self_ : QRegularExpressionMatch*, nth : Int32) : CrystalString
     fun bg_QRegularExpressionMatch_captured_const_QString_R(_self_ : QRegularExpressionMatch*, name : CrystalString) : CrystalString
+    fun bg_QRegularExpressionMatch_capturedRef_const_QString_R(_self_ : QRegularExpressionMatch*, name : CrystalString) : CrystalString
+    fun bg_QRegularExpressionMatch_capturedView_QStringView(_self_ : QRegularExpressionMatch*, name : CrystalString) : CrystalString
     fun bg_QRegularExpressionMatch_capturedTexts_(_self_ : QRegularExpressionMatch*) : ContainerQListQString*
     fun bg_QRegularExpressionMatch_capturedStart_int(_self_ : QRegularExpressionMatch*, nth : Int32) : Int32
     fun bg_QRegularExpressionMatch_capturedLength_int(_self_ : QRegularExpressionMatch*, nth : Int32) : Int32
@@ -10737,6 +10746,7 @@ module Qt
     fun bg_QUuid__CONSTRUCT_() : QUuid*
     fun bg_QUuid__CONSTRUCT_uint_ushort_ushort_uchar_uchar_uchar_uchar_uchar_uchar_uchar_uchar(l : UInt32, w1 : UInt16, w2 : UInt16, b1 : UInt8, b2 : UInt8, b3 : UInt8, b4 : UInt8, b5 : UInt8, b6 : UInt8, b7 : UInt8, b8 : UInt8) : QUuid*
     fun bg_QUuid__CONSTRUCT_const_QString_R(unnamed_arg_0 : CrystalString) : QUuid*
+    fun bg_QUuid_fromString_STATIC_QStringView(string : CrystalString) : QUuid*
     fun bg_QUuid__CONSTRUCT_const_char_X(unnamed_arg_0 : UInt8*) : QUuid*
     fun bg_QUuid_toString_(_self_ : QUuid*) : CrystalString
     fun bg_QUuid_toString_QUuid__StringFormat(_self_ : QUuid*, mode : ::Qt::Uuid::StringFormat) : CrystalString
@@ -11139,6 +11149,7 @@ module Qt
     fun bg_QCborStreamWriter_append_qint64(_self_ : QCborStreamWriter*, i : Int64) : Void
     fun bg_QCborStreamWriter_append_QCborNegativeInteger(_self_ : QCborStreamWriter*, n : UInt64) : Void
     fun bg_QCborStreamWriter_append_const_QByteArray_R(_self_ : QCborStreamWriter*, ba : CrystalString) : Void
+    fun bg_QCborStreamWriter_append_QStringView(_self_ : QCborStreamWriter*, str : CrystalString) : Void
     fun bg_QCborStreamWriter_append_QCborTag(_self_ : QCborStreamWriter*, tag : UInt64) : Void
     fun bg_QCborStreamWriter_append_QCborKnownTags(_self_ : QCborStreamWriter*, tag : ::Qt::CborKnownTags) : Void
     fun bg_QCborStreamWriter_append_QCborSimpleType(_self_ : QCborStreamWriter*, st : ::Qt::CborSimpleType) : Void
@@ -13164,6 +13175,7 @@ module Qt
     fun bg_QProcess_startDetached_STATIC_const_QString_R_const_QStringList_R(program : CrystalString, arguments : ContainerQListQString*) : Bool
     fun bg_QProcess_systemEnvironment_STATIC_() : ContainerQListQString*
     fun bg_QProcess_nullDevice_STATIC_() : CrystalString
+    fun bg_QProcess_splitCommand_STATIC_QStringView(command : CrystalString) : ContainerQListQString*
     fun bg_QProcess_terminate_(_self_ : QProcess*) : Void
     fun bg_QProcess_kill_(_self_ : QProcess*) : Void
     fun bg_QProcess_finished_int_QProcess__ExitStatus(_self_ : QProcess*, exit_code : Int32, exit_status : ::Qt::Process::ExitStatus) : Void
@@ -14761,10 +14773,17 @@ module Qt
     fun bg_QXmlStreamAttribute__CONSTRUCT_const_QString_R_const_QString_R_const_QString_R(namespace_uri : CrystalString, name : CrystalString, value : CrystalString) : QXmlStreamAttribute*
     fun bg_QXmlStreamAttribute__COPY_const_QXmlStreamAttribute_R(unnamed_arg_0 : QXmlStreamAttribute*) : QXmlStreamAttribute*
     fun bg_QXmlStreamAttribute__OPERATOR_assign_const_QXmlStreamAttribute_R(_self_ : QXmlStreamAttribute*, unnamed_arg_0 : QXmlStreamAttribute*) : QXmlStreamAttribute*
+    fun bg_QXmlStreamAttribute_namespaceUri_(_self_ : QXmlStreamAttribute*) : CrystalString
+    fun bg_QXmlStreamAttribute_name_(_self_ : QXmlStreamAttribute*) : CrystalString
+    fun bg_QXmlStreamAttribute_qualifiedName_(_self_ : QXmlStreamAttribute*) : CrystalString
+    fun bg_QXmlStreamAttribute_prefix_(_self_ : QXmlStreamAttribute*) : CrystalString
+    fun bg_QXmlStreamAttribute_value_(_self_ : QXmlStreamAttribute*) : CrystalString
     fun bg_QXmlStreamAttribute_isDefault_(_self_ : QXmlStreamAttribute*) : Bool
     fun bg_QXmlStreamAttribute__OPERATOR_eq_const_QXmlStreamAttribute_R(_self_ : QXmlStreamAttribute*, other : QXmlStreamAttribute*) : Bool
     fun bg_QXmlStreamAttribute__OPERATOR_ne_const_QXmlStreamAttribute_R(_self_ : QXmlStreamAttribute*, other : QXmlStreamAttribute*) : Bool
     fun bg_QXmlStreamAttributes__CONSTRUCT_() : QXmlStreamAttributes*
+    fun bg_QXmlStreamAttributes_value_const_QString_R_const_QString_R(_self_ : QXmlStreamAttributes*, namespace_uri : CrystalString, name : CrystalString) : CrystalString
+    fun bg_QXmlStreamAttributes_value_const_QString_R(_self_ : QXmlStreamAttributes*, qualified_name : CrystalString) : CrystalString
     fun bg_QXmlStreamAttributes_append_const_QString_R_const_QString_R_const_QString_R(_self_ : QXmlStreamAttributes*, namespace_uri : CrystalString, name : CrystalString, value : CrystalString) : Void
     fun bg_QXmlStreamAttributes_append_const_QString_R_const_QString_R(_self_ : QXmlStreamAttributes*, qualified_name : CrystalString, value : CrystalString) : Void
     fun bg_QXmlStreamAttributes_hasAttribute_const_QString_R(_self_ : QXmlStreamAttributes*, qualified_name : CrystalString) : Bool
@@ -14777,16 +14796,26 @@ module Qt
     fun bg_QXmlStreamNamespaceDeclaration__CONSTRUCT_const_QString_R_const_QString_R(prefix : CrystalString, namespace_uri : CrystalString) : QXmlStreamNamespaceDeclaration*
     fun bg_QXmlStreamNamespaceDeclaration__COPY_const_QXmlStreamNamespaceDeclaration_R(unnamed_arg_0 : QXmlStreamNamespaceDeclaration*) : QXmlStreamNamespaceDeclaration*
     fun bg_QXmlStreamNamespaceDeclaration__OPERATOR_assign_const_QXmlStreamNamespaceDeclaration_R(_self_ : QXmlStreamNamespaceDeclaration*, unnamed_arg_0 : QXmlStreamNamespaceDeclaration*) : QXmlStreamNamespaceDeclaration*
+    fun bg_QXmlStreamNamespaceDeclaration_prefix_(_self_ : QXmlStreamNamespaceDeclaration*) : CrystalString
+    fun bg_QXmlStreamNamespaceDeclaration_namespaceUri_(_self_ : QXmlStreamNamespaceDeclaration*) : CrystalString
     fun bg_QXmlStreamNamespaceDeclaration__OPERATOR_eq_const_QXmlStreamNamespaceDeclaration_R(_self_ : QXmlStreamNamespaceDeclaration*, other : QXmlStreamNamespaceDeclaration*) : Bool
     fun bg_QXmlStreamNamespaceDeclaration__OPERATOR_ne_const_QXmlStreamNamespaceDeclaration_R(_self_ : QXmlStreamNamespaceDeclaration*, other : QXmlStreamNamespaceDeclaration*) : Bool
     fun bg_QXmlStreamNotationDeclaration__CONSTRUCT_() : QXmlStreamNotationDeclaration*
     fun bg_QXmlStreamNotationDeclaration__COPY_const_QXmlStreamNotationDeclaration_R(unnamed_arg_0 : QXmlStreamNotationDeclaration*) : QXmlStreamNotationDeclaration*
     fun bg_QXmlStreamNotationDeclaration__OPERATOR_assign_const_QXmlStreamNotationDeclaration_R(_self_ : QXmlStreamNotationDeclaration*, unnamed_arg_0 : QXmlStreamNotationDeclaration*) : QXmlStreamNotationDeclaration*
+    fun bg_QXmlStreamNotationDeclaration_name_(_self_ : QXmlStreamNotationDeclaration*) : CrystalString
+    fun bg_QXmlStreamNotationDeclaration_systemId_(_self_ : QXmlStreamNotationDeclaration*) : CrystalString
+    fun bg_QXmlStreamNotationDeclaration_publicId_(_self_ : QXmlStreamNotationDeclaration*) : CrystalString
     fun bg_QXmlStreamNotationDeclaration__OPERATOR_eq_const_QXmlStreamNotationDeclaration_R(_self_ : QXmlStreamNotationDeclaration*, other : QXmlStreamNotationDeclaration*) : Bool
     fun bg_QXmlStreamNotationDeclaration__OPERATOR_ne_const_QXmlStreamNotationDeclaration_R(_self_ : QXmlStreamNotationDeclaration*, other : QXmlStreamNotationDeclaration*) : Bool
     fun bg_QXmlStreamEntityDeclaration__CONSTRUCT_() : QXmlStreamEntityDeclaration*
     fun bg_QXmlStreamEntityDeclaration__COPY_const_QXmlStreamEntityDeclaration_R(unnamed_arg_0 : QXmlStreamEntityDeclaration*) : QXmlStreamEntityDeclaration*
     fun bg_QXmlStreamEntityDeclaration__OPERATOR_assign_const_QXmlStreamEntityDeclaration_R(_self_ : QXmlStreamEntityDeclaration*, unnamed_arg_0 : QXmlStreamEntityDeclaration*) : QXmlStreamEntityDeclaration*
+    fun bg_QXmlStreamEntityDeclaration_name_(_self_ : QXmlStreamEntityDeclaration*) : CrystalString
+    fun bg_QXmlStreamEntityDeclaration_notationName_(_self_ : QXmlStreamEntityDeclaration*) : CrystalString
+    fun bg_QXmlStreamEntityDeclaration_systemId_(_self_ : QXmlStreamEntityDeclaration*) : CrystalString
+    fun bg_QXmlStreamEntityDeclaration_publicId_(_self_ : QXmlStreamEntityDeclaration*) : CrystalString
+    fun bg_QXmlStreamEntityDeclaration_value_(_self_ : QXmlStreamEntityDeclaration*) : CrystalString
     fun bg_QXmlStreamEntityDeclaration__OPERATOR_eq_const_QXmlStreamEntityDeclaration_R(_self_ : QXmlStreamEntityDeclaration*, other : QXmlStreamEntityDeclaration*) : Bool
     fun bg_QXmlStreamEntityDeclaration__OPERATOR_ne_const_QXmlStreamEntityDeclaration_R(_self_ : QXmlStreamEntityDeclaration*, other : QXmlStreamEntityDeclaration*) : Bool
     fun bg_QXmlStreamEntityResolver_resolveEntity_const_QString_R_const_QString_R(_self_ : QXmlStreamEntityResolver*, public_id : CrystalString, system_id : CrystalString) : CrystalString
@@ -14828,16 +14857,28 @@ module Qt
     fun bg_QXmlStreamReader_isEntityReference_(_self_ : QXmlStreamReader*) : Bool
     fun bg_QXmlStreamReader_isProcessingInstruction_(_self_ : QXmlStreamReader*) : Bool
     fun bg_QXmlStreamReader_isStandaloneDocument_(_self_ : QXmlStreamReader*) : Bool
+    fun bg_QXmlStreamReader_documentVersion_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_documentEncoding_(_self_ : QXmlStreamReader*) : CrystalString
     fun bg_QXmlStreamReader_lineNumber_(_self_ : QXmlStreamReader*) : Int64
     fun bg_QXmlStreamReader_columnNumber_(_self_ : QXmlStreamReader*) : Int64
     fun bg_QXmlStreamReader_characterOffset_(_self_ : QXmlStreamReader*) : Int64
     fun bg_QXmlStreamReader_attributes_(_self_ : QXmlStreamReader*) : QXmlStreamAttributes*
     fun bg_QXmlStreamReader_readElementText_QXmlStreamReader__ReadElementTextBehaviour(_self_ : QXmlStreamReader*, behaviour : ::Qt::XmlStreamReader::ReadElementTextBehaviour) : CrystalString
+    fun bg_QXmlStreamReader_name_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_namespaceUri_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_qualifiedName_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_prefix_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_processingInstructionTarget_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_processingInstructionData_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_text_(_self_ : QXmlStreamReader*) : CrystalString
     fun bg_QXmlStreamReader_namespaceDeclarations_(_self_ : QXmlStreamReader*) : ContainerQVectorQXmlStreamNamespaceDeclaration*
     fun bg_QXmlStreamReader_addExtraNamespaceDeclaration_const_QXmlStreamNamespaceDeclaration_R(_self_ : QXmlStreamReader*, extra_namespace_declaraction : QXmlStreamNamespaceDeclaration*) : Void
     fun bg_QXmlStreamReader_addExtraNamespaceDeclarations_const_QXmlStreamNamespaceDeclarations_R(_self_ : QXmlStreamReader*, extra_namespace_declaractions : ContainerQVectorQXmlStreamNamespaceDeclaration*) : Void
     fun bg_QXmlStreamReader_notationDeclarations_(_self_ : QXmlStreamReader*) : ContainerQVectorQXmlStreamNotationDeclaration*
     fun bg_QXmlStreamReader_entityDeclarations_(_self_ : QXmlStreamReader*) : ContainerQVectorQXmlStreamEntityDeclaration*
+    fun bg_QXmlStreamReader_dtdName_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_dtdPublicId_(_self_ : QXmlStreamReader*) : CrystalString
+    fun bg_QXmlStreamReader_dtdSystemId_(_self_ : QXmlStreamReader*) : CrystalString
     fun bg_QXmlStreamReader_entityExpansionLimit_(_self_ : QXmlStreamReader*) : Int32
     fun bg_QXmlStreamReader_setEntityExpansionLimit_int(_self_ : QXmlStreamReader*, limit : Int32) : Void
     fun bg_QXmlStreamReader_raiseError_(_self_ : QXmlStreamReader*) : Void
@@ -36644,35 +36685,6 @@ module Qt
     fun bg____qSetPadChar_STATIC_QChar(ch : Int32) : QTextStreamManipulator*
     fun bg____qSetRealNumberPrecision_STATIC_int(precision : Int32) : QTextStreamManipulator*
     fun bg____qt5cr_reset_numeric_locale_STATIC_() : Void
-    fun bg____qt5cr_xml_reader_documentVersion_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_documentEncoding_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_name_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_namespaceUri_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_qualifiedName_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_prefix_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_processingInstructionTarget_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_processingInstructionData_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_text_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_dtdName_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_dtdPublicId_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_reader_dtdSystemId_STATIC_const_QXmlStreamReader_X(object : QXmlStreamReader*) : CrystalString
-    fun bg____qt5cr_xml_attribute_namespaceUri_STATIC_const_QXmlStreamAttribute_X(object : QXmlStreamAttribute*) : CrystalString
-    fun bg____qt5cr_xml_attribute_name_STATIC_const_QXmlStreamAttribute_X(object : QXmlStreamAttribute*) : CrystalString
-    fun bg____qt5cr_xml_attribute_qualifiedName_STATIC_const_QXmlStreamAttribute_X(object : QXmlStreamAttribute*) : CrystalString
-    fun bg____qt5cr_xml_attribute_prefix_STATIC_const_QXmlStreamAttribute_X(object : QXmlStreamAttribute*) : CrystalString
-    fun bg____qt5cr_xml_attribute_value_STATIC_const_QXmlStreamAttribute_X(object : QXmlStreamAttribute*) : CrystalString
-    fun bg____qt5cr_xml_namespace_declaration_prefix_STATIC_const_QXmlStreamNamespaceDeclaration_X(object : QXmlStreamNamespaceDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_namespace_declaration_namespaceUri_STATIC_const_QXmlStreamNamespaceDeclaration_X(object : QXmlStreamNamespaceDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_notation_declaration_name_STATIC_const_QXmlStreamNotationDeclaration_X(object : QXmlStreamNotationDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_notation_declaration_systemId_STATIC_const_QXmlStreamNotationDeclaration_X(object : QXmlStreamNotationDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_notation_declaration_publicId_STATIC_const_QXmlStreamNotationDeclaration_X(object : QXmlStreamNotationDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_entity_declaration_name_STATIC_const_QXmlStreamEntityDeclaration_X(object : QXmlStreamEntityDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_entity_declaration_notationName_STATIC_const_QXmlStreamEntityDeclaration_X(object : QXmlStreamEntityDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_entity_declaration_systemId_STATIC_const_QXmlStreamEntityDeclaration_X(object : QXmlStreamEntityDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_entity_declaration_publicId_STATIC_const_QXmlStreamEntityDeclaration_X(object : QXmlStreamEntityDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_entity_declaration_value_STATIC_const_QXmlStreamEntityDeclaration_X(object : QXmlStreamEntityDeclaration*) : CrystalString
-    fun bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R(attributes : QXmlStreamAttributes*, qualified_name : CrystalString) : CrystalString
-    fun bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R_const_QString_R(attributes : QXmlStreamAttributes*, namespace_uri : CrystalString, name : CrystalString) : CrystalString
     fun bg____qt5cr_data_stream_read_string_STATIC_QDataStream_X(stream : QDataStream*) : CrystalString
     fun bg____qt5cr_data_stream_read_bytes_STATIC_QDataStream_X(stream : QDataStream*) : CrystalString
     fun bg____qt5cr_invoke_method_STATIC_QObject_X_const_char_X_Qt__ConnectionType(object : QObject*, member : UInt8*, type : ::Qt::ConnectionType) : Bool
@@ -37707,6 +37719,10 @@ module Qt
     
     def index_in(str : String, from : Int32 = 0) : Int32
       Binding.bg_QStringMatcher_indexIn_const_QString_R_int(self, Qt::Converter::QString.wrap(str), from)
+    end
+    
+    def index_in(str : String, from : Int64 = 0i64) : Int64
+      Binding.bg_QStringMatcher_indexIn_QStringView_qsizetype(self, Qt::Converter::QString.wrap(str), from)
     end
     
     def pattern() : String
@@ -46525,12 +46541,20 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QLocale_toString_const_QDateTime_R_QLocale__FormatType(self, date_time, format))
     end
     
+    def to_string(date : Date, format_str : String, cal : Calendar) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QLocale_toString_const_QDate_R_QStringView_QCalendar(self, date, Qt::Converter::QString.wrap(format_str), cal))
+    end
+    
     def to_string(date : Date, format : Locale::FormatType, cal : Calendar) : String
       Qt::Converter::QString.unwrap(Binding.bg_QLocale_toString_const_QDate_R_QLocale__FormatType_QCalendar(self, date, format, cal))
     end
     
     def to_string(date_time : DateTime, format : Locale::FormatType, cal : Calendar) : String
       Qt::Converter::QString.unwrap(Binding.bg_QLocale_toString_const_QDateTime_R_QLocale__FormatType_QCalendar(self, date_time, format, cal))
+    end
+    
+    def to_string(date_time : DateTime, format_str : String, cal : Calendar) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QLocale_toString_const_QDateTime_R_QStringView_QCalendar(self, date_time, Qt::Converter::QString.wrap(format_str), cal))
     end
     
     def date_format(format : Locale::FormatType = Locale::FormatType::LongFormat) : String
@@ -47659,6 +47683,11 @@ module Qt
     @unwrap = result
     end
     
+    def initialize(name : String)
+      result = Binding.bg_QCalendar__CONSTRUCT_QStringView(Qt::Converter::QString.wrap(name))
+    @unwrap = result
+    end
+    
     def valid?() : Bool
       Binding.bg_QCalendar_isValid_(self)
     end
@@ -47753,6 +47782,10 @@ module Qt
     
     def standalone_week_day_name(locale : Locale, day : Int32, format : Locale::FormatType = Locale::FormatType::LongFormat) : String
       Qt::Converter::QString.unwrap(Binding.bg_QCalendar_standaloneWeekDayName_const_QLocale_R_int_QLocale__FormatType(self, locale, day, format))
+    end
+    
+    def date_time_to_string(format : String, datetime : DateTime, date_only : Date, time_only : Time, locale : Locale) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QCalendar_dateTimeToString_QStringView_const_QDateTime_R_const_QDate_R_const_QTime_R_const_QLocale_R(self, Qt::Converter::QString.wrap(format), datetime, date_only, time_only, locale))
     end
     
     def self.available_calendars() : Enumerable(String)
@@ -49141,8 +49174,24 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_captured_int(self, nth))
     end
     
+    def captured_ref(nth : Int32 = 0) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_capturedRef_int(self, nth))
+    end
+    
+    def captured_view(nth : Int32 = 0) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_capturedView_int(self, nth))
+    end
+    
     def captured(name : String) : String
       Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_captured_const_QString_R(self, Qt::Converter::QString.wrap(name)))
+    end
+    
+    def captured_ref(name : String) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_capturedRef_const_QString_R(self, Qt::Converter::QString.wrap(name)))
+    end
+    
+    def captured_view(name : String) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QRegularExpressionMatch_capturedView_QStringView(self, Qt::Converter::QString.wrap(name)))
     end
     
     def captured_texts() : Enumerable(String)
@@ -49659,6 +49708,10 @@ module Qt
     def initialize(unnamed_arg_0 : String)
       result = Binding.bg_QUuid__CONSTRUCT_const_QString_R(Qt::Converter::QString.wrap(unnamed_arg_0))
     @unwrap = result
+    end
+    
+    def self.from_string(string : String) : Uuid
+      Uuid.new(unwrap: Binding.bg_QUuid_fromString_STATIC_QStringView(Qt::Converter::QString.wrap(string)))
     end
     
     def initialize(unnamed_arg_0 : UInt8*)
@@ -51538,6 +51591,10 @@ module Qt
     
     def append(ba : Bytes) : Void
       Binding.bg_QCborStreamWriter_append_const_QByteArray_R(self, Qt::Converter::QByteArray.wrap(ba))
+    end
+    
+    def append(str : String) : Void
+      Binding.bg_QCborStreamWriter_append_QStringView(self, Qt::Converter::QString.wrap(str))
     end
     
     def append(tag : UInt64) : Void
@@ -64951,6 +65008,10 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QProcess_nullDevice_STATIC_())
     end
     
+    def self.split_command(command : String) : Enumerable(String)
+      StringList.new(unwrap: Binding.bg_QProcess_splitCommand_STATIC_QStringView(Qt::Converter::QString.wrap(command)))
+    end
+    
     def terminate() : Void
       Binding.bg_QProcess_terminate_(self)
     end
@@ -76884,6 +76945,26 @@ module Qt
       XmlStreamAttribute.new(unwrap: Binding.bg_QXmlStreamAttribute__OPERATOR_assign_const_QXmlStreamAttribute_R(self, unnamed_arg_0))
     end
     
+    def namespace_uri() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttribute_namespaceUri_(self))
+    end
+    
+    def name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttribute_name_(self))
+    end
+    
+    def qualified_name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttribute_qualifiedName_(self))
+    end
+    
+    def prefix() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttribute_prefix_(self))
+    end
+    
+    def value() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttribute_value_(self))
+    end
+    
     def default?() : Bool
       Binding.bg_QXmlStreamAttribute_isDefault_(self)
     end
@@ -76928,6 +77009,14 @@ module Qt
       XmlStreamNamespaceDeclaration.new(unwrap: Binding.bg_QXmlStreamNamespaceDeclaration__OPERATOR_assign_const_QXmlStreamNamespaceDeclaration_R(self, unnamed_arg_0))
     end
     
+    def prefix() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamNamespaceDeclaration_prefix_(self))
+    end
+    
+    def namespace_uri() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamNamespaceDeclaration_namespaceUri_(self))
+    end
+    
     def ==(other : XmlStreamNamespaceDeclaration) : Bool
       Binding.bg_QXmlStreamNamespaceDeclaration__OPERATOR_eq_const_QXmlStreamNamespaceDeclaration_R(self, other)
     end
@@ -76963,6 +77052,18 @@ module Qt
       XmlStreamNotationDeclaration.new(unwrap: Binding.bg_QXmlStreamNotationDeclaration__OPERATOR_assign_const_QXmlStreamNotationDeclaration_R(self, unnamed_arg_0))
     end
     
+    def name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamNotationDeclaration_name_(self))
+    end
+    
+    def system_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamNotationDeclaration_systemId_(self))
+    end
+    
+    def public_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamNotationDeclaration_publicId_(self))
+    end
+    
     def ==(other : XmlStreamNotationDeclaration) : Bool
       Binding.bg_QXmlStreamNotationDeclaration__OPERATOR_eq_const_QXmlStreamNotationDeclaration_R(self, other)
     end
@@ -76996,6 +77097,26 @@ module Qt
     
     def assign!(unnamed_arg_0 : XmlStreamEntityDeclaration) : XmlStreamEntityDeclaration
       XmlStreamEntityDeclaration.new(unwrap: Binding.bg_QXmlStreamEntityDeclaration__OPERATOR_assign_const_QXmlStreamEntityDeclaration_R(self, unnamed_arg_0))
+    end
+    
+    def name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamEntityDeclaration_name_(self))
+    end
+    
+    def notation_name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamEntityDeclaration_notationName_(self))
+    end
+    
+    def system_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamEntityDeclaration_systemId_(self))
+    end
+    
+    def public_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamEntityDeclaration_publicId_(self))
+    end
+    
+    def value() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamEntityDeclaration_value_(self))
     end
     
     def ==(other : XmlStreamEntityDeclaration) : Bool
@@ -77273,6 +77394,14 @@ module Qt
       Binding.bg_QXmlStreamReader_isStandaloneDocument_(self)
     end
     
+    def document_version() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_documentVersion_(self))
+    end
+    
+    def document_encoding() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_documentEncoding_(self))
+    end
+    
     def line_number() : Int64
       Binding.bg_QXmlStreamReader_lineNumber_(self)
     end
@@ -77293,6 +77422,34 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_readElementText_QXmlStreamReader__ReadElementTextBehaviour(self, behaviour))
     end
     
+    def name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_name_(self))
+    end
+    
+    def namespace_uri() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_namespaceUri_(self))
+    end
+    
+    def qualified_name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_qualifiedName_(self))
+    end
+    
+    def prefix() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_prefix_(self))
+    end
+    
+    def processing_instruction_target() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_processingInstructionTarget_(self))
+    end
+    
+    def processing_instruction_data() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_processingInstructionData_(self))
+    end
+    
+    def text() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_text_(self))
+    end
+    
     def namespace_declarations() : Enumerable(XmlStreamNamespaceDeclaration)
       Container_QVector_QXmlStreamNamespaceDeclaration_.new(unwrap: Binding.bg_QXmlStreamReader_namespaceDeclarations_(self))
     end
@@ -77311,6 +77468,18 @@ module Qt
     
     def entity_declarations() : Enumerable(XmlStreamEntityDeclaration)
       Container_QVector_QXmlStreamEntityDeclaration_.new(unwrap: Binding.bg_QXmlStreamReader_entityDeclarations_(self))
+    end
+    
+    def dtd_name() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_dtdName_(self))
+    end
+    
+    def dtd_public_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_dtdPublicId_(self))
+    end
+    
+    def dtd_system_id() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamReader_dtdSystemId_(self))
     end
     
     def entity_expansion_limit() : Int32
@@ -250697,122 +250866,6 @@ module Qt
     Binding.bg____qt5cr_reset_numeric_locale_STATIC_()
   end
   
-  def self.qt5cr_xml_reader_document_version(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_documentVersion_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_document_encoding(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_documentEncoding_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_name(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_name_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_namespace_uri(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_namespaceUri_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_qualified_name(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_qualifiedName_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_prefix(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_prefix_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_processing_instruction_target(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_processingInstructionTarget_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_processing_instruction_data(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_processingInstructionData_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_text(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_text_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_dtd_name(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_dtdName_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_dtd_public_id(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_dtdPublicId_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_reader_dtd_system_id(object : XmlStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_reader_dtdSystemId_STATIC_const_QXmlStreamReader_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamReader).null)))
-  end
-  
-  def self.qt5cr_xml_attribute_namespace_uri(object : XmlStreamAttribute) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attribute_namespaceUri_STATIC_const_QXmlStreamAttribute_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttribute).null)))
-  end
-  
-  def self.qt5cr_xml_attribute_name(object : XmlStreamAttribute) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attribute_name_STATIC_const_QXmlStreamAttribute_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttribute).null)))
-  end
-  
-  def self.qt5cr_xml_attribute_qualified_name(object : XmlStreamAttribute) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attribute_qualifiedName_STATIC_const_QXmlStreamAttribute_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttribute).null)))
-  end
-  
-  def self.qt5cr_xml_attribute_prefix(object : XmlStreamAttribute) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attribute_prefix_STATIC_const_QXmlStreamAttribute_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttribute).null)))
-  end
-  
-  def self.qt5cr_xml_attribute_value(object : XmlStreamAttribute) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attribute_value_STATIC_const_QXmlStreamAttribute_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttribute).null)))
-  end
-  
-  def self.qt5cr_xml_namespace_declaration_prefix(object : XmlStreamNamespaceDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_namespace_declaration_prefix_STATIC_const_QXmlStreamNamespaceDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamNamespaceDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_namespace_declaration_namespace_uri(object : XmlStreamNamespaceDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_namespace_declaration_namespaceUri_STATIC_const_QXmlStreamNamespaceDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamNamespaceDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_notation_declaration_name(object : XmlStreamNotationDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_notation_declaration_name_STATIC_const_QXmlStreamNotationDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamNotationDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_notation_declaration_system_id(object : XmlStreamNotationDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_notation_declaration_systemId_STATIC_const_QXmlStreamNotationDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamNotationDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_notation_declaration_public_id(object : XmlStreamNotationDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_notation_declaration_publicId_STATIC_const_QXmlStreamNotationDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamNotationDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_entity_declaration_name(object : XmlStreamEntityDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_entity_declaration_name_STATIC_const_QXmlStreamEntityDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamEntityDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_entity_declaration_notation_name(object : XmlStreamEntityDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_entity_declaration_notationName_STATIC_const_QXmlStreamEntityDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamEntityDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_entity_declaration_system_id(object : XmlStreamEntityDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_entity_declaration_systemId_STATIC_const_QXmlStreamEntityDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamEntityDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_entity_declaration_public_id(object : XmlStreamEntityDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_entity_declaration_publicId_STATIC_const_QXmlStreamEntityDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamEntityDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_entity_declaration_value(object : XmlStreamEntityDeclaration) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_entity_declaration_value_STATIC_const_QXmlStreamEntityDeclaration_X((object.try(&.to_unsafe) || Pointer(Binding::QXmlStreamEntityDeclaration).null)))
-  end
-  
-  def self.qt5cr_xml_attributes_value(attributes : XmlStreamAttributes, qualified_name : String) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R((attributes.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttributes).null), Qt::Converter::QString.wrap(qualified_name)))
-  end
-  
-  def self.qt5cr_xml_attributes_value(attributes : XmlStreamAttributes, namespace_uri : String, name : String) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R_const_QString_R((attributes.try(&.to_unsafe) || Pointer(Binding::QXmlStreamAttributes).null), Qt::Converter::QString.wrap(namespace_uri), Qt::Converter::QString.wrap(name)))
-  end
-  
   def self.qt5cr_data_stream_read_string(stream : DataStream) : String
     Qt::Converter::QString.unwrap(Binding.bg____qt5cr_data_stream_read_string_STATIC_QDataStream_X((stream.try(&.to_unsafe) || Pointer(Binding::QDataStream).null)))
   end
@@ -255143,6 +255196,14 @@ module Qt
     def initialize()
       result = Binding.bg_QXmlStreamAttributes__CONSTRUCT_()
     @unwrap = result
+    end
+    
+    def value(namespace_uri : String, name : String) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttributes_value_const_QString_R_const_QString_R(self, Qt::Converter::QString.wrap(namespace_uri), Qt::Converter::QString.wrap(name)))
+    end
+    
+    def value(qualified_name : String) : String
+      Qt::Converter::QString.unwrap(Binding.bg_QXmlStreamAttributes_value_const_QString_R(self, Qt::Converter::QString.wrap(qualified_name)))
     end
     
     def append(namespace_uri : String, name : String, value : String) : Void

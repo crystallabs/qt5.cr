@@ -153,9 +153,27 @@ types: # Type rewrite rules
   # Qt's string views and regular expressions aren't wrapped: their overloads
   # would take opaque pointers nobody can build.  The view ones all have a
   # QString twin.
-  QStringView: { ignore: true }
-  QStringRef: { ignore: true }
-  QLatin1String: { ignore: true }
+  QStringView: &string_view # A view of a temporary QString, which lives for the call
+    converter: Qt::Converter::QString
+    crystal_type: String
+    cpp_type: CrystalString
+    binding_type: CrystalString
+    to_cpp: "qt5cr_string_view(%)" # Holds the QString, see ext/converters.hpp
+    from_cpp: "qstring_to_crystal(%.toString())"
+    kind: Struct
+    builtin: true
+    pass_by: Value
+    wrapper_pass_by: Value
+    shadowed_by: [QString] # Drop the overload where one takes a QString
+  QStringRef: # A reference into a temporary QString, held by qt5cr_string_ref
+    <<: *string_view
+    to_cpp: "qt5cr_string_ref(%)"
+    shadowed_by: [QString, QStringView]
+  QLatin1String: # A view of a temporary Latin-1 QByteArray, likewise
+    <<: *string_view
+    to_cpp: "qt5cr_latin1_string(%)"
+    from_cpp: "qstring_to_crystal(QString(%))"
+    shadowed_by: [QString, QStringView, QStringRef]
   QRegExp: { ignore: true } # QRegularExpression is wrapped instead
 
   # Ignore private data structures
@@ -342,6 +360,9 @@ types: # Type rewrite rules
     declare_methods:
       - "bool try_lock_for(std::chrono::milliseconds duration)"
   QRecursiveMutex: *try_lock_for
+  QRegularExpression:
+    ignore_methods: # The match keeps the view of the temporary QString: use match(String)
+      - "/^(match|globalMatch)\\((const QStringRef &|QStringView)/"
   QTextDecoder:
     ignore_methods:
       # Writes the string through the pointer, like the overload returning

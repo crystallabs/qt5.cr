@@ -6,8 +6,6 @@ functions:
     destination: "::"
   "^qt5cr_reset_numeric_locale":
     destination: "::"
-  "^qt5cr_xml_\\w+$": # See ext/xml_helper.hpp
-    destination: "::"
   "^qt5cr_data_stream_\\w+$": # See ext/data_stream_helper.hpp
     destination: "::"
   "^qt5cr_invoke_method$": # See ext/meta_helper.hpp

@@ -17,12 +17,4 @@ module Qt
       Qt.qt5cr_cbor_read_all_byte_array(self)
     end
   end
-
-  class CborStreamWriter
-    # Appends *string* as a text string.  Qt 5's overloads take a
-    # `QStringView` or `QLatin1String`, which aren't wrapped.
-    def append(string : String) : Void
-      append_text_string(string.to_unsafe, string.bytesize.to_i64)
-    end
-  end
 end

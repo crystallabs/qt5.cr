@@ -4,7 +4,6 @@
 #include <QtGui/QtGui>
 #include <QtWidgets/QtWidgets>
 #include <locale_helper.hpp>
-#include <xml_helper.hpp>
 #include <data_stream_helper.hpp>
 #include <meta_helper.hpp>
 #include <cbor_helper.hpp>
@@ -539,6 +538,10 @@ extern "C" void bg_QStringMatcher_setCaseSensitivity_Qt__CaseSensitivity(QString
 
 extern "C" int bg_QStringMatcher_indexIn_const_QString_R_int(QStringMatcher * _self_, const CrystalString str, int from) {
   return _self_->indexIn(([&]() { auto &&bg_value = (str); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), from);
+}
+
+extern "C" qsizetype bg_QStringMatcher_indexIn_QStringView_qsizetype(QStringMatcher * _self_, CrystalString str, qsizetype from) {
+  return _self_->indexIn(qt5cr_string_view(str), from);
 }
 
 extern "C" CrystalString bg_QStringMatcher_pattern_(QStringMatcher * _self_) {
@@ -7546,12 +7549,20 @@ extern "C" CrystalString bg_QLocale_toString_const_QDateTime_R_QLocale__FormatTy
   return qstring_to_crystal(_self_->toString(dateTime, format));
 }
 
+extern "C" CrystalString bg_QLocale_toString_const_QDate_R_QStringView_QCalendar(QLocale * _self_, const QDate & date, CrystalString formatStr, QCalendar & cal) {
+  return qstring_to_crystal(_self_->toString(date, qt5cr_string_view(formatStr), cal));
+}
+
 extern "C" CrystalString bg_QLocale_toString_const_QDate_R_QLocale__FormatType_QCalendar(QLocale * _self_, const QDate & date, QLocale::FormatType format, QCalendar & cal) {
   return qstring_to_crystal(_self_->toString(date, format, cal));
 }
 
 extern "C" CrystalString bg_QLocale_toString_const_QDateTime_R_QLocale__FormatType_QCalendar(QLocale * _self_, const QDateTime & dateTime, QLocale::FormatType format, QCalendar & cal) {
   return qstring_to_crystal(_self_->toString(dateTime, format, cal));
+}
+
+extern "C" CrystalString bg_QLocale_toString_const_QDateTime_R_QStringView_QCalendar(QLocale * _self_, const QDateTime & dateTime, CrystalString formatStr, QCalendar & cal) {
+  return qstring_to_crystal(_self_->toString(dateTime, qt5cr_string_view(formatStr), cal));
 }
 
 extern "C" CrystalString bg_QLocale_dateFormat_QLocale__FormatType(QLocale * _self_, QLocale::FormatType format) {
@@ -7846,6 +7857,10 @@ extern "C" QCalendar * bg_QCalendar__CONSTRUCT_QCalendar__System(QCalendar::Syst
   return new (UseGC) CrystalGCWrapper<QCalendar>(system);
 }
 
+extern "C" QCalendar * bg_QCalendar__CONSTRUCT_QStringView(CrystalString name) {
+  return new (UseGC) CrystalGCWrapper<QCalendar>(qt5cr_string_view(name));
+}
+
 extern "C" bool bg_QCalendar_isValid_(QCalendar * _self_) {
   return _self_->isValid();
 }
@@ -7940,6 +7955,10 @@ extern "C" CrystalString bg_QCalendar_weekDayName_const_QLocale_R_int_QLocale__F
 
 extern "C" CrystalString bg_QCalendar_standaloneWeekDayName_const_QLocale_R_int_QLocale__FormatType(QCalendar * _self_, const QLocale & locale, int day, QLocale::FormatType format) {
   return qstring_to_crystal(_self_->standaloneWeekDayName(locale, day, format));
+}
+
+extern "C" CrystalString bg_QCalendar_dateTimeToString_QStringView_const_QDateTime_R_const_QDate_R_const_QTime_R_const_QLocale_R(QCalendar * _self_, CrystalString format, const QDateTime & datetime, const QDate & dateOnly, const QTime & timeOnly, const QLocale & locale) {
+  return qstring_to_crystal(_self_->dateTimeToString(qt5cr_string_view(format), datetime, dateOnly, timeOnly, locale));
 }
 
 extern "C" QList<QString> * bg_QCalendar_availableCalendars_STATIC_() {
@@ -9037,8 +9056,24 @@ extern "C" CrystalString bg_QRegularExpressionMatch_captured_int(QRegularExpress
   return qstring_to_crystal(_self_->captured(nth));
 }
 
+extern "C" CrystalString bg_QRegularExpressionMatch_capturedRef_int(QRegularExpressionMatch * _self_, int nth) {
+  return qstring_to_crystal(_self_->capturedRef(nth).toString());
+}
+
+extern "C" CrystalString bg_QRegularExpressionMatch_capturedView_int(QRegularExpressionMatch * _self_, int nth) {
+  return qstring_to_crystal(_self_->capturedView(nth).toString());
+}
+
 extern "C" CrystalString bg_QRegularExpressionMatch_captured_const_QString_R(QRegularExpressionMatch * _self_, const CrystalString name) {
   return qstring_to_crystal(_self_->captured(([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
+}
+
+extern "C" CrystalString bg_QRegularExpressionMatch_capturedRef_const_QString_R(QRegularExpressionMatch * _self_, const CrystalString name) {
+  return qstring_to_crystal(_self_->capturedRef(([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())).toString());
+}
+
+extern "C" CrystalString bg_QRegularExpressionMatch_capturedView_QStringView(QRegularExpressionMatch * _self_, CrystalString name) {
+  return qstring_to_crystal(_self_->capturedView(qt5cr_string_view(name)).toString());
 }
 
 extern "C" QList<QString> * bg_QRegularExpressionMatch_capturedTexts_(QRegularExpressionMatch * _self_) {
@@ -9447,6 +9482,10 @@ extern "C" QUuid * bg_QUuid__CONSTRUCT_uint_ushort_ushort_uchar_uchar_uchar_ucha
 
 extern "C" QUuid * bg_QUuid__CONSTRUCT_const_QString_R(const CrystalString unnamed_arg_0) {
   return new (UseGC) CrystalGCWrapper<QUuid>(([&]() { auto &&bg_value = (unnamed_arg_0); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+}
+
+extern "C" QUuid * bg_QUuid_fromString_STATIC_QStringView(CrystalString string) {
+  return new (UseGC, bindgen_gc_finalizer<QUuid>()) QUuid (QUuid::fromString(qt5cr_string_view(string)));
 }
 
 extern "C" QUuid * bg_QUuid__CONSTRUCT_const_char_X(const char * unnamed_arg_0) {
@@ -11055,6 +11094,10 @@ extern "C" void bg_QCborStreamWriter_append_QCborNegativeInteger(QCborStreamWrit
 
 extern "C" void bg_QCborStreamWriter_append_const_QByteArray_R(QCborStreamWriter * _self_, const CrystalString ba) {
   _self_->append(([&]() { auto &&bg_value = (ba); return QByteArray(bg_value.ptr, bg_value.size); }()));
+}
+
+extern "C" void bg_QCborStreamWriter_append_QStringView(QCborStreamWriter * _self_, CrystalString str) {
+  _self_->append(qt5cr_string_view(str));
 }
 
 extern "C" void bg_QCborStreamWriter_append_QCborTag(QCborStreamWriter * _self_, quint64 tag) {
@@ -20926,6 +20969,10 @@ extern "C" CrystalString bg_QProcess_nullDevice_STATIC_() {
   return qstring_to_crystal(QProcess::nullDevice());
 }
 
+extern "C" QList<QString> * bg_QProcess_splitCommand_STATIC_QStringView(CrystalString command) {
+  return new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QProcess::splitCommand(qt5cr_string_view(command)));
+}
+
 extern "C" void bg_QProcess_terminate_(QProcess * _self_) {
   _self_->terminate();
 }
@@ -29034,6 +29081,26 @@ extern "C" QXmlStreamAttribute * bg_QXmlStreamAttribute__OPERATOR_assign_const_Q
   return &(((*_self_) = (unnamed_arg_0)));
 }
 
+extern "C" CrystalString bg_QXmlStreamAttribute_namespaceUri_(QXmlStreamAttribute * _self_) {
+  return qstring_to_crystal(_self_->namespaceUri().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamAttribute_name_(QXmlStreamAttribute * _self_) {
+  return qstring_to_crystal(_self_->name().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamAttribute_qualifiedName_(QXmlStreamAttribute * _self_) {
+  return qstring_to_crystal(_self_->qualifiedName().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamAttribute_prefix_(QXmlStreamAttribute * _self_) {
+  return qstring_to_crystal(_self_->prefix().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamAttribute_value_(QXmlStreamAttribute * _self_) {
+  return qstring_to_crystal(_self_->value().toString());
+}
+
 extern "C" bool bg_QXmlStreamAttribute_isDefault_(QXmlStreamAttribute * _self_) {
   return _self_->isDefault();
 }
@@ -29048,6 +29115,14 @@ extern "C" bool bg_QXmlStreamAttribute__OPERATOR_ne_const_QXmlStreamAttribute_R(
 
 extern "C" QXmlStreamAttributes * bg_QXmlStreamAttributes__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QXmlStreamAttributes>();
+}
+
+extern "C" CrystalString bg_QXmlStreamAttributes_value_const_QString_R_const_QString_R(QXmlStreamAttributes * _self_, const CrystalString namespaceUri, const CrystalString name) {
+  return qstring_to_crystal(_self_->value(([&]() { auto &&bg_value = (namespaceUri); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())).toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamAttributes_value_const_QString_R(QXmlStreamAttributes * _self_, const CrystalString qualifiedName) {
+  return qstring_to_crystal(_self_->value(([&]() { auto &&bg_value = (qualifiedName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())).toString());
 }
 
 extern "C" void bg_QXmlStreamAttributes_append_const_QString_R_const_QString_R_const_QString_R(QXmlStreamAttributes * _self_, const CrystalString namespaceUri, const CrystalString name, const CrystalString value) {
@@ -29098,6 +29173,14 @@ extern "C" QXmlStreamNamespaceDeclaration * bg_QXmlStreamNamespaceDeclaration__O
   return &(((*_self_) = (unnamed_arg_0)));
 }
 
+extern "C" CrystalString bg_QXmlStreamNamespaceDeclaration_prefix_(QXmlStreamNamespaceDeclaration * _self_) {
+  return qstring_to_crystal(_self_->prefix().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamNamespaceDeclaration_namespaceUri_(QXmlStreamNamespaceDeclaration * _self_) {
+  return qstring_to_crystal(_self_->namespaceUri().toString());
+}
+
 extern "C" bool bg_QXmlStreamNamespaceDeclaration__OPERATOR_eq_const_QXmlStreamNamespaceDeclaration_R(QXmlStreamNamespaceDeclaration * _self_, const QXmlStreamNamespaceDeclaration & other) {
   return ((*_self_) == (other));
 }
@@ -29118,6 +29201,18 @@ extern "C" QXmlStreamNotationDeclaration * bg_QXmlStreamNotationDeclaration__OPE
   return &(((*_self_) = (unnamed_arg_0)));
 }
 
+extern "C" CrystalString bg_QXmlStreamNotationDeclaration_name_(QXmlStreamNotationDeclaration * _self_) {
+  return qstring_to_crystal(_self_->name().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamNotationDeclaration_systemId_(QXmlStreamNotationDeclaration * _self_) {
+  return qstring_to_crystal(_self_->systemId().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamNotationDeclaration_publicId_(QXmlStreamNotationDeclaration * _self_) {
+  return qstring_to_crystal(_self_->publicId().toString());
+}
+
 extern "C" bool bg_QXmlStreamNotationDeclaration__OPERATOR_eq_const_QXmlStreamNotationDeclaration_R(QXmlStreamNotationDeclaration * _self_, const QXmlStreamNotationDeclaration & other) {
   return ((*_self_) == (other));
 }
@@ -29136,6 +29231,26 @@ extern "C" QXmlStreamEntityDeclaration * bg_QXmlStreamEntityDeclaration__COPY_co
 
 extern "C" QXmlStreamEntityDeclaration * bg_QXmlStreamEntityDeclaration__OPERATOR_assign_const_QXmlStreamEntityDeclaration_R(QXmlStreamEntityDeclaration * _self_, const QXmlStreamEntityDeclaration & unnamed_arg_0) {
   return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" CrystalString bg_QXmlStreamEntityDeclaration_name_(QXmlStreamEntityDeclaration * _self_) {
+  return qstring_to_crystal(_self_->name().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamEntityDeclaration_notationName_(QXmlStreamEntityDeclaration * _self_) {
+  return qstring_to_crystal(_self_->notationName().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamEntityDeclaration_systemId_(QXmlStreamEntityDeclaration * _self_) {
+  return qstring_to_crystal(_self_->systemId().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamEntityDeclaration_publicId_(QXmlStreamEntityDeclaration * _self_) {
+  return qstring_to_crystal(_self_->publicId().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamEntityDeclaration_value_(QXmlStreamEntityDeclaration * _self_) {
+  return qstring_to_crystal(_self_->value().toString());
 }
 
 extern "C" bool bg_QXmlStreamEntityDeclaration__OPERATOR_eq_const_QXmlStreamEntityDeclaration_R(QXmlStreamEntityDeclaration * _self_, const QXmlStreamEntityDeclaration & other) {
@@ -29329,6 +29444,14 @@ extern "C" bool bg_QXmlStreamReader_isStandaloneDocument_(QXmlStreamReader * _se
   return _self_->isStandaloneDocument();
 }
 
+extern "C" CrystalString bg_QXmlStreamReader_documentVersion_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->documentVersion().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_documentEncoding_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->documentEncoding().toString());
+}
+
 extern "C" qint64 bg_QXmlStreamReader_lineNumber_(QXmlStreamReader * _self_) {
   return _self_->lineNumber();
 }
@@ -29349,6 +29472,34 @@ extern "C" CrystalString bg_QXmlStreamReader_readElementText_QXmlStreamReader__R
   return qstring_to_crystal(_self_->readElementText(behaviour));
 }
 
+extern "C" CrystalString bg_QXmlStreamReader_name_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->name().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_namespaceUri_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->namespaceUri().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_qualifiedName_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->qualifiedName().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_prefix_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->prefix().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_processingInstructionTarget_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->processingInstructionTarget().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_processingInstructionData_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->processingInstructionData().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_text_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->text().toString());
+}
+
 extern "C" Container_QVector_QXmlStreamNamespaceDeclaration_ * bg_QXmlStreamReader_namespaceDeclarations_(QXmlStreamReader * _self_) {
   return new (UseGC, bindgen_gc_finalizer<Container_QVector_QXmlStreamNamespaceDeclaration_>()) Container_QVector_QXmlStreamNamespaceDeclaration_ (_self_->namespaceDeclarations());
 }
@@ -29367,6 +29518,18 @@ extern "C" Container_QVector_QXmlStreamNotationDeclaration_ * bg_QXmlStreamReade
 
 extern "C" Container_QVector_QXmlStreamEntityDeclaration_ * bg_QXmlStreamReader_entityDeclarations_(QXmlStreamReader * _self_) {
   return new (UseGC, bindgen_gc_finalizer<Container_QVector_QXmlStreamEntityDeclaration_>()) Container_QVector_QXmlStreamEntityDeclaration_ (_self_->entityDeclarations());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_dtdName_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->dtdName().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_dtdPublicId_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->dtdPublicId().toString());
+}
+
+extern "C" CrystalString bg_QXmlStreamReader_dtdSystemId_(QXmlStreamReader * _self_) {
+  return qstring_to_crystal(_self_->dtdSystemId().toString());
 }
 
 extern "C" int bg_QXmlStreamReader_entityExpansionLimit_(QXmlStreamReader * _self_) {
@@ -145582,122 +145745,6 @@ extern "C" QTextStreamManipulator * bg____qSetRealNumberPrecision_STATIC_int(int
 
 extern "C" void bg____qt5cr_reset_numeric_locale_STATIC_() {
   ::qt5cr_reset_numeric_locale();
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_documentVersion_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_documentVersion(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_documentEncoding_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_documentEncoding(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_name_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_name(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_namespaceUri_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_namespaceUri(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_qualifiedName_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_qualifiedName(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_prefix_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_prefix(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_processingInstructionTarget_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_processingInstructionTarget(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_processingInstructionData_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_processingInstructionData(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_text_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_text(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_dtdName_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_dtdName(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_dtdPublicId_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_dtdPublicId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_reader_dtdSystemId_STATIC_const_QXmlStreamReader_X(const QXmlStreamReader * object) {
-  return qstring_to_crystal(::qt5cr_xml_reader_dtdSystemId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attribute_namespaceUri_STATIC_const_QXmlStreamAttribute_X(const QXmlStreamAttribute * object) {
-  return qstring_to_crystal(::qt5cr_xml_attribute_namespaceUri(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attribute_name_STATIC_const_QXmlStreamAttribute_X(const QXmlStreamAttribute * object) {
-  return qstring_to_crystal(::qt5cr_xml_attribute_name(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attribute_qualifiedName_STATIC_const_QXmlStreamAttribute_X(const QXmlStreamAttribute * object) {
-  return qstring_to_crystal(::qt5cr_xml_attribute_qualifiedName(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attribute_prefix_STATIC_const_QXmlStreamAttribute_X(const QXmlStreamAttribute * object) {
-  return qstring_to_crystal(::qt5cr_xml_attribute_prefix(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attribute_value_STATIC_const_QXmlStreamAttribute_X(const QXmlStreamAttribute * object) {
-  return qstring_to_crystal(::qt5cr_xml_attribute_value(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_namespace_declaration_prefix_STATIC_const_QXmlStreamNamespaceDeclaration_X(const QXmlStreamNamespaceDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_namespace_declaration_prefix(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_namespace_declaration_namespaceUri_STATIC_const_QXmlStreamNamespaceDeclaration_X(const QXmlStreamNamespaceDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_namespace_declaration_namespaceUri(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_notation_declaration_name_STATIC_const_QXmlStreamNotationDeclaration_X(const QXmlStreamNotationDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_notation_declaration_name(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_notation_declaration_systemId_STATIC_const_QXmlStreamNotationDeclaration_X(const QXmlStreamNotationDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_notation_declaration_systemId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_notation_declaration_publicId_STATIC_const_QXmlStreamNotationDeclaration_X(const QXmlStreamNotationDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_notation_declaration_publicId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_entity_declaration_name_STATIC_const_QXmlStreamEntityDeclaration_X(const QXmlStreamEntityDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_entity_declaration_name(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_entity_declaration_notationName_STATIC_const_QXmlStreamEntityDeclaration_X(const QXmlStreamEntityDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_entity_declaration_notationName(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_entity_declaration_systemId_STATIC_const_QXmlStreamEntityDeclaration_X(const QXmlStreamEntityDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_entity_declaration_systemId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_entity_declaration_publicId_STATIC_const_QXmlStreamEntityDeclaration_X(const QXmlStreamEntityDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_entity_declaration_publicId(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_entity_declaration_value_STATIC_const_QXmlStreamEntityDeclaration_X(const QXmlStreamEntityDeclaration * object) {
-  return qstring_to_crystal(::qt5cr_xml_entity_declaration_value(object));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R(const QXmlStreamAttributes * attributes, const CrystalString qualifiedName) {
-  return qstring_to_crystal(::qt5cr_xml_attributes_value(attributes, ([&]() { auto &&bg_value = (qualifiedName); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
-}
-
-extern "C" CrystalString bg____qt5cr_xml_attributes_value_STATIC_const_QXmlStreamAttributes_X_const_QString_R_const_QString_R(const QXmlStreamAttributes * attributes, const CrystalString namespaceUri, const CrystalString name) {
-  return qstring_to_crystal(::qt5cr_xml_attributes_value(attributes, ([&]() { auto &&bg_value = (namespaceUri); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), ([&]() { auto &&bg_value = (name); return QString::fromUtf8(bg_value.ptr, bg_value.size); }())));
 }
 
 extern "C" CrystalString bg____qt5cr_data_stream_read_string_STATIC_QDataStream_X(QDataStream * stream) {
