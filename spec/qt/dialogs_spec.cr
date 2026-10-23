@@ -92,6 +92,35 @@ describe Qt::ErrorMessage do
   end
 end
 
+describe Qt::MessageBox do
+  it "holds text and standard buttons" do
+    box = Qt::MessageBox.new
+    box.text = "Save the changes?"
+    box.text.should eq("Save the changes?")
+    box.icon = Qt::MessageBox::Icon::Question
+    box.icon.should eq(Qt::MessageBox::Icon::Question)
+    box.standard_buttons = Qt::MessageBox::StandardButtons::Save | Qt::MessageBox::StandardButtons::Discard
+    box.standard_buttons.should eq(Qt::MessageBox::StandardButtons::Save | Qt::MessageBox::StandardButtons::Discard)
+    box.buttons.size.should eq(2)
+    box.button(Qt::MessageBox::StandardButton::Cancel).should be_nil
+  end
+
+  it "takes custom buttons, a default and a check box" do
+    box = Qt::MessageBox.new
+    custom = Qt::PushButton.new("Later")
+    box.add_button(custom, Qt::MessageBox::ButtonRole::RejectRole)
+    box.button_role(custom).should eq(Qt::MessageBox::ButtonRole::RejectRole)
+    ok = box.add_button(Qt::MessageBox::StandardButton::Ok).not_nil!
+    box.default_button = ok
+    box.default_button.should eq(ok)
+    box.escape_button = custom
+    box.escape_button.should eq(custom)
+    check = Qt::CheckBox.new("Don't ask again")
+    box.check_box = check
+    box.check_box.should eq(check)
+  end
+end
+
 describe Qt::Wizard do
   it "holds pages" do
     wizard = Qt::Wizard.new

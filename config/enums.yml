@@ -238,6 +238,7 @@ enums:
   "QLibraryInfo::LibraryLocation": LibraryInfo::LibraryLocation
   "QLibraryInfo::PathGroup": LibraryInfo::PathGroup
   "QMimeDatabase::MatchMode": MimeDatabase::MatchMode
+  "QClipboard::Mode": Clipboard::Mode
   "QOperatingSystemVersion::OSType": OperatingSystemVersion::OSType
   "QSysInfo::Sizes": SysInfo::Sizes
   "QSysInfo::Endian": SysInfo::Endian
@@ -357,6 +358,10 @@ enums:
   "QDialogButtonBox::StandardButton": DialogButtonBox::StandardButton
   "QDialogButtonBox::StandardButtons": DialogButtonBox::StandardButtons
   "QDialogButtonBox::ButtonLayout": DialogButtonBox::ButtonLayout
+  "QMessageBox::Icon": MessageBox::Icon
+  "QMessageBox::ButtonRole": MessageBox::ButtonRole
+  "QMessageBox::StandardButton": MessageBox::StandardButton
+  "QMessageBox::StandardButtons": MessageBox::StandardButtons
   "QMdiArea::AreaOption": MdiArea::AreaOption
   "QMdiArea::AreaOptions": MdiArea::AreaOptions
   "QMdiArea::WindowOrder": MdiArea::WindowOrder
@@ -508,6 +513,15 @@ enums:
   "QLibrary::LoadHint": Library::LoadHint
   "QLibrary::LoadHints": Library::LoadHints
   "QResource::Compression": Resource::Compression
+  "QSettings::Format": Settings::Format
+  "QSettings::Scope": Settings::Scope
+  "QSettings::Status": Settings::Status
+  "QProcess::ProcessError": Process::ProcessError
+  "QProcess::ProcessState": Process::ProcessState
+  "QProcess::ProcessChannel": Process::ProcessChannel
+  "QProcess::ProcessChannelMode": Process::ProcessChannelMode
+  "QProcess::InputChannelMode": Process::InputChannelMode
+  "QProcess::ExitStatus": Process::ExitStatus
   QtMsgType: MsgType # QLoggingCategory
   # Meta-objects and CBOR
   "QMetaMethod::Access": MetaMethod::Access

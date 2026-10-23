@@ -377,9 +377,16 @@ see the comments there:
   bindgen splits the overloads a default argument can't express off the
   pure virtuals, calling C++ with the default.
 * `QAbstractTextDocumentLayout::PaintContext` and `Selection`,
-  `QTextLayout::FormatRange`, bare structs of Qt classes, are wrapped as
-  classes with property methods: `Qt::TextDocumentLayoutPaintContext`,
-  `Qt::TextLayoutFormatRange`.
+  `QTextLayout::FormatRange`, `QTextEdit::ExtraSelection`,
+  `QFormLayout::TakeRowResult` and `QTextOption::Tab`, bare structs of Qt
+  classes, are wrapped as classes with property methods:
+  `Qt::TextDocumentLayoutPaintContext`, `Qt::TextLayoutFormatRange`,
+  `Qt::TextEditExtraSelection.new(cursor: cursor, format: format)`,
+  `form_layout.take_row(0).field_item`, `Qt::TextOptionTab.new(40.0,
+  Qt::TextOption::TabType::RightTab)`.
+* `QSettings::registerFormat` is dropped, as its `ReadFunc` and `WriteFunc`
+  are C function pointers; `Qt::Settings::Format::IniFormat` and the native
+  format need none.
 * `QTextFrame::iterator` and `QTextBlock::iterator` are Crystal `Iterator`s
   (`src/qt5/text_iterators.cr`): `frame.begin.each { |frame_or_block| }`,
   `block.begin.map(&.text)`.  `QFontDatabase` is an instance in Qt 5:

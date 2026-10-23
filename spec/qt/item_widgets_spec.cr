@@ -299,3 +299,53 @@ describe Qt::ItemDelegate do
     delegate.has_clipping?.should be_false
   end
 end
+
+describe Qt::TableWidget do
+  it "selects ranges" do
+    table = Qt::TableWidget.new(4, 3)
+    table.set_range_selected(Qt::TableWidgetSelectionRange.new(1, 0, 2, 1), true)
+    ranges = table.selected_ranges.to_a
+    ranges.size.should eq(1)
+    ranges.first.top_row.should eq(1)
+    ranges.first.bottom_row.should eq(2)
+    ranges.first.row_count.should eq(2)
+    ranges.first.column_count.should eq(2)
+  end
+end
+
+describe Qt::TextEdit do
+  it "holds extra selections" do
+    edit = Qt::TextEdit.new("highlight me")
+    cursor = edit.text_cursor
+    cursor.select(Qt::TextCursor::SelectionType::WordUnderCursor)
+    format = Qt::TextCharFormat.new
+    format.font_weight = Qt::Font::Weight::Bold.to_i
+    selection = Qt::TextEditExtraSelection.new(cursor: cursor, format: format)
+    edit.extra_selections = [selection]
+    selections = edit.extra_selections.to_a
+    selections.size.should eq(1)
+    selections.first.cursor.selected_text.should eq("highlight")
+    selections.first.format.font_weight.should eq(Qt::Font::Weight::Bold.to_i)
+  end
+
+  it "holds extra selections in a plain text edit" do
+    edit = Qt::PlainTextEdit.new("plain")
+    selection = Qt::TextEditExtraSelection.new
+    selection.cursor = edit.text_cursor
+    edit.extra_selections = [selection]
+    edit.extra_selections.to_a.size.should eq(1)
+  end
+end
+
+describe Qt::FormLayout do
+  it "takes rows out" do
+    layout = Qt::FormLayout.new
+    field = Qt::LineEdit.new
+    layout.add_row("Name", field)
+    layout.row_count.should eq(1)
+    result = layout.take_row(0)
+    layout.row_count.should eq(0)
+    result.field_item.not_nil!.widget.should eq(field)
+    result.label_item.not_nil!.widget.not_nil!.to?(Qt::Label).not_nil!.text.should eq("Name")
+  end
+end

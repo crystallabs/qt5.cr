@@ -132,6 +132,20 @@ describe Qt::TextLayout do
   end
 end
 
+describe Qt::TextOption do
+  it "holds tab stops" do
+    option = Qt::TextOption.new
+    option.tabs = [Qt::TextOptionTab.new(40.0, Qt::TextOption::TabType::RightTab),
+                   Qt::TextOptionTab.new(80.0, Qt::TextOption::TabType::DelimiterTab, '.')]
+    tabs = option.tabs.to_a
+    tabs.size.should eq(2)
+    tabs[0].position.should eq(40.0)
+    tabs[0].type.should eq(Qt::TextOption::TabType::RightTab)
+    tabs[1].delimiter.should eq('.')
+    tabs[1].should eq(Qt::TextOptionTab.new(80.0, Qt::TextOption::TabType::DelimiterTab, '.'))
+  end
+end
+
 describe Qt::TextDocument do
   it "holds tables and lists" do
     document = Qt::TextDocument.new

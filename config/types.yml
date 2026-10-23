@@ -177,11 +177,6 @@ types: # Type rewrite rules
   "QInputMethodEvent::Attribute": { ignore: true }
   "QList<QInputMethodEvent::Attribute>": { ignore: true }
 
-  "QList<QTextEdit::ExtraSelection>": { ignore: true }
-  "QList<QTextOption::Tab>": { ignore: true }
-  "QTextOption::Tab": { ignore: true }
-  "QFormLayout::TakeRowResult": { ignore: true }
-
   # Ignore private data structures
   QObjectPrivate: { ignore: true }
   QKeySequencePrivate: { ignore: true }
@@ -215,6 +210,12 @@ types: # Type rewrite rules
   # QVariantAnimation interpolators are too, and go through registerInterpolator.
   "QEasingCurve::EasingFunction": { ignore: true }
   "qreal (qreal)": { ignore: true }
+  # QSettings::registerFormat takes the ReadFunc and WriteFunc C function
+  # pointers; the INI and native formats need none.
+  "QSettings::ReadFunc": { ignore: true }
+  "QSettings::WriteFunc": { ignore: true }
+  "bool (QIODevice &, SettingsMap &)": { ignore: true }
+  "bool (QIODevice &, const SettingsMap &)": { ignore: true }
   "std::__1::function<void (const QString &, const QByteArray &)>":
     ignore: true
   "std::function<void (const QString &, const QByteArray &)>":

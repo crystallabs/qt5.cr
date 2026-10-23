@@ -38,6 +38,7 @@ classes:
   QInputDialog: InputDialog
   QProgressDialog: ProgressDialog
   QErrorMessage: ErrorMessage
+  QMessageBox: MessageBox
   QWizard: Wizard
   QWizardPage: WizardPage
   QDialogButtonBox: DialogButtonBox
@@ -105,6 +106,7 @@ classes:
   QTableView: TableView
   QTableWidget: TableWidget
   QTableWidgetItem: TableWidgetItem
+  QTableWidgetSelectionRange: TableWidgetSelectionRange
   QTreeView: TreeView
   QHeaderView: HeaderView
   QTreeWidget: TreeWidget
@@ -137,6 +139,7 @@ classes:
   QGridLayout: GridLayout
   QStackedLayout: StackedLayout
   QFormLayout: FormLayout
+  "QFormLayout::TakeRowResult": FormLayoutTakeRowResult
   QPalette: Palette
   QPoint: Point
   QPointF: PointF
@@ -145,9 +148,10 @@ classes:
   QKeySequence: KeySequence
   QLineEdit: LineEdit
   QTextEdit: TextEdit
+  "QTextEdit::ExtraSelection": TextEditExtraSelection
   QFileDialog: FileDialog
   QTextOption: TextOption
-  # "QTextOption::Tab": TextOptionTab
+  "QTextOption::Tab": TextOptionTab
   QTextDocument: TextDocument
   QTextCursor: TextCursor
   QCursor: Cursor
@@ -287,6 +291,7 @@ classes:
   QDesktopWidget: DesktopWidget
   QStandardPaths: StandardPaths
   QMimeData: MimeData
+  QClipboard: Clipboard
   QSizePolicy: SizePolicy
   QUrl: Url
   QScreen: Screen
@@ -430,6 +435,8 @@ classes:
   QBasicTimer: BasicTimer
   QSignalMapper: SignalMapper
   QProcessEnvironment: ProcessEnvironment
+  QProcess: Process
+  QSettings: Settings
   QBitArray: BitArray
   QJsonDocument: JsonDocument
   QJsonObject: JsonObject

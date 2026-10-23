@@ -104,6 +104,36 @@ describe "Qt::TemporaryFile" do
   end
 end
 
+describe "Qt::Settings" do
+  it "writes and reads an INI file" do
+    with_temp_dir do |root|
+      path = ::File.join(root, "app.ini")
+      settings = Qt::Settings.new(path, Qt::Settings::Format::IniFormat)
+      settings.format.should eq(Qt::Settings::Format::IniFormat)
+      settings.set_value("window/title", Qt.variant("Hello"))
+      settings.sync
+      settings.status.should eq(Qt::Settings::Status::NoError)
+      ::File.exists?(path).should be_true
+      ::File.read(path).should contain("title=Hello")
+      Qt::Settings.new(path, Qt::Settings::Format::IniFormat).value("window/title").to?(String).should eq("Hello")
+    end
+  end
+
+  it "groups keys" do
+    with_temp_dir do |root|
+      settings = Qt::Settings.new(::File.join(root, "app.ini"), Qt::Settings::Format::IniFormat)
+      settings.begin_group("window")
+      settings.set_value("width", Qt.variant(640))
+      settings.end_group
+      settings.contains("window/width").should be_true
+      settings.child_groups.to_a.should eq(["window"])
+      settings.value("missing", Qt.variant(1)).to?(Int32).should eq(1)
+      settings.remove("window")
+      settings.all_keys.to_a.should be_empty
+    end
+  end
+end
+
 describe "Qt::TemporaryDir" do
   it "creates a directory and removes it" do
     dir = Qt::TemporaryDir.new

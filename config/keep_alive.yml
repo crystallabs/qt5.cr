@@ -151,6 +151,12 @@ QTextEdit:
 QDrag:
   keep_alive:
     "^setMimeData$": true
+QClipboard:
+  keep_alive:
+    "^setMimeData$": [0]
+QProcess:
+  keep_alive:
+    "^setStandardOutputProcess$": true
 QGraphicsView:
   keep_alive:
     "^setScene$": true
@@ -274,6 +280,11 @@ QWizardPage:
 QDialogButtonBox:
   keep_alive:
     "^addButton$": true
+QMessageBox:
+  keep_alive:
+    "^setCheckBox$": true
+    "^addButton$": [0]
+    "^set(Default|Escape)Button$": true
 QMdiArea:
   keep_alive:
     "^addSubWindow$": [0]
