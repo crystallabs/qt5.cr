@@ -44,8 +44,7 @@ QStackedLayout:
 QObject:
   keep_alive:
     "^installEventFilter$": true
-  release:
-    "^removeEventFilter$": true
+  # No release of removeEventFilter: a filter is often installed on several objects
 QCoreApplication:
   keep_alive:
     "^postEvent$": [1]
@@ -62,8 +61,7 @@ QWidget:
     "^addAction$": true
     "^insertAction$": [1]
     "^set(Style|GraphicsEffect|FocusProxy)$": true
-  release:
-    "^removeAction$": true # For QMenu, QToolBar, QLineEdit too
+  # No release of removeAction: an action is often in several widgets, like a menu and a toolbar
 QApplication:
   keep_alive:
     "^setStyle$": true
@@ -199,8 +197,7 @@ QGraphicsItem:
   keep_alive:
     "^installSceneEventFilter$": true
     "^set(GraphicsEffect|Group)$": true
-  release:
-    "^removeSceneEventFilter$": true
+  # No release of removeSceneEventFilter: a filter is often installed on several items
 QGraphicsItemGroup:
   keep_alive:
     "^addToGroup$": true
@@ -214,8 +211,7 @@ QGraphicsWidget:
     "^addAction$": true
     "^insertAction$": [1]
     "^set(Layout|Style)$": true
-  release:
-    "^removeAction$": true
+  # No release of removeAction: an action is often in several widgets
 QGraphicsLinearLayout:
   keep_alive:
     "^addItem$": true
@@ -370,8 +366,7 @@ QProgressDialog:
 QActionGroup:
   keep_alive:
     "^addAction$": true
-  release:
-    "^removeAction$": true
+  # No release of removeAction: the action stays in its widgets
 QWidgetAction:
   keep_alive:
     "^setDefaultWidget$": true

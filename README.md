@@ -15,6 +15,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [String lists](#string-lists)
       * [Object lifetime](#object-lifetime)
       * [Threads](#threads)
+      * [Overriding virtual methods](#overriding-virtual-methods)
       * [Null pointers](#null-pointers)
       * [Downcasts](#downcasts)
    * [Developer perspective](#developer-perspective)
@@ -244,6 +245,32 @@ called (and a Crystal `Qt::Runnable` subclass can't be instantiated).  Use
 Crystal's own `Thread` or fibers for Crystal work.  The locks exclude Qt
 threads from Qt data: `mutex.lock`, `semaphore.acquire(2)`,
 `condition.wait(mutex, Qt::DeadlineTimer.new(100))`.
+
+## Overriding virtual methods
+
+A Crystal subclass of a wrapped class overrides its virtual methods by
+defining them, as `samples/virtual_override.cr` does; Qt calls the Crystal
+method.  `super` calls the C++ implementation of the class the Crystal class
+derives from, and so does the private `superclass` wrapper from any method:
+
+```crystal
+class Canvas < Qt::Widget
+  def mouse_press_event(event : Qt::MouseEvent) : Void
+    puts "pressed at #{event.pos.x}, #{event.pos.y}"
+    super # Same as `superclass.mouse_press_event(event)`
+  end
+end
+```
+
+An exception raised in an override, or in the block of a signal, can't unwind
+through the Qt code calling it: it goes to `Qt::BindgenHelper.on_exception`,
+which prints it with its backtrace to the standard error by default, and Qt
+receives a zero of the result type, `false` for an `event` override.  Replace
+the handler to log or collect them:
+
+```crystal
+Qt::BindgenHelper.on_exception = ->(exception : Exception) { Log.error(exception: exception) { "In a Qt callback" } }
+```
 
 ## Null pointers
 
