@@ -9181,8 +9181,8 @@ module Qt
     fun bg_QObject_CAST_Wizard_(_self_ : QObject*) : QWizard*
     fun bg_QObject_CAST_WizardPage_(_self_ : QObject*) : QWizardPage*
     fun bg_BgInherit_QObject_JUMPTABLE_BgJumptable_QObject_R(_self_ : QObject*, table : BgJumptable_QObject*) : Void
-    fun bg_QObject_CONNECT_destroyed_CrystalProc_void__QObject_X_(_self_ : QObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QObject_CONNECT_objectNameChanged_CrystalProc_void__const_QString_R_(_self_ : QObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QObject_CONNECT_destroyed_Qt__ConnectionType_CrystalProc_void__QObject_X_(_self_ : QObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QObject_CONNECT_objectNameChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QObject*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QObject*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QObject*, event : QTimerEvent*) : Void
@@ -9229,10 +9229,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractAnimation*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractAnimation*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractAnimation*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractAnimation_CONNECT_finished_CrystalProc_void_(_self_ : QAbstractAnimation*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractAnimation_CONNECT_stateChanged_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(_self_ : QAbstractAnimation*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractAnimation_CONNECT_currentLoopChanged_CrystalProc_void__int_(_self_ : QAbstractAnimation*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractAnimation_CONNECT_directionChanged_CrystalProc_void__QAbstractAnimation__Direction_(_self_ : QAbstractAnimation*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractAnimation_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractAnimation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractAnimation_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(_self_ : QAbstractAnimation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractAnimation_CONNECT_currentLoopChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QAbstractAnimation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractAnimation_CONNECT_directionChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__Direction_(_self_ : QAbstractAnimation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractAnimation_event_SUPER_QEvent_X(_self_ : QAbstractAnimation*, event : QEvent*) : Bool
     fun bg_QAbstractAnimation_updateState_SUPER_QAbstractAnimation__State_QAbstractAnimation__State(_self_ : QAbstractAnimation*, new_state : ::Qt::AbstractAnimation::State, old_state : ::Qt::AbstractAnimation::State) : Void
     fun bg_QAbstractAnimation_updateDirection_SUPER_QAbstractAnimation__Direction(_self_ : QAbstractAnimation*, direction : ::Qt::AbstractAnimation::Direction) : Void
@@ -9268,8 +9268,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAnimationDriver*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAnimationDriver*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAnimationDriver*, signal : QMetaMethod*) : Void
-    fun bg_QAnimationDriver_CONNECT_started_CrystalProc_void_(_self_ : QAnimationDriver*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAnimationDriver_CONNECT_stopped_CrystalProc_void_(_self_ : QAnimationDriver*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAnimationDriver_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(_self_ : QAnimationDriver*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAnimationDriver_CONNECT_stopped_Qt__ConnectionType_CrystalProc_void_(_self_ : QAnimationDriver*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAnimationDriver_advance_SUPER_(_self_ : QAnimationDriver*) : Void
     fun bg_QAnimationDriver_elapsed_SUPER_(_self_ : QAnimationDriver*) : Int64
     fun bg_QAnimationDriver_start_SUPER_(_self_ : QAnimationDriver*) : Void
@@ -9349,8 +9349,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractEventDispatcher*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractEventDispatcher*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractEventDispatcher*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_CrystalProc_void_(_self_ : QAbstractEventDispatcher*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractEventDispatcher_CONNECT_awake_CrystalProc_void_(_self_ : QAbstractEventDispatcher*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractEventDispatcher*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractEventDispatcher_CONNECT_awake_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractEventDispatcher*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractEventDispatcher_startingUp_SUPER_(_self_ : QAbstractEventDispatcher*) : Void
     fun bg_QAbstractEventDispatcher_closingDown_SUPER_(_self_ : QAbstractEventDispatcher*) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QAbstractEventDispatcher*, event : QEvent*) : Bool
@@ -9503,27 +9503,27 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractItemModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractItemModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractItemModel*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_headerDataChanged_CrystalProc_void__Qt__Orientation__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_CrystalProc_void_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_modelReset_CrystalProc_void_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_rowsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemModel_CONNECT_columnsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_headerDataChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_modelReset_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_rowsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemModel_CONNECT_columnsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(_self_ : QAbstractItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractItemModel_sibling_SUPER_int_int_const_QModelIndex_R(_self_ : QAbstractItemModel*, row : Int32, column : Int32, idx : QModelIndex*) : QModelIndex*
     fun bg_QAbstractItemModel_hasChildren_SUPER_const_QModelIndex_R(_self_ : QAbstractItemModel*, parent : QModelIndex*) : Bool
     fun bg_QAbstractItemModel_setData_SUPER_const_QModelIndex_R_const_QVariant_R_int(_self_ : QAbstractItemModel*, index : QModelIndex*, value : CrystalVariant, role : Int32) : Bool
@@ -9818,7 +9818,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractProxyModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractProxyModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractProxyModel*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractProxyModel_CONNECT_sourceModelChanged_CrystalProc_void_(_self_ : QAbstractProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractProxyModel_CONNECT_sourceModelChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractProxyModel_setSourceModel_SUPER_QAbstractItemModel_X(_self_ : QAbstractProxyModel*, source_model : QAbstractItemModel*) : Void
     fun bg_QAbstractProxyModel_mapSelectionToSource_SUPER_const_QItemSelection_R(_self_ : QAbstractProxyModel*, selection : QItemSelection*) : QItemSelection*
     fun bg_QAbstractProxyModel_mapSelectionFromSource_SUPER_const_QItemSelection_R(_self_ : QAbstractProxyModel*, selection : QItemSelection*) : QItemSelection*
@@ -10009,12 +10009,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QIODevice*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QIODevice*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QIODevice*, signal : QMetaMethod*) : Void
-    fun bg_QIODevice_CONNECT_readyRead_CrystalProc_void_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIODevice_CONNECT_channelReadyRead_CrystalProc_void__int_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIODevice_CONNECT_bytesWritten_CrystalProc_void__qint64_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIODevice_CONNECT_channelBytesWritten_CrystalProc_void__int__qint64_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIODevice_CONNECT_aboutToClose_CrystalProc_void_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIODevice_CONNECT_readChannelFinished_CrystalProc_void_(_self_ : QIODevice*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_readyRead_Qt__ConnectionType_CrystalProc_void_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_channelReadyRead_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_bytesWritten_Qt__ConnectionType_CrystalProc_void__qint64_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_channelBytesWritten_Qt__ConnectionType_CrystalProc_void__int__qint64_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_aboutToClose_Qt__ConnectionType_CrystalProc_void_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIODevice_CONNECT_readChannelFinished_Qt__ConnectionType_CrystalProc_void_(_self_ : QIODevice*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QIODevice_isSequential_SUPER_(_self_ : QIODevice*) : Bool
     fun bg_QIODevice_open_SUPER_QIODevice__OpenMode(_self_ : QIODevice*, mode : ::Qt::IODevice::OpenMode) : Bool
     fun bg_QIODevice_close_SUPER_(_self_ : QIODevice*) : Void
@@ -11223,11 +11223,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QCoreApplication*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QCoreApplication*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QCoreApplication*, signal : QMetaMethod*) : Void
-    fun bg_QCoreApplication_CONNECT_aboutToQuit_CrystalProc_void_(_self_ : QCoreApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCoreApplication_CONNECT_organizationNameChanged_CrystalProc_void_(_self_ : QCoreApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCoreApplication_CONNECT_organizationDomainChanged_CrystalProc_void_(_self_ : QCoreApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCoreApplication_CONNECT_applicationNameChanged_CrystalProc_void_(_self_ : QCoreApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCoreApplication_CONNECT_applicationVersionChanged_CrystalProc_void_(_self_ : QCoreApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCoreApplication_CONNECT_aboutToQuit_Qt__ConnectionType_CrystalProc_void_(_self_ : QCoreApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCoreApplication_CONNECT_organizationNameChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QCoreApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCoreApplication_CONNECT_organizationDomainChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QCoreApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCoreApplication_CONNECT_applicationNameChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QCoreApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCoreApplication_CONNECT_applicationVersionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QCoreApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QCoreApplication_notify_SUPER_QObject_X_QEvent_X(_self_ : QCoreApplication*, unnamed_arg_0 : QObject*, unnamed_arg_1 : QEvent*) : Bool
     fun bg_QCoreApplication_event_SUPER_QEvent_X(_self_ : QCoreApplication*, event : QEvent*) : Bool
     fun bg_QCoreApplication_compressEvent_SUPER_QEvent_X_QObject_X_QPostEventList_X(_self_ : QCoreApplication*, unnamed_arg_0 : QEvent*, receiver : QObject*, unnamed_arg_2 : QPostEventList*) : Bool
@@ -11974,8 +11974,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QFileSystemWatcher*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QFileSystemWatcher*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QFileSystemWatcher*, signal : QMetaMethod*) : Void
-    fun bg_QFileSystemWatcher_CONNECT_fileChanged_CrystalProc_void__const_QString_R_(_self_ : QFileSystemWatcher*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileSystemWatcher_CONNECT_directoryChanged_CrystalProc_void__const_QString_R_(_self_ : QFileSystemWatcher*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileSystemWatcher_CONNECT_fileChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileSystemWatcher*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileSystemWatcher_CONNECT_directoryChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileSystemWatcher*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QFileSystemWatcher*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QFileSystemWatcher*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QFileSystemWatcher*, event : QTimerEvent*) : Void
@@ -12171,11 +12171,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QItemSelectionModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QItemSelectionModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QItemSelectionModel*, signal : QMetaMethod*) : Void
-    fun bg_QItemSelectionModel_CONNECT_selectionChanged_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(_self_ : QItemSelectionModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QItemSelectionModel_CONNECT_currentChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QItemSelectionModel_CONNECT_currentRowChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QItemSelectionModel_CONNECT_currentColumnChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QItemSelectionModel_CONNECT_modelChanged_CrystalProc_void__QAbstractItemModel_X_(_self_ : QItemSelectionModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QItemSelectionModel_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(_self_ : QItemSelectionModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QItemSelectionModel_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QItemSelectionModel_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QItemSelectionModel_CONNECT_currentColumnChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(_self_ : QItemSelectionModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QItemSelectionModel_CONNECT_modelChanged_Qt__ConnectionType_CrystalProc_void__QAbstractItemModel_X_(_self_ : QItemSelectionModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QItemSelectionModel_setCurrentIndex_SUPER_const_QModelIndex_R_QItemSelectionModel__SelectionFlags(_self_ : QItemSelectionModel*, index : QModelIndex*, command : ::Qt::ItemSelectionModel::SelectionFlags) : Void
     fun bg_QItemSelectionModel_select_SUPER_const_QModelIndex_R_QItemSelectionModel__SelectionFlags(_self_ : QItemSelectionModel*, index : QModelIndex*, command : ::Qt::ItemSelectionModel::SelectionFlags) : Void
     fun bg_QItemSelectionModel_select_SUPER_const_QItemSelection_R_QItemSelectionModel__SelectionFlags(_self_ : QItemSelectionModel*, selection : QItemSelection*, command : ::Qt::ItemSelectionModel::SelectionFlags) : Void
@@ -13045,12 +13045,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QProcess*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QProcess*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QProcess*, signal : QMetaMethod*) : Void
-    fun bg_QProcess_CONNECT_started_CrystalProc_void_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QProcess_CONNECT_finished_CrystalProc_void__int__QProcess__ExitStatus_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QProcess_CONNECT_errorOccurred_CrystalProc_void__QProcess__ProcessError_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QProcess_CONNECT_stateChanged_CrystalProc_void__QProcess__ProcessState_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QProcess_CONNECT_readyReadStandardOutput_CrystalProc_void_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QProcess_CONNECT_readyReadStandardError_CrystalProc_void_(_self_ : QProcess*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int__QProcess__ExitStatus_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_errorOccurred_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessError_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessState_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_readyReadStandardOutput_Qt__ConnectionType_CrystalProc_void_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProcess_CONNECT_readyReadStandardError_Qt__ConnectionType_CrystalProc_void_(_self_ : QProcess*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QProcess_open_SUPER_QIODevice__OpenMode(_self_ : QProcess*, mode : ::Qt::IODevice::OpenMode) : Bool
     fun bg_QProcess_waitForReadyRead_SUPER_int(_self_ : QProcess*, msecs : Int32) : Bool
     fun bg_QProcess_waitForBytesWritten_SUPER_int(_self_ : QProcess*, msecs : Int32) : Bool
@@ -13110,7 +13110,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QVariantAnimation*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QVariantAnimation*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QVariantAnimation*, signal : QMetaMethod*) : Void
-    fun bg_QVariantAnimation_CONNECT_valueChanged_CrystalProc_void__const_QVariant_R_(_self_ : QVariantAnimation*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QVariantAnimation_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__const_QVariant_R_(_self_ : QVariantAnimation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QVariantAnimation_duration_SUPER_(_self_ : QVariantAnimation*) : Int32
     fun bg_QVariantAnimation_event_SUPER_QEvent_X(_self_ : QVariantAnimation*, event : QEvent*) : Bool
     fun bg_QVariantAnimation_updateCurrentTime_SUPER_int(_self_ : QVariantAnimation*, current_time : Int32) : Void
@@ -13574,7 +13574,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSequentialAnimationGroup*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSequentialAnimationGroup*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSequentialAnimationGroup*, signal : QMetaMethod*) : Void
-    fun bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_CrystalProc_void__QAbstractAnimation_X_(_self_ : QSequentialAnimationGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation_X_(_self_ : QSequentialAnimationGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSequentialAnimationGroup_duration_SUPER_(_self_ : QSequentialAnimationGroup*) : Int32
     fun bg_QSequentialAnimationGroup_event_SUPER_QEvent_X(_self_ : QSequentialAnimationGroup*, event : QEvent*) : Bool
     fun bg_QSequentialAnimationGroup_updateCurrentTime_SUPER_int(_self_ : QSequentialAnimationGroup*, current_time : Int32) : Void
@@ -13718,10 +13718,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSignalMapper*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSignalMapper*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSignalMapper*, signal : QMetaMethod*) : Void
-    fun bg_QSignalMapper_CONNECT_mappedInt_CrystalProc_void__int_(_self_ : QSignalMapper*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSignalMapper_CONNECT_mappedString_CrystalProc_void__const_QString_R_(_self_ : QSignalMapper*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSignalMapper_CONNECT_mappedWidget_CrystalProc_void__QWidget_X_(_self_ : QSignalMapper*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSignalMapper_CONNECT_mappedObject_CrystalProc_void__QObject_X_(_self_ : QSignalMapper*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSignalMapper_CONNECT_mappedInt_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QSignalMapper*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSignalMapper_CONNECT_mappedString_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QSignalMapper*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSignalMapper_CONNECT_mappedWidget_Qt__ConnectionType_CrystalProc_void__QWidget_X_(_self_ : QSignalMapper*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSignalMapper_CONNECT_mappedObject_Qt__ConnectionType_CrystalProc_void__QObject_X_(_self_ : QSignalMapper*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QSignalMapper*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QSignalMapper*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QSignalMapper*, event : QTimerEvent*) : Void
@@ -13748,7 +13748,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSocketNotifier*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSocketNotifier*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSocketNotifier*, signal : QMetaMethod*) : Void
-    fun bg_QSocketNotifier_CONNECT_activated_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(_self_ : QSocketNotifier*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSocketNotifier_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(_self_ : QSocketNotifier*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSocketNotifier_event_SUPER_QEvent_X(_self_ : QSocketNotifier*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QSocketNotifier*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QSocketNotifier*, event : QTimerEvent*) : Void
@@ -13856,13 +13856,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSortFilterProxyModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSortFilterProxyModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSortFilterProxyModel*, signal : QMetaMethod*) : Void
-    fun bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_CrystalProc_void__int_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_CrystalProc_void__int_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QSortFilterProxyModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSortFilterProxyModel_setSourceModel_SUPER_QAbstractItemModel_X(_self_ : QSortFilterProxyModel*, source_model : QAbstractItemModel*) : Void
     fun bg_QSortFilterProxyModel_mapToSource_SUPER_const_QModelIndex_R(_self_ : QSortFilterProxyModel*, proxy_index : QModelIndex*) : QModelIndex*
     fun bg_QSortFilterProxyModel_mapFromSource_SUPER_const_QModelIndex_R(_self_ : QSortFilterProxyModel*, source_index : QModelIndex*) : QModelIndex*
@@ -14231,8 +14231,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QThread*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QThread*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QThread*, signal : QMetaMethod*) : Void
-    fun bg_QThread_CONNECT_started_CrystalProc_void_(_self_ : QThread*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QThread_CONNECT_finished_CrystalProc_void_(_self_ : QThread*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QThread_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(_self_ : QThread*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QThread_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(_self_ : QThread*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QThreadPool_metaObject_(_self_ : QThreadPool*) : QMetaObject*
     fun bg_QThreadPool_qt_metacast_const_char_X(_self_ : QThreadPool*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QThreadPool_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QThreadPool*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -14312,10 +14312,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTimeLine*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTimeLine*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTimeLine*, signal : QMetaMethod*) : Void
-    fun bg_QTimeLine_CONNECT_valueChanged_CrystalProc_void__qreal_(_self_ : QTimeLine*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTimeLine_CONNECT_frameChanged_CrystalProc_void__int_(_self_ : QTimeLine*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTimeLine_CONNECT_stateChanged_CrystalProc_void__QTimeLine__State_(_self_ : QTimeLine*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTimeLine_CONNECT_finished_CrystalProc_void_(_self_ : QTimeLine*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimeLine_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QTimeLine*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimeLine_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTimeLine*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimeLine_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QTimeLine__State_(_self_ : QTimeLine*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimeLine_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(_self_ : QTimeLine*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTimeLine_valueForTime_SUPER_int(_self_ : QTimeLine*, msec : Int32) : Float64
     fun bg_QTimeLine_timerEvent_SUPER_QTimerEvent_X(_self_ : QTimeLine*, event : QTimerEvent*) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QTimeLine*, event : QEvent*) : Bool
@@ -14359,7 +14359,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTimer*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTimer*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTimer*, signal : QMetaMethod*) : Void
-    fun bg_QTimer_CONNECT_timeout_CrystalProc_void_(_self_ : QTimer*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimer_CONNECT_timeout_Qt__ConnectionType_CrystalProc_void_(_self_ : QTimer*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTimer_timerEvent_SUPER_QTimerEvent_X(_self_ : QTimer*, event : QTimerEvent*) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QTimer*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QTimer*, watched : QObject*, event : QEvent*) : Bool
@@ -16886,16 +16886,16 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTextDocument*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTextDocument*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTextDocument*, signal : QMetaMethod*) : Void
-    fun bg_QTextDocument_CONNECT_contentsChange_CrystalProc_void__int__int__int_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_contentsChanged_CrystalProc_void_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_undoAvailable_CrystalProc_void__bool_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_redoAvailable_CrystalProc_void__bool_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_undoCommandAdded_CrystalProc_void_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_modificationChanged_CrystalProc_void__bool_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_cursorPositionChanged_CrystalProc_void__const_QTextCursor_R_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_blockCountChanged_CrystalProc_void__int_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_baseUrlChanged_CrystalProc_void__const_QUrl_R_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextDocument_CONNECT_documentLayoutChanged_CrystalProc_void_(_self_ : QTextDocument*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_contentsChange_Qt__ConnectionType_CrystalProc_void__int__int__int_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_contentsChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_undoCommandAdded_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCursor_R_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_baseUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextDocument_CONNECT_documentLayoutChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextDocument*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTextDocument_clear_SUPER_(_self_ : QTextDocument*) : Void
     fun bg_QTextDocument_createObject_SUPER_const_QTextFormat_R(_self_ : QTextDocument*, f : QTextFormat*) : QTextObject*
     fun bg_QTextDocument_loadResource_SUPER_int_const_QUrl_R(_self_ : QTextDocument*, type : Int32, name : QUrl*) : CrystalVariant
@@ -17000,11 +17000,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractTextDocumentLayout*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractTextDocumentLayout*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractTextDocumentLayout*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void_(_self_ : QAbstractTextDocumentLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void__const_QRectF_R_(_self_ : QAbstractTextDocumentLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_CrystalProc_void__const_QTextBlock_R_(_self_ : QAbstractTextDocumentLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_CrystalProc_void__const_QSizeF_R_(_self_ : QAbstractTextDocumentLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_CrystalProc_void__int_(_self_ : QAbstractTextDocumentLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractTextDocumentLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(_self_ : QAbstractTextDocumentLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_Qt__ConnectionType_CrystalProc_void__const_QTextBlock_R_(_self_ : QAbstractTextDocumentLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(_self_ : QAbstractTextDocumentLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QAbstractTextDocumentLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractTextDocumentLayout_resizeInlineObject_SUPER_QTextInlineObject_int_const_QTextFormat_R(_self_ : QAbstractTextDocumentLayout*, item : QTextInlineObject*, pos_in_document : Int32, format : QTextFormat*) : Void
     fun bg_QAbstractTextDocumentLayout_positionInlineObject_SUPER_QTextInlineObject_int_const_QTextFormat_R(_self_ : QAbstractTextDocumentLayout*, item : QTextInlineObject*, pos_in_document : Int32, format : QTextFormat*) : Void
     fun bg_QAbstractTextDocumentLayout_drawInlineObject_SUPER_QPainter_X_const_QRectF_R_QTextInlineObject_int_const_QTextFormat_R(_self_ : QAbstractTextDocumentLayout*, painter : QPainter*, rect : QRectF, object : QTextInlineObject*, pos_in_document : Int32, format : QTextFormat*) : Void
@@ -17325,25 +17325,25 @@ module Qt
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QWindow*, signal : QMetaMethod*) : Void
     fun bg_QWindow_surfaceClass_(_self_ : QWindow*) : ::Qt::Surface::SurfaceClass
     fun bg_QWindow_supportsOpenGL_(_self_ : QWindow*) : Bool
-    fun bg_QWindow_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_modalityChanged_CrystalProc_void__Qt__WindowModality_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowState_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_xChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_yChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_widthChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_heightChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_minimumWidthChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_minimumHeightChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_maximumWidthChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_maximumHeightChanged_CrystalProc_void__int_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_visibleChanged_CrystalProc_void__bool_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_visibilityChanged_CrystalProc_void__QWindow__Visibility_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_activeChanged_CrystalProc_void_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_contentOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_opacityChanged_CrystalProc_void__qreal_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWindow_CONNECT_transientParentChanged_CrystalProc_void__QWindow_X_(_self_ : QWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_modalityChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowModality_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowState_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_minimumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_minimumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_maximumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_maximumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__QWindow__Visibility_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_activeChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_contentOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWindow_CONNECT_transientParentChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(_self_ : QWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QWindow_surfaceType_SUPER_(_self_ : QWindow*) : ::Qt::Surface::SurfaceType
     fun bg_QWindow_format_SUPER_(_self_ : QWindow*) : QSurfaceFormat*
     fun bg_QWindow_size_SUPER_(_self_ : QWindow*) : QSize
@@ -17446,10 +17446,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QClipboard*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QClipboard*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QClipboard*, signal : QMetaMethod*) : Void
-    fun bg_QClipboard_CONNECT_changed_CrystalProc_void__QClipboard__Mode_(_self_ : QClipboard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QClipboard_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QClipboard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QClipboard_CONNECT_findBufferChanged_CrystalProc_void_(_self_ : QClipboard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QClipboard_CONNECT_dataChanged_CrystalProc_void_(_self_ : QClipboard*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QClipboard_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__QClipboard__Mode_(_self_ : QClipboard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QClipboard_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QClipboard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QClipboard_CONNECT_findBufferChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QClipboard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QClipboard_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QClipboard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QColorTransform__CONSTRUCT_() : QColorTransform*
     fun bg_QColorTransform__COPY_const_QColorTransform_R(color_transform : QColorTransform*) : QColorTransform*
     fun bg_QColorTransform__OPERATOR_assign_const_QColorTransform_R(_self_ : QColorTransform*, other : QColorTransform*) : QColorTransform*
@@ -17517,8 +17517,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDrag*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDrag*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDrag*, signal : QMetaMethod*) : Void
-    fun bg_QDrag_CONNECT_actionChanged_CrystalProc_void__Qt__DropAction_(_self_ : QDrag*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDrag_CONNECT_targetChanged_CrystalProc_void__QObject_X_(_self_ : QDrag*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDrag_CONNECT_actionChanged_Qt__ConnectionType_CrystalProc_void__Qt__DropAction_(_self_ : QDrag*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDrag_CONNECT_targetChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(_self_ : QDrag*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QDrag*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QDrag*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QDrag*, event : QTimerEvent*) : Void
@@ -17660,14 +17660,14 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QInputMethod*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QInputMethod*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QInputMethod*, signal : QMetaMethod*) : Void
-    fun bg_QInputMethod_CONNECT_cursorRectangleChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_anchorRectangleChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_keyboardRectangleChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_visibleChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_animatingChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_localeChanged_CrystalProc_void_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputMethod_CONNECT_inputDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(_self_ : QInputMethod*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_cursorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_anchorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_keyboardRectangleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_animatingChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_localeChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputMethod_CONNECT_inputDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(_self_ : QInputMethod*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGuiApplication_metaObject_(_self_ : QGuiApplication*) : QMetaObject*
     fun bg_QGuiApplication_qt_metacast_const_char_X(_self_ : QGuiApplication*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QGuiApplication_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QGuiApplication*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -17750,20 +17750,20 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGuiApplication*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGuiApplication*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGuiApplication*, signal : QMetaMethod*) : Void
-    fun bg_QGuiApplication_CONNECT_fontDatabaseChanged_CrystalProc_void_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_screenAdded_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_screenRemoved_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_primaryScreenChanged_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_lastWindowClosed_CrystalProc_void_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_focusWindowChanged_CrystalProc_void__QWindow_X_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_applicationStateChanged_CrystalProc_void__Qt__ApplicationState_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_layoutDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_commitDataRequest_CrystalProc_void__QSessionManager_R_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_saveStateRequest_CrystalProc_void__QSessionManager_R_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_paletteChanged_CrystalProc_void__const_QPalette_R_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_CrystalProc_void_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGuiApplication_CONNECT_fontChanged_CrystalProc_void__const_QFont_R_(_self_ : QGuiApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_fontDatabaseChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_screenAdded_Qt__ConnectionType_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_screenRemoved_Qt__ConnectionType_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_primaryScreenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_lastWindowClosed_Qt__ConnectionType_CrystalProc_void_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_focusWindowChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_applicationStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__ApplicationState_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_layoutDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_commitDataRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_saveStateRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_paletteChanged_Qt__ConnectionType_CrystalProc_void__const_QPalette_R_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGuiApplication_CONNECT_fontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(_self_ : QGuiApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGuiApplication_notify_SUPER_QObject_X_QEvent_X(_self_ : QGuiApplication*, unnamed_arg_0 : QObject*, unnamed_arg_1 : QEvent*) : Bool
     fun bg_QGuiApplication_event_SUPER_QEvent_X(_self_ : QGuiApplication*, event : QEvent*) : Bool
     fun bg_QGuiApplication_compressEvent_SUPER_QEvent_X_QObject_X_QPostEventList_X(_self_ : QGuiApplication*, unnamed_arg_0 : QEvent*, receiver : QObject*, unnamed_arg_2 : QPostEventList*) : Bool
@@ -18167,13 +18167,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMovie*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMovie*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMovie*, signal : QMetaMethod*) : Void
-    fun bg_QMovie_CONNECT_started_CrystalProc_void_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_resized_CrystalProc_void__const_QSize_R_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_updated_CrystalProc_void__const_QRect_R_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_stateChanged_CrystalProc_void__QMovie__MovieState_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_error_CrystalProc_void__QImageReader__ImageReaderError_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_finished_CrystalProc_void_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMovie_CONNECT_frameChanged_CrystalProc_void__int_(_self_ : QMovie*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_resized_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_updated_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QMovie__MovieState_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_error_Qt__ConnectionType_CrystalProc_void__QImageReader__ImageReaderError_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMovie_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QMovie*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QMovie*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QMovie*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QMovie*, event : QTimerEvent*) : Void
@@ -18214,7 +18214,7 @@ module Qt
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QOffscreenSurface*, signal : QMetaMethod*) : Void
     fun bg_QOffscreenSurface_surfaceClass_(_self_ : QOffscreenSurface*) : ::Qt::Surface::SurfaceClass
     fun bg_QOffscreenSurface_supportsOpenGL_(_self_ : QOffscreenSurface*) : Bool
-    fun bg_QOffscreenSurface_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(_self_ : QOffscreenSurface*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QOffscreenSurface_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(_self_ : QOffscreenSurface*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QOffscreenSurface_surfaceType_SUPER_(_self_ : QOffscreenSurface*) : ::Qt::Surface::SurfaceType
     fun bg_QOffscreenSurface_format_SUPER_(_self_ : QOffscreenSurface*) : QSurfaceFormat*
     fun bg_QOffscreenSurface_size_SUPER_(_self_ : QOffscreenSurface*) : QSize
@@ -18952,15 +18952,15 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QScreen*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QScreen*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QScreen*, signal : QMetaMethod*) : Void
-    fun bg_QScreen_CONNECT_geometryChanged_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_availableGeometryChanged_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_physicalSizeChanged_CrystalProc_void__const_QSizeF_R_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_physicalDotsPerInchChanged_CrystalProc_void__qreal_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_logicalDotsPerInchChanged_CrystalProc_void__qreal_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_virtualGeometryChanged_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_primaryOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_orientationChanged_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScreen_CONNECT_refreshRateChanged_CrystalProc_void__qreal_(_self_ : QScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_availableGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_physicalSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_physicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_logicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_virtualGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_primaryOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScreen_CONNECT_refreshRateChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QScreen*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QScreen*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QScreen*, event : QTimerEvent*) : Void
@@ -19166,7 +19166,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QStandardItemModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QStandardItemModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QStandardItemModel*, signal : QMetaMethod*) : Void
-    fun bg_QStandardItemModel_CONNECT_itemChanged_CrystalProc_void__QStandardItem_X_(_self_ : QStandardItemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStandardItemModel_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QStandardItem_X_(_self_ : QStandardItemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QStandardItemModel_index_SUPER_int_int_const_QModelIndex_R(_self_ : QStandardItemModel*, row : Int32, column : Int32, parent : QModelIndex*) : QModelIndex*
     fun bg_QStandardItemModel_parent_SUPER_const_QModelIndex_R(_self_ : QStandardItemModel*, child : QModelIndex*) : QModelIndex*
     fun bg_QStandardItemModel_rowCount_SUPER_const_QModelIndex_R(_self_ : QStandardItemModel*, parent : QModelIndex*) : Int32
@@ -19288,17 +19288,17 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QStyleHints*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QStyleHints*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QStyleHints*, signal : QMetaMethod*) : Void
-    fun bg_QStyleHints_CONNECT_cursorFlashTimeChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_startDragDistanceChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_startDragTimeChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_CrystalProc_void__Qt__TabFocusBehavior_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_useHoverEffectsChanged_CrystalProc_void__bool_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_CrystalProc_void__bool_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_wheelScrollLinesChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_CrystalProc_void__int_(_self_ : QStyleHints*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_cursorFlashTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_startDragDistanceChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_startDragTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_Qt__ConnectionType_CrystalProc_void__Qt__TabFocusBehavior_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_useHoverEffectsChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_wheelScrollLinesChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStyleHints*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QStyleHints*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QStyleHints*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QStyleHints*, event : QTimerEvent*) : Void
@@ -19657,7 +19657,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QValidator*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QValidator*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QValidator*, signal : QMetaMethod*) : Void
-    fun bg_QValidator_CONNECT_changed_CrystalProc_void_(_self_ : QValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QValidator_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(_self_ : QValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QIntValidator_metaObject_(_self_ : QIntValidator*) : QMetaObject*
     fun bg_QIntValidator_qt_metacast_const_char_X(_self_ : QIntValidator*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QIntValidator*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -19680,8 +19680,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QIntValidator*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QIntValidator*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QIntValidator*, signal : QMetaMethod*) : Void
-    fun bg_QIntValidator_CONNECT_bottomChanged_CrystalProc_void__int_(_self_ : QIntValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QIntValidator_CONNECT_topChanged_CrystalProc_void__int_(_self_ : QIntValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIntValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QIntValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QIntValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QIntValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QIntValidator_setRange_SUPER_int_int(_self_ : QIntValidator*, bottom : Int32, top : Int32) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QIntValidator*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QIntValidator*, watched : QObject*, event : QEvent*) : Bool
@@ -19719,10 +19719,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDoubleValidator*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDoubleValidator*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDoubleValidator*, signal : QMetaMethod*) : Void
-    fun bg_QDoubleValidator_CONNECT_bottomChanged_CrystalProc_void__double_(_self_ : QDoubleValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDoubleValidator_CONNECT_topChanged_CrystalProc_void__double_(_self_ : QDoubleValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDoubleValidator_CONNECT_decimalsChanged_CrystalProc_void__int_(_self_ : QDoubleValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDoubleValidator_CONNECT_notationChanged_CrystalProc_void__QDoubleValidator__Notation_(_self_ : QDoubleValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__double_(_self_ : QDoubleValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__double_(_self_ : QDoubleValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleValidator_CONNECT_decimalsChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QDoubleValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleValidator_CONNECT_notationChanged_Qt__ConnectionType_CrystalProc_void__QDoubleValidator__Notation_(_self_ : QDoubleValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDoubleValidator_setRange_SUPER_double_double_int(_self_ : QDoubleValidator*, bottom : Float64, top : Float64, decimals : Int32) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QDoubleValidator*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QDoubleValidator*, watched : QObject*, event : QEvent*) : Bool
@@ -19750,7 +19750,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QRegularExpressionValidator*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QRegularExpressionValidator*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QRegularExpressionValidator*, signal : QMetaMethod*) : Void
-    fun bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_CrystalProc_void__const_QRegularExpression_R_(_self_ : QRegularExpressionValidator*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_Qt__ConnectionType_CrystalProc_void__const_QRegularExpression_R_(_self_ : QRegularExpressionValidator*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QRegularExpressionValidator*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QRegularExpressionValidator*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QRegularExpressionValidator*, event : QTimerEvent*) : Void
@@ -20108,10 +20108,10 @@ module Qt
     fun bg_QWidget_devicePixelRatioF_(_self_ : QWidget*) : Float64
     fun bg_QWidget_colorCount_(_self_ : QWidget*) : Int32
     fun bg_QWidget_depth_(_self_ : QWidget*) : Int32
-    fun bg_QWidget_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(_self_ : QWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWidget_CONNECT_windowIconChanged_CrystalProc_void__const_QIcon_R_(_self_ : QWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWidget_CONNECT_windowIconTextChanged_CrystalProc_void__const_QString_R_(_self_ : QWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWidget_CONNECT_customContextMenuRequested_CrystalProc_void__const_QPoint_R_(_self_ : QWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWidget_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWidget_CONNECT_windowIconChanged_Qt__ConnectionType_CrystalProc_void__const_QIcon_R_(_self_ : QWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWidget_CONNECT_windowIconTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWidget_CONNECT_customContextMenuRequested_Qt__ConnectionType_CrystalProc_void__const_QPoint_R_(_self_ : QWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QWidget_devType_SUPER_(_self_ : QWidget*) : Int32
     fun bg_QWidget_setVisible_SUPER_bool(_self_ : QWidget*, visible : Bool) : Void
     fun bg_QWidget_sizeHint_SUPER_(_self_ : QWidget*) : QSize
@@ -20246,10 +20246,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractButton*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractButton*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractButton*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractButton_CONNECT_pressed_CrystalProc_void_(_self_ : QAbstractButton*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractButton_CONNECT_released_CrystalProc_void_(_self_ : QAbstractButton*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractButton_CONNECT_clicked_CrystalProc_void__bool_(_self_ : QAbstractButton*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractButton_CONNECT_toggled_CrystalProc_void__bool_(_self_ : QAbstractButton*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractButton_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractButton*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractButton_CONNECT_released_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractButton*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractButton_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QAbstractButton*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractButton_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QAbstractButton*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractButton_hitButton_SUPER_const_QPoint_R(_self_ : QAbstractButton*, pos : QPoint) : Bool
     fun bg_QAbstractButton_checkStateSet_SUPER_(_self_ : QAbstractButton*) : Void
     fun bg_QAbstractButton_nextCheckState_SUPER_(_self_ : QAbstractButton*) : Void
@@ -20386,7 +20386,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractSpinBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractSpinBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractSpinBox*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractSpinBox_CONNECT_editingFinished_CrystalProc_void_(_self_ : QAbstractSpinBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSpinBox_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractSpinBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractSpinBox_sizeHint_SUPER_(_self_ : QAbstractSpinBox*) : QSize
     fun bg_QAbstractSpinBox_minimumSizeHint_SUPER_(_self_ : QAbstractSpinBox*) : QSize
     fun bg_QAbstractSpinBox_event_SUPER_QEvent_X(_self_ : QAbstractSpinBox*, event : QEvent*) : Bool
@@ -20524,12 +20524,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractSlider*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractSlider*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractSlider*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractSlider_CONNECT_valueChanged_CrystalProc_void__int_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractSlider_CONNECT_sliderPressed_CrystalProc_void_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractSlider_CONNECT_sliderMoved_CrystalProc_void__int_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractSlider_CONNECT_sliderReleased_CrystalProc_void_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractSlider_CONNECT_rangeChanged_CrystalProc_void__int__int_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractSlider_CONNECT_actionTriggered_CrystalProc_void__int_(_self_ : QAbstractSlider*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_sliderPressed_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_sliderMoved_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_sliderReleased_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_rangeChanged_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractSlider_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QAbstractSlider*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractSlider_event_SUPER_QEvent_X(_self_ : QAbstractSlider*, event : QEvent*) : Bool
     fun bg_QAbstractSlider_sliderChange_SUPER_QAbstractSlider__SliderChange(_self_ : QAbstractSlider*, change : ::Qt::AbstractSlider::SliderChange) : Void
     fun bg_QAbstractSlider_keyPressEvent_SUPER_QKeyEvent_X(_self_ : QAbstractSlider*, event : QKeyEvent*) : Void
@@ -20869,11 +20869,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTabBar*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTabBar*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTabBar*, signal : QMetaMethod*) : Void
-    fun bg_QTabBar_CONNECT_currentChanged_CrystalProc_void__int_(_self_ : QTabBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabBar_CONNECT_tabCloseRequested_CrystalProc_void__int_(_self_ : QTabBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabBar_CONNECT_tabMoved_CrystalProc_void__int__int_(_self_ : QTabBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabBar_CONNECT_tabBarClicked_CrystalProc_void__int_(_self_ : QTabBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabBar_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(_self_ : QTabBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabBar_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabBar_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabBar_CONNECT_tabMoved_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTabBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabBar_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabBar_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTabBar_sizeHint_SUPER_(_self_ : QTabBar*) : QSize
     fun bg_QTabBar_minimumSizeHint_SUPER_(_self_ : QTabBar*) : QSize
     fun bg_QTabBar_tabSizeHint_SUPER_int(_self_ : QTabBar*, index : Int32) : QSize
@@ -21033,10 +21033,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTabWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTabWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTabWidget*, signal : QMetaMethod*) : Void
-    fun bg_QTabWidget_CONNECT_currentChanged_CrystalProc_void__int_(_self_ : QTabWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabWidget_CONNECT_tabCloseRequested_CrystalProc_void__int_(_self_ : QTabWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabWidget_CONNECT_tabBarClicked_CrystalProc_void__int_(_self_ : QTabWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTabWidget_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(_self_ : QTabWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabWidget_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabWidget_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTabWidget_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QTabWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTabWidget_sizeHint_SUPER_(_self_ : QTabWidget*) : QSize
     fun bg_QTabWidget_minimumSizeHint_SUPER_(_self_ : QTabWidget*) : QSize
     fun bg_QTabWidget_heightForWidth_SUPER_int(_self_ : QTabWidget*, unnamed_arg_0 : Int32) : Int32
@@ -21751,9 +21751,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractItemDelegate*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractItemDelegate*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractItemDelegate*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractItemDelegate_CONNECT_commitData_CrystalProc_void__QWidget_X_(_self_ : QAbstractItemDelegate*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemDelegate_CONNECT_closeEditor_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(_self_ : QAbstractItemDelegate*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemDelegate*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemDelegate_CONNECT_commitData_Qt__ConnectionType_CrystalProc_void__QWidget_X_(_self_ : QAbstractItemDelegate*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemDelegate_CONNECT_closeEditor_Qt__ConnectionType_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(_self_ : QAbstractItemDelegate*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemDelegate*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractItemDelegate_createEditor_SUPER_QWidget_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(_self_ : QAbstractItemDelegate*, parent : QWidget*, option : QStyleOptionViewItem*, index : QModelIndex*) : QWidget*
     fun bg_QAbstractItemDelegate_destroyEditor_SUPER_QWidget_X_const_QModelIndex_R(_self_ : QAbstractItemDelegate*, editor : QWidget*, index : QModelIndex*) : Void
     fun bg_QAbstractItemDelegate_setEditorData_SUPER_QWidget_X_const_QModelIndex_R(_self_ : QAbstractItemDelegate*, editor : QWidget*, index : QModelIndex*) : Void
@@ -22075,13 +22075,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAbstractItemView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAbstractItemView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAbstractItemView*, signal : QMetaMethod*) : Void
-    fun bg_QAbstractItemView_CONNECT_pressed_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_clicked_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_doubleClicked_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_entered_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_viewportEntered_CrystalProc_void_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAbstractItemView_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(_self_ : QAbstractItemView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_doubleClicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_entered_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_viewportEntered_Qt__ConnectionType_CrystalProc_void_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAbstractItemView_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(_self_ : QAbstractItemView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAbstractItemView_setModel_SUPER_QAbstractItemModel_X(_self_ : QAbstractItemView*, model : QAbstractItemModel*) : Void
     fun bg_QAbstractItemView_setSelectionModel_SUPER_QItemSelectionModel_X(_self_ : QAbstractItemView*, selection_model : QItemSelectionModel*) : Void
     fun bg_QAbstractItemView_keyboardSearch_SUPER_const_QString_R(_self_ : QAbstractItemView*, search : CrystalString) : Void
@@ -22239,10 +22239,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QAction*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QAction*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QAction*, signal : QMetaMethod*) : Void
-    fun bg_QAction_CONNECT_changed_CrystalProc_void_(_self_ : QAction*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAction_CONNECT_triggered_CrystalProc_void__bool_(_self_ : QAction*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAction_CONNECT_hovered_CrystalProc_void_(_self_ : QAction*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QAction_CONNECT_toggled_CrystalProc_void__bool_(_self_ : QAction*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAction_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(_self_ : QAction*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAction_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QAction*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAction_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void_(_self_ : QAction*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QAction_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QAction*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QAction_event_SUPER_QEvent_X(_self_ : QAction*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QAction*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QAction*, event : QTimerEvent*) : Void
@@ -22282,8 +22282,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QActionGroup*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QActionGroup*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QActionGroup*, signal : QMetaMethod*) : Void
-    fun bg_QActionGroup_CONNECT_triggered_CrystalProc_void__QAction_X_(_self_ : QActionGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QActionGroup_CONNECT_hovered_CrystalProc_void__QAction_X_(_self_ : QActionGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QActionGroup_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QActionGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QActionGroup_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QActionGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QActionGroup*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QActionGroup*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QActionGroup*, event : QTimerEvent*) : Void
@@ -22360,7 +22360,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QApplication*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QApplication*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QApplication*, signal : QMetaMethod*) : Void
-    fun bg_QApplication_CONNECT_focusChanged_CrystalProc_void__QWidget_X__QWidget_X_(_self_ : QApplication*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QApplication_CONNECT_focusChanged_Qt__ConnectionType_CrystalProc_void__QWidget_X__QWidget_X_(_self_ : QApplication*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QApplication_notify_SUPER_QObject_X_QEvent_X(_self_ : QApplication*, unnamed_arg_0 : QObject*, unnamed_arg_1 : QEvent*) : Bool
     fun bg_QApplication_event_SUPER_QEvent_X(_self_ : QApplication*, event : QEvent*) : Bool
     fun bg_QApplication_compressEvent_SUPER_QEvent_X_QObject_X_QPostEventList_X(_self_ : QApplication*, unnamed_arg_0 : QEvent*, receiver : QObject*, unnamed_arg_2 : QPostEventList*) : Bool
@@ -22932,14 +22932,14 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QButtonGroup*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QButtonGroup*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QButtonGroup*, signal : QMetaMethod*) : Void
-    fun bg_QButtonGroup_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_buttonPressed_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_buttonReleased_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_buttonToggled_CrystalProc_void__QAbstractButton_X__bool_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_idClicked_CrystalProc_void__int_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_idPressed_CrystalProc_void__int_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_idReleased_CrystalProc_void__int_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QButtonGroup_CONNECT_idToggled_CrystalProc_void__int__bool_(_self_ : QButtonGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_buttonPressed_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_buttonReleased_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_buttonToggled_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X__bool_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_idClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_idPressed_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_idReleased_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QButtonGroup_CONNECT_idToggled_Qt__ConnectionType_CrystalProc_void__int__bool_(_self_ : QButtonGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QButtonGroup*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QButtonGroup*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QButtonGroup*, event : QTimerEvent*) : Void
@@ -23049,10 +23049,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QCalendarWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QCalendarWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QCalendarWidget*, signal : QMetaMethod*) : Void
-    fun bg_QCalendarWidget_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QCalendarWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCalendarWidget_CONNECT_clicked_CrystalProc_void__const_QDate_R_(_self_ : QCalendarWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCalendarWidget_CONNECT_activated_CrystalProc_void__const_QDate_R_(_self_ : QCalendarWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCalendarWidget_CONNECT_currentPageChanged_CrystalProc_void__int__int_(_self_ : QCalendarWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCalendarWidget_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QCalendarWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCalendarWidget_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(_self_ : QCalendarWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCalendarWidget_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(_self_ : QCalendarWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCalendarWidget_CONNECT_currentPageChanged_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QCalendarWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QCalendarWidget_sizeHint_SUPER_(_self_ : QCalendarWidget*) : QSize
     fun bg_QCalendarWidget_minimumSizeHint_SUPER_(_self_ : QCalendarWidget*) : QSize
     fun bg_QCalendarWidget_event_SUPER_QEvent_X(_self_ : QCalendarWidget*, event : QEvent*) : Bool
@@ -23164,7 +23164,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QCheckBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QCheckBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QCheckBox*, signal : QMetaMethod*) : Void
-    fun bg_QCheckBox_CONNECT_stateChanged_CrystalProc_void__int_(_self_ : QCheckBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCheckBox_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QCheckBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QCheckBox_sizeHint_SUPER_(_self_ : QCheckBox*) : QSize
     fun bg_QCheckBox_minimumSizeHint_SUPER_(_self_ : QCheckBox*) : QSize
     fun bg_QCheckBox_event_SUPER_QEvent_X(_self_ : QCheckBox*, event : QEvent*) : Bool
@@ -23285,9 +23285,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDialog*, signal : QMetaMethod*) : Void
-    fun bg_QDialog_CONNECT_finished_CrystalProc_void__int_(_self_ : QDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDialog_CONNECT_accepted_CrystalProc_void_(_self_ : QDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDialog_CONNECT_rejected_CrystalProc_void_(_self_ : QDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialog_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialog_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(_self_ : QDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialog_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(_self_ : QDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDialog_setVisible_SUPER_bool(_self_ : QDialog*, visible : Bool) : Void
     fun bg_QDialog_sizeHint_SUPER_(_self_ : QDialog*) : QSize
     fun bg_QDialog_minimumSizeHint_SUPER_(_self_ : QDialog*) : QSize
@@ -23418,8 +23418,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QColorDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QColorDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QColorDialog*, signal : QMetaMethod*) : Void
-    fun bg_QColorDialog_CONNECT_currentColorChanged_CrystalProc_void__const_QColor_R_(_self_ : QColorDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QColorDialog_CONNECT_colorSelected_CrystalProc_void__const_QColor_R_(_self_ : QColorDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QColorDialog_CONNECT_currentColorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(_self_ : QColorDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QColorDialog_CONNECT_colorSelected_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(_self_ : QColorDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QColorDialog_open_SUPER_(_self_ : QColorDialog*) : Void
     fun bg_QColorDialog_setVisible_SUPER_bool(_self_ : QColorDialog*, visible : Bool) : Void
     fun bg_QColorDialog_changeEvent_SUPER_QEvent_X(_self_ : QColorDialog*, unnamed_arg_0 : QEvent*) : Void
@@ -23578,7 +23578,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QColumnView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QColumnView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QColumnView*, signal : QMetaMethod*) : Void
-    fun bg_QColumnView_CONNECT_updatePreviewWidget_CrystalProc_void__const_QModelIndex_R_(_self_ : QColumnView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QColumnView_CONNECT_updatePreviewWidget_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QColumnView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QColumnView_indexAt_SUPER_const_QPoint_R(_self_ : QColumnView*, point : QPoint) : QModelIndex*
     fun bg_QColumnView_scrollTo_SUPER_const_QModelIndex_R_QAbstractItemView__ScrollHint(_self_ : QColumnView*, index : QModelIndex*, hint : ::Qt::AbstractItemDelegate::ScrollHint) : Void
     fun bg_QColumnView_sizeHint_SUPER_(_self_ : QColumnView*) : QSize
@@ -23801,13 +23801,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QComboBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QComboBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QComboBox*, signal : QMetaMethod*) : Void
-    fun bg_QComboBox_CONNECT_editTextChanged_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_activated_CrystalProc_void__int_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_textActivated_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_highlighted_CrystalProc_void__int_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_textHighlighted_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_currentIndexChanged_CrystalProc_void__int_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QComboBox_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_editTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_textActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_textHighlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QComboBox_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QComboBox_sizeHint_SUPER_(_self_ : QComboBox*) : QSize
     fun bg_QComboBox_minimumSizeHint_SUPER_(_self_ : QComboBox*) : QSize
     fun bg_QComboBox_showPopup_SUPER_(_self_ : QComboBox*) : Void
@@ -24209,10 +24209,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QCompleter*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QCompleter*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QCompleter*, signal : QMetaMethod*) : Void
-    fun bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QString_R_(_self_ : QCompleter*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(_self_ : QCompleter*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QString_R_(_self_ : QCompleter*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QModelIndex_R_(_self_ : QCompleter*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QCompleter*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QCompleter*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QCompleter*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QCompleter*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QCompleter_pathFromIndex_SUPER_const_QModelIndex_R(_self_ : QCompleter*, index : QModelIndex*) : CrystalString
     fun bg_QCompleter_splitPath_SUPER_const_QString_R(_self_ : QCompleter*, path : CrystalString) : ContainerQListQString*
     fun bg_QCompleter_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QCompleter*, watched : QObject*, event : QEvent*) : Bool
@@ -24264,7 +24264,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDataWidgetMapper*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDataWidgetMapper*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDataWidgetMapper*, signal : QMetaMethod*) : Void
-    fun bg_QDataWidgetMapper_CONNECT_currentIndexChanged_CrystalProc_void__int_(_self_ : QDataWidgetMapper*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDataWidgetMapper_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QDataWidgetMapper*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDataWidgetMapper_setCurrentIndex_SUPER_int(_self_ : QDataWidgetMapper*, index : Int32) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QDataWidgetMapper*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QDataWidgetMapper*, watched : QObject*, event : QEvent*) : Bool
@@ -24387,9 +24387,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDateTimeEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDateTimeEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDateTimeEdit*, signal : QMetaMethod*) : Void
-    fun bg_QDateTimeEdit_CONNECT_dateTimeChanged_CrystalProc_void__const_QDateTime_R_(_self_ : QDateTimeEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDateTimeEdit_CONNECT_timeChanged_CrystalProc_void__const_QTime_R_(_self_ : QDateTimeEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDateTimeEdit_CONNECT_dateChanged_CrystalProc_void__const_QDate_R_(_self_ : QDateTimeEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDateTimeEdit_CONNECT_dateTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QDateTime_R_(_self_ : QDateTimeEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDateTimeEdit_CONNECT_timeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(_self_ : QDateTimeEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDateTimeEdit_CONNECT_dateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(_self_ : QDateTimeEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDateTimeEdit_sizeHint_SUPER_(_self_ : QDateTimeEdit*) : QSize
     fun bg_QDateTimeEdit_clear_SUPER_(_self_ : QDateTimeEdit*) : Void
     fun bg_QDateTimeEdit_stepBy_SUPER_int(_self_ : QDateTimeEdit*, steps : Int32) : Void
@@ -24502,7 +24502,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTimeEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTimeEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTimeEdit*, signal : QMetaMethod*) : Void
-    fun bg_QTimeEdit_CONNECT_userTimeChanged_CrystalProc_void__const_QTime_R_(_self_ : QTimeEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTimeEdit_CONNECT_userTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(_self_ : QTimeEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDateTimeEdit_sizeHint_SUPER_(_self_ : QTimeEdit*) : QSize
     fun bg_QDateTimeEdit_clear_SUPER_(_self_ : QTimeEdit*) : Void
     fun bg_QDateTimeEdit_stepBy_SUPER_int(_self_ : QTimeEdit*, steps : Int32) : Void
@@ -24615,7 +24615,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDateEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDateEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDateEdit*, signal : QMetaMethod*) : Void
-    fun bg_QDateEdit_CONNECT_userDateChanged_CrystalProc_void__const_QDate_R_(_self_ : QDateEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDateEdit_CONNECT_userDateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(_self_ : QDateEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDateTimeEdit_sizeHint_SUPER_(_self_ : QDateEdit*) : QSize
     fun bg_QDateTimeEdit_clear_SUPER_(_self_ : QDateEdit*) : Void
     fun bg_QDateTimeEdit_stepBy_SUPER_int(_self_ : QDateEdit*, steps : Int32) : Void
@@ -24956,10 +24956,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDialogButtonBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDialogButtonBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDialogButtonBox*, signal : QMetaMethod*) : Void
-    fun bg_QDialogButtonBox_CONNECT_clicked_CrystalProc_void__QAbstractButton_X_(_self_ : QDialogButtonBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDialogButtonBox_CONNECT_accepted_CrystalProc_void_(_self_ : QDialogButtonBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDialogButtonBox_CONNECT_helpRequested_CrystalProc_void_(_self_ : QDialogButtonBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDialogButtonBox_CONNECT_rejected_CrystalProc_void_(_self_ : QDialogButtonBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialogButtonBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(_self_ : QDialogButtonBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialogButtonBox_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(_self_ : QDialogButtonBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialogButtonBox_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(_self_ : QDialogButtonBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDialogButtonBox_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(_self_ : QDialogButtonBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDialogButtonBox_changeEvent_SUPER_QEvent_X(_self_ : QDialogButtonBox*, unnamed_arg_0 : QEvent*) : Void
     fun bg_QDialogButtonBox_event_SUPER_QEvent_X(_self_ : QDialogButtonBox*, event : QEvent*) : Bool
     fun bg_QWidget_devType_SUPER_(_self_ : QDialogButtonBox*) : Int32
@@ -25091,11 +25091,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDockWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDockWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDockWidget*, signal : QMetaMethod*) : Void
-    fun bg_QDockWidget_CONNECT_featuresChanged_CrystalProc_void__QDockWidget__DockWidgetFeatures_(_self_ : QDockWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDockWidget_CONNECT_topLevelChanged_CrystalProc_void__bool_(_self_ : QDockWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDockWidget_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__DockWidgetAreas_(_self_ : QDockWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDockWidget_CONNECT_visibilityChanged_CrystalProc_void__bool_(_self_ : QDockWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDockWidget_CONNECT_dockLocationChanged_CrystalProc_void__Qt__DockWidgetArea_(_self_ : QDockWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDockWidget_CONNECT_featuresChanged_Qt__ConnectionType_CrystalProc_void__QDockWidget__DockWidgetFeatures_(_self_ : QDockWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDockWidget_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QDockWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDockWidget_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetAreas_(_self_ : QDockWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDockWidget_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QDockWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDockWidget_CONNECT_dockLocationChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetArea_(_self_ : QDockWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDockWidget_changeEvent_SUPER_QEvent_X(_self_ : QDockWidget*, unnamed_arg_0 : QEvent*) : Void
     fun bg_QDockWidget_closeEvent_SUPER_QCloseEvent_X(_self_ : QDockWidget*, event : QCloseEvent*) : Void
     fun bg_QDockWidget_paintEvent_SUPER_QPaintEvent_X(_self_ : QDockWidget*, event : QPaintEvent*) : Void
@@ -25412,15 +25412,15 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QFileDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QFileDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QFileDialog*, signal : QMetaMethod*) : Void
-    fun bg_QFileDialog_CONNECT_fileSelected_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_filesSelected_CrystalProc_void__const_QStringList_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_currentChanged_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_directoryEntered_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_urlSelected_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_urlsSelected_CrystalProc_void__const_QList_QUrl__R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_currentUrlChanged_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_directoryUrlEntered_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileDialog_CONNECT_filterSelected_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_fileSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_filesSelected_Qt__ConnectionType_CrystalProc_void__const_QStringList_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_directoryEntered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_urlSelected_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_urlsSelected_Qt__ConnectionType_CrystalProc_void__const_QList_QUrl__R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_currentUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_directoryUrlEntered_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileDialog_CONNECT_filterSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QFileDialog_open_SUPER_(_self_ : QFileDialog*) : Void
     fun bg_QFileDialog_setVisible_SUPER_bool(_self_ : QFileDialog*, visible : Bool) : Void
     fun bg_QFileDialog_done_SUPER_int(_self_ : QFileDialog*, unnamed_arg_0 : Int32) : Void
@@ -25568,9 +25568,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QFileSystemModel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QFileSystemModel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QFileSystemModel*, signal : QMetaMethod*) : Void
-    fun bg_QFileSystemModel_CONNECT_rootPathChanged_CrystalProc_void__const_QString_R_(_self_ : QFileSystemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileSystemModel_CONNECT_fileRenamed_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(_self_ : QFileSystemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFileSystemModel_CONNECT_directoryLoaded_CrystalProc_void__const_QString_R_(_self_ : QFileSystemModel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileSystemModel_CONNECT_rootPathChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileSystemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileSystemModel_CONNECT_fileRenamed_Qt__ConnectionType_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(_self_ : QFileSystemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFileSystemModel_CONNECT_directoryLoaded_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QFileSystemModel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QFileSystemModel_index_SUPER_int_int_const_QModelIndex_R(_self_ : QFileSystemModel*, row : Int32, column : Int32, parent : QModelIndex*) : QModelIndex*
     fun bg_QFileSystemModel_parent_SUPER_const_QModelIndex_R(_self_ : QFileSystemModel*, child : QModelIndex*) : QModelIndex*
     fun bg_QFileSystemModel_sibling_SUPER_int_int_const_QModelIndex_R(_self_ : QFileSystemModel*, row : Int32, column : Int32, idx : QModelIndex*) : QModelIndex*
@@ -25778,7 +25778,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QFontComboBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QFontComboBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QFontComboBox*, signal : QMetaMethod*) : Void
-    fun bg_QFontComboBox_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(_self_ : QFontComboBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFontComboBox_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(_self_ : QFontComboBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QFontComboBox_sizeHint_SUPER_(_self_ : QFontComboBox*) : QSize
     fun bg_QFontComboBox_event_SUPER_QEvent_X(_self_ : QFontComboBox*, event : QEvent*) : Bool
     fun bg_QComboBox_minimumSizeHint_SUPER_(_self_ : QFontComboBox*) : QSize
@@ -25901,8 +25901,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QFontDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QFontDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QFontDialog*, signal : QMetaMethod*) : Void
-    fun bg_QFontDialog_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(_self_ : QFontDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QFontDialog_CONNECT_fontSelected_CrystalProc_void__const_QFont_R_(_self_ : QFontDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFontDialog_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(_self_ : QFontDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QFontDialog_CONNECT_fontSelected_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(_self_ : QFontDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QFontDialog_open_SUPER_(_self_ : QFontDialog*) : Void
     fun bg_QFontDialog_setVisible_SUPER_bool(_self_ : QFontDialog*, visible : Bool) : Void
     fun bg_QFontDialog_changeEvent_SUPER_QEvent_X(_self_ : QFontDialog*, unnamed_arg_0 : QEvent*) : Void
@@ -26777,18 +26777,18 @@ module Qt
     fun bg_QGraphicsObject_addToIndex_(_self_ : QGraphicsObject*) : Void
     fun bg_QGraphicsObject_removeFromIndex_(_self_ : QGraphicsObject*) : Void
     fun bg_QGraphicsObject_prepareGeometryChange_(_self_ : QGraphicsObject*) : Void
-    fun bg_QGraphicsObject_CONNECT_parentChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_opacityChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_visibleChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_enabledChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_xChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_yChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_zChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_rotationChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_scaleChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_childrenChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_widthChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsObject_CONNECT_heightChanged_CrystalProc_void_(_self_ : QGraphicsObject*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_parentChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_zChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_rotationChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_childrenChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsObject_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsObject*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsObject_event_SUPER_QEvent_X(_self_ : QGraphicsObject*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QGraphicsObject*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QGraphicsObject*, event : QTimerEvent*) : Void
@@ -27443,8 +27443,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsTextItem*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsTextItem*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsTextItem*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsTextItem_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(_self_ : QGraphicsTextItem*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsTextItem_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(_self_ : QGraphicsTextItem*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsTextItem_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QGraphicsTextItem*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsTextItem_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QGraphicsTextItem*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsTextItem_boundingRect_SUPER_(_self_ : QGraphicsTextItem*) : QRectF
     fun bg_QGraphicsTextItem_shape_SUPER_(_self_ : QGraphicsTextItem*) : QPainterPath*
     fun bg_QGraphicsTextItem_contains_SUPER_const_QPointF_R(_self_ : QGraphicsTextItem*, point : QPointF) : Bool
@@ -27794,7 +27794,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsEffect*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsEffect*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsEffect*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsEffect_CONNECT_enabledChanged_CrystalProc_void__bool_(_self_ : QGraphicsEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsEffect_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QGraphicsEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsEffect_boundingRectFor_SUPER_const_QRectF_R(_self_ : QGraphicsEffect*, source_rect : QRectF) : QRectF
     fun bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFlags(_self_ : QGraphicsEffect*, flags : ::Qt::GraphicsEffect::ChangeFlags) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QGraphicsEffect*, event : QEvent*) : Bool
@@ -27828,8 +27828,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsColorizeEffect*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsColorizeEffect*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsColorizeEffect*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsColorizeEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(_self_ : QGraphicsColorizeEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_CrystalProc_void__qreal_(_self_ : QGraphicsColorizeEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsColorizeEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(_self_ : QGraphicsColorizeEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QGraphicsColorizeEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsColorizeEffect_draw_SUPER_QPainter_X(_self_ : QGraphicsColorizeEffect*, painter : QPainter*) : Void
     fun bg_QGraphicsEffect_boundingRectFor_SUPER_const_QRectF_R(_self_ : QGraphicsColorizeEffect*, source_rect : QRectF) : QRectF
     fun bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFlags(_self_ : QGraphicsColorizeEffect*, flags : ::Qt::GraphicsEffect::ChangeFlags) : Void
@@ -27864,8 +27864,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsBlurEffect*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsBlurEffect*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsBlurEffect*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(_self_ : QGraphicsBlurEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(_self_ : QGraphicsBlurEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QGraphicsBlurEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(_self_ : QGraphicsBlurEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsBlurEffect_boundingRectFor_SUPER_const_QRectF_R(_self_ : QGraphicsBlurEffect*, source_rect : QRectF) : QRectF
     fun bg_QGraphicsBlurEffect_draw_SUPER_QPainter_X(_self_ : QGraphicsBlurEffect*, painter : QPainter*) : Void
     fun bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFlags(_self_ : QGraphicsBlurEffect*, flags : ::Qt::GraphicsEffect::ChangeFlags) : Void
@@ -27909,9 +27909,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsDropShadowEffect*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsDropShadowEffect*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsDropShadowEffect*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_CrystalProc_void__const_QPointF_R_(_self_ : QGraphicsDropShadowEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(_self_ : QGraphicsDropShadowEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(_self_ : QGraphicsDropShadowEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_Qt__ConnectionType_CrystalProc_void__const_QPointF_R_(_self_ : QGraphicsDropShadowEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QGraphicsDropShadowEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(_self_ : QGraphicsDropShadowEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsDropShadowEffect_boundingRectFor_SUPER_const_QRectF_R(_self_ : QGraphicsDropShadowEffect*, source_rect : QRectF) : QRectF
     fun bg_QGraphicsDropShadowEffect_draw_SUPER_QPainter_X(_self_ : QGraphicsDropShadowEffect*, painter : QPainter*) : Void
     fun bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFlags(_self_ : QGraphicsDropShadowEffect*, flags : ::Qt::GraphicsEffect::ChangeFlags) : Void
@@ -27946,8 +27946,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsOpacityEffect*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsOpacityEffect*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsOpacityEffect*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_CrystalProc_void__qreal_(_self_ : QGraphicsOpacityEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_CrystalProc_void__const_QBrush_R_(_self_ : QGraphicsOpacityEffect*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(_self_ : QGraphicsOpacityEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_Qt__ConnectionType_CrystalProc_void__const_QBrush_R_(_self_ : QGraphicsOpacityEffect*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsOpacityEffect_draw_SUPER_QPainter_X(_self_ : QGraphicsOpacityEffect*, painter : QPainter*) : Void
     fun bg_QGraphicsEffect_boundingRectFor_SUPER_const_QRectF_R(_self_ : QGraphicsOpacityEffect*, source_rect : QRectF) : QRectF
     fun bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFlags(_self_ : QGraphicsOpacityEffect*, flags : ::Qt::GraphicsEffect::ChangeFlags) : Void
@@ -28248,8 +28248,8 @@ module Qt
     fun bg_QGraphicsWidget_ownedByLayout_(_self_ : QGraphicsWidget*) : Bool
     fun bg_QGraphicsWidget_setGraphicsItem_QGraphicsItem_X(_self_ : QGraphicsWidget*, item : QGraphicsItem*) : Void
     fun bg_QGraphicsWidget_setOwnedByLayout_bool(_self_ : QGraphicsWidget*, owned_by_layout : Bool) : Void
-    fun bg_QGraphicsWidget_CONNECT_geometryChanged_CrystalProc_void_(_self_ : QGraphicsWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsWidget_CONNECT_layoutChanged_CrystalProc_void_(_self_ : QGraphicsWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsWidget_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsWidget_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsWidget_setGeometry_SUPER_const_QRectF_R(_self_ : QGraphicsWidget*, rect : QRectF) : Void
     fun bg_QGraphicsWidget_getContentsMargins_SUPER_qreal_X_qreal_X_qreal_X_qreal_X(_self_ : QGraphicsWidget*, left : Float64*, top : Float64*, right : Float64*, bottom : Float64*) : Void
     fun bg_QGraphicsWidget_type_SUPER_(_self_ : QGraphicsWidget*) : Int32
@@ -28558,10 +28558,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsScene*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsScene*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsScene*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsScene_CONNECT_changed_CrystalProc_void__const_QList_QRectF__R_(_self_ : QGraphicsScene*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScene_CONNECT_sceneRectChanged_CrystalProc_void__const_QRectF_R_(_self_ : QGraphicsScene*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScene_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QGraphicsScene*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScene_CONNECT_focusItemChanged_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(_self_ : QGraphicsScene*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScene_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__const_QList_QRectF__R_(_self_ : QGraphicsScene*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScene_CONNECT_sceneRectChanged_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(_self_ : QGraphicsScene*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScene_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScene*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScene_CONNECT_focusItemChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(_self_ : QGraphicsScene*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsScene_inputMethodQuery_SUPER_Qt__InputMethodQuery(_self_ : QGraphicsScene*, query : ::Qt::InputMethodQuery) : CrystalVariant
     fun bg_QGraphicsScene_event_SUPER_QEvent_X(_self_ : QGraphicsScene*, event : QEvent*) : Bool
     fun bg_QGraphicsScene_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QGraphicsScene*, watched : QObject*, event : QEvent*) : Bool
@@ -28755,11 +28755,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsScale*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsScale*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsScale*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsScale_CONNECT_originChanged_CrystalProc_void_(_self_ : QGraphicsScale*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScale_CONNECT_xScaleChanged_CrystalProc_void_(_self_ : QGraphicsScale*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScale_CONNECT_yScaleChanged_CrystalProc_void_(_self_ : QGraphicsScale*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScale_CONNECT_zScaleChanged_CrystalProc_void_(_self_ : QGraphicsScale*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsScale_CONNECT_scaleChanged_CrystalProc_void_(_self_ : QGraphicsScale*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScale_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScale*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScale_CONNECT_xScaleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScale*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScale_CONNECT_yScaleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScale*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScale_CONNECT_zScaleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScale*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsScale_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsScale*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsScale_applyTo_SUPER_QMatrix4x4_X(_self_ : QGraphicsScale*, matrix : QMatrix4x4*) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QGraphicsScale*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QGraphicsScale*, watched : QObject*, event : QEvent*) : Bool
@@ -28794,9 +28794,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsRotation*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsRotation*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsRotation*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsRotation_CONNECT_originChanged_CrystalProc_void_(_self_ : QGraphicsRotation*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsRotation_CONNECT_angleChanged_CrystalProc_void_(_self_ : QGraphicsRotation*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGraphicsRotation_CONNECT_axisChanged_CrystalProc_void_(_self_ : QGraphicsRotation*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsRotation_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsRotation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsRotation_CONNECT_angleChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsRotation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsRotation_CONNECT_axisChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QGraphicsRotation*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsRotation_applyTo_SUPER_QMatrix4x4_X(_self_ : QGraphicsRotation*, matrix : QMatrix4x4*) : Void
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QGraphicsRotation*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QGraphicsRotation*, watched : QObject*, event : QEvent*) : Bool
@@ -29067,7 +29067,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGraphicsView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGraphicsView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGraphicsView*, signal : QMetaMethod*) : Void
-    fun bg_QGraphicsView_CONNECT_rubberBandChanged_CrystalProc_void__QRect__QPointF__QPointF_(_self_ : QGraphicsView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGraphicsView_CONNECT_rubberBandChanged_Qt__ConnectionType_CrystalProc_void__QRect__QPointF__QPointF_(_self_ : QGraphicsView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGraphicsView_sizeHint_SUPER_(_self_ : QGraphicsView*) : QSize
     fun bg_QGraphicsView_inputMethodQuery_SUPER_Qt__InputMethodQuery(_self_ : QGraphicsView*, unnamed_arg_0 : ::Qt::InputMethodQuery) : CrystalVariant
     fun bg_QGraphicsView_setupViewport_SUPER_QWidget_X(_self_ : QGraphicsView*, viewport : QWidget*) : Void
@@ -29189,8 +29189,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QGroupBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QGroupBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QGroupBox*, signal : QMetaMethod*) : Void
-    fun bg_QGroupBox_CONNECT_clicked_CrystalProc_void__bool_(_self_ : QGroupBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QGroupBox_CONNECT_toggled_CrystalProc_void__bool_(_self_ : QGroupBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGroupBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QGroupBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QGroupBox_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QGroupBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QGroupBox_minimumSizeHint_SUPER_(_self_ : QGroupBox*) : QSize
     fun bg_QGroupBox_event_SUPER_QEvent_X(_self_ : QGroupBox*, event : QEvent*) : Bool
     fun bg_QGroupBox_childEvent_SUPER_QChildEvent_X(_self_ : QGroupBox*, event : QChildEvent*) : Void
@@ -29418,16 +29418,16 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QHeaderView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QHeaderView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QHeaderView*, signal : QMetaMethod*) : Void
-    fun bg_QHeaderView_CONNECT_sectionMoved_CrystalProc_void__int__int__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionResized_CrystalProc_void__int__int__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionPressed_CrystalProc_void__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionClicked_CrystalProc_void__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionEntered_CrystalProc_void__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionDoubleClicked_CrystalProc_void__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionCountChanged_CrystalProc_void__int__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_CrystalProc_void__int_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_geometriesChanged_CrystalProc_void_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QHeaderView_CONNECT_sortIndicatorChanged_CrystalProc_void__int__Qt__SortOrder_(_self_ : QHeaderView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionMoved_Qt__ConnectionType_CrystalProc_void__int__int__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionResized_Qt__ConnectionType_CrystalProc_void__int__int__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionPressed_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionEntered_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionCountChanged_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_geometriesChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QHeaderView_CONNECT_sortIndicatorChanged_Qt__ConnectionType_CrystalProc_void__int__Qt__SortOrder_(_self_ : QHeaderView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QHeaderView_setModel_SUPER_QAbstractItemModel_X(_self_ : QHeaderView*, model : QAbstractItemModel*) : Void
     fun bg_QHeaderView_sizeHint_SUPER_(_self_ : QHeaderView*) : QSize
     fun bg_QHeaderView_setVisible_SUPER_bool(_self_ : QHeaderView*, visible : Bool) : Void
@@ -29648,13 +29648,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QLineEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QLineEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QLineEdit*, signal : QMetaMethod*) : Void
-    fun bg_QLineEdit_CONNECT_textChanged_CrystalProc_void__const_QString_R_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_textEdited_CrystalProc_void__const_QString_R_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_cursorPositionChanged_CrystalProc_void__int__int_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_returnPressed_CrystalProc_void_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_editingFinished_CrystalProc_void_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLineEdit_CONNECT_inputRejected_CrystalProc_void_(_self_ : QLineEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_textEdited_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_returnPressed_Qt__ConnectionType_CrystalProc_void_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLineEdit_CONNECT_inputRejected_Qt__ConnectionType_CrystalProc_void_(_self_ : QLineEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QLineEdit_sizeHint_SUPER_(_self_ : QLineEdit*) : QSize
     fun bg_QLineEdit_minimumSizeHint_SUPER_(_self_ : QLineEdit*) : QSize
     fun bg_QLineEdit_mousePressEvent_SUPER_QMouseEvent_X(_self_ : QLineEdit*, event : QMouseEvent*) : Void
@@ -29824,12 +29824,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QInputDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QInputDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QInputDialog*, signal : QMetaMethod*) : Void
-    fun bg_QInputDialog_CONNECT_textValueChanged_CrystalProc_void__const_QString_R_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputDialog_CONNECT_textValueSelected_CrystalProc_void__const_QString_R_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputDialog_CONNECT_intValueChanged_CrystalProc_void__int_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputDialog_CONNECT_intValueSelected_CrystalProc_void__int_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputDialog_CONNECT_doubleValueChanged_CrystalProc_void__double_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QInputDialog_CONNECT_doubleValueSelected_CrystalProc_void__double_(_self_ : QInputDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_textValueChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_textValueSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_intValueChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_intValueSelected_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_doubleValueChanged_Qt__ConnectionType_CrystalProc_void__double_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QInputDialog_CONNECT_doubleValueSelected_Qt__ConnectionType_CrystalProc_void__double_(_self_ : QInputDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QInputDialog_open_SUPER_(_self_ : QInputDialog*) : Void
     fun bg_QInputDialog_minimumSizeHint_SUPER_(_self_ : QInputDialog*) : QSize
     fun bg_QInputDialog_sizeHint_SUPER_(_self_ : QInputDialog*) : QSize
@@ -30019,8 +30019,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QKeySequenceEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QKeySequenceEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QKeySequenceEdit*, signal : QMetaMethod*) : Void
-    fun bg_QKeySequenceEdit_CONNECT_editingFinished_CrystalProc_void_(_self_ : QKeySequenceEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QKeySequenceEdit_CONNECT_keySequenceChanged_CrystalProc_void__const_QKeySequence_R_(_self_ : QKeySequenceEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QKeySequenceEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(_self_ : QKeySequenceEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QKeySequenceEdit_CONNECT_keySequenceChanged_Qt__ConnectionType_CrystalProc_void__const_QKeySequence_R_(_self_ : QKeySequenceEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QKeySequenceEdit_event_SUPER_QEvent_X(_self_ : QKeySequenceEdit*, event : QEvent*) : Bool
     fun bg_QKeySequenceEdit_keyPressEvent_SUPER_QKeyEvent_X(_self_ : QKeySequenceEdit*, event : QKeyEvent*) : Void
     fun bg_QKeySequenceEdit_keyReleaseEvent_SUPER_QKeyEvent_X(_self_ : QKeySequenceEdit*, event : QKeyEvent*) : Void
@@ -30159,8 +30159,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QLabel*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QLabel*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QLabel*, signal : QMetaMethod*) : Void
-    fun bg_QLabel_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(_self_ : QLabel*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QLabel_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(_self_ : QLabel*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLabel_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QLabel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLabel_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QLabel*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QLabel_sizeHint_SUPER_(_self_ : QLabel*) : QSize
     fun bg_QLabel_minimumSizeHint_SUPER_(_self_ : QLabel*) : QSize
     fun bg_QLabel_heightForWidth_SUPER_int(_self_ : QLabel*, unnamed_arg_0 : Int32) : Int32
@@ -30282,7 +30282,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QLCDNumber*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QLCDNumber*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QLCDNumber*, signal : QMetaMethod*) : Void
-    fun bg_QLCDNumber_CONNECT_overflow_CrystalProc_void_(_self_ : QLCDNumber*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QLCDNumber_CONNECT_overflow_Qt__ConnectionType_CrystalProc_void_(_self_ : QLCDNumber*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QLCDNumber_sizeHint_SUPER_(_self_ : QLCDNumber*) : QSize
     fun bg_QLCDNumber_event_SUPER_QEvent_X(_self_ : QLCDNumber*, event : QEvent*) : Bool
     fun bg_QLCDNumber_paintEvent_SUPER_QPaintEvent_X(_self_ : QLCDNumber*, event : QPaintEvent*) : Void
@@ -30463,7 +30463,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QListView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QListView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QListView*, signal : QMetaMethod*) : Void
-    fun bg_QListView_CONNECT_indexesMoved_CrystalProc_void__const_QModelIndexList_R_(_self_ : QListView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListView_CONNECT_indexesMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndexList_R_(_self_ : QListView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QListView_visualRect_SUPER_const_QModelIndex_R(_self_ : QListView*, index : QModelIndex*) : QRect
     fun bg_QListView_scrollTo_SUPER_const_QModelIndex_R_QAbstractItemView__ScrollHint(_self_ : QListView*, index : QModelIndex*, hint : ::Qt::AbstractItemDelegate::ScrollHint) : Void
     fun bg_QListView_indexAt_SUPER_const_QPoint_R(_self_ : QListView*, point : QPoint) : QModelIndex*
@@ -30747,16 +30747,16 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QListWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QListWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QListWidget*, signal : QMetaMethod*) : Void
-    fun bg_QListWidget_CONNECT_itemPressed_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemClicked_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemActivated_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemEntered_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemChanged_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_currentItemChanged_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_currentRowChanged_CrystalProc_void__int_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QListWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(_self_ : QListWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QListWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QListWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QListWidget_setSelectionModel_SUPER_QItemSelectionModel_X(_self_ : QListWidget*, selection_model : QItemSelectionModel*) : Void
     fun bg_QListWidget_dropEvent_SUPER_QDropEvent_X(_self_ : QListWidget*, event : QDropEvent*) : Void
     fun bg_QListWidget_event_SUPER_QEvent_X(_self_ : QListWidget*, event : QEvent*) : Bool
@@ -30958,9 +30958,9 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMainWindow*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMainWindow*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMainWindow*, signal : QMetaMethod*) : Void
-    fun bg_QMainWindow_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(_self_ : QMainWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMainWindow_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(_self_ : QMainWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_CrystalProc_void__QDockWidget_X_(_self_ : QMainWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMainWindow_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(_self_ : QMainWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMainWindow_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(_self_ : QMainWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_Qt__ConnectionType_CrystalProc_void__QDockWidget_X_(_self_ : QMainWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMainWindow_createPopupMenu_SUPER_(_self_ : QMainWindow*) : QMenu*
     fun bg_QMainWindow_contextMenuEvent_SUPER_QContextMenuEvent_X(_self_ : QMainWindow*, event : QContextMenuEvent*) : Void
     fun bg_QMainWindow_event_SUPER_QEvent_X(_self_ : QMainWindow*, event : QEvent*) : Bool
@@ -31098,7 +31098,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMdiArea*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMdiArea*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMdiArea*, signal : QMetaMethod*) : Void
-    fun bg_QMdiArea_CONNECT_subWindowActivated_CrystalProc_void__QMdiSubWindow_X_(_self_ : QMdiArea*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMdiArea_CONNECT_subWindowActivated_Qt__ConnectionType_CrystalProc_void__QMdiSubWindow_X_(_self_ : QMdiArea*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMdiArea_sizeHint_SUPER_(_self_ : QMdiArea*) : QSize
     fun bg_QMdiArea_minimumSizeHint_SUPER_(_self_ : QMdiArea*) : QSize
     fun bg_QMdiArea_setupViewport_SUPER_QWidget_X(_self_ : QMdiArea*, viewport : QWidget*) : Void
@@ -31222,8 +31222,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMdiSubWindow*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMdiSubWindow*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMdiSubWindow*, signal : QMetaMethod*) : Void
-    fun bg_QMdiSubWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(_self_ : QMdiSubWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMdiSubWindow_CONNECT_aboutToActivate_CrystalProc_void_(_self_ : QMdiSubWindow*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMdiSubWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(_self_ : QMdiSubWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMdiSubWindow_CONNECT_aboutToActivate_Qt__ConnectionType_CrystalProc_void_(_self_ : QMdiSubWindow*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMdiSubWindow_sizeHint_SUPER_(_self_ : QMdiSubWindow*) : QSize
     fun bg_QMdiSubWindow_minimumSizeHint_SUPER_(_self_ : QMdiSubWindow*) : QSize
     fun bg_QMdiSubWindow_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QMdiSubWindow*, watched : QObject*, event : QEvent*) : Bool
@@ -31380,10 +31380,10 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMenu*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMenu*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMenu*, signal : QMetaMethod*) : Void
-    fun bg_QMenu_CONNECT_aboutToShow_CrystalProc_void_(_self_ : QMenu*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMenu_CONNECT_aboutToHide_CrystalProc_void_(_self_ : QMenu*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMenu_CONNECT_triggered_CrystalProc_void__QAction_X_(_self_ : QMenu*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMenu_CONNECT_hovered_CrystalProc_void__QAction_X_(_self_ : QMenu*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenu_CONNECT_aboutToShow_Qt__ConnectionType_CrystalProc_void_(_self_ : QMenu*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenu_CONNECT_aboutToHide_Qt__ConnectionType_CrystalProc_void_(_self_ : QMenu*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenu_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QMenu*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenu_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QMenu*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMenu_sizeHint_SUPER_(_self_ : QMenu*) : QSize
     fun bg_QMenu_changeEvent_SUPER_QEvent_X(_self_ : QMenu*, unnamed_arg_0 : QEvent*) : Void
     fun bg_QMenu_keyPressEvent_SUPER_QKeyEvent_X(_self_ : QMenu*, event : QKeyEvent*) : Void
@@ -31508,8 +31508,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMenuBar*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMenuBar*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMenuBar*, signal : QMetaMethod*) : Void
-    fun bg_QMenuBar_CONNECT_triggered_CrystalProc_void__QAction_X_(_self_ : QMenuBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QMenuBar_CONNECT_hovered_CrystalProc_void__QAction_X_(_self_ : QMenuBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenuBar_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QMenuBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMenuBar_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QMenuBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMenuBar_sizeHint_SUPER_(_self_ : QMenuBar*) : QSize
     fun bg_QMenuBar_minimumSizeHint_SUPER_(_self_ : QMenuBar*) : QSize
     fun bg_QMenuBar_heightForWidth_SUPER_int(_self_ : QMenuBar*, unnamed_arg_0 : Int32) : Int32
@@ -31691,7 +31691,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QMessageBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QMessageBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QMessageBox*, signal : QMetaMethod*) : Void
-    fun bg_QMessageBox_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(_self_ : QMessageBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QMessageBox_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(_self_ : QMessageBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QMessageBox_open_SUPER_(_self_ : QMessageBox*) : Void
     fun bg_QMessageBox_event_SUPER_QEvent_X(_self_ : QMessageBox*, event : QEvent*) : Bool
     fun bg_QMessageBox_resizeEvent_SUPER_QResizeEvent_X(_self_ : QMessageBox*, event : QResizeEvent*) : Void
@@ -31907,13 +31907,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTextEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTextEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTextEdit*, signal : QMetaMethod*) : Void
-    fun bg_QTextEdit_CONNECT_textChanged_CrystalProc_void_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_currentCharFormatChanged_CrystalProc_void__const_QTextCharFormat_R_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(_self_ : QTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_currentCharFormatChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCharFormat_R_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTextEdit_loadResource_SUPER_int_const_QUrl_R(_self_ : QTextEdit*, type : Int32, name : QUrl*) : CrystalVariant
     fun bg_QTextEdit_inputMethodQuery_SUPER_Qt__InputMethodQuery(_self_ : QTextEdit*, unnamed_arg_0 : ::Qt::InputMethodQuery) : CrystalVariant
     fun bg_QTextEdit_event_SUPER_QEvent_X(_self_ : QTextEdit*, event : QEvent*) : Bool
@@ -32125,15 +32125,15 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QPlainTextEdit*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QPlainTextEdit*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QPlainTextEdit*, signal : QMetaMethod*) : Void
-    fun bg_QPlainTextEdit_CONNECT_textChanged_CrystalProc_void_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_selectionChanged_CrystalProc_void_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_updateRequest_CrystalProc_void__const_QRect_R__int_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_blockCountChanged_CrystalProc_void__int_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QPlainTextEdit_CONNECT_modificationChanged_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_updateRequest_Qt__ConnectionType_CrystalProc_void__const_QRect_R__int_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QPlainTextEdit_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QPlainTextEdit*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QPlainTextEdit_loadResource_SUPER_int_const_QUrl_R(_self_ : QPlainTextEdit*, type : Int32, name : QUrl*) : CrystalVariant
     fun bg_QPlainTextEdit_inputMethodQuery_SUPER_Qt__InputMethodQuery(_self_ : QPlainTextEdit*, unnamed_arg_0 : ::Qt::InputMethodQuery) : CrystalVariant
     fun bg_QPlainTextEdit_event_SUPER_QEvent_X(_self_ : QPlainTextEdit*, event : QEvent*) : Bool
@@ -32313,7 +32313,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QProgressBar*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QProgressBar*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QProgressBar*, signal : QMetaMethod*) : Void
-    fun bg_QProgressBar_CONNECT_valueChanged_CrystalProc_void__int_(_self_ : QProgressBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProgressBar_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QProgressBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QProgressBar_text_SUPER_(_self_ : QProgressBar*) : CrystalString
     fun bg_QProgressBar_sizeHint_SUPER_(_self_ : QProgressBar*) : QSize
     fun bg_QProgressBar_minimumSizeHint_SUPER_(_self_ : QProgressBar*) : QSize
@@ -32448,7 +32448,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QProgressDialog*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QProgressDialog*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QProgressDialog*, signal : QMetaMethod*) : Void
-    fun bg_QProgressDialog_CONNECT_canceled_CrystalProc_void_(_self_ : QProgressDialog*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QProgressDialog_CONNECT_canceled_Qt__ConnectionType_CrystalProc_void_(_self_ : QProgressDialog*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QProgressDialog_sizeHint_SUPER_(_self_ : QProgressDialog*) : QSize
     fun bg_QProgressDialog_open_SUPER_(_self_ : QProgressDialog*) : Void
     fun bg_QProgressDialog_resizeEvent_SUPER_QResizeEvent_X(_self_ : QProgressDialog*, event : QResizeEvent*) : Void
@@ -32833,8 +32833,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QScroller*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QScroller*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QScroller*, signal : QMetaMethod*) : Void
-    fun bg_QScroller_CONNECT_stateChanged_CrystalProc_void__QScroller__State_(_self_ : QScroller*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QScroller_CONNECT_scrollerPropertiesChanged_CrystalProc_void__const_QScrollerProperties_R_(_self_ : QScroller*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScroller_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QScroller__State_(_self_ : QScroller*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QScroller_CONNECT_scrollerPropertiesChanged_Qt__ConnectionType_CrystalProc_void__const_QScrollerProperties_R_(_self_ : QScroller*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QShortcut_metaObject_(_self_ : QShortcut*) : QMetaObject*
     fun bg_QShortcut_qt_metacast_const_char_X(_self_ : QShortcut*, unnamed_arg_0 : UInt8*) : Void*
     fun bg_QShortcut_qt_metacall_QMetaObject__Call_int_void_XX(_self_ : QShortcut*, unnamed_arg_0 : ::Qt::MetaObjectCall, unnamed_arg_1 : Int32, unnamed_arg_2 : Void**) : Int32
@@ -32866,8 +32866,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QShortcut*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QShortcut*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QShortcut*, signal : QMetaMethod*) : Void
-    fun bg_QShortcut_CONNECT_activated_CrystalProc_void_(_self_ : QShortcut*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QShortcut_CONNECT_activatedAmbiguously_CrystalProc_void_(_self_ : QShortcut*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QShortcut_CONNECT_activated_Qt__ConnectionType_CrystalProc_void_(_self_ : QShortcut*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QShortcut_CONNECT_activatedAmbiguously_Qt__ConnectionType_CrystalProc_void_(_self_ : QShortcut*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QShortcut_event_SUPER_QEvent_X(_self_ : QShortcut*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QShortcut*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QShortcut*, event : QTimerEvent*) : Void
@@ -33054,8 +33054,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSpinBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSpinBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSpinBox*, signal : QMetaMethod*) : Void
-    fun bg_QSpinBox_CONNECT_valueChanged_CrystalProc_void__int_(_self_ : QSpinBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(_self_ : QSpinBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QSpinBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QSpinBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSpinBox_event_SUPER_QEvent_X(_self_ : QSpinBox*, event : QEvent*) : Bool
     fun bg_QSpinBox_valueFromText_SUPER_const_QString_R(_self_ : QSpinBox*, text : CrystalString) : Int32
     fun bg_QSpinBox_textFromValue_SUPER_int(_self_ : QSpinBox*, val : Int32) : CrystalString
@@ -33186,8 +33186,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QDoubleSpinBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QDoubleSpinBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QDoubleSpinBox*, signal : QMetaMethod*) : Void
-    fun bg_QDoubleSpinBox_CONNECT_valueChanged_CrystalProc_void__double_(_self_ : QDoubleSpinBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QDoubleSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(_self_ : QDoubleSpinBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__double_(_self_ : QDoubleSpinBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QDoubleSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QDoubleSpinBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QDoubleSpinBox_valueFromText_SUPER_const_QString_R(_self_ : QDoubleSpinBox*, text : CrystalString) : Float64
     fun bg_QDoubleSpinBox_textFromValue_SUPER_double(_self_ : QDoubleSpinBox*, val : Float64) : CrystalString
     fun bg_QAbstractSpinBox_sizeHint_SUPER_(_self_ : QDoubleSpinBox*) : QSize
@@ -33308,7 +33308,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSplashScreen*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSplashScreen*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSplashScreen*, signal : QMetaMethod*) : Void
-    fun bg_QSplashScreen_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(_self_ : QSplashScreen*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSplashScreen_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QSplashScreen*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSplashScreen_event_SUPER_QEvent_X(_self_ : QSplashScreen*, event : QEvent*) : Bool
     fun bg_QSplashScreen_drawContents_SUPER_QPainter_X(_self_ : QSplashScreen*, painter : QPainter*) : Void
     fun bg_QSplashScreen_mousePressEvent_SUPER_QMouseEvent_X(_self_ : QSplashScreen*, event : QMouseEvent*) : Void
@@ -33440,7 +33440,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSplitter*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSplitter*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSplitter*, signal : QMetaMethod*) : Void
-    fun bg_QSplitter_CONNECT_splitterMoved_CrystalProc_void__int__int_(_self_ : QSplitter*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSplitter_CONNECT_splitterMoved_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QSplitter*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSplitter_sizeHint_SUPER_(_self_ : QSplitter*) : QSize
     fun bg_QSplitter_minimumSizeHint_SUPER_(_self_ : QSplitter*) : QSize
     fun bg_QSplitter_createHandle_SUPER_(_self_ : QSplitter*) : QSplitterHandle*
@@ -33640,8 +33640,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QStackedLayout*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QStackedLayout*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QStackedLayout*, signal : QMetaMethod*) : Void
-    fun bg_QStackedLayout_CONNECT_widgetRemoved_CrystalProc_void__int_(_self_ : QStackedLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStackedLayout_CONNECT_currentChanged_CrystalProc_void__int_(_self_ : QStackedLayout*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStackedLayout_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStackedLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStackedLayout_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStackedLayout*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QStackedLayout_widget_SUPER_(_self_ : QStackedLayout*) : QWidget*
     fun bg_QStackedLayout_count_SUPER_(_self_ : QStackedLayout*) : Int32
     fun bg_QStackedLayout_addItem_SUPER_QLayoutItem_X(_self_ : QStackedLayout*, unnamed_arg_0 : QLayoutItem*) : Void
@@ -33733,8 +33733,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QStackedWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QStackedWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QStackedWidget*, signal : QMetaMethod*) : Void
-    fun bg_QStackedWidget_CONNECT_currentChanged_CrystalProc_void__int_(_self_ : QStackedWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QStackedWidget_CONNECT_widgetRemoved_CrystalProc_void__int_(_self_ : QStackedWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStackedWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStackedWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStackedWidget_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QStackedWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QStackedWidget_event_SUPER_QEvent_X(_self_ : QStackedWidget*, event : QEvent*) : Bool
     fun bg_QFrame_sizeHint_SUPER_(_self_ : QStackedWidget*) : QSize
     fun bg_QFrame_paintEvent_SUPER_QPaintEvent_X(_self_ : QStackedWidget*, event : QPaintEvent*) : Void
@@ -33848,7 +33848,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QStatusBar*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QStatusBar*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QStatusBar*, signal : QMetaMethod*) : Void
-    fun bg_QStatusBar_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(_self_ : QStatusBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QStatusBar_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QStatusBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QStatusBar_showEvent_SUPER_QShowEvent_X(_self_ : QStatusBar*, event : QShowEvent*) : Void
     fun bg_QStatusBar_paintEvent_SUPER_QPaintEvent_X(_self_ : QStatusBar*, event : QPaintEvent*) : Void
     fun bg_QStatusBar_resizeEvent_SUPER_QResizeEvent_X(_self_ : QStatusBar*, event : QResizeEvent*) : Void
@@ -33980,8 +33980,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QSystemTrayIcon*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QSystemTrayIcon*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QSystemTrayIcon*, signal : QMetaMethod*) : Void
-    fun bg_QSystemTrayIcon_CONNECT_activated_CrystalProc_void__QSystemTrayIcon__ActivationReason_(_self_ : QSystemTrayIcon*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QSystemTrayIcon_CONNECT_messageClicked_CrystalProc_void_(_self_ : QSystemTrayIcon*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSystemTrayIcon_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSystemTrayIcon__ActivationReason_(_self_ : QSystemTrayIcon*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QSystemTrayIcon_CONNECT_messageClicked_Qt__ConnectionType_CrystalProc_void_(_self_ : QSystemTrayIcon*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QSystemTrayIcon_event_SUPER_QEvent_X(_self_ : QSystemTrayIcon*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QSystemTrayIcon*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QSystemTrayIcon*, event : QTimerEvent*) : Void
@@ -34453,21 +34453,21 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTableWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTableWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTableWidget*, signal : QMetaMethod*) : Void
-    fun bg_QTableWidget_CONNECT_itemPressed_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemClicked_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemActivated_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemEntered_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemChanged_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_currentItemChanged_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellPressed_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellClicked_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellDoubleClicked_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellActivated_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellEntered_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_cellChanged_CrystalProc_void__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTableWidget_CONNECT_currentCellChanged_CrystalProc_void__int__int__int__int_(_self_ : QTableWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellPressed_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellClicked_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellDoubleClicked_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellActivated_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellEntered_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_cellChanged_Qt__ConnectionType_CrystalProc_void__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTableWidget_CONNECT_currentCellChanged_Qt__ConnectionType_CrystalProc_void__int__int__int__int_(_self_ : QTableWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTableWidget_event_SUPER_QEvent_X(_self_ : QTableWidget*, event : QEvent*) : Bool
     fun bg_QTableWidget_mimeTypes_SUPER_(_self_ : QTableWidget*) : ContainerQListQString*
     fun bg_QTableWidget_mimeData_SUPER_const_QList_QTableWidgetItem_X_(_self_ : QTableWidget*, items : ContainerQListQTableWidgetItemX*) : QMimeData*
@@ -34650,12 +34650,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTextBrowser*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTextBrowser*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTextBrowser*, signal : QMetaMethod*) : Void
-    fun bg_QTextBrowser_CONNECT_backwardAvailable_CrystalProc_void__bool_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextBrowser_CONNECT_forwardAvailable_CrystalProc_void__bool_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextBrowser_CONNECT_historyChanged_CrystalProc_void_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextBrowser_CONNECT_sourceChanged_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextBrowser_CONNECT_highlighted_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTextBrowser_CONNECT_anchorClicked_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_backwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_forwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_historyChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_sourceChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTextBrowser_CONNECT_anchorClicked_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(_self_ : QTextBrowser*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTextBrowser_loadResource_SUPER_int_const_QUrl_R(_self_ : QTextBrowser*, type : Int32, name : QUrl*) : CrystalVariant
     fun bg_QTextBrowser_setSource_SUPER_const_QUrl_R(_self_ : QTextBrowser*, name : QUrl*) : Void
     fun bg_QTextBrowser_backward_SUPER_(_self_ : QTextBrowser*) : Void
@@ -34809,14 +34809,14 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QToolBar*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QToolBar*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QToolBar*, signal : QMetaMethod*) : Void
-    fun bg_QToolBar_CONNECT_actionTriggered_CrystalProc_void__QAction_X_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_movableChanged_CrystalProc_void__bool_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__ToolBarAreas_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_orientationChanged_CrystalProc_void__Qt__Orientation_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_topLevelChanged_CrystalProc_void__bool_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QToolBar_CONNECT_visibilityChanged_CrystalProc_void__bool_(_self_ : QToolBar*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_movableChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolBarAreas_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBar_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QToolBar*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QToolBar_actionEvent_SUPER_QActionEvent_X(_self_ : QToolBar*, event : QActionEvent*) : Void
     fun bg_QToolBar_changeEvent_SUPER_QEvent_X(_self_ : QToolBar*, unnamed_arg_0 : QEvent*) : Void
     fun bg_QToolBar_paintEvent_SUPER_QPaintEvent_X(_self_ : QToolBar*, event : QPaintEvent*) : Void
@@ -34941,7 +34941,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QToolBox*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QToolBox*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QToolBox*, signal : QMetaMethod*) : Void
-    fun bg_QToolBox_CONNECT_currentChanged_CrystalProc_void__int_(_self_ : QToolBox*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolBox_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QToolBox*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QToolBox_event_SUPER_QEvent_X(_self_ : QToolBox*, event : QEvent*) : Bool
     fun bg_QToolBox_itemInserted_SUPER_int(_self_ : QToolBox*, index : Int32) : Void
     fun bg_QToolBox_itemRemoved_SUPER_int(_self_ : QToolBox*, index : Int32) : Void
@@ -35062,7 +35062,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QToolButton*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QToolButton*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QToolButton*, signal : QMetaMethod*) : Void
-    fun bg_QToolButton_CONNECT_triggered_CrystalProc_void__QAction_X_(_self_ : QToolButton*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QToolButton_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(_self_ : QToolButton*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QToolButton_sizeHint_SUPER_(_self_ : QToolButton*) : QSize
     fun bg_QToolButton_minimumSizeHint_SUPER_(_self_ : QToolButton*) : QSize
     fun bg_QToolButton_event_SUPER_QEvent_X(_self_ : QToolButton*, event : QEvent*) : Bool
@@ -35284,8 +35284,8 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTreeView*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTreeView*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTreeView*, signal : QMetaMethod*) : Void
-    fun bg_QTreeView_CONNECT_expanded_CrystalProc_void__const_QModelIndex_R_(_self_ : QTreeView*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeView_CONNECT_collapsed_CrystalProc_void__const_QModelIndex_R_(_self_ : QTreeView*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeView_CONNECT_expanded_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QTreeView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeView_CONNECT_collapsed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(_self_ : QTreeView*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTreeView_setModel_SUPER_QAbstractItemModel_X(_self_ : QTreeView*, model : QAbstractItemModel*) : Void
     fun bg_QTreeView_setRootIndex_SUPER_const_QModelIndex_R(_self_ : QTreeView*, index : QModelIndex*) : Void
     fun bg_QTreeView_setSelectionModel_SUPER_QItemSelectionModel_X(_self_ : QTreeView*, selection_model : QItemSelectionModel*) : Void
@@ -35616,16 +35616,16 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QTreeWidget*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QTreeWidget*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QTreeWidget*, signal : QMetaMethod*) : Void
-    fun bg_QTreeWidget_CONNECT_itemPressed_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemClicked_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemActivated_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemEntered_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemChanged_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemExpanded_CrystalProc_void__QTreeWidgetItem_X_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemCollapsed_CrystalProc_void__QTreeWidgetItem_X_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_currentItemChanged_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QTreeWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(_self_ : QTreeWidget*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemExpanded_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemCollapsed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QTreeWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QTreeWidget*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QTreeWidget_setSelectionModel_SUPER_QItemSelectionModel_X(_self_ : QTreeWidget*, selection_model : QItemSelectionModel*) : Void
     fun bg_QTreeWidget_event_SUPER_QEvent_X(_self_ : QTreeWidget*, event : QEvent*) : Bool
     fun bg_QTreeWidget_mimeTypes_SUPER_(_self_ : QTreeWidget*) : ContainerQListQString*
@@ -35757,13 +35757,13 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QUndoGroup*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QUndoGroup*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QUndoGroup*, signal : QMetaMethod*) : Void
-    fun bg_QUndoGroup_CONNECT_activeStackChanged_CrystalProc_void__QUndoStack_X_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_indexChanged_CrystalProc_void__int_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_cleanChanged_CrystalProc_void__bool_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_canUndoChanged_CrystalProc_void__bool_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_canRedoChanged_CrystalProc_void__bool_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoGroup_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(_self_ : QUndoGroup*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_activeStackChanged_Qt__ConnectionType_CrystalProc_void__QUndoStack_X_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoGroup_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QUndoGroup*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QUndoGroup*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QUndoGroup*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QUndoGroup*, event : QTimerEvent*) : Void
@@ -35837,12 +35837,12 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QUndoStack*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QUndoStack*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QUndoStack*, signal : QMetaMethod*) : Void
-    fun bg_QUndoStack_CONNECT_indexChanged_CrystalProc_void__int_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoStack_CONNECT_cleanChanged_CrystalProc_void__bool_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoStack_CONNECT_canUndoChanged_CrystalProc_void__bool_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoStack_CONNECT_canRedoChanged_CrystalProc_void__bool_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoStack_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QUndoStack_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(_self_ : QUndoStack*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QUndoStack_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(_self_ : QUndoStack*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QObject_event_SUPER_QEvent_X(_self_ : QUndoStack*, event : QEvent*) : Bool
     fun bg_QObject_eventFilter_SUPER_QObject_X_QEvent_X(_self_ : QUndoStack*, watched : QObject*, event : QEvent*) : Bool
     fun bg_QObject_timerEvent_SUPER_QTimerEvent_X(_self_ : QUndoStack*, event : QTimerEvent*) : Void
@@ -36188,11 +36188,11 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QWizard*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QWizard*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QWizard*, signal : QMetaMethod*) : Void
-    fun bg_QWizard_CONNECT_currentIdChanged_CrystalProc_void__int_(_self_ : QWizard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWizard_CONNECT_helpRequested_CrystalProc_void_(_self_ : QWizard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWizard_CONNECT_customButtonClicked_CrystalProc_void__int_(_self_ : QWizard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWizard_CONNECT_pageAdded_CrystalProc_void__int_(_self_ : QWizard*, _proc_ : CrystalProc) : QMetaObjectConnection*
-    fun bg_QWizard_CONNECT_pageRemoved_CrystalProc_void__int_(_self_ : QWizard*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizard_CONNECT_currentIdChanged_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWizard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizard_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(_self_ : QWizard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizard_CONNECT_customButtonClicked_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWizard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizard_CONNECT_pageAdded_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWizard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizard_CONNECT_pageRemoved_Qt__ConnectionType_CrystalProc_void__int_(_self_ : QWizard*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QWizard_validateCurrentPage_SUPER_(_self_ : QWizard*) : Bool
     fun bg_QWizard_nextId_SUPER_(_self_ : QWizard*) : Int32
     fun bg_QWizard_setVisible_SUPER_bool(_self_ : QWizard*, visible : Bool) : Void
@@ -36326,7 +36326,7 @@ module Qt
     fun bg_QObject_customEvent_QEvent_X(_self_ : QWizardPage*, event : QEvent*) : Void
     fun bg_QObject_connectNotify_const_QMetaMethod_R(_self_ : QWizardPage*, signal : QMetaMethod*) : Void
     fun bg_QObject_disconnectNotify_const_QMetaMethod_R(_self_ : QWizardPage*, signal : QMetaMethod*) : Void
-    fun bg_QWizardPage_CONNECT_completeChanged_CrystalProc_void_(_self_ : QWizardPage*, _proc_ : CrystalProc) : QMetaObjectConnection*
+    fun bg_QWizardPage_CONNECT_completeChanged_Qt__ConnectionType_CrystalProc_void_(_self_ : QWizardPage*, type : ::Qt::ConnectionType, _proc_ : CrystalProc) : QMetaObjectConnection*
     fun bg_QWizardPage_initializePage_SUPER_(_self_ : QWizardPage*) : Void
     fun bg_QWizardPage_cleanupPage_SUPER_(_self_ : QWizardPage*) : Void
     fun bg_QWizardPage_validatePage_SUPER_(_self_ : QWizardPage*) : Bool
@@ -38410,12 +38410,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_destroyed(&_proc_ : Proc(Object, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QObject_CONNECT_destroyed_CrystalProc_void__QObject_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(arg0.try {|ptr| Object.new(unwrap: ptr) unless ptr.null?}) end)))
+    def on_destroyed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QObject_CONNECT_destroyed_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(arg0.try {|ptr| Object.new(unwrap: ptr) unless ptr.null?}) end)))
     end
     
-    def on_object_name_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QObject_CONNECT_objectNameChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_object_name_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QObject_CONNECT_objectNameChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -38751,20 +38751,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_finished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_state_changed(&_proc_ : Proc(AbstractAnimation::State, AbstractAnimation::State, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_stateChanged_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(self, BindgenHelper.wrap_proc(Proc(::Qt::AbstractAnimation::State, ::Qt::AbstractAnimation::State, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractAnimation::State, AbstractAnimation::State, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::AbstractAnimation::State, ::Qt::AbstractAnimation::State, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_current_loop_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_currentLoopChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_loop_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_currentLoopChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_direction_changed(&_proc_ : Proc(AbstractAnimation::Direction, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_directionChanged_CrystalProc_void__QAbstractAnimation__Direction_(self, BindgenHelper.wrap_proc(Proc(::Qt::AbstractAnimation::Direction, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_direction_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractAnimation::Direction, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractAnimation_CONNECT_directionChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__Direction_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::AbstractAnimation::Direction, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -39045,12 +39045,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_started(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAnimationDriver_CONNECT_started_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_started(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAnimationDriver_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_stopped(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAnimationDriver_CONNECT_stopped_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_stopped(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAnimationDriver_CONNECT_stopped_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -39572,12 +39572,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_about_to_block(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_block(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_awake(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractEventDispatcher_CONNECT_awake_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_awake(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractEventDispatcher_CONNECT_awake_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -40616,88 +40616,88 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_data_changed(_type1_ : ModelIndex.class, _type2_ : ModelIndex.class, &_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
+    def on_data_changed(_type1_ : ModelIndex.class, _type2_ : ModelIndex.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
     end
     
-    def on_data_changed(_type1_ : ModelIndex.class, _type2_ : ModelIndex.class, _type3_ : Enumerable(Int32).class, &_proc_ : Proc(ModelIndex, ModelIndex, Enumerable(Int32), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Binding::ContainerQVectorInt*, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1), Container_QVector_int_.new(unwrap: arg2)) end)))
+    def on_data_changed(_type1_ : ModelIndex.class, _type2_ : ModelIndex.class, _type3_ : Enumerable(Int32).class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, ModelIndex, Enumerable(Int32), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Binding::ContainerQVectorInt*, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1), Container_QVector_int_.new(unwrap: arg2)) end)))
     end
     
-    def on_header_data_changed(&_proc_ : Proc(Orientation, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_headerDataChanged_CrystalProc_void__Qt__Orientation__int__int_(self, BindgenHelper.wrap_proc(Proc(::Qt::Orientation, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
+    def on_header_data_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Orientation, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_headerDataChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation__int__int_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Orientation, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
     end
     
-    def on_layout_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_layout_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_layout_changed(_type1_ : Enumerable(PersistentModelIndex).class, &_proc_ : Proc(Enumerable(PersistentModelIndex), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQPersistentModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QPersistentModelIndex_.new(unwrap: arg0)) end)))
+    def on_layout_changed(_type1_ : Enumerable(PersistentModelIndex).class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(PersistentModelIndex), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQPersistentModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QPersistentModelIndex_.new(unwrap: arg0)) end)))
     end
     
-    def on_layout_about_to_be_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_layout_about_to_be_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_layout_about_to_be_changed(_type1_ : Enumerable(PersistentModelIndex).class, &_proc_ : Proc(Enumerable(PersistentModelIndex), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQPersistentModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QPersistentModelIndex_.new(unwrap: arg0)) end)))
+    def on_layout_about_to_be_changed(_type1_ : Enumerable(PersistentModelIndex).class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(PersistentModelIndex), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQPersistentModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QPersistentModelIndex_.new(unwrap: arg0)) end)))
     end
     
-    def on_rows_about_to_be_inserted(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_rows_about_to_be_inserted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_rows_inserted(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_rows_inserted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_rows_about_to_be_removed(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_rows_about_to_be_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_rows_removed(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_rows_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_columns_about_to_be_inserted(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_columns_about_to_be_inserted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_columns_inserted(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_columns_inserted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_columns_about_to_be_removed(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_columns_about_to_be_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_columns_removed(&_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
+    def on_columns_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2) end)))
     end
     
-    def on_model_about_to_be_reset(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_model_about_to_be_reset(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_model_reset(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_modelReset_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_model_reset(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_modelReset_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_rows_about_to_be_moved(&_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
+    def on_rows_about_to_be_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
     end
     
-    def on_rows_moved(&_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
+    def on_rows_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_rowsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
     end
     
-    def on_columns_about_to_be_moved(&_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
+    def on_columns_about_to_be_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
     end
     
-    def on_columns_moved(&_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
+    def on_columns_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Int32, Int32, ModelIndex, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemModel_CONNECT_columnsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Int32, Int32, Binding::QModelIndex*, Int32, Void).new do |arg0, arg1, arg2, arg3, arg4| _proc_.call(ModelIndex.new(unwrap: arg0), arg1, arg2, ModelIndex.new(unwrap: arg3), arg4) end)))
     end
     
   end
@@ -42738,8 +42738,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_source_model_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractProxyModel_CONNECT_sourceModelChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_source_model_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractProxyModel_CONNECT_sourceModelChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -43858,28 +43858,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_ready_read(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_readyRead_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_ready_read(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_readyRead_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_channel_ready_read(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_channelReadyRead_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_channel_ready_read(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_channelReadyRead_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_bytes_written(&_proc_ : Proc(Int64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_bytesWritten_CrystalProc_void__qint64_(self, BindgenHelper.wrap_proc(Proc(Int64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_bytes_written(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_bytesWritten_Qt__ConnectionType_CrystalProc_void__qint64_(self, type, BindgenHelper.wrap_proc(Proc(Int64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_channel_bytes_written(&_proc_ : Proc(Int32, Int64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_channelBytesWritten_CrystalProc_void__int__qint64_(self, BindgenHelper.wrap_proc(Proc(Int32, Int64, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_channel_bytes_written(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_channelBytesWritten_Qt__ConnectionType_CrystalProc_void__int__qint64_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int64, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_about_to_close(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_aboutToClose_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_close(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_aboutToClose_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_read_channel_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_readChannelFinished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_read_channel_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIODevice_CONNECT_readChannelFinished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -50517,24 +50517,24 @@ module Qt
       Binding.bg_QObject_disconnectNotify_const_QMetaMethod_R(self, signal)
     end
     
-    def on_about_to_quit(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_aboutToQuit_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_quit(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_aboutToQuit_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_organization_name_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_organizationNameChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_organization_name_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_organizationNameChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_organization_domain_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_organizationDomainChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_organization_domain_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_organizationDomainChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_application_name_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_applicationNameChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_application_name_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_applicationNameChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_application_version_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_applicationVersionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_application_version_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCoreApplication_CONNECT_applicationVersionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -54981,12 +54981,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_file_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileSystemWatcher_CONNECT_fileChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_file_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileSystemWatcher_CONNECT_fileChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_directory_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileSystemWatcher_CONNECT_directoryChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_directory_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileSystemWatcher_CONNECT_directoryChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -56350,24 +56350,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_selection_changed(&_proc_ : Proc(ItemSelection, ItemSelection, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_selectionChanged_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QItemSelection*, Binding::QItemSelection*, Void).new do |arg0, arg1| _proc_.call(ItemSelection.new(unwrap: arg0), ItemSelection.new(unwrap: arg1)) end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ItemSelection, ItemSelection, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QItemSelection*, Binding::QItemSelection*, Void).new do |arg0, arg1| _proc_.call(ItemSelection.new(unwrap: arg0), ItemSelection.new(unwrap: arg1)) end)))
     end
     
-    def on_current_changed(&_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
     end
     
-    def on_current_row_changed(&_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentRowChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
+    def on_current_row_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
     end
     
-    def on_current_column_changed(&_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentColumnChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
+    def on_current_column_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_currentColumnChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Binding::QModelIndex*, Void).new do |arg0, arg1| _proc_.call(ModelIndex.new(unwrap: arg0), ModelIndex.new(unwrap: arg1)) end)))
     end
     
-    def on_model_changed(&_proc_ : Proc(AbstractItemModel, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_modelChanged_CrystalProc_void__QAbstractItemModel_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractItemModel*, Void).new do |arg0| _proc_.call(AbstractItemModelImpl.new(unwrap: arg0)) end)))
+    def on_model_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractItemModel, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QItemSelectionModel_CONNECT_modelChanged_Qt__ConnectionType_CrystalProc_void__QAbstractItemModel_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractItemModel*, Void).new do |arg0| _proc_.call(AbstractItemModelImpl.new(unwrap: arg0)) end)))
     end
     
   end
@@ -61126,28 +61126,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_started(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_started_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_started(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_finished(&_proc_ : Proc(Int32, Process::ExitStatus, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_finished_CrystalProc_void__int__QProcess__ExitStatus_(self, BindgenHelper.wrap_proc(Proc(Int32, ::Qt::Process::ExitStatus, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Process::ExitStatus, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int__QProcess__ExitStatus_(self, type, BindgenHelper.wrap_proc(Proc(Int32, ::Qt::Process::ExitStatus, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_error_occurred(&_proc_ : Proc(Process::ProcessError, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_errorOccurred_CrystalProc_void__QProcess__ProcessError_(self, BindgenHelper.wrap_proc(Proc(::Qt::Process::ProcessError, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_error_occurred(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Process::ProcessError, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_errorOccurred_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessError_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Process::ProcessError, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_state_changed(&_proc_ : Proc(Process::ProcessState, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_stateChanged_CrystalProc_void__QProcess__ProcessState_(self, BindgenHelper.wrap_proc(Proc(::Qt::Process::ProcessState, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Process::ProcessState, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessState_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Process::ProcessState, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_ready_read_standard_output(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_readyReadStandardOutput_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_ready_read_standard_output(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_readyReadStandardOutput_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_ready_read_standard_error(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_readyReadStandardError_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_ready_read_standard_error(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProcess_CONNECT_readyReadStandardError_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -61480,8 +61480,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Variant, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QVariantAnimation_CONNECT_valueChanged_CrystalProc_void__const_QVariant_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalVariant*, Void).new do |arg0| _proc_.call(Qt::Variant.new(arg0.value)) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Variant, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QVariantAnimation_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__const_QVariant_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalVariant*, Void).new do |arg0| _proc_.call(Qt::Variant.new(arg0.value)) end)))
     end
     
   end
@@ -64077,8 +64077,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_animation_changed(&_proc_ : Proc(AbstractAnimation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_CrystalProc_void__QAbstractAnimation_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractAnimation*, Void).new do |arg0| _proc_.call(AbstractAnimationImpl.new(unwrap: arg0)) end)))
+    def on_current_animation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractAnimation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractAnimation*, Void).new do |arg0| _proc_.call(AbstractAnimationImpl.new(unwrap: arg0)) end)))
     end
     
   end
@@ -65312,20 +65312,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_mapped_int(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedInt_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_mapped_int(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedInt_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_mapped_string(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedString_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_mapped_string(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedString_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_mapped_widget(&_proc_ : Proc(Widget, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedWidget_CrystalProc_void__QWidget_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Void).new do |arg0| _proc_.call(Widget.new(unwrap: arg0)) end)))
+    def on_mapped_widget(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Widget, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedWidget_Qt__ConnectionType_CrystalProc_void__QWidget_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Void).new do |arg0| _proc_.call(Widget.new(unwrap: arg0)) end)))
     end
     
-    def on_mapped_object(&_proc_ : Proc(Object, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedObject_CrystalProc_void__QObject_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
+    def on_mapped_object(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSignalMapper_CONNECT_mappedObject_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
     end
     
   end
@@ -65503,8 +65503,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_activated(&_proc_ : Proc(Binding::QSocketDescriptor, SocketNotifier::Type, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSocketNotifier_CONNECT_activated_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(self, BindgenHelper.wrap_proc(Proc(Binding::QSocketDescriptor*, ::Qt::SocketNotifier::Type, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSocketDescriptor, SocketNotifier::Type, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSocketNotifier_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSocketDescriptor*, ::Qt::SocketNotifier::Type, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
   end
@@ -66272,32 +66272,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_dynamic_sort_filter_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_dynamic_sort_filter_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_filter_case_sensitivity_changed(&_proc_ : Proc(CaseSensitivity, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(self, BindgenHelper.wrap_proc(Proc(::Qt::CaseSensitivity, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_filter_case_sensitivity_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(CaseSensitivity, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::CaseSensitivity, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_sort_case_sensitivity_changed(&_proc_ : Proc(CaseSensitivity, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(self, BindgenHelper.wrap_proc(Proc(::Qt::CaseSensitivity, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_sort_case_sensitivity_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(CaseSensitivity, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::CaseSensitivity, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_sort_locale_aware_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_sort_locale_aware_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_sort_role_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_sort_role_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_filter_role_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_filter_role_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_recursive_filtering_enabled_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_recursive_filtering_enabled_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -68441,12 +68441,12 @@ module Qt
     @unwrap = result
     end
     
-    def on_started(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QThread_CONNECT_started_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_started(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QThread_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QThread_CONNECT_finished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QThread_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -68944,20 +68944,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_valueChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_frame_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_frameChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_frame_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_state_changed(&_proc_ : Proc(TimeLine::State, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_stateChanged_CrystalProc_void__QTimeLine__State_(self, BindgenHelper.wrap_proc(Proc(::Qt::TimeLine::State, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TimeLine::State, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QTimeLine__State_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::TimeLine::State, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_finished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimeLine_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -69194,8 +69194,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_timeout(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimer_CONNECT_timeout_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_timeout(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimer_CONNECT_timeout_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -81927,44 +81927,44 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_contents_change(&_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_contentsChange_CrystalProc_void__int__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
+    def on_contents_change(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_contentsChange_Qt__ConnectionType_CrystalProc_void__int__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
     end
     
-    def on_contents_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_contentsChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_contents_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_contentsChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_undo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_undoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_undo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_redo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_redoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_redo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_undo_command_added(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_undoCommandAdded_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_undo_command_added(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_undoCommandAdded_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_modification_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_modificationChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_modification_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_cursor_position_changed(&_proc_ : Proc(TextCursor, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_cursorPositionChanged_CrystalProc_void__const_QTextCursor_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QTextCursor*, Void).new do |arg0| _proc_.call(TextCursor.new(unwrap: arg0)) end)))
+    def on_cursor_position_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TextCursor, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCursor_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTextCursor*, Void).new do |arg0| _proc_.call(TextCursor.new(unwrap: arg0)) end)))
     end
     
-    def on_block_count_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_blockCountChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_block_count_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_base_url_changed(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_baseUrlChanged_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_base_url_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_baseUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_document_layout_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_documentLayoutChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_document_layout_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextDocument_CONNECT_documentLayoutChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -82568,24 +82568,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_update(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_update(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_update(_type1_ : RectF.class, &_proc_ : Proc(RectF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void__const_QRectF_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRectF*, Void).new do |arg0| _proc_.call(RectF.new(unwrap: arg0.value)) end)))
+    def on_update(_type1_ : RectF.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(RectF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRectF*, Void).new do |arg0| _proc_.call(RectF.new(unwrap: arg0.value)) end)))
     end
     
-    def on_update_block(&_proc_ : Proc(TextBlock, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_CrystalProc_void__const_QTextBlock_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QTextBlock*, Void).new do |arg0| _proc_.call(TextBlock.new(unwrap: arg0)) end)))
+    def on_update_block(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TextBlock, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_Qt__ConnectionType_CrystalProc_void__const_QTextBlock_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTextBlock*, Void).new do |arg0| _proc_.call(TextBlock.new(unwrap: arg0)) end)))
     end
     
-    def on_document_size_changed(&_proc_ : Proc(SizeF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_CrystalProc_void__const_QSizeF_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSizeF*, Void).new do |arg0| _proc_.call(SizeF.new(unwrap: arg0.value)) end)))
+    def on_document_size_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(SizeF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSizeF*, Void).new do |arg0| _proc_.call(SizeF.new(unwrap: arg0.value)) end)))
     end
     
-    def on_page_count_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_page_count_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -84430,80 +84430,80 @@ module Qt
       Binding.bg_QWindow_supportsOpenGL_(self)
     end
     
-    def on_screen_changed(&_proc_ : Proc(Screen, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
+    def on_screen_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Screen, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
     end
     
-    def on_modality_changed(&_proc_ : Proc(WindowModality, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_modalityChanged_CrystalProc_void__Qt__WindowModality_(self, BindgenHelper.wrap_proc(Proc(::Qt::WindowModality, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_modality_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(WindowModality, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_modalityChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowModality_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::WindowModality, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_window_state_changed(&_proc_ : Proc(WindowState, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowState_(self, BindgenHelper.wrap_proc(Proc(::Qt::WindowState, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_window_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(WindowState, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowState_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::WindowState, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_window_title_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_window_title_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_x_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_xChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_x_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_y_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_yChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_y_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_width_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_widthChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_width_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_height_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_heightChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_height_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_minimum_width_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_minimumWidthChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_minimum_width_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_minimumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_minimum_height_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_minimumHeightChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_minimum_height_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_minimumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_maximum_width_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_maximumWidthChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_maximum_width_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_maximumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_maximum_height_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_maximumHeightChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_maximum_height_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_maximumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_visible_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_visibleChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_visible_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_visibility_changed(&_proc_ : Proc(Window::Visibility, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_visibilityChanged_CrystalProc_void__QWindow__Visibility_(self, BindgenHelper.wrap_proc(Proc(::Qt::Window::Visibility, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_visibility_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Window::Visibility, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__QWindow__Visibility_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Window::Visibility, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_active_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_activeChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_active_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_activeChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_content_orientation_changed(&_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_contentOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(self, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_content_orientation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_contentOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_focus_object_changed(&_proc_ : Proc(Object, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
+    def on_focus_object_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
     end
     
-    def on_opacity_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_opacityChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_opacity_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_transient_parent_changed(&_proc_ : Proc(Window, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_transientParentChanged_CrystalProc_void__QWindow_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QWindow*, Void).new do |arg0| _proc_.call(Window.new(unwrap: arg0)) end)))
+    def on_transient_parent_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Window, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWindow_CONNECT_transientParentChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWindow*, Void).new do |arg0| _proc_.call(Window.new(unwrap: arg0)) end)))
     end
     
   end
@@ -85106,20 +85106,20 @@ module Qt
     @unwrap = result
     end
     
-    def on_changed(&_proc_ : Proc(Clipboard::Mode, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_changed_CrystalProc_void__QClipboard__Mode_(self, BindgenHelper.wrap_proc(Proc(::Qt::Clipboard::Mode, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Clipboard::Mode, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__QClipboard__Mode_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Clipboard::Mode, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_find_buffer_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_findBufferChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_find_buffer_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_findBufferChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_data_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_dataChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_data_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QClipboard_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -85555,12 +85555,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_action_changed(&_proc_ : Proc(DropAction, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDrag_CONNECT_actionChanged_CrystalProc_void__Qt__DropAction_(self, BindgenHelper.wrap_proc(Proc(::Qt::DropAction, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_action_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DropAction, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDrag_CONNECT_actionChanged_Qt__ConnectionType_CrystalProc_void__Qt__DropAction_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::DropAction, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_target_changed(&_proc_ : Proc(Object, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDrag_CONNECT_targetChanged_CrystalProc_void__QObject_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
+    def on_target_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDrag_CONNECT_targetChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
     end
     
   end
@@ -86159,36 +86159,36 @@ module Qt
     @unwrap = result
     end
     
-    def on_cursor_rectangle_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_cursorRectangleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_cursor_rectangle_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_cursorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_anchor_rectangle_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_anchorRectangleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_anchor_rectangle_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_anchorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_keyboard_rectangle_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_keyboardRectangleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_keyboard_rectangle_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_keyboardRectangleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_input_item_clip_rectangle_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_input_item_clip_rectangle_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_visible_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_visibleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_visible_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_animating_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_animatingChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_animating_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_animatingChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_locale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_localeChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_locale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_localeChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_input_direction_changed(&_proc_ : Proc(LayoutDirection, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_inputDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(self, BindgenHelper.wrap_proc(Proc(::Qt::LayoutDirection, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_input_direction_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(LayoutDirection, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputMethod_CONNECT_inputDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::LayoutDirection, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -86679,60 +86679,60 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_font_database_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_fontDatabaseChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_font_database_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_fontDatabaseChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_screen_added(&_proc_ : Proc(Screen, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_screenAdded_CrystalProc_void__QScreen_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
+    def on_screen_added(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Screen, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_screenAdded_Qt__ConnectionType_CrystalProc_void__QScreen_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
     end
     
-    def on_screen_removed(&_proc_ : Proc(Screen, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_screenRemoved_CrystalProc_void__QScreen_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
+    def on_screen_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Screen, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_screenRemoved_Qt__ConnectionType_CrystalProc_void__QScreen_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
     end
     
-    def on_primary_screen_changed(&_proc_ : Proc(Screen, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_primaryScreenChanged_CrystalProc_void__QScreen_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
+    def on_primary_screen_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Screen, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_primaryScreenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
     end
     
-    def on_last_window_closed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_lastWindowClosed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_last_window_closed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_lastWindowClosed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_focus_object_changed(&_proc_ : Proc(Object, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
+    def on_focus_object_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Object, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QObject*, Void).new do |arg0| _proc_.call(Object.new(unwrap: arg0)) end)))
     end
     
-    def on_focus_window_changed(&_proc_ : Proc(Window, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_focusWindowChanged_CrystalProc_void__QWindow_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QWindow*, Void).new do |arg0| _proc_.call(Window.new(unwrap: arg0)) end)))
+    def on_focus_window_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Window, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_focusWindowChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWindow*, Void).new do |arg0| _proc_.call(Window.new(unwrap: arg0)) end)))
     end
     
-    def on_application_state_changed(&_proc_ : Proc(ApplicationState, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_applicationStateChanged_CrystalProc_void__Qt__ApplicationState_(self, BindgenHelper.wrap_proc(Proc(::Qt::ApplicationState, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_application_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ApplicationState, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_applicationStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__ApplicationState_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ApplicationState, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_layout_direction_changed(&_proc_ : Proc(LayoutDirection, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_layoutDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(self, BindgenHelper.wrap_proc(Proc(::Qt::LayoutDirection, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_layout_direction_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(LayoutDirection, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_layoutDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::LayoutDirection, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_commit_data_request(&_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_commitDataRequest_CrystalProc_void__QSessionManager_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_commit_data_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_commitDataRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_save_state_request(&_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_saveStateRequest_CrystalProc_void__QSessionManager_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_save_state_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Binding::QSessionManager, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_saveStateRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSessionManager**, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_palette_changed(&_proc_ : Proc(Palette, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_paletteChanged_CrystalProc_void__const_QPalette_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QPalette*, Void).new do |arg0| _proc_.call(Palette.new(unwrap: arg0)) end)))
+    def on_palette_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Palette, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_paletteChanged_Qt__ConnectionType_CrystalProc_void__const_QPalette_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QPalette*, Void).new do |arg0| _proc_.call(Palette.new(unwrap: arg0)) end)))
     end
     
-    def on_application_display_name_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_application_display_name_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_font_changed(&_proc_ : Proc(Font, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_fontChanged_CrystalProc_void__const_QFont_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
+    def on_font_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Font, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGuiApplication_CONNECT_fontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
     end
     
   end
@@ -88797,32 +88797,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_started(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_started_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_started(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_resized(&_proc_ : Proc(Size, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_resized_CrystalProc_void__const_QSize_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
+    def on_resized(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Size, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_resized_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
     end
     
-    def on_updated(&_proc_ : Proc(Rect, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_updated_CrystalProc_void__const_QRect_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
+    def on_updated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_updated_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
     end
     
-    def on_state_changed(&_proc_ : Proc(Movie::MovieState, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_stateChanged_CrystalProc_void__QMovie__MovieState_(self, BindgenHelper.wrap_proc(Proc(::Qt::Movie::MovieState, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Movie::MovieState, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QMovie__MovieState_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Movie::MovieState, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_error(&_proc_ : Proc(ImageReader::ImageReaderError, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_error_CrystalProc_void__QImageReader__ImageReaderError_(self, BindgenHelper.wrap_proc(Proc(::Qt::ImageReader::ImageReaderError, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_error(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ImageReader::ImageReaderError, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_error_Qt__ConnectionType_CrystalProc_void__QImageReader__ImageReaderError_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ImageReader::ImageReaderError, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_finished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_frame_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_frameChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_frame_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMovie_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -89124,8 +89124,8 @@ module Qt
       Binding.bg_QOffscreenSurface_supportsOpenGL_(self)
     end
     
-    def on_screen_changed(&_proc_ : Proc(Screen, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QOffscreenSurface_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
+    def on_screen_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Screen, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QOffscreenSurface_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScreen*, Void).new do |arg0| _proc_.call(Screen.new(unwrap: arg0)) end)))
     end
     
   end
@@ -93000,40 +93000,40 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_geometry_changed(&_proc_ : Proc(Rect, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_geometryChanged_CrystalProc_void__const_QRect_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
+    def on_geometry_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
     end
     
-    def on_available_geometry_changed(&_proc_ : Proc(Rect, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_availableGeometryChanged_CrystalProc_void__const_QRect_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
+    def on_available_geometry_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_availableGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
     end
     
-    def on_physical_size_changed(&_proc_ : Proc(SizeF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_physicalSizeChanged_CrystalProc_void__const_QSizeF_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSizeF*, Void).new do |arg0| _proc_.call(SizeF.new(unwrap: arg0.value)) end)))
+    def on_physical_size_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(SizeF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_physicalSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSizeF*, Void).new do |arg0| _proc_.call(SizeF.new(unwrap: arg0.value)) end)))
     end
     
-    def on_physical_dots_per_inch_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_physicalDotsPerInchChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_physical_dots_per_inch_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_physicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_logical_dots_per_inch_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_logicalDotsPerInchChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_logical_dots_per_inch_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_logicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_virtual_geometry_changed(&_proc_ : Proc(Rect, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_virtualGeometryChanged_CrystalProc_void__const_QRect_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
+    def on_virtual_geometry_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_virtualGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Void).new do |arg0| _proc_.call(Rect.new(unwrap: arg0.value)) end)))
     end
     
-    def on_primary_orientation_changed(&_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_primaryOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(self, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_primary_orientation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_primaryOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_orientation_changed(&_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_orientationChanged_CrystalProc_void__Qt__ScreenOrientation_(self, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_orientation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ScreenOrientation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ScreenOrientation, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_refresh_rate_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_refreshRateChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_refresh_rate_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScreen_CONNECT_refreshRateChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -94700,8 +94700,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_item_changed(&_proc_ : Proc(StandardItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStandardItemModel_CONNECT_itemChanged_CrystalProc_void__QStandardItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QStandardItem*, Void).new do |arg0| _proc_.call(StandardItem.new(unwrap: arg0)) end)))
+    def on_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(StandardItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStandardItemModel_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QStandardItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QStandardItem*, Void).new do |arg0| _proc_.call(StandardItem.new(unwrap: arg0)) end)))
     end
     
   end
@@ -95089,48 +95089,48 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_cursor_flash_time_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_cursorFlashTimeChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_cursor_flash_time_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_cursorFlashTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_keyboard_input_interval_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_keyboard_input_interval_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_mouse_double_click_interval_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_mouse_double_click_interval_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_mouse_press_and_hold_interval_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_mouse_press_and_hold_interval_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_start_drag_distance_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_startDragDistanceChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_start_drag_distance_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_startDragDistanceChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_start_drag_time_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_startDragTimeChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_start_drag_time_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_startDragTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_focus_behavior_changed(&_proc_ : Proc(TabFocusBehavior, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_CrystalProc_void__Qt__TabFocusBehavior_(self, BindgenHelper.wrap_proc(Proc(::Qt::TabFocusBehavior, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_focus_behavior_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TabFocusBehavior, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_Qt__ConnectionType_CrystalProc_void__Qt__TabFocusBehavior_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::TabFocusBehavior, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_use_hover_effects_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_useHoverEffectsChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_use_hover_effects_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_useHoverEffectsChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_show_shortcuts_in_context_menus_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_show_shortcuts_in_context_menus_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_wheel_scroll_lines_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_wheelScrollLinesChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_wheel_scroll_lines_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_wheelScrollLinesChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_mouse_quick_selection_threshold_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_mouse_quick_selection_threshold_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -97275,8 +97275,8 @@ module Qt
     @unwrap = result
     end
     
-    def on_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QValidator_CONNECT_changed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QValidator_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -97521,12 +97521,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_bottom_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIntValidator_CONNECT_bottomChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_bottom_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIntValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_top_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QIntValidator_CONNECT_topChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_top_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QIntValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -97799,20 +97799,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_bottom_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_bottomChanged_CrystalProc_void__double_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_bottom_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__double_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_top_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_topChanged_CrystalProc_void__double_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_top_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__double_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_decimals_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_decimalsChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_decimals_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_decimalsChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_notation_changed(&_proc_ : Proc(DoubleValidator::Notation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_notationChanged_CrystalProc_void__QDoubleValidator__Notation_(self, BindgenHelper.wrap_proc(Proc(::Qt::DoubleValidator::Notation, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_notation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DoubleValidator::Notation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleValidator_CONNECT_notationChanged_Qt__ConnectionType_CrystalProc_void__QDoubleValidator__Notation_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::DoubleValidator::Notation, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -98033,8 +98033,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_regular_expression_changed(&_proc_ : Proc(RegularExpression, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_CrystalProc_void__const_QRegularExpression_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRegularExpression*, Void).new do |arg0| _proc_.call(RegularExpression.new(unwrap: arg0)) end)))
+    def on_regular_expression_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(RegularExpression, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_Qt__ConnectionType_CrystalProc_void__const_QRegularExpression_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRegularExpression*, Void).new do |arg0| _proc_.call(RegularExpression.new(unwrap: arg0)) end)))
     end
     
   end
@@ -100214,20 +100214,20 @@ module Qt
       Binding.bg_QWidget_depth_(self)
     end
     
-    def on_window_title_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_window_title_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_window_icon_changed(&_proc_ : Proc(Icon, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowIconChanged_CrystalProc_void__const_QIcon_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QIcon*, Void).new do |arg0| _proc_.call(Icon.new(unwrap: arg0)) end)))
+    def on_window_icon_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Icon, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowIconChanged_Qt__ConnectionType_CrystalProc_void__const_QIcon_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QIcon*, Void).new do |arg0| _proc_.call(Icon.new(unwrap: arg0)) end)))
     end
     
-    def on_window_icon_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowIconTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_window_icon_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_windowIconTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_custom_context_menu_requested(&_proc_ : Proc(Point, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_customContextMenuRequested_CrystalProc_void__const_QPoint_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QPoint*, Void).new do |arg0| _proc_.call(Point.new(unwrap: arg0.value)) end)))
+    def on_custom_context_menu_requested(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Point, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWidget_CONNECT_customContextMenuRequested_Qt__ConnectionType_CrystalProc_void__const_QPoint_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QPoint*, Void).new do |arg0| _proc_.call(Point.new(unwrap: arg0.value)) end)))
     end
     
   end
@@ -101053,20 +101053,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_pressed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_pressed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_released(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_released_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_released(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_released_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_clicked(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_clicked_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_toggled(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_toggled_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_toggled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractButton_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -101924,8 +101924,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_editing_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSpinBox_CONNECT_editingFinished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_editing_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSpinBox_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -102758,28 +102758,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_valueChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_slider_pressed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderPressed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_slider_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderPressed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_slider_moved(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderMoved_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_slider_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderMoved_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_slider_released(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderReleased_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_slider_released(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_sliderReleased_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_range_changed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_rangeChanged_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_range_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_rangeChanged_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_action_triggered(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_actionTriggered_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_action_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractSlider_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -105430,24 +105430,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_currentChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_close_requested(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabCloseRequested_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_close_requested(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_moved(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabMoved_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_tab_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabMoved_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_tab_bar_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabBarClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_bar_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_bar_double_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_bar_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabBar_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -106238,20 +106238,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_currentChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_close_requested(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabCloseRequested_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_close_requested(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_bar_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabBarClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_bar_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tab_bar_double_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tab_bar_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTabWidget_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -110298,16 +110298,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_commit_data(&_proc_ : Proc(Widget, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_commitData_CrystalProc_void__QWidget_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Void).new do |arg0| _proc_.call(Widget.new(unwrap: arg0)) end)))
+    def on_commit_data(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Widget, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_commitData_Qt__ConnectionType_CrystalProc_void__QWidget_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Void).new do |arg0| _proc_.call(Widget.new(unwrap: arg0)) end)))
     end
     
-    def on_close_editor(&_proc_ : Proc(Widget, AbstractItemDelegate::EndEditHint, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_closeEditor_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(self, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, ::Qt::AbstractItemDelegate::EndEditHint, Void).new do |arg0, arg1| _proc_.call(Widget.new(unwrap: arg0), arg1) end)))
+    def on_close_editor(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Widget, AbstractItemDelegate::EndEditHint, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_closeEditor_Qt__ConnectionType_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, ::Qt::AbstractItemDelegate::EndEditHint, Void).new do |arg0, arg1| _proc_.call(Widget.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_size_hint_changed(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_size_hint_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
   end
@@ -112567,32 +112567,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_pressed(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_pressed_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_clicked(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_clicked_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_double_clicked(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_doubleClicked_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_doubleClicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_activated(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_entered(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_entered_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_entered_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_viewport_entered(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_viewportEntered_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_viewport_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_viewportEntered_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_icon_size_changed(&_proc_ : Proc(Size, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
+    def on_icon_size_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Size, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAbstractItemView_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
     end
     
   end
@@ -113165,20 +113165,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_changed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_triggered(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_triggered_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_hovered(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_hovered_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_toggled(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_toggled_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_toggled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QAction_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -113410,12 +113410,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_triggered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QActionGroup_CONNECT_triggered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QActionGroup_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
-    def on_hovered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QActionGroup_CONNECT_hovered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QActionGroup_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
   end
@@ -113800,8 +113800,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_focus_changed(&_proc_ : Proc(Widget, Widget, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QApplication_CONNECT_focusChanged_CrystalProc_void__QWidget_X__QWidget_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Binding::QWidget*, Void).new do |arg0, arg1| _proc_.call(Widget.new(unwrap: arg0), Widget.new(unwrap: arg1)) end)))
+    def on_focus_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Widget, Widget, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QApplication_CONNECT_focusChanged_Qt__ConnectionType_CrystalProc_void__QWidget_X__QWidget_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QWidget*, Binding::QWidget*, Void).new do |arg0, arg1| _proc_.call(Widget.new(unwrap: arg0), Widget.new(unwrap: arg1)) end)))
     end
     
   end
@@ -117497,36 +117497,36 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_button_clicked(&_proc_ : Proc(AbstractButton, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
+    def on_button_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
     end
     
-    def on_button_pressed(&_proc_ : Proc(AbstractButton, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonPressed_CrystalProc_void__QAbstractButton_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
+    def on_button_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonPressed_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
     end
     
-    def on_button_released(&_proc_ : Proc(AbstractButton, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonReleased_CrystalProc_void__QAbstractButton_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
+    def on_button_released(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonReleased_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
     end
     
-    def on_button_toggled(&_proc_ : Proc(AbstractButton, Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonToggled_CrystalProc_void__QAbstractButton_X__bool_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Bool, Void).new do |arg0, arg1| _proc_.call(AbstractButtonImpl.new(unwrap: arg0), arg1) end)))
+    def on_button_toggled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_buttonToggled_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X__bool_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Bool, Void).new do |arg0, arg1| _proc_.call(AbstractButtonImpl.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_id_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_id_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_id_pressed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idPressed_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_id_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idPressed_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_id_released(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idReleased_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_id_released(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idReleased_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_id_toggled(&_proc_ : Proc(Int32, Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idToggled_CrystalProc_void__int__bool_(self, BindgenHelper.wrap_proc(Proc(Int32, Bool, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_id_toggled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QButtonGroup_CONNECT_idToggled_Qt__ConnectionType_CrystalProc_void__int__bool_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Bool, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
   end
@@ -118285,20 +118285,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_clicked(&_proc_ : Proc(Date, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_clicked_CrystalProc_void__const_QDate_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
+    def on_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Date, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
     end
     
-    def on_activated(&_proc_ : Proc(Date, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_activated_CrystalProc_void__const_QDate_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Date, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
     end
     
-    def on_current_page_changed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_currentPageChanged_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_current_page_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCalendarWidget_CONNECT_currentPageChanged_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
   end
@@ -119035,8 +119035,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_state_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCheckBox_CONNECT_stateChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCheckBox_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -120093,16 +120093,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_finished(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_finished_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_accepted(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_accepted_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_accepted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_rejected(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_rejected_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_rejected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialog_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -120926,12 +120926,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_color_changed(&_proc_ : Proc(Color, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QColorDialog_CONNECT_currentColorChanged_CrystalProc_void__const_QColor_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
+    def on_current_color_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Color, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QColorDialog_CONNECT_currentColorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
     end
     
-    def on_color_selected(&_proc_ : Proc(Color, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QColorDialog_CONNECT_colorSelected_CrystalProc_void__const_QColor_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
+    def on_color_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Color, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QColorDialog_CONNECT_colorSelected_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
     end
     
   end
@@ -122167,8 +122167,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_update_preview_widget(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QColumnView_CONNECT_updatePreviewWidget_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_update_preview_widget(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QColumnView_CONNECT_updatePreviewWidget_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
   end
@@ -123192,32 +123192,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_edit_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_editTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_edit_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_editTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_activated(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_activated_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_text_activated(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_textActivated_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_textActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_highlighted(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_highlighted_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_highlighted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_text_highlighted(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_textHighlighted_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_highlighted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_textHighlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_current_index_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_currentIndexChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_index_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_current_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_current_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QComboBox_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -126023,20 +126023,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_activated(_type1_ : String.class, &_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_activated(_type1_ : String.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_activated(_type1_ : ModelIndex.class, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_activated(_type1_ : ModelIndex.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_highlighted(_type1_ : String.class, &_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_highlighted(_type1_ : String.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_highlighted(_type1_ : ModelIndex.class, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_highlighted(_type1_ : ModelIndex.class, type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
   end
@@ -126315,8 +126315,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_index_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDataWidgetMapper_CONNECT_currentIndexChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_index_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDataWidgetMapper_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -127841,16 +127841,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_date_time_changed(&_proc_ : Proc(DateTime, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_dateTimeChanged_CrystalProc_void__const_QDateTime_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QDateTime*, Void).new do |arg0| _proc_.call(DateTime.new(unwrap: arg0)) end)))
+    def on_date_time_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DateTime, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_dateTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QDateTime_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDateTime*, Void).new do |arg0| _proc_.call(DateTime.new(unwrap: arg0)) end)))
     end
     
-    def on_time_changed(&_proc_ : Proc(Time, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_timeChanged_CrystalProc_void__const_QTime_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QTime*, Void).new do |arg0| _proc_.call(Time.new(unwrap: arg0)) end)))
+    def on_time_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Time, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_timeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTime*, Void).new do |arg0| _proc_.call(Time.new(unwrap: arg0)) end)))
     end
     
-    def on_date_changed(&_proc_ : Proc(Date, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_dateChanged_CrystalProc_void__const_QDate_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
+    def on_date_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Date, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDateTimeEdit_CONNECT_dateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
     end
     
   end
@@ -128591,8 +128591,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_user_time_changed(&_proc_ : Proc(Time, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTimeEdit_CONNECT_userTimeChanged_CrystalProc_void__const_QTime_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QTime*, Void).new do |arg0| _proc_.call(Time.new(unwrap: arg0)) end)))
+    def on_user_time_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Time, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTimeEdit_CONNECT_userTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTime*, Void).new do |arg0| _proc_.call(Time.new(unwrap: arg0)) end)))
     end
     
   end
@@ -129333,8 +129333,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_user_date_changed(&_proc_ : Proc(Date, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDateEdit_CONNECT_userDateChanged_CrystalProc_void__const_QDate_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
+    def on_user_date_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Date, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDateEdit_CONNECT_userDateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDate*, Void).new do |arg0| _proc_.call(Date.new(unwrap: arg0)) end)))
     end
     
   end
@@ -131556,20 +131556,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_clicked(&_proc_ : Proc(AbstractButton, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_clicked_CrystalProc_void__QAbstractButton_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
+    def on_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
     end
     
-    def on_accepted(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_accepted_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_accepted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_help_requested(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_helpRequested_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_help_requested(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_rejected(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_rejected_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_rejected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDialogButtonBox_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -132703,24 +132703,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_features_changed(&_proc_ : Proc(DockWidget::Features, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_featuresChanged_CrystalProc_void__QDockWidget__DockWidgetFeatures_(self, BindgenHelper.wrap_proc(Proc(::Qt::DockWidget::Features, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_features_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DockWidget::Features, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_featuresChanged_Qt__ConnectionType_CrystalProc_void__QDockWidget__DockWidgetFeatures_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::DockWidget::Features, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_top_level_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_topLevelChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_top_level_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_allowed_areas_changed(&_proc_ : Proc(DockWidgetAreas, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__DockWidgetAreas_(self, BindgenHelper.wrap_proc(Proc(::Qt::DockWidgetAreas, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_allowed_areas_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DockWidgetAreas, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetAreas_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::DockWidgetAreas, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_visibility_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_visibilityChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_visibility_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_dock_location_changed(&_proc_ : Proc(DockWidgetArea, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_dockLocationChanged_CrystalProc_void__Qt__DockWidgetArea_(self, BindgenHelper.wrap_proc(Proc(::Qt::DockWidgetArea, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_dock_location_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DockWidgetArea, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDockWidget_CONNECT_dockLocationChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetArea_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::DockWidgetArea, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -135038,40 +135038,40 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_file_selected(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_fileSelected_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_file_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_fileSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_files_selected(&_proc_ : Proc(Enumerable(String), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_filesSelected_CrystalProc_void__const_QStringList_R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQString*, Void).new do |arg0| _proc_.call(StringList.new(unwrap: arg0)) end)))
+    def on_files_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(String), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_filesSelected_Qt__ConnectionType_CrystalProc_void__const_QStringList_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQString*, Void).new do |arg0| _proc_.call(StringList.new(unwrap: arg0)) end)))
     end
     
-    def on_current_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_currentChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_directory_entered(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_directoryEntered_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_directory_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_directoryEntered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_url_selected(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_urlSelected_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_url_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_urlSelected_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_urls_selected(&_proc_ : Proc(Enumerable(Url), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_urlsSelected_CrystalProc_void__const_QList_QUrl__R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQUrl*, Void).new do |arg0| _proc_.call(Container_QList_QUrl_.new(unwrap: arg0)) end)))
+    def on_urls_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(Url), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_urlsSelected_Qt__ConnectionType_CrystalProc_void__const_QList_QUrl__R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQUrl*, Void).new do |arg0| _proc_.call(Container_QList_QUrl_.new(unwrap: arg0)) end)))
     end
     
-    def on_current_url_changed(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_currentUrlChanged_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_current_url_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_currentUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_directory_url_entered(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_directoryUrlEntered_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_directory_url_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_directoryUrlEntered_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_filter_selected(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_filterSelected_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_filter_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileDialog_CONNECT_filterSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -135926,16 +135926,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_root_path_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_rootPathChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_root_path_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_rootPathChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_file_renamed(&_proc_ : Proc(String, String, String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_fileRenamed_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Binding::CrystalString*, Binding::CrystalString*, Void).new do |arg0, arg1, arg2| _proc_.call(Qt::Converter::QString.unwrap(arg0.value), Qt::Converter::QString.unwrap(arg1.value), Qt::Converter::QString.unwrap(arg2.value)) end)))
+    def on_file_renamed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, String, String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_fileRenamed_Qt__ConnectionType_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Binding::CrystalString*, Binding::CrystalString*, Void).new do |arg0, arg1, arg2| _proc_.call(Qt::Converter::QString.unwrap(arg0.value), Qt::Converter::QString.unwrap(arg1.value), Qt::Converter::QString.unwrap(arg2.value)) end)))
     end
     
-    def on_directory_loaded(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_directoryLoaded_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_directory_loaded(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFileSystemModel_CONNECT_directoryLoaded_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -137102,8 +137102,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_font_changed(&_proc_ : Proc(Font, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFontComboBox_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
+    def on_current_font_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Font, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFontComboBox_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
     end
     
   end
@@ -137913,12 +137913,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_font_changed(&_proc_ : Proc(Font, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFontDialog_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
+    def on_current_font_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Font, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFontDialog_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
     end
     
-    def on_font_selected(&_proc_ : Proc(Font, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QFontDialog_CONNECT_fontSelected_CrystalProc_void__const_QFont_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
+    def on_font_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Font, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QFontDialog_CONNECT_fontSelected_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QFont*, Void).new do |arg0| _proc_.call(Font.new(unwrap: arg0)) end)))
     end
     
   end
@@ -142621,52 +142621,52 @@ module Qt
       Binding.bg_QGraphicsObject_prepareGeometryChange_(self)
     end
     
-    def on_parent_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_parentChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_parent_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_parentChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_opacity_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_opacityChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_opacity_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_visible_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_visibleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_visible_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_enabled_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_enabledChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_enabled_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_x_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_xChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_x_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_y_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_yChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_y_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_z_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_zChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_z_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_zChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_rotation_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_rotationChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_rotation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_rotationChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_scale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_scaleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_scale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_children_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_childrenChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_children_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_childrenChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_width_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_widthChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_width_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_height_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_heightChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_height_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsObject_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -147298,12 +147298,12 @@ module Qt
       Binding.bg_QObject_disconnectNotify_const_QMetaMethod_R(self, signal)
     end
     
-    def on_link_activated(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsTextItem_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_link_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsTextItem_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_link_hovered(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsTextItem_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_link_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsTextItem_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -149351,8 +149351,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_enabled_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsEffect_CONNECT_enabledChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_enabled_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsEffect_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -149563,12 +149563,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_color_changed(&_proc_ : Proc(Color, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsColorizeEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
+    def on_color_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Color, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsColorizeEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
     end
     
-    def on_strength_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_strength_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -149790,12 +149790,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_blur_radius_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_blur_radius_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_blur_hints_changed(&_proc_ : Proc(GraphicsBlurEffect::BlurHints, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(self, BindgenHelper.wrap_proc(Proc(::Qt::GraphicsBlurEffect::BlurHints, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_blur_hints_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(GraphicsBlurEffect::BlurHints, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::GraphicsBlurEffect::BlurHints, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -150042,16 +150042,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_offset_changed(&_proc_ : Proc(PointF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_CrystalProc_void__const_QPointF_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QPointF*, Void).new do |arg0| _proc_.call(PointF.new(unwrap: arg0.value)) end)))
+    def on_offset_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(PointF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_Qt__ConnectionType_CrystalProc_void__const_QPointF_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QPointF*, Void).new do |arg0| _proc_.call(PointF.new(unwrap: arg0.value)) end)))
     end
     
-    def on_blur_radius_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_blur_radius_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_color_changed(&_proc_ : Proc(Color, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
+    def on_color_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Color, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QColor*, Void).new do |arg0| _proc_.call(Color.new(unwrap: arg0)) end)))
     end
     
   end
@@ -150262,12 +150262,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_opacity_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_CrystalProc_void__qreal_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_opacity_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_opacity_mask_changed(&_proc_ : Proc(Brush, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_CrystalProc_void__const_QBrush_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QBrush*, Void).new do |arg0| _proc_.call(Brush.new(unwrap: arg0)) end)))
+    def on_opacity_mask_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Brush, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_Qt__ConnectionType_CrystalProc_void__const_QBrush_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QBrush*, Void).new do |arg0| _proc_.call(Brush.new(unwrap: arg0)) end)))
     end
     
   end
@@ -152319,12 +152319,12 @@ module Qt
       Binding.bg_QGraphicsWidget_setOwnedByLayout_bool(self, owned_by_layout)
     end
     
-    def on_geometry_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsWidget_CONNECT_geometryChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_geometry_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsWidget_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_layout_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsWidget_CONNECT_layoutChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_layout_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsWidget_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -154122,20 +154122,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_changed(&_proc_ : Proc(Enumerable(RectF), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_changed_CrystalProc_void__const_QList_QRectF__R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQRectF*, Void).new do |arg0| _proc_.call(Container_QList_QRectF_.new(unwrap: arg0)) end)))
+    def on_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(RectF), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__const_QList_QRectF__R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQRectF*, Void).new do |arg0| _proc_.call(Container_QList_QRectF_.new(unwrap: arg0)) end)))
     end
     
-    def on_scene_rect_changed(&_proc_ : Proc(RectF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_sceneRectChanged_CrystalProc_void__const_QRectF_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QRectF*, Void).new do |arg0| _proc_.call(RectF.new(unwrap: arg0.value)) end)))
+    def on_scene_rect_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(RectF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_sceneRectChanged_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRectF*, Void).new do |arg0| _proc_.call(RectF.new(unwrap: arg0.value)) end)))
     end
     
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_focus_item_changed(&_proc_ : Proc(GraphicsItem, GraphicsItem, FocusReason, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_focusItemChanged_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(self, BindgenHelper.wrap_proc(Proc(Binding::QGraphicsItem*, Binding::QGraphicsItem*, ::Qt::FocusReason, Void).new do |arg0, arg1, arg2| _proc_.call(GraphicsItemImpl.new(unwrap: arg0), GraphicsItemImpl.new(unwrap: arg1), arg2) end)))
+    def on_focus_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(GraphicsItem, GraphicsItem, FocusReason, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScene_CONNECT_focusItemChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QGraphicsItem*, Binding::QGraphicsItem*, ::Qt::FocusReason, Void).new do |arg0, arg1, arg2| _proc_.call(GraphicsItemImpl.new(unwrap: arg0), GraphicsItemImpl.new(unwrap: arg1), arg2) end)))
     end
     
   end
@@ -155167,24 +155167,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_origin_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_originChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_origin_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_x_scale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_xScaleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_x_scale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_xScaleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_y_scale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_yScaleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_y_scale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_yScaleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_z_scale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_zScaleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_z_scale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_zScaleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_scale_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_scaleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_scale_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsScale_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -155391,16 +155391,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_origin_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_originChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_origin_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_angle_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_angleChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_angle_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_angleChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_axis_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_axisChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_axis_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsRotation_CONNECT_axisChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -157422,8 +157422,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_rubber_band_changed(&_proc_ : Proc(Rect, PointF, PointF, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGraphicsView_CONNECT_rubberBandChanged_CrystalProc_void__QRect__QPointF__QPointF_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Binding::QPointF*, Binding::QPointF*, Void).new do |arg0, arg1, arg2| _proc_.call(Rect.new(unwrap: arg0.value), PointF.new(unwrap: arg1.value), PointF.new(unwrap: arg2.value)) end)))
+    def on_rubber_band_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, PointF, PointF, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGraphicsView_CONNECT_rubberBandChanged_Qt__ConnectionType_CrystalProc_void__QRect__QPointF__QPointF_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Binding::QPointF*, Binding::QPointF*, Void).new do |arg0, arg1, arg2| _proc_.call(Rect.new(unwrap: arg0.value), PointF.new(unwrap: arg1.value), PointF.new(unwrap: arg2.value)) end)))
     end
     
   end
@@ -158152,12 +158152,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_clicked(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGroupBox_CONNECT_clicked_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGroupBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_toggled(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QGroupBox_CONNECT_toggled_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_toggled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QGroupBox_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -159703,44 +159703,44 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_section_moved(&_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionMoved_CrystalProc_void__int__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
+    def on_section_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionMoved_Qt__ConnectionType_CrystalProc_void__int__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
     end
     
-    def on_section_resized(&_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionResized_CrystalProc_void__int__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
+    def on_section_resized(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionResized_Qt__ConnectionType_CrystalProc_void__int__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Void).new do |arg0, arg1, arg2| _proc_.call(arg0, arg1, arg2) end)))
     end
     
-    def on_section_pressed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionPressed_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_section_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionPressed_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_section_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_section_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_section_entered(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionEntered_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_section_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionEntered_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_section_double_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionDoubleClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_section_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_section_count_changed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionCountChanged_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_section_count_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionCountChanged_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_section_handle_double_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_section_handle_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_geometries_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_geometriesChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_geometries_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_geometriesChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_sort_indicator_changed(&_proc_ : Proc(Int32, SortOrder, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sortIndicatorChanged_CrystalProc_void__int__Qt__SortOrder_(self, BindgenHelper.wrap_proc(Proc(Int32, ::Qt::SortOrder, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_sort_indicator_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, SortOrder, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QHeaderView_CONNECT_sortIndicatorChanged_Qt__ConnectionType_CrystalProc_void__int__Qt__SortOrder_(self, type, BindgenHelper.wrap_proc(Proc(Int32, ::Qt::SortOrder, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
   end
@@ -160732,32 +160732,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_textChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_text_edited(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_textEdited_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_edited(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_textEdited_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_cursor_position_changed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_cursorPositionChanged_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cursor_position_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_return_pressed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_returnPressed_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_return_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_returnPressed_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_editing_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_editingFinished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_editing_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_input_rejected(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_inputRejected_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_input_rejected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLineEdit_CONNECT_inputRejected_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -161762,28 +161762,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_text_value_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_textValueChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_textValueChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_text_value_selected(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_textValueSelected_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_value_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_textValueSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_int_value_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_intValueChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_int_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_intValueChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_int_value_selected(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_intValueSelected_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_int_value_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_intValueSelected_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_double_value_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_doubleValueChanged_CrystalProc_void__double_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_double_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_doubleValueChanged_Qt__ConnectionType_CrystalProc_void__double_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_double_value_selected(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_doubleValueSelected_CrystalProc_void__double_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_double_value_selected(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QInputDialog_CONNECT_doubleValueSelected_Qt__ConnectionType_CrystalProc_void__double_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -163132,12 +163132,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_editing_finished(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QKeySequenceEdit_CONNECT_editingFinished_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_editing_finished(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QKeySequenceEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_key_sequence_changed(&_proc_ : Proc(KeySequence, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QKeySequenceEdit_CONNECT_keySequenceChanged_CrystalProc_void__const_QKeySequence_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QKeySequence*, Void).new do |arg0| _proc_.call(KeySequence.new(unwrap: arg0)) end)))
+    def on_key_sequence_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(KeySequence, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QKeySequenceEdit_CONNECT_keySequenceChanged_Qt__ConnectionType_CrystalProc_void__const_QKeySequence_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QKeySequence*, Void).new do |arg0| _proc_.call(KeySequence.new(unwrap: arg0)) end)))
     end
     
   end
@@ -164216,12 +164216,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_link_activated(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLabel_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_link_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLabel_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_link_hovered(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLabel_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_link_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLabel_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -164989,8 +164989,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_overflow(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QLCDNumber_CONNECT_overflow_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_overflow(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QLCDNumber_CONNECT_overflow_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -166346,8 +166346,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_indexes_moved(&_proc_ : Proc(Enumerable(ModelIndex), Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListView_CONNECT_indexesMoved_CrystalProc_void__const_QModelIndexList_R_(self, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QModelIndex_.new(unwrap: arg0)) end)))
+    def on_indexes_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Enumerable(ModelIndex), Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListView_CONNECT_indexesMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndexList_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::ContainerQListQModelIndex*, Void).new do |arg0| _proc_.call(Container_QList_QModelIndex_.new(unwrap: arg0)) end)))
     end
     
   end
@@ -167900,44 +167900,44 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_item_pressed(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemPressed_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_clicked(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemClicked_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_double_clicked(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_activated(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemActivated_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_entered(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemEntered_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_changed(&_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemChanged_CrystalProc_void__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Void).new do |arg0| _proc_.call(ListWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_current_item_changed(&_proc_ : Proc(ListWidgetItem, ListWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentItemChanged_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Binding::QListWidgetItem*, Void).new do |arg0, arg1| _proc_.call(ListWidgetItem.new(unwrap: arg0), ListWidgetItem.new(unwrap: arg1)) end)))
+    def on_current_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ListWidgetItem, ListWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QListWidgetItem*, Binding::QListWidgetItem*, Void).new do |arg0, arg1| _proc_.call(ListWidgetItem.new(unwrap: arg0), ListWidgetItem.new(unwrap: arg1)) end)))
     end
     
-    def on_current_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_current_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_current_row_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentRowChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_row_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_item_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_item_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QListWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -168863,16 +168863,16 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_icon_size_changed(&_proc_ : Proc(Size, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
+    def on_icon_size_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Size, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
     end
     
-    def on_tool_button_style_changed(&_proc_ : Proc(ToolButtonStyle, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(self, BindgenHelper.wrap_proc(Proc(::Qt::ToolButtonStyle, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tool_button_style_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ToolButtonStyle, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ToolButtonStyle, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_tabified_dock_widget_activated(&_proc_ : Proc(DockWidget, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_CrystalProc_void__QDockWidget_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QDockWidget*, Void).new do |arg0| _proc_.call(DockWidget.new(unwrap: arg0)) end)))
+    def on_tabified_dock_widget_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(DockWidget, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_Qt__ConnectionType_CrystalProc_void__QDockWidget_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QDockWidget*, Void).new do |arg0| _proc_.call(DockWidget.new(unwrap: arg0)) end)))
     end
     
   end
@@ -169605,8 +169605,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_sub_window_activated(&_proc_ : Proc(MdiSubWindow, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMdiArea_CONNECT_subWindowActivated_CrystalProc_void__QMdiSubWindow_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QMdiSubWindow*, Void).new do |arg0| _proc_.call(MdiSubWindow.new(unwrap: arg0)) end)))
+    def on_sub_window_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(MdiSubWindow, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMdiArea_CONNECT_subWindowActivated_Qt__ConnectionType_CrystalProc_void__QMdiSubWindow_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QMdiSubWindow*, Void).new do |arg0| _proc_.call(MdiSubWindow.new(unwrap: arg0)) end)))
     end
     
   end
@@ -170370,12 +170370,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_window_state_changed(&_proc_ : Proc(WindowStates, WindowStates, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMdiSubWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(self, BindgenHelper.wrap_proc(Proc(::Qt::WindowStates, ::Qt::WindowStates, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_window_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(WindowStates, WindowStates, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMdiSubWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::WindowStates, ::Qt::WindowStates, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_about_to_activate(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMdiSubWindow_CONNECT_aboutToActivate_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_activate(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMdiSubWindow_CONNECT_aboutToActivate_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -171412,20 +171412,20 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_about_to_show(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_aboutToShow_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_show(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_aboutToShow_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_about_to_hide(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_aboutToHide_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_about_to_hide(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_aboutToHide_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_triggered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_triggered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
-    def on_hovered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_hovered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenu_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
   end
@@ -172074,12 +172074,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_triggered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenuBar_CONNECT_triggered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenuBar_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
-    def on_hovered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMenuBar_CONNECT_hovered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_hovered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMenuBar_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
   end
@@ -173741,8 +173741,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_button_clicked(&_proc_ : Proc(AbstractButton, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QMessageBox_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
+    def on_button_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(AbstractButton, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QMessageBox_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAbstractButton*, Void).new do |arg0| _proc_.call(AbstractButtonImpl.new(unwrap: arg0)) end)))
     end
     
   end
@@ -175089,32 +175089,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_text_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_textChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_undo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_undo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_redo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_redo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_current_char_format_changed(&_proc_ : Proc(TextCharFormat, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_currentCharFormatChanged_CrystalProc_void__const_QTextCharFormat_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QTextCharFormat*, Void).new do |arg0| _proc_.call(TextCharFormat.new(unwrap: arg0)) end)))
+    def on_current_char_format_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TextCharFormat, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_currentCharFormatChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCharFormat_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTextCharFormat*, Void).new do |arg0| _proc_.call(TextCharFormat.new(unwrap: arg0)) end)))
     end
     
-    def on_copy_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_copy_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_cursor_position_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_cursor_position_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -176431,40 +176431,40 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_text_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_textChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_undo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_undo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_redo_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_redo_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_copy_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_copy_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_selectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_cursor_position_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_cursor_position_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_update_request(&_proc_ : Proc(Rect, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_updateRequest_CrystalProc_void__const_QRect_R__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Int32, Void).new do |arg0, arg1| _proc_.call(Rect.new(unwrap: arg0.value), arg1) end)))
+    def on_update_request(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Rect, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_updateRequest_Qt__ConnectionType_CrystalProc_void__const_QRect_R__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QRect*, Int32, Void).new do |arg0, arg1| _proc_.call(Rect.new(unwrap: arg0.value), arg1) end)))
     end
     
-    def on_block_count_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_blockCountChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_block_count_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_modification_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_modificationChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_modification_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QPlainTextEdit_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -177386,8 +177386,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProgressBar_CONNECT_valueChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProgressBar_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -178507,8 +178507,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_canceled(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QProgressDialog_CONNECT_canceled_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_canceled(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QProgressDialog_CONNECT_canceled_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -180681,12 +180681,12 @@ module Qt
     @unwrap = result
     end
     
-    def on_state_changed(&_proc_ : Proc(Scroller::State, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScroller_CONNECT_stateChanged_CrystalProc_void__QScroller__State_(self, BindgenHelper.wrap_proc(Proc(::Qt::Scroller::State, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_state_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Scroller::State, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScroller_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QScroller__State_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Scroller::State, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_scroller_properties_changed(&_proc_ : Proc(ScrollerProperties, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QScroller_CONNECT_scrollerPropertiesChanged_CrystalProc_void__const_QScrollerProperties_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QScrollerProperties*, Void).new do |arg0| _proc_.call(ScrollerProperties.new(unwrap: arg0)) end)))
+    def on_scroller_properties_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ScrollerProperties, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QScroller_CONNECT_scrollerPropertiesChanged_Qt__ConnectionType_CrystalProc_void__const_QScrollerProperties_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QScrollerProperties*, Void).new do |arg0| _proc_.call(ScrollerProperties.new(unwrap: arg0)) end)))
     end
     
   end
@@ -181055,12 +181055,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_activated(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QShortcut_CONNECT_activated_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QShortcut_CONNECT_activated_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_activated_ambiguously(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QShortcut_CONNECT_activatedAmbiguously_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_activated_ambiguously(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QShortcut_CONNECT_activatedAmbiguously_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -182281,12 +182281,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSpinBox_CONNECT_valueChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -182963,12 +182963,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_value_changed(&_proc_ : Proc(Float64, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleSpinBox_CONNECT_valueChanged_CrystalProc_void__double_(self, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_value_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Float64, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__double_(self, type, BindgenHelper.wrap_proc(Proc(Float64, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QDoubleSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QDoubleSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -184215,8 +184215,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_message_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSplashScreen_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_message_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSplashScreen_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -185020,8 +185020,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_splitter_moved(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSplitter_CONNECT_splitterMoved_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_splitter_moved(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSplitter_CONNECT_splitterMoved_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
   end
@@ -186151,12 +186151,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_widget_removed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStackedLayout_CONNECT_widgetRemoved_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_widget_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStackedLayout_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_current_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStackedLayout_CONNECT_currentChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStackedLayout_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -186753,12 +186753,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStackedWidget_CONNECT_currentChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStackedWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_widget_removed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStackedWidget_CONNECT_widgetRemoved_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_widget_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStackedWidget_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -187361,8 +187361,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_message_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QStatusBar_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_message_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QStatusBar_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -187966,12 +187966,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_activated(&_proc_ : Proc(SystemTrayIcon::ActivationReason, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSystemTrayIcon_CONNECT_activated_CrystalProc_void__QSystemTrayIcon__ActivationReason_(self, BindgenHelper.wrap_proc(Proc(::Qt::SystemTrayIcon::ActivationReason, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(SystemTrayIcon::ActivationReason, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSystemTrayIcon_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSystemTrayIcon__ActivationReason_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::SystemTrayIcon::ActivationReason, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_message_clicked(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QSystemTrayIcon_CONNECT_messageClicked_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_message_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QSystemTrayIcon_CONNECT_messageClicked_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -191291,64 +191291,64 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_item_pressed(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemPressed_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_clicked(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemClicked_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_double_clicked(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_activated(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemActivated_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_entered(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemEntered_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_changed(&_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemChanged_CrystalProc_void__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Void).new do |arg0| _proc_.call(TableWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_current_item_changed(&_proc_ : Proc(TableWidgetItem, TableWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_currentItemChanged_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Binding::QTableWidgetItem*, Void).new do |arg0, arg1| _proc_.call(TableWidgetItem.new(unwrap: arg0), TableWidgetItem.new(unwrap: arg1)) end)))
+    def on_current_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TableWidgetItem, TableWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTableWidgetItem*, Binding::QTableWidgetItem*, Void).new do |arg0, arg1| _proc_.call(TableWidgetItem.new(unwrap: arg0), TableWidgetItem.new(unwrap: arg1)) end)))
     end
     
-    def on_item_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_item_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_cell_pressed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellPressed_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellPressed_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_cell_clicked(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellClicked_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellClicked_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_cell_double_clicked(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellDoubleClicked_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellDoubleClicked_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_cell_activated(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellActivated_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellActivated_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_cell_entered(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellEntered_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellEntered_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_cell_changed(&_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellChanged_CrystalProc_void__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
+    def on_cell_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_cellChanged_Qt__ConnectionType_CrystalProc_void__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Void).new do |arg0, arg1| _proc_.call(arg0, arg1) end)))
     end
     
-    def on_current_cell_changed(&_proc_ : Proc(Int32, Int32, Int32, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_currentCellChanged_CrystalProc_void__int__int__int__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Int32, Void).new do |arg0, arg1, arg2, arg3| _proc_.call(arg0, arg1, arg2, arg3) end)))
+    def on_current_cell_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Int32, Int32, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTableWidget_CONNECT_currentCellChanged_Qt__ConnectionType_CrystalProc_void__int__int__int__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Int32, Int32, Int32, Void).new do |arg0, arg1, arg2, arg3| _proc_.call(arg0, arg1, arg2, arg3) end)))
     end
     
   end
@@ -192127,28 +192127,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_backward_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_backwardAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_backward_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_backwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_forward_available(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_forwardAvailable_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_forward_available(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_forwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_history_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_historyChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_history_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_historyChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_source_changed(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_sourceChanged_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_source_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_sourceChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_highlighted(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_highlighted_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_highlighted(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
-    def on_anchor_clicked(&_proc_ : Proc(Url, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_anchorClicked_CrystalProc_void__const_QUrl_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
+    def on_anchor_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Url, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTextBrowser_CONNECT_anchorClicked_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUrl*, Void).new do |arg0| _proc_.call(Url.new(unwrap: arg0)) end)))
     end
     
   end
@@ -192984,36 +192984,36 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_action_triggered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_actionTriggered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_action_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
-    def on_movable_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_movableChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_movable_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_movableChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_allowed_areas_changed(&_proc_ : Proc(ToolBarAreas, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__ToolBarAreas_(self, BindgenHelper.wrap_proc(Proc(::Qt::ToolBarAreas, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_allowed_areas_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ToolBarAreas, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolBarAreas_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ToolBarAreas, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_orientation_changed(&_proc_ : Proc(Orientation, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_orientationChanged_CrystalProc_void__Qt__Orientation_(self, BindgenHelper.wrap_proc(Proc(::Qt::Orientation, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_orientation_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Orientation, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::Orientation, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_icon_size_changed(&_proc_ : Proc(Size, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
+    def on_icon_size_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Size, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QSize*, Void).new do |arg0| _proc_.call(Size.new(unwrap: arg0.value)) end)))
     end
     
-    def on_tool_button_style_changed(&_proc_ : Proc(ToolButtonStyle, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(self, BindgenHelper.wrap_proc(Proc(::Qt::ToolButtonStyle, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_tool_button_style_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ToolButtonStyle, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(self, type, BindgenHelper.wrap_proc(Proc(::Qt::ToolButtonStyle, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_top_level_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_topLevelChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_top_level_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_visibility_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_visibilityChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_visibility_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBar_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -193802,8 +193802,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolBox_CONNECT_currentChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolBox_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -194447,8 +194447,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_triggered(&_proc_ : Proc(Action, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QToolButton_CONNECT_triggered_CrystalProc_void__QAction_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
+    def on_triggered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Action, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QToolButton_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QAction*, Void).new do |arg0| _proc_.call(Action.new(unwrap: arg0)) end)))
     end
     
   end
@@ -195965,12 +195965,12 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_expanded(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeView_CONNECT_expanded_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_expanded(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeView_CONNECT_expanded_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
-    def on_collapsed(&_proc_ : Proc(ModelIndex, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeView_CONNECT_collapsed_CrystalProc_void__const_QModelIndex_R_(self, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
+    def on_collapsed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(ModelIndex, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeView_CONNECT_collapsed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QModelIndex*, Void).new do |arg0| _proc_.call(ModelIndex.new(unwrap: arg0)) end)))
     end
     
   end
@@ -197996,44 +197996,44 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_item_pressed(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemPressed_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_pressed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_clicked(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemClicked_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_double_clicked(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_double_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_activated(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemActivated_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_activated(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_entered(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemEntered_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_entered(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_changed(&_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemChanged_CrystalProc_void__QTreeWidgetItem_X__int_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
+    def on_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Int32, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), arg1) end)))
     end
     
-    def on_item_expanded(&_proc_ : Proc(TreeWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemExpanded_CrystalProc_void__QTreeWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Void).new do |arg0| _proc_.call(TreeWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_expanded(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemExpanded_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Void).new do |arg0| _proc_.call(TreeWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_item_collapsed(&_proc_ : Proc(TreeWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemCollapsed_CrystalProc_void__QTreeWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Void).new do |arg0| _proc_.call(TreeWidgetItem.new(unwrap: arg0)) end)))
+    def on_item_collapsed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemCollapsed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Void).new do |arg0| _proc_.call(TreeWidgetItem.new(unwrap: arg0)) end)))
     end
     
-    def on_current_item_changed(&_proc_ : Proc(TreeWidgetItem, TreeWidgetItem, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_currentItemChanged_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Binding::QTreeWidgetItem*, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), TreeWidgetItem.new(unwrap: arg1)) end)))
+    def on_current_item_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(TreeWidgetItem, TreeWidgetItem, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QTreeWidgetItem*, Binding::QTreeWidgetItem*, Void).new do |arg0, arg1| _proc_.call(TreeWidgetItem.new(unwrap: arg0), TreeWidgetItem.new(unwrap: arg1)) end)))
     end
     
-    def on_item_selection_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_item_selection_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QTreeWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end
@@ -198283,32 +198283,32 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_active_stack_changed(&_proc_ : Proc(UndoStack, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_activeStackChanged_CrystalProc_void__QUndoStack_X_(self, BindgenHelper.wrap_proc(Proc(Binding::QUndoStack*, Void).new do |arg0| _proc_.call(UndoStack.new(unwrap: arg0)) end)))
+    def on_active_stack_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(UndoStack, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_activeStackChanged_Qt__ConnectionType_CrystalProc_void__QUndoStack_X_(self, type, BindgenHelper.wrap_proc(Proc(Binding::QUndoStack*, Void).new do |arg0| _proc_.call(UndoStack.new(unwrap: arg0)) end)))
     end
     
-    def on_index_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_indexChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_index_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_clean_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_cleanChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_clean_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_can_undo_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_canUndoChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_can_undo_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_can_redo_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_canRedoChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_can_redo_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_undo_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_undo_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_redo_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_redo_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoGroup_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -198755,28 +198755,28 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_index_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_indexChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_index_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_clean_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_cleanChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_clean_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_can_undo_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_canUndoChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_can_undo_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_can_redo_changed(&_proc_ : Proc(Bool, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_canRedoChanged_CrystalProc_void__bool_(self, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_can_redo_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Bool, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(self, type, BindgenHelper.wrap_proc(Proc(Bool, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_undo_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_undo_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
-    def on_redo_text_changed(&_proc_ : Proc(String, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(self, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
+    def on_redo_text_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(String, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QUndoStack_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(self, type, BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Void).new do |arg0| _proc_.call(Qt::Converter::QString.unwrap(arg0.value)) end)))
     end
     
   end
@@ -201471,24 +201471,24 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_current_id_changed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_currentIdChanged_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_current_id_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_currentIdChanged_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_help_requested(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_helpRequested_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_help_requested(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
-    def on_custom_button_clicked(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_customButtonClicked_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_custom_button_clicked(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_customButtonClicked_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_page_added(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_pageAdded_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_page_added(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_pageAdded_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
-    def on_page_removed(&_proc_ : Proc(Int32, Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_pageRemoved_CrystalProc_void__int_(self, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
+    def on_page_removed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Int32, Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizard_CONNECT_pageRemoved_Qt__ConnectionType_CrystalProc_void__int_(self, type, BindgenHelper.wrap_proc(Proc(Int32, Void).new do |arg0| _proc_.call(arg0) end)))
     end
     
   end
@@ -202164,8 +202164,8 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
-    def on_complete_changed(&_proc_ : Proc(Void)) : SignalConnection
-      SignalConnection.new(unwrap: Binding.bg_QWizardPage_CONNECT_completeChanged_CrystalProc_void_(self, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
+    def on_complete_changed(type : ConnectionType = ConnectionType::AutoConnection, &_proc_ : Proc(Void)) : SignalConnection
+      SignalConnection.new(unwrap: Binding.bg_QWizardPage_CONNECT_completeChanged_Qt__ConnectionType_CrystalProc_void_(self, type, BindgenHelper.wrap_proc(Proc(Void).new do  _proc_.call() end)))
     end
     
   end

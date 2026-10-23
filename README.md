@@ -206,8 +206,15 @@ must not call into Crystal**: the Crystal runtime and its GC only know the
 threads they start, so a Crystal method run from a Qt thread corrupts the
 program.  Deleting a wrapped object counts, as its destructor calls into
 Crystal to release it from `keep_alive`.  A thread started from Crystal runs Qt
-code only, like the event loop `QThread::run` starts by default, and the queued
-signals it emits are delivered in the main thread:
+code only, like the event loop `QThread::run` starts by default.  The signals
+it emits are delivered in the main thread: the `on_x` connection methods
+connect with the application object as the context of the connection, so with
+the default `Qt::ConnectionType::AutoConnection`, a signal emitted in the main
+thread runs the block at once, and one emitted in another thread queues the
+block to the main event loop.  The connection methods take the connection
+type as their argument, after the type arguments of an overloaded signal.
+`Qt::ConnectionType::DirectConnection` runs the block on the emitting thread,
+so don't use it for a signal a Qt thread emits:
 
 ```crystal
 thread = Qt::Thread.new
@@ -215,6 +222,8 @@ thread.on_finished { puts "done" } # Called from the main event loop
 thread.start
 thread.quit
 thread.wait
+
+button.on_clicked(Qt::ConnectionType::QueuedConnection) { } # Run by the event loop, after the click
 ```
 
 `QThread` and `QRunnable` are the one place a Crystal override of a virtual

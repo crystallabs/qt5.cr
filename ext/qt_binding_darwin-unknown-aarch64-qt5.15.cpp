@@ -1767,12 +1767,12 @@ extern "C" void bg_BgInherit_QObject_JUMPTABLE_BgJumptable_QObject_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
-extern "C" QMetaObject::Connection * bg_QObject_CONNECT_destroyed_CrystalProc_void__QObject_X_(QObject * _self_, CrystalProc<void, QObject *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QObject::*)(QObject *))&QObject::destroyed, [_proc_](QObject * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QObject_CONNECT_destroyed_Qt__ConnectionType_CrystalProc_void__QObject_X_(QObject * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QObject::*)(QObject *))&QObject::destroyed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QObject_CONNECT_objectNameChanged_CrystalProc_void__const_QString_R_(QObject * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QObject::*)(const QString &))&QObject::objectNameChanged, [_proc_](const QString & objectName){ _proc_(bindgen_address(qstring_to_crystal(objectName))); }));
+extern "C" QMetaObject::Connection * bg_QObject_CONNECT_objectNameChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QObject * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QObject::*)(const QString &))&QObject::objectNameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & objectName){ _proc_(bindgen_address(qstring_to_crystal(objectName))); }, type));
 }
 
 extern "C" bool bg_QObject_event_SUPER_QEvent_X(QObject * _self_, QEvent * event) {
@@ -2081,20 +2081,20 @@ extern "C" const QMetaObject * bg_QAbstractAnimation_staticMetaObject_STATIC_GET
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractAnimation::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_finished_CrystalProc_void_(QAbstractAnimation * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)())&QAbstractAnimation::finished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(QAbstractAnimation * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)())&QAbstractAnimation::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_stateChanged_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(QAbstractAnimation * _self_, CrystalProc<void, QAbstractAnimation::State, QAbstractAnimation::State> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(QAbstractAnimation::State, QAbstractAnimation::State))&QAbstractAnimation::stateChanged, [_proc_](QAbstractAnimation::State newState, QAbstractAnimation::State oldState){ _proc_(newState, oldState); }));
+extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__State__QAbstractAnimation__State_(QAbstractAnimation * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractAnimation::State, QAbstractAnimation::State> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(QAbstractAnimation::State, QAbstractAnimation::State))&QAbstractAnimation::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractAnimation::State newState, QAbstractAnimation::State oldState){ _proc_(newState, oldState); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_currentLoopChanged_CrystalProc_void__int_(QAbstractAnimation * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(int))&QAbstractAnimation::currentLoopChanged, [_proc_](int currentLoop){ _proc_(currentLoop); }));
+extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_currentLoopChanged_Qt__ConnectionType_CrystalProc_void__int_(QAbstractAnimation * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(int))&QAbstractAnimation::currentLoopChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int currentLoop){ _proc_(currentLoop); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_directionChanged_CrystalProc_void__QAbstractAnimation__Direction_(QAbstractAnimation * _self_, CrystalProc<void, QAbstractAnimation::Direction> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(QAbstractAnimation::Direction))&QAbstractAnimation::directionChanged, [_proc_](QAbstractAnimation::Direction unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_directionChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation__Direction_(QAbstractAnimation * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractAnimation::Direction> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)(QAbstractAnimation::Direction))&QAbstractAnimation::directionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractAnimation::Direction unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" bool bg_QAbstractAnimation_event_SUPER_QEvent_X(QAbstractAnimation * _self_, QEvent * event) {
@@ -2331,12 +2331,12 @@ extern "C" const QMetaObject * bg_QAnimationDriver_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAnimationDriver::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAnimationDriver_CONNECT_started_CrystalProc_void_(QAnimationDriver * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAnimationDriver::*)())&QAnimationDriver::started, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAnimationDriver_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(QAnimationDriver * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAnimationDriver::*)())&QAnimationDriver::started, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAnimationDriver_CONNECT_stopped_CrystalProc_void_(QAnimationDriver * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAnimationDriver::*)())&QAnimationDriver::stopped, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAnimationDriver_CONNECT_stopped_Qt__ConnectionType_CrystalProc_void_(QAnimationDriver * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAnimationDriver::*)())&QAnimationDriver::stopped, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QAnimationDriver_advance_SUPER_(QAnimationDriver * _self_) {
@@ -2903,12 +2903,12 @@ extern "C" const QMetaObject * bg_QAbstractEventDispatcher_staticMetaObject_STAT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractEventDispatcher::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_CrystalProc_void_(QAbstractEventDispatcher * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractEventDispatcher::*)())&QAbstractEventDispatcher::aboutToBlock, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractEventDispatcher_CONNECT_aboutToBlock_Qt__ConnectionType_CrystalProc_void_(QAbstractEventDispatcher * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractEventDispatcher::*)())&QAbstractEventDispatcher::aboutToBlock, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractEventDispatcher_CONNECT_awake_CrystalProc_void_(QAbstractEventDispatcher * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractEventDispatcher::*)())&QAbstractEventDispatcher::awake, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractEventDispatcher_CONNECT_awake_Qt__ConnectionType_CrystalProc_void_(QAbstractEventDispatcher * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractEventDispatcher::*)())&QAbstractEventDispatcher::awake, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QAbstractEventDispatcher_startingUp_SUPER_(QAbstractEventDispatcher * _self_) {
@@ -3918,88 +3918,88 @@ extern "C" const QMetaObject * bg_QAbstractItemModel_staticMetaObject_STATIC_GET
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractItemModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, const QModelIndex &))&QAbstractItemModel::dataChanged, [_proc_](const QModelIndex & topLeft, const QModelIndex & bottomRight){ _proc_(&(topLeft), &(bottomRight)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, const QModelIndex &))&QAbstractItemModel::dataChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & topLeft, const QModelIndex & bottomRight){ _proc_(&(topLeft), &(bottomRight)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_dataChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, const QModelIndex *, const Container_QVector_int_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, const QModelIndex &, const QVector<int> &))&QAbstractItemModel::dataChanged, [_proc_](const QModelIndex & topLeft, const QModelIndex & bottomRight, const QVector<int> & roles){ _proc_(&(topLeft), &(bottomRight), new (UseGC, bindgen_gc_finalizer<Container_QVector_int_>()) Container_QVector_int_ (roles)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R__const_QVector_int__R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *, const Container_QVector_int_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, const QModelIndex &, const QVector<int> &))&QAbstractItemModel::dataChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & topLeft, const QModelIndex & bottomRight, const QVector<int> & roles){ _proc_(&(topLeft), &(bottomRight), new (UseGC, bindgen_gc_finalizer<Container_QVector_int_>()) Container_QVector_int_ (roles)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_headerDataChanged_CrystalProc_void__Qt__Orientation__int__int_(QAbstractItemModel * _self_, CrystalProc<void, Qt::Orientation, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(Qt::Orientation, int, int))&QAbstractItemModel::headerDataChanged, [_proc_](Qt::Orientation orientation, int first, int last){ _proc_(orientation, first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_headerDataChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::Orientation, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(Qt::Orientation, int, int))&QAbstractItemModel::headerDataChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::Orientation orientation, int first, int last){ _proc_(orientation, first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void_(QAbstractItemModel * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutChanged, [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void_(QAbstractItemModel * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutAboutToBeChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::layoutAboutToBeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutAboutToBeChanged, [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_layoutAboutToBeChanged_Qt__ConnectionType_CrystalProc_void__const_QList_QPersistentModelIndex__R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QPersistentModelIndex_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QList<QPersistentModelIndex> &))&QAbstractItemModel::layoutAboutToBeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QPersistentModelIndex> & parents){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QPersistentModelIndex_>()) Container_QList_QPersistentModelIndex_ (parents)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsAboutToBeInserted, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsAboutToBeInserted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsInserted, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsInserted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsAboutToBeRemoved, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsAboutToBeRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsRemoved, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::rowsRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsAboutToBeInserted, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsAboutToBeInserted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsInserted_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsInserted, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsInserted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsInserted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsAboutToBeRemoved, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsAboutToBeRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsRemoved_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsRemoved, [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsRemoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int))&QAbstractItemModel::columnsRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int first, int last){ _proc_(&(parent), first, last); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_CrystalProc_void_(QAbstractItemModel * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::modelAboutToBeReset, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_modelAboutToBeReset_Qt__ConnectionType_CrystalProc_void_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::modelAboutToBeReset, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_modelReset_CrystalProc_void_(QAbstractItemModel * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::modelReset, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_modelReset_Qt__ConnectionType_CrystalProc_void_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)())&QAbstractItemModel::modelReset, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::rowsAboutToBeMoved, [_proc_](const QModelIndex & sourceParent, int sourceStart, int sourceEnd, const QModelIndex & destinationParent, int destinationRow){ _proc_(&(sourceParent), sourceStart, sourceEnd, &(destinationParent), destinationRow); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::rowsAboutToBeMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & sourceParent, int sourceStart, int sourceEnd, const QModelIndex & destinationParent, int destinationRow){ _proc_(&(sourceParent), sourceStart, sourceEnd, &(destinationParent), destinationRow); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::rowsMoved, [_proc_](const QModelIndex & parent, int start, int end, const QModelIndex & destination, int row){ _proc_(&(parent), start, end, &(destination), row); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_rowsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::rowsMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int start, int end, const QModelIndex & destination, int row){ _proc_(&(parent), start, end, &(destination), row); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::columnsAboutToBeMoved, [_proc_](const QModelIndex & sourceParent, int sourceStart, int sourceEnd, const QModelIndex & destinationParent, int destinationColumn){ _proc_(&(sourceParent), sourceStart, sourceEnd, &(destinationParent), destinationColumn); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsAboutToBeMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::columnsAboutToBeMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & sourceParent, int sourceStart, int sourceEnd, const QModelIndex & destinationParent, int destinationColumn){ _proc_(&(sourceParent), sourceStart, sourceEnd, &(destinationParent), destinationColumn); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsMoved_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::columnsMoved, [_proc_](const QModelIndex & parent, int start, int end, const QModelIndex & destination, int column){ _proc_(&(parent), start, end, &(destination), column); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_columnsMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__int__int__const_QModelIndex_R__int_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, int, int, const QModelIndex *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, int, int, const QModelIndex &, int))&QAbstractItemModel::columnsMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & parent, int start, int end, const QModelIndex & destination, int column){ _proc_(&(parent), start, end, &(destination), column); }, type));
 }
 
 extern "C" QModelIndex * bg_QAbstractItemModel_sibling_SUPER_int_int_const_QModelIndex_R(QAbstractItemModel * _self_, int row, int column, const QModelIndex & idx) {
@@ -5796,8 +5796,8 @@ extern "C" const QMetaObject * bg_QAbstractProxyModel_staticMetaObject_STATIC_GE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractProxyModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractProxyModel_CONNECT_sourceModelChanged_CrystalProc_void_(QAbstractProxyModel * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractProxyModel::*)())&QAbstractProxyModel::sourceModelChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractProxyModel_CONNECT_sourceModelChanged_Qt__ConnectionType_CrystalProc_void_(QAbstractProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractProxyModel::*)())&QAbstractProxyModel::sourceModelChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QAbstractProxyModel_setSourceModel_SUPER_QAbstractItemModel_X(QAbstractProxyModel * _self_, QAbstractItemModel * sourceModel) {
@@ -6812,28 +6812,28 @@ extern "C" const QMetaObject * bg_QIODevice_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QIODevice::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_readyRead_CrystalProc_void_(QIODevice * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::readyRead, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_readyRead_Qt__ConnectionType_CrystalProc_void_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::readyRead, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_channelReadyRead_CrystalProc_void__int_(QIODevice * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(int))&QIODevice::channelReadyRead, [_proc_](int channel){ _proc_(channel); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_channelReadyRead_Qt__ConnectionType_CrystalProc_void__int_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(int))&QIODevice::channelReadyRead, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int channel){ _proc_(channel); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_bytesWritten_CrystalProc_void__qint64_(QIODevice * _self_, CrystalProc<void, qint64> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(qint64))&QIODevice::bytesWritten, [_proc_](qint64 bytes){ _proc_(bytes); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_bytesWritten_Qt__ConnectionType_CrystalProc_void__qint64_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void, qint64> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(qint64))&QIODevice::bytesWritten, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qint64 bytes){ _proc_(bytes); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_channelBytesWritten_CrystalProc_void__int__qint64_(QIODevice * _self_, CrystalProc<void, int, qint64> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(int, qint64))&QIODevice::channelBytesWritten, [_proc_](int channel, qint64 bytes){ _proc_(channel, bytes); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_channelBytesWritten_Qt__ConnectionType_CrystalProc_void__int__qint64_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void, int, qint64> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)(int, qint64))&QIODevice::channelBytesWritten, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int channel, qint64 bytes){ _proc_(channel, bytes); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_aboutToClose_CrystalProc_void_(QIODevice * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::aboutToClose, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_aboutToClose_Qt__ConnectionType_CrystalProc_void_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::aboutToClose, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_readChannelFinished_CrystalProc_void_(QIODevice * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::readChannelFinished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_readChannelFinished_Qt__ConnectionType_CrystalProc_void_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::readChannelFinished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QIODevice_isSequential_SUPER_(QIODevice * _self_) {
@@ -11912,24 +11912,24 @@ extern "C" const QMetaObject * bg_QCoreApplication_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QCoreApplication::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_aboutToQuit_CrystalProc_void_(QCoreApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::aboutToQuit, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_aboutToQuit_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::aboutToQuit, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_organizationNameChanged_CrystalProc_void_(QCoreApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::organizationNameChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_organizationNameChanged_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::organizationNameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_organizationDomainChanged_CrystalProc_void_(QCoreApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::organizationDomainChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_organizationDomainChanged_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::organizationDomainChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_applicationNameChanged_CrystalProc_void_(QCoreApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::applicationNameChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_applicationNameChanged_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::applicationNameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_applicationVersionChanged_CrystalProc_void_(QCoreApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::applicationVersionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_applicationVersionChanged_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::applicationVersionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QCoreApplication_notify_SUPER_QObject_X_QEvent_X(QCoreApplication * _self_, QObject * unnamed_arg_0, QEvent * unnamed_arg_1) {
@@ -15575,12 +15575,12 @@ extern "C" const QMetaObject * bg_QFileSystemWatcher_staticMetaObject_STATIC_GET
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFileSystemWatcher::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QFileSystemWatcher_CONNECT_fileChanged_CrystalProc_void__const_QString_R_(QFileSystemWatcher * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemWatcher::*)(const QString &))&QFileSystemWatcher::fileChanged, [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }));
+extern "C" QMetaObject::Connection * bg_QFileSystemWatcher_CONNECT_fileChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileSystemWatcher * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemWatcher::*)(const QString &))&QFileSystemWatcher::fileChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileSystemWatcher_CONNECT_directoryChanged_CrystalProc_void__const_QString_R_(QFileSystemWatcher * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemWatcher::*)(const QString &))&QFileSystemWatcher::directoryChanged, [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }));
+extern "C" QMetaObject::Connection * bg_QFileSystemWatcher_CONNECT_directoryChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileSystemWatcher * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemWatcher::*)(const QString &))&QFileSystemWatcher::directoryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }, type));
 }
 
 extern "C" void bg_BgInherit_QFileSystemWatcher_JUMPTABLE_BgJumptable_QFileSystemWatcher_R(BgInherit_QFileSystemWatcher * _self_, const BgJumptable_QFileSystemWatcher & table) {
@@ -16754,24 +16754,24 @@ extern "C" const QMetaObject * bg_QItemSelectionModel_staticMetaObject_STATIC_GE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QItemSelectionModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_selectionChanged_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(QItemSelectionModel * _self_, CrystalProc<void, const QItemSelection *, const QItemSelection *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QItemSelection &, const QItemSelection &))&QItemSelectionModel::selectionChanged, [_proc_](const QItemSelection & selected, const QItemSelection & deselected){ _proc_(&(selected), &(deselected)); }));
+extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void__const_QItemSelection_R__const_QItemSelection_R_(QItemSelectionModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QItemSelection *, const QItemSelection *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QItemSelection &, const QItemSelection &))&QItemSelectionModel::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QItemSelection & selected, const QItemSelection & deselected){ _proc_(&(selected), &(deselected)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentChanged, [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }));
+extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentRowChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentRowChanged, [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }));
+extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentRowChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentColumnChanged_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentColumnChanged, [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }));
+extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_currentColumnChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QItemSelectionModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(const QModelIndex &, const QModelIndex &))&QItemSelectionModel::currentColumnChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & current, const QModelIndex & previous){ _proc_(&(current), &(previous)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_modelChanged_CrystalProc_void__QAbstractItemModel_X_(QItemSelectionModel * _self_, CrystalProc<void, QAbstractItemModel *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(QAbstractItemModel *))&QItemSelectionModel::modelChanged, [_proc_](QAbstractItemModel * model){ _proc_(model); }));
+extern "C" QMetaObject::Connection * bg_QItemSelectionModel_CONNECT_modelChanged_Qt__ConnectionType_CrystalProc_void__QAbstractItemModel_X_(QItemSelectionModel * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractItemModel *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QItemSelectionModel::*)(QAbstractItemModel *))&QItemSelectionModel::modelChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractItemModel * model){ _proc_(model); }, type));
 }
 
 extern "C" void bg_QItemSelectionModel_setCurrentIndex_SUPER_const_QModelIndex_R_QItemSelectionModel__SelectionFlags(QItemSelectionModel * _self_, const QModelIndex & index, QItemSelectionModel::SelectionFlags command) {
@@ -20811,28 +20811,28 @@ extern "C" const QMetaObject * bg_QProcess_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QProcess::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_started_CrystalProc_void_(QProcess * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::started, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::started, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_finished_CrystalProc_void__int__QProcess__ExitStatus_(QProcess * _self_, CrystalProc<void, int, QProcess::ExitStatus> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(int, QProcess::ExitStatus))&QProcess::finished, [_proc_](int exitCode, QProcess::ExitStatus exitStatus){ _proc_(exitCode, exitStatus); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int__QProcess__ExitStatus_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void, int, QProcess::ExitStatus> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(int, QProcess::ExitStatus))&QProcess::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int exitCode, QProcess::ExitStatus exitStatus){ _proc_(exitCode, exitStatus); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_errorOccurred_CrystalProc_void__QProcess__ProcessError_(QProcess * _self_, CrystalProc<void, QProcess::ProcessError> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(QProcess::ProcessError))&QProcess::errorOccurred, [_proc_](QProcess::ProcessError error){ _proc_(error); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_errorOccurred_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessError_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void, QProcess::ProcessError> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(QProcess::ProcessError))&QProcess::errorOccurred, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QProcess::ProcessError error){ _proc_(error); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_stateChanged_CrystalProc_void__QProcess__ProcessState_(QProcess * _self_, CrystalProc<void, QProcess::ProcessState> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(QProcess::ProcessState))&QProcess::stateChanged, [_proc_](QProcess::ProcessState state){ _proc_(state); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QProcess__ProcessState_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void, QProcess::ProcessState> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)(QProcess::ProcessState))&QProcess::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QProcess::ProcessState state){ _proc_(state); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_readyReadStandardOutput_CrystalProc_void_(QProcess * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::readyReadStandardOutput, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_readyReadStandardOutput_Qt__ConnectionType_CrystalProc_void_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::readyReadStandardOutput, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_readyReadStandardError_CrystalProc_void_(QProcess * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::readyReadStandardError, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QProcess_CONNECT_readyReadStandardError_Qt__ConnectionType_CrystalProc_void_(QProcess * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProcess::*)())&QProcess::readyReadStandardError, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QProcess_open_SUPER_QIODevice__OpenMode(QProcess * _self_, QIODevice::OpenMode mode) {
@@ -21161,8 +21161,8 @@ extern "C" const QMetaObject * bg_QVariantAnimation_staticMetaObject_STATIC_GETT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QVariantAnimation::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QVariantAnimation_CONNECT_valueChanged_CrystalProc_void__const_QVariant_R_(QVariantAnimation * _self_, CrystalProc<void, const CrystalVariant *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QVariantAnimation::*)(const QVariant &))&QVariantAnimation::valueChanged, [_proc_](const QVariant & value){ _proc_(bindgen_address(qvariant_to_crystal(value))); }));
+extern "C" QMetaObject::Connection * bg_QVariantAnimation_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__const_QVariant_R_(QVariantAnimation * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalVariant *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QVariantAnimation::*)(const QVariant &))&QVariantAnimation::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QVariant & value){ _proc_(bindgen_address(qvariant_to_crystal(value))); }, type));
 }
 
 extern "C" int bg_QVariantAnimation_duration_SUPER_(QVariantAnimation * _self_) {
@@ -23306,8 +23306,8 @@ extern "C" const QMetaObject * bg_QSequentialAnimationGroup_staticMetaObject_STA
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSequentialAnimationGroup::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_CrystalProc_void__QAbstractAnimation_X_(QSequentialAnimationGroup * _self_, CrystalProc<void, QAbstractAnimation *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSequentialAnimationGroup::*)(QAbstractAnimation *))&QSequentialAnimationGroup::currentAnimationChanged, [_proc_](QAbstractAnimation * current){ _proc_(current); }));
+extern "C" QMetaObject::Connection * bg_QSequentialAnimationGroup_CONNECT_currentAnimationChanged_Qt__ConnectionType_CrystalProc_void__QAbstractAnimation_X_(QSequentialAnimationGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractAnimation *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSequentialAnimationGroup::*)(QAbstractAnimation *))&QSequentialAnimationGroup::currentAnimationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractAnimation * current){ _proc_(current); }, type));
 }
 
 extern "C" int bg_QSequentialAnimationGroup_duration_SUPER_(QSequentialAnimationGroup * _self_) {
@@ -24044,20 +24044,20 @@ extern "C" const QMetaObject * bg_QSignalMapper_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSignalMapper::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedInt_CrystalProc_void__int_(QSignalMapper * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(int))&QSignalMapper::mappedInt, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedInt_Qt__ConnectionType_CrystalProc_void__int_(QSignalMapper * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(int))&QSignalMapper::mappedInt, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedString_CrystalProc_void__const_QString_R_(QSignalMapper * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(const QString &))&QSignalMapper::mappedString, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedString_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QSignalMapper * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(const QString &))&QSignalMapper::mappedString, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedWidget_CrystalProc_void__QWidget_X_(QSignalMapper * _self_, CrystalProc<void, QWidget *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(QWidget *))&QSignalMapper::mappedWidget, [_proc_](QWidget * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedWidget_Qt__ConnectionType_CrystalProc_void__QWidget_X_(QSignalMapper * _self_, Qt::ConnectionType type, CrystalProc<void, QWidget *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(QWidget *))&QSignalMapper::mappedWidget, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWidget * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedObject_CrystalProc_void__QObject_X_(QSignalMapper * _self_, CrystalProc<void, QObject *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(QObject *))&QSignalMapper::mappedObject, [_proc_](QObject * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QSignalMapper_CONNECT_mappedObject_Qt__ConnectionType_CrystalProc_void__QObject_X_(QSignalMapper * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSignalMapper::*)(QObject *))&QSignalMapper::mappedObject, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" void bg_BgInherit_QSignalMapper_JUMPTABLE_BgJumptable_QSignalMapper_R(BgInherit_QSignalMapper * _self_, const BgJumptable_QSignalMapper & table) {
@@ -24218,8 +24218,8 @@ extern "C" const QMetaObject * bg_QSocketNotifier_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSocketNotifier::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSocketNotifier_CONNECT_activated_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(QSocketNotifier * _self_, CrystalProc<void, QSocketDescriptor *, QSocketNotifier::Type> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSocketNotifier::*)(QSocketDescriptor, QSocketNotifier::Type))&QSocketNotifier::activated, [_proc_](QSocketDescriptor socket, QSocketNotifier::Type activationEvent){ _proc_(new (UseGC, bindgen_gc_finalizer<QSocketDescriptor>()) QSocketDescriptor (socket), activationEvent); }));
+extern "C" QMetaObject::Connection * bg_QSocketNotifier_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSocketDescriptor__QSocketNotifier__Type_(QSocketNotifier * _self_, Qt::ConnectionType type, CrystalProc<void, QSocketDescriptor *, QSocketNotifier::Type> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSocketNotifier::*)(QSocketDescriptor, QSocketNotifier::Type))&QSocketNotifier::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QSocketDescriptor socket, QSocketNotifier::Type activationEvent){ _proc_(new (UseGC, bindgen_gc_finalizer<QSocketDescriptor>()) QSocketDescriptor (socket), activationEvent); }, type));
 }
 
 extern "C" bool bg_QSocketNotifier_event_SUPER_QEvent_X(QSocketNotifier * _self_, QEvent * event) {
@@ -25097,32 +25097,32 @@ extern "C" const QMetaObject * bg_QSortFilterProxyModel_staticMetaObject_STATIC_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSortFilterProxyModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::dynamicSortFilterChanged, [_proc_](bool dynamicSortFilter){ _proc_(dynamicSortFilter); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_dynamicSortFilterChanged_Qt__ConnectionType_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::dynamicSortFilterChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool dynamicSortFilter){ _proc_(dynamicSortFilter); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(QSortFilterProxyModel * _self_, CrystalProc<void, Qt::CaseSensitivity> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(Qt::CaseSensitivity))&QSortFilterProxyModel::filterCaseSensitivityChanged, [_proc_](Qt::CaseSensitivity filterCaseSensitivity){ _proc_(filterCaseSensitivity); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_filterCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::CaseSensitivity> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(Qt::CaseSensitivity))&QSortFilterProxyModel::filterCaseSensitivityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::CaseSensitivity filterCaseSensitivity){ _proc_(filterCaseSensitivity); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_CrystalProc_void__Qt__CaseSensitivity_(QSortFilterProxyModel * _self_, CrystalProc<void, Qt::CaseSensitivity> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(Qt::CaseSensitivity))&QSortFilterProxyModel::sortCaseSensitivityChanged, [_proc_](Qt::CaseSensitivity sortCaseSensitivity){ _proc_(sortCaseSensitivity); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortCaseSensitivityChanged_Qt__ConnectionType_CrystalProc_void__Qt__CaseSensitivity_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::CaseSensitivity> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(Qt::CaseSensitivity))&QSortFilterProxyModel::sortCaseSensitivityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::CaseSensitivity sortCaseSensitivity){ _proc_(sortCaseSensitivity); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::sortLocaleAwareChanged, [_proc_](bool sortLocaleAware){ _proc_(sortLocaleAware); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortLocaleAwareChanged_Qt__ConnectionType_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::sortLocaleAwareChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool sortLocaleAware){ _proc_(sortLocaleAware); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_CrystalProc_void__int_(QSortFilterProxyModel * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(int))&QSortFilterProxyModel::sortRoleChanged, [_proc_](int sortRole){ _proc_(sortRole); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_sortRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(int))&QSortFilterProxyModel::sortRoleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int sortRole){ _proc_(sortRole); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_CrystalProc_void__int_(QSortFilterProxyModel * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(int))&QSortFilterProxyModel::filterRoleChanged, [_proc_](int filterRole){ _proc_(filterRole); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_filterRoleChanged_Qt__ConnectionType_CrystalProc_void__int_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(int))&QSortFilterProxyModel::filterRoleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int filterRole){ _proc_(filterRole); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::recursiveFilteringEnabledChanged, [_proc_](bool recursiveFilteringEnabled){ _proc_(recursiveFilteringEnabled); }));
+extern "C" QMetaObject::Connection * bg_QSortFilterProxyModel_CONNECT_recursiveFilteringEnabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(QSortFilterProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSortFilterProxyModel::*)(bool))&QSortFilterProxyModel::recursiveFilteringEnabledChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool recursiveFilteringEnabled){ _proc_(recursiveFilteringEnabled); }, type));
 }
 
 extern "C" void bg_QSortFilterProxyModel_setSourceModel_SUPER_QAbstractItemModel_X(QSortFilterProxyModel * _self_, QAbstractItemModel * sourceModel) {
@@ -26795,12 +26795,12 @@ extern "C" const QMetaObject * bg_QThread_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QThread::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QThread_CONNECT_started_CrystalProc_void_(QThread * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QThread::*)())&QThread::started, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QThread_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(QThread * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QThread::*)())&QThread::started, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QThread_CONNECT_finished_CrystalProc_void_(QThread * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QThread::*)())&QThread::finished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QThread_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(QThread * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QThread::*)())&QThread::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 struct BgJumptable_QThreadPool {
@@ -27261,20 +27261,20 @@ extern "C" const QMetaObject * bg_QTimeLine_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTimeLine::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_valueChanged_CrystalProc_void__qreal_(QTimeLine * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(qreal))&QTimeLine::valueChanged, [_proc_](qreal x){ _proc_(x); }));
+extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QTimeLine * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(qreal))&QTimeLine::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal x){ _proc_(x); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_frameChanged_CrystalProc_void__int_(QTimeLine * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(int))&QTimeLine::frameChanged, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(QTimeLine * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(int))&QTimeLine::frameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_stateChanged_CrystalProc_void__QTimeLine__State_(QTimeLine * _self_, CrystalProc<void, QTimeLine::State> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(QTimeLine::State))&QTimeLine::stateChanged, [_proc_](QTimeLine::State newState){ _proc_(newState); }));
+extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QTimeLine__State_(QTimeLine * _self_, Qt::ConnectionType type, CrystalProc<void, QTimeLine::State> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)(QTimeLine::State))&QTimeLine::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTimeLine::State newState){ _proc_(newState); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_finished_CrystalProc_void_(QTimeLine * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)())&QTimeLine::finished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTimeLine_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(QTimeLine * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeLine::*)())&QTimeLine::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" qreal bg_QTimeLine_valueForTime_SUPER_int(QTimeLine * _self_, int msec) {
@@ -27507,8 +27507,8 @@ extern "C" const QMetaObject * bg_QTimer_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTimer::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTimer_CONNECT_timeout_CrystalProc_void_(QTimer * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimer::*)())&QTimer::timeout, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTimer_CONNECT_timeout_Qt__ConnectionType_CrystalProc_void_(QTimer * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimer::*)())&QTimer::timeout, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QTimer_timerEvent_SUPER_QTimerEvent_X(QTimer * _self_, QTimerEvent * event) {
@@ -38109,44 +38109,44 @@ extern "C" const QMetaObject * bg_QTextDocument_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTextDocument::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_contentsChange_CrystalProc_void__int__int__int_(QTextDocument * _self_, CrystalProc<void, int, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(int, int, int))&QTextDocument::contentsChange, [_proc_](int from, int charsRemoved, int charsAdded){ _proc_(from, charsRemoved, charsAdded); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_contentsChange_Qt__ConnectionType_CrystalProc_void__int__int__int_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, int, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(int, int, int))&QTextDocument::contentsChange, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int from, int charsRemoved, int charsAdded){ _proc_(from, charsRemoved, charsAdded); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_contentsChanged_CrystalProc_void_(QTextDocument * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::contentsChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_contentsChanged_Qt__ConnectionType_CrystalProc_void_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::contentsChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_undoAvailable_CrystalProc_void__bool_(QTextDocument * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::undoAvailable, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::undoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_redoAvailable_CrystalProc_void__bool_(QTextDocument * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::redoAvailable, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::redoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_undoCommandAdded_CrystalProc_void_(QTextDocument * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::undoCommandAdded, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_undoCommandAdded_Qt__ConnectionType_CrystalProc_void_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::undoCommandAdded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_modificationChanged_CrystalProc_void__bool_(QTextDocument * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::modificationChanged, [_proc_](bool m){ _proc_(m); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(bool))&QTextDocument::modificationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool m){ _proc_(m); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_cursorPositionChanged_CrystalProc_void__const_QTextCursor_R_(QTextDocument * _self_, CrystalProc<void, const QTextCursor *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(const QTextCursor &))&QTextDocument::cursorPositionChanged, [_proc_](const QTextCursor & cursor){ _proc_(&(cursor)); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCursor_R_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, const QTextCursor *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(const QTextCursor &))&QTextDocument::cursorPositionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QTextCursor & cursor){ _proc_(&(cursor)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_blockCountChanged_CrystalProc_void__int_(QTextDocument * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(int))&QTextDocument::blockCountChanged, [_proc_](int newBlockCount){ _proc_(newBlockCount); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(int))&QTextDocument::blockCountChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int newBlockCount){ _proc_(newBlockCount); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_baseUrlChanged_CrystalProc_void__const_QUrl_R_(QTextDocument * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(const QUrl &))&QTextDocument::baseUrlChanged, [_proc_](const QUrl & url){ _proc_(&(url)); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_baseUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)(const QUrl &))&QTextDocument::baseUrlChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & url){ _proc_(&(url)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_documentLayoutChanged_CrystalProc_void_(QTextDocument * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::documentLayoutChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextDocument_CONNECT_documentLayoutChanged_Qt__ConnectionType_CrystalProc_void_(QTextDocument * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextDocument::*)())&QTextDocument::documentLayoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QTextDocument_clear_SUPER_(QTextDocument * _self_) {
@@ -38715,24 +38715,24 @@ extern "C" const QMetaObject * bg_QAbstractTextDocumentLayout_staticMetaObject_S
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractTextDocumentLayout::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void_(QAbstractTextDocumentLayout * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)())&QAbstractTextDocumentLayout::update, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)())&QAbstractTextDocumentLayout::update, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_update_CrystalProc_void__const_QRectF_R_(QAbstractTextDocumentLayout * _self_, CrystalProc<void, const QRectF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QRectF &))&QAbstractTextDocumentLayout::update, [_proc_](const QRectF & unnamed_arg_0){ _proc_(bindgen_address(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void, const QRectF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QRectF &))&QAbstractTextDocumentLayout::update, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRectF & unnamed_arg_0){ _proc_(bindgen_address(unnamed_arg_0)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_CrystalProc_void__const_QTextBlock_R_(QAbstractTextDocumentLayout * _self_, CrystalProc<void, const QTextBlock *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QTextBlock &))&QAbstractTextDocumentLayout::updateBlock, [_proc_](const QTextBlock & block){ _proc_(&(block)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_updateBlock_Qt__ConnectionType_CrystalProc_void__const_QTextBlock_R_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void, const QTextBlock *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QTextBlock &))&QAbstractTextDocumentLayout::updateBlock, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QTextBlock & block){ _proc_(&(block)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_CrystalProc_void__const_QSizeF_R_(QAbstractTextDocumentLayout * _self_, CrystalProc<void, const QSizeF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QSizeF &))&QAbstractTextDocumentLayout::documentSizeChanged, [_proc_](const QSizeF & newSize){ _proc_(bindgen_address(newSize)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_documentSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void, const QSizeF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(const QSizeF &))&QAbstractTextDocumentLayout::documentSizeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSizeF & newSize){ _proc_(bindgen_address(newSize)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_CrystalProc_void__int_(QAbstractTextDocumentLayout * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(int))&QAbstractTextDocumentLayout::pageCountChanged, [_proc_](int newPages){ _proc_(newPages); }));
+extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_pageCountChanged_Qt__ConnectionType_CrystalProc_void__int_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractTextDocumentLayout::*)(int))&QAbstractTextDocumentLayout::pageCountChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int newPages){ _proc_(newPages); }, type));
 }
 
 extern "C" void bg_QAbstractTextDocumentLayout_resizeInlineObject_SUPER_QTextInlineObject_int_const_QTextFormat_R(QAbstractTextDocumentLayout * _self_, QTextInlineObject & item, int posInDocument, const QTextFormat & format) {
@@ -40335,80 +40335,80 @@ extern "C" bool bg_QWindow_supportsOpenGL_(QWindow * _self_) {
   return _self_->supportsOpenGL();
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(QWindow * _self_, CrystalProc<void, QScreen *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QScreen *))&QWindow::screenChanged, [_proc_](QScreen * screen){ _proc_(screen); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QScreen *))&QWindow::screenChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_modalityChanged_CrystalProc_void__Qt__WindowModality_(QWindow * _self_, CrystalProc<void, Qt::WindowModality> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::WindowModality))&QWindow::modalityChanged, [_proc_](Qt::WindowModality modality){ _proc_(modality); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_modalityChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowModality_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::WindowModality> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::WindowModality))&QWindow::modalityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::WindowModality modality){ _proc_(modality); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowState_(QWindow * _self_, CrystalProc<void, Qt::WindowState> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::WindowState))&QWindow::windowStateChanged, [_proc_](Qt::WindowState windowState){ _proc_(windowState); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowState_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::WindowState> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::WindowState))&QWindow::windowStateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::WindowState windowState){ _proc_(windowState); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(QWindow * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(const QString &))&QWindow::windowTitleChanged, [_proc_](const QString & title){ _proc_(bindgen_address(qstring_to_crystal(title))); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(const QString &))&QWindow::windowTitleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & title){ _proc_(bindgen_address(qstring_to_crystal(title))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_xChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::xChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::xChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_yChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::yChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::yChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_widthChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::widthChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::widthChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_heightChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::heightChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::heightChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_minimumWidthChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::minimumWidthChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_minimumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::minimumWidthChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_minimumHeightChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::minimumHeightChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_minimumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::minimumHeightChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_maximumWidthChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::maximumWidthChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_maximumWidthChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::maximumWidthChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_maximumHeightChanged_CrystalProc_void__int_(QWindow * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::maximumHeightChanged, [_proc_](int arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_maximumHeightChanged_Qt__ConnectionType_CrystalProc_void__int_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(int))&QWindow::maximumHeightChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_visibleChanged_CrystalProc_void__bool_(QWindow * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(bool))&QWindow::visibleChanged, [_proc_](bool arg){ _proc_(arg); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void__bool_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(bool))&QWindow::visibleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool arg){ _proc_(arg); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_visibilityChanged_CrystalProc_void__QWindow__Visibility_(QWindow * _self_, CrystalProc<void, QWindow::Visibility> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QWindow::Visibility))&QWindow::visibilityChanged, [_proc_](QWindow::Visibility visibility){ _proc_(visibility); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__QWindow__Visibility_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QWindow::Visibility> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QWindow::Visibility))&QWindow::visibilityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWindow::Visibility visibility){ _proc_(visibility); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_activeChanged_CrystalProc_void_(QWindow * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)())&QWindow::activeChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_activeChanged_Qt__ConnectionType_CrystalProc_void_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)())&QWindow::activeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_contentOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(QWindow * _self_, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::ScreenOrientation))&QWindow::contentOrientationChanged, [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_contentOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(Qt::ScreenOrientation))&QWindow::contentOrientationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(QWindow * _self_, CrystalProc<void, QObject *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QObject *))&QWindow::focusObjectChanged, [_proc_](QObject * object){ _proc_(object); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QObject *))&QWindow::focusObjectChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * object){ _proc_(object); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_opacityChanged_CrystalProc_void__qreal_(QWindow * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(qreal))&QWindow::opacityChanged, [_proc_](qreal opacity){ _proc_(opacity); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(qreal))&QWindow::opacityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal opacity){ _proc_(opacity); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_transientParentChanged_CrystalProc_void__QWindow_X_(QWindow * _self_, CrystalProc<void, QWindow *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QWindow *))&QWindow::transientParentChanged, [_proc_](QWindow * transientParent){ _proc_(transientParent); }));
+extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_transientParentChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QWindow *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QWindow *))&QWindow::transientParentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWindow * transientParent){ _proc_(transientParent); }, type));
 }
 
 extern "C" QSurface::SurfaceType bg_QWindow_surfaceType_SUPER_(QWindow * _self_) {
@@ -40796,20 +40796,20 @@ extern "C" const QMetaObject * bg_QClipboard_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QClipboard::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_changed_CrystalProc_void__QClipboard__Mode_(QClipboard * _self_, CrystalProc<void, QClipboard::Mode> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)(QClipboard::Mode))&QClipboard::changed, [_proc_](QClipboard::Mode mode){ _proc_(mode); }));
+extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__QClipboard__Mode_(QClipboard * _self_, Qt::ConnectionType type, CrystalProc<void, QClipboard::Mode> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)(QClipboard::Mode))&QClipboard::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QClipboard::Mode mode){ _proc_(mode); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_selectionChanged_CrystalProc_void_(QClipboard * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QClipboard * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_findBufferChanged_CrystalProc_void_(QClipboard * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::findBufferChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_findBufferChanged_Qt__ConnectionType_CrystalProc_void_(QClipboard * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::findBufferChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_dataChanged_CrystalProc_void_(QClipboard * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::dataChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QClipboard_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void_(QClipboard * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QClipboard::*)())&QClipboard::dataChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QColorTransform * bg_QColorTransform__CONSTRUCT_() {
@@ -41158,12 +41158,12 @@ extern "C" const QMetaObject * bg_QDrag_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDrag::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDrag_CONNECT_actionChanged_CrystalProc_void__Qt__DropAction_(QDrag * _self_, CrystalProc<void, Qt::DropAction> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDrag::*)(Qt::DropAction))&QDrag::actionChanged, [_proc_](Qt::DropAction action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QDrag_CONNECT_actionChanged_Qt__ConnectionType_CrystalProc_void__Qt__DropAction_(QDrag * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::DropAction> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDrag::*)(Qt::DropAction))&QDrag::actionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::DropAction action){ _proc_(action); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDrag_CONNECT_targetChanged_CrystalProc_void__QObject_X_(QDrag * _self_, CrystalProc<void, QObject *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDrag::*)(QObject *))&QDrag::targetChanged, [_proc_](QObject * newTarget){ _proc_(newTarget); }));
+extern "C" QMetaObject::Connection * bg_QDrag_CONNECT_targetChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(QDrag * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDrag::*)(QObject *))&QDrag::targetChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * newTarget){ _proc_(newTarget); }, type));
 }
 
 extern "C" void bg_BgInherit_QDrag_JUMPTABLE_BgJumptable_QDrag_R(BgInherit_QDrag * _self_, const BgJumptable_QDrag & table) {
@@ -41674,36 +41674,36 @@ extern "C" const QMetaObject * bg_QInputMethod_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QInputMethod::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_cursorRectangleChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::cursorRectangleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_cursorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::cursorRectangleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_anchorRectangleChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::anchorRectangleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_anchorRectangleChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::anchorRectangleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_keyboardRectangleChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::keyboardRectangleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_keyboardRectangleChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::keyboardRectangleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::inputItemClipRectangleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_inputItemClipRectangleChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::inputItemClipRectangleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_visibleChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::visibleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::visibleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_animatingChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::animatingChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_animatingChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::animatingChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_localeChanged_CrystalProc_void_(QInputMethod * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::localeChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_localeChanged_Qt__ConnectionType_CrystalProc_void_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)())&QInputMethod::localeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_inputDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(QInputMethod * _self_, CrystalProc<void, Qt::LayoutDirection> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)(Qt::LayoutDirection))&QInputMethod::inputDirectionChanged, [_proc_](Qt::LayoutDirection newDirection){ _proc_(newDirection); }));
+extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_inputDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(QInputMethod * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::LayoutDirection> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputMethod::*)(Qt::LayoutDirection))&QInputMethod::inputDirectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::LayoutDirection newDirection){ _proc_(newDirection); }, type));
 }
 
 struct BgJumptable_QGuiApplication {
@@ -42136,60 +42136,60 @@ extern "C" const QMetaObject * bg_QGuiApplication_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGuiApplication::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_fontDatabaseChanged_CrystalProc_void_(QGuiApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::fontDatabaseChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_fontDatabaseChanged_Qt__ConnectionType_CrystalProc_void_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::fontDatabaseChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_screenAdded_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, CrystalProc<void, QScreen *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::screenAdded, [_proc_](QScreen * screen){ _proc_(screen); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_screenAdded_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::screenAdded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_screenRemoved_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, CrystalProc<void, QScreen *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::screenRemoved, [_proc_](QScreen * screen){ _proc_(screen); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_screenRemoved_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::screenRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_primaryScreenChanged_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, CrystalProc<void, QScreen *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::primaryScreenChanged, [_proc_](QScreen * screen){ _proc_(screen); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_primaryScreenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QScreen *))&QGuiApplication::primaryScreenChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_lastWindowClosed_CrystalProc_void_(QGuiApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::lastWindowClosed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_lastWindowClosed_Qt__ConnectionType_CrystalProc_void_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::lastWindowClosed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_focusObjectChanged_CrystalProc_void__QObject_X_(QGuiApplication * _self_, CrystalProc<void, QObject *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QObject *))&QGuiApplication::focusObjectChanged, [_proc_](QObject * focusObject){ _proc_(focusObject); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_focusObjectChanged_Qt__ConnectionType_CrystalProc_void__QObject_X_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QObject *))&QGuiApplication::focusObjectChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * focusObject){ _proc_(focusObject); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_focusWindowChanged_CrystalProc_void__QWindow_X_(QGuiApplication * _self_, CrystalProc<void, QWindow *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QWindow *))&QGuiApplication::focusWindowChanged, [_proc_](QWindow * focusWindow){ _proc_(focusWindow); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_focusWindowChanged_Qt__ConnectionType_CrystalProc_void__QWindow_X_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QWindow *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QWindow *))&QGuiApplication::focusWindowChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWindow * focusWindow){ _proc_(focusWindow); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_applicationStateChanged_CrystalProc_void__Qt__ApplicationState_(QGuiApplication * _self_, CrystalProc<void, Qt::ApplicationState> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(Qt::ApplicationState))&QGuiApplication::applicationStateChanged, [_proc_](Qt::ApplicationState state){ _proc_(state); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_applicationStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__ApplicationState_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ApplicationState> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(Qt::ApplicationState))&QGuiApplication::applicationStateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ApplicationState state){ _proc_(state); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_layoutDirectionChanged_CrystalProc_void__Qt__LayoutDirection_(QGuiApplication * _self_, CrystalProc<void, Qt::LayoutDirection> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(Qt::LayoutDirection))&QGuiApplication::layoutDirectionChanged, [_proc_](Qt::LayoutDirection direction){ _proc_(direction); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_layoutDirectionChanged_Qt__ConnectionType_CrystalProc_void__Qt__LayoutDirection_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::LayoutDirection> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(Qt::LayoutDirection))&QGuiApplication::layoutDirectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::LayoutDirection direction){ _proc_(direction); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_commitDataRequest_CrystalProc_void__QSessionManager_R_(QGuiApplication * _self_, CrystalProc<void, QSessionManager &> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QSessionManager &))&QGuiApplication::commitDataRequest, [_proc_](QSessionManager & sessionManager){ _proc_((sessionManager)); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_commitDataRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QSessionManager &> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QSessionManager &))&QGuiApplication::commitDataRequest, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QSessionManager & sessionManager){ _proc_((sessionManager)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_saveStateRequest_CrystalProc_void__QSessionManager_R_(QGuiApplication * _self_, CrystalProc<void, QSessionManager &> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QSessionManager &))&QGuiApplication::saveStateRequest, [_proc_](QSessionManager & sessionManager){ _proc_((sessionManager)); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_saveStateRequest_Qt__ConnectionType_CrystalProc_void__QSessionManager_R_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QSessionManager &> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(QSessionManager &))&QGuiApplication::saveStateRequest, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QSessionManager & sessionManager){ _proc_((sessionManager)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_paletteChanged_CrystalProc_void__const_QPalette_R_(QGuiApplication * _self_, CrystalProc<void, const QPalette *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(const QPalette &))&QGuiApplication::paletteChanged, [_proc_](const QPalette & pal){ _proc_(&(pal)); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_paletteChanged_Qt__ConnectionType_CrystalProc_void__const_QPalette_R_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, const QPalette *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(const QPalette &))&QGuiApplication::paletteChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QPalette & pal){ _proc_(&(pal)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_CrystalProc_void_(QGuiApplication * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::applicationDisplayNameChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_applicationDisplayNameChanged_Qt__ConnectionType_CrystalProc_void_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)())&QGuiApplication::applicationDisplayNameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_fontChanged_CrystalProc_void__const_QFont_R_(QGuiApplication * _self_, CrystalProc<void, const QFont *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(const QFont &))&QGuiApplication::fontChanged, [_proc_](const QFont & font){ _proc_(&(font)); }));
+extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_fontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void, const QFont *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGuiApplication::*)(const QFont &))&QGuiApplication::fontChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QFont & font){ _proc_(&(font)); }, type));
 }
 
 extern "C" bool bg_QGuiApplication_notify_SUPER_QObject_X_QEvent_X(QGuiApplication * _self_, QObject * unnamed_arg_0, QEvent * unnamed_arg_1) {
@@ -43984,32 +43984,32 @@ extern "C" const QMetaObject * bg_QMovie_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMovie::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_started_CrystalProc_void_(QMovie * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)())&QMovie::started, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_started_Qt__ConnectionType_CrystalProc_void_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)())&QMovie::started, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_resized_CrystalProc_void__const_QSize_R_(QMovie * _self_, CrystalProc<void, const QSize *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(const QSize &))&QMovie::resized, [_proc_](const QSize & size){ _proc_(bindgen_address(size)); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_resized_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void, const QSize *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(const QSize &))&QMovie::resized, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSize & size){ _proc_(bindgen_address(size)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_updated_CrystalProc_void__const_QRect_R_(QMovie * _self_, CrystalProc<void, const QRect *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(const QRect &))&QMovie::updated, [_proc_](const QRect & rect){ _proc_(bindgen_address(rect)); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_updated_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void, const QRect *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(const QRect &))&QMovie::updated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRect & rect){ _proc_(bindgen_address(rect)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_stateChanged_CrystalProc_void__QMovie__MovieState_(QMovie * _self_, CrystalProc<void, QMovie::MovieState> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(QMovie::MovieState))&QMovie::stateChanged, [_proc_](QMovie::MovieState state){ _proc_(state); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QMovie__MovieState_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void, QMovie::MovieState> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(QMovie::MovieState))&QMovie::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QMovie::MovieState state){ _proc_(state); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_error_CrystalProc_void__QImageReader__ImageReaderError_(QMovie * _self_, CrystalProc<void, QImageReader::ImageReaderError> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(QImageReader::ImageReaderError))&QMovie::error, [_proc_](QImageReader::ImageReaderError error){ _proc_(error); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_error_Qt__ConnectionType_CrystalProc_void__QImageReader__ImageReaderError_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void, QImageReader::ImageReaderError> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(QImageReader::ImageReaderError))&QMovie::error, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QImageReader::ImageReaderError error){ _proc_(error); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_finished_CrystalProc_void_(QMovie * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)())&QMovie::finished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)())&QMovie::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_frameChanged_CrystalProc_void__int_(QMovie * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(int))&QMovie::frameChanged, [_proc_](int frameNumber){ _proc_(frameNumber); }));
+extern "C" QMetaObject::Connection * bg_QMovie_CONNECT_frameChanged_Qt__ConnectionType_CrystalProc_void__int_(QMovie * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMovie::*)(int))&QMovie::frameChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int frameNumber){ _proc_(frameNumber); }, type));
 }
 
 extern "C" void bg_BgInherit_QMovie_JUMPTABLE_BgJumptable_QMovie_R(BgInherit_QMovie * _self_, const BgJumptable_QMovie & table) {
@@ -44252,8 +44252,8 @@ extern "C" bool bg_QOffscreenSurface_supportsOpenGL_(QOffscreenSurface * _self_)
   return _self_->supportsOpenGL();
 }
 
-extern "C" QMetaObject::Connection * bg_QOffscreenSurface_CONNECT_screenChanged_CrystalProc_void__QScreen_X_(QOffscreenSurface * _self_, CrystalProc<void, QScreen *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QOffscreenSurface::*)(QScreen *))&QOffscreenSurface::screenChanged, [_proc_](QScreen * screen){ _proc_(screen); }));
+extern "C" QMetaObject::Connection * bg_QOffscreenSurface_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QOffscreenSurface * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QOffscreenSurface::*)(QScreen *))&QOffscreenSurface::screenChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
 
 extern "C" QSurface::SurfaceType bg_QOffscreenSurface_surfaceType_SUPER_(QOffscreenSurface * _self_) {
@@ -47711,40 +47711,40 @@ extern "C" const QMetaObject * bg_QScreen_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QScreen::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_geometryChanged_CrystalProc_void__const_QRect_R_(QScreen * _self_, CrystalProc<void, const QRect *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::geometryChanged, [_proc_](const QRect & geometry){ _proc_(bindgen_address(geometry)); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, const QRect *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::geometryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRect & geometry){ _proc_(bindgen_address(geometry)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_availableGeometryChanged_CrystalProc_void__const_QRect_R_(QScreen * _self_, CrystalProc<void, const QRect *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::availableGeometryChanged, [_proc_](const QRect & geometry){ _proc_(bindgen_address(geometry)); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_availableGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, const QRect *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::availableGeometryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRect & geometry){ _proc_(bindgen_address(geometry)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_physicalSizeChanged_CrystalProc_void__const_QSizeF_R_(QScreen * _self_, CrystalProc<void, const QSizeF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QSizeF &))&QScreen::physicalSizeChanged, [_proc_](const QSizeF & size){ _proc_(bindgen_address(size)); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_physicalSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSizeF_R_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, const QSizeF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QSizeF &))&QScreen::physicalSizeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSizeF & size){ _proc_(bindgen_address(size)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_physicalDotsPerInchChanged_CrystalProc_void__qreal_(QScreen * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::physicalDotsPerInchChanged, [_proc_](qreal dpi){ _proc_(dpi); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_physicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::physicalDotsPerInchChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal dpi){ _proc_(dpi); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_logicalDotsPerInchChanged_CrystalProc_void__qreal_(QScreen * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::logicalDotsPerInchChanged, [_proc_](qreal dpi){ _proc_(dpi); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_logicalDotsPerInchChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::logicalDotsPerInchChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal dpi){ _proc_(dpi); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_virtualGeometryChanged_CrystalProc_void__const_QRect_R_(QScreen * _self_, CrystalProc<void, const QRect *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::virtualGeometryChanged, [_proc_](const QRect & rect){ _proc_(bindgen_address(rect)); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_virtualGeometryChanged_Qt__ConnectionType_CrystalProc_void__const_QRect_R_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, const QRect *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(const QRect &))&QScreen::virtualGeometryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRect & rect){ _proc_(bindgen_address(rect)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_primaryOrientationChanged_CrystalProc_void__Qt__ScreenOrientation_(QScreen * _self_, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(Qt::ScreenOrientation))&QScreen::primaryOrientationChanged, [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_primaryOrientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(Qt::ScreenOrientation))&QScreen::primaryOrientationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_orientationChanged_CrystalProc_void__Qt__ScreenOrientation_(QScreen * _self_, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(Qt::ScreenOrientation))&QScreen::orientationChanged, [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__ScreenOrientation_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ScreenOrientation> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(Qt::ScreenOrientation))&QScreen::orientationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ScreenOrientation orientation){ _proc_(orientation); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_refreshRateChanged_CrystalProc_void__qreal_(QScreen * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::refreshRateChanged, [_proc_](qreal refreshRate){ _proc_(refreshRate); }));
+extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_refreshRateChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QScreen * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScreen::*)(qreal))&QScreen::refreshRateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal refreshRate){ _proc_(refreshRate); }, type));
 }
 
 extern "C" void bg_BgInherit_QScreen_JUMPTABLE_BgJumptable_QScreen_R(BgInherit_QScreen * _self_, const BgJumptable_QScreen & table) {
@@ -48991,8 +48991,8 @@ extern "C" const QMetaObject * bg_QStandardItemModel_staticMetaObject_STATIC_GET
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QStandardItemModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QStandardItemModel_CONNECT_itemChanged_CrystalProc_void__QStandardItem_X_(QStandardItemModel * _self_, CrystalProc<void, QStandardItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStandardItemModel::*)(QStandardItem *))&QStandardItemModel::itemChanged, [_proc_](QStandardItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QStandardItemModel_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QStandardItem_X_(QStandardItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, QStandardItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStandardItemModel::*)(QStandardItem *))&QStandardItemModel::itemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QStandardItem * item){ _proc_(item); }, type));
 }
 
 extern "C" QModelIndex * bg_QStandardItemModel_index_SUPER_int_int_const_QModelIndex_R(QStandardItemModel * _self_, int row, int column, const QModelIndex & parent) {
@@ -49481,48 +49481,48 @@ extern "C" const QMetaObject * bg_QStyleHints_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QStyleHints::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_cursorFlashTimeChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::cursorFlashTimeChanged, [_proc_](int cursorFlashTime){ _proc_(cursorFlashTime); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_cursorFlashTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::cursorFlashTimeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int cursorFlashTime){ _proc_(cursorFlashTime); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::keyboardInputIntervalChanged, [_proc_](int keyboardInputInterval){ _proc_(keyboardInputInterval); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_keyboardInputIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::keyboardInputIntervalChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int keyboardInputInterval){ _proc_(keyboardInputInterval); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mouseDoubleClickIntervalChanged, [_proc_](int mouseDoubleClickInterval){ _proc_(mouseDoubleClickInterval); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mouseDoubleClickIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mouseDoubleClickIntervalChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int mouseDoubleClickInterval){ _proc_(mouseDoubleClickInterval); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mousePressAndHoldIntervalChanged, [_proc_](int mousePressAndHoldInterval){ _proc_(mousePressAndHoldInterval); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mousePressAndHoldIntervalChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mousePressAndHoldIntervalChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int mousePressAndHoldInterval){ _proc_(mousePressAndHoldInterval); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_startDragDistanceChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::startDragDistanceChanged, [_proc_](int startDragDistance){ _proc_(startDragDistance); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_startDragDistanceChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::startDragDistanceChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int startDragDistance){ _proc_(startDragDistance); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_startDragTimeChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::startDragTimeChanged, [_proc_](int startDragTime){ _proc_(startDragTime); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_startDragTimeChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::startDragTimeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int startDragTime){ _proc_(startDragTime); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_CrystalProc_void__Qt__TabFocusBehavior_(QStyleHints * _self_, CrystalProc<void, Qt::TabFocusBehavior> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(Qt::TabFocusBehavior))&QStyleHints::tabFocusBehaviorChanged, [_proc_](Qt::TabFocusBehavior tabFocusBehavior){ _proc_(tabFocusBehavior); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_tabFocusBehaviorChanged_Qt__ConnectionType_CrystalProc_void__Qt__TabFocusBehavior_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::TabFocusBehavior> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(Qt::TabFocusBehavior))&QStyleHints::tabFocusBehaviorChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::TabFocusBehavior tabFocusBehavior){ _proc_(tabFocusBehavior); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_useHoverEffectsChanged_CrystalProc_void__bool_(QStyleHints * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(bool))&QStyleHints::useHoverEffectsChanged, [_proc_](bool useHoverEffects){ _proc_(useHoverEffects); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_useHoverEffectsChanged_Qt__ConnectionType_CrystalProc_void__bool_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(bool))&QStyleHints::useHoverEffectsChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool useHoverEffects){ _proc_(useHoverEffects); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_CrystalProc_void__bool_(QStyleHints * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(bool))&QStyleHints::showShortcutsInContextMenusChanged, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_showShortcutsInContextMenusChanged_Qt__ConnectionType_CrystalProc_void__bool_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(bool))&QStyleHints::showShortcutsInContextMenusChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_wheelScrollLinesChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::wheelScrollLinesChanged, [_proc_](int scrollLines){ _proc_(scrollLines); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_wheelScrollLinesChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::wheelScrollLinesChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int scrollLines){ _proc_(scrollLines); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_CrystalProc_void__int_(QStyleHints * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mouseQuickSelectionThresholdChanged, [_proc_](int threshold){ _proc_(threshold); }));
+extern "C" QMetaObject::Connection * bg_QStyleHints_CONNECT_mouseQuickSelectionThresholdChanged_Qt__ConnectionType_CrystalProc_void__int_(QStyleHints * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStyleHints::*)(int))&QStyleHints::mouseQuickSelectionThresholdChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int threshold){ _proc_(threshold); }, type));
 }
 
 extern "C" void bg_BgInherit_QStyleHints_JUMPTABLE_BgJumptable_QStyleHints_R(BgInherit_QStyleHints * _self_, const BgJumptable_QStyleHints & table) {
@@ -51239,8 +51239,8 @@ extern "C" const QMetaObject * bg_QValidator_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QValidator::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QValidator_CONNECT_changed_CrystalProc_void_(QValidator * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QValidator::*)())&QValidator::changed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QValidator_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(QValidator * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QValidator::*)())&QValidator::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 struct BgJumptable_QIntValidator {
@@ -51419,12 +51419,12 @@ extern "C" const QMetaObject * bg_QIntValidator_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QIntValidator::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QIntValidator_CONNECT_bottomChanged_CrystalProc_void__int_(QIntValidator * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIntValidator::*)(int))&QIntValidator::bottomChanged, [_proc_](int bottom){ _proc_(bottom); }));
+extern "C" QMetaObject::Connection * bg_QIntValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__int_(QIntValidator * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIntValidator::*)(int))&QIntValidator::bottomChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int bottom){ _proc_(bottom); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QIntValidator_CONNECT_topChanged_CrystalProc_void__int_(QIntValidator * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIntValidator::*)(int))&QIntValidator::topChanged, [_proc_](int top){ _proc_(top); }));
+extern "C" QMetaObject::Connection * bg_QIntValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__int_(QIntValidator * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIntValidator::*)(int))&QIntValidator::topChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int top){ _proc_(top); }, type));
 }
 
 extern "C" void bg_QIntValidator_setRange_SUPER_int_int(QIntValidator * _self_, int bottom, int top) {
@@ -51635,20 +51635,20 @@ extern "C" const QMetaObject * bg_QDoubleValidator_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDoubleValidator::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_bottomChanged_CrystalProc_void__double_(QDoubleValidator * _self_, CrystalProc<void, double> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(double))&QDoubleValidator::bottomChanged, [_proc_](double bottom){ _proc_(bottom); }));
+extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_bottomChanged_Qt__ConnectionType_CrystalProc_void__double_(QDoubleValidator * _self_, Qt::ConnectionType type, CrystalProc<void, double> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(double))&QDoubleValidator::bottomChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](double bottom){ _proc_(bottom); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_topChanged_CrystalProc_void__double_(QDoubleValidator * _self_, CrystalProc<void, double> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(double))&QDoubleValidator::topChanged, [_proc_](double top){ _proc_(top); }));
+extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_topChanged_Qt__ConnectionType_CrystalProc_void__double_(QDoubleValidator * _self_, Qt::ConnectionType type, CrystalProc<void, double> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(double))&QDoubleValidator::topChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](double top){ _proc_(top); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_decimalsChanged_CrystalProc_void__int_(QDoubleValidator * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(int))&QDoubleValidator::decimalsChanged, [_proc_](int decimals){ _proc_(decimals); }));
+extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_decimalsChanged_Qt__ConnectionType_CrystalProc_void__int_(QDoubleValidator * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(int))&QDoubleValidator::decimalsChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int decimals){ _proc_(decimals); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_notationChanged_CrystalProc_void__QDoubleValidator__Notation_(QDoubleValidator * _self_, CrystalProc<void, QDoubleValidator::Notation> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(QDoubleValidator::Notation))&QDoubleValidator::notationChanged, [_proc_](QDoubleValidator::Notation notation){ _proc_(notation); }));
+extern "C" QMetaObject::Connection * bg_QDoubleValidator_CONNECT_notationChanged_Qt__ConnectionType_CrystalProc_void__QDoubleValidator__Notation_(QDoubleValidator * _self_, Qt::ConnectionType type, CrystalProc<void, QDoubleValidator::Notation> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleValidator::*)(QDoubleValidator::Notation))&QDoubleValidator::notationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QDoubleValidator::Notation notation){ _proc_(notation); }, type));
 }
 
 extern "C" void bg_QDoubleValidator_setRange_SUPER_double_double_int(QDoubleValidator * _self_, double bottom, double top, int decimals) {
@@ -51809,8 +51809,8 @@ extern "C" const QMetaObject * bg_QRegularExpressionValidator_staticMetaObject_S
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QRegularExpressionValidator::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_CrystalProc_void__const_QRegularExpression_R_(QRegularExpressionValidator * _self_, CrystalProc<void, const QRegularExpression *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QRegularExpressionValidator::*)(const QRegularExpression &))&QRegularExpressionValidator::regularExpressionChanged, [_proc_](const QRegularExpression & re){ _proc_(&(re)); }));
+extern "C" QMetaObject::Connection * bg_QRegularExpressionValidator_CONNECT_regularExpressionChanged_Qt__ConnectionType_CrystalProc_void__const_QRegularExpression_R_(QRegularExpressionValidator * _self_, Qt::ConnectionType type, CrystalProc<void, const QRegularExpression *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QRegularExpressionValidator::*)(const QRegularExpression &))&QRegularExpressionValidator::regularExpressionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRegularExpression & re){ _proc_(&(re)); }, type));
 }
 
 extern "C" void bg_BgInherit_QRegularExpressionValidator_JUMPTABLE_BgJumptable_QRegularExpressionValidator_R(BgInherit_QRegularExpressionValidator * _self_, const BgJumptable_QRegularExpressionValidator & table) {
@@ -53685,20 +53685,20 @@ extern "C" int bg_QWidget_depth_(QWidget * _self_) {
   return _self_->depth();
 }
 
-extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowTitleChanged_CrystalProc_void__const_QString_R_(QWidget * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QString &))&QWidget::windowTitleChanged, [_proc_](const QString & title){ _proc_(bindgen_address(qstring_to_crystal(title))); }));
+extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QString &))&QWidget::windowTitleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & title){ _proc_(bindgen_address(qstring_to_crystal(title))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowIconChanged_CrystalProc_void__const_QIcon_R_(QWidget * _self_, CrystalProc<void, const QIcon *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QIcon &))&QWidget::windowIconChanged, [_proc_](const QIcon & icon){ _proc_(&(icon)); }));
+extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowIconChanged_Qt__ConnectionType_CrystalProc_void__const_QIcon_R_(QWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const QIcon *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QIcon &))&QWidget::windowIconChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QIcon & icon){ _proc_(&(icon)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowIconTextChanged_CrystalProc_void__const_QString_R_(QWidget * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QString &))&QWidget::windowIconTextChanged, [_proc_](const QString & iconText){ _proc_(bindgen_address(qstring_to_crystal(iconText))); }));
+extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowIconTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QString &))&QWidget::windowIconTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & iconText){ _proc_(bindgen_address(qstring_to_crystal(iconText))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_customContextMenuRequested_CrystalProc_void__const_QPoint_R_(QWidget * _self_, CrystalProc<void, const QPoint *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QPoint &))&QWidget::customContextMenuRequested, [_proc_](const QPoint & pos){ _proc_(bindgen_address(pos)); }));
+extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_customContextMenuRequested_Qt__ConnectionType_CrystalProc_void__const_QPoint_R_(QWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const QPoint *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QPoint &))&QWidget::customContextMenuRequested, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QPoint & pos){ _proc_(bindgen_address(pos)); }, type));
 }
 
 extern "C" int bg_QWidget_devType_SUPER_(QWidget * _self_) {
@@ -54599,20 +54599,20 @@ extern "C" const QMetaObject * bg_QAbstractButton_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractButton::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_pressed_CrystalProc_void_(QAbstractButton * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)())&QAbstractButton::pressed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void_(QAbstractButton * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)())&QAbstractButton::pressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_released_CrystalProc_void_(QAbstractButton * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)())&QAbstractButton::released, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_released_Qt__ConnectionType_CrystalProc_void_(QAbstractButton * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)())&QAbstractButton::released, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_clicked_CrystalProc_void__bool_(QAbstractButton * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)(bool))&QAbstractButton::clicked, [_proc_](bool checked){ _proc_(checked); }));
+extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(QAbstractButton * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)(bool))&QAbstractButton::clicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool checked){ _proc_(checked); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_toggled_CrystalProc_void__bool_(QAbstractButton * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)(bool))&QAbstractButton::toggled, [_proc_](bool checked){ _proc_(checked); }));
+extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(QAbstractButton * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)(bool))&QAbstractButton::toggled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool checked){ _proc_(checked); }, type));
 }
 
 extern "C" bool bg_QAbstractButton_hitButton_SUPER_const_QPoint_R(QAbstractButton * _self_, const QPoint pos) {
@@ -55441,8 +55441,8 @@ extern "C" const QMetaObject * bg_QAbstractSpinBox_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractSpinBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSpinBox_CONNECT_editingFinished_CrystalProc_void_(QAbstractSpinBox * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSpinBox::*)())&QAbstractSpinBox::editingFinished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSpinBox_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(QAbstractSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSpinBox::*)())&QAbstractSpinBox::editingFinished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QSize bg_QAbstractSpinBox_sizeHint_SUPER_(QAbstractSpinBox * _self_) {
@@ -56231,28 +56231,28 @@ extern "C" const QMetaObject * bg_QAbstractSlider_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractSlider::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_valueChanged_CrystalProc_void__int_(QAbstractSlider * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::valueChanged, [_proc_](int value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int value){ _proc_(value); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderPressed_CrystalProc_void_(QAbstractSlider * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)())&QAbstractSlider::sliderPressed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderPressed_Qt__ConnectionType_CrystalProc_void_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)())&QAbstractSlider::sliderPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderMoved_CrystalProc_void__int_(QAbstractSlider * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::sliderMoved, [_proc_](int position){ _proc_(position); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderMoved_Qt__ConnectionType_CrystalProc_void__int_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::sliderMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int position){ _proc_(position); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderReleased_CrystalProc_void_(QAbstractSlider * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)())&QAbstractSlider::sliderReleased, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_sliderReleased_Qt__ConnectionType_CrystalProc_void_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)())&QAbstractSlider::sliderReleased, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_rangeChanged_CrystalProc_void__int__int_(QAbstractSlider * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int, int))&QAbstractSlider::rangeChanged, [_proc_](int min, int max){ _proc_(min, max); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_rangeChanged_Qt__ConnectionType_CrystalProc_void__int__int_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int, int))&QAbstractSlider::rangeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int min, int max){ _proc_(min, max); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_actionTriggered_CrystalProc_void__int_(QAbstractSlider * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::actionTriggered, [_proc_](int action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__int_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::actionTriggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int action){ _proc_(action); }, type));
 }
 
 extern "C" bool bg_QAbstractSlider_event_SUPER_QEvent_X(QAbstractSlider * _self_, QEvent * event) {
@@ -58331,24 +58331,24 @@ extern "C" const QMetaObject * bg_QTabBar_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTabBar::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_currentChanged_CrystalProc_void__int_(QTabBar * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::currentChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(QTabBar * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabCloseRequested_CrystalProc_void__int_(QTabBar * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabCloseRequested, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(QTabBar * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabCloseRequested, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabMoved_CrystalProc_void__int__int_(QTabBar * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int, int))&QTabBar::tabMoved, [_proc_](int from, int to){ _proc_(from, to); }));
+extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabMoved_Qt__ConnectionType_CrystalProc_void__int__int_(QTabBar * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int, int))&QTabBar::tabMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int from, int to){ _proc_(from, to); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabBarClicked_CrystalProc_void__int_(QTabBar * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabBarClicked, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(QTabBar * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabBarClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(QTabBar * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabBarDoubleClicked, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabBar_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(QTabBar * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabBar::*)(int))&QTabBar::tabBarDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" QSize bg_QTabBar_sizeHint_SUPER_(QTabBar * _self_) {
@@ -59231,20 +59231,20 @@ extern "C" const QMetaObject * bg_QTabWidget_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTabWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_currentChanged_CrystalProc_void__int_(QTabWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::currentChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(QTabWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabCloseRequested_CrystalProc_void__int_(QTabWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabCloseRequested, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabCloseRequested_Qt__ConnectionType_CrystalProc_void__int_(QTabWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabCloseRequested, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabBarClicked_CrystalProc_void__int_(QTabWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabBarClicked, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabBarClicked_Qt__ConnectionType_CrystalProc_void__int_(QTabWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabBarClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabBarDoubleClicked_CrystalProc_void__int_(QTabWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabBarDoubleClicked, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QTabWidget_CONNECT_tabBarDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(QTabWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTabWidget::*)(int))&QTabWidget::tabBarDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" QSize bg_QTabWidget_sizeHint_SUPER_(QTabWidget * _self_) {
@@ -62473,16 +62473,16 @@ extern "C" const QMetaObject * bg_QAbstractItemDelegate_staticMetaObject_STATIC_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractItemDelegate::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_commitData_CrystalProc_void__QWidget_X_(QAbstractItemDelegate * _self_, CrystalProc<void, QWidget *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(QWidget *))&QAbstractItemDelegate::commitData, [_proc_](QWidget * editor){ _proc_(editor); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_commitData_Qt__ConnectionType_CrystalProc_void__QWidget_X_(QAbstractItemDelegate * _self_, Qt::ConnectionType type, CrystalProc<void, QWidget *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(QWidget *))&QAbstractItemDelegate::commitData, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWidget * editor){ _proc_(editor); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_closeEditor_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(QAbstractItemDelegate * _self_, CrystalProc<void, QWidget *, QAbstractItemDelegate::EndEditHint> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(QWidget *, QAbstractItemDelegate::EndEditHint))&QAbstractItemDelegate::closeEditor, [_proc_](QWidget * editor, QAbstractItemDelegate::EndEditHint hint){ _proc_(editor, hint); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_closeEditor_Qt__ConnectionType_CrystalProc_void__QWidget_X__QAbstractItemDelegate__EndEditHint_(QAbstractItemDelegate * _self_, Qt::ConnectionType type, CrystalProc<void, QWidget *, QAbstractItemDelegate::EndEditHint> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(QWidget *, QAbstractItemDelegate::EndEditHint))&QAbstractItemDelegate::closeEditor, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWidget * editor, QAbstractItemDelegate::EndEditHint hint){ _proc_(editor, hint); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_CrystalProc_void__const_QModelIndex_R_(QAbstractItemDelegate * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(const QModelIndex &))&QAbstractItemDelegate::sizeHintChanged, [_proc_](const QModelIndex & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_sizeHintChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemDelegate * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(const QModelIndex &))&QAbstractItemDelegate::sizeHintChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }, type));
 }
 
 extern "C" QWidget * bg_QAbstractItemDelegate_createEditor_SUPER_QWidget_X_const_QStyleOptionViewItem_R_const_QModelIndex_R(QAbstractItemDelegate * _self_, QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) {
@@ -64842,32 +64842,32 @@ extern "C" const QMetaObject * bg_QAbstractItemView_staticMetaObject_STATIC_GETT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAbstractItemView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_pressed_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::pressed, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::pressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_clicked_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::clicked, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::clicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_doubleClicked_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::doubleClicked, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_doubleClicked_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::doubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::activated, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_entered_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::entered, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_entered_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::entered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_viewportEntered_CrystalProc_void_(QAbstractItemView * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)())&QAbstractItemView::viewportEntered, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_viewportEntered_Qt__ConnectionType_CrystalProc_void_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)())&QAbstractItemView::viewportEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(QAbstractItemView * _self_, CrystalProc<void, const QSize *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QSize &))&QAbstractItemView::iconSizeChanged, [_proc_](const QSize & size){ _proc_(bindgen_address(size)); }));
+extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QSize *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QSize &))&QAbstractItemView::iconSizeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSize & size){ _proc_(bindgen_address(size)); }, type));
 }
 
 extern "C" void bg_QAbstractItemView_setModel_SUPER_QAbstractItemModel_X(QAbstractItemView * _self_, QAbstractItemModel * model) {
@@ -65460,20 +65460,20 @@ extern "C" const QMetaObject * bg_QAction_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QAction::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QAction_CONNECT_changed_CrystalProc_void_(QAction * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)())&QAction::changed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAction_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(QAction * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)())&QAction::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAction_CONNECT_triggered_CrystalProc_void__bool_(QAction * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)(bool))&QAction::triggered, [_proc_](bool checked){ _proc_(checked); }));
+extern "C" QMetaObject::Connection * bg_QAction_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__bool_(QAction * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)(bool))&QAction::triggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool checked){ _proc_(checked); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAction_CONNECT_hovered_CrystalProc_void_(QAction * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)())&QAction::hovered, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QAction_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void_(QAction * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)())&QAction::hovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QAction_CONNECT_toggled_CrystalProc_void__bool_(QAction * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)(bool))&QAction::toggled, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QAction_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(QAction * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)(bool))&QAction::toggled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" bool bg_QAction_event_SUPER_QEvent_X(QAction * _self_, QEvent * event) {
@@ -65686,12 +65686,12 @@ extern "C" const QMetaObject * bg_QActionGroup_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QActionGroup::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QActionGroup_CONNECT_triggered_CrystalProc_void__QAction_X_(QActionGroup * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QActionGroup::*)(QAction *))&QActionGroup::triggered, [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QActionGroup_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QActionGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QActionGroup::*)(QAction *))&QActionGroup::triggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QActionGroup_CONNECT_hovered_CrystalProc_void__QAction_X_(QActionGroup * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QActionGroup::*)(QAction *))&QActionGroup::hovered, [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QActionGroup_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QActionGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QActionGroup::*)(QAction *))&QActionGroup::hovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" void bg_BgInherit_QActionGroup_JUMPTABLE_BgJumptable_QActionGroup_R(BgInherit_QActionGroup * _self_, const BgJumptable_QActionGroup & table) {
@@ -66072,8 +66072,8 @@ extern "C" const QMetaObject * bg_QApplication_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QApplication::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QApplication_CONNECT_focusChanged_CrystalProc_void__QWidget_X__QWidget_X_(QApplication * _self_, CrystalProc<void, QWidget *, QWidget *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QApplication::*)(QWidget *, QWidget *))&QApplication::focusChanged, [_proc_](QWidget * old, QWidget * now){ _proc_(old, now); }));
+extern "C" QMetaObject::Connection * bg_QApplication_CONNECT_focusChanged_Qt__ConnectionType_CrystalProc_void__QWidget_X__QWidget_X_(QApplication * _self_, Qt::ConnectionType type, CrystalProc<void, QWidget *, QWidget *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QApplication::*)(QWidget *, QWidget *))&QApplication::focusChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWidget * old, QWidget * now){ _proc_(old, now); }, type));
 }
 
 extern "C" bool bg_QApplication_notify_SUPER_QObject_X_QEvent_X(QApplication * _self_, QObject * unnamed_arg_0, QEvent * unnamed_arg_1) {
@@ -69673,36 +69673,36 @@ extern "C" const QMetaObject * bg_QButtonGroup_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QButtonGroup::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, CrystalProc<void, QAbstractButton *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonClicked, [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonPressed_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, CrystalProc<void, QAbstractButton *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonPressed, [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonPressed_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonReleased_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, CrystalProc<void, QAbstractButton *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonReleased, [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonReleased_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *))&QButtonGroup::buttonReleased, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonToggled_CrystalProc_void__QAbstractButton_X__bool_(QButtonGroup * _self_, CrystalProc<void, QAbstractButton *, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *, bool))&QButtonGroup::buttonToggled, [_proc_](QAbstractButton * unnamed_arg_0, bool unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_buttonToggled_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X__bool_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(QAbstractButton *, bool))&QButtonGroup::buttonToggled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * unnamed_arg_0, bool unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idClicked_CrystalProc_void__int_(QButtonGroup * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idClicked, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idClicked_Qt__ConnectionType_CrystalProc_void__int_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idPressed_CrystalProc_void__int_(QButtonGroup * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idPressed, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idPressed_Qt__ConnectionType_CrystalProc_void__int_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idReleased_CrystalProc_void__int_(QButtonGroup * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idReleased, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idReleased_Qt__ConnectionType_CrystalProc_void__int_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int))&QButtonGroup::idReleased, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idToggled_CrystalProc_void__int__bool_(QButtonGroup * _self_, CrystalProc<void, int, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int, bool))&QButtonGroup::idToggled, [_proc_](int unnamed_arg_0, bool unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }));
+extern "C" QMetaObject::Connection * bg_QButtonGroup_CONNECT_idToggled_Qt__ConnectionType_CrystalProc_void__int__bool_(QButtonGroup * _self_, Qt::ConnectionType type, CrystalProc<void, int, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QButtonGroup::*)(int, bool))&QButtonGroup::idToggled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0, bool unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }, type));
 }
 
 extern "C" void bg_BgInherit_QButtonGroup_JUMPTABLE_BgJumptable_QButtonGroup_R(BgInherit_QButtonGroup * _self_, const BgJumptable_QButtonGroup & table) {
@@ -70463,20 +70463,20 @@ extern "C" const QMetaObject * bg_QCalendarWidget_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QCalendarWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_selectionChanged_CrystalProc_void_(QCalendarWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)())&QCalendarWidget::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QCalendarWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)())&QCalendarWidget::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_clicked_CrystalProc_void__const_QDate_R_(QCalendarWidget * _self_, CrystalProc<void, const QDate *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(const QDate &))&QCalendarWidget::clicked, [_proc_](const QDate & date){ _proc_(&(date)); }));
+extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(QCalendarWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const QDate *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(const QDate &))&QCalendarWidget::clicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDate & date){ _proc_(&(date)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_activated_CrystalProc_void__const_QDate_R_(QCalendarWidget * _self_, CrystalProc<void, const QDate *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(const QDate &))&QCalendarWidget::activated, [_proc_](const QDate & date){ _proc_(&(date)); }));
+extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(QCalendarWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const QDate *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(const QDate &))&QCalendarWidget::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDate & date){ _proc_(&(date)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_currentPageChanged_CrystalProc_void__int__int_(QCalendarWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(int, int))&QCalendarWidget::currentPageChanged, [_proc_](int year, int month){ _proc_(year, month); }));
+extern "C" QMetaObject::Connection * bg_QCalendarWidget_CONNECT_currentPageChanged_Qt__ConnectionType_CrystalProc_void__int__int_(QCalendarWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCalendarWidget::*)(int, int))&QCalendarWidget::currentPageChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int year, int month){ _proc_(year, month); }, type));
 }
 
 extern "C" QSize bg_QCalendarWidget_sizeHint_SUPER_(QCalendarWidget * _self_) {
@@ -71129,8 +71129,8 @@ extern "C" const QMetaObject * bg_QCheckBox_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QCheckBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QCheckBox_CONNECT_stateChanged_CrystalProc_void__int_(QCheckBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCheckBox::*)(int))&QCheckBox::stateChanged, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QCheckBox_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__int_(QCheckBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCheckBox::*)(int))&QCheckBox::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" QSize bg_QCheckBox_sizeHint_SUPER_(QCheckBox * _self_) {
@@ -71847,16 +71847,16 @@ extern "C" const QMetaObject * bg_QDialog_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_finished_CrystalProc_void__int_(QDialog * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)(int))&QDialog::finished, [_proc_](int result){ _proc_(result); }));
+extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int_(QDialog * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)(int))&QDialog::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int result){ _proc_(result); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_accepted_CrystalProc_void_(QDialog * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)())&QDialog::accepted, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(QDialog * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)())&QDialog::accepted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_rejected_CrystalProc_void_(QDialog * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)())&QDialog::rejected, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(QDialog * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)())&QDialog::rejected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QDialog_setVisible_SUPER_bool(QDialog * _self_, bool visible) {
@@ -72589,12 +72589,12 @@ extern "C" const QMetaObject * bg_QColorDialog_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QColorDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QColorDialog_CONNECT_currentColorChanged_CrystalProc_void__const_QColor_R_(QColorDialog * _self_, CrystalProc<void, const QColor *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColorDialog::*)(const QColor &))&QColorDialog::currentColorChanged, [_proc_](const QColor & color){ _proc_(&(color)); }));
+extern "C" QMetaObject::Connection * bg_QColorDialog_CONNECT_currentColorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(QColorDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QColor *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColorDialog::*)(const QColor &))&QColorDialog::currentColorChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QColor & color){ _proc_(&(color)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QColorDialog_CONNECT_colorSelected_CrystalProc_void__const_QColor_R_(QColorDialog * _self_, CrystalProc<void, const QColor *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColorDialog::*)(const QColor &))&QColorDialog::colorSelected, [_proc_](const QColor & color){ _proc_(&(color)); }));
+extern "C" QMetaObject::Connection * bg_QColorDialog_CONNECT_colorSelected_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(QColorDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QColor *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColorDialog::*)(const QColor &))&QColorDialog::colorSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QColor & color){ _proc_(&(color)); }, type));
 }
 
 extern "C" void bg_QColorDialog_open_SUPER_(QColorDialog * _self_) {
@@ -73684,8 +73684,8 @@ extern "C" const QMetaObject * bg_QColumnView_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QColumnView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QColumnView_CONNECT_updatePreviewWidget_CrystalProc_void__const_QModelIndex_R_(QColumnView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColumnView::*)(const QModelIndex &))&QColumnView::updatePreviewWidget, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QColumnView_CONNECT_updatePreviewWidget_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QColumnView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QColumnView::*)(const QModelIndex &))&QColumnView::updatePreviewWidget, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
 extern "C" QModelIndex * bg_QColumnView_indexAt_SUPER_const_QPoint_R(QColumnView * _self_, const QPoint point) {
@@ -74700,32 +74700,32 @@ extern "C" const QMetaObject * bg_QComboBox_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QComboBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_editTextChanged_CrystalProc_void__const_QString_R_(QComboBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::editTextChanged, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_editTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::editTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_activated_CrystalProc_void__int_(QComboBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::activated, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__int_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_textActivated_CrystalProc_void__const_QString_R_(QComboBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::textActivated, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_textActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::textActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_highlighted_CrystalProc_void__int_(QComboBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::highlighted, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__int_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::highlighted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_textHighlighted_CrystalProc_void__const_QString_R_(QComboBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::textHighlighted, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_textHighlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::textHighlighted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_currentIndexChanged_CrystalProc_void__int_(QComboBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::currentIndexChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(int))&QComboBox::currentIndexChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(QComboBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::currentTextChanged, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::currentTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
 extern "C" QSize bg_QComboBox_sizeHint_SUPER_(QComboBox * _self_) {
@@ -76938,20 +76938,20 @@ extern "C" const QMetaObject * bg_QCompleter_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QCompleter::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QString_R_(QCompleter * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QString &))&QCompleter::activated, [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }));
+extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QCompleter * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QString &))&QCompleter::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_activated_CrystalProc_void__const_QModelIndex_R_(QCompleter * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QModelIndex &))&QCompleter::activated, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QCompleter * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QModelIndex &))&QCompleter::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QString_R_(QCompleter * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QString &))&QCompleter::highlighted, [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }));
+extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QCompleter * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QString &))&QCompleter::highlighted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_highlighted_CrystalProc_void__const_QModelIndex_R_(QCompleter * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QModelIndex &))&QCompleter::highlighted, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QCompleter_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QCompleter * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCompleter::*)(const QModelIndex &))&QCompleter::highlighted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
 extern "C" CrystalString bg_QCompleter_pathFromIndex_SUPER_const_QModelIndex_R(QCompleter * _self_, const QModelIndex & index) {
@@ -77226,8 +77226,8 @@ extern "C" const QMetaObject * bg_QDataWidgetMapper_staticMetaObject_STATIC_GETT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDataWidgetMapper::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDataWidgetMapper_CONNECT_currentIndexChanged_CrystalProc_void__int_(QDataWidgetMapper * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDataWidgetMapper::*)(int))&QDataWidgetMapper::currentIndexChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QDataWidgetMapper_CONNECT_currentIndexChanged_Qt__ConnectionType_CrystalProc_void__int_(QDataWidgetMapper * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDataWidgetMapper::*)(int))&QDataWidgetMapper::currentIndexChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" void bg_QDataWidgetMapper_setCurrentIndex_SUPER_int(QDataWidgetMapper * _self_, int index) {
@@ -78084,16 +78084,16 @@ extern "C" const QMetaObject * bg_QDateTimeEdit_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDateTimeEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_dateTimeChanged_CrystalProc_void__const_QDateTime_R_(QDateTimeEdit * _self_, CrystalProc<void, const QDateTime *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QDateTime &))&QDateTimeEdit::dateTimeChanged, [_proc_](const QDateTime & dateTime){ _proc_(&(dateTime)); }));
+extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_dateTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QDateTime_R_(QDateTimeEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QDateTime *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QDateTime &))&QDateTimeEdit::dateTimeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDateTime & dateTime){ _proc_(&(dateTime)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_timeChanged_CrystalProc_void__const_QTime_R_(QDateTimeEdit * _self_, CrystalProc<void, const QTime *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QTime &))&QDateTimeEdit::timeChanged, [_proc_](const QTime & time){ _proc_(&(time)); }));
+extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_timeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(QDateTimeEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QTime *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QTime &))&QDateTimeEdit::timeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QTime & time){ _proc_(&(time)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_dateChanged_CrystalProc_void__const_QDate_R_(QDateTimeEdit * _self_, CrystalProc<void, const QDate *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QDate &))&QDateTimeEdit::dateChanged, [_proc_](const QDate & date){ _proc_(&(date)); }));
+extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_dateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(QDateTimeEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QDate *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QDate &))&QDateTimeEdit::dateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDate & date){ _proc_(&(date)); }, type));
 }
 
 extern "C" QSize bg_QDateTimeEdit_sizeHint_SUPER_(QDateTimeEdit * _self_) {
@@ -78734,8 +78734,8 @@ extern "C" const QMetaObject * bg_QTimeEdit_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTimeEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTimeEdit_CONNECT_userTimeChanged_CrystalProc_void__const_QTime_R_(QTimeEdit * _self_, CrystalProc<void, const QTime *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeEdit::*)(const QTime &))&QTimeEdit::userTimeChanged, [_proc_](const QTime & time){ _proc_(&(time)); }));
+extern "C" QMetaObject::Connection * bg_QTimeEdit_CONNECT_userTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QTime_R_(QTimeEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QTime *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTimeEdit::*)(const QTime &))&QTimeEdit::userTimeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QTime & time){ _proc_(&(time)); }, type));
 }
 
 extern "C" void bg_BgInherit_QTimeEdit_JUMPTABLE_BgJumptable_QTimeEdit_R(BgInherit_QTimeEdit * _self_, const BgJumptable_QTimeEdit & table) {
@@ -79324,8 +79324,8 @@ extern "C" const QMetaObject * bg_QDateEdit_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDateEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDateEdit_CONNECT_userDateChanged_CrystalProc_void__const_QDate_R_(QDateEdit * _self_, CrystalProc<void, const QDate *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateEdit::*)(const QDate &))&QDateEdit::userDateChanged, [_proc_](const QDate & date){ _proc_(&(date)); }));
+extern "C" QMetaObject::Connection * bg_QDateEdit_CONNECT_userDateChanged_Qt__ConnectionType_CrystalProc_void__const_QDate_R_(QDateEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QDate *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateEdit::*)(const QDate &))&QDateEdit::userDateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDate & date){ _proc_(&(date)); }, type));
 }
 
 extern "C" void bg_BgInherit_QDateEdit_JUMPTABLE_BgJumptable_QDateEdit_R(BgInherit_QDateEdit * _self_, const BgJumptable_QDateEdit & table) {
@@ -81142,20 +81142,20 @@ extern "C" const QMetaObject * bg_QDialogButtonBox_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDialogButtonBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_clicked_CrystalProc_void__QAbstractButton_X_(QDialogButtonBox * _self_, CrystalProc<void, QAbstractButton *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)(QAbstractButton *))&QDialogButtonBox::clicked, [_proc_](QAbstractButton * button){ _proc_(button); }));
+extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(QDialogButtonBox * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)(QAbstractButton *))&QDialogButtonBox::clicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * button){ _proc_(button); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_accepted_CrystalProc_void_(QDialogButtonBox * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::accepted, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_accepted_Qt__ConnectionType_CrystalProc_void_(QDialogButtonBox * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::accepted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_helpRequested_CrystalProc_void_(QDialogButtonBox * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::helpRequested, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(QDialogButtonBox * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::helpRequested, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_rejected_CrystalProc_void_(QDialogButtonBox * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::rejected, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QDialogButtonBox_CONNECT_rejected_Qt__ConnectionType_CrystalProc_void_(QDialogButtonBox * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialogButtonBox::*)())&QDialogButtonBox::rejected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QDialogButtonBox_changeEvent_SUPER_QEvent_X(QDialogButtonBox * _self_, QEvent * unnamed_arg_0) {
@@ -81870,24 +81870,24 @@ extern "C" const QMetaObject * bg_QDockWidget_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDockWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_featuresChanged_CrystalProc_void__QDockWidget__DockWidgetFeatures_(QDockWidget * _self_, CrystalProc<void, QDockWidget::DockWidgetFeatures> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(QDockWidget::DockWidgetFeatures))&QDockWidget::featuresChanged, [_proc_](QDockWidget::DockWidgetFeatures features){ _proc_(features); }));
+extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_featuresChanged_Qt__ConnectionType_CrystalProc_void__QDockWidget__DockWidgetFeatures_(QDockWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QDockWidget::DockWidgetFeatures> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(QDockWidget::DockWidgetFeatures))&QDockWidget::featuresChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QDockWidget::DockWidgetFeatures features){ _proc_(features); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_topLevelChanged_CrystalProc_void__bool_(QDockWidget * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(bool))&QDockWidget::topLevelChanged, [_proc_](bool topLevel){ _proc_(topLevel); }));
+extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(QDockWidget * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(bool))&QDockWidget::topLevelChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool topLevel){ _proc_(topLevel); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__DockWidgetAreas_(QDockWidget * _self_, CrystalProc<void, Qt::DockWidgetAreas> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(Qt::DockWidgetAreas))&QDockWidget::allowedAreasChanged, [_proc_](Qt::DockWidgetAreas allowedAreas){ _proc_(allowedAreas); }));
+extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetAreas_(QDockWidget * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::DockWidgetAreas> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(Qt::DockWidgetAreas))&QDockWidget::allowedAreasChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::DockWidgetAreas allowedAreas){ _proc_(allowedAreas); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_visibilityChanged_CrystalProc_void__bool_(QDockWidget * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(bool))&QDockWidget::visibilityChanged, [_proc_](bool visible){ _proc_(visible); }));
+extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(QDockWidget * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(bool))&QDockWidget::visibilityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool visible){ _proc_(visible); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_dockLocationChanged_CrystalProc_void__Qt__DockWidgetArea_(QDockWidget * _self_, CrystalProc<void, Qt::DockWidgetArea> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(Qt::DockWidgetArea))&QDockWidget::dockLocationChanged, [_proc_](Qt::DockWidgetArea area){ _proc_(area); }));
+extern "C" QMetaObject::Connection * bg_QDockWidget_CONNECT_dockLocationChanged_Qt__ConnectionType_CrystalProc_void__Qt__DockWidgetArea_(QDockWidget * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::DockWidgetArea> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDockWidget::*)(Qt::DockWidgetArea))&QDockWidget::dockLocationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::DockWidgetArea area){ _proc_(area); }, type));
 }
 
 extern "C" void bg_QDockWidget_changeEvent_SUPER_QEvent_X(QDockWidget * _self_, QEvent * unnamed_arg_0) {
@@ -83502,40 +83502,40 @@ extern "C" const QMetaObject * bg_QFileDialog_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFileDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_fileSelected_CrystalProc_void__const_QString_R_(QFileDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::fileSelected, [_proc_](const QString & file){ _proc_(bindgen_address(qstring_to_crystal(file))); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_fileSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::fileSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & file){ _proc_(bindgen_address(qstring_to_crystal(file))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_filesSelected_CrystalProc_void__const_QStringList_R_(QFileDialog * _self_, CrystalProc<void, const QList<QString> *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QStringList &))&QFileDialog::filesSelected, [_proc_](const QStringList & files){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (files)); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_filesSelected_Qt__ConnectionType_CrystalProc_void__const_QStringList_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QList<QString> *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QStringList &))&QFileDialog::filesSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QStringList & files){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (files)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_currentChanged_CrystalProc_void__const_QString_R_(QFileDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::currentChanged, [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_directoryEntered_CrystalProc_void__const_QString_R_(QFileDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::directoryEntered, [_proc_](const QString & directory){ _proc_(bindgen_address(qstring_to_crystal(directory))); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_directoryEntered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::directoryEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & directory){ _proc_(bindgen_address(qstring_to_crystal(directory))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_urlSelected_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::urlSelected, [_proc_](const QUrl & url){ _proc_(&(url)); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_urlSelected_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::urlSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & url){ _proc_(&(url)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_urlsSelected_CrystalProc_void__const_QList_QUrl__R_(QFileDialog * _self_, CrystalProc<void, const Container_QList_QUrl_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QList<QUrl> &))&QFileDialog::urlsSelected, [_proc_](const QList<QUrl> & urls){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (urls)); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_urlsSelected_Qt__ConnectionType_CrystalProc_void__const_QList_QUrl__R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QUrl_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QList<QUrl> &))&QFileDialog::urlsSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QUrl> & urls){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QUrl_>()) Container_QList_QUrl_ (urls)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_currentUrlChanged_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::currentUrlChanged, [_proc_](const QUrl & url){ _proc_(&(url)); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_currentUrlChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::currentUrlChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & url){ _proc_(&(url)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_directoryUrlEntered_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::directoryUrlEntered, [_proc_](const QUrl & directory){ _proc_(&(directory)); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_directoryUrlEntered_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QUrl &))&QFileDialog::directoryUrlEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & directory){ _proc_(&(directory)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_filterSelected_CrystalProc_void__const_QString_R_(QFileDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::filterSelected, [_proc_](const QString & filter){ _proc_(bindgen_address(qstring_to_crystal(filter))); }));
+extern "C" QMetaObject::Connection * bg_QFileDialog_CONNECT_filterSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileDialog::*)(const QString &))&QFileDialog::filterSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & filter){ _proc_(bindgen_address(qstring_to_crystal(filter))); }, type));
 }
 
 extern "C" void bg_QFileDialog_open_SUPER_(QFileDialog * _self_) {
@@ -84289,16 +84289,16 @@ extern "C" const QMetaObject * bg_QFileSystemModel_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFileSystemModel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_rootPathChanged_CrystalProc_void__const_QString_R_(QFileSystemModel * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &))&QFileSystemModel::rootPathChanged, [_proc_](const QString & newPath){ _proc_(bindgen_address(qstring_to_crystal(newPath))); }));
+extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_rootPathChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileSystemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &))&QFileSystemModel::rootPathChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & newPath){ _proc_(bindgen_address(qstring_to_crystal(newPath))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_fileRenamed_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(QFileSystemModel * _self_, CrystalProc<void, const CrystalString *, const CrystalString *, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &, const QString &, const QString &))&QFileSystemModel::fileRenamed, [_proc_](const QString & path, const QString & oldName, const QString & newName){ _proc_(bindgen_address(qstring_to_crystal(path)), bindgen_address(qstring_to_crystal(oldName)), bindgen_address(qstring_to_crystal(newName))); }));
+extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_fileRenamed_Qt__ConnectionType_CrystalProc_void__const_QString_R__const_QString_R__const_QString_R_(QFileSystemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *, const CrystalString *, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &, const QString &, const QString &))&QFileSystemModel::fileRenamed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & path, const QString & oldName, const QString & newName){ _proc_(bindgen_address(qstring_to_crystal(path)), bindgen_address(qstring_to_crystal(oldName)), bindgen_address(qstring_to_crystal(newName))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_directoryLoaded_CrystalProc_void__const_QString_R_(QFileSystemModel * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &))&QFileSystemModel::directoryLoaded, [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }));
+extern "C" QMetaObject::Connection * bg_QFileSystemModel_CONNECT_directoryLoaded_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QFileSystemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFileSystemModel::*)(const QString &))&QFileSystemModel::directoryLoaded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & path){ _proc_(bindgen_address(qstring_to_crystal(path))); }, type));
 }
 
 extern "C" QModelIndex * bg_QFileSystemModel_index_SUPER_int_int_const_QModelIndex_R(QFileSystemModel * _self_, int row, int column, const QModelIndex & parent) {
@@ -85525,8 +85525,8 @@ extern "C" const QMetaObject * bg_QFontComboBox_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFontComboBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QFontComboBox_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(QFontComboBox * _self_, CrystalProc<void, const QFont *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontComboBox::*)(const QFont &))&QFontComboBox::currentFontChanged, [_proc_](const QFont & f){ _proc_(&(f)); }));
+extern "C" QMetaObject::Connection * bg_QFontComboBox_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(QFontComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const QFont *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontComboBox::*)(const QFont &))&QFontComboBox::currentFontChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QFont & f){ _proc_(&(f)); }, type));
 }
 
 extern "C" QSize bg_QFontComboBox_sizeHint_SUPER_(QFontComboBox * _self_) {
@@ -86195,12 +86195,12 @@ extern "C" const QMetaObject * bg_QFontDialog_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QFontDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QFontDialog_CONNECT_currentFontChanged_CrystalProc_void__const_QFont_R_(QFontDialog * _self_, CrystalProc<void, const QFont *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontDialog::*)(const QFont &))&QFontDialog::currentFontChanged, [_proc_](const QFont & font){ _proc_(&(font)); }));
+extern "C" QMetaObject::Connection * bg_QFontDialog_CONNECT_currentFontChanged_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(QFontDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QFont *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontDialog::*)(const QFont &))&QFontDialog::currentFontChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QFont & font){ _proc_(&(font)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QFontDialog_CONNECT_fontSelected_CrystalProc_void__const_QFont_R_(QFontDialog * _self_, CrystalProc<void, const QFont *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontDialog::*)(const QFont &))&QFontDialog::fontSelected, [_proc_](const QFont & font){ _proc_(&(font)); }));
+extern "C" QMetaObject::Connection * bg_QFontDialog_CONNECT_fontSelected_Qt__ConnectionType_CrystalProc_void__const_QFont_R_(QFontDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const QFont *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QFontDialog::*)(const QFont &))&QFontDialog::fontSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QFont & font){ _proc_(&(font)); }, type));
 }
 
 extern "C" void bg_QFontDialog_open_SUPER_(QFontDialog * _self_) {
@@ -90811,52 +90811,52 @@ extern "C" void bg_QGraphicsObject_prepareGeometryChange_(QGraphicsObject * _sel
   _self_->prepareGeometryChange();
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_parentChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::parentChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_parentChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::parentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_opacityChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::opacityChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::opacityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_visibleChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::visibleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_visibleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::visibleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_enabledChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::enabledChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::enabledChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_xChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::xChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_xChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::xChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_yChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::yChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_yChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::yChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_zChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::zChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_zChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::zChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_rotationChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::rotationChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_rotationChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::rotationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_scaleChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::scaleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::scaleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_childrenChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::childrenChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_childrenChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::childrenChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_widthChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::widthChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_widthChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::widthChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_heightChanged_CrystalProc_void_(QGraphicsObject * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::heightChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_heightChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsObject::*)())&QGraphicsObject::heightChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QGraphicsObject_event_SUPER_QEvent_X(QGraphicsObject * _self_, QEvent * event) {
@@ -94855,12 +94855,12 @@ extern "C" const QMetaObject * bg_QGraphicsTextItem_staticMetaObject_STATIC_GETT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsTextItem::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsTextItem_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(QGraphicsTextItem * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsTextItem::*)(const QString &))&QGraphicsTextItem::linkActivated, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsTextItem_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QGraphicsTextItem * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsTextItem::*)(const QString &))&QGraphicsTextItem::linkActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsTextItem_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(QGraphicsTextItem * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsTextItem::*)(const QString &))&QGraphicsTextItem::linkHovered, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsTextItem_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QGraphicsTextItem * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsTextItem::*)(const QString &))&QGraphicsTextItem::linkHovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
 extern "C" QRectF bg_QGraphicsTextItem_boundingRect_SUPER_(QGraphicsTextItem * _self_) {
@@ -96862,8 +96862,8 @@ extern "C" const QMetaObject * bg_QGraphicsEffect_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsEffect::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsEffect_CONNECT_enabledChanged_CrystalProc_void__bool_(QGraphicsEffect * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsEffect::*)(bool))&QGraphicsEffect::enabledChanged, [_proc_](bool enabled){ _proc_(enabled); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsEffect_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(QGraphicsEffect * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsEffect::*)(bool))&QGraphicsEffect::enabledChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool enabled){ _proc_(enabled); }, type));
 }
 
 extern "C" QRectF bg_QGraphicsEffect_boundingRectFor_SUPER_const_QRectF_R(QGraphicsEffect * _self_, const QRectF sourceRect) {
@@ -97070,12 +97070,12 @@ extern "C" const QMetaObject * bg_QGraphicsColorizeEffect_staticMetaObject_STATI
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsColorizeEffect::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsColorizeEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(QGraphicsColorizeEffect * _self_, CrystalProc<void, const QColor *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsColorizeEffect::*)(const QColor &))&QGraphicsColorizeEffect::colorChanged, [_proc_](const QColor & color){ _proc_(&(color)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsColorizeEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(QGraphicsColorizeEffect * _self_, Qt::ConnectionType type, CrystalProc<void, const QColor *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsColorizeEffect::*)(const QColor &))&QGraphicsColorizeEffect::colorChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QColor & color){ _proc_(&(color)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_CrystalProc_void__qreal_(QGraphicsColorizeEffect * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsColorizeEffect::*)(qreal))&QGraphicsColorizeEffect::strengthChanged, [_proc_](qreal strength){ _proc_(strength); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsColorizeEffect_CONNECT_strengthChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QGraphicsColorizeEffect * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsColorizeEffect::*)(qreal))&QGraphicsColorizeEffect::strengthChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal strength){ _proc_(strength); }, type));
 }
 
 extern "C" void bg_QGraphicsColorizeEffect_draw_SUPER_QPainter_X(QGraphicsColorizeEffect * _self_, QPainter * painter) {
@@ -97282,12 +97282,12 @@ extern "C" const QMetaObject * bg_QGraphicsBlurEffect_staticMetaObject_STATIC_GE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsBlurEffect::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(QGraphicsBlurEffect * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsBlurEffect::*)(qreal))&QGraphicsBlurEffect::blurRadiusChanged, [_proc_](qreal blurRadius){ _proc_(blurRadius); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsBlurEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QGraphicsBlurEffect * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsBlurEffect::*)(qreal))&QGraphicsBlurEffect::blurRadiusChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal blurRadius){ _proc_(blurRadius); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(QGraphicsBlurEffect * _self_, CrystalProc<void, QGraphicsBlurEffect::BlurHints> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsBlurEffect::*)(QGraphicsBlurEffect::BlurHints))&QGraphicsBlurEffect::blurHintsChanged, [_proc_](QGraphicsBlurEffect::BlurHints hints){ _proc_(hints); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsBlurEffect_CONNECT_blurHintsChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsBlurEffect__BlurHints_(QGraphicsBlurEffect * _self_, Qt::ConnectionType type, CrystalProc<void, QGraphicsBlurEffect::BlurHints> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsBlurEffect::*)(QGraphicsBlurEffect::BlurHints))&QGraphicsBlurEffect::blurHintsChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QGraphicsBlurEffect::BlurHints hints){ _proc_(hints); }, type));
 }
 
 extern "C" QRectF bg_QGraphicsBlurEffect_boundingRectFor_SUPER_const_QRectF_R(QGraphicsBlurEffect * _self_, const QRectF sourceRect) {
@@ -97534,16 +97534,16 @@ extern "C" const QMetaObject * bg_QGraphicsDropShadowEffect_staticMetaObject_STA
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsDropShadowEffect::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_CrystalProc_void__const_QPointF_R_(QGraphicsDropShadowEffect * _self_, CrystalProc<void, const QPointF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(const QPointF &))&QGraphicsDropShadowEffect::offsetChanged, [_proc_](const QPointF & offset){ _proc_(bindgen_address(offset)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_offsetChanged_Qt__ConnectionType_CrystalProc_void__const_QPointF_R_(QGraphicsDropShadowEffect * _self_, Qt::ConnectionType type, CrystalProc<void, const QPointF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(const QPointF &))&QGraphicsDropShadowEffect::offsetChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QPointF & offset){ _proc_(bindgen_address(offset)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_CrystalProc_void__qreal_(QGraphicsDropShadowEffect * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(qreal))&QGraphicsDropShadowEffect::blurRadiusChanged, [_proc_](qreal blurRadius){ _proc_(blurRadius); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_blurRadiusChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QGraphicsDropShadowEffect * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(qreal))&QGraphicsDropShadowEffect::blurRadiusChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal blurRadius){ _proc_(blurRadius); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_CrystalProc_void__const_QColor_R_(QGraphicsDropShadowEffect * _self_, CrystalProc<void, const QColor *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(const QColor &))&QGraphicsDropShadowEffect::colorChanged, [_proc_](const QColor & color){ _proc_(&(color)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsDropShadowEffect_CONNECT_colorChanged_Qt__ConnectionType_CrystalProc_void__const_QColor_R_(QGraphicsDropShadowEffect * _self_, Qt::ConnectionType type, CrystalProc<void, const QColor *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsDropShadowEffect::*)(const QColor &))&QGraphicsDropShadowEffect::colorChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QColor & color){ _proc_(&(color)); }, type));
 }
 
 extern "C" QRectF bg_QGraphicsDropShadowEffect_boundingRectFor_SUPER_const_QRectF_R(QGraphicsDropShadowEffect * _self_, const QRectF sourceRect) {
@@ -97750,12 +97750,12 @@ extern "C" const QMetaObject * bg_QGraphicsOpacityEffect_staticMetaObject_STATIC
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsOpacityEffect::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_CrystalProc_void__qreal_(QGraphicsOpacityEffect * _self_, CrystalProc<void, qreal> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsOpacityEffect::*)(qreal))&QGraphicsOpacityEffect::opacityChanged, [_proc_](qreal opacity){ _proc_(opacity); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsOpacityEffect_CONNECT_opacityChanged_Qt__ConnectionType_CrystalProc_void__qreal_(QGraphicsOpacityEffect * _self_, Qt::ConnectionType type, CrystalProc<void, qreal> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsOpacityEffect::*)(qreal))&QGraphicsOpacityEffect::opacityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](qreal opacity){ _proc_(opacity); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_CrystalProc_void__const_QBrush_R_(QGraphicsOpacityEffect * _self_, CrystalProc<void, const QBrush *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsOpacityEffect::*)(const QBrush &))&QGraphicsOpacityEffect::opacityMaskChanged, [_proc_](const QBrush & mask){ _proc_(&(mask)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsOpacityEffect_CONNECT_opacityMaskChanged_Qt__ConnectionType_CrystalProc_void__const_QBrush_R_(QGraphicsOpacityEffect * _self_, Qt::ConnectionType type, CrystalProc<void, const QBrush *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsOpacityEffect::*)(const QBrush &))&QGraphicsOpacityEffect::opacityMaskChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QBrush & mask){ _proc_(&(mask)); }, type));
 }
 
 extern "C" void bg_QGraphicsOpacityEffect_draw_SUPER_QPainter_X(QGraphicsOpacityEffect * _self_, QPainter * painter) {
@@ -99531,12 +99531,12 @@ extern "C" void bg_QGraphicsWidget_setOwnedByLayout_bool(QGraphicsWidget * _self
   _self_->setOwnedByLayout(ownedByLayout);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsWidget_CONNECT_geometryChanged_CrystalProc_void_(QGraphicsWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsWidget::*)())&QGraphicsWidget::geometryChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsWidget_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsWidget::*)())&QGraphicsWidget::geometryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsWidget_CONNECT_layoutChanged_CrystalProc_void_(QGraphicsWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsWidget::*)())&QGraphicsWidget::layoutChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsWidget_CONNECT_layoutChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsWidget::*)())&QGraphicsWidget::layoutChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QGraphicsWidget_setGeometry_SUPER_const_QRectF_R(QGraphicsWidget * _self_, const QRectF rect) {
@@ -101432,20 +101432,20 @@ extern "C" const QMetaObject * bg_QGraphicsScene_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsScene::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_changed_CrystalProc_void__const_QList_QRectF__R_(QGraphicsScene * _self_, CrystalProc<void, const Container_QList_QRectF_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(const QList<QRectF> &))&QGraphicsScene::changed, [_proc_](const QList<QRectF> & region){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QRectF_>()) Container_QList_QRectF_ (region)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_changed_Qt__ConnectionType_CrystalProc_void__const_QList_QRectF__R_(QGraphicsScene * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QRectF_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(const QList<QRectF> &))&QGraphicsScene::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QList<QRectF> & region){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QRectF_>()) Container_QList_QRectF_ (region)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_sceneRectChanged_CrystalProc_void__const_QRectF_R_(QGraphicsScene * _self_, CrystalProc<void, const QRectF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(const QRectF &))&QGraphicsScene::sceneRectChanged, [_proc_](const QRectF & rect){ _proc_(bindgen_address(rect)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_sceneRectChanged_Qt__ConnectionType_CrystalProc_void__const_QRectF_R_(QGraphicsScene * _self_, Qt::ConnectionType type, CrystalProc<void, const QRectF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(const QRectF &))&QGraphicsScene::sceneRectChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRectF & rect){ _proc_(bindgen_address(rect)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_selectionChanged_CrystalProc_void_(QGraphicsScene * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)())&QGraphicsScene::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScene * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)())&QGraphicsScene::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_focusItemChanged_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(QGraphicsScene * _self_, CrystalProc<void, QGraphicsItem *, QGraphicsItem *, Qt::FocusReason> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(QGraphicsItem *, QGraphicsItem *, Qt::FocusReason))&QGraphicsScene::focusItemChanged, [_proc_](QGraphicsItem * newFocus, QGraphicsItem * oldFocus, Qt::FocusReason reason){ _proc_(newFocus, oldFocus, reason); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScene_CONNECT_focusItemChanged_Qt__ConnectionType_CrystalProc_void__QGraphicsItem_X__QGraphicsItem_X__Qt__FocusReason_(QGraphicsScene * _self_, Qt::ConnectionType type, CrystalProc<void, QGraphicsItem *, QGraphicsItem *, Qt::FocusReason> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScene::*)(QGraphicsItem *, QGraphicsItem *, Qt::FocusReason))&QGraphicsScene::focusItemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QGraphicsItem * newFocus, QGraphicsItem * oldFocus, Qt::FocusReason reason){ _proc_(newFocus, oldFocus, reason); }, type));
 }
 
 extern "C" CrystalVariant bg_QGraphicsScene_inputMethodQuery_SUPER_Qt__InputMethodQuery(QGraphicsScene * _self_, Qt::InputMethodQuery query) {
@@ -102348,24 +102348,24 @@ extern "C" const QMetaObject * bg_QGraphicsScale_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsScale::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_originChanged_CrystalProc_void_(QGraphicsScale * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::originChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScale * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::originChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_xScaleChanged_CrystalProc_void_(QGraphicsScale * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::xScaleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_xScaleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScale * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::xScaleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_yScaleChanged_CrystalProc_void_(QGraphicsScale * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::yScaleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_yScaleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScale * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::yScaleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_zScaleChanged_CrystalProc_void_(QGraphicsScale * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::zScaleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_zScaleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScale * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::zScaleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_scaleChanged_CrystalProc_void_(QGraphicsScale * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::scaleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsScale_CONNECT_scaleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsScale * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsScale::*)())&QGraphicsScale::scaleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QGraphicsScale_applyTo_SUPER_QMatrix4x4_X(QGraphicsScale * _self_, QMatrix4x4 * matrix) {
@@ -102564,16 +102564,16 @@ extern "C" const QMetaObject * bg_QGraphicsRotation_staticMetaObject_STATIC_GETT
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsRotation::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_originChanged_CrystalProc_void_(QGraphicsRotation * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::originChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_originChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsRotation * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::originChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_angleChanged_CrystalProc_void_(QGraphicsRotation * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::angleChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_angleChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsRotation * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::angleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_axisChanged_CrystalProc_void_(QGraphicsRotation * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::axisChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsRotation_CONNECT_axisChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsRotation * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsRotation::*)())&QGraphicsRotation::axisChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QGraphicsRotation_applyTo_SUPER_QMatrix4x4_X(QGraphicsRotation * _self_, QMatrix4x4 * matrix) {
@@ -104286,8 +104286,8 @@ extern "C" const QMetaObject * bg_QGraphicsView_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGraphicsView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGraphicsView_CONNECT_rubberBandChanged_CrystalProc_void__QRect__QPointF__QPointF_(QGraphicsView * _self_, CrystalProc<void, QRect *, QPointF *, QPointF *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsView::*)(QRect, QPointF, QPointF))&QGraphicsView::rubberBandChanged, [_proc_](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint){ _proc_(bindgen_address(viewportRect), bindgen_address(fromScenePoint), bindgen_address(toScenePoint)); }));
+extern "C" QMetaObject::Connection * bg_QGraphicsView_CONNECT_rubberBandChanged_Qt__ConnectionType_CrystalProc_void__QRect__QPointF__QPointF_(QGraphicsView * _self_, Qt::ConnectionType type, CrystalProc<void, QRect *, QPointF *, QPointF *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsView::*)(QRect, QPointF, QPointF))&QGraphicsView::rubberBandChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint){ _proc_(bindgen_address(viewportRect), bindgen_address(fromScenePoint), bindgen_address(toScenePoint)); }, type));
 }
 
 extern "C" QSize bg_QGraphicsView_sizeHint_SUPER_(QGraphicsView * _self_) {
@@ -105026,12 +105026,12 @@ extern "C" const QMetaObject * bg_QGroupBox_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QGroupBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QGroupBox_CONNECT_clicked_CrystalProc_void__bool_(QGroupBox * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGroupBox::*)(bool))&QGroupBox::clicked, [_proc_](bool checked){ _proc_(checked); }));
+extern "C" QMetaObject::Connection * bg_QGroupBox_CONNECT_clicked_Qt__ConnectionType_CrystalProc_void__bool_(QGroupBox * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGroupBox::*)(bool))&QGroupBox::clicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool checked){ _proc_(checked); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QGroupBox_CONNECT_toggled_CrystalProc_void__bool_(QGroupBox * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGroupBox::*)(bool))&QGroupBox::toggled, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QGroupBox_CONNECT_toggled_Qt__ConnectionType_CrystalProc_void__bool_(QGroupBox * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGroupBox::*)(bool))&QGroupBox::toggled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" QSize bg_QGroupBox_minimumSizeHint_SUPER_(QGroupBox * _self_) {
@@ -106487,44 +106487,44 @@ extern "C" const QMetaObject * bg_QHeaderView_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QHeaderView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionMoved_CrystalProc_void__int__int__int_(QHeaderView * _self_, CrystalProc<void, int, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int, int))&QHeaderView::sectionMoved, [_proc_](int logicalIndex, int oldVisualIndex, int newVisualIndex){ _proc_(logicalIndex, oldVisualIndex, newVisualIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionMoved_Qt__ConnectionType_CrystalProc_void__int__int__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int, int))&QHeaderView::sectionMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex, int oldVisualIndex, int newVisualIndex){ _proc_(logicalIndex, oldVisualIndex, newVisualIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionResized_CrystalProc_void__int__int__int_(QHeaderView * _self_, CrystalProc<void, int, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int, int))&QHeaderView::sectionResized, [_proc_](int logicalIndex, int oldSize, int newSize){ _proc_(logicalIndex, oldSize, newSize); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionResized_Qt__ConnectionType_CrystalProc_void__int__int__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int, int))&QHeaderView::sectionResized, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex, int oldSize, int newSize){ _proc_(logicalIndex, oldSize, newSize); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionPressed_CrystalProc_void__int_(QHeaderView * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionPressed, [_proc_](int logicalIndex){ _proc_(logicalIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionPressed_Qt__ConnectionType_CrystalProc_void__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex){ _proc_(logicalIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionClicked_CrystalProc_void__int_(QHeaderView * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionClicked, [_proc_](int logicalIndex){ _proc_(logicalIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionClicked_Qt__ConnectionType_CrystalProc_void__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex){ _proc_(logicalIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionEntered_CrystalProc_void__int_(QHeaderView * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionEntered, [_proc_](int logicalIndex){ _proc_(logicalIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionEntered_Qt__ConnectionType_CrystalProc_void__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex){ _proc_(logicalIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionDoubleClicked_CrystalProc_void__int_(QHeaderView * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionDoubleClicked, [_proc_](int logicalIndex){ _proc_(logicalIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex){ _proc_(logicalIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionCountChanged_CrystalProc_void__int__int_(QHeaderView * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int))&QHeaderView::sectionCountChanged, [_proc_](int oldCount, int newCount){ _proc_(oldCount, newCount); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionCountChanged_Qt__ConnectionType_CrystalProc_void__int__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, int))&QHeaderView::sectionCountChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int oldCount, int newCount){ _proc_(oldCount, newCount); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_CrystalProc_void__int_(QHeaderView * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionHandleDoubleClicked, [_proc_](int logicalIndex){ _proc_(logicalIndex); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sectionHandleDoubleClicked_Qt__ConnectionType_CrystalProc_void__int_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int))&QHeaderView::sectionHandleDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex){ _proc_(logicalIndex); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_geometriesChanged_CrystalProc_void_(QHeaderView * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)())&QHeaderView::geometriesChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_geometriesChanged_Qt__ConnectionType_CrystalProc_void_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)())&QHeaderView::geometriesChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sortIndicatorChanged_CrystalProc_void__int__Qt__SortOrder_(QHeaderView * _self_, CrystalProc<void, int, Qt::SortOrder> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, Qt::SortOrder))&QHeaderView::sortIndicatorChanged, [_proc_](int logicalIndex, Qt::SortOrder order){ _proc_(logicalIndex, order); }));
+extern "C" QMetaObject::Connection * bg_QHeaderView_CONNECT_sortIndicatorChanged_Qt__ConnectionType_CrystalProc_void__int__Qt__SortOrder_(QHeaderView * _self_, Qt::ConnectionType type, CrystalProc<void, int, Qt::SortOrder> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QHeaderView::*)(int, Qt::SortOrder))&QHeaderView::sortIndicatorChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int logicalIndex, Qt::SortOrder order){ _proc_(logicalIndex, order); }, type));
 }
 
 extern "C" void bg_QHeaderView_setModel_SUPER_QAbstractItemModel_X(QHeaderView * _self_, QAbstractItemModel * model) {
@@ -107547,32 +107547,32 @@ extern "C" const QMetaObject * bg_QLineEdit_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QLineEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_textChanged_CrystalProc_void__const_QString_R_(QLineEdit * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(const QString &))&QLineEdit::textChanged, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(const QString &))&QLineEdit::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_textEdited_CrystalProc_void__const_QString_R_(QLineEdit * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(const QString &))&QLineEdit::textEdited, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_textEdited_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(const QString &))&QLineEdit::textEdited, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_cursorPositionChanged_CrystalProc_void__int__int_(QLineEdit * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(int, int))&QLineEdit::cursorPositionChanged, [_proc_](int unnamed_arg_0, int unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void__int__int_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)(int, int))&QLineEdit::cursorPositionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0, int unnamed_arg_1){ _proc_(unnamed_arg_0, unnamed_arg_1); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_returnPressed_CrystalProc_void_(QLineEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::returnPressed, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_returnPressed_Qt__ConnectionType_CrystalProc_void_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::returnPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_editingFinished_CrystalProc_void_(QLineEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::editingFinished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::editingFinished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_selectionChanged_CrystalProc_void_(QLineEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_inputRejected_CrystalProc_void_(QLineEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::inputRejected, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QLineEdit_CONNECT_inputRejected_Qt__ConnectionType_CrystalProc_void_(QLineEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLineEdit::*)())&QLineEdit::inputRejected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QSize bg_QLineEdit_sizeHint_SUPER_(QLineEdit * _self_) {
@@ -108505,28 +108505,28 @@ extern "C" const QMetaObject * bg_QInputDialog_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QInputDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_textValueChanged_CrystalProc_void__const_QString_R_(QInputDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(const QString &))&QInputDialog::textValueChanged, [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_textValueChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(const QString &))&QInputDialog::textValueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_textValueSelected_CrystalProc_void__const_QString_R_(QInputDialog * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(const QString &))&QInputDialog::textValueSelected, [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_textValueSelected_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(const QString &))&QInputDialog::textValueSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_intValueChanged_CrystalProc_void__int_(QInputDialog * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(int))&QInputDialog::intValueChanged, [_proc_](int value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_intValueChanged_Qt__ConnectionType_CrystalProc_void__int_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(int))&QInputDialog::intValueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int value){ _proc_(value); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_intValueSelected_CrystalProc_void__int_(QInputDialog * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(int))&QInputDialog::intValueSelected, [_proc_](int value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_intValueSelected_Qt__ConnectionType_CrystalProc_void__int_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(int))&QInputDialog::intValueSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int value){ _proc_(value); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_doubleValueChanged_CrystalProc_void__double_(QInputDialog * _self_, CrystalProc<void, double> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(double))&QInputDialog::doubleValueChanged, [_proc_](double value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_doubleValueChanged_Qt__ConnectionType_CrystalProc_void__double_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, double> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(double))&QInputDialog::doubleValueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](double value){ _proc_(value); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_doubleValueSelected_CrystalProc_void__double_(QInputDialog * _self_, CrystalProc<void, double> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(double))&QInputDialog::doubleValueSelected, [_proc_](double value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QInputDialog_CONNECT_doubleValueSelected_Qt__ConnectionType_CrystalProc_void__double_(QInputDialog * _self_, Qt::ConnectionType type, CrystalProc<void, double> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QInputDialog::*)(double))&QInputDialog::doubleValueSelected, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](double value){ _proc_(value); }, type));
 }
 
 extern "C" void bg_QInputDialog_open_SUPER_(QInputDialog * _self_) {
@@ -109656,12 +109656,12 @@ extern "C" const QMetaObject * bg_QKeySequenceEdit_staticMetaObject_STATIC_GETTE
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QKeySequenceEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QKeySequenceEdit_CONNECT_editingFinished_CrystalProc_void_(QKeySequenceEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QKeySequenceEdit::*)())&QKeySequenceEdit::editingFinished, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QKeySequenceEdit_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(QKeySequenceEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QKeySequenceEdit::*)())&QKeySequenceEdit::editingFinished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QKeySequenceEdit_CONNECT_keySequenceChanged_CrystalProc_void__const_QKeySequence_R_(QKeySequenceEdit * _self_, CrystalProc<void, const QKeySequence *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QKeySequenceEdit::*)(const QKeySequence &))&QKeySequenceEdit::keySequenceChanged, [_proc_](const QKeySequence & keySequence){ _proc_(&(keySequence)); }));
+extern "C" QMetaObject::Connection * bg_QKeySequenceEdit_CONNECT_keySequenceChanged_Qt__ConnectionType_CrystalProc_void__const_QKeySequence_R_(QKeySequenceEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QKeySequence *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QKeySequenceEdit::*)(const QKeySequence &))&QKeySequenceEdit::keySequenceChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QKeySequence & keySequence){ _proc_(&(keySequence)); }, type));
 }
 
 extern "C" bool bg_QKeySequenceEdit_event_SUPER_QEvent_X(QKeySequenceEdit * _self_, QEvent * event) {
@@ -110416,12 +110416,12 @@ extern "C" const QMetaObject * bg_QLabel_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QLabel::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QLabel_CONNECT_linkActivated_CrystalProc_void__const_QString_R_(QLabel * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLabel::*)(const QString &))&QLabel::linkActivated, [_proc_](const QString & link){ _proc_(bindgen_address(qstring_to_crystal(link))); }));
+extern "C" QMetaObject::Connection * bg_QLabel_CONNECT_linkActivated_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QLabel * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLabel::*)(const QString &))&QLabel::linkActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & link){ _proc_(bindgen_address(qstring_to_crystal(link))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QLabel_CONNECT_linkHovered_CrystalProc_void__const_QString_R_(QLabel * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLabel::*)(const QString &))&QLabel::linkHovered, [_proc_](const QString & link){ _proc_(bindgen_address(qstring_to_crystal(link))); }));
+extern "C" QMetaObject::Connection * bg_QLabel_CONNECT_linkHovered_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QLabel * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLabel::*)(const QString &))&QLabel::linkHovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & link){ _proc_(bindgen_address(qstring_to_crystal(link))); }, type));
 }
 
 extern "C" QSize bg_QLabel_sizeHint_SUPER_(QLabel * _self_) {
@@ -111104,8 +111104,8 @@ extern "C" const QMetaObject * bg_QLCDNumber_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QLCDNumber::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QLCDNumber_CONNECT_overflow_CrystalProc_void_(QLCDNumber * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLCDNumber::*)())&QLCDNumber::overflow, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QLCDNumber_CONNECT_overflow_Qt__ConnectionType_CrystalProc_void_(QLCDNumber * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QLCDNumber::*)())&QLCDNumber::overflow, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QSize bg_QLCDNumber_sizeHint_SUPER_(QLCDNumber * _self_) {
@@ -112353,8 +112353,8 @@ extern "C" const QMetaObject * bg_QListView_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QListView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QListView_CONNECT_indexesMoved_CrystalProc_void__const_QModelIndexList_R_(QListView * _self_, CrystalProc<void, const Container_QList_QModelIndex_ *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListView::*)(const QModelIndexList &))&QListView::indexesMoved, [_proc_](const QModelIndexList & indexes){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QModelIndex_>()) Container_QList_QModelIndex_ (indexes)); }));
+extern "C" QMetaObject::Connection * bg_QListView_CONNECT_indexesMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndexList_R_(QListView * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QModelIndex_ *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListView::*)(const QModelIndexList &))&QListView::indexesMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndexList & indexes){ _proc_(new (UseGC, bindgen_gc_finalizer<Container_QList_QModelIndex_>()) Container_QList_QModelIndex_ (indexes)); }, type));
 }
 
 extern "C" QRect bg_QListView_visualRect_SUPER_const_QModelIndex_R(QListView * _self_, const QModelIndex & index) {
@@ -113930,44 +113930,44 @@ extern "C" const QMetaObject * bg_QListWidget_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QListWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemPressed_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemPressed, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemClicked_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemClicked, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemDoubleClicked, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemActivated_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemActivated, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemEntered_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemEntered, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemChanged_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemChanged, [_proc_](QListWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *))&QListWidget::itemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentItemChanged_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(QListWidget * _self_, CrystalProc<void, QListWidgetItem *, QListWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *, QListWidgetItem *))&QListWidget::currentItemChanged, [_proc_](QListWidgetItem * current, QListWidgetItem * previous){ _proc_(current, previous); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QListWidgetItem_X__QListWidgetItem_X_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QListWidgetItem *, QListWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(QListWidgetItem *, QListWidgetItem *))&QListWidget::currentItemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QListWidgetItem * current, QListWidgetItem * previous){ _proc_(current, previous); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentTextChanged_CrystalProc_void__const_QString_R_(QListWidget * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(const QString &))&QListWidget::currentTextChanged, [_proc_](const QString & currentText){ _proc_(bindgen_address(qstring_to_crystal(currentText))); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(const QString &))&QListWidget::currentTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & currentText){ _proc_(bindgen_address(qstring_to_crystal(currentText))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentRowChanged_CrystalProc_void__int_(QListWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(int))&QListWidget::currentRowChanged, [_proc_](int currentRow){ _proc_(currentRow); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_currentRowChanged_Qt__ConnectionType_CrystalProc_void__int_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)(int))&QListWidget::currentRowChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int currentRow){ _proc_(currentRow); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(QListWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)())&QListWidget::itemSelectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QListWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(QListWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QListWidget::*)())&QListWidget::itemSelectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QListWidget_setSelectionModel_SUPER_QItemSelectionModel_X(QListWidget * _self_, QItemSelectionModel * selectionModel) {
@@ -114768,16 +114768,16 @@ extern "C" const QMetaObject * bg_QMainWindow_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMainWindow::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(QMainWindow * _self_, CrystalProc<void, const QSize *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(const QSize &))&QMainWindow::iconSizeChanged, [_proc_](const QSize & iconSize){ _proc_(bindgen_address(iconSize)); }));
+extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(QMainWindow * _self_, Qt::ConnectionType type, CrystalProc<void, const QSize *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(const QSize &))&QMainWindow::iconSizeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSize & iconSize){ _proc_(bindgen_address(iconSize)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(QMainWindow * _self_, CrystalProc<void, Qt::ToolButtonStyle> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(Qt::ToolButtonStyle))&QMainWindow::toolButtonStyleChanged, [_proc_](Qt::ToolButtonStyle toolButtonStyle){ _proc_(toolButtonStyle); }));
+extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(QMainWindow * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ToolButtonStyle> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(Qt::ToolButtonStyle))&QMainWindow::toolButtonStyleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ToolButtonStyle toolButtonStyle){ _proc_(toolButtonStyle); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_CrystalProc_void__QDockWidget_X_(QMainWindow * _self_, CrystalProc<void, QDockWidget *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(QDockWidget *))&QMainWindow::tabifiedDockWidgetActivated, [_proc_](QDockWidget * dockWidget){ _proc_(dockWidget); }));
+extern "C" QMetaObject::Connection * bg_QMainWindow_CONNECT_tabifiedDockWidgetActivated_Qt__ConnectionType_CrystalProc_void__QDockWidget_X_(QMainWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QDockWidget *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMainWindow::*)(QDockWidget *))&QMainWindow::tabifiedDockWidgetActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QDockWidget * dockWidget){ _proc_(dockWidget); }, type));
 }
 
 extern "C" QMenu * bg_QMainWindow_createPopupMenu_SUPER_(QMainWindow * _self_) {
@@ -115536,8 +115536,8 @@ extern "C" const QMetaObject * bg_QMdiArea_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMdiArea::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMdiArea_CONNECT_subWindowActivated_CrystalProc_void__QMdiSubWindow_X_(QMdiArea * _self_, CrystalProc<void, QMdiSubWindow *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiArea::*)(QMdiSubWindow *))&QMdiArea::subWindowActivated, [_proc_](QMdiSubWindow * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QMdiArea_CONNECT_subWindowActivated_Qt__ConnectionType_CrystalProc_void__QMdiSubWindow_X_(QMdiArea * _self_, Qt::ConnectionType type, CrystalProc<void, QMdiSubWindow *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiArea::*)(QMdiSubWindow *))&QMdiArea::subWindowActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QMdiSubWindow * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" QSize bg_QMdiArea_sizeHint_SUPER_(QMdiArea * _self_) {
@@ -116280,12 +116280,12 @@ extern "C" const QMetaObject * bg_QMdiSubWindow_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMdiSubWindow::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMdiSubWindow_CONNECT_windowStateChanged_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(QMdiSubWindow * _self_, CrystalProc<void, Qt::WindowStates, Qt::WindowStates> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiSubWindow::*)(Qt::WindowStates, Qt::WindowStates))&QMdiSubWindow::windowStateChanged, [_proc_](Qt::WindowStates oldState, Qt::WindowStates newState){ _proc_(oldState, newState); }));
+extern "C" QMetaObject::Connection * bg_QMdiSubWindow_CONNECT_windowStateChanged_Qt__ConnectionType_CrystalProc_void__Qt__WindowStates__Qt__WindowStates_(QMdiSubWindow * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::WindowStates, Qt::WindowStates> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiSubWindow::*)(Qt::WindowStates, Qt::WindowStates))&QMdiSubWindow::windowStateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::WindowStates oldState, Qt::WindowStates newState){ _proc_(oldState, newState); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMdiSubWindow_CONNECT_aboutToActivate_CrystalProc_void_(QMdiSubWindow * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiSubWindow::*)())&QMdiSubWindow::aboutToActivate, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QMdiSubWindow_CONNECT_aboutToActivate_Qt__ConnectionType_CrystalProc_void_(QMdiSubWindow * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMdiSubWindow::*)())&QMdiSubWindow::aboutToActivate, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QSize bg_QMdiSubWindow_sizeHint_SUPER_(QMdiSubWindow * _self_) {
@@ -117188,20 +117188,20 @@ extern "C" const QMetaObject * bg_QMenu_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMenu::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_aboutToShow_CrystalProc_void_(QMenu * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)())&QMenu::aboutToShow, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_aboutToShow_Qt__ConnectionType_CrystalProc_void_(QMenu * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)())&QMenu::aboutToShow, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_aboutToHide_CrystalProc_void_(QMenu * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)())&QMenu::aboutToHide, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_aboutToHide_Qt__ConnectionType_CrystalProc_void_(QMenu * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)())&QMenu::aboutToHide, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_triggered_CrystalProc_void__QAction_X_(QMenu * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)(QAction *))&QMenu::triggered, [_proc_](QAction * action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QMenu * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)(QAction *))&QMenu::triggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * action){ _proc_(action); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_hovered_CrystalProc_void__QAction_X_(QMenu * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)(QAction *))&QMenu::hovered, [_proc_](QAction * action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QMenu_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QMenu * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenu::*)(QAction *))&QMenu::hovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * action){ _proc_(action); }, type));
 }
 
 extern "C" QSize bg_QMenu_sizeHint_SUPER_(QMenu * _self_) {
@@ -117960,12 +117960,12 @@ extern "C" const QMetaObject * bg_QMenuBar_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMenuBar::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMenuBar_CONNECT_triggered_CrystalProc_void__QAction_X_(QMenuBar * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenuBar::*)(QAction *))&QMenuBar::triggered, [_proc_](QAction * action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QMenuBar_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QMenuBar * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenuBar::*)(QAction *))&QMenuBar::triggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * action){ _proc_(action); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QMenuBar_CONNECT_hovered_CrystalProc_void__QAction_X_(QMenuBar * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenuBar::*)(QAction *))&QMenuBar::hovered, [_proc_](QAction * action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QMenuBar_CONNECT_hovered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QMenuBar * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMenuBar::*)(QAction *))&QMenuBar::hovered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * action){ _proc_(action); }, type));
 }
 
 extern "C" QSize bg_QMenuBar_sizeHint_SUPER_(QMenuBar * _self_) {
@@ -118950,8 +118950,8 @@ extern "C" const QMetaObject * bg_QMessageBox_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QMessageBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QMessageBox_CONNECT_buttonClicked_CrystalProc_void__QAbstractButton_X_(QMessageBox * _self_, CrystalProc<void, QAbstractButton *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMessageBox::*)(QAbstractButton *))&QMessageBox::buttonClicked, [_proc_](QAbstractButton * button){ _proc_(button); }));
+extern "C" QMetaObject::Connection * bg_QMessageBox_CONNECT_buttonClicked_Qt__ConnectionType_CrystalProc_void__QAbstractButton_X_(QMessageBox * _self_, Qt::ConnectionType type, CrystalProc<void, QAbstractButton *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QMessageBox::*)(QAbstractButton *))&QMessageBox::buttonClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAbstractButton * button){ _proc_(button); }, type));
 }
 
 extern "C" void bg_QMessageBox_open_SUPER_(QMessageBox * _self_) {
@@ -120120,32 +120120,32 @@ extern "C" const QMetaObject * bg_QTextEdit_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTextEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_textChanged_CrystalProc_void_(QTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::textChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(QTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::undoAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::undoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(QTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::redoAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::redoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_currentCharFormatChanged_CrystalProc_void__const_QTextCharFormat_R_(QTextEdit * _self_, CrystalProc<void, const QTextCharFormat *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(const QTextCharFormat &))&QTextEdit::currentCharFormatChanged, [_proc_](const QTextCharFormat & format){ _proc_(&(format)); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_currentCharFormatChanged_Qt__ConnectionType_CrystalProc_void__const_QTextCharFormat_R_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QTextCharFormat *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(const QTextCharFormat &))&QTextEdit::currentCharFormatChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QTextCharFormat & format){ _proc_(&(format)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(QTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::copyAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)(bool))&QTextEdit::copyAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_selectionChanged_CrystalProc_void_(QTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(QTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::cursorPositionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::cursorPositionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" CrystalVariant bg_QTextEdit_loadResource_SUPER_int_const_QUrl_R(QTextEdit * _self_, int type, const QUrl & name) {
@@ -121370,40 +121370,40 @@ extern "C" const QMetaObject * bg_QPlainTextEdit_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QPlainTextEdit::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_textChanged_CrystalProc_void_(QPlainTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::textChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_undoAvailable_CrystalProc_void__bool_(QPlainTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::undoAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_undoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::undoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_redoAvailable_CrystalProc_void__bool_(QPlainTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::redoAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_redoAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::redoAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_copyAvailable_CrystalProc_void__bool_(QPlainTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::copyAvailable, [_proc_](bool b){ _proc_(b); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_copyAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::copyAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool b){ _proc_(b); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_selectionChanged_CrystalProc_void_(QPlainTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::selectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_selectionChanged_Qt__ConnectionType_CrystalProc_void_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::selectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_cursorPositionChanged_CrystalProc_void_(QPlainTextEdit * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::cursorPositionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_cursorPositionChanged_Qt__ConnectionType_CrystalProc_void_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)())&QPlainTextEdit::cursorPositionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_updateRequest_CrystalProc_void__const_QRect_R__int_(QPlainTextEdit * _self_, CrystalProc<void, const QRect *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(const QRect &, int))&QPlainTextEdit::updateRequest, [_proc_](const QRect & rect, int dy){ _proc_(bindgen_address(rect), dy); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_updateRequest_Qt__ConnectionType_CrystalProc_void__const_QRect_R__int_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QRect *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(const QRect &, int))&QPlainTextEdit::updateRequest, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QRect & rect, int dy){ _proc_(bindgen_address(rect), dy); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_blockCountChanged_CrystalProc_void__int_(QPlainTextEdit * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(int))&QPlainTextEdit::blockCountChanged, [_proc_](int newBlockCount){ _proc_(newBlockCount); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_blockCountChanged_Qt__ConnectionType_CrystalProc_void__int_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(int))&QPlainTextEdit::blockCountChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int newBlockCount){ _proc_(newBlockCount); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_modificationChanged_CrystalProc_void__bool_(QPlainTextEdit * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::modificationChanged, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QPlainTextEdit_CONNECT_modificationChanged_Qt__ConnectionType_CrystalProc_void__bool_(QPlainTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QPlainTextEdit::*)(bool))&QPlainTextEdit::modificationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" CrystalVariant bg_QPlainTextEdit_loadResource_SUPER_int_const_QUrl_R(QPlainTextEdit * _self_, int type, const QUrl & name) {
@@ -122482,8 +122482,8 @@ extern "C" const QMetaObject * bg_QProgressBar_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QProgressBar::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QProgressBar_CONNECT_valueChanged_CrystalProc_void__int_(QProgressBar * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProgressBar::*)(int))&QProgressBar::valueChanged, [_proc_](int value){ _proc_(value); }));
+extern "C" QMetaObject::Connection * bg_QProgressBar_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(QProgressBar * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProgressBar::*)(int))&QProgressBar::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int value){ _proc_(value); }, type));
 }
 
 extern "C" CrystalString bg_QProgressBar_text_SUPER_(QProgressBar * _self_) {
@@ -123220,8 +123220,8 @@ extern "C" const QMetaObject * bg_QProgressDialog_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QProgressDialog::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QProgressDialog_CONNECT_canceled_CrystalProc_void_(QProgressDialog * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProgressDialog::*)())&QProgressDialog::canceled, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QProgressDialog_CONNECT_canceled_Qt__ConnectionType_CrystalProc_void_(QProgressDialog * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QProgressDialog::*)())&QProgressDialog::canceled, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" QSize bg_QProgressDialog_sizeHint_SUPER_(QProgressDialog * _self_) {
@@ -125232,12 +125232,12 @@ extern "C" const QMetaObject * bg_QScroller_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QScroller::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QScroller_CONNECT_stateChanged_CrystalProc_void__QScroller__State_(QScroller * _self_, CrystalProc<void, QScroller::State> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScroller::*)(QScroller::State))&QScroller::stateChanged, [_proc_](QScroller::State newstate){ _proc_(newstate); }));
+extern "C" QMetaObject::Connection * bg_QScroller_CONNECT_stateChanged_Qt__ConnectionType_CrystalProc_void__QScroller__State_(QScroller * _self_, Qt::ConnectionType type, CrystalProc<void, QScroller::State> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScroller::*)(QScroller::State))&QScroller::stateChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScroller::State newstate){ _proc_(newstate); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QScroller_CONNECT_scrollerPropertiesChanged_CrystalProc_void__const_QScrollerProperties_R_(QScroller * _self_, CrystalProc<void, const QScrollerProperties *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScroller::*)(const QScrollerProperties &))&QScroller::scrollerPropertiesChanged, [_proc_](const QScrollerProperties & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QScroller_CONNECT_scrollerPropertiesChanged_Qt__ConnectionType_CrystalProc_void__const_QScrollerProperties_R_(QScroller * _self_, Qt::ConnectionType type, CrystalProc<void, const QScrollerProperties *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QScroller::*)(const QScrollerProperties &))&QScroller::scrollerPropertiesChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QScrollerProperties & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }, type));
 }
 
 struct BgJumptable_QShortcut {
@@ -125446,12 +125446,12 @@ extern "C" const QMetaObject * bg_QShortcut_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QShortcut::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QShortcut_CONNECT_activated_CrystalProc_void_(QShortcut * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QShortcut::*)())&QShortcut::activated, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QShortcut_CONNECT_activated_Qt__ConnectionType_CrystalProc_void_(QShortcut * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QShortcut::*)())&QShortcut::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QShortcut_CONNECT_activatedAmbiguously_CrystalProc_void_(QShortcut * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QShortcut::*)())&QShortcut::activatedAmbiguously, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QShortcut_CONNECT_activatedAmbiguously_Qt__ConnectionType_CrystalProc_void_(QShortcut * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QShortcut::*)())&QShortcut::activatedAmbiguously, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QShortcut_event_SUPER_QEvent_X(QShortcut * _self_, QEvent * event) {
@@ -126744,12 +126744,12 @@ extern "C" const QMetaObject * bg_QSpinBox_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSpinBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSpinBox_CONNECT_valueChanged_CrystalProc_void__int_(QSpinBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSpinBox::*)(int))&QSpinBox::valueChanged, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(QSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSpinBox::*)(int))&QSpinBox::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(QSpinBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSpinBox::*)(const QString &))&QSpinBox::textChanged, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSpinBox::*)(const QString &))&QSpinBox::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
 extern "C" bool bg_QSpinBox_event_SUPER_QEvent_X(QSpinBox * _self_, QEvent * event) {
@@ -127430,12 +127430,12 @@ extern "C" const QMetaObject * bg_QDoubleSpinBox_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QDoubleSpinBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleSpinBox_CONNECT_valueChanged_CrystalProc_void__double_(QDoubleSpinBox * _self_, CrystalProc<void, double> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleSpinBox::*)(double))&QDoubleSpinBox::valueChanged, [_proc_](double unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QDoubleSpinBox_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__double_(QDoubleSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void, double> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleSpinBox::*)(double))&QDoubleSpinBox::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](double unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QDoubleSpinBox_CONNECT_textChanged_CrystalProc_void__const_QString_R_(QDoubleSpinBox * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleSpinBox::*)(const QString &))&QDoubleSpinBox::textChanged, [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }));
+extern "C" QMetaObject::Connection * bg_QDoubleSpinBox_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QDoubleSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDoubleSpinBox::*)(const QString &))&QDoubleSpinBox::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
 
 extern "C" double bg_QDoubleSpinBox_valueFromText_SUPER_const_QString_R(QDoubleSpinBox * _self_, const CrystalString text) {
@@ -128052,8 +128052,8 @@ extern "C" const QMetaObject * bg_QSplashScreen_staticMetaObject_STATIC_GETTER_(
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSplashScreen::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSplashScreen_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(QSplashScreen * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSplashScreen::*)(const QString &))&QSplashScreen::messageChanged, [_proc_](const QString & message){ _proc_(bindgen_address(qstring_to_crystal(message))); }));
+extern "C" QMetaObject::Connection * bg_QSplashScreen_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QSplashScreen * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSplashScreen::*)(const QString &))&QSplashScreen::messageChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & message){ _proc_(bindgen_address(qstring_to_crystal(message))); }, type));
 }
 
 extern "C" bool bg_QSplashScreen_event_SUPER_QEvent_X(QSplashScreen * _self_, QEvent * event) {
@@ -128750,8 +128750,8 @@ extern "C" const QMetaObject * bg_QSplitter_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSplitter::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSplitter_CONNECT_splitterMoved_CrystalProc_void__int__int_(QSplitter * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSplitter::*)(int, int))&QSplitter::splitterMoved, [_proc_](int pos, int index){ _proc_(pos, index); }));
+extern "C" QMetaObject::Connection * bg_QSplitter_CONNECT_splitterMoved_Qt__ConnectionType_CrystalProc_void__int__int_(QSplitter * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSplitter::*)(int, int))&QSplitter::splitterMoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int pos, int index){ _proc_(pos, index); }, type));
 }
 
 extern "C" QSize bg_QSplitter_sizeHint_SUPER_(QSplitter * _self_) {
@@ -129800,12 +129800,12 @@ extern "C" const QMetaObject * bg_QStackedLayout_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QStackedLayout::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QStackedLayout_CONNECT_widgetRemoved_CrystalProc_void__int_(QStackedLayout * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedLayout::*)(int))&QStackedLayout::widgetRemoved, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QStackedLayout_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(QStackedLayout * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedLayout::*)(int))&QStackedLayout::widgetRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStackedLayout_CONNECT_currentChanged_CrystalProc_void__int_(QStackedLayout * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedLayout::*)(int))&QStackedLayout::currentChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QStackedLayout_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(QStackedLayout * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedLayout::*)(int))&QStackedLayout::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" QWidget * bg_QStackedLayout_widget_SUPER_(QStackedLayout * _self_) {
@@ -130428,12 +130428,12 @@ extern "C" const QMetaObject * bg_QStackedWidget_staticMetaObject_STATIC_GETTER_
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QStackedWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QStackedWidget_CONNECT_currentChanged_CrystalProc_void__int_(QStackedWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedWidget::*)(int))&QStackedWidget::currentChanged, [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QStackedWidget_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(QStackedWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedWidget::*)(int))&QStackedWidget::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QStackedWidget_CONNECT_widgetRemoved_CrystalProc_void__int_(QStackedWidget * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedWidget::*)(int))&QStackedWidget::widgetRemoved, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QStackedWidget_CONNECT_widgetRemoved_Qt__ConnectionType_CrystalProc_void__int_(QStackedWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStackedWidget::*)(int))&QStackedWidget::widgetRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" bool bg_QStackedWidget_event_SUPER_QEvent_X(QStackedWidget * _self_, QEvent * event) {
@@ -131036,8 +131036,8 @@ extern "C" const QMetaObject * bg_QStatusBar_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QStatusBar::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QStatusBar_CONNECT_messageChanged_CrystalProc_void__const_QString_R_(QStatusBar * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStatusBar::*)(const QString &))&QStatusBar::messageChanged, [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }));
+extern "C" QMetaObject::Connection * bg_QStatusBar_CONNECT_messageChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QStatusBar * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QStatusBar::*)(const QString &))&QStatusBar::messageChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & text){ _proc_(bindgen_address(qstring_to_crystal(text))); }, type));
 }
 
 extern "C" void bg_QStatusBar_showEvent_SUPER_QShowEvent_X(QStatusBar * _self_, QShowEvent * event) {
@@ -131632,12 +131632,12 @@ extern "C" const QMetaObject * bg_QSystemTrayIcon_staticMetaObject_STATIC_GETTER
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QSystemTrayIcon::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QSystemTrayIcon_CONNECT_activated_CrystalProc_void__QSystemTrayIcon__ActivationReason_(QSystemTrayIcon * _self_, CrystalProc<void, QSystemTrayIcon::ActivationReason> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason))&QSystemTrayIcon::activated, [_proc_](QSystemTrayIcon::ActivationReason reason){ _proc_(reason); }));
+extern "C" QMetaObject::Connection * bg_QSystemTrayIcon_CONNECT_activated_Qt__ConnectionType_CrystalProc_void__QSystemTrayIcon__ActivationReason_(QSystemTrayIcon * _self_, Qt::ConnectionType type, CrystalProc<void, QSystemTrayIcon::ActivationReason> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason))&QSystemTrayIcon::activated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QSystemTrayIcon::ActivationReason reason){ _proc_(reason); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QSystemTrayIcon_CONNECT_messageClicked_CrystalProc_void_(QSystemTrayIcon * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSystemTrayIcon::*)())&QSystemTrayIcon::messageClicked, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QSystemTrayIcon_CONNECT_messageClicked_Qt__ConnectionType_CrystalProc_void_(QSystemTrayIcon * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QSystemTrayIcon::*)())&QSystemTrayIcon::messageClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" bool bg_QSystemTrayIcon_event_SUPER_QEvent_X(QSystemTrayIcon * _self_, QEvent * event) {
@@ -134584,64 +134584,64 @@ extern "C" const QMetaObject * bg_QTableWidget_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTableWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemPressed_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemPressed, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemClicked_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemClicked, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemDoubleClicked, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemActivated_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemActivated, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemEntered_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemEntered, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemChanged_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemChanged, [_proc_](QTableWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *))&QTableWidget::itemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_currentItemChanged_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(QTableWidget * _self_, CrystalProc<void, QTableWidgetItem *, QTableWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *, QTableWidgetItem *))&QTableWidget::currentItemChanged, [_proc_](QTableWidgetItem * current, QTableWidgetItem * previous){ _proc_(current, previous); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTableWidgetItem_X__QTableWidgetItem_X_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTableWidgetItem *, QTableWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(QTableWidgetItem *, QTableWidgetItem *))&QTableWidget::currentItemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTableWidgetItem * current, QTableWidgetItem * previous){ _proc_(current, previous); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(QTableWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)())&QTableWidget::itemSelectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)())&QTableWidget::itemSelectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellPressed_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellPressed, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellPressed_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellClicked_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellClicked, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellClicked_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellDoubleClicked_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellDoubleClicked, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellDoubleClicked_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellActivated_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellActivated, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellActivated_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellEntered_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellEntered, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellEntered_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellChanged_CrystalProc_void__int__int_(QTableWidget * _self_, CrystalProc<void, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellChanged, [_proc_](int row, int column){ _proc_(row, column); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_cellChanged_Qt__ConnectionType_CrystalProc_void__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int))&QTableWidget::cellChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int row, int column){ _proc_(row, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_currentCellChanged_CrystalProc_void__int__int__int__int_(QTableWidget * _self_, CrystalProc<void, int, int, int, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int, int, int))&QTableWidget::currentCellChanged, [_proc_](int currentRow, int currentColumn, int previousRow, int previousColumn){ _proc_(currentRow, currentColumn, previousRow, previousColumn); }));
+extern "C" QMetaObject::Connection * bg_QTableWidget_CONNECT_currentCellChanged_Qt__ConnectionType_CrystalProc_void__int__int__int__int_(QTableWidget * _self_, Qt::ConnectionType type, CrystalProc<void, int, int, int, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTableWidget::*)(int, int, int, int))&QTableWidget::currentCellChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int currentRow, int currentColumn, int previousRow, int previousColumn){ _proc_(currentRow, currentColumn, previousRow, previousColumn); }, type));
 }
 
 extern "C" bool bg_QTableWidget_event_SUPER_QEvent_X(QTableWidget * _self_, QEvent * event) {
@@ -135484,28 +135484,28 @@ extern "C" const QMetaObject * bg_QTextBrowser_staticMetaObject_STATIC_GETTER_()
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTextBrowser::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_backwardAvailable_CrystalProc_void__bool_(QTextBrowser * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(bool))&QTextBrowser::backwardAvailable, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_backwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(bool))&QTextBrowser::backwardAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_forwardAvailable_CrystalProc_void__bool_(QTextBrowser * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(bool))&QTextBrowser::forwardAvailable, [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_forwardAvailable_Qt__ConnectionType_CrystalProc_void__bool_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(bool))&QTextBrowser::forwardAvailable, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_historyChanged_CrystalProc_void_(QTextBrowser * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)())&QTextBrowser::historyChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_historyChanged_Qt__ConnectionType_CrystalProc_void_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)())&QTextBrowser::historyChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_sourceChanged_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::sourceChanged, [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_sourceChanged_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::sourceChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_highlighted_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::highlighted, [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_highlighted_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::highlighted, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_anchorClicked_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, CrystalProc<void, const QUrl *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::anchorClicked, [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }));
+extern "C" QMetaObject::Connection * bg_QTextBrowser_CONNECT_anchorClicked_Qt__ConnectionType_CrystalProc_void__const_QUrl_R_(QTextBrowser * _self_, Qt::ConnectionType type, CrystalProc<void, const QUrl *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextBrowser::*)(const QUrl &))&QTextBrowser::anchorClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QUrl & unnamed_arg_0){ _proc_(&(unnamed_arg_0)); }, type));
 }
 
 extern "C" CrystalVariant bg_QTextBrowser_loadResource_SUPER_int_const_QUrl_R(QTextBrowser * _self_, int type, const QUrl & name) {
@@ -136264,36 +136264,36 @@ extern "C" const QMetaObject * bg_QToolBar_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QToolBar::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_actionTriggered_CrystalProc_void__QAction_X_(QToolBar * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(QAction *))&QToolBar::actionTriggered, [_proc_](QAction * action){ _proc_(action); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_actionTriggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(QAction *))&QToolBar::actionTriggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * action){ _proc_(action); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_movableChanged_CrystalProc_void__bool_(QToolBar * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::movableChanged, [_proc_](bool movable){ _proc_(movable); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_movableChanged_Qt__ConnectionType_CrystalProc_void__bool_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::movableChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool movable){ _proc_(movable); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_allowedAreasChanged_CrystalProc_void__Qt__ToolBarAreas_(QToolBar * _self_, CrystalProc<void, Qt::ToolBarAreas> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::ToolBarAreas))&QToolBar::allowedAreasChanged, [_proc_](Qt::ToolBarAreas allowedAreas){ _proc_(allowedAreas); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_allowedAreasChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolBarAreas_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ToolBarAreas> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::ToolBarAreas))&QToolBar::allowedAreasChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ToolBarAreas allowedAreas){ _proc_(allowedAreas); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_orientationChanged_CrystalProc_void__Qt__Orientation_(QToolBar * _self_, CrystalProc<void, Qt::Orientation> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::Orientation))&QToolBar::orientationChanged, [_proc_](Qt::Orientation orientation){ _proc_(orientation); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_orientationChanged_Qt__ConnectionType_CrystalProc_void__Qt__Orientation_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::Orientation> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::Orientation))&QToolBar::orientationChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::Orientation orientation){ _proc_(orientation); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_iconSizeChanged_CrystalProc_void__const_QSize_R_(QToolBar * _self_, CrystalProc<void, const QSize *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(const QSize &))&QToolBar::iconSizeChanged, [_proc_](const QSize & iconSize){ _proc_(bindgen_address(iconSize)); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_iconSizeChanged_Qt__ConnectionType_CrystalProc_void__const_QSize_R_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, const QSize *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(const QSize &))&QToolBar::iconSizeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QSize & iconSize){ _proc_(bindgen_address(iconSize)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_toolButtonStyleChanged_CrystalProc_void__Qt__ToolButtonStyle_(QToolBar * _self_, CrystalProc<void, Qt::ToolButtonStyle> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::ToolButtonStyle))&QToolBar::toolButtonStyleChanged, [_proc_](Qt::ToolButtonStyle toolButtonStyle){ _proc_(toolButtonStyle); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_toolButtonStyleChanged_Qt__ConnectionType_CrystalProc_void__Qt__ToolButtonStyle_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, Qt::ToolButtonStyle> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(Qt::ToolButtonStyle))&QToolBar::toolButtonStyleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](Qt::ToolButtonStyle toolButtonStyle){ _proc_(toolButtonStyle); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_topLevelChanged_CrystalProc_void__bool_(QToolBar * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::topLevelChanged, [_proc_](bool topLevel){ _proc_(topLevel); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_topLevelChanged_Qt__ConnectionType_CrystalProc_void__bool_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::topLevelChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool topLevel){ _proc_(topLevel); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_visibilityChanged_CrystalProc_void__bool_(QToolBar * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::visibilityChanged, [_proc_](bool visible){ _proc_(visible); }));
+extern "C" QMetaObject::Connection * bg_QToolBar_CONNECT_visibilityChanged_Qt__ConnectionType_CrystalProc_void__bool_(QToolBar * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBar::*)(bool))&QToolBar::visibilityChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool visible){ _proc_(visible); }, type));
 }
 
 extern "C" void bg_QToolBar_actionEvent_SUPER_QActionEvent_X(QToolBar * _self_, QActionEvent * event) {
@@ -136968,8 +136968,8 @@ extern "C" const QMetaObject * bg_QToolBox_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QToolBox::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QToolBox_CONNECT_currentChanged_CrystalProc_void__int_(QToolBox * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBox::*)(int))&QToolBox::currentChanged, [_proc_](int index){ _proc_(index); }));
+extern "C" QMetaObject::Connection * bg_QToolBox_CONNECT_currentChanged_Qt__ConnectionType_CrystalProc_void__int_(QToolBox * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolBox::*)(int))&QToolBox::currentChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int index){ _proc_(index); }, type));
 }
 
 extern "C" bool bg_QToolBox_event_SUPER_QEvent_X(QToolBox * _self_, QEvent * event) {
@@ -137662,8 +137662,8 @@ extern "C" const QMetaObject * bg_QToolButton_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QToolButton::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QToolButton_CONNECT_triggered_CrystalProc_void__QAction_X_(QToolButton * _self_, CrystalProc<void, QAction *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolButton::*)(QAction *))&QToolButton::triggered, [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }));
+extern "C" QMetaObject::Connection * bg_QToolButton_CONNECT_triggered_Qt__ConnectionType_CrystalProc_void__QAction_X_(QToolButton * _self_, Qt::ConnectionType type, CrystalProc<void, QAction *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QToolButton::*)(QAction *))&QToolButton::triggered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QAction * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
 
 extern "C" QSize bg_QToolButton_sizeHint_SUPER_(QToolButton * _self_) {
@@ -139139,12 +139139,12 @@ extern "C" const QMetaObject * bg_QTreeView_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTreeView::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeView_CONNECT_expanded_CrystalProc_void__const_QModelIndex_R_(QTreeView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeView::*)(const QModelIndex &))&QTreeView::expanded, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QTreeView_CONNECT_expanded_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QTreeView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeView::*)(const QModelIndex &))&QTreeView::expanded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeView_CONNECT_collapsed_CrystalProc_void__const_QModelIndex_R_(QTreeView * _self_, CrystalProc<void, const QModelIndex *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeView::*)(const QModelIndex &))&QTreeView::collapsed, [_proc_](const QModelIndex & index){ _proc_(&(index)); }));
+extern "C" QMetaObject::Connection * bg_QTreeView_CONNECT_collapsed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QTreeView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeView::*)(const QModelIndex &))&QTreeView::collapsed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
 
 extern "C" void bg_QTreeView_setModel_SUPER_QAbstractItemModel_X(QTreeView * _self_, QAbstractItemModel * model) {
@@ -140946,44 +140946,44 @@ extern "C" const QMetaObject * bg_QTreeWidget_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QTreeWidget::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemPressed_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemPressed, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemPressed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemPressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemClicked_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemClicked, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemDoubleClicked_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemDoubleClicked, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemDoubleClicked_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemDoubleClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemActivated_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemActivated, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemActivated_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemActivated, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemEntered_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemEntered, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemEntered_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemEntered, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemChanged_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemChanged, [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__int_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, int))&QTreeWidget::itemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item, int column){ _proc_(item, column); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemExpanded_CrystalProc_void__QTreeWidgetItem_X_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *))&QTreeWidget::itemExpanded, [_proc_](QTreeWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemExpanded_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *))&QTreeWidget::itemExpanded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemCollapsed_CrystalProc_void__QTreeWidgetItem_X_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *))&QTreeWidget::itemCollapsed, [_proc_](QTreeWidgetItem * item){ _proc_(item); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemCollapsed_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *))&QTreeWidget::itemCollapsed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * item){ _proc_(item); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_currentItemChanged_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(QTreeWidget * _self_, CrystalProc<void, QTreeWidgetItem *, QTreeWidgetItem *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, QTreeWidgetItem *))&QTreeWidget::currentItemChanged, [_proc_](QTreeWidgetItem * current, QTreeWidgetItem * previous){ _proc_(current, previous); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_currentItemChanged_Qt__ConnectionType_CrystalProc_void__QTreeWidgetItem_X__QTreeWidgetItem_X_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void, QTreeWidgetItem *, QTreeWidgetItem *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)(QTreeWidgetItem *, QTreeWidgetItem *))&QTreeWidget::currentItemChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QTreeWidgetItem * current, QTreeWidgetItem * previous){ _proc_(current, previous); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemSelectionChanged_CrystalProc_void_(QTreeWidget * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)())&QTreeWidget::itemSelectionChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QTreeWidget_CONNECT_itemSelectionChanged_Qt__ConnectionType_CrystalProc_void_(QTreeWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTreeWidget::*)())&QTreeWidget::itemSelectionChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QTreeWidget_setSelectionModel_SUPER_QItemSelectionModel_X(QTreeWidget * _self_, QItemSelectionModel * selectionModel) {
@@ -141244,32 +141244,32 @@ extern "C" const QMetaObject * bg_QUndoGroup_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QUndoGroup::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_activeStackChanged_CrystalProc_void__QUndoStack_X_(QUndoGroup * _self_, CrystalProc<void, QUndoStack *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(QUndoStack *))&QUndoGroup::activeStackChanged, [_proc_](QUndoStack * stack){ _proc_(stack); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_activeStackChanged_Qt__ConnectionType_CrystalProc_void__QUndoStack_X_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, QUndoStack *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(QUndoStack *))&QUndoGroup::activeStackChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QUndoStack * stack){ _proc_(stack); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_indexChanged_CrystalProc_void__int_(QUndoGroup * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(int))&QUndoGroup::indexChanged, [_proc_](int idx){ _proc_(idx); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(int))&QUndoGroup::indexChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int idx){ _proc_(idx); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_cleanChanged_CrystalProc_void__bool_(QUndoGroup * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::cleanChanged, [_proc_](bool clean){ _proc_(clean); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::cleanChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool clean){ _proc_(clean); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_canUndoChanged_CrystalProc_void__bool_(QUndoGroup * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::canUndoChanged, [_proc_](bool canUndo){ _proc_(canUndo); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::canUndoChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool canUndo){ _proc_(canUndo); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_canRedoChanged_CrystalProc_void__bool_(QUndoGroup * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::canRedoChanged, [_proc_](bool canRedo){ _proc_(canRedo); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(bool))&QUndoGroup::canRedoChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool canRedo){ _proc_(canRedo); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(QUndoGroup * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(const QString &))&QUndoGroup::undoTextChanged, [_proc_](const QString & undoText){ _proc_(bindgen_address(qstring_to_crystal(undoText))); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(const QString &))&QUndoGroup::undoTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & undoText){ _proc_(bindgen_address(qstring_to_crystal(undoText))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(QUndoGroup * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(const QString &))&QUndoGroup::redoTextChanged, [_proc_](const QString & redoText){ _proc_(bindgen_address(qstring_to_crystal(redoText))); }));
+extern "C" QMetaObject::Connection * bg_QUndoGroup_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QUndoGroup * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoGroup::*)(const QString &))&QUndoGroup::redoTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & redoText){ _proc_(bindgen_address(qstring_to_crystal(redoText))); }, type));
 }
 
 extern "C" void bg_BgInherit_QUndoGroup_JUMPTABLE_BgJumptable_QUndoGroup_R(BgInherit_QUndoGroup * _self_, const BgJumptable_QUndoGroup & table) {
@@ -141660,28 +141660,28 @@ extern "C" const QMetaObject * bg_QUndoStack_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QUndoStack::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_indexChanged_CrystalProc_void__int_(QUndoStack * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(int))&QUndoStack::indexChanged, [_proc_](int idx){ _proc_(idx); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_indexChanged_Qt__ConnectionType_CrystalProc_void__int_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(int))&QUndoStack::indexChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int idx){ _proc_(idx); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_cleanChanged_CrystalProc_void__bool_(QUndoStack * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::cleanChanged, [_proc_](bool clean){ _proc_(clean); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_cleanChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::cleanChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool clean){ _proc_(clean); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_canUndoChanged_CrystalProc_void__bool_(QUndoStack * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::canUndoChanged, [_proc_](bool canUndo){ _proc_(canUndo); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_canUndoChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::canUndoChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool canUndo){ _proc_(canUndo); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_canRedoChanged_CrystalProc_void__bool_(QUndoStack * _self_, CrystalProc<void, bool> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::canRedoChanged, [_proc_](bool canRedo){ _proc_(canRedo); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_canRedoChanged_Qt__ConnectionType_CrystalProc_void__bool_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(bool))&QUndoStack::canRedoChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool canRedo){ _proc_(canRedo); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_undoTextChanged_CrystalProc_void__const_QString_R_(QUndoStack * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(const QString &))&QUndoStack::undoTextChanged, [_proc_](const QString & undoText){ _proc_(bindgen_address(qstring_to_crystal(undoText))); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_undoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(const QString &))&QUndoStack::undoTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & undoText){ _proc_(bindgen_address(qstring_to_crystal(undoText))); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_redoTextChanged_CrystalProc_void__const_QString_R_(QUndoStack * _self_, CrystalProc<void, const CrystalString *> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(const QString &))&QUndoStack::redoTextChanged, [_proc_](const QString & redoText){ _proc_(bindgen_address(qstring_to_crystal(redoText))); }));
+extern "C" QMetaObject::Connection * bg_QUndoStack_CONNECT_redoTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QUndoStack * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QUndoStack::*)(const QString &))&QUndoStack::redoTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & redoText){ _proc_(bindgen_address(qstring_to_crystal(redoText))); }, type));
 }
 
 extern "C" void bg_BgInherit_QUndoStack_JUMPTABLE_BgJumptable_QUndoStack_R(BgInherit_QUndoStack * _self_, const BgJumptable_QUndoStack & table) {
@@ -143737,24 +143737,24 @@ extern "C" const QMetaObject * bg_QWizard_staticMetaObject_STATIC_GETTER_() {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QWizard::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_currentIdChanged_CrystalProc_void__int_(QWizard * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::currentIdChanged, [_proc_](int id){ _proc_(id); }));
+extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_currentIdChanged_Qt__ConnectionType_CrystalProc_void__int_(QWizard * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::currentIdChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int id){ _proc_(id); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_helpRequested_CrystalProc_void_(QWizard * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)())&QWizard::helpRequested, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_helpRequested_Qt__ConnectionType_CrystalProc_void_(QWizard * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)())&QWizard::helpRequested, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_customButtonClicked_CrystalProc_void__int_(QWizard * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::customButtonClicked, [_proc_](int which){ _proc_(which); }));
+extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_customButtonClicked_Qt__ConnectionType_CrystalProc_void__int_(QWizard * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::customButtonClicked, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int which){ _proc_(which); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_pageAdded_CrystalProc_void__int_(QWizard * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::pageAdded, [_proc_](int id){ _proc_(id); }));
+extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_pageAdded_Qt__ConnectionType_CrystalProc_void__int_(QWizard * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::pageAdded, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int id){ _proc_(id); }, type));
 }
 
-extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_pageRemoved_CrystalProc_void__int_(QWizard * _self_, CrystalProc<void, int> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::pageRemoved, [_proc_](int id){ _proc_(id); }));
+extern "C" QMetaObject::Connection * bg_QWizard_CONNECT_pageRemoved_Qt__ConnectionType_CrystalProc_void__int_(QWizard * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizard::*)(int))&QWizard::pageRemoved, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int id){ _proc_(id); }, type));
 }
 
 extern "C" bool bg_QWizard_validateCurrentPage_SUPER_(QWizard * _self_) {
@@ -144471,8 +144471,8 @@ extern "C" const QMetaObject * bg_QWizardPage_staticMetaObject_STATIC_GETTER_() 
   return new (UseGC, bindgen_gc_finalizer<QMetaObject>()) QMetaObject (QWizardPage::staticMetaObject);
 }
 
-extern "C" QMetaObject::Connection * bg_QWizardPage_CONNECT_completeChanged_CrystalProc_void_(QWizardPage * _self_, CrystalProc<void> _proc_) {
-  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizardPage::*)())&QWizardPage::completeChanged, [_proc_](){ _proc_(); }));
+extern "C" QMetaObject::Connection * bg_QWizardPage_CONNECT_completeChanged_Qt__ConnectionType_CrystalProc_void_(QWizardPage * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
+  return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWizardPage::*)())&QWizardPage::completeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
 
 extern "C" void bg_QWizardPage_initializePage_SUPER_(QWizardPage * _self_) {

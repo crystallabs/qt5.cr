@@ -20,3 +20,25 @@ describe "signals with deprecated overloads" do
     indices.should eq([0, 1])
   end
 end
+
+describe "connection type" do
+  it "queues a connection to the event loop" do
+    spin_box = Qt::SpinBox.new
+    values = [] of Int32
+    spin_box.on_value_changed(Qt::ConnectionType::QueuedConnection) { |value| values << value }
+    spin_box.value = 42
+    values.should eq([] of Int32)
+    Qt::CoreApplication.process_events
+    values.should eq([42])
+  end
+
+  it "takes the connection type after the type arguments of an overloaded signal" do
+    completer = Qt::Completer.new
+    texts = [] of String
+    completer.on_activated(String, Qt::ConnectionType::QueuedConnection) { |text| texts << text }
+    completer.activated("done")
+    texts.should eq([] of String)
+    Qt::CoreApplication.process_events
+    texts.should eq(["done"])
+  end
+end
