@@ -99,3 +99,78 @@ describe "graphics items with a parent item" do
     Qt::BindgenHelper.kept_alive?(item).should be_false
   end
 end
+
+# Gives *tree* a top-level item with a child, keeping no reference to them.
+private def add_items(tree)
+  Qt::TreeWidgetItem.new(Qt::TreeWidgetItem.new(tree, ["root"]), ["child"])
+  nil
+end
+
+describe "items owned by a parent which isn't a QObject" do
+  it "aren't collected while their owner holds them" do
+    tree = Qt::TreeWidget.new
+    add_items(tree)
+    churn
+
+    tree.top_level_item_count.should eq(1)
+    tree.top_level_item(0).not_nil!.child_count.should eq(1)
+  end
+
+  it "are kept alive by the tree, list, item or command given to their constructor" do
+    tree = Qt::TreeWidget.new
+    root = Qt::TreeWidgetItem.new(tree, ["root"])
+    Qt::BindgenHelper.kept_alive?(root).should be_true
+    Qt::BindgenHelper.kept_alive?(Qt::TreeWidgetItem.new(root, ["child"])).should be_true
+    Qt::BindgenHelper.kept_alive?(Qt::TreeWidgetItem.new(["loose"])).should be_false
+
+    list = Qt::ListWidget.new
+    Qt::BindgenHelper.kept_alive?(Qt::ListWidgetItem.new("item", list)).should be_true
+    Qt::BindgenHelper.kept_alive?(Qt::ListWidgetItem.new("loose")).should be_false
+
+    command = Qt::UndoCommand.new("parent")
+    Qt::BindgenHelper.kept_alive?(Qt::UndoCommand.new("child", command)).should be_true
+    Qt::BindgenHelper.kept_alive?(command).should be_false
+  end
+
+  it "are released when taken out or deleted" do
+    tree = Qt::TreeWidget.new
+    root = Qt::TreeWidgetItem.new(tree, ["root"])
+    child = Qt::TreeWidgetItem.new(root, ["child"])
+
+    tree.take_top_level_item(0).not_nil!.to_unsafe.should eq(root.to_unsafe)
+    Qt::BindgenHelper.kept_alive?(root).should be_false
+    Qt::BindgenHelper.kept_alive?(child).should be_true # Its parent item holds it still
+
+    tree.add_top_level_item(root)
+    Qt::BindgenHelper.kept_alive?(root).should be_true
+    tree.clear # Deletes the items
+    Qt::BindgenHelper.kept_alive?(root).should be_false
+    Qt::BindgenHelper.kept_alive?(child).should be_false
+  end
+end
+
+describe "objects kept alive and given a parent" do
+  it "stay kept alive when their parent is taken" do
+    view = Qt::ListView.new
+    model = Qt::StringListModel.new(view)
+    view.model = model
+
+    model.parent = nil
+    Qt::BindgenHelper.kept_alive?(model).should be_true # The view uses it still
+    Qt::BindgenHelper.release(model)
+    Qt::BindgenHelper.kept_alive?(model).should be_false
+  end
+
+  it "aren't kept when Qt created them" do
+    window = Qt::Widget.new
+    layout = Qt::VBoxLayout.new(window)
+    layout.add_widget(Qt::Label.new("label"))
+    label = window.children.first
+    Qt::BindgenHelper.kept_alive?(label).should be_true # The object Crystal constructed
+
+    menu = Qt::Menu.new
+    action = menu.add_action("entry") # Created by Qt
+    Qt::BindgenHelper.keep_alive(action)
+    Qt::BindgenHelper.kept_alive?(action).should be_false
+  end
+end

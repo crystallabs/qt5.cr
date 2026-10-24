@@ -11,6 +11,11 @@
 # destroyed, like an iterator unregistering from its container: the GC destroys
 # the object before the argument, and releases the argument with it.
 #
+# `parent_arguments:` names the constructor arguments giving an object its
+# owner in the classes owned by a parent which aren't QObjects, like the tree
+# or item of a QTreeWidgetItem: bindgen's `Qt` processor keeps the object alive
+# while it has one, like a QObject's child.
+#
 # Deep-merged (`<<+:`) into `types:` after `deprecated.yml`, so classes listed
 # in both keep their `ignore_methods` from there.
 ---
@@ -146,6 +151,8 @@ QListWidget:
     "^setItemWidget$": [1]
   release:
     "^takeItem$": true # removeItemWidget deletes the widget
+QListWidgetItem:
+  parent_arguments: [listview] # The list given to the constructor owns the item
 QTableWidget:
   keep_alive:
     "^set(Item|HorizontalHeaderItem|VerticalHeaderItem|CellWidget|ItemPrototype)$": true
@@ -278,6 +285,7 @@ QTreeWidget:
   release:
     "^takeTopLevelItem$": true
 QTreeWidgetItem:
+  parent_arguments: [parent, treeview] # The tree or item given to the constructor owns the item, like a QObject parent
   keep_alive:
     "^(add|insert)Child(ren)?$": true
   release:
@@ -305,6 +313,8 @@ QSyntaxHighlighter:
 QTextBlock:
   keep_alive:
     "^setUserData$": true
+QUndoCommand:
+  parent_arguments: [parent] # A child command belongs to its parent command
 QUndoStack:
   keep_alive:
     "^push$": true

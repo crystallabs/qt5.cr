@@ -41,6 +41,7 @@
 #define BINDGEN_HELPER_HPP
 
 #include <gc/gc.h> // Boehm GC
+#include <gc/gc_mark.h> // GC_get_kind_and_size()
 #include <string.h>
 #include <stdlib.h> // abort()
 #include <stdio.h> // fprintf()
@@ -346,12 +347,23 @@ static void bindgen_notify_destroyed(void *object) {
 /* The key of the wrapped object at `object` in the table of kept objects of
  * `BindgenHelper`: the start of its GC allocation, so a pointer to a secondary
  * base of it, like the `QPaintDevice` of a `QWidget`, finds the same entry as
- * the object and as the destroyed hooks; the pointer itself for an object not
- * on the GC heap.  Weak, like the hooks: one definition serves all bindings.
+ * the object and as the destroyed hooks.  Null for an object C++ created: one
+ * off the GC heap, or one the replacement `operator new` of libgccpp allocated
+ * uncollectable, which the GC never frees.  Keeping its wrapper would keep
+ * nothing C++ uses, and the entry would outlive the object, as nothing tells of
+ * its deletion.  Weak, like the hooks: one definition serves all bindings.
  */
 extern "C" __attribute__((weak)) void *bindgen_kept_key(void *object) {
   void *base = GC_base(object);
-  return base ? base : object;
+  if (base == nullptr) return nullptr;
+
+  // The uncollectable kinds of the GC, `UNCOLLECTABLE` and `AUNCOLLECTABLE` of
+  // its private header, which only `GC_MALLOC_UNCOLLECTABLE` and the
+  // `operator new` of libgccpp allocate.
+  int kind = GC_get_kind_and_size(base, nullptr);
+  if (kind == 2 || kind == 3) return nullptr;
+
+  return base;
 }
 
 /* The bookkeeping of an object constructed from Crystal, the first base of
