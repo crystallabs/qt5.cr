@@ -248,7 +248,8 @@ threads from Qt data: `mutex.lock`, `semaphore.acquire(2)`,
 
 A `std::function` argument is taken as a block (or as a `Proc`, when it isn't
 the last argument), and Qt may keep the block for as long as it keeps the
-function.  The functions Qt runs on another thread, `Qt::ThreadPool#start`,
+function, like `Qt::FileDialog.get_open_file_content`.  The functions Qt runs on
+another thread, `Qt::ThreadPool#start`,
 `#try_start` and `Qt::Runnable.create`, are left out, as that thread can't run
 Crystal.
 

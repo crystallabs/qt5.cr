@@ -217,10 +217,6 @@ types: # Type rewrite rules
   "QSettings::WriteFunc": { ignore: true }
   "bool (QIODevice &, SettingsMap &)": { ignore: true }
   "bool (QIODevice &, const SettingsMap &)": { ignore: true }
-  "std::__1::function<void (const QString &, const QByteArray &)>":
-    ignore: true
-  "std::function<void (const QString &, const QByteArray &)>":
-    ignore: true
   "std::chrono::milliseconds":
     cpp_type: int64_t
     binding_type: Int64

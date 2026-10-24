@@ -445,3 +445,11 @@ describe Qt::ToolTip do
     Qt::WhatsThis.create_action.not_nil!.text.should eq("What's This?")
   end
 end
+
+describe "Qt::FileDialog.get_open_file_content" do
+  it "takes the callback as a block, without opening a dialog" do
+    # Not called: it would show the native dialog.
+    Qt::FileDialog.responds_to?(:get_open_file_content).should be_true
+    typeof(Qt::FileDialog.get_open_file_content("*.txt") { |_name, _data| }).should eq(Nil)
+  end
+end

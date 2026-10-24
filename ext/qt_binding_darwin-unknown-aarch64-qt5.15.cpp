@@ -86020,6 +86020,10 @@ extern "C" Container_QList_QUrl_ * bg_QFileDialog_getOpenFileUrls_STATIC_QWidget
   return _result_;
 }
 
+extern "C" void bg_QFileDialog_getOpenFileContent_STATIC_const_QString_R_const_std__function_void__const_QString_R__const_QByteArray_R___R(const CrystalString nameFilter, const CrystalProc<void, const CrystalString *, const CrystalString *> fileContentsReady) {
+  QFileDialog::getOpenFileContent(([&]() { auto &&bg_value = (nameFilter); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), std::function<void (const QString &, const QByteArray &)>([proc = bindgen_hold_proc(fileContentsReady)](const QString & arg0, const QByteArray & arg1){ (*proc)(bindgen_address(qstring_to_crystal(arg0)), bindgen_address(qbytearray_to_crystal(arg1))); }));
+}
+
 extern "C" void bg_QFileDialog_saveFileContent_STATIC_const_QByteArray_R(const CrystalString fileContent) {
   QFileDialog::saveFileContent(([&]() { auto &&bg_value = (fileContent); return QByteArray(bg_value.ptr, bg_value.size); }()));
 }

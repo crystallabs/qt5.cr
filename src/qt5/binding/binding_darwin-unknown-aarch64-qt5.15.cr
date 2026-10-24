@@ -26004,6 +26004,7 @@ module Qt
     fun bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X(parent : QWidget*, caption : CrystalString, dir : QUrl*, filter : CrystalString, selected_filter : CrystalString*) : ContainerQListQUrl*
     fun bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options(parent : QWidget*, caption : CrystalString, dir : QUrl*, filter : CrystalString, selected_filter : CrystalString*, options : ::Qt::FileDialog::Options) : ContainerQListQUrl*
     fun bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options_const_QStringList_R(parent : QWidget*, caption : CrystalString, dir : QUrl*, filter : CrystalString, selected_filter : CrystalString*, options : ::Qt::FileDialog::Options, supported_schemes : ContainerQListQString*) : ContainerQListQUrl*
+    fun bg_QFileDialog_getOpenFileContent_STATIC_const_QString_R_const_std__function_void__const_QString_R__const_QByteArray_R___R(name_filter : CrystalString, file_contents_ready : CrystalProc) : Void
     fun bg_QFileDialog_saveFileContent_STATIC_const_QByteArray_R(file_content : CrystalString) : Void
     fun bg_QFileDialog_saveFileContent_STATIC_const_QByteArray_R_const_QString_R(file_content : CrystalString, file_name_hint : CrystalString) : Void
     fun bg_QFileDialog__CONSTRUCT_const_QFileDialogArgs_R(args : QFileDialogArgs*) : QFileDialog*
@@ -164943,6 +164944,10 @@ module Qt
     def self.get_open_file_urls(parent : Widget?, caption : String, dir : Url, filter : String, options : FileDialog::Options, supported_schemes : Enumerable(String)) : {Enumerable(Url), String}
       selected_filter_ = BindgenHelper.zero_value(Binding::CrystalString)
     {Container_QList_QUrl_.new(unwrap: Binding.bg_QFileDialog_getOpenFileUrls_STATIC_QWidget_X_const_QString_R_const_QUrl_R_const_QString_R_QString_X_QFileDialog__Options_const_QStringList_R((parent.try(&.to_unsafe) || Pointer(Binding::QWidget).null), Qt::Converter::QString.wrap(caption), dir, Qt::Converter::QString.wrap(filter), pointerof(selected_filter_), options, BindgenHelper.wrap_container(StringList, supported_schemes).to_unsafe)), Qt::Converter::QString.unwrap(selected_filter_)}
+    end
+    
+    def self.get_open_file_content(name_filter : String, &file_contents_ready : Proc(String, Bytes, Void)) : Void
+      Binding.bg_QFileDialog_getOpenFileContent_STATIC_const_QString_R_const_std__function_void__const_QString_R__const_QByteArray_R___R(Qt::Converter::QString.wrap(name_filter), BindgenHelper.wrap_proc(Proc(Binding::CrystalString*, Binding::CrystalString*, Void).new do |arg0, arg1| BindgenHelper.rescued(nil) do file_contents_ready.call(Qt::Converter::QString.unwrap(arg0.value), Qt::Converter::QByteArray.unwrap(arg1.value)) end end))
     end
     
     def self.save_file_content(file_content : Bytes) : Void
