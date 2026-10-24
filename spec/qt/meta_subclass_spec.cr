@@ -254,3 +254,121 @@ describe "the types of signals, slots and properties of a Crystal subclass" do
     String.new(meta.class_info(meta.index_of_class_info("QML.Element".to_unsafe)).value).should eq("auto")
   end
 end
+
+# A Crystal enum as a type: an enumerator of the class, like `Q_ENUM`,
+# registered with Qt as `Machine::Mode`.
+private class Machine < Qt::Object
+  enum Mode
+    Idle = 0
+    Fast = 1
+    Slow = 2
+  end
+
+  @[Flags]
+  enum Options
+    Verbose
+    Dry
+  end
+
+  signal mode_changed(mode : Mode)
+
+  getter mode = Mode::Idle
+  getter options = Options::None
+
+  @[Qt::Slot]
+  def set_mode(mode : Mode) : Nil
+    @mode = mode
+    mode_changed(mode)
+  end
+
+  @[Qt::Slot]
+  def set_options(options : Options) : Nil
+    @options = options
+  end
+
+  @[Qt::Slot]
+  def next_mode : Mode
+    Mode.new((@mode.value + 1) % 3)
+  end
+
+  qt_property mode : Mode, write: :set_mode, notify: :mode_changed
+  qt_property options : Options, write: :set_options
+end
+
+describe "a Crystal enum in a Crystal subclass's meta-object" do
+  it "is an enumerator of the class, registered with Qt" do
+    machine = Machine.new
+    meta = machine.meta_object.not_nil!
+    meta.enumerator_count.should eq(2)
+    mode = meta.enumerator(meta.index_of_enumerator("Mode".to_unsafe))
+    String.new(mode.name).should eq("Mode")
+    String.new(mode.scope).should eq("Machine")
+    mode.key_count.should eq(3)
+    mode.key_to_value("Slow".to_unsafe).should eq({2, true})
+    String.new(mode.value_to_key(1)).should eq("Fast")
+    mode.scoped?.should be_true
+    mode.flag?.should be_false
+    meta.enumerator(meta.index_of_enumerator("Options".to_unsafe)).flag?.should be_true
+
+    property = meta.property(meta.index_of_property("mode".to_unsafe))
+    String.new(property.type_name).should eq("Machine::Mode")
+    property.enum_type?.should be_true
+    meta.index_of_signal("modeChanged(Machine::Mode)".to_unsafe).should eq(meta.method_offset)
+    String.new(meta.method(meta.index_of_slot("nextMode()".to_unsafe)).type_name).should eq("Machine::Mode")
+  end
+
+  it "is emitted, received and invoked as the enum" do
+    machine = Machine.new
+    seen = [] of Machine::Mode
+    machine.on_mode_changed { |mode| seen << mode }
+    machine.set_mode(Machine::Mode::Fast)
+    machine.mode_changed(Machine::Mode::Slow)
+    seen.should eq([Machine::Mode::Fast, Machine::Mode::Slow])
+
+    # Connected by name, with the registered type.
+    other = Machine.new
+    Qt::Object.connect(machine, "2modeChanged(Machine::Mode)".to_unsafe, other, "1setMode(Machine::Mode)".to_unsafe)
+    machine.set_mode(Machine::Mode::Idle)
+    other.mode.should eq(Machine::Mode::Idle)
+
+    # Queued: the type being registered, Qt copies the argument.
+    queued = [] of Machine::Mode
+    machine.on_mode_changed(Qt::ConnectionType::QueuedConnection) { |mode| queued << mode }
+    machine.set_mode(Machine::Mode::Fast)
+    queued.should be_empty
+    Qt::CoreApplication.process_events
+    queued.should eq([Machine::Mode::Fast])
+
+    Qt::MetaObject.invoke_method(machine, "nextMode").should be_true
+  end
+
+  it "goes through QVariants by key, by number and as the enum" do
+    machine = Machine.new
+    machine.set_property("mode".to_unsafe, Qt.variant("Slow")).should be_true
+    machine.mode.should eq(Machine::Mode::Slow)
+    machine.set_property("mode".to_unsafe, Qt.variant(1)).should be_true
+    machine.mode.should eq(Machine::Mode::Fast)
+    machine.set_property("mode".to_unsafe, Qt.variant("Nowhere")).should be_false
+    machine.mode.should eq(Machine::Mode::Fast)
+
+    variant = machine.property("mode".to_unsafe)
+    variant.to(Machine::Mode).should eq(Machine::Mode::Fast)
+    variant.to?(Int32).should be_nil
+    variant.to?(String).should be_nil
+    machine.set_property("mode".to_unsafe, Qt.variant(Machine::Mode::Slow)).should be_true # Passed as its int
+    machine.mode.should eq(Machine::Mode::Slow)
+    Qt.variant(Machine::Mode::Slow).to(Machine::Mode).should eq(Machine::Mode::Slow)
+    Qt.variant(Machine::Mode::Slow).to(Int32).should eq(2)
+
+    machine.set_property("options".to_unsafe, Qt.variant("Verbose|Dry")).should be_true
+    machine.options.should eq(Machine::Options::Verbose | Machine::Options::Dry)
+    machine.property("options".to_unsafe).to(Machine::Options).should eq(Machine::Options::All)
+
+    # A wrapped enum Qt hands out unpacks as the enum too.
+    slider = Qt::Slider.new(Qt::Orientation::Vertical)
+    slider.property("orientation".to_unsafe).to(Qt::Orientation).should eq(Qt::Orientation::Vertical)
+    slider.property("orientation".to_unsafe).to?(Machine::Mode).should eq(Machine::Mode::Slow) # Its value is 2: Qt's enums aren't told apart
+    Qt.variant(1).to(Machine::Mode).should eq(Machine::Mode::Fast) # An integer unpacks as an enum
+    Qt.variant("1").to?(Machine::Mode).should be_nil
+  end
+end

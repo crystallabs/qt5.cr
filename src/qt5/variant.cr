@@ -2,6 +2,9 @@ module Qt
   lib Binding
     VARIANT_INLINE_SIZE = Variant::INLINE_SIZE
 
+    # See ext/converters.hpp: the value of an enumeration Qt knows.
+    fun bindgen_qt_variant_enum_value(variant : Void*, value : Int64*) : Bool
+
     union CrystalVariantData
       # bytes : UInt8[Variant::INLINE_SIZE] # Issue crystal/#5426
       bytes : UInt8[VARIANT_INLINE_SIZE]
@@ -56,6 +59,13 @@ module Qt
   # model.data(index).to(String)              # => "x"
   # settings.value("list").to?(Array(String)) # A QStringList Qt loaded
   # ```
+  #
+  # A Crystal enum, like `Qt::Orientation::Vertical`, is passed to Qt as its
+  # integer value, which Qt converts to its enum types.  A `QVariant` of an
+  # enumeration Qt knows, a wrapped enum or a Crystal enum of a class with a
+  # meta-object, is kept as Qt made it (see `Tag::Unknown`).  `#to(SomeEnum)`
+  # unpacks either as the enum of its value: `slider.property("orientation")
+  # .to(Qt::Orientation)`.
   #
   # Any other Crystal value is wrapped as is, for the round trip through Qt.
   # Conversely a `QVariant` of a Qt type without a mapping, like a `QColor`,
@@ -175,6 +185,13 @@ module Qt
       @data = self.class.pack(value)
     end
 
+    # Constructs a Variant holding the integer value of the enum *value*, which
+    # Qt converts to its enums: `set_property("orientation",
+    # Qt.variant(Qt::Orientation::Vertical))`.  `#to(SomeEnum)` unpacks it.
+    def initialize(value : Enum)
+      @data = self.class.pack(value.value)
+    end
+
     # The `Binding::CrystalVariant` passed to Qt.  A value of a type Qt knows
     # (see `Tag`) is tagged for `crystal_to_qvariant` to build the native
     # `QVariant` of it, so Qt can display, sort and store it.  Any other value
@@ -254,9 +271,27 @@ module Qt
     # This method is like the `#as` cast method.
     def to(type : T.class) : T forall T
       {% begin %}
-        Variant.unpack(@data, Union({{ T.is_a?(Path) ? T.resolve : T }})) do
-          raise TypeCastError.new("Variant doesn't contain a #{T}")
-        end
+        {% if T < ::Enum %}
+          if value = enum_value_from_qt(T)
+            return value
+          end
+          {% for int in [Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64] %}
+            if @data.type_id == {{ int }}.crystal_instance_type_id # An integer, like a packed enum
+              return T.new(typeof(T.new(0).value).new!(Variant.unpack_value(@data, {{ int }})))
+            end
+          {% end %}
+        {% end %}
+        {% if T.union? %}
+          case @data.type_id
+          {% for inner in T.union_types %}
+          when {{ inner }}.crystal_instance_type_id
+            return Variant.unpack_value(@data, {{ inner }})
+          {% end %}
+          end
+        {% else %}
+          return Variant.unpack_value(@data, T) if @data.type_id == T.crystal_instance_type_id
+        {% end %}
+        raise TypeCastError.new("Variant doesn't contain a #{T}")
       {% end %}
     end
 
@@ -266,33 +301,55 @@ module Qt
     # This method is like the `#as?` cast method.
     def to?(type : T.class) : T? forall T
       {% begin %}
-        Variant.unpack(@data, Union({{ T.is_a?(Path) ? T.resolve : T }})) do
-          nil
+        {% if T < ::Enum %}
+          if value = enum_value_from_qt(T)
+            return value
+          end
+          {% for int in [Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64] %}
+            if @data.type_id == {{ int }}.crystal_instance_type_id # An integer, like a packed enum
+              return T.new(typeof(T.new(0).value).new!(Variant.unpack_value(@data, {{ int }})))
+            end
+          {% end %}
+        {% end %}
+        {% if T.union? %}
+          case @data.type_id
+          {% for inner in T.union_types %}
+          when {{ inner }}.crystal_instance_type_id
+            return Variant.unpack_value(@data, {{ inner }})
+          {% end %}
+          end
+        {% else %}
+          return Variant.unpack_value(@data, T) if @data.type_id == T.crystal_instance_type_id
+        {% end %}
+        nil
+      {% end %}
+    end
+
+    # The value of *type* in *data*, which holds one: see `unpack_type`.  A
+    # method, so a type private to the caller's file is found.
+    protected def self.unpack_value(data : Binding::CrystalVariant, type : T.class) : T forall T
+      {% if T < Reference %}
+        data.data.pointer.as(T)
+      {% else %}
+        if sizeof(T) > INLINE_SIZE
+          data.data.pointer.as(T*).value
+        else
+          data.data.bytes.to_unsafe.as(T*).value
         end
       {% end %}
     end
 
-    # Helper macro to unpack the (possibly union) *type* from *data*.
-    # Does type checks.  If *type* does not match, it'll yield.
-    macro unpack(data, type)
-      {% type = type.type_vars[0] if type.is_a?(Generic) %}
-      {% type = type.resolve if type.is_a?(Path) %}
-      {% if type.is_a?(Union) %}
-        case {{ data }}.type_id
-          {% for inner in type.types %}
-          when {{ inner }}.crystal_instance_type_id
-            Variant.unpack_type({{ data }}, {{ inner }})
-          {% end %}
-        else
-          {{ yield }}
-        end
-      {% else %}
-        if {{ data }}.type_id == {{ type }}.crystal_instance_type_id
-          Variant.unpack_type({{ data }}, {{ type }})
-        else
-          {{ yield }}
-        end
-      {% end %}
+    # The value of the enum *type* held by a QVariant of an enumeration Qt
+    # knows (see `Tag::Unknown`): a wrapped enum, like the `orientation`
+    # property of a slider, or a Crystal enum of a class with a meta-object.
+    # `nil` for any other content.
+    private def enum_value_from_qt(type : T.class) : T? forall T
+      return unless @data.type_id == Tag::Unknown.value
+      pointer = @data.data.pointer
+      return if pointer.null?
+      value = 0_i64
+      return unless Binding.bindgen_qt_variant_enum_value(pointer, pointerof(value))
+      T.new(typeof(T.new(0).value).new!(value))
     end
 
     # Helper macro to unpack a single *type* from the *data*.  This macro

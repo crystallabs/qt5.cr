@@ -300,3 +300,20 @@ static QVariant crystal_to_qvariant(CrystalVariant object) {
       return QVariant::fromValue<CrystalVariant>(object);
   }
 }
+
+// The integral value of a QVariant holding an enumeration Qt knows (a wrapped
+// enum, or a Crystal enum of a class with a meta-object), for
+// `Qt::Variant#to(SomeEnum)`.  False for any other type.
+extern "C" bool bindgen_qt_variant_enum_value(const QVariant *variant, int64_t *value) {
+  if (!variant) return false;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  if (!(variant->metaType().flags() & QMetaType::IsEnumeration)) return false;
+#else
+  if (!(QMetaType::typeFlags(variant->userType()) & QMetaType::IsEnumeration)) return false;
+#endif
+  bool ok = false;
+  qlonglong result = variant->toLongLong(&ok);
+  if (!ok) return false;
+  *value = static_cast<int64_t>(result);
+  return true;
+}

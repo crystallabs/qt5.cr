@@ -63,6 +63,13 @@ enum PropertyFlags : unsigned {
   Notify = 0x00400000,
 };
 
+enum EnumFlags : unsigned {
+  EnumIsFlag = 0x1,
+  EnumIsScoped = 0x2,
+};
+
+const unsigned IntsPerEnum = 5; // Name, alias, flags, count, data offset
+
 const unsigned IsUnresolvedType = 0x80000000u;
 
 // The QMetaType id of the type *name*, or 0 if unknown to Qt.
@@ -94,6 +101,28 @@ struct ClassInfo {
   std::string key;
   std::string value;
 };
+
+/* An enumerator of the class: a Crystal enum a property, signal or slot of
+ * the class uses, listed in the meta-object like a `Q_ENUM`, and registered
+ * with `QMetaType` as `Class::Name` by `BindgenQtMetaObject::registerEnums`,
+ * so `QObject::property` returns it, `setProperty` takes an int or a key,
+ * and QML and queued connections carry it.  The values are ints.
+ */
+struct Enum {
+  std::string name;
+  bool is_flags;
+  std::vector<std::string> keys;
+  std::vector<int> values;
+};
+
+// The C++ type the registered enum types are modelled on: a scoped int enum.
+enum class EnumModel : int {};
+
+// *name* as Qt normalizes a type name: `QMap<QString,QVariant>`.
+inline std::string normalized(const char *name) {
+  QByteArray normal = QMetaObject::normalizedType(name);
+  return std::string(normal.constData(), static_cast<size_t>(normal.size()));
+}
 
 } // namespace bindgen_qt
 
@@ -145,9 +174,9 @@ struct BindgenQtMetaObject {
     bindgen_qt::Method method;
     method.flags = flags;
     method.name = name;
-    method.return_type = return_type;
+    method.return_type = bindgen_qt::normalized(return_type);
     for (int i = 0; i < argc; ++i) {
-      method.types.push_back(types[i]);
+      method.types.push_back(bindgen_qt::normalized(types[i]));
       method.names.push_back(names[i]);
     }
     methods.push_back(method);
@@ -155,8 +184,21 @@ struct BindgenQtMetaObject {
   }
 
   int addProperty(const char *name, const char *type, int notify, bool writable, bool is_enum) {
-    properties.push_back(bindgen_qt::Property{name, type, notify, writable, is_enum});
+    properties.push_back(bindgen_qt::Property{name, bindgen_qt::normalized(type), notify, writable, is_enum});
     return static_cast<int>(properties.size()) - 1;
+  }
+
+  // Adds the enumerator *name* with *count* *keys* and *values*, see `bindgen_qt::Enum`.
+  int addEnum(const char *name, bool is_flags, int count, const char **keys, const int *values) {
+    bindgen_qt::Enum e;
+    e.name = name;
+    e.is_flags = is_flags;
+    for (int i = 0; i < count; ++i) {
+      e.keys.push_back(keys[i]);
+      e.values.push_back(values[i]);
+    }
+    enums.push_back(e);
+    return static_cast<int>(enums.size()) - 1;
   }
 
   int addClassInfo(const char *key, const char *value) {
@@ -170,6 +212,7 @@ struct BindgenQtMetaObject {
     using namespace bindgen_qt;
     parent = parent_meta;
     crystalProc = metacall_proc;
+    registerEnums(); // Before the type names are looked up
 
     // Signals first, as Qt expects them: stable partition.
     std::vector<Method> ordered;
@@ -199,7 +242,7 @@ struct BindgenQtMetaObject {
     data[4] = static_cast<unsigned>(methods.size());
     data[5] = methods.empty() ? 0 : methodsOffset;
     unsigned parametersOffset = methodsOffset + static_cast<unsigned>(methods.size()) * IntsPerMethod;
-    unsigned metaTypeOffset = static_cast<unsigned>(properties.size()) + (Revision >= 10 ? 1 : 0);
+    unsigned metaTypeOffset = static_cast<unsigned>(properties.size()) + (Revision >= 12 ? static_cast<unsigned>(enums.size()) : 0) + (Revision >= 10 ? 1 : 0);
 
     for (const Method &m : methods) {
       data.push_back(stringIndex(m.name.c_str()));
@@ -237,6 +280,27 @@ struct BindgenQtMetaObject {
     }
     if (Revision < 9 && anyNotify) {
       for (const Property &p : properties) data.push_back(p.notify >= 0 ? static_cast<unsigned>(p.notify) : 0);
+    }
+
+    // Enumerators: name, alias, flags, count, data offset; then the key and
+    // value pairs.  Crystal enums are scoped.
+    data[8] = static_cast<unsigned>(enums.size());
+    data[9] = enums.empty() ? 0 : static_cast<unsigned>(data.size());
+    unsigned enumDataOffset = static_cast<unsigned>(data.size()) + static_cast<unsigned>(enums.size()) * IntsPerEnum;
+    for (const Enum &e : enums) {
+      const unsigned name = stringIndex(e.name.c_str());
+      data.push_back(name);
+      data.push_back(name); // Alias
+      data.push_back(EnumIsScoped | (e.is_flags ? EnumIsFlag : 0));
+      data.push_back(static_cast<unsigned>(e.keys.size()));
+      data.push_back(enumDataOffset);
+      enumDataOffset += 2 * static_cast<unsigned>(e.keys.size());
+    }
+    for (const Enum &e : enums) {
+      for (size_t i = 0; i < e.keys.size(); ++i) {
+        data.push_back(stringIndex(e.keys[i].c_str()));
+        data.push_back(static_cast<unsigned>(e.values[i]));
+      }
     }
 
     data[12] = 0; // Flags: property access through qt_metacall
@@ -351,6 +415,7 @@ struct BindgenQtMetaObject {
   std::vector<bindgen_qt::Method> methods;
   std::vector<bindgen_qt::Property> properties;
   std::vector<bindgen_qt::ClassInfo> classInfos;
+  std::vector<bindgen_qt::Enum> enums;
   int signalCount = 0;
   BindgenQtMetacall crystalProc;
 
@@ -361,6 +426,51 @@ private:
   std::vector<unsigned> stringData; // (offset, size) pairs, then the characters
   std::vector<const QtPrivate::QMetaTypeInterface *> metaTypes;
   std::vector<std::pair<size_t, std::string>> unresolvedTypes; // Index into `metaTypes`, type name
+
+  /* The `QMetaType` of an enumerator: an interface like `int`'s, flagged as
+   * an enumeration, named `Class::Name`, whose meta-object is this one, so
+   * `QMetaType::convert` finds the keys.  Qt keeps the pointer: never freed.
+   */
+  struct EnumType {
+    QtPrivate::QMetaTypeInterface iface; // First: `enumMetaObject` casts back
+    BindgenQtMetaObject *owner;
+  };
+  std::vector<EnumType *> enumTypes;
+
+  static const QMetaObject *enumMetaObject(const QtPrivate::QMetaTypeInterface *iface) {
+    return &reinterpret_cast<const EnumType *>(iface)->owner->meta;
+  }
+
+  void registerEnums() {
+    const QtPrivate::QMetaTypeInterface &model = QtPrivate::QMetaTypeInterfaceWrapper<bindgen_qt::EnumModel>::metaType;
+    for (const bindgen_qt::Enum &e : enums) {
+      const char *name = qstrdup((className + "::" + e.name).c_str()); // Kept by Qt
+      EnumType *type = new EnumType{
+        {
+          /*.revision=*/ model.revision,
+          /*.alignment=*/ model.alignment,
+          /*.size=*/ model.size,
+          /*.flags=*/ model.flags,
+          /*.typeId=*/ {},
+          /*.metaObjectFn=*/ enumMetaObject,
+          /*.name=*/ name,
+          /*.defaultCtr=*/ model.defaultCtr,
+          /*.copyCtr=*/ model.copyCtr,
+          /*.moveCtr=*/ model.moveCtr,
+          /*.dtor=*/ model.dtor,
+          /*.equals=*/ model.equals,
+          /*.lessThan=*/ model.lessThan,
+          /*.debugStream=*/ model.debugStream,
+          /*.dataStreamOut=*/ model.dataStreamOut,
+          /*.dataStreamIn=*/ model.dataStreamIn,
+          /*.legacyRegisterOp=*/ model.legacyRegisterOp,
+        },
+        this,
+      };
+      QMetaType(&type->iface).id(); // Registers it, or finds the type of the name
+      enumTypes.push_back(type);
+    }
+  }
 
   // Looks the types `buildMetaTypes` didn't find up again.
   void resolveMetaTypes() {
@@ -377,6 +487,17 @@ private:
 #else
   std::vector<char> characters;
   QByteArrayData *byteArrayData = nullptr;
+
+  // Registers the enumerators as int-sized enumeration types named
+  // `Class::Name`, with this meta-object, so `QVariant::convert` finds the keys.
+  void registerEnums() {
+    typedef QtMetaTypePrivate::QMetaTypeFunctionHelper<int> Helper;
+    for (const bindgen_qt::Enum &e : enums) {
+      QByteArray name = QMetaObject::normalizedType((className + "::" + e.name).c_str());
+      QMetaType::registerNormalizedType(name, Helper::Destruct, Helper::Construct, sizeof(int),
+                                        QMetaType::TypeFlags(QMetaType::MovableType | QMetaType::IsEnumeration), &meta);
+    }
+  }
 #endif
 
   unsigned stringIndex(const char *string) {
@@ -419,13 +540,16 @@ private:
     return mt.iface();
   }
 
-  // Properties, the class (void: unknown to Qt), then the return type and
-  // the parameters of each method.  A type Qt doesn't know yet is noted for
-  // `resolveMetaTypes`.
+  // Properties, the enumerators (revision 12+), the class (void: unknown to
+  // Qt), then the return type and the parameters of each method.  A type Qt
+  // doesn't know yet is noted for `resolveMetaTypes`.
   void buildMetaTypes() {
     metaTypes.clear();
     unresolvedTypes.clear();
     for (const bindgen_qt::Property &p : properties) pushMetaType(p.type);
+    if (bindgen_qt::Revision >= 12) {
+      for (const EnumType *type : enumTypes) metaTypes.push_back(&type->iface);
+    }
     if (bindgen_qt::Revision >= 10) metaTypes.push_back(QMetaType::fromType<void>().iface());
     for (const bindgen_qt::Method &m : methods) {
       pushMetaType(m.return_type);
@@ -525,6 +649,11 @@ BINDGEN_QT_C int bindgen_qt_meta_add_property(BindgenQtMetaObject *meta, const c
 
 BINDGEN_QT_C int bindgen_qt_meta_add_class_info(BindgenQtMetaObject *meta, const char *key, const char *value) {
   return meta->addClassInfo(key, value);
+}
+
+// A Crystal enum of the class: its *name* without the scope, and *count* *keys* and *values*.
+BINDGEN_QT_C int bindgen_qt_meta_add_enum(BindgenQtMetaObject *meta, const char *name, bool is_flags, int count, const char **keys, const int *values) {
+  return meta->addEnum(name, is_flags, count, keys, values);
 }
 
 BINDGEN_QT_C void bindgen_qt_meta_finish(BindgenQtMetaObject *meta, BindgenQtMetaObject *parent, BindgenQtMetacall metacall) {
