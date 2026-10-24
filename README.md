@@ -326,9 +326,13 @@ Qt::MetaObject.invoke_method(counter, "increment")
 counter.property("value".to_unsafe).to(Int32)
 ```
 
-The argument, result and property types are the numbers, `Bool`, `String`,
-`Bytes`, and the `Qt::Object` classes (as pointers, nilable or not); the C++
-names are the camel-cased Crystal names.  A Crystal class deriving from another
+A `@[Qt::Invokable]` method is invokable by name without being a slot
+(`Q_INVOKABLE`), and `qt_class_info "QML.Element", "auto"` adds a class info
+(`Q_CLASSINFO`).  The argument, result and property types are the numbers,
+`Bool`, `String`, `Bytes`, the wrapped enums (`Qt::Orientation`), the
+`Qt::Object` classes (as pointers, nilable or not) and the other wrapper
+classes by value (`Qt::Color`, copied through its `QMetaType`); the C++ names
+are the camel-cased Crystal names.  A Crystal class deriving from another
 Crystal class with such members chains its meta-object to the parent's.  See
 `spec/qt/meta_subclass_spec.cr`.
 
@@ -502,7 +506,8 @@ see the comments there:
   `Bytes`, `Array(String)` (`QStringList`), `Point`, `PointF`, `Size`, `SizeF`,
   `Rect` and `RectF`.  Any other Crystal value is wrapped as is and comes back
   unchanged; a `QVariant` of another Qt type unpacks as unknown (`#to?`
-  returns `nil`).  See `Qt::Variant`.
+  returns `nil`), keeping the value for Qt: `label.set_property("font",
+  other.property("font"))` works.  See `Qt::Variant`.
 * `QByteArray` maps to `Bytes`, copied in both directions like `QString`:
   `String.new(Qt::Url.to_percent_encoding(text))`, `mime_data.set_data(type,
   bytes)`.  `QList<QByteArray>` is an `Enumerable(Bytes)`.

@@ -56,8 +56,9 @@ module Qt
   # implementation of a virtual method through `#superclass`, so `super` works.
   # Also marks these methods themselves: the compiler copies them into the
   # subclasses, and the constructors must not take a copy for an override.  On a
-  # class, its argument is the C++ name of the wrapped class, `"QWidget"`, which
-  # the Qt meta-object macros need for the types of signals and properties.
+  # class or an enum, its argument is the C++ name of the wrapped type,
+  # `"QWidget"` or `"Qt::Orientation"`, which the Qt meta-object macros need for
+  # the types of signals and properties.
   annotation BindgenWrapper
   end
   
@@ -38301,9 +38302,11 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QSysInfo::Sizes")]
     enum Sizes : UInt32
       WordSize = 64
     end
+    @[BindgenWrapper("QSysInfo::Endian")]
     enum Endian : UInt32
       BigEndian = 0
       LittleEndian = 1
@@ -38403,6 +38406,7 @@ module Qt
       Binding.bg_QMutex_try_lock_for_std__chrono__milliseconds(self, Qt::Converter::TimeSpan.wrap(duration))
     end
     
+    @[BindgenWrapper("QMutex::RecursionMode")]
     enum RecursionMode : UInt32
       NonRecursive = 0
       Recursive = 1
@@ -39035,6 +39039,7 @@ module Qt
       Binding.bg_QMetaType__OPERATOR_ne_const_QMetaType_R(self, b)
     end
     
+    @[BindgenWrapper("QMetaType::Type")]
     enum Type : UInt32
       Void = 43
       Bool = 1
@@ -39127,6 +39132,7 @@ module Qt
       UnknownType = 0
       User = 1024
     end
+    @[BindgenWrapper("QMetaType::TypeFlags")]
     @[Flags]
     enum TypeFlags : UInt32
       NeedsConstruction = 1
@@ -40176,14 +40182,25 @@ module Qt
           end
         end
     
+        # Declares a class info, `qt_class_info "QML.Element", "auto"`: a key and
+        # a value in the meta-object, like `Q_CLASSINFO`, read through
+        # `QMetaObject::classInfo`.
+        macro qt_class_info(key, value)
+          {% raise "qt_class_info expects two string literals, like `qt_class_info \"Author\", \"Me\"`" unless key.is_a?(StringLiteral) && value.is_a?(StringLiteral) %}
+          @[::Qt::ClassInfo(key: {{ key }}, value: {{ value }})]
+          def bg_class_info_{{ key.gsub(/[^A-Za-z0-9_]/, "_").id }} : Nil
+          end
+        end
+    
         # Installs the `finished` macro building the meta-object of a subclass
-        # declaring signals, slots or properties.
+        # declaring signals, slots, invokable methods, properties or class infos.
         macro inherited
           macro finished
             \{% signals = @type.methods.select(&.annotation(::Qt::Signal)) %}
-            \{% slots = @type.methods.select(&.annotation(::Qt::Slot)) %}
+            \{% slots = @type.methods.select { |m| m.annotation(::Qt::Slot) || m.annotation(::Qt::Invokable) } %}
             \{% properties = @type.methods.select(&.annotation(::Qt::Property)) %}
-            \{% unless signals.empty? && slots.empty? && properties.empty? %}
+            \{% class_infos = @type.methods.select(&.annotation(::Qt::ClassInfo)) %}
+            \{% unless signals.empty? && slots.empty? && properties.empty? && class_infos.empty? %}
               \{% for m, i in signals %}
                 BG_SIGNAL_\{{ m.name.upcase }} = \{{ i }}
               \{% end %}
@@ -40195,6 +40212,10 @@ module Qt
                 return @@bg_meta_object unless @@bg_meta_object.null?
     
                 meta = ::Qt::Binding.bindgen_qt_meta_new(\{{ @type.name.stringify.split("::").last }}.to_unsafe)
+                \{% for m in class_infos %}
+                  \{% ann = m.annotation(::Qt::ClassInfo) %}
+                  ::Qt::Binding.bindgen_qt_meta_add_class_info(meta, \{{ ann[:key] }}.to_unsafe, \{{ ann[:value] }}.to_unsafe)
+                \{% end %}
                 \{% for m, i in signals + slots %}
                   \{% raise "#{@type}##{m.name} can't be a Qt slot: its name must be a plain identifier" if m.name.stringify =~ /[?!=]/ %}
                   \{% for a in m.args %}
@@ -40211,7 +40232,7 @@ module Qt
                   \{% if i < signals.size %}
                     \{% raise "signal #{m.name} must return Nil" if !rt.is_a?(Nop) && rt.resolve != Nil %}
                   \{% end %}
-                  ::Qt::Binding.bindgen_qt_meta_add_method(meta, \{{ i < signals.size ? 0 : 1 }}, \{{ m.name.stringify.camelcase(lower: true) }}.to_unsafe,
+                  ::Qt::Binding.bindgen_qt_meta_add_method(meta, \{{ i < signals.size ? 0 : (m.annotation(::Qt::Slot) ? 1 : 2) }}, \{{ m.name.stringify.camelcase(lower: true) }}.to_unsafe,
                     \{% if rt.is_a?(Nop) %}"void"\{% else %}::Qt::BindgenMeta.cpp_type_name(\{{ rt }})\{% end %}.to_unsafe,
                     \{{ m.args.size }}, bg_types\{{ i }}, bg_names\{{ i }})
                 \{% end %}
@@ -40226,7 +40247,8 @@ module Qt
                   \{% end %}
                   \{% raise "#{@type}: the property #{ann[:name]} notifies through #{notify}, which isn't a signal of the class" if notify && notify_index.nil? %}
                   ::Qt::Binding.bindgen_qt_meta_add_property(meta, \{{ ann[:name].id.stringify.camelcase(lower: true) }}.to_unsafe,
-                    ::Qt::BindgenMeta.cpp_type_name(\{{ p.return_type }}).to_unsafe, \{{ notify_index.nil? ? -1 : notify_index }}, \{{ ann[:write] ? true : false }})
+                    ::Qt::BindgenMeta.cpp_type_name(\{{ p.return_type }}).to_unsafe, \{{ notify_index.nil? ? -1 : notify_index }}, \{{ ann[:write] ? true : false }},
+                    ::Qt::BindgenMeta.enum_type?(\{{ p.return_type }}))
                 \{% end %}
                 ::Qt::Binding.bindgen_qt_meta_finish(meta, \{{ @type.superclass }}.bg_meta_object, ::Qt::BindgenHelper.wrap_proc(->\{{ @type }}.bg_metacall(Void*, Int32, Int32, Void**)))
                 @@bg_meta_object = meta
@@ -40239,7 +40261,7 @@ module Qt
                 object = crystal.as(\{{ @type }})
                 ::Qt::BindgenHelper.rescued(nil) do
                   case call
-                  when 0 # InvokeMetaMethod: the slots, after the signals
+                  when 0 # InvokeMetaMethod: the slots and invokables, after the signals
                     case id
                     \{% for m, i in slots %}
                     when \{{ signals.size + i }}
@@ -40545,15 +40567,18 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractAnimation_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractAnimation::Direction")]
     enum Direction : UInt32
       Forward = 0
       Backward = 1
     end
+    @[BindgenWrapper("QAbstractAnimation::State")]
     enum State : UInt32
       Stopped = 0
       Paused = 1
       Running = 2
     end
+    @[BindgenWrapper("QAbstractAnimation::DeletionPolicy")]
     enum DeletionPolicy : UInt32
       KeepWhenStopped = 0
       DeleteWhenStopped = 1
@@ -41234,6 +41259,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QEventLoop_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QEventLoop::ProcessEventsFlags")]
     @[Flags]
     enum ProcessEventsFlags : UInt32
       AllEvents = 0
@@ -42922,17 +42948,20 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractItemModel_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractItemModel::LayoutChangeHint")]
     enum LayoutChangeHint : UInt32
       NoLayoutChangeHint = 0
       VerticalSortHint = 1
       HorizontalSortHint = 2
     end
+    @[BindgenWrapper("QAbstractItemModel::CheckIndexOption")]
     enum CheckIndexOption : Int32
       NoOption = 0
       IndexIsValid = 1
       DoNotUseParent = 2
       ParentIsInvalid = 4
     end
+    @[BindgenWrapper("QAbstractItemModel::CheckIndexOptions")]
     @[Flags]
     enum CheckIndexOptions : Int32
       NoOption = 0
@@ -47476,6 +47505,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QIODevice_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QIODevice::OpenModeFlag")]
     enum OpenModeFlag : UInt32
       NotOpen = 0
       ReadOnly = 1
@@ -47488,6 +47518,7 @@ module Qt
       NewOnly = 64
       ExistingOnly = 128
     end
+    @[BindgenWrapper("QIODevice::OpenMode")]
     @[Flags]
     enum OpenMode : UInt32
       NotOpen = 0
@@ -48816,6 +48847,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QLocale_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QLocale::Language")]
     enum Language : UInt32
       AnyLanguage = 0
       C = 1
@@ -49156,6 +49188,7 @@ module Qt
       Uigur = 128
       LastLanguage = 370
     end
+    @[BindgenWrapper("QLocale::Script")]
     enum Script : UInt32
       AnyScript = 0
       ArabicScript = 1
@@ -49303,6 +49336,7 @@ module Qt
       TraditionalChineseScript = 6
       LastScript = 141
     end
+    @[BindgenWrapper("QLocale::Country")]
     enum Country : UInt32
       AnyCountry = 0
       Afghanistan = 1
@@ -49575,17 +49609,20 @@ module Qt
       SyrianArabRepublic = 207
       LastCountry = 261
     end
+    @[BindgenWrapper("QLocale::MeasurementSystem")]
     enum MeasurementSystem : UInt32
       MetricSystem = 0
       ImperialUSSystem = 1
       ImperialUKSystem = 2
       ImperialSystem = 1
     end
+    @[BindgenWrapper("QLocale::FormatType")]
     enum FormatType : UInt32
       LongFormat = 0
       ShortFormat = 1
       NarrowFormat = 2
     end
+    @[BindgenWrapper("QLocale::NumberOption")]
     enum NumberOption : UInt32
       DefaultNumberOptions = 0
       OmitGroupSeparator = 1
@@ -49595,6 +49632,7 @@ module Qt
       IncludeTrailingZeroesAfterDot = 16
       RejectTrailingZeroesAfterDot = 32
     end
+    @[BindgenWrapper("QLocale::NumberOptions")]
     @[Flags]
     enum NumberOptions : UInt32
       DefaultNumberOptions = 0
@@ -49605,14 +49643,17 @@ module Qt
       IncludeTrailingZeroesAfterDot = 16
       RejectTrailingZeroesAfterDot = 32
     end
+    @[BindgenWrapper("QLocale::FloatingPointPrecisionOption")]
     enum FloatingPointPrecisionOption : Int32
       FloatingPointShortest = -128
     end
+    @[BindgenWrapper("QLocale::CurrencySymbolFormat")]
     enum CurrencySymbolFormat : UInt32
       CurrencyIsoCode = 0
       CurrencySymbol = 1
       CurrencyDisplayName = 2
     end
+    @[BindgenWrapper("QLocale::DataSizeFormat")]
     enum DataSizeFormat : UInt32
       DataSizeBase1000 = 1
       DataSizeSIQuantifiers = 2
@@ -49620,6 +49661,7 @@ module Qt
       DataSizeTraditionalFormat = 2
       DataSizeSIFormat = 3
     end
+    @[BindgenWrapper("QLocale::DataSizeFormats")]
     @[Flags]
     enum DataSizeFormats : UInt32
       DataSizeBase1000 = 1
@@ -49628,6 +49670,7 @@ module Qt
       DataSizeTraditionalFormat = 2
       DataSizeSIFormat = 3
     end
+    @[BindgenWrapper("QLocale::QuotationStyle")]
     enum QuotationStyle : UInt32
       StandardQuotation = 0
       AlternateQuotation = 1
@@ -49870,6 +49913,7 @@ module Qt
     @unwrap = result
     end
     
+    @[BindgenWrapper("QCalendar::System")]
     enum System : Int32
       Gregorian = 0
       Julian = 8
@@ -50869,23 +50913,27 @@ module Qt
       TextStream.bg_discover(Binding.bg_QTextStream__OPERATOR_lshift_QTextStreamManipulator(self, m))
     end
     
+    @[BindgenWrapper("QTextStream::RealNumberNotation")]
     enum RealNumberNotation : UInt32
       SmartNotation = 0
       FixedNotation = 1
       ScientificNotation = 2
     end
+    @[BindgenWrapper("QTextStream::FieldAlignment")]
     enum FieldAlignment : UInt32
       AlignLeft = 0
       AlignRight = 1
       AlignCenter = 2
       AlignAccountingStyle = 3
     end
+    @[BindgenWrapper("QTextStream::Status")]
     enum Status : UInt32
       Ok = 0
       ReadPastEnd = 1
       ReadCorruptData = 2
       WriteFailed = 3
     end
+    @[BindgenWrapper("QTextStream::NumberFlag")]
     enum NumberFlag : UInt32
       ShowBase = 1
       ForcePoint = 2
@@ -50893,6 +50941,7 @@ module Qt
       UppercaseBase = 8
       UppercaseDigits = 16
     end
+    @[BindgenWrapper("QTextStream::NumberFlags")]
     @[Flags]
     enum NumberFlags : UInt32
       ShowBase = 1
@@ -50991,6 +51040,7 @@ module Qt
       Binding.bg_QCborError_c_SETTER_QCborError__Code(self, c)
     end
     
+    @[BindgenWrapper("QCborError::Code")]
     enum Code : Int32
       UnknownError = 1
       AdvancePastEnd = 3
@@ -51149,6 +51199,7 @@ module Qt
       Binding.bg_QRegularExpression_qHash_uint(self, seed)
     end
     
+    @[BindgenWrapper("QRegularExpression::PatternOption")]
     enum PatternOption : UInt32
       NoPatternOption = 0
       CaseInsensitiveOption = 1
@@ -51161,6 +51212,7 @@ module Qt
       OptimizeOnFirstUsageOption = 128
       DontAutomaticallyOptimizeOption = 256
     end
+    @[BindgenWrapper("QRegularExpression::PatternOptions")]
     @[Flags]
     enum PatternOptions : UInt32
       NoPatternOption = 0
@@ -51174,17 +51226,20 @@ module Qt
       OptimizeOnFirstUsageOption = 128
       DontAutomaticallyOptimizeOption = 256
     end
+    @[BindgenWrapper("QRegularExpression::MatchType")]
     enum MatchType : UInt32
       NormalMatch = 0
       PartialPreferCompleteMatch = 1
       PartialPreferFirstMatch = 2
       NoMatch = 3
     end
+    @[BindgenWrapper("QRegularExpression::MatchOption")]
     enum MatchOption : UInt32
       NoMatchOption = 0
       AnchoredMatchOption = 1
       DontCheckSubjectStringMatchOption = 2
     end
+    @[BindgenWrapper("QRegularExpression::MatchOptions")]
     @[Flags]
     enum MatchOptions : UInt32
       NoMatchOption = 0
@@ -51735,11 +51790,13 @@ module Qt
       Binding.bg_QUrl_qHash_uint(self, seed)
     end
     
+    @[BindgenWrapper("QUrl::ParsingMode")]
     enum ParsingMode : UInt32
       TolerantMode = 0
       StrictMode = 1
       DecodedMode = 2
     end
+    @[BindgenWrapper("QUrl::UrlFormattingOption")]
     enum FormattingOption : UInt32
       None = 0
       RemoveScheme = 1
@@ -51755,6 +51812,7 @@ module Qt
       RemoveFilename = 2048
       NormalizePathSegments = 4096
     end
+    @[BindgenWrapper("QUrl::ComponentFormattingOption")]
     enum ComponentFormattingOption : UInt32
       PrettyDecoded = 0
       EncodeSpaces = 1048576
@@ -51765,6 +51823,7 @@ module Qt
       FullyEncoded = 32505856
       FullyDecoded = 133169152
     end
+    @[BindgenWrapper("QUrl::ComponentFormattingOptions")]
     @[Flags]
     enum ComponentFormattingOptions : UInt32
       PrettyDecoded = 0
@@ -51776,10 +51835,12 @@ module Qt
       FullyEncoded = 32505856
       FullyDecoded = 133169152
     end
+    @[BindgenWrapper("QUrl::UserInputResolutionOption")]
     enum UserInputResolutionOption : UInt32
       DefaultResolution = 0
       AssumeLocalFile = 1
     end
+    @[BindgenWrapper("QUrl::UserInputResolutionOptions")]
     @[Flags]
     enum UserInputResolutionOptions : UInt32
       DefaultResolution = 0
@@ -51969,6 +52030,7 @@ module Qt
       BindgenHelper::SliceConverter(UInt8).unwrap(Binding.bg_QUuid_data4_GETTER_(self))
     end
     
+    @[BindgenWrapper("QUuid::Variant")]
     enum Variant : Int32
       VarUnknown = -1
       Ncs = 0
@@ -51976,6 +52038,7 @@ module Qt
       Microsoft = 6
       Reserved = 7
     end
+    @[BindgenWrapper("QUuid::Version")]
     enum Version : Int32
       VerUnknown = -1
       Time = 1
@@ -51985,6 +52048,7 @@ module Qt
       Random = 4
       Sha1 = 5
     end
+    @[BindgenWrapper("QUuid::StringFormat")]
     enum StringFormat : UInt32
       WithBraces = 0
       WithoutBraces = 1
@@ -52487,6 +52551,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QCborValue_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QCborValue::EncodingOptions")]
     @[Flags]
     enum EncodingOptions : UInt32
       SortKeysInMaps = 1
@@ -52495,12 +52560,14 @@ module Qt
       UseIntegers = 8
       NoTransformation = 0
     end
+    @[BindgenWrapper("QCborValue::DiagnosticNotationOptions")]
     @[Flags]
     enum DiagnosticNotationOptions : UInt32
       Compact = 0
       LineWrapped = 1
       ExtendedFormat = 2
     end
+    @[BindgenWrapper("QCborValue::Type")]
     enum Type : Int32
       Integer = 0
       ByteArray = 64
@@ -53767,6 +53834,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QCborStreamReader_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QCborStreamReader::Type")]
     enum Type : UInt8
       UnsignedInteger = 0
       NegativeInteger = 32
@@ -53784,6 +53852,7 @@ module Qt
       Double = 251
       Invalid = 255
     end
+    @[BindgenWrapper("QCborStreamReader::StringResultCode")]
     enum StringResultCode : Int32
       EndOfString = 0
       Ok = 1
@@ -54183,10 +54252,12 @@ module Qt
       Binding.bg_QCommandLineOption_setFlags_QCommandLineOption__Flags(self, aflags)
     end
     
+    @[BindgenWrapper("QCommandLineOption::Flag")]
     enum Flag : UInt32
       HiddenFromHelp = 1
       ShortOptionStyle = 2
     end
+    @[BindgenWrapper("QCommandLineOption::Flags")]
     @[Flags]
     enum Flags : UInt32
       HiddenFromHelp = 1
@@ -54277,6 +54348,7 @@ module Qt
       Binding.bg_QEvent_t_SETTER_ushort(self, t)
     end
     
+    @[BindgenWrapper("QEvent::Type")]
     enum Type : UInt32
       None = 0
       Timer = 1
@@ -55502,10 +55574,12 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QCommandLineParser_helpText_(self))
     end
     
+    @[BindgenWrapper("QCommandLineParser::SingleDashWordOptionMode")]
     enum SingleDashWordOptionMode : UInt32
       ParseAsCompactedShortOptions = 0
       ParseAsLongOptions = 1
     end
+    @[BindgenWrapper("QCommandLineParser::OptionsAfterPositionalArgumentsMode")]
     enum OptionsAfterPositionalArgumentsMode : UInt32
       ParseAsOptions = 0
       ParseAsPositionalArguments = 1
@@ -56473,6 +56547,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QCryptographicHash_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QCryptographicHash::Algorithm")]
     enum Algorithm : UInt32
       Md4 = 0
       Md5 = 1
@@ -57212,6 +57287,7 @@ module Qt
       DataStream.bg_discover(Binding.bg_QDataStream__OPERATOR_rshift_QTreeWidgetItem_R(self, item))
     end
     
+    @[BindgenWrapper("QDataStream::Version")]
     enum Version : UInt32
       Qt_1_0 = 1
       Qt_2_0 = 2
@@ -57247,16 +57323,19 @@ module Qt
       Qt_5_15 = 19
       Qt_DefaultCompiledVersion = 19
     end
+    @[BindgenWrapper("QDataStream::ByteOrder")]
     enum ByteOrder : UInt32
       BigEndian = 0
       LittleEndian = 1
     end
+    @[BindgenWrapper("QDataStream::Status")]
     enum Status : UInt32
       Ok = 0
       ReadPastEnd = 1
       ReadCorruptData = 2
       WriteFailed = 3
     end
+    @[BindgenWrapper("QDataStream::FloatingPointPrecision")]
     enum FloatingPointPrecision : UInt32
       SinglePrecision = 0
       DoublePrecision = 1
@@ -57354,6 +57433,7 @@ module Qt
       Binding.bg_QElapsedTimer__OPERATOR_lt_const_QElapsedTimer_R(self, v2)
     end
     
+    @[BindgenWrapper("QElapsedTimer::ClockType")]
     enum ClockType : UInt32
       SystemTime = 0
       MonotonicClock = 1
@@ -57522,6 +57602,7 @@ module Qt
       Binding.bg_QDeadlineTimer__OPERATOR_sub_QDeadlineTimer(self, dt2)
     end
     
+    @[BindgenWrapper("QDeadlineTimer::ForeverConstant")]
     enum ForeverConstant : UInt32
       Forever = 0
     end
@@ -58019,6 +58100,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFileDevice_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFileDevice::FileError")]
     enum FileError : UInt32
       NoError = 0
       ReadError = 1
@@ -58036,12 +58118,14 @@ module Qt
       PermissionsError = 13
       CopyError = 14
     end
+    @[BindgenWrapper("QFileDevice::FileTime")]
     enum FileTime : UInt32
       FileAccessTime = 0
       FileBirthTime = 1
       FileMetadataChangeTime = 2
       FileModificationTime = 3
     end
+    @[BindgenWrapper("QFileDevice::Permission")]
     enum Permission : UInt32
       ReadOwner = 16384
       WriteOwner = 8192
@@ -58056,6 +58140,7 @@ module Qt
       WriteOther = 2
       ExeOther = 1
     end
+    @[BindgenWrapper("QFileDevice::Permissions")]
     @[Flags]
     enum Permissions : UInt32
       ReadOwner = 16384
@@ -58071,15 +58156,18 @@ module Qt
       WriteOther = 2
       ExeOther = 1
     end
+    @[BindgenWrapper("QFileDevice::FileHandleFlag")]
     enum FileHandleFlag : UInt32
       AutoCloseHandle = 1
       DontCloseHandle = 0
     end
+    @[BindgenWrapper("QFileDevice::FileHandleFlags")]
     @[Flags]
     enum FileHandleFlags : UInt32
       AutoCloseHandle = 1
       DontCloseHandle = 0
     end
+    @[BindgenWrapper("QFileDevice::MemoryMapFlags")]
     enum MemoryMapFlags : UInt32
       NoOptions = 0
       MapPrivateOption = 1
@@ -60038,6 +60126,7 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QDir::Filters")]
     @[Flags]
     enum Filters : Int32
       Dirs = 1
@@ -60061,6 +60150,7 @@ module Qt
       NoDotAndDotDot = 24576
       NoFilter = -1
     end
+    @[BindgenWrapper("QDir::SortFlags")]
     @[Flags]
     enum SortFlags : Int32
       Name = 0
@@ -60175,11 +60265,13 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QDirIterator_path_(self))
     end
     
+    @[BindgenWrapper("QDirIterator::IteratorFlag")]
     enum IteratorFlag : UInt32
       NoIteratorFlags = 0
       FollowSymlinks = 1
       Subdirectories = 2
     end
+    @[BindgenWrapper("QDirIterator::IteratorFlags")]
     @[Flags]
     enum IteratorFlags : UInt32
       NoIteratorFlags = 0
@@ -60287,6 +60379,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QEasingCurve_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QEasingCurve::Type")]
     enum Type : UInt32
       Linear = 0
       InQuad = 1
@@ -62562,6 +62655,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QItemSelectionModel_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QItemSelectionModel::SelectionFlag")]
     enum SelectionFlag : UInt32
       NoUpdate = 0
       Clear = 1
@@ -62575,6 +62669,7 @@ module Qt
       ToggleCurrent = 24
       ClearAndSelect = 3
     end
+    @[BindgenWrapper("QItemSelectionModel::SelectionFlags")]
     @[Flags]
     enum SelectionFlags : UInt32
       NoUpdate = 0
@@ -62953,6 +63048,7 @@ module Qt
       Binding.bg_QJsonValue_qHash_uint(self, seed)
     end
     
+    @[BindgenWrapper("QJsonValue::Type")]
     enum Type : UInt32
       Null = 0
       Bool = 1
@@ -63347,6 +63443,7 @@ module Qt
       Binding.bg_QJsonParseError_error_SETTER_QJsonParseError__ParseError(self, error)
     end
     
+    @[BindgenWrapper("QJsonParseError::ParseError")]
     enum ParseError : UInt32
       NoError = 0
       UnterminatedObject = 1
@@ -63500,10 +63597,12 @@ module Qt
     @unwrap = result
     end
     
+    @[BindgenWrapper("QJsonDocument::DataValidation")]
     enum DataValidation : UInt32
       Validate = 0
       BypassValidation = 1
     end
+    @[BindgenWrapper("QJsonDocument::JsonFormat")]
     enum JsonFormat : UInt32
       Indented = 0
       Compact = 1
@@ -64024,6 +64123,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QLibrary_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QLibrary::LoadHint")]
     enum LoadHint : UInt32
       ResolveAllSymbolsHint = 1
       ExportExternalSymbolsHint = 2
@@ -64031,6 +64131,7 @@ module Qt
       PreventUnloadHint = 8
       DeepBindHint = 16
     end
+    @[BindgenWrapper("QLibrary::LoadHints")]
     @[Flags]
     enum LoadHints : UInt32
       ResolveAllSymbolsHint = 1
@@ -64371,6 +64472,7 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QLibraryInfo::LibraryLocation")]
     enum LibraryLocation : UInt32
       PrefixPath = 0
       DocumentationPath = 1
@@ -65001,6 +65103,7 @@ module Qt
       LineF.new(unwrap: Binding.bg_QLineF__OPERATOR_mul_const_QTransform_R(pointerof(@unwrap), m))
     end
     
+    @[BindgenWrapper("QLineF::IntersectionType")]
     enum IntersectionType : UInt32
       NoIntersection = 0
       BoundedIntersection = 1
@@ -65066,6 +65169,7 @@ module Qt
       Binding.bg_QLockFile_error_(self)
     end
     
+    @[BindgenWrapper("QLockFile::LockError")]
     enum LockError : UInt32
       NoError = 0
       LockFailedError = 1
@@ -65651,17 +65755,20 @@ module Qt
       Binding.bg_QMetaMethod__OPERATOR_ne_const_QMetaMethod_R(self, m2)
     end
     
+    @[BindgenWrapper("QMetaMethod::Access")]
     enum Access : UInt32
       Private = 0
       Protected = 1
       Public = 2
     end
+    @[BindgenWrapper("QMetaMethod::MethodType")]
     enum MethodType : UInt32
       Method = 0
       Signal = 1
       Slot = 2
       Constructor = 3
     end
+    @[BindgenWrapper("QMetaMethod::Attributes")]
     enum Attributes : UInt32
       Compatibility = 1
       Cloned = 2
@@ -66496,6 +66603,7 @@ module Qt
       Container_QList_QMimeType_.new(unwrap: Binding.bg_QMimeDatabase_allMimeTypes_(self))
     end
     
+    @[BindgenWrapper("QMimeDatabase::MatchMode")]
     enum MatchMode : UInt32
       MatchDefault = 0
       MatchExtension = 1
@@ -66903,6 +67011,7 @@ module Qt
       OperatingSystemVersion.new(unwrap: Binding.bg_QOperatingSystemVersion_AndroidOreo_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QOperatingSystemVersion::OSType")]
     enum OSType : UInt32
       Unknown = 0
       Windows = 1
@@ -68171,6 +68280,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QProcess_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QProcess::ProcessError")]
     enum ProcessError : UInt32
       FailedToStart = 0
       Crashed = 1
@@ -68179,15 +68289,18 @@ module Qt
       WriteError = 4
       UnknownError = 5
     end
+    @[BindgenWrapper("QProcess::ProcessState")]
     enum ProcessState : UInt32
       NotRunning = 0
       Starting = 1
       Running = 2
     end
+    @[BindgenWrapper("QProcess::ProcessChannel")]
     enum ProcessChannel : UInt32
       StandardOutput = 0
       StandardError = 1
     end
+    @[BindgenWrapper("QProcess::ProcessChannelMode")]
     enum ProcessChannelMode : UInt32
       SeparateChannels = 0
       MergedChannels = 1
@@ -68195,10 +68308,12 @@ module Qt
       ForwardedOutputChannel = 3
       ForwardedErrorChannel = 4
     end
+    @[BindgenWrapper("QProcess::InputChannelMode")]
     enum InputChannelMode : UInt32
       ManagedInputChannel = 0
       ForwardedInputChannel = 1
     end
+    @[BindgenWrapper("QProcess::ExitStatus")]
     enum ExitStatus : UInt32
       NormalExit = 0
       CrashExit = 1
@@ -69610,6 +69725,7 @@ module Qt
       Binding.bg_QReadWriteLock_unlock_(self)
     end
     
+    @[BindgenWrapper("QReadWriteLock::RecursionMode")]
     enum RecursionMode : UInt32
       NonRecursive = 0
       Recursive = 1
@@ -70837,6 +70953,7 @@ module Qt
       StringList.new(unwrap: Binding.bg_QResource_children_(self))
     end
     
+    @[BindgenWrapper("QResource::Compression")]
     enum Compression : UInt32
       NoCompression = 0
       ZlibCompression = 1
@@ -72685,11 +72802,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSettings_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSettings::Status")]
     enum Status : UInt32
       NoError = 0
       AccessError = 1
       FormatError = 2
     end
+    @[BindgenWrapper("QSettings::Format")]
     enum Format : UInt32
       NativeFormat = 0
       IniFormat = 1
@@ -72711,6 +72830,7 @@ module Qt
       CustomFormat15 = 31
       CustomFormat16 = 32
     end
+    @[BindgenWrapper("QSettings::Scope")]
     enum Scope : UInt32
       UserScope = 0
       SystemScope = 1
@@ -73027,10 +73147,12 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSharedMemory_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSharedMemory::AccessMode")]
     enum AccessMode : UInt32
       ReadOnly = 0
       ReadWrite = 1
     end
+    @[BindgenWrapper("QSharedMemory::SharedMemoryError")]
     enum SharedMemoryError : UInt32
       NoError = 0
       PermissionDenied = 1
@@ -73593,6 +73715,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSocketNotifier_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSocketNotifier::Type")]
     enum Type : UInt32
       Read = 0
       Write = 1
@@ -74992,6 +75115,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QStandardPaths_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QStandardPaths::StandardLocation")]
     enum StandardLocation : UInt32
       DesktopLocation = 0
       DocumentsLocation = 1
@@ -75014,10 +75138,12 @@ module Qt
       AppConfigLocation = 18
       AppLocalDataLocation = 9
     end
+    @[BindgenWrapper("QStandardPaths::LocateOption")]
     enum LocateOption : UInt32
       LocateFile = 0
       LocateDirectory = 1
     end
+    @[BindgenWrapper("QStandardPaths::LocateOptions")]
     @[Flags]
     enum LocateOptions : UInt32
       LocateFile = 0
@@ -76195,10 +76321,12 @@ module Qt
       Qt::Converter::QString.unwrap(Binding.bg_QSystemSemaphore_errorString_(self))
     end
     
+    @[BindgenWrapper("QSystemSemaphore::AccessMode")]
     enum AccessMode : UInt32
       Open = 0
       Create = 1
     end
+    @[BindgenWrapper("QSystemSemaphore::SystemSemaphoreError")]
     enum SystemSemaphoreError : UInt32
       NoError = 0
       PermissionDenied = 1
@@ -77226,12 +77354,14 @@ module Qt
       Binding.bg_QTextBoundaryFinder_boundaryReasons_(self)
     end
     
+    @[BindgenWrapper("QTextBoundaryFinder::BoundaryType")]
     enum BoundaryType : UInt32
       Grapheme = 0
       Word = 1
       Sentence = 2
       Line = 3
     end
+    @[BindgenWrapper("QTextBoundaryFinder::BoundaryReason")]
     enum BoundaryReason : UInt32
       NotAtBoundary = 0
       BreakOpportunity = 31
@@ -77240,6 +77370,7 @@ module Qt
       MandatoryBreak = 128
       SoftHyphen = 256
     end
+    @[BindgenWrapper("QTextBoundaryFinder::BoundaryReasons")]
     @[Flags]
     enum BoundaryReasons : UInt32
       NotAtBoundary = 0
@@ -77362,12 +77493,14 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QTextCodec::ConversionFlag")]
     enum ConversionFlag : UInt32
       DefaultConversion = 0
       ConvertInvalidToNull = 2147483648
       IgnoreHeader = 1
       FreeFunction = 2
     end
+    @[BindgenWrapper("QTextCodec::ConversionFlags")]
     @[Flags]
     enum ConversionFlags : UInt32
       DefaultConversion = 0
@@ -77639,6 +77772,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QThread_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QThread::Priority")]
     enum Priority : UInt32
       IdlePriority = 0
       LowestPriority = 1
@@ -78191,11 +78325,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTimeLine_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTimeLine::State")]
     enum State : UInt32
       NotRunning = 0
       Paused = 1
       Running = 2
     end
+    @[BindgenWrapper("QTimeLine::Direction")]
     enum Direction : UInt32
       Forward = 0
       Backward = 1
@@ -78856,11 +78992,13 @@ module Qt
     @unwrap = result
     end
     
+    @[BindgenWrapper("QTimeZone::TimeType")]
     enum TimeType : UInt32
       StandardTime = 0
       DaylightTime = 1
       GenericTime = 2
     end
+    @[BindgenWrapper("QTimeZone::NameType")]
     enum NameType : UInt32
       DefaultName = 0
       LongName = 1
@@ -81278,6 +81416,7 @@ module Qt
       Binding.bg_QXmlStreamReader_entityResolver_(self).try {|ptr| XmlStreamEntityResolver.bg_discover(ptr) unless ptr.null?}
     end
     
+    @[BindgenWrapper("QXmlStreamReader::TokenType")]
     enum TokenType : UInt32
       NoToken = 0
       Invalid = 1
@@ -81291,11 +81430,13 @@ module Qt
       EntityReference = 9
       ProcessingInstruction = 10
     end
+    @[BindgenWrapper("QXmlStreamReader::ReadElementTextBehaviour")]
     enum ReadElementTextBehaviour : UInt32
       ErrorOnUnexpectedElement = 0
       IncludeChildElements = 1
       SkipChildElements = 2
     end
+    @[BindgenWrapper("QXmlStreamReader::Error")]
     enum Error : UInt32
       NoError = 0
       UnexpectedElementError = 1
@@ -82101,6 +82242,7 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QColor::Spec")]
     enum Spec : UInt32
       Invalid = 0
       Rgb = 1
@@ -82109,6 +82251,7 @@ module Qt
       Hsl = 4
       ExtendedRgb = 5
     end
+    @[BindgenWrapper("QColor::NameFormat")]
     enum NameFormat : UInt32
       HexRgb = 0
       HexArgb = 1
@@ -82326,6 +82469,7 @@ module Qt
       Region.new(unwrap: Binding.bg_QRegion__OPERATOR_mul_const_QTransform_R(self, m))
     end
     
+    @[BindgenWrapper("QRegion::RegionType")]
     enum RegionType : UInt32
       Rectangle = 0
       Ellipse = 1
@@ -82469,6 +82613,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QKeySequence_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QKeySequence::StandardKey")]
     enum StandardKey : UInt32
       UnknownKey = 0
       HelpContents = 1
@@ -82542,10 +82687,12 @@ module Qt
       Backspace = 69
       Cancel = 70
     end
+    @[BindgenWrapper("QKeySequence::SequenceFormat")]
     enum SequenceFormat : UInt32
       NativeText = 0
       PortableText = 1
     end
+    @[BindgenWrapper("QKeySequence::SequenceMatch")]
     enum SequenceMatch : UInt32
       NoMatch = 0
       PartialMatch = 1
@@ -82821,10 +82968,12 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTouchDevice_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTouchDevice::DeviceType")]
     enum DeviceType : UInt32
       TouchScreen = 0
       TouchPad = 1
     end
+    @[BindgenWrapper("QTouchDevice::CapabilityFlag")]
     enum CapabilityFlag : UInt32
       Position = 1
       Area = 2
@@ -82834,6 +82983,7 @@ module Qt
       NormalizedPosition = 32
       MouseEmulation = 64
     end
+    @[BindgenWrapper("QTouchDevice::Capabilities")]
     @[Flags]
     enum Capabilities : UInt32
       Position = 1
@@ -83664,6 +83814,7 @@ module Qt
       Binding.bg_QTabletEvent_mExtra_SETTER_void_X(self, m_extra)
     end
     
+    @[BindgenWrapper("QTabletEvent::TabletDevice")]
     enum TabletDevice : UInt32
       NoDevice = 0
       Puck = 1
@@ -83673,6 +83824,7 @@ module Qt
       Xfreeeraser = 5
       RotationStylus = 6
     end
+    @[BindgenWrapper("QTabletEvent::PointerType")]
     enum PointerType : UInt32
       UnknownPointer = 0
       Pen = 1
@@ -84255,6 +84407,7 @@ module Qt
       Binding.bg_QPlatformSurfaceEvent_m_surfaceEventType_SETTER_QPlatformSurfaceEvent__SurfaceEventType(self, m_surface_event_type)
     end
     
+    @[BindgenWrapper("QPlatformSurfaceEvent::SurfaceEventType")]
     enum SurfaceEventType : UInt32
       SurfaceCreated = 0
       SurfaceAboutToBeDestroyed = 1
@@ -84587,6 +84740,7 @@ module Qt
       Binding.bg_QContextMenuEvent_reas_SETTER_uint(self, reas)
     end
     
+    @[BindgenWrapper("QContextMenuEvent::Reason")]
     enum Reason : UInt32
       Mouse = 0
       Keyboard = 1
@@ -84662,6 +84816,7 @@ module Qt
       InputMethodEvent.bg_discover(Binding.bg_QInputMethodEvent__OPERATOR_assign_const_QInputMethodEvent_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QInputMethodEvent::AttributeType")]
     enum AttributeType : UInt32
       TextFormat = 0
       Cursor = 1
@@ -85921,10 +86076,12 @@ module Qt
       Binding.bg_QTouchEvent__TouchPoint_setRawScreenPositions_const_QVector_QPointF__R(self, BindgenHelper.wrap_container(Container_QVector_QPointF_, positions).to_unsafe)
     end
     
+    @[BindgenWrapper("QTouchEvent::TouchPoint::InfoFlag")]
     enum InfoFlag : UInt32
       Pen = 1
       Token = 2
     end
+    @[BindgenWrapper("QTouchEvent::TouchPoint::InfoFlags")]
     @[Flags]
     enum InfoFlags : UInt32
       Pen = 1
@@ -86045,6 +86202,7 @@ module Qt
       ScrollEvent.bg_discover(Binding.bg_QScrollEvent__OPERATOR_assign_const_QScrollEvent_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QScrollEvent::ScrollState")]
     enum ScrollState : UInt32
       ScrollStarted = 0
       ScrollUpdated = 1
@@ -86482,6 +86640,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFont_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFont::StyleHint")]
     enum StyleHint : UInt32
       Helvetica = 0
       SansSerif = 0
@@ -86497,6 +86656,7 @@ module Qt
       Monospace = 7
       Fantasy = 8
     end
+    @[BindgenWrapper("QFont::StyleStrategy")]
     enum StyleStrategy : UInt32
       PreferDefault = 1
       PreferBitmap = 2
@@ -86511,12 +86671,14 @@ module Qt
       PreferNoShaping = 4096
       NoFontMerging = 32768
     end
+    @[BindgenWrapper("QFont::HintingPreference")]
     enum HintingPreference : UInt32
       PreferDefaultHinting = 0
       PreferNoHinting = 1
       PreferVerticalHinting = 2
       PreferFullHinting = 3
     end
+    @[BindgenWrapper("QFont::Weight")]
     enum Weight : UInt32
       Thin = 0
       ExtraLight = 12
@@ -86528,11 +86690,13 @@ module Qt
       ExtraBold = 81
       Black = 87
     end
+    @[BindgenWrapper("QFont::Style")]
     enum Style : UInt32
       StyleNormal = 0
       StyleItalic = 1
       StyleOblique = 2
     end
+    @[BindgenWrapper("QFont::Stretch")]
     enum Stretch : UInt32
       AnyStretch = 0
       UltraCondensed = 50
@@ -86545,6 +86709,7 @@ module Qt
       ExtraExpanded = 150
       UltraExpanded = 200
     end
+    @[BindgenWrapper("QFont::Capitalization")]
     enum Capitalization : UInt32
       MixedCase = 0
       AllUppercase = 1
@@ -86552,6 +86717,7 @@ module Qt
       SmallCaps = 3
       Capitalize = 4
     end
+    @[BindgenWrapper("QFont::SpacingType")]
     enum SpacingType : UInt32
       PercentageSpacing = 0
       AbsoluteSpacing = 1
@@ -87060,6 +87226,7 @@ module Qt
       Transform.new(unwrap: Binding.bg_QTransform__OPERATOR_sub_qreal(self, n))
     end
     
+    @[BindgenWrapper("QTransform::TransformationType")]
     enum TransformationType : UInt32
       TxNone = 0
       TxTranslate = 1
@@ -87250,6 +87417,7 @@ module Qt
       Binding.bg_QPaintDevice_painters_SETTER_ushort(self, painters)
     end
     
+    @[BindgenWrapper("QPaintDevice::PaintDeviceMetric")]
     enum PaintDeviceMetric : UInt32
       PdmWidth = 1
       PdmHeight = 2
@@ -87607,6 +87775,7 @@ module Qt
       Binding.bg_QPixelFormat__OPERATOR_ne_QPixelFormat(self, fmt2)
     end
     
+    @[BindgenWrapper("QPixelFormat::ColorModel")]
     enum ColorModel : UInt32
       Rgb = 0
       Bgr = 1
@@ -87618,24 +87787,29 @@ module Qt
       Yuv = 7
       Alpha = 8
     end
+    @[BindgenWrapper("QPixelFormat::AlphaUsage")]
     enum AlphaUsage : UInt32
       UsesAlpha = 0
       IgnoresAlpha = 1
     end
+    @[BindgenWrapper("QPixelFormat::AlphaPosition")]
     enum AlphaPosition : UInt32
       AtBeginning = 0
       AtEnd = 1
     end
+    @[BindgenWrapper("QPixelFormat::AlphaPremultiplied")]
     enum AlphaPremultiplied : UInt32
       NotPremultiplied = 0
       Premultiplied = 1
     end
+    @[BindgenWrapper("QPixelFormat::TypeInterpretation")]
     enum TypeInterpretation : UInt32
       UnsignedInteger = 0
       UnsignedShort = 1
       UnsignedByte = 2
       FloatingPoint = 3
     end
+    @[BindgenWrapper("QPixelFormat::YUVLayout")]
     enum YUVLayout : UInt32
       Yuv444 = 0
       Yuv422 = 1
@@ -87654,6 +87828,7 @@ module Qt
       Y8 = 14
       Y16 = 15
     end
+    @[BindgenWrapper("QPixelFormat::ByteOrder")]
     enum ByteOrder : UInt32
       LittleEndian = 0
       BigEndian = 1
@@ -88184,10 +88359,12 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QImage_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QImage::InvertMode")]
     enum InvertMode : UInt32
       InvertRgb = 0
       InvertRgba = 1
     end
+    @[BindgenWrapper("QImage::Format")]
     enum Format : UInt32
       Invalid = 0
       Mono = 1
@@ -88827,27 +89004,32 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGradient_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGradient::Type")]
     enum Type : UInt32
       LinearGradient = 0
       RadialGradient = 1
       ConicalGradient = 2
       NoGradient = 3
     end
+    @[BindgenWrapper("QGradient::Spread")]
     enum Spread : UInt32
       PadSpread = 0
       ReflectSpread = 1
       RepeatSpread = 2
     end
+    @[BindgenWrapper("QGradient::CoordinateMode")]
     enum CoordinateMode : UInt32
       LogicalMode = 0
       StretchToDeviceMode = 1
       ObjectBoundingMode = 2
       ObjectMode = 3
     end
+    @[BindgenWrapper("QGradient::InterpolationMode")]
     enum InterpolationMode : UInt32
       ColorInterpolation = 0
       ComponentInterpolation = 1
     end
+    @[BindgenWrapper("QGradient::Preset")]
     enum Preset : UInt32
       WarmFlame = 1
       NightFade = 2
@@ -89529,12 +89711,14 @@ module Qt
       Binding.bg_QTextOption_useDesignMetrics_(self)
     end
     
+    @[BindgenWrapper("QTextOption::TabType")]
     enum TabType : UInt32
       LeftTab = 0
       RightTab = 1
       CenterTab = 2
       DelimiterTab = 3
     end
+    @[BindgenWrapper("QTextOption::WrapMode")]
     enum WrapMode : UInt32
       NoWrap = 0
       WordWrap = 1
@@ -89542,6 +89726,7 @@ module Qt
       WrapAnywhere = 3
       WrapAtWordBoundaryOrAnywhere = 4
     end
+    @[BindgenWrapper("QTextOption::Flags")]
     @[Flags]
     enum Flags : UInt32
       ShowTabsAndSpaces = 1
@@ -89695,6 +89880,7 @@ module Qt
       TextLength.bg_discover(Binding.bg_QTextLength__OPERATOR_assign_const_QTextLength_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QTextLength::Type")]
     enum Type : UInt32
       VariableLength = 0
       FixedLength = 1
@@ -89947,6 +90133,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTextFormat_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTextFormat::FormatType")]
     enum FormatType : Int32
       InvalidFormat = -1
       BlockFormat = 1
@@ -89955,6 +90142,7 @@ module Qt
       FrameFormat = 5
       UserFormat = 100
     end
+    @[BindgenWrapper("QTextFormat::Property")]
     enum Property : UInt32
       ObjectIndex = 0
       CssFloat = 2048
@@ -90062,6 +90250,7 @@ module Qt
       PageBreakPolicy = 28672
       UserProperty = 1048576
     end
+    @[BindgenWrapper("QTextFormat::ObjectTypes")]
     enum ObjectTypes : UInt32
       NoObject = 0
       ImageObject = 1
@@ -90069,11 +90258,13 @@ module Qt
       TableCellObject = 3
       UserObject = 4096
     end
+    @[BindgenWrapper("QTextFormat::PageBreakFlag")]
     enum PageBreakFlag : UInt32
       PageBreak_Auto = 0
       PageBreak_AlwaysBefore = 1
       PageBreak_AlwaysAfter = 16
     end
+    @[BindgenWrapper("QTextFormat::PageBreakFlags")]
     @[Flags]
     enum PageBreakFlags : UInt32
       PageBreak_Auto = 0
@@ -90369,6 +90560,7 @@ module Qt
       TextCharFormat.bg_discover(Binding.bg_QTextCharFormat__OPERATOR_assign_const_QTextCharFormat_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QTextCharFormat::VerticalAlignment")]
     enum VerticalAlignment : UInt32
       AlignNormal = 0
       AlignSuperScript = 1
@@ -90378,6 +90570,7 @@ module Qt
       AlignBottom = 5
       AlignBaseline = 6
     end
+    @[BindgenWrapper("QTextCharFormat::UnderlineStyle")]
     enum UnderlineStyle : UInt32
       NoUnderline = 0
       SingleUnderline = 1
@@ -90388,6 +90581,7 @@ module Qt
       WaveUnderline = 6
       SpellCheckUnderline = 7
     end
+    @[BindgenWrapper("QTextCharFormat::FontPropertiesInheritanceBehavior")]
     enum FontPropertiesInheritanceBehavior : UInt32
       FontPropertiesSpecifiedOnly = 0
       FontPropertiesAll = 1
@@ -90546,6 +90740,7 @@ module Qt
       TextBlockFormat.bg_discover(Binding.bg_QTextBlockFormat__OPERATOR_assign_const_QTextBlockFormat_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QTextBlockFormat::LineHeightTypes")]
     enum LineHeightTypes : UInt32
       SingleHeight = 0
       ProportionalHeight = 1
@@ -90553,6 +90748,7 @@ module Qt
       MinimumHeight = 3
       LineDistanceHeight = 4
     end
+    @[BindgenWrapper("QTextBlockFormat::MarkerType")]
     enum MarkerType : Int32
       NoMarker = 0
       Unchecked = 1
@@ -90632,6 +90828,7 @@ module Qt
       TextListFormat.bg_discover(Binding.bg_QTextListFormat__OPERATOR_assign_const_QTextListFormat_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QTextListFormat::Style")]
     enum Style : Int32
       ListDisc = -1
       ListCircle = -2
@@ -90867,11 +91064,13 @@ module Qt
       TextFrameFormat.bg_discover(Binding.bg_QTextFrameFormat__OPERATOR_assign_const_QTextFrameFormat_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QTextFrameFormat::Position")]
     enum Position : UInt32
       InFlow = 0
       FloatLeft = 1
       FloatRight = 2
     end
+    @[BindgenWrapper("QTextFrameFormat::BorderStyle")]
     enum BorderStyle : UInt32
       BorderStyle_None = 0
       BorderStyle_Dotted = 1
@@ -91327,6 +91526,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFontDatabase_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFontDatabase::WritingSystem")]
     enum WritingSystem : UInt32
       Any = 0
       Latin = 1
@@ -91365,6 +91565,7 @@ module Qt
       Nko = 33
       WritingSystemsCount = 34
     end
+    @[BindgenWrapper("QFontDatabase::SystemFont")]
     enum SystemFont : UInt32
       GeneralFont = 0
       FixedFont = 1
@@ -91564,15 +91765,18 @@ module Qt
       Binding.bg_QRawFont_qHash_uint(self, seed)
     end
     
+    @[BindgenWrapper("QRawFont::AntialiasingType")]
     enum AntialiasingType : UInt32
       PixelAntialiasing = 0
       SubPixelAntialiasing = 1
     end
+    @[BindgenWrapper("QRawFont::LayoutFlag")]
     enum LayoutFlag : UInt32
       SeparateAdvances = 0
       KernedAdvances = 1
       UseDesignMetrics = 2
     end
+    @[BindgenWrapper("QRawFont::LayoutFlags")]
     @[Flags]
     enum LayoutFlags : UInt32
       SeparateAdvances = 0
@@ -91715,6 +91919,7 @@ module Qt
       Binding.bg_QGlyphRun_isEmpty_(self)
     end
     
+    @[BindgenWrapper("QGlyphRun::GlyphRunFlag")]
     enum GlyphRunFlag : UInt32
       Overline = 1
       Underline = 2
@@ -91722,6 +91927,7 @@ module Qt
       RightToLeft = 8
       SplitLigature = 16
     end
+    @[BindgenWrapper("QGlyphRun::GlyphRunFlags")]
     @[Flags]
     enum GlyphRunFlags : UInt32
       Overline = 1
@@ -92092,10 +92298,12 @@ module Qt
       Binding.bg_QTextCursor_document_(self).try {|ptr| TextDocument.bg_discover(ptr) unless ptr.null?}
     end
     
+    @[BindgenWrapper("QTextCursor::MoveMode")]
     enum MoveMode : UInt32
       MoveAnchor = 0
       KeepAnchor = 1
     end
+    @[BindgenWrapper("QTextCursor::MoveOperation")]
     enum MoveOperation : UInt32
       NoMove = 0
       Start = 1
@@ -92123,6 +92331,7 @@ module Qt
       NextRow = 23
       PreviousRow = 24
     end
+    @[BindgenWrapper("QTextCursor::SelectionType")]
     enum SelectionType : UInt32
       WordUnderCursor = 0
       LineUnderCursor = 1
@@ -92423,6 +92632,7 @@ module Qt
       Binding.bg_QTextLayout_setFlags_int(self, flags)
     end
     
+    @[BindgenWrapper("QTextLayout::CursorMode")]
     enum CursorMode : UInt32
       SkipCharacters = 0
       SkipWords = 1
@@ -92639,10 +92849,12 @@ module Qt
     BindgenHelper.set_crystal_object(result, self)
     end
     
+    @[BindgenWrapper("QTextLine::Edge")]
     enum Edge : UInt32
       Leading = 0
       Trailing = 1
     end
+    @[BindgenWrapper("QTextLine::CursorPosition")]
     enum CursorPosition : UInt32
       CursorBetweenCharacters = 0
       CursorOnCharacter = 1
@@ -93223,22 +93435,26 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTextDocument_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTextDocument::MetaInformation")]
     enum MetaInformation : UInt32
       DocumentTitle = 0
       DocumentUrl = 1
     end
+    @[BindgenWrapper("QTextDocument::MarkdownFeatures")]
     @[Flags]
     enum MarkdownFeatures : UInt32
       MarkdownNoHTML = 96
       MarkdownDialectCommonMark = 0
       MarkdownDialectGitHub = 3852
     end
+    @[BindgenWrapper("QTextDocument::FindFlags")]
     @[Flags]
     enum FindFlags : UInt32
       FindBackward = 1
       FindCaseSensitively = 2
       FindWholeWords = 4
     end
+    @[BindgenWrapper("QTextDocument::ResourceType")]
     enum ResourceType : UInt32
       UnknownResource = 0
       HtmlResource = 1
@@ -93247,6 +93463,7 @@ module Qt
       MarkdownResource = 4
       UserResource = 100
     end
+    @[BindgenWrapper("QTextDocument::Stacks")]
     enum Stacks : UInt32
       UndoStack = 1
       RedoStack = 2
@@ -93688,6 +93905,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QPalette_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QPalette::ColorGroup")]
     enum ColorGroup : UInt32
       Active = 0
       Disabled = 1
@@ -93697,6 +93915,7 @@ module Qt
       All = 5
       Normal = 0
     end
+    @[BindgenWrapper("QPalette::ColorRole")]
     enum ColorRole : UInt32
       WindowText = 0
       Button = 1
@@ -94525,12 +94744,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSurfaceFormat_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSurfaceFormat::FormatOption")]
     enum FormatOption : UInt32
       StereoBuffers = 1
       DebugContext = 2
       DeprecatedFunctions = 4
       ResetNotification = 8
     end
+    @[BindgenWrapper("QSurfaceFormat::FormatOptions")]
     @[Flags]
     enum FormatOptions : UInt32
       StereoBuffers = 1
@@ -94538,23 +94759,27 @@ module Qt
       DeprecatedFunctions = 4
       ResetNotification = 8
     end
+    @[BindgenWrapper("QSurfaceFormat::SwapBehavior")]
     enum SwapBehavior : UInt32
       DefaultSwapBehavior = 0
       SingleBuffer = 1
       DoubleBuffer = 2
       TripleBuffer = 3
     end
+    @[BindgenWrapper("QSurfaceFormat::RenderableType")]
     enum RenderableType : UInt32
       DefaultRenderableType = 0
       OpenGL = 1
       OpenGLES = 2
       OpenVG = 4
     end
+    @[BindgenWrapper("QSurfaceFormat::OpenGLContextProfile")]
     enum OpenGLContextProfile : UInt32
       NoProfile = 0
       CoreProfile = 1
       CompatibilityProfile = 2
     end
+    @[BindgenWrapper("QSurfaceFormat::ColorSpace")]
     enum ColorSpace : UInt32
       DefaultColorSpace = 0
       Srgbcolorspace = 1
@@ -94656,10 +94881,12 @@ module Qt
       Binding.bg_QSurface_m_reserved_SETTER_QSurfacePrivate_X(self, m_reserved)
     end
     
+    @[BindgenWrapper("QSurface::SurfaceClass")]
     enum SurfaceClass : UInt32
       Window = 0
       Offscreen = 1
     end
+    @[BindgenWrapper("QSurface::SurfaceType")]
     enum SurfaceType : UInt32
       RasterSurface = 0
       OpenGLSurface = 1
@@ -94885,12 +95112,14 @@ module Qt
       Binding.bg_QIcon_setFallbackThemeName_STATIC_const_QString_R(Qt::Converter::QString.wrap(name))
     end
     
+    @[BindgenWrapper("QIcon::Mode")]
     enum Mode : UInt32
       Normal = 0
       Disabled = 1
       Active = 2
       Selected = 3
     end
+    @[BindgenWrapper("QIcon::State")]
     enum State : UInt32
       On = 0
       Off = 1
@@ -96108,6 +96337,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QWindow_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QWindow::Visibility")]
     enum Visibility : UInt32
       Hidden = 0
       AutomaticVisibility = 1
@@ -96116,6 +96346,7 @@ module Qt
       Maximized = 4
       FullScreen = 5
     end
+    @[BindgenWrapper("QWindow::AncestorMode")]
     enum AncestorMode : UInt32
       ExcludeTransients = 0
       IncludeTransients = 1
@@ -97100,6 +97331,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QClipboard_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QClipboard::Mode")]
     enum Mode : UInt32
       Clipboard = 0
       Selection = 1
@@ -97341,6 +97573,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QColorSpace_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QColorSpace::NamedColorSpace")]
     enum NamedColorSpace : UInt32
       Srgb = 1
       Srgblinear = 2
@@ -97348,6 +97581,7 @@ module Qt
       DisplayP3 = 4
       ProPhotoRgb = 5
     end
+    @[BindgenWrapper("QColorSpace::Primaries")]
     enum Primaries : Int32
       Custom = 0
       Srgb = 1
@@ -97355,6 +97589,7 @@ module Qt
       DciP3D65 = 3
       ProPhotoRgb = 4
     end
+    @[BindgenWrapper("QColorSpace::TransferFunction")]
     enum TransferFunction : Int32
       Custom = 0
       Linear = 1
@@ -98311,6 +98546,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QInputMethod_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QInputMethod::Action")]
     enum Action : UInt32
       Click = 0
       ContextMenu = 1
@@ -99256,6 +99492,7 @@ module Qt
     Binding.bg_QIconEngine_virtual_hook_int_void_X(self, id, data)
     end
     
+    @[BindgenWrapper("QIconEngine::IconEngineHook")]
     enum IconEngineHook : UInt32
       AvailableSizesHook = 1
       IconNameHook = 2
@@ -99644,6 +99881,7 @@ module Qt
       Container_QList_QByteArray_.new(unwrap: Binding.bg_QImageReader_imageFormatsForMimeType_STATIC_const_QByteArray_R(Qt::Converter::QByteArray.wrap(mime_type)))
     end
     
+    @[BindgenWrapper("QImageReader::ImageReaderError")]
     enum ImageReaderError : UInt32
       UnknownError = 0
       FileNotFoundError = 1
@@ -99816,6 +100054,7 @@ module Qt
       Container_QList_QByteArray_.new(unwrap: Binding.bg_QImageWriter_imageFormatsForMimeType_STATIC_const_QByteArray_R(Qt::Converter::QByteArray.wrap(mime_type)))
     end
     
+    @[BindgenWrapper("QImageWriter::ImageWriterError")]
     enum ImageWriterError : UInt32
       UnknownError = 0
       DeviceError = 1
@@ -101280,11 +101519,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QMovie_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QMovie::MovieState")]
     enum MovieState : UInt32
       NotRunning = 0
       Paused = 1
       Running = 2
     end
+    @[BindgenWrapper("QMovie::CacheMode")]
     enum CacheMode : UInt32
       CacheNone = 0
       CacheAll = 1
@@ -102805,6 +103046,7 @@ module Qt
       Binding.bg_QPageSize__OPERATOR_ne_const_QPageSize_R(self, rhs)
     end
     
+    @[BindgenWrapper("QPageSize::PageSizeId")]
     enum PageSizeId : UInt32
       A4 = 0
       B5 = 1
@@ -102934,6 +103176,7 @@ module Qt
       EnvelopeDL = 26
       Envelope10 = 25
     end
+    @[BindgenWrapper("QPageSize::Unit")]
     enum Unit : UInt32
       Millimeter = 0
       Point = 1
@@ -102942,6 +103185,7 @@ module Qt
       Didot = 4
       Cicero = 5
     end
+    @[BindgenWrapper("QPageSize::SizeMatchPolicy")]
     enum SizeMatchPolicy : UInt32
       FuzzyMatch = 0
       FuzzyOrientationMatch = 1
@@ -103132,6 +103376,7 @@ module Qt
       Binding.bg_QPageLayout__OPERATOR_ne_const_QPageLayout_R(self, rhs)
     end
     
+    @[BindgenWrapper("QPageLayout::Unit")]
     enum Unit : UInt32
       Millimeter = 0
       Point = 1
@@ -103140,10 +103385,12 @@ module Qt
       Didot = 4
       Cicero = 5
     end
+    @[BindgenWrapper("QPageLayout::Orientation")]
     enum Orientation : UInt32
       Portrait = 0
       Landscape = 1
     end
+    @[BindgenWrapper("QPageLayout::Mode")]
     enum Mode : UInt32
       StandardMode = 0
       FullPageMode = 1
@@ -103248,6 +103495,7 @@ module Qt
       Binding.bg_QPagedPaintDevice_d_SETTER_QPagedPaintDevicePrivate_X(self, d)
     end
     
+    @[BindgenWrapper("QPagedPaintDevice::PdfVersion")]
     enum PdfVersion : UInt32
       PdfVersion_1_4 = 0
       PdfVersion_A1b = 1
@@ -104134,6 +104382,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QPainter_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QPainter::RenderHint")]
     enum RenderHint : UInt32
       Antialiasing = 1
       TextAntialiasing = 2
@@ -104141,6 +104390,7 @@ module Qt
       Qt4CompatiblePainting = 32
       LosslessImageRendering = 64
     end
+    @[BindgenWrapper("QPainter::RenderHints")]
     @[Flags]
     enum RenderHints : UInt32
       Antialiasing = 1
@@ -104149,13 +104399,16 @@ module Qt
       Qt4CompatiblePainting = 32
       LosslessImageRendering = 64
     end
+    @[BindgenWrapper("QPainter::PixmapFragmentHint")]
     enum PixmapFragmentHint : UInt32
       OpaqueHint = 1
     end
+    @[BindgenWrapper("QPainter::PixmapFragmentHints")]
     @[Flags]
     enum PixmapFragmentHints : UInt32
       OpaqueHint = 1
     end
+    @[BindgenWrapper("QPainter::CompositionMode")]
     enum CompositionMode : UInt32
       CompositionMode_SourceOver = 0
       CompositionMode_DestinationOver = 1
@@ -104666,6 +104919,7 @@ module Qt
       PainterPath.new(unwrap: Binding.bg_QPainterPath__OPERATOR_mul_const_QTransform_R(self, m))
     end
     
+    @[BindgenWrapper("QPainterPath::ElementType")]
     enum ElementType : UInt32
       MoveToElement = 0
       LineToElement = 1
@@ -107520,6 +107774,7 @@ module Qt
       Binding.bg_QStandardItem_emitDataChanged_(self)
     end
     
+    @[BindgenWrapper("QStandardItem::ItemType")]
     enum ItemType : UInt32
       Type = 0
       UserType = 1000
@@ -109002,6 +109257,7 @@ module Qt
       Binding.bg_QStaticText__OPERATOR_ne_const_QStaticText_R(self, unnamed_arg_0)
     end
     
+    @[BindgenWrapper("QStaticText::PerformanceHint")]
     enum PerformanceHint : UInt32
       ModerateCaching = 0
       AggressiveCaching = 1
@@ -112170,6 +112426,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QValidator_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QValidator::State")]
     enum State : UInt32
       Invalid = 0
       Intermediate = 1
@@ -112934,6 +113191,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDoubleValidator_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDoubleValidator::Notation")]
     enum Notation : UInt32
       StandardNotation = 0
       ScientificNotation = 1
@@ -113596,12 +113854,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSizePolicy_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSizePolicy::PolicyFlag")]
     enum PolicyFlag : UInt32
       GrowFlag = 1
       ExpandFlag = 2
       ShrinkFlag = 4
       IgnoreFlag = 8
     end
+    @[BindgenWrapper("QSizePolicy::Policy")]
     enum Policy : UInt32
       Fixed = 0
       Minimum = 1
@@ -113611,6 +113871,7 @@ module Qt
       Expanding = 7
       Ignored = 13
     end
+    @[BindgenWrapper("QSizePolicy::ControlType")]
     enum ControlType : UInt32
       DefaultType = 1
       ButtonBox = 2
@@ -113628,6 +113889,7 @@ module Qt
       TabWidget = 8192
       ToolButton = 16384
     end
+    @[BindgenWrapper("QSizePolicy::ControlTypes")]
     @[Flags]
     enum ControlTypes : UInt32
       DefaultType = 1
@@ -115585,6 +115847,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QWidget_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("Qt::WidgetAttribute")]
     enum Attribute : UInt32
       Disabled = 0
       UnderMouse = 1
@@ -115693,6 +115956,7 @@ module Qt
       StyleSheetTarget = 131
       AttributeCount = 132
     end
+    @[BindgenWrapper("QWidget::RenderFlags")]
     @[Flags]
     enum RenderFlags : UInt32
       DrawWindowBackground = 1
@@ -118125,26 +118389,31 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractSpinBox_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractSpinBox::StepEnabledFlag")]
     enum StepEnabledFlag : UInt32
       StepNone = 0
       StepUpEnabled = 1
       StepDownEnabled = 2
     end
+    @[BindgenWrapper("QAbstractSpinBox::StepEnabled")]
     @[Flags]
     enum StepEnabled : UInt32
       StepNone = 0
       StepUpEnabled = 1
       StepDownEnabled = 2
     end
+    @[BindgenWrapper("QAbstractSpinBox::ButtonSymbols")]
     enum ButtonSymbols : UInt32
       UpDownArrows = 0
       PlusMinus = 1
       NoButtons = 2
     end
+    @[BindgenWrapper("QAbstractSpinBox::CorrectionMode")]
     enum CorrectionMode : UInt32
       CorrectToPreviousValue = 0
       CorrectToNearestValue = 1
     end
+    @[BindgenWrapper("QAbstractSpinBox::StepType")]
     enum StepType : UInt32
       DefaultStepType = 0
       AdaptiveDecimalStepType = 1
@@ -119204,6 +119473,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractSlider_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractSlider::SliderAction")]
     enum SliderAction : UInt32
       SliderNoAction = 0
       SliderSingleStepAdd = 1
@@ -119214,6 +119484,7 @@ module Qt
       SliderToMaximum = 6
       SliderMove = 7
     end
+    @[BindgenWrapper("QAbstractSlider::SliderChange")]
     enum SliderChange : UInt32
       SliderRangeChange = 0
       SliderOrientationChange = 1
@@ -120367,6 +120638,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSlider_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSlider::TickPosition")]
     enum TickPosition : UInt32
       NoTicks = 0
       TicksAbove = 1
@@ -121452,6 +121724,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QStyle_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QStyle::StateFlag")]
     enum StateFlag : UInt32
       None = 0
       Enabled = 1
@@ -121482,6 +121755,7 @@ module Qt
       Small = 67108864
       Mini = 134217728
     end
+    @[BindgenWrapper("QStyle::State")]
     @[Flags]
     enum State : UInt32
       Enabled = 1
@@ -121512,6 +121786,7 @@ module Qt
       Small = 67108864
       Mini = 134217728
     end
+    @[BindgenWrapper("QStyle::PrimitiveElement")]
     enum PrimitiveElement : UInt32
       Frame = 0
       FrameDefaultButton = 1
@@ -121566,6 +121841,7 @@ module Qt
       IndicatorTabTearRight = 49
       CustomBase = 251658240
     end
+    @[BindgenWrapper("QStyle::ControlElement")]
     enum ControlElement : UInt32
       PushButton = 0
       PushButtonBevel = 1
@@ -121616,6 +121892,7 @@ module Qt
       ShapedFrame = 46
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::SubElement")]
     enum SubElement : UInt32
       PushButtonContents = 0
       PushButtonFocusRect = 1
@@ -121677,6 +121954,7 @@ module Qt
       PushButtonBevel = 57
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::ComplexControl")]
     enum ComplexControl : UInt32
       SpinBox = 0
       ComboBox = 1
@@ -121689,6 +121967,7 @@ module Qt
       MdiControls = 8
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::SubControl")]
     enum SubControl : UInt32
       None = 0
       ScrollBarAddLine = 1
@@ -121734,6 +122013,7 @@ module Qt
       CustomBase = 4026531840
       All = 4294967295
     end
+    @[BindgenWrapper("QStyle::SubControls")]
     @[Flags]
     enum SubControls : UInt32
       ScrollBarAddLine = 1
@@ -121779,6 +122059,7 @@ module Qt
       CustomBase = 4026531840
       CppAll = 4294967295
     end
+    @[BindgenWrapper("QStyle::PixelMetric")]
     enum PixelMetric : UInt32
       ButtonMargin = 0
       ButtonDefaultIndicator = 1
@@ -121875,6 +122156,7 @@ module Qt
       TitleBarButtonSize = 95
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::ContentsType")]
     enum ContentsType : UInt32
       PushButton = 0
       CheckBox = 1
@@ -121901,10 +122183,12 @@ module Qt
       ItemViewItem = 22
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::RequestSoftwareInputPanel")]
     enum RequestSoftwareInputPanel : UInt32
       OnMouseClickAndAlreadyFocused = 0
       OnMouseClick = 1
     end
+    @[BindgenWrapper("QStyle::StyleHint")]
     enum StyleHint : UInt32
       EtchDisabledText = 0
       DitherDisabledText = 1
@@ -122026,6 +122310,7 @@ module Qt
       SpinBox_StepModifier = 117
       CustomBase = 4026531840
     end
+    @[BindgenWrapper("QStyle::StandardPixmap")]
     enum StandardPixmap : UInt32
       TitleBarMenuButton = 0
       TitleBarMinButton = 1
@@ -122934,6 +123219,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTabBar_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTabBar::Shape")]
     enum Shape : UInt32
       RoundedNorth = 0
       RoundedSouth = 1
@@ -122944,10 +123230,12 @@ module Qt
       TriangularWest = 6
       TriangularEast = 7
     end
+    @[BindgenWrapper("QTabBar::ButtonPosition")]
     enum ButtonPosition : UInt32
       LeftSide = 0
       RightSide = 1
     end
+    @[BindgenWrapper("QTabBar::SelectionBehavior")]
     enum SelectionBehavior : UInt32
       SelectLeftTab = 0
       SelectRightTab = 1
@@ -124119,12 +124407,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTabWidget_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTabWidget::TabPosition")]
     enum TabPosition : UInt32
       North = 0
       South = 1
       West = 2
       East = 3
     end
+    @[BindgenWrapper("QTabWidget::TabShape")]
     enum TabShape : UInt32
       Rounded = 0
       Triangular = 1
@@ -125066,6 +125356,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QRubberBand_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QRubberBand::Shape")]
     enum Shape : UInt32
       Line = 0
       Rectangle = 1
@@ -126412,6 +126703,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFrame_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFrame::Shape")]
     enum Shape : UInt32
       NoFrame = 0
       Box = 1
@@ -126421,6 +126713,7 @@ module Qt
       Vline = 5
       StyledPanel = 6
     end
+    @[BindgenWrapper("QFrame::Shadow")]
     enum Shadow : UInt32
       Plain = 16
       Raised = 32
@@ -127266,6 +127559,7 @@ module Qt
       Binding.bg_QStyleOption_styleObject_SETTER_QObject_X(self, (style_object.try(&.to_unsafe) || Pointer(Binding::QObject).null))
     end
     
+    @[BindgenWrapper("QStyleOption::OptionType")]
     enum OptionType : UInt32
       Default = 0
       FocusRect = 1
@@ -127413,11 +127707,13 @@ module Qt
       Binding.bg_QStyleOptionFrame_frameShape_SETTER_QFrame__Shape(self, frame_shape)
     end
     
+    @[BindgenWrapper("QStyleOptionFrame::FrameFeature")]
     enum FrameFeature : UInt32
       None = 0
       Flat = 1
       Rounded = 2
     end
+    @[BindgenWrapper("QStyleOptionFrame::FrameFeatures")]
     @[Flags]
     enum FrameFeatures : UInt32
       Flat = 1
@@ -127705,18 +128001,21 @@ module Qt
       Binding.bg_QStyleOptionHeader_orientation_SETTER_Qt__Orientation(self, orientation)
     end
     
+    @[BindgenWrapper("QStyleOptionHeader::SectionPosition")]
     enum SectionPosition : UInt32
       Beginning = 0
       Middle = 1
       End = 2
       OnlyOneSection = 3
     end
+    @[BindgenWrapper("QStyleOptionHeader::SelectedPosition")]
     enum SelectedPosition : UInt32
       NotAdjacent = 0
       NextIsSelected = 1
       PreviousIsSelected = 2
       NextAndPreviousAreSelected = 3
     end
+    @[BindgenWrapper("QStyleOptionHeader::SortIndicator")]
     enum SortIndicator : UInt32
       None = 0
       SortUp = 1
@@ -127792,6 +128091,7 @@ module Qt
       Binding.bg_QStyleOptionButton_iconSize_SETTER_QSize(self, icon_size)
     end
     
+    @[BindgenWrapper("QStyleOptionButton::ButtonFeature")]
     enum ButtonFeature : UInt32
       None = 0
       Flat = 1
@@ -127800,6 +128100,7 @@ module Qt
       AutoDefaultButton = 8
       CommandLinkButton = 16
     end
+    @[BindgenWrapper("QStyleOptionButton::ButtonFeatures")]
     @[Flags]
     enum ButtonFeatures : UInt32
       Flat = 1
@@ -127942,32 +128243,38 @@ module Qt
       Binding.bg_QStyleOptionTab_features_SETTER_QStyleOptionTab__TabFeatures(self, features)
     end
     
+    @[BindgenWrapper("QStyleOptionTab::TabPosition")]
     enum TabPosition : UInt32
       Beginning = 0
       Middle = 1
       End = 2
       OnlyOneTab = 3
     end
+    @[BindgenWrapper("QStyleOptionTab::SelectedPosition")]
     enum SelectedPosition : UInt32
       NotAdjacent = 0
       NextIsSelected = 1
       PreviousIsSelected = 2
     end
+    @[BindgenWrapper("QStyleOptionTab::CornerWidget")]
     enum CornerWidget : UInt32
       NoCornerWidgets = 0
       LeftCornerWidget = 1
       RightCornerWidget = 2
     end
+    @[BindgenWrapper("QStyleOptionTab::TabFeature")]
     enum TabFeature : UInt32
       None = 0
       HasFrame = 1
     end
+    @[BindgenWrapper("QStyleOptionTab::CornerWidgets")]
     @[Flags]
     enum CornerWidgets : UInt32
       NoCornerWidgets = 0
       LeftCornerWidget = 1
       RightCornerWidget = 2
     end
+    @[BindgenWrapper("QStyleOptionTab::TabFeatures")]
     @[Flags]
     enum TabFeatures : UInt32
       HasFrame = 1
@@ -128098,16 +128405,19 @@ module Qt
       Binding.bg_QStyleOptionToolBar_midLineWidth_SETTER_int(self, mid_line_width)
     end
     
+    @[BindgenWrapper("QStyleOptionToolBar::ToolBarPosition")]
     enum ToolBarPosition : UInt32
       Beginning = 0
       Middle = 1
       End = 2
       OnlyOne = 3
     end
+    @[BindgenWrapper("QStyleOptionToolBar::ToolBarFeature")]
     enum ToolBarFeature : UInt32
       None = 0
       Movable = 1
     end
+    @[BindgenWrapper("QStyleOptionToolBar::ToolBarFeatures")]
     @[Flags]
     enum ToolBarFeatures : UInt32
       Movable = 1
@@ -128340,6 +128650,7 @@ module Qt
       Binding.bg_QStyleOptionMenuItem_font_SETTER_QFont(self, font)
     end
     
+    @[BindgenWrapper("QStyleOptionMenuItem::MenuItemType")]
     enum MenuItemType : UInt32
       Normal = 0
       DefaultItem = 1
@@ -128350,6 +128661,7 @@ module Qt
       Margin = 6
       EmptyArea = 7
     end
+    @[BindgenWrapper("QStyleOptionMenuItem::CheckType")]
     enum CheckType : UInt32
       NotCheckable = 0
       Exclusive = 1
@@ -128595,12 +128907,14 @@ module Qt
       Binding.bg_QStyleOptionViewItem_backgroundBrush_SETTER_QBrush(self, background_brush)
     end
     
+    @[BindgenWrapper("QStyleOptionViewItem::Position")]
     enum Position : UInt32
       Left = 0
       Right = 1
       Top = 2
       Bottom = 3
     end
+    @[BindgenWrapper("QStyleOptionViewItem::ViewItemFeature")]
     enum ViewItemFeature : UInt32
       None = 0
       WrapText = 1
@@ -128609,6 +128923,7 @@ module Qt
       HasDisplay = 8
       HasDecoration = 16
     end
+    @[BindgenWrapper("QStyleOptionViewItem::ViewItemFeatures")]
     @[Flags]
     enum ViewItemFeatures : UInt32
       WrapText = 1
@@ -128617,6 +128932,7 @@ module Qt
       HasDisplay = 8
       HasDecoration = 16
     end
+    @[BindgenWrapper("QStyleOptionViewItem::ViewItemPosition")]
     enum ViewItemPosition : UInt32
       Invalid = 0
       Beginning = 1
@@ -128694,12 +129010,14 @@ module Qt
       Binding.bg_QStyleOptionToolBox_selectedPosition_SETTER_QStyleOptionToolBox__SelectedPosition(self, selected_position)
     end
     
+    @[BindgenWrapper("QStyleOptionToolBox::TabPosition")]
     enum TabPosition : UInt32
       Beginning = 0
       Middle = 1
       End = 2
       OnlyOneTab = 3
     end
+    @[BindgenWrapper("QStyleOptionToolBox::SelectedPosition")]
     enum SelectedPosition : UInt32
       NotAdjacent = 0
       NextIsSelected = 1
@@ -129105,6 +129423,7 @@ module Qt
       Binding.bg_QStyleOptionToolButton_font_SETTER_QFont(self, font)
     end
     
+    @[BindgenWrapper("QStyleOptionToolButton::ToolButtonFeature")]
     enum ToolButtonFeature : UInt32
       None = 0
       Arrow = 1
@@ -129113,6 +129432,7 @@ module Qt
       PopupDelay = 8
       HasMenu = 16
     end
+    @[BindgenWrapper("QStyleOptionToolButton::ToolButtonFeatures")]
     @[Flags]
     enum ToolButtonFeatures : UInt32
       Arrow = 1
@@ -129525,6 +129845,7 @@ module Qt
       Binding.bg_QStyleHintReturn_type_SETTER_int(self, type)
     end
     
+    @[BindgenWrapper("QStyleHintReturn::HintReturnType")]
     enum HintReturnType : UInt32
       Default = 61440
       Mask = 61441
@@ -129831,6 +130152,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractItemDelegate_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractItemDelegate::EndEditHint")]
     enum EndEditHint : UInt32
       NoHint = 0
       EditNextItem = 1
@@ -129838,6 +130160,7 @@ module Qt
       SubmitModelCache = 3
       RevertModelCache = 4
     end
+    @[BindgenWrapper("QAbstractItemView::SelectionMode")]
     enum SelectionMode : UInt32
       NoSelection = 0
       SingleSelection = 1
@@ -129845,17 +130168,20 @@ module Qt
       ExtendedSelection = 3
       ContiguousSelection = 4
     end
+    @[BindgenWrapper("QAbstractItemView::SelectionBehavior")]
     enum SelectionBehavior : UInt32
       SelectItems = 0
       SelectRows = 1
       SelectColumns = 2
     end
+    @[BindgenWrapper("QAbstractItemView::ScrollHint")]
     enum ScrollHint : UInt32
       EnsureVisible = 0
       PositionAtTop = 1
       PositionAtBottom = 2
       PositionAtCenter = 3
     end
+    @[BindgenWrapper("QAbstractItemView::EditTrigger")]
     enum EditTrigger : UInt32
       NoEditTriggers = 0
       CurrentChanged = 1
@@ -129865,6 +130191,7 @@ module Qt
       AnyKeyPressed = 16
       AllEditTriggers = 31
     end
+    @[BindgenWrapper("QAbstractItemView::EditTriggers")]
     @[Flags]
     enum EditTriggers : UInt32
       NoEditTriggers = 0
@@ -129875,10 +130202,12 @@ module Qt
       AnyKeyPressed = 16
       AllEditTriggers = 31
     end
+    @[BindgenWrapper("QAbstractItemView::ScrollMode")]
     enum ScrollMode : UInt32
       ScrollPerItem = 0
       ScrollPerPixel = 1
     end
+    @[BindgenWrapper("QAbstractItemView::DragDropMode")]
     enum DragDropMode : UInt32
       NoDragDrop = 0
       DragOnly = 1
@@ -129886,6 +130215,7 @@ module Qt
       DragDrop = 3
       InternalMove = 4
     end
+    @[BindgenWrapper("QAbstractItemView::CursorAction")]
     enum CursorAction : UInt32
       MoveUp = 0
       MoveDown = 1
@@ -129898,6 +130228,7 @@ module Qt
       MoveNext = 8
       MovePrevious = 9
     end
+    @[BindgenWrapper("QAbstractItemView::State")]
     enum State : UInt32
       NoState = 0
       DraggingState = 1
@@ -129907,6 +130238,7 @@ module Qt
       CollapsingState = 5
       AnimatingState = 6
     end
+    @[BindgenWrapper("QAbstractItemView::DropIndicatorPosition")]
     enum DropIndicatorPosition : UInt32
       OnItem = 0
       AboveItem = 1
@@ -130748,6 +131080,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAbstractScrollArea_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAbstractScrollArea::SizeAdjustPolicy")]
     enum SizeAdjust : UInt32
       AdjustIgnored = 0
       AdjustToContentsOnFirstShow = 1
@@ -133971,6 +134304,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QAction_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QAction::MenuRole")]
     enum MenuRole : UInt32
       NoRole = 0
       TextHeuristicRole = 1
@@ -133980,11 +134314,13 @@ module Qt
       PreferencesRole = 5
       QuitRole = 6
     end
+    @[BindgenWrapper("QAction::Priority")]
     enum Priority : UInt32
       LowPriority = 0
       NormalPriority = 128
       HighPriority = 256
     end
+    @[BindgenWrapper("QAction::ActionEvent")]
     enum Event : UInt32
       Trigger = 0
       Hover = 1
@@ -134294,6 +134630,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QActionGroup_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QActionGroup::ExclusionPolicy")]
     enum ExclusionPolicy : Int32
       None = 0
       Exclusive = 1
@@ -136938,6 +137275,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QLayout_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QLayout::SizeConstraint")]
     enum SizeConstraint : UInt32
       SetDefaultConstraint = 0
       SetNoConstraint = 1
@@ -138362,6 +138700,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QBoxLayout_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QBoxLayout::Direction")]
     enum Direction : UInt32
       LeftToRight = 0
       RightToLeft = 1
@@ -140691,16 +141030,19 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QCalendarWidget_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QCalendarWidget::HorizontalHeaderFormat")]
     enum HorizontalHeaderFormat : UInt32
       NoHorizontalHeader = 0
       SingleLetterDayNames = 1
       ShortDayNames = 2
       LongDayNames = 3
     end
+    @[BindgenWrapper("QCalendarWidget::VerticalHeaderFormat")]
     enum VerticalHeaderFormat : UInt32
       NoVerticalHeader = 0
       Isoweeknumbers = 1
     end
+    @[BindgenWrapper("QCalendarWidget::SelectionMode")]
     enum SelectionMode : UInt32
       NoSelection = 0
       SingleSelection = 1
@@ -143339,6 +143681,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDialog_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDialog::DialogCode")]
     enum DialogCode : UInt32
       Rejected = 0
       Accepted = 1
@@ -144481,11 +144824,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QColorDialog_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QColorDialog::ColorDialogOption")]
     enum Option : UInt32
       ShowAlphaChannel = 1
       NoButtons = 2
       DontUseNativeDialog = 4
     end
+    @[BindgenWrapper("QColorDialog::ColorDialogOptions")]
     @[Flags]
     enum Options : UInt32
       ShowAlphaChannel = 1
@@ -148104,6 +148449,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QComboBox_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QComboBox::InsertPolicy")]
     enum InsertPolicy : UInt32
       NoInsert = 0
       InsertAtTop = 1
@@ -148113,6 +148459,7 @@ module Qt
       InsertBeforeCurrent = 5
       InsertAlphabetically = 6
     end
+    @[BindgenWrapper("QComboBox::SizeAdjustPolicy")]
     enum SizeAdjustPolicy : UInt32
       AdjustToContents = 0
       AdjustToContentsOnFirstShow = 1
@@ -152514,11 +152861,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QCompleter_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QCompleter::CompletionMode")]
     enum CompletionMode : UInt32
       PopupCompletion = 0
       UnfilteredPopupCompletion = 1
       InlineCompletion = 2
     end
+    @[BindgenWrapper("QCompleter::ModelSorting")]
     enum ModelSorting : UInt32
       UnsortedModel = 0
       CaseSensitivelySortedModel = 1
@@ -152870,6 +153219,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDataWidgetMapper_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDataWidgetMapper::SubmitPolicy")]
     enum SubmitPolicy : UInt32
       AutoSubmit = 0
       ManualSubmit = 1
@@ -154319,6 +154669,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDateTimeEdit_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDateTimeEdit::Section")]
     enum Section : UInt32
       NoSection = 0
       AmPmSection = 1
@@ -154332,6 +154683,7 @@ module Qt
       TimeSections_Mask = 31
       DateSections_Mask = 1792
     end
+    @[BindgenWrapper("QDateTimeEdit::Sections")]
     @[Flags]
     enum Sections : UInt32
       NoSection = 0
@@ -160057,6 +160409,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDialogButtonBox_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDialogButtonBox::ButtonRole")]
     enum ButtonRole : Int32
       InvalidRole = -1
       AcceptRole = 0
@@ -160070,6 +160423,7 @@ module Qt
       ApplyRole = 8
       Nroles = 9
     end
+    @[BindgenWrapper("QDialogButtonBox::StandardButton")]
     enum StandardButton : UInt32
       NoButton = 0
       Ok = 1024
@@ -160093,6 +160447,7 @@ module Qt
       FirstButton = 1024
       LastButton = 134217728
     end
+    @[BindgenWrapper("QDialogButtonBox::StandardButtons")]
     @[Flags]
     enum StandardButtons : UInt32
       NoButton = 0
@@ -160117,6 +160472,7 @@ module Qt
       FirstButton = 1024
       LastButton = 134217728
     end
+    @[BindgenWrapper("QDialogButtonBox::ButtonLayout")]
     enum ButtonLayout : UInt32
       WinLayout = 0
       MacLayout = 1
@@ -160978,6 +161334,7 @@ module Qt
       Binding.bg_QFileIconProvider_options_(self)
     end
     
+    @[BindgenWrapper("QFileIconProvider::IconType")]
     enum IconType : UInt32
       Computer = 0
       Desktop = 1
@@ -160987,9 +161344,11 @@ module Qt
       Folder = 5
       File = 6
     end
+    @[BindgenWrapper("QFileIconProvider::Option")]
     enum Option : UInt32
       DontUseCustomDirectoryIcons = 1
     end
+    @[BindgenWrapper("QFileIconProvider::Options")]
     @[Flags]
     enum Options : UInt32
       DontUseCustomDirectoryIcons = 1
@@ -161691,6 +162050,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QDockWidget_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QDockWidget::DockWidgetFeature")]
     enum Feature : UInt32
       DockWidgetClosable = 1
       DockWidgetMovable = 2
@@ -161700,6 +162060,7 @@ module Qt
       NoDockWidgetFeatures = 0
       Reserved = 255
     end
+    @[BindgenWrapper("QDockWidget::DockWidgetFeatures")]
     @[Flags]
     enum Features : UInt32
       DockWidgetClosable = 1
@@ -164827,10 +165188,12 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFileDialog_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFileDialog::ViewMode")]
     enum ViewMode : UInt32
       Detail = 0
       List = 1
     end
+    @[BindgenWrapper("QFileDialog::FileMode")]
     enum FileMode : UInt32
       AnyFile = 0
       ExistingFile = 1
@@ -164838,10 +165201,12 @@ module Qt
       ExistingFiles = 3
       DirectoryOnly = 4
     end
+    @[BindgenWrapper("QFileDialog::AcceptMode")]
     enum AcceptMode : UInt32
       AcceptOpen = 0
       AcceptSave = 1
     end
+    @[BindgenWrapper("QFileDialog::DialogLabel")]
     enum DialogLabel : UInt32
       LookIn = 0
       FileName = 1
@@ -164849,6 +165214,7 @@ module Qt
       Accept = 3
       Reject = 4
     end
+    @[BindgenWrapper("QFileDialog::Option")]
     enum Option : UInt32
       ShowDirsOnly = 1
       DontResolveSymlinks = 2
@@ -164858,6 +165224,7 @@ module Qt
       HideNameFilterDetails = 64
       DontUseCustomDirectoryIcons = 128
     end
+    @[BindgenWrapper("QFileDialog::Options")]
     @[Flags]
     enum Options : UInt32
       ShowDirsOnly = 1
@@ -166397,17 +166764,20 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFileSystemModel_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFileSystemModel::Roles")]
     enum Roles : UInt32
       FileIconRole = 1
       FilePathRole = 257
       FileNameRole = 258
       FilePermissions = 259
     end
+    @[BindgenWrapper("QFileSystemModel::Option")]
     enum Option : UInt32
       DontWatchForChanges = 1
       DontResolveSymlinks = 2
       DontUseCustomDirectoryIcons = 4
     end
+    @[BindgenWrapper("QFileSystemModel::Options")]
     @[Flags]
     enum Options : UInt32
       DontWatchForChanges = 1
@@ -168055,6 +168425,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFontComboBox_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFontComboBox::FontFilter")]
     enum FontFilter : UInt32
       AllFonts = 0
       ScalableFonts = 1
@@ -168062,6 +168433,7 @@ module Qt
       MonospacedFonts = 4
       ProportionalFonts = 8
     end
+    @[BindgenWrapper("QFontComboBox::FontFilters")]
     @[Flags]
     enum FontFilters : UInt32
       AllFonts = 0
@@ -169274,6 +169646,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFontDialog_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFontDialog::FontDialogOption")]
     enum Option : UInt32
       NoButtons = 1
       DontUseNativeDialog = 2
@@ -169282,6 +169655,7 @@ module Qt
       MonospacedFonts = 16
       ProportionalFonts = 32
     end
+    @[BindgenWrapper("QFontDialog::FontDialogOptions")]
     @[Flags]
     enum Options : UInt32
       NoButtons = 1
@@ -170530,16 +170904,19 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QFormLayout_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QFormLayout::FieldGrowthPolicy")]
     enum FieldGrowthPolicy : UInt32
       FieldsStayAtSizeHint = 0
       ExpandingFieldsGrow = 1
       AllNonFixedFieldsGrow = 2
     end
+    @[BindgenWrapper("QFormLayout::RowWrapPolicy")]
     enum RowWrapPolicy : UInt32
       DontWrapRows = 0
       WrapLongRows = 1
       WrapAllRows = 2
     end
+    @[BindgenWrapper("QFormLayout::ItemRole")]
     enum ItemRole : UInt32
       LabelRole = 0
       FieldRole = 1
@@ -171039,6 +171416,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGesture_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGesture::GestureCancelPolicy")]
     enum GestureCancelPolicy : UInt32
       CancelNone = 0
       CancelAllInContext = 1
@@ -171602,11 +171980,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QPinchGesture_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QPinchGesture::ChangeFlag")]
     enum ChangeFlag : UInt32
       ScaleFactorChanged = 1
       RotationAngleChanged = 2
       CenterPointChanged = 4
     end
+    @[BindgenWrapper("QPinchGesture::ChangeFlags")]
     @[Flags]
     enum ChangeFlags : UInt32
       ScaleFactorChanged = 1
@@ -171845,6 +172225,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSwipeGesture_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSwipeGesture::SwipeDirection")]
     enum SwipeDirection : UInt32
       NoDirection = 0
       Left = 1
@@ -172646,6 +173027,7 @@ module Qt
       GestureRecognizer.bg_discover(Binding.bg_QGestureRecognizer__OPERATOR_assign_const_QGestureRecognizer_R(self, unnamed_arg_0))
     end
     
+    @[BindgenWrapper("QGestureRecognizer::ResultFlag")]
     enum ResultFlag : UInt32
       Ignore = 1
       MayBeGesture = 2
@@ -172656,6 +173038,7 @@ module Qt
       ConsumeEventHint = 256
       ResultHint_Mask = 65280
     end
+    @[BindgenWrapper("QGestureRecognizer::Result")]
     @[Flags]
     enum Result : UInt32
       Ignore = 1
@@ -174226,6 +174609,7 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
+    @[BindgenWrapper("QGraphicsItem::GraphicsItemFlag")]
     enum Flag : UInt32
       ItemIsMovable = 1
       ItemIsSelectable = 2
@@ -174248,6 +174632,7 @@ module Qt
       ItemStopsFocusHandling = 262144
       ItemContainsChildrenInShape = 524288
     end
+    @[BindgenWrapper("QGraphicsItem::GraphicsItemFlags")]
     @[Flags]
     enum Flags : UInt32
       ItemIsMovable = 1
@@ -174271,6 +174656,7 @@ module Qt
       ItemStopsFocusHandling = 262144
       ItemContainsChildrenInShape = 524288
     end
+    @[BindgenWrapper("QGraphicsItem::GraphicsItemChange")]
     enum Change : UInt32
       ItemPositionChange = 0
       ItemVisibleChange = 2
@@ -174306,16 +174692,19 @@ module Qt
       ItemTransformOriginPointChange = 32
       ItemTransformOriginPointHasChanged = 33
     end
+    @[BindgenWrapper("QGraphicsItem::CacheMode")]
     enum CacheMode : UInt32
       NoCache = 0
       ItemCoordinateCache = 1
       DeviceCoordinateCache = 2
     end
+    @[BindgenWrapper("QGraphicsItem::PanelModality")]
     enum PanelModality : UInt32
       NonModal = 0
       PanelModal = 1
       SceneModal = 2
     end
+    @[BindgenWrapper("QGraphicsItem::Extension")]
     enum Extension : UInt32
       UserExtension = 2147483648
     end
@@ -181835,6 +182224,7 @@ module Qt
     private def superclass
       Superclass.new(self)
     end
+    @[BindgenWrapper("QGraphicsPixmapItem::ShapeMode")]
     enum ShapeMode : UInt32
       MaskShape = 0
       BoundingRectShape = 1
@@ -185939,12 +186329,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGraphicsEffect_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGraphicsEffect::ChangeFlag")]
     enum ChangeFlag : UInt32
       SourceAttached = 1
       SourceDetached = 2
       SourceBoundingRectChanged = 4
       SourceInvalidated = 8
     end
+    @[BindgenWrapper("QGraphicsEffect::ChangeFlags")]
     @[Flags]
     enum ChangeFlags : UInt32
       SourceAttached = 1
@@ -185952,6 +186344,7 @@ module Qt
       SourceBoundingRectChanged = 4
       SourceInvalidated = 8
     end
+    @[BindgenWrapper("QGraphicsEffect::PixmapPadMode")]
     enum PixmapPadMode : UInt32
       NoPad = 0
       PadToTransparentBorder = 1
@@ -186557,11 +186950,13 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGraphicsBlurEffect_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGraphicsBlurEffect::BlurHint")]
     enum BlurHint : UInt32
       PerformanceHint = 0
       QualityHint = 1
       AnimationHint = 2
     end
+    @[BindgenWrapper("QGraphicsBlurEffect::BlurHints")]
     @[Flags]
     enum BlurHints : UInt32
       PerformanceHint = 0
@@ -192320,16 +192715,19 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGraphicsScene_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGraphicsScene::ItemIndexMethod")]
     enum ItemIndexMethod : Int32
       BspTreeIndex = 0
       NoIndex = -1
     end
+    @[BindgenWrapper("QGraphicsScene::SceneLayer")]
     enum SceneLayer : UInt32
       ItemLayer = 1
       BackgroundLayer = 2
       ForegroundLayer = 4
       AllLayers = 65535
     end
+    @[BindgenWrapper("QGraphicsScene::SceneLayers")]
     @[Flags]
     enum SceneLayers : UInt32
       ItemLayer = 1
@@ -192897,6 +193295,7 @@ module Qt
       Binding.bg_QGraphicsSceneContextMenuEvent_setReason_QGraphicsSceneContextMenuEvent__Reason(self, reason)
     end
     
+    @[BindgenWrapper("QGraphicsSceneContextMenuEvent::Reason")]
     enum Reason : UInt32
       Mouse = 0
       Keyboard = 1
@@ -196433,21 +196832,25 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QGraphicsView_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QGraphicsView::ViewportAnchor")]
     enum ViewportAnchor : UInt32
       NoAnchor = 0
       AnchorViewCenter = 1
       AnchorUnderMouse = 2
     end
+    @[BindgenWrapper("QGraphicsView::CacheMode")]
     @[Flags]
     enum CacheMode : UInt32
       CacheNone = 0
       CacheBackground = 1
     end
+    @[BindgenWrapper("QGraphicsView::DragMode")]
     enum DragMode : UInt32
       NoDrag = 0
       ScrollHandDrag = 1
       RubberBandDrag = 2
     end
+    @[BindgenWrapper("QGraphicsView::ViewportUpdateMode")]
     enum ViewportUpdateMode : UInt32
       FullViewportUpdate = 0
       MinimalViewportUpdate = 1
@@ -196455,11 +196858,13 @@ module Qt
       NoViewportUpdate = 3
       BoundingRectViewportUpdate = 4
     end
+    @[BindgenWrapper("QGraphicsView::OptimizationFlag")]
     enum OptimizationFlag : UInt32
       DontSavePainterState = 2
       DontAdjustForAntialiasing = 4
       IndirectPainting = 8
     end
+    @[BindgenWrapper("QGraphicsView::OptimizationFlags")]
     @[Flags]
     enum OptimizationFlags : UInt32
       DontSavePainterState = 2
@@ -199257,6 +199662,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QHeaderView_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QHeaderView::ResizeMode")]
     enum ResizeMode : UInt32
       Interactive = 0
       Stretch = 1
@@ -201278,10 +201684,12 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QLineEdit_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QLineEdit::ActionPosition")]
     enum ActionPosition : UInt32
       LeadingPosition = 0
       TrailingPosition = 1
     end
+    @[BindgenWrapper("QLineEdit::EchoMode")]
     enum EchoMode : UInt32
       Normal = 0
       NoEcho = 1
@@ -202498,17 +202906,20 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QInputDialog_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QInputDialog::InputDialogOption")]
     enum Option : UInt32
       NoButtons = 1
       UseListViewForComboBoxItems = 2
       UsePlainTextEditForTextInput = 4
     end
+    @[BindgenWrapper("QInputDialog::InputDialogOptions")]
     @[Flags]
     enum Options : UInt32
       NoButtons = 1
       UseListViewForComboBoxItems = 2
       UsePlainTextEditForTextInput = 4
     end
+    @[BindgenWrapper("QInputDialog::InputMode")]
     enum InputMode : UInt32
       TextInput = 0
       IntInput = 1
@@ -207145,12 +207556,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QLCDNumber_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QLCDNumber::Mode")]
     enum Mode : UInt32
       Hex = 0
       Dec = 1
       Oct = 2
       Bin = 3
     end
+    @[BindgenWrapper("QLCDNumber::SegmentStyle")]
     enum SegmentStyle : UInt32
       Outline = 0
       Filled = 1
@@ -208892,23 +209305,28 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QListView_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QListView::Movement")]
     enum Movement : UInt32
       Static = 0
       Free = 1
       Snap = 2
     end
+    @[BindgenWrapper("QListView::Flow")]
     enum Flow : UInt32
       LeftToRight = 0
       TopToBottom = 1
     end
+    @[BindgenWrapper("QListView::ResizeMode")]
     enum ResizeMode : UInt32
       Fixed = 0
       Adjust = 1
     end
+    @[BindgenWrapper("QListView::LayoutMode")]
     enum LayoutMode : UInt32
       SinglePass = 0
       Batched = 1
     end
+    @[BindgenWrapper("QListView::ViewMode")]
     enum ViewMode : UInt32
       ListMode = 0
       IconMode = 1
@@ -212937,6 +213355,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QMainWindow_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QMainWindow::DockOptions")]
     @[Flags]
     enum DockOptions : UInt32
       AnimatedDocks = 1
@@ -214149,18 +214568,22 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QMdiArea_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QMdiArea::AreaOption")]
     enum AreaOption : UInt32
       DontMaximizeSubWindowOnActivation = 1
     end
+    @[BindgenWrapper("QMdiArea::AreaOptions")]
     @[Flags]
     enum AreaOptions : UInt32
       DontMaximizeSubWindowOnActivation = 1
     end
+    @[BindgenWrapper("QMdiArea::WindowOrder")]
     enum WindowOrder : UInt32
       CreationOrder = 0
       StackingOrder = 1
       ActivationHistoryOrder = 2
     end
+    @[BindgenWrapper("QMdiArea::ViewMode")]
     enum ViewMode : UInt32
       SubWindowView = 0
       TabbedView = 1
@@ -215479,12 +215902,14 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QMdiSubWindow_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QMdiSubWindow::SubWindowOption")]
     enum Option : UInt32
       AllowOutsideAreaHorizontally = 1
       AllowOutsideAreaVertically = 2
       RubberBandResize = 4
       RubberBandMove = 8
     end
+    @[BindgenWrapper("QMdiSubWindow::SubWindowOptions")]
     @[Flags]
     enum Options : UInt32
       AllowOutsideAreaHorizontally = 1
@@ -219702,6 +220127,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QMessageBox_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QMessageBox::Icon")]
     enum Icon : UInt32
       NoIcon = 0
       Information = 1
@@ -219709,6 +220135,7 @@ module Qt
       Critical = 3
       Question = 4
     end
+    @[BindgenWrapper("QMessageBox::ButtonRole")]
     enum ButtonRole : Int32
       InvalidRole = -1
       AcceptRole = 0
@@ -219722,6 +220149,7 @@ module Qt
       ApplyRole = 8
       Nroles = 9
     end
+    @[BindgenWrapper("QMessageBox::StandardButton")]
     enum StandardButton : Int32
       NoButton = 0
       Ok = 1024
@@ -219751,6 +220179,7 @@ module Qt
       FlagMask = 768
       ButtonMask = -769
     end
+    @[BindgenWrapper("QMessageBox::StandardButtons")]
     @[Flags]
     enum StandardButtons : Int32
       NoButton = 0
@@ -221760,17 +222189,20 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QTextEdit_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QTextEdit::LineWrapMode")]
     enum LineWrapMode : UInt32
       NoWrap = 0
       WidgetWidth = 1
       FixedPixelWidth = 2
       FixedColumnWidth = 3
     end
+    @[BindgenWrapper("QTextEdit::AutoFormattingFlag")]
     enum AutoFormattingFlag : UInt32
       AutoNone = 0
       AutoBulletList = 1
       AutoAll = 4294967295
     end
+    @[BindgenWrapper("QTextEdit::AutoFormatting")]
     @[Flags]
     enum AutoFormatting : UInt32
       AutoNone = 0
@@ -223594,6 +224026,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QPlainTextEdit_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QPlainTextEdit::LineWrapMode")]
     enum LineWrapMode : UInt32
       NoWrap = 0
       WidgetWidth = 1
@@ -224935,6 +225368,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QProgressBar_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QProgressBar::Direction")]
     enum Direction : UInt32
       TopToBottom = 0
       BottomToTop = 1
@@ -230168,17 +230602,20 @@ module Qt
       Binding.bg_QScrollerProperties_setScrollMetric_QScrollerProperties__ScrollMetric_const_QVariant_R(self, metric, (value.to_unsafe))
     end
     
+    @[BindgenWrapper("QScrollerProperties::OvershootPolicy")]
     enum OvershootPolicy : UInt32
       OvershootWhenScrollable = 0
       OvershootAlwaysOff = 1
       OvershootAlwaysOn = 2
     end
+    @[BindgenWrapper("QScrollerProperties::FrameRates")]
     enum FrameRates : UInt32
       Standard = 0
       Fps60 = 1
       Fps30 = 2
       Fps20 = 3
     end
+    @[BindgenWrapper("QScrollerProperties::ScrollMetric")]
     enum ScrollMetric : UInt32
       MousePressEventDelay = 0
       DragStartDistance = 1
@@ -230353,18 +230790,21 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QScroller_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QScroller::State")]
     enum State : UInt32
       Inactive = 0
       Pressed = 1
       Dragging = 2
       Scrolling = 3
     end
+    @[BindgenWrapper("QScroller::ScrollerGestureType")]
     enum ScrollerGestureType : UInt32
       TouchGesture = 0
       LeftMouseButtonGesture = 1
       RightMouseButtonGesture = 2
       MiddleMouseButtonGesture = 3
     end
+    @[BindgenWrapper("QScroller::Input")]
     enum Input : UInt32
       InputPress = 1
       InputMove = 2
@@ -238299,6 +238739,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QStackedLayout_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QStackedLayout::StackingMode")]
     enum StackingMode : UInt32
       StackOne = 0
       StackAll = 1
@@ -241283,6 +241724,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QSystemTrayIcon_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QSystemTrayIcon::ActivationReason")]
     enum ActivationReason : UInt32
       Unknown = 0
       Context = 1
@@ -241290,6 +241732,7 @@ module Qt
       Trigger = 3
       MiddleClick = 4
     end
+    @[BindgenWrapper("QSystemTrayIcon::MessageIcon")]
     enum MessageIcon : UInt32
       NoIcon = 0
       Information = 1
@@ -250496,6 +250939,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QToolButton_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QToolButton::ToolButtonPopupMode")]
     enum ToolButtonPopupMode : UInt32
       DelayedPopup = 0
       MenuButtonPopup = 1
@@ -253486,6 +253930,7 @@ module Qt
       Binding.bg_QTreeWidgetItemIterator__OPERATOR_deref_(self).try {|ptr| TreeWidgetItem.bg_discover(ptr) unless ptr.null?}
     end
     
+    @[BindgenWrapper("QTreeWidgetItemIterator::IteratorFlag")]
     enum IteratorFlag : UInt32
       All = 0
       Hidden = 1
@@ -253508,6 +253953,7 @@ module Qt
       NotEditable = 131072
       UserFlag = 16777216
     end
+    @[BindgenWrapper("QTreeWidgetItemIterator::IteratorFlags")]
     @[Flags]
     enum IteratorFlags : UInt32
       CppAll = 0
@@ -254237,10 +254683,12 @@ module Qt
       Binding.bg_QTreeWidgetItem_emitDataChanged_(self)
     end
     
+    @[BindgenWrapper("QTreeWidgetItem::ItemType")]
     enum ItemType : UInt32
       Type = 0
       UserType = 1000
     end
+    @[BindgenWrapper("QTreeWidgetItem::ChildIndicatorPolicy")]
     enum ChildIndicatorPolicy : UInt32
       ShowIndicator = 0
       DontShowIndicator = 1
@@ -260382,6 +260830,7 @@ module Qt
       MetaObject.new(unwrap: Binding.bg_QWizard_staticMetaObject_STATIC_GETTER_())
     end
     
+    @[BindgenWrapper("QWizard::WizardButton")]
     enum Button : Int32
       BackButton = 0
       NextButton = 1
@@ -260397,6 +260846,7 @@ module Qt
       Nstandardbuttons = 6
       Nbuttons = 9
     end
+    @[BindgenWrapper("QWizard::WizardPixmap")]
     enum Pixmap : UInt32
       WatermarkPixmap = 0
       LogoPixmap = 1
@@ -260404,6 +260854,7 @@ module Qt
       BackgroundPixmap = 3
       Npixmaps = 4
     end
+    @[BindgenWrapper("QWizard::WizardStyle")]
     enum Style : UInt32
       ClassicStyle = 0
       ModernStyle = 1
@@ -260411,6 +260862,7 @@ module Qt
       AeroStyle = 3
       Nstyles = 4
     end
+    @[BindgenWrapper("QWizard::WizardOption")]
     enum Option : UInt32
       IndependentPages = 1
       IgnoreSubTitles = 2
@@ -260430,6 +260882,7 @@ module Qt
       HaveCustomButton3 = 32768
       NoCancelButtonOnLastPage = 65536
     end
+    @[BindgenWrapper("QWizard::WizardOptions")]
     @[Flags]
     enum Options : UInt32
       IndependentPages = 1
@@ -264431,7 +264884,8 @@ module Qt
   
     fun bindgen_qt_meta_new(class_name : UInt8*) : Void*
     fun bindgen_qt_meta_add_method(meta : Void*, kind : Int32, name : UInt8*, return_type : UInt8*, argc : Int32, types : UInt8**, names : UInt8**) : Int32
-    fun bindgen_qt_meta_add_property(meta : Void*, name : UInt8*, type : UInt8*, notify : Int32, writable : Bool) : Int32
+    fun bindgen_qt_meta_add_property(meta : Void*, name : UInt8*, type : UInt8*, notify : Int32, writable : Bool, is_enum : Bool) : Int32
+    fun bindgen_qt_meta_add_class_info(meta : Void*, key : UInt8*, value : UInt8*) : Int32
     fun bindgen_qt_meta_finish(meta : Void*, parent : Void*, metacall : CrystalProc) : Void
     fun bindgen_qt_signal_index(meta : Void*, local : Int32) : Int32
     fun bindgen_qt_activate(sender : Void*, meta : Void*, local : Int32, args : BindgenQtArg*, count : Int32) : Void
@@ -264440,6 +264894,8 @@ module Qt
     fun bindgen_qt_set_string(slot : Void*, string : CrystalString) : Void
     fun bindgen_qt_bytes_at(slot : Void*) : CrystalString
     fun bindgen_qt_set_bytes(slot : Void*, bytes : CrystalString) : Void
+    fun bindgen_qt_copy_value(type : UInt8*, source : Void*) : Void*
+    fun bindgen_qt_set_value(slot : Void*, type : UInt8*, source : Void*) : Bool
   end
   
   # Marks the emission method of a signal declared with `signal`.
@@ -264450,6 +264906,15 @@ module Qt
   # connectable from C++ and QML.  Its arguments and result need type
   # restrictions, of the types `BindgenMeta.cpp_type_name` knows.
   annotation Slot
+  end
+  
+  # Marks a method as invokable by name through the meta-object, like
+  # `Q_INVOKABLE`: a slot which isn't one.  Same requirements as `Slot`.
+  annotation Invokable
+  end
+  
+  # Marks the placeholder method of a class info declared with `qt_class_info`.
+  annotation ClassInfo
   end
   
   # Marks the reader of a property declared with `qt_property`.
@@ -264479,6 +264944,7 @@ module Qt
       {% end %}
       {% raise "#{type} can't be a signal or property type: only a wrapper class may be nilable" unless types.size == 1 %}
       {% t = types[0] %}
+      {% raise "#{type} can't be nilable: only a QObject wrapper class, passed as a pointer, may be" if (parts.size > 1 || parts[0].resolve.union?) && !(t.class? && t <= ::Qt::Object) %}
       {% if t == Int32 %}"int"{% elsif t == UInt32 %}"uint"{% elsif t == Int64 %}"qlonglong"{% elsif t == UInt64 %}"qulonglong"
       {% elsif t == Int16 %}"short"{% elsif t == UInt16 %}"ushort"{% elsif t == Int8 %}"signed char"{% elsif t == UInt8 %}"uchar"
       {% elsif t == Float64 %}"double"{% elsif t == Float32 %}"float"{% elsif t == Bool %}"bool"{% elsif t == Nil %}"void"
@@ -264486,7 +264952,19 @@ module Qt
       {% elsif (ann = t.annotation(::Qt::BindgenWrapper)) && ann.args.size == 1 %}
         {% if t <= ::Qt::Object %}{{ ann.args[0] + "*" }}{% else %}{{ ann.args[0] }}{% end %}
       {% else %}
-        {% raise "#{type} isn't a type the Qt meta-object system can take: use a number, Bool, String, Bytes, or a wrapped Qt class" %}
+        {% raise "#{type} isn't a type the Qt meta-object system can take: use a number, Bool, String, Bytes, a wrapped Qt class or a wrapped Qt enum" %}
+      {% end %}
+    end
+  
+    # Is *type*, as written in a declaration, a Crystal enum?  A property of an
+    # enum type is flagged as such, like `Q_PROPERTY` does, so Qt looks its
+    # `QMetaEnum` up (`Qt::Orientation` in the `Qt` namespace, or an enum of the
+    # C++ base classes) and writes it from an int or a key name.
+    macro enum_type?(type)
+      {% if type.is_a?(Union) || (type.is_a?(Call) && type.name == "|") %}
+        false
+      {% else %}
+        {{ type.resolve < ::Enum }}
       {% end %}
     end
   
@@ -264515,8 +264993,12 @@ module Qt
         ::Qt::BindgenMeta.discover({{ T }}, slot.as(Void**).value)
       {% elsif T.struct? && T.annotation(::Qt::BindgenWrapper) %}
         slot.as(T*).value
-      {% elsif T.class? && T.annotation(::Qt::BindgenWrapper) %}
-        {% raise "#{T} isn't supported as a signal, slot or property type yet: a class passed by value" %}
+      {% elsif T.class? && (ann = T.annotation(::Qt::BindgenWrapper)) && ann.args.size == 1 %}
+        # A class passed by value: the slot points at a value owned by the caller,
+        # so copy it, through its QMetaType, into a GC allocation of our own.
+        pointer = Binding.bindgen_qt_copy_value({{ ann.args[0] }}.to_unsafe, slot)
+        raise "Qt can't copy a #{ {{ ann.args[0] }} }: the type isn't registered with QMetaType" if pointer.null?
+        ::Qt::BindgenMeta.discover({{ T }}, pointer)
       {% else %}
         slot.as(T*).value
       {% end %}
@@ -264536,6 +265018,12 @@ module Qt
         slot.as(Void**).value = value ? value.to_unsafe.as(Void*) : Pointer(Void).null
       {% elsif T <= ::Qt::Object %}
         slot.as(Void**).value = value.to_unsafe.as(Void*)
+      {% elsif T.class? && (ann = T.annotation(::Qt::BindgenWrapper)) && ann.args.size == 1 %}
+        # A class returned by value: the slot points at a value Qt constructed,
+        # assigned through its QMetaType.
+        unless Binding.bindgen_qt_set_value(slot, {{ ann.args[0] }}.to_unsafe, value.to_unsafe.as(Void*))
+          raise "Qt can't copy a #{ {{ ann.args[0] }} }: the type isn't registered with QMetaType"
+        end
       {% else %}
         slot.as(T*).value = value
       {% end %}
@@ -264575,6 +265063,7 @@ module Qt
     Binding.bg____qt5cr_invoke_method_STATIC_QObject_X_const_char_X_Qt__ConnectionType((object.try(&.to_unsafe) || Pointer(Binding::QObject).null), member, type)
   end
   
+  @[BindgenWrapper("QtMsgType")]
   enum MsgType : UInt32
     QtDebugMsg = 0
     QtWarningMsg = 1
@@ -264583,6 +265072,7 @@ module Qt
     QtInfoMsg = 4
     QtSystemMsg = 2
   end
+  @[BindgenWrapper("Qt::GlobalColor")]
   enum GlobalColor : UInt32
     Color0 = 0
     Color1 = 1
@@ -264605,6 +265095,7 @@ module Qt
     Darkyellow = 18
     Transparent = 19
   end
+  @[BindgenWrapper("Qt::KeyboardModifiers")]
   @[Flags]
   enum KeyboardModifiers : UInt32
     NoModifier = 0
@@ -264616,6 +265107,7 @@ module Qt
     GroupSwitchModifier = 1073741824
     KeyboardModifierMask = 4261412864
   end
+  @[BindgenWrapper("Qt::MouseButton")]
   enum MouseButton : UInt32
     NoButton = 0
     LeftButton = 1
@@ -264654,6 +265146,7 @@ module Qt
     MaxMouseButton = 67108864
     MouseButtonMask = 4294967295
   end
+  @[BindgenWrapper("Qt::MouseButtons")]
   @[Flags]
   enum MouseButtons : UInt32
     NoButton = 0
@@ -264693,15 +265186,18 @@ module Qt
     MaxMouseButton = 67108864
     MouseButtonMask = 4294967295
   end
+  @[BindgenWrapper("Qt::Orientation")]
   enum Orientation : UInt32
     Horizontal = 1
     Vertical = 2
   end
+  @[BindgenWrapper("Qt::Orientations")]
   @[Flags]
   enum Orientations : UInt32
     Horizontal = 1
     Vertical = 2
   end
+  @[BindgenWrapper("Qt::FocusPolicy")]
   enum FocusPolicy : UInt32
     NoFocus = 0
     TabFocus = 1
@@ -264709,16 +265205,19 @@ module Qt
     StrongFocus = 11
     WheelFocus = 15
   end
+  @[BindgenWrapper("Qt::TabFocusBehavior")]
   enum TabFocusBehavior : UInt32
     NoTabFocus = 0
     TabFocusTextControls = 1
     TabFocusListControls = 2
     TabFocusAllControls = 255
   end
+  @[BindgenWrapper("Qt::SortOrder")]
   enum SortOrder : UInt32
     AscendingOrder = 0
     DescendingOrder = 1
   end
+  @[BindgenWrapper("Qt::Alignment")]
   @[Flags]
   enum Alignment : UInt32
     AlignLeft = 1
@@ -264736,16 +265235,19 @@ module Qt
     AlignVertical_Mask = 480
     AlignCenter = 132
   end
+  @[BindgenWrapper("Qt::TextElideMode")]
   enum TextElideMode : UInt32
     Left = 0
     Right = 1
     Middle = 2
     None = 3
   end
+  @[BindgenWrapper("Qt::HitTestAccuracy")]
   enum HitTestAccuracy : UInt32
     ExactHit = 0
     FuzzyHit = 1
   end
+  @[BindgenWrapper("Qt::WindowType")]
   enum WindowType : UInt32
     Widget = 0
     Window = 1
@@ -264786,6 +265288,7 @@ module Qt
     NoDropShadowWindowHint = 1073741824
     WindowFullscreenButtonHint = 2147483648
   end
+  @[BindgenWrapper("Qt::WindowFlags")]
   @[Flags]
   enum WindowFlags : UInt32
     Widget = 0
@@ -264827,6 +265330,7 @@ module Qt
     NoDropShadowWindowHint = 1073741824
     WindowFullscreenButtonHint = 2147483648
   end
+  @[BindgenWrapper("Qt::WindowState")]
   enum WindowState : UInt32
     WindowNoState = 0
     WindowMinimized = 1
@@ -264834,6 +265338,7 @@ module Qt
     WindowFullScreen = 4
     WindowActive = 8
   end
+  @[BindgenWrapper("Qt::WindowStates")]
   @[Flags]
   enum WindowStates : UInt32
     WindowNoState = 0
@@ -264842,12 +265347,14 @@ module Qt
     WindowFullScreen = 4
     WindowActive = 8
   end
+  @[BindgenWrapper("Qt::ApplicationState")]
   enum ApplicationState : UInt32
     ApplicationSuspended = 0
     ApplicationHidden = 1
     ApplicationInactive = 2
     ApplicationActive = 4
   end
+  @[BindgenWrapper("Qt::ScreenOrientation")]
   enum ScreenOrientation : UInt32
     PrimaryOrientation = 0
     PortraitOrientation = 1
@@ -264855,6 +265362,7 @@ module Qt
     InvertedPortraitOrientation = 4
     InvertedLandscapeOrientation = 8
   end
+  @[BindgenWrapper("Qt::ScreenOrientations")]
   @[Flags]
   enum ScreenOrientations : UInt32
     PrimaryOrientation = 0
@@ -264863,6 +265371,7 @@ module Qt
     InvertedPortraitOrientation = 4
     InvertedLandscapeOrientation = 8
   end
+  @[BindgenWrapper("Qt::ApplicationAttribute")]
   enum ApplicationAttribute : UInt32
     AaImmediatewidgetcreation = 0
     AaDontshowiconsinmenus = 2
@@ -264896,6 +265405,7 @@ module Qt
     AaDisablesessionmanager = 31
     AaAttributecount = 32
   end
+  @[BindgenWrapper("Qt::ImageConversionFlags")]
   @[Flags]
   enum ImageConversionFlags : UInt32
     ColorMode_Mask = 3
@@ -264918,10 +265428,12 @@ module Qt
     NoOpaqueDetection = 256
     NoFormatConversion = 512
   end
+  @[BindgenWrapper("Qt::BGMode")]
   enum BgMode : UInt32
     TransparentMode = 0
     OpaqueMode = 1
   end
+  @[BindgenWrapper("Qt::Key")]
   enum Key : UInt32
     Escape = 16777216
     Tab = 16777217
@@ -265393,6 +265905,7 @@ module Qt
     CameraFocus = 17825825
     Unknown = 33554431
   end
+  @[BindgenWrapper("Qt::ArrowType")]
   enum ArrowType : UInt32
     NoArrow = 0
     UpArrow = 1
@@ -265400,6 +265913,7 @@ module Qt
     LeftArrow = 3
     RightArrow = 4
   end
+  @[BindgenWrapper("Qt::PenStyle")]
   enum PenStyle : UInt32
     NoPen = 0
     SolidLine = 1
@@ -265410,12 +265924,14 @@ module Qt
     CustomDashLine = 6
     Mpenstyle = 15
   end
+  @[BindgenWrapper("Qt::PenCapStyle")]
   enum PenCapStyle : UInt32
     FlatCap = 0
     SquareCap = 16
     RoundCap = 32
     Mpencapstyle = 48
   end
+  @[BindgenWrapper("Qt::PenJoinStyle")]
   enum PenJoinStyle : UInt32
     MiterJoin = 0
     BevelJoin = 64
@@ -265423,6 +265939,7 @@ module Qt
     SvgMiterJoin = 256
     Mpenjoinstyle = 448
   end
+  @[BindgenWrapper("Qt::BrushStyle")]
   enum BrushStyle : UInt32
     NoBrush = 0
     SolidPattern = 1
@@ -265444,10 +265961,12 @@ module Qt
     ConicalGradientPattern = 17
     TexturePattern = 24
   end
+  @[BindgenWrapper("Qt::SizeMode")]
   enum SizeMode : UInt32
     AbsoluteSize = 0
     RelativeSize = 1
   end
+  @[BindgenWrapper("Qt::UIEffect")]
   enum UIEffect : UInt32
     UiGeneral = 0
     UiAnimatemenu = 1
@@ -265457,6 +265976,7 @@ module Qt
     UiFadetooltip = 5
     UiAnimatetoolbox = 6
   end
+  @[BindgenWrapper("Qt::CursorShape")]
   enum CursorShape : UInt32
     ArrowCursor = 0
     UpArrowCursor = 1
@@ -265484,17 +266004,20 @@ module Qt
     BitmapCursor = 24
     CustomCursor = 25
   end
+  @[BindgenWrapper("Qt::TextFormat")]
   enum TextFormatEnum : UInt32
     PlainText = 0
     RichText = 1
     AutoText = 2
     MarkdownText = 3
   end
+  @[BindgenWrapper("Qt::AspectRatioMode")]
   enum AspectRatioMode : UInt32
     IgnoreAspectRatio = 0
     KeepAspectRatio = 1
     KeepAspectRatioByExpanding = 2
   end
+  @[BindgenWrapper("Qt::DockWidgetArea")]
   enum DockWidgetArea : UInt32
     LeftDockWidgetArea = 1
     RightDockWidgetArea = 2
@@ -265504,6 +266027,7 @@ module Qt
     AllDockWidgetAreas = 15
     NoDockWidgetArea = 0
   end
+  @[BindgenWrapper("Qt::DockWidgetAreas")]
   @[Flags]
   enum DockWidgetAreas : UInt32
     LeftDockWidgetArea = 1
@@ -265514,6 +266038,7 @@ module Qt
     AllDockWidgetAreas = 15
     NoDockWidgetArea = 0
   end
+  @[BindgenWrapper("Qt::ToolBarArea")]
   enum ToolBarArea : UInt32
     LeftToolBarArea = 1
     RightToolBarArea = 2
@@ -265523,6 +266048,7 @@ module Qt
     AllToolBarAreas = 15
     NoToolBarArea = 0
   end
+  @[BindgenWrapper("Qt::ToolBarAreas")]
   @[Flags]
   enum ToolBarAreas : UInt32
     LeftToolBarArea = 1
@@ -265533,18 +266059,21 @@ module Qt
     AllToolBarAreas = 15
     NoToolBarArea = 0
   end
+  @[BindgenWrapper("Qt::DateFormat")]
   enum DateFormat : UInt32
     TextDate = 0
     ISODate = 1
     RFC2822Date = 8
     ISODateWithMs = 9
   end
+  @[BindgenWrapper("Qt::TimeSpec")]
   enum TimeSpec : UInt32
     LocalTime = 0
     Utc = 1
     OffsetFromUTC = 2
     TimeZone = 3
   end
+  @[BindgenWrapper("Qt::DayOfWeek")]
   enum DayOfWeek : UInt32
     Monday = 1
     Tuesday = 2
@@ -265554,27 +266083,32 @@ module Qt
     Saturday = 6
     Sunday = 7
   end
+  @[BindgenWrapper("Qt::ScrollBarPolicy")]
   enum ScrollBarPolicy : UInt32
     AsNeeded = 0
     AlwaysOff = 1
     AlwaysOn = 2
   end
+  @[BindgenWrapper("Qt::CaseSensitivity")]
   enum CaseSensitivity : UInt32
     CaseInsensitive = 0
     CaseSensitive = 1
   end
+  @[BindgenWrapper("Qt::Corner")]
   enum Corner : UInt32
     TopLeftCorner = 0
     TopRightCorner = 1
     BottomLeftCorner = 2
     BottomRightCorner = 3
   end
+  @[BindgenWrapper("Qt::Edge")]
   enum Edge : UInt32
     TopEdge = 1
     LeftEdge = 2
     RightEdge = 4
     BottomEdge = 8
   end
+  @[BindgenWrapper("Qt::Edges")]
   @[Flags]
   enum Edges : UInt32
     TopEdge = 1
@@ -265582,6 +266116,7 @@ module Qt
     RightEdge = 4
     BottomEdge = 8
   end
+  @[BindgenWrapper("Qt::ConnectionType")]
   enum ConnectionType : UInt32
     AutoConnection = 0
     DirectConnection = 1
@@ -265589,44 +266124,53 @@ module Qt
     BlockingQueuedConnection = 3
     UniqueConnection = 128
   end
+  @[BindgenWrapper("Qt::ShortcutContext")]
   enum ShortcutContext : UInt32
     WidgetShortcut = 0
     WindowShortcut = 1
     ApplicationShortcut = 2
     WidgetWithChildrenShortcut = 3
   end
+  @[BindgenWrapper("Qt::FillRule")]
   enum FillRule : UInt32
     OddEvenFill = 0
     WindingFill = 1
   end
+  @[BindgenWrapper("Qt::MaskMode")]
   enum MaskMode : UInt32
     MaskInColor = 0
     MaskOutColor = 1
   end
+  @[BindgenWrapper("Qt::ClipOperation")]
   enum ClipOperation : UInt32
     NoClip = 0
     ReplaceClip = 1
     IntersectClip = 2
   end
+  @[BindgenWrapper("Qt::ItemSelectionMode")]
   enum ItemSelectionMode : UInt32
     ContainsItemShape = 0
     IntersectsItemShape = 1
     ContainsItemBoundingRect = 2
     IntersectsItemBoundingRect = 3
   end
+  @[BindgenWrapper("Qt::ItemSelectionOperation")]
   enum ItemSelectionOperation : UInt32
     ReplaceSelection = 0
     AddToSelection = 1
   end
+  @[BindgenWrapper("Qt::TransformationMode")]
   enum TransformationMode : UInt32
     FastTransformation = 0
     SmoothTransformation = 1
   end
+  @[BindgenWrapper("Qt::Axis")]
   enum Axis : UInt32
     XAxis = 0
     YAxis = 1
     ZAxis = 2
   end
+  @[BindgenWrapper("Qt::FocusReason")]
   enum FocusReason : UInt32
     MouseFocusReason = 0
     TabFocusReason = 1
@@ -265638,6 +266182,7 @@ module Qt
     OtherFocusReason = 7
     NoFocusReason = 8
   end
+  @[BindgenWrapper("Qt::ContextMenuPolicy")]
   enum ContextMenuPolicy : UInt32
     NoContextMenu = 0
     DefaultContextMenu = 1
@@ -265645,6 +266190,7 @@ module Qt
     CustomContextMenu = 3
     PreventContextMenu = 4
   end
+  @[BindgenWrapper("Qt::InputMethodQuery")]
   enum InputMethodQuery : UInt32
     ImEnabled = 1
     ImCursorRectangle = 2
@@ -265666,6 +266212,7 @@ module Qt
     ImQueryInput = 16570
     ImQueryAll = 4294967295
   end
+  @[BindgenWrapper("Qt::InputMethodQueries")]
   @[Flags]
   enum InputMethodQueries : UInt32
     ImEnabled = 1
@@ -265688,6 +266235,7 @@ module Qt
     ImQueryInput = 16570
     ImQueryAll = 4294967295
   end
+  @[BindgenWrapper("Qt::InputMethodHints")]
   @[Flags]
   enum InputMethodHints : UInt32
     ImhNone = 0
@@ -265714,6 +266262,7 @@ module Qt
     ImhLatinOnly = 8388608
     ImhExclusiveInputMask = 4294901760
   end
+  @[BindgenWrapper("Qt::ToolButtonStyle")]
   enum ToolButtonStyle : UInt32
     ToolButtonIconOnly = 0
     ToolButtonTextOnly = 1
@@ -265721,11 +266270,13 @@ module Qt
     ToolButtonTextUnderIcon = 3
     ToolButtonFollowStyle = 4
   end
+  @[BindgenWrapper("Qt::LayoutDirection")]
   enum LayoutDirection : UInt32
     LeftToRight = 0
     RightToLeft = 1
     LayoutDirectionAuto = 2
   end
+  @[BindgenWrapper("Qt::AnchorPoint")]
   enum AnchorPoint : UInt32
     AnchorLeft = 0
     AnchorHorizontalCenter = 1
@@ -265734,11 +266285,13 @@ module Qt
     AnchorVerticalCenter = 4
     AnchorBottom = 5
   end
+  @[BindgenWrapper("Qt::FindChildOptions")]
   @[Flags]
   enum FindChildOptions : UInt32
     FindDirectChildrenOnly = 0
     FindChildrenRecursively = 1
   end
+  @[BindgenWrapper("Qt::DropAction")]
   enum DropAction : UInt32
     CopyAction = 1
     MoveAction = 2
@@ -265747,6 +266300,7 @@ module Qt
     TargetMoveAction = 32770
     IgnoreAction = 0
   end
+  @[BindgenWrapper("Qt::DropActions")]
   @[Flags]
   enum DropActions : UInt32
     CopyAction = 1
@@ -265756,11 +266310,13 @@ module Qt
     TargetMoveAction = 32770
     IgnoreAction = 0
   end
+  @[BindgenWrapper("Qt::CheckState")]
   enum CheckState : UInt32
     Unchecked = 0
     PartiallyChecked = 1
     Checked = 2
   end
+  @[BindgenWrapper("Qt::ItemDataRole")]
   enum ItemDataRole : UInt32
     DisplayRole = 0
     DecorationRole = 1
@@ -265784,6 +266340,7 @@ module Qt
     WhatsThisPropertyRole = 31
     UserRole = 256
   end
+  @[BindgenWrapper("Qt::ItemFlags")]
   @[Flags]
   enum ItemFlags : UInt32
     NoItemFlags = 0
@@ -265797,6 +266354,7 @@ module Qt
     ItemNeverHasChildren = 128
     ItemIsUserTristate = 256
   end
+  @[BindgenWrapper("Qt::MatchFlags")]
   @[Flags]
   enum MatchFlags : UInt32
     MatchExactly = 0
@@ -265810,11 +266368,13 @@ module Qt
     MatchWrap = 32
     MatchRecursive = 64
   end
+  @[BindgenWrapper("Qt::WindowModality")]
   enum WindowModality : UInt32
     NonModal = 0
     WindowModal = 1
     ApplicationModal = 2
   end
+  @[BindgenWrapper("Qt::TextInteractionFlags")]
   @[Flags]
   enum TextInteractionFlags : UInt32
     NoTextInteraction = 0
@@ -265826,6 +266386,7 @@ module Qt
     TextEditorInteraction = 19
     TextBrowserInteraction = 13
   end
+  @[BindgenWrapper("Qt::SizeHint")]
   enum SizeHint : UInt32
     MinimumSize = 0
     PreferredSize = 1
@@ -265833,6 +266394,7 @@ module Qt
     MinimumDescent = 3
     Nsizehints = 4
   end
+  @[BindgenWrapper("Qt::WindowFrameSection")]
   enum WindowFrameSection : UInt32
     NoSection = 0
     LeftSection = 1
@@ -265845,16 +266407,19 @@ module Qt
     BottomLeftSection = 8
     TitleBarArea = 9
   end
+  @[BindgenWrapper("Qt::CoordinateSystem")]
   enum CoordinateSystem : UInt32
     DeviceCoordinates = 0
     LogicalCoordinates = 1
   end
+  @[BindgenWrapper("Qt::TouchPointState")]
   enum TouchPointState : UInt32
     TouchPointPressed = 1
     TouchPointMoved = 2
     TouchPointStationary = 4
     TouchPointReleased = 8
   end
+  @[BindgenWrapper("Qt::TouchPointStates")]
   @[Flags]
   enum TouchPointStates : UInt32
     TouchPointPressed = 1
@@ -265862,6 +266427,7 @@ module Qt
     TouchPointStationary = 4
     TouchPointReleased = 8
   end
+  @[BindgenWrapper("Qt::GestureState")]
   enum GestureState : UInt32
     NoGesture = 0
     GestureStarted = 1
@@ -265869,6 +266435,7 @@ module Qt
     GestureFinished = 3
     GestureCanceled = 4
   end
+  @[BindgenWrapper("Qt::GestureType")]
   enum GestureType : UInt32
     TapGesture = 1
     TapAndHoldGesture = 2
@@ -265878,12 +266445,14 @@ module Qt
     CustomGesture = 256
     LastGestureType = 4294967295
   end
+  @[BindgenWrapper("Qt::GestureFlags")]
   @[Flags]
   enum GestureFlags : UInt32
     DontStartGestureOnChildren = 1
     ReceivePartialGestures = 2
     IgnoredGesturesPropagateToParent = 4
   end
+  @[BindgenWrapper("Qt::NativeGestureType")]
   enum NativeGestureType : UInt32
     BeginNativeGesture = 0
     EndNativeGesture = 1
@@ -265893,15 +266462,18 @@ module Qt
     RotateNativeGesture = 5
     SwipeNativeGesture = 6
   end
+  @[BindgenWrapper("Qt::CursorMoveStyle")]
   enum CursorMoveStyle : UInt32
     LogicalMoveStyle = 0
     VisualMoveStyle = 1
   end
+  @[BindgenWrapper("Qt::TimerType")]
   enum TimerType : UInt32
     PreciseTimer = 0
     CoarseTimer = 1
     VeryCoarseTimer = 2
   end
+  @[BindgenWrapper("Qt::ScrollPhase")]
   enum ScrollPhase : UInt32
     NoScrollPhase = 0
     ScrollBegin = 1
@@ -265909,17 +266481,20 @@ module Qt
     ScrollEnd = 3
     ScrollMomentum = 4
   end
+  @[BindgenWrapper("Qt::MouseEventSource")]
   enum MouseEventSource : UInt32
     MouseEventNotSynthesized = 0
     MouseEventSynthesizedBySystem = 1
     MouseEventSynthesizedByQt = 2
     MouseEventSynthesizedByApplication = 3
   end
+  @[BindgenWrapper("Qt::MouseEventFlags")]
   @[Flags]
   enum MouseEventFlags : UInt32
     MouseEventCreatedDoubleClick = 1
     MouseEventFlagMask = 255
   end
+  @[BindgenWrapper("Qt::HighDpiScaleFactorRoundingPolicy")]
   enum HighDpiScaleFactorRoundingPolicy : Int32
     Unset = 0
     Round = 1
@@ -265928,9 +266503,11 @@ module Qt
     RoundPreferFloor = 4
     PassThrough = 5
   end
+  @[BindgenWrapper("Qt::ReturnByValueConstant")]
   enum ReturnByValueConstant : UInt32
     ReturnByValue = 0
   end
+  @[BindgenWrapper("QMetaObject::Call")]
   enum MetaObjectCall : UInt32
     InvokeMetaMethod = 0
     ReadProperty = 1
@@ -265946,12 +266523,14 @@ module Qt
     RegisterPropertyMetaType = 11
     RegisterMethodArgumentMetaType = 12
   end
+  @[BindgenWrapper("QCborSimpleType")]
   enum CborSimpleType : UInt8
     False = 20
     True = 21
     Null = 22
     Undefined = 23
   end
+  @[BindgenWrapper("QVariant::Type")]
   enum VariantType : UInt32
     Invalid = 0
     Bool = 1
@@ -266016,6 +266595,7 @@ module Qt
     UserType = 1024
     LastType = 4294967295
   end
+  @[BindgenWrapper("QCborKnownTags")]
   enum CborKnownTags : Int32
     DateTimeString = 0
     UnixTime_t = 1
@@ -266042,6 +266622,7 @@ module Qt
     Signature = 55799
   end
   module ImageIOHandler
+    @[BindgenWrapper("QImageIOHandler::ImageOption")]
     enum ImageOption : UInt32
       Size = 0
       ClipRect = 1
@@ -266064,6 +266645,7 @@ module Qt
       ImageTransformation = 18
       TransformedByDefault = 19
     end
+    @[BindgenWrapper("QImageIOHandler::Transformation")]
     enum Transformation : UInt32
       TransformationNone = 0
       TransformationMirror = 1
@@ -266074,6 +266656,7 @@ module Qt
       TransformationFlipAndRotate90 = 6
       TransformationRotate270 = 7
     end
+    @[BindgenWrapper("QImageIOHandler::Transformations")]
     @[Flags]
     enum Transformations : UInt32
       TransformationNone = 0
@@ -266087,12 +266670,14 @@ module Qt
     end
   end
   module OpenGLContext
+    @[BindgenWrapper("QOpenGLContext::OpenGLModuleType")]
     enum OpenGLModuleType : UInt32
       LibGL = 0
       LibGLES = 1
     end
   end
   module OpenGLWidget
+    @[BindgenWrapper("QOpenGLWidget::UpdateBehavior")]
     enum UpdateBehavior : UInt32
       NoPartialUpdate = 0
       PartialUpdate = 1

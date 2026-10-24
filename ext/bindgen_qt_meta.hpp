@@ -16,6 +16,7 @@
 #include <QtCore/QByteArray>
 #include <QtCore/QCoreApplication>
 #include <cstring>
+#include <new>
 #include <string>
 #include <vector>
 
@@ -55,6 +56,7 @@ enum MethodFlags : unsigned {
 enum PropertyFlags : unsigned {
   Readable = 0x00000001,
   Writable = 0x00000002,
+  EnumOrFlag = 0x00000008,
   Designable = 0x00001000,
   Scriptable = 0x00004000,
   Stored = 0x00010000,
@@ -85,6 +87,12 @@ struct Property {
   std::string type;
   int notify; // The index of the notifying signal, or -1
   bool writable;
+  bool is_enum; // An enum type: Qt looks its `QMetaEnum` up, and takes an int for it
+};
+
+struct ClassInfo {
+  std::string key;
+  std::string value;
 };
 
 } // namespace bindgen_qt
@@ -113,7 +121,17 @@ struct BindgenQtMetaObject {
     std::memset(&meta, 0, sizeof(meta));
   }
 
-  const QMetaObject *metaObject() const { return &meta; }
+  /* The `QMetaObject`.  Qt 6 reads the `QMetaType` of a property or a
+   * parameter from the `metaTypes` table, which `finish` fills by name: a type
+   * Qt didn't know then, like an enum no `QVariant` held yet, is looked up
+   * again here, on the way to every property access or connection.
+   */
+  const QMetaObject *metaObject() {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    if (!unresolvedTypes.empty()) resolveMetaTypes();
+#endif
+    return &meta;
+  }
 
   // Is *name* the class name of this meta-object, or of a Crystal parent?
   bool isClassName(const char *name) const {
@@ -136,9 +154,14 @@ struct BindgenQtMetaObject {
     return static_cast<int>(methods.size()) - 1;
   }
 
-  int addProperty(const char *name, const char *type, int notify, bool writable) {
-    properties.push_back(bindgen_qt::Property{name, type, notify, writable});
+  int addProperty(const char *name, const char *type, int notify, bool writable, bool is_enum) {
+    properties.push_back(bindgen_qt::Property{name, type, notify, writable, is_enum});
     return static_cast<int>(properties.size()) - 1;
+  }
+
+  int addClassInfo(const char *key, const char *value) {
+    classInfos.push_back(bindgen_qt::ClassInfo{key, value});
+    return static_cast<int>(classInfos.size()) - 1;
   }
 
   // Builds the tables.  Call once, after the last `add*`, with the parent
@@ -163,8 +186,16 @@ struct BindgenQtMetaObject {
     data[0] = Revision;
     data[1] = 0; // Class name
 
+    // Class infos: key and value.
+    data[2] = static_cast<unsigned>(classInfos.size());
+    data[3] = classInfos.empty() ? 0 : HeaderSize;
+    for (const ClassInfo &info : classInfos) {
+      data.push_back(stringIndex(info.key.c_str()));
+      data.push_back(stringIndex(info.value.c_str()));
+    }
+
     // Methods, then their parameters.
-    unsigned methodsOffset = HeaderSize;
+    unsigned methodsOffset = static_cast<unsigned>(data.size());
     data[4] = static_cast<unsigned>(methods.size());
     data[5] = methods.empty() ? 0 : methodsOffset;
     unsigned parametersOffset = methodsOffset + static_cast<unsigned>(methods.size()) * IntsPerMethod;
@@ -194,6 +225,7 @@ struct BindgenQtMetaObject {
     for (const Property &p : properties) {
       unsigned flags = Readable | Designable | Scriptable | Stored;
       if (p.writable) flags |= Writable;
+      if (p.is_enum) flags |= EnumOrFlag;
       if (p.notify >= 0) { flags |= Notify; anyNotify = true; }
       data.push_back(stringIndex(p.name.c_str()));
       data.push_back(typeData(p.type.c_str()));
@@ -318,6 +350,7 @@ struct BindgenQtMetaObject {
   std::string className;
   std::vector<bindgen_qt::Method> methods;
   std::vector<bindgen_qt::Property> properties;
+  std::vector<bindgen_qt::ClassInfo> classInfos;
   int signalCount = 0;
   BindgenQtMetacall crystalProc;
 
@@ -327,6 +360,20 @@ private:
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
   std::vector<unsigned> stringData; // (offset, size) pairs, then the characters
   std::vector<const QtPrivate::QMetaTypeInterface *> metaTypes;
+  std::vector<std::pair<size_t, std::string>> unresolvedTypes; // Index into `metaTypes`, type name
+
+  // Looks the types `buildMetaTypes` didn't find up again.
+  void resolveMetaTypes() {
+    for (size_t i = 0; i < unresolvedTypes.size(); ) {
+      const QtPrivate::QMetaTypeInterface *iface = interfaceOf(unresolvedTypes[i].second.c_str());
+      if (iface) {
+        metaTypes[unresolvedTypes[i].first] = iface;
+        unresolvedTypes.erase(unresolvedTypes.begin() + static_cast<std::ptrdiff_t>(i));
+      } else {
+        ++i;
+      }
+    }
+  }
 #else
   std::vector<char> characters;
   QByteArrayData *byteArrayData = nullptr;
@@ -373,15 +420,23 @@ private:
   }
 
   // Properties, the class (void: unknown to Qt), then the return type and
-  // the parameters of each method.
+  // the parameters of each method.  A type Qt doesn't know yet is noted for
+  // `resolveMetaTypes`.
   void buildMetaTypes() {
     metaTypes.clear();
-    for (const bindgen_qt::Property &p : properties) metaTypes.push_back(interfaceOf(p.type.c_str()));
+    unresolvedTypes.clear();
+    for (const bindgen_qt::Property &p : properties) pushMetaType(p.type);
     if (bindgen_qt::Revision >= 10) metaTypes.push_back(QMetaType::fromType<void>().iface());
     for (const bindgen_qt::Method &m : methods) {
-      metaTypes.push_back(interfaceOf(m.return_type.c_str()));
-      for (const std::string &type : m.types) metaTypes.push_back(interfaceOf(type.c_str()));
+      pushMetaType(m.return_type);
+      for (const std::string &type : m.types) pushMetaType(type);
     }
+  }
+
+  void pushMetaType(const std::string &type) {
+    const QtPrivate::QMetaTypeInterface *iface = interfaceOf(type.c_str());
+    if (!iface && type != "void") unresolvedTypes.push_back(std::make_pair(metaTypes.size(), type));
+    metaTypes.push_back(iface);
   }
 #else
   void buildStrings() {
@@ -464,8 +519,12 @@ BINDGEN_QT_C int bindgen_qt_meta_add_method(BindgenQtMetaObject *meta, int kind,
   return meta->addMethod(flags, name, return_type, argc, types, names);
 }
 
-BINDGEN_QT_C int bindgen_qt_meta_add_property(BindgenQtMetaObject *meta, const char *name, const char *type, int notify, bool writable) {
-  return meta->addProperty(name, type, notify, writable);
+BINDGEN_QT_C int bindgen_qt_meta_add_property(BindgenQtMetaObject *meta, const char *name, const char *type, int notify, bool writable, bool is_enum) {
+  return meta->addProperty(name, type, notify, writable, is_enum);
+}
+
+BINDGEN_QT_C int bindgen_qt_meta_add_class_info(BindgenQtMetaObject *meta, const char *key, const char *value) {
+  return meta->addClassInfo(key, value);
 }
 
 BINDGEN_QT_C void bindgen_qt_meta_finish(BindgenQtMetaObject *meta, BindgenQtMetaObject *parent, BindgenQtMetacall metacall) {
@@ -549,6 +608,79 @@ BINDGEN_QT_C CrystalString bindgen_qt_bytes_at(void *slot) {
 
 BINDGEN_QT_C void bindgen_qt_set_bytes(void *slot, CrystalString bytes) {
   *static_cast<QByteArray *>(slot) = QByteArray(bytes.ptr, static_cast<int>(bytes.size));
+}
+
+/* A value of a class passed by value, like a `QColor`, copied out of an
+ * argument vector by `bindgen_qt_copy_value`: the `QMetaType` of the value,
+ * for its destructor, is kept in front of it in the GC allocation.  The header
+ * doesn't look like a `BindgenGCObject`, so the type discovery wraps the copy
+ * anew.
+ */
+struct BindgenQtValueHeader {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  QMetaType type;
+#else
+  int type;
+#endif
+};
+
+const size_t BindgenQtValueOffset = 16;
+static_assert(sizeof(BindgenQtValueHeader) <= BindgenQtValueOffset, "the header must fit in front of the value");
+
+static void GC_CALLBACK bindgen_qt_destruct_value(void *object, void *) {
+  auto *header = static_cast<BindgenQtValueHeader *>(object);
+  void *value = static_cast<char *>(object) + BindgenQtValueOffset;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  header->type.destruct(value);
+#else
+  QMetaType::destruct(header->type, value);
+#endif
+}
+
+/* A copy of the value of *type*, a name `QMetaType` knows, at *source*, in a
+ * GC allocation destructed by a finalizer, or null for an unknown type.  For
+ * the slots and properties of Crystal classes taking a class by value.
+ */
+BINDGEN_QT_C void *bindgen_qt_copy_value(const char *type, const void *source) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  QMetaType mt = QMetaType::fromName(type);
+  if (!mt.isValid()) return nullptr;
+  const size_t size = static_cast<size_t>(mt.sizeOf());
+#else
+  int mt = QMetaType::type(type);
+  if (mt == QMetaType::UnknownType) return nullptr;
+  const size_t size = static_cast<size_t>(QMetaType::sizeOf(mt));
+#endif
+
+  void *memory = GC_MALLOC(BindgenQtValueOffset + size);
+  new (memory) BindgenQtValueHeader{mt};
+  void *value = static_cast<char *>(memory) + BindgenQtValueOffset;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  mt.construct(value, source);
+#else
+  QMetaType::construct(mt, value, source);
+#endif
+  GC_REGISTER_FINALIZER_IGNORE_SELF(memory, bindgen_qt_destruct_value, nullptr, nullptr, nullptr);
+  return value;
+}
+
+/* Assigns the value of *type* at *source* to the one an argument vector slot
+ * points to, the result of a slot or a property read, through the `QMetaType`.
+ * False for a type Qt doesn't know.
+ */
+BINDGEN_QT_C bool bindgen_qt_set_value(void *slot, const char *type, const void *source) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  QMetaType mt = QMetaType::fromName(type);
+  if (!mt.isValid()) return false;
+  mt.destruct(slot);
+  mt.construct(slot, source);
+#else
+  int mt = QMetaType::type(type);
+  if (mt == QMetaType::UnknownType) return false;
+  QMetaType::destruct(mt, slot);
+  QMetaType::construct(mt, slot, source);
+#endif
+  return true;
 }
 
 #undef BINDGEN_QT_C

@@ -128,3 +128,129 @@ describe "a Crystal subclass declaring signals, slots and properties" do
     child.inherits("Counter".to_unsafe).should be_true
   end
 end
+
+# The other types: a wrapped enum and a class passed by value; the
+# counterparts of Q_INVOKABLE and Q_CLASSINFO.
+private class Shape < Qt::Object
+  qt_class_info "Author", "spec"
+  qt_class_info "QML.Element", "auto"
+
+  signal flipped(orientation : Qt::Orientation)
+  signal painted(color : Qt::Color)
+
+  getter orientation = Qt::Orientation::Horizontal
+  getter color = Qt::Color.new(0, 0, 0)
+  getter resets = 0
+
+  @[Qt::Slot]
+  def set_orientation(orientation : Qt::Orientation) : Nil
+    @orientation = orientation
+    flipped(orientation)
+  end
+
+  @[Qt::Slot]
+  def set_color(color : Qt::Color) : Nil
+    @color = color
+  end
+
+  @[Qt::Invokable]
+  def reset : Nil
+    @resets += 1
+  end
+
+  qt_property orientation : Qt::Orientation, write: :set_orientation, notify: :flipped
+  qt_property color : Qt::Color, write: :set_color
+end
+
+describe "the types of signals, slots and properties of a Crystal subclass" do
+  it "takes a wrapped enum" do
+    shape = Shape.new
+    meta = shape.meta_object.not_nil!
+    meta.index_of_signal("flipped(Qt::Orientation)".to_unsafe).should eq(meta.method_offset)
+    String.new(meta.property(meta.index_of_property("orientation".to_unsafe)).type_name).should eq("Qt::Orientation")
+
+    seen = [] of Qt::Orientation
+    shape.on_flipped { |orientation| seen << orientation }
+    shape.set_orientation(Qt::Orientation::Vertical)
+    seen.should eq([Qt::Orientation::Vertical])
+
+    # Through QVariants Qt makes and reads: a slider's orientation property.
+    shape.set_orientation(Qt::Orientation::Horizontal)
+    vertical = Qt::Slider.new(Qt::Orientation::Vertical)
+    shape.set_property("orientation".to_unsafe, vertical.property("orientation".to_unsafe)).should be_true
+    shape.orientation.should eq(Qt::Orientation::Vertical)
+    horizontal = Qt::Slider.new(Qt::Orientation::Horizontal)
+    horizontal.set_property("orientation".to_unsafe, shape.property("orientation".to_unsafe)).should be_true
+    horizontal.orientation.should eq(Qt::Orientation::Vertical)
+
+    # Qt converts an int to the enum.
+    shape.set_property("orientation".to_unsafe, Qt.variant(Qt::Orientation::Horizontal.value.to_i32)).should be_true
+    shape.orientation.should eq(Qt::Orientation::Horizontal)
+
+    # Connected by name to and from Qt's own signals and slots.
+    toolbar = Qt::ToolBar.new
+    Qt::Object.connect(toolbar, "2orientationChanged(Qt::Orientation)".to_unsafe, shape, "1setOrientation(Qt::Orientation)".to_unsafe)
+    toolbar.orientation = Qt::Orientation::Vertical
+    shape.orientation.should eq(Qt::Orientation::Vertical)
+    Qt::Object.connect(shape, "2flipped(Qt::Orientation)".to_unsafe, horizontal, "1setOrientation(Qt::Orientation)".to_unsafe)
+    shape.set_orientation(Qt::Orientation::Horizontal)
+    horizontal.orientation.should eq(Qt::Orientation::Horizontal)
+  end
+
+  it "takes a class by value, copying it" do
+    shape = Shape.new
+    names = [] of String
+    shape.on_painted { |color| names << color.name }
+    shape.painted(Qt::Color.new(255, 0, 0))
+    names.should eq(["#ff0000"])
+
+    source = Shape.new
+    Qt::Object.connect(source, "2painted(QColor)".to_unsafe, shape, "1setColor(QColor)".to_unsafe)
+    source.painted(Qt::Color.new(0, 255, 0))
+    shape.color.name.should eq("#00ff00")
+
+    # Through QVariants Qt makes and reads: a color dialog's color property.
+    dialog = Qt::ColorDialog.new
+    dialog.current_color = Qt::Color.new(0, 0, 255)
+    shape.set_property("color".to_unsafe, dialog.property("currentColor".to_unsafe)).should be_true
+    shape.color.name.should eq("#0000ff")
+    dialog.current_color = Qt::Color.new(255, 255, 255)
+    dialog.set_property("currentColor".to_unsafe, shape.property("color".to_unsafe)).should be_true
+    dialog.current_color.name.should eq("#0000ff")
+
+    # Connected by name to and from Qt's own signals and slots.
+    Qt::Object.connect(dialog, "2currentColorChanged(QColor)".to_unsafe, shape, "1setColor(QColor)".to_unsafe)
+    dialog.current_color = Qt::Color.new(1, 2, 3)
+    shape.color.name.should eq("#010203")
+    effect = Qt::GraphicsColorizeEffect.new
+    Qt::Object.connect(shape, "2painted(QColor)".to_unsafe, effect, "1setColor(QColor)".to_unsafe)
+    shape.painted(Qt::Color.new(4, 5, 6))
+    effect.color.name.should eq("#040506")
+  end
+
+  it "has invokable methods which aren't slots" do
+    shape = Shape.new
+    meta = shape.meta_object.not_nil!
+    index = meta.index_of_method("reset()".to_unsafe)
+    index.should be >= meta.method_offset
+    meta.method(index).method_type.should eq(Qt::MetaMethod::MethodType::Method)
+    meta.method(meta.index_of_slot("setColor(QColor)".to_unsafe)).method_type.should eq(Qt::MetaMethod::MethodType::Slot)
+
+    Qt::MetaObject.invoke_method(shape, "reset").should be_true
+    shape.resets.should eq(1)
+
+    # A signal connects to it through the QMetaMethods, with more arguments.
+    Qt::Object.connect(shape, meta.method(meta.index_of_signal("flipped(Qt::Orientation)".to_unsafe)), shape, meta.method(index))
+    shape.set_orientation(Qt::Orientation::Vertical)
+    shape.resets.should eq(2)
+  end
+
+  it "carries class infos" do
+    meta = Shape.new.meta_object.not_nil!
+    meta.class_info_count.should eq(2)
+    author = meta.class_info(meta.index_of_class_info("Author".to_unsafe))
+    String.new(author.name).should eq("Author")
+    String.new(author.value).should eq("spec")
+    String.new(meta.class_info(meta.index_of_class_info("QML.Element".to_unsafe)).value).should eq("auto")
+  end
+end
