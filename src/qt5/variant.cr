@@ -60,7 +60,8 @@ module Qt
   # Any other Crystal value is wrapped as is, for the round trip through Qt.
   # Conversely a `QVariant` of a Qt type without a mapping, like a `QColor`,
   # is unpacked as *unknown*: not `#is_nil?`, but `#is?` nothing and `#to?`
-  # returns `nil`.
+  # returns `nil`.  It keeps the `QVariant`, so handing it back to Qt works:
+  # `label.set_property("palette", other_label.property("palette"))`.
   #
   # ## Code sample
   #
@@ -138,7 +139,7 @@ module Qt
     #
     # Mirrored from ext/converters.hpp, "struct CrystalVariant".
     enum Tag : Int32
-      Unknown    =  -1 # A Qt type without a Crystal mapping.  No data.
+      Unknown    =  -1 # A Qt type without a Crystal mapping.  A pointer to a GC-allocated copy of the QVariant, or null.
       Bool       =  -2 # bool, in bytes[0]
       Int32      =  -3 # int, inline
       UInt32     =  -4 # unsigned int, inline

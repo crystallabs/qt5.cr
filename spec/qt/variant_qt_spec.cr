@@ -107,8 +107,16 @@ describe "Qt::Variant through Qt" do
     variant.type_id.should eq(Qt::Variant::Tag::Unknown.value)
     expect_raises(TypeCastError) { variant.to(String) }
 
-    # Qt gets nothing back out of it.
-    round_trip(variant).is_nil?.should be_true
+    # Qt gets the value back out of it.
+    font = Qt::Font.new
+    font.point_size = 42
+    widget = Qt::Widget.new
+    widget.font = font
+    variant = round_trip(widget.property("font".to_unsafe))
+    variant.type_id.should eq(Qt::Variant::Tag::Unknown.value)
+    other = Qt::Widget.new
+    other.set_property("font".to_unsafe, variant).should be_true
+    other.font.point_size.should eq(42)
   end
 
   it "survives garbage collection of the exchanged data" do

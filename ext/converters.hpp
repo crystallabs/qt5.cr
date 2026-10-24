@@ -85,7 +85,7 @@ struct CrystalVariant {
   // Tags, in `typeId`, of values exchanged in their native Qt form.  Negative,
   // as Crystal type ids are positive.  Mirrored in Crystal as `Qt::Variant::Tag`.
   enum Tag : int32_t {
-    TAG_UNKNOWN = -1,      // A Qt type without a Crystal mapping.  No data.
+    TAG_UNKNOWN = -1,      // A Qt type without a Crystal mapping.  `reference` points to a GC-allocated copy of the QVariant, or is null
     TAG_BOOL = -2,         // bool, in bytes[0]
     TAG_INT32 = -3,        // int, inline
     TAG_UINT32 = -4,       // unsigned int, inline
@@ -179,7 +179,8 @@ static bool qvariant_is_null(const QVariant &variant) {
 
 // Converts a QVariant into a CrystalVariant: a wrapped Crystal value is
 // returned as it was, a value of a native Qt type listed in
-// `CrystalVariant::Tag` is tagged, any other is `TAG_UNKNOWN`.
+// `CrystalVariant::Tag` is tagged, any other is `TAG_UNKNOWN` holding a copy
+// of the QVariant, so it survives the round trip back to Qt.
 static CrystalVariant qvariant_to_crystal(const QVariant &variant) {
   int id = qRegisterMetaType<CrystalVariant>();
 
@@ -232,7 +233,7 @@ static CrystalVariant qvariant_to_crystal(const QVariant &variant) {
     case QMetaType::QRectF:
       return CrystalVariant::boxed(CrystalVariant::TAG_RECTF, variant.toRectF());
     default:
-      return CrystalVariant::tagged(CrystalVariant::TAG_UNKNOWN);
+      return CrystalVariant::boxed(CrystalVariant::TAG_UNKNOWN, variant);
   }
 }
 
@@ -244,8 +245,9 @@ static QVariant crystal_to_qvariant(CrystalVariant object) {
 
   switch (object.typeId) {
     case CrystalVariant::CRYSTAL_NIL_ID:
-    case CrystalVariant::TAG_UNKNOWN:
       return QVariant();
+    case CrystalVariant::TAG_UNKNOWN: // The QVariant Qt handed out, if any
+      return object.reference ? *static_cast<const QVariant *>(object.reference) : QVariant();
     case CrystalVariant::TAG_BOOL:
       return QVariant(object.bytes[0] != 0);
     case CrystalVariant::TAG_INT32:
