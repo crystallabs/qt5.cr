@@ -2,12 +2,57 @@
 # its overrides in Crystal; `nilable:` makes a pointer result `T` or `T?`
 # regardless of `nilable_results` (`false` where Qt never returns null, like a
 # menu bar it creates on demand), and the listed pointer arguments accept
-# `nil` where Qt accepts a null pointer.  Keys are C++ names, signatures or
-# `/regex/` like `ignore_methods`.
+# `nil` where Qt accepts a null pointer.  `out_arguments:` decides which
+# pointer arguments are out arguments, returned with the result, where the
+# default of `builtin_out_arguments` (qt.yml) is wrong: `false` for a pointer
+# to an array, or where the tuple would clash with another overload.  Keys are
+# C++ names, signatures or `/regex/` like `ignore_methods`.
 #
 # Deep-merged (`<<+:`) into `types:` after `keep_alive.yml`, so classes listed
 # there keep their rules.
 ---
+QRandomGenerator: # Also QRandomGenerator64, which re-declares them
+  out_arguments:
+    generate: false # `generate(quint32 *begin, quint32 *end)` fills a range, `generate()` returns a value
+QPolygon:
+  out_arguments:
+    point: false # `point(int, int *x, int *y)` would clash with `point(int) : QPoint`
+QFontMetrics:
+  out_arguments: # `int *tabarray` is an array of tab stops, an input
+    boundingRect: false
+    size: false
+QFontMetricsF:
+  out_arguments:
+    boundingRect: false
+    size: false
+QTextLine:
+  out_arguments:
+    cursorToX: false # `int *cursorPos` is in/out through the pointer; `cursorToX(int, Edge)` takes it by value
+QDataStream:
+  out_arguments:
+    readBytes: false # `len` is set to the length of the buffer `new`ed into `char *&s`
+QMetaObject:
+  out_arguments:
+    connect: false # `int *types` is an array of argument types
+QMetaMethod:
+  out_arguments:
+    getParameterTypes: false # Fills an array of `parameterCount()` type ids
+QMatrix4x4:
+  out_arguments:
+    copyDataTo: false # Fills an array of 16 floats
+# The QGenericMatrix typedefs: `copyDataTo(float *)` fills an array of
+# columns * rows floats.
+QMatrix2x2: { out_arguments: { copyDataTo: false } }
+QMatrix2x3: { out_arguments: { copyDataTo: false } }
+QMatrix2x4: { out_arguments: { copyDataTo: false } }
+QMatrix3x2: { out_arguments: { copyDataTo: false } }
+QMatrix3x3: { out_arguments: { copyDataTo: false } }
+QMatrix3x4: { out_arguments: { copyDataTo: false } }
+QMatrix4x2: { out_arguments: { copyDataTo: false } }
+QMatrix4x3: { out_arguments: { copyDataTo: false } }
+QQuaternion:
+  out_arguments:
+    "getAxisAndAngle(QVector3D *, float *) const": false # Keeps the pointer form next to the four-float tuple one
 QWidget:
   rename:
     raise: raise_ # Would shadow Crystal's raise in widgets written in Crystal

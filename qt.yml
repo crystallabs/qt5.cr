@@ -21,6 +21,12 @@ ignore_deprecated: true
 # of pointers and the `#as_X` casts.  See `spec/qt/null_pointer_spec.cr`.
 nilable_results: true
 
+# Every `bool *ok`, `int *` or `int &` a method writes through is returned with
+# the result: `value, ok = variant.to_int`, `year, month, day = date.get_date`.
+# Pointers to bytes and characters are buffers and stay pointers; config/
+# methods.yml lists the exceptions under `out_arguments:`.
+builtin_out_arguments: true
+
 # Free functions bound as methods of the class of their first parameter:
 # qHash(const QPoint &, size_t) is Point#q_hash, forwarded to #hash.
 member_functions: [qHash]

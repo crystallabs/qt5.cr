@@ -2,11 +2,10 @@ require "../spec_helper"
 
 # The hand-written helpers of src/qt5/.
 
-# Returns the row, column, row span and column span of *widget* in *grid*.
+# Returns the row, column, row span and column span of *widget* in *grid*: the
+# out pointers of `QGridLayout::getItemPosition`, returned as a tuple.
 private def grid_position(grid, widget)
-  row = column = row_span = column_span = 0
-  grid.get_item_position(grid.index_of(widget), pointerof(row), pointerof(column), pointerof(row_span), pointerof(column_span))
-  {row, column, row_span, column_span}
+  grid.get_item_position(grid.index_of(widget))
 end
 
 describe "Qt::GridLayout#[]=" do

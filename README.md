@@ -517,6 +517,13 @@ see the comments there:
   returns the fixed string, `FileDialog.get_open_file_name(parent, caption,
   dir, filter)` returns `{file_name, selected_filter}`, `TextStream#read_line_into`
   `{Bool, String}` and `LockFile#lock_info` `{Bool, Int64, String, String}`.
+  So is a `bool *ok`, `int *` or `int &` a method writes through
+  (`builtin_out_arguments` in `qt.yml`): `value, ok = locale.to_int("42")`,
+  `year, month, day = date.get_date`, `r, g, b, a = color.get_rgb`,
+  `inverse, invertible = transform.inverted`, `font, ok = FontDialog.get_font`.
+  A pointer to bytes or characters, like `IODevice#read(buffer, size)`, stays
+  a pointer, and so do the arrays of `Matrix4x4#copy_data_to` and
+  `FontMetrics#bounding_rect` (`out_arguments:` in `config/methods.yml`).
   A validator or spin box written in Crystal returns the same tuple from its
   `validate`.  `QTextStream::setString` and `QBuffer::setBuffer` keep the
   pointer instead, and are ignored.

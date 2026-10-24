@@ -49,7 +49,7 @@ end
 describe "Qt::VersionNumber" do
   it "compares versions" do
     old = Qt::VersionNumber.new(5, 9)
-    new = Qt::VersionNumber.from_string("5.15.2")
+    new = Qt::VersionNumber.from_string("5.15.2")[0] # With the `int *suffixIndex`
     new.major_version.should eq(5)
     new.minor_version.should eq(15)
     new.micro_version.should eq(2)
@@ -63,8 +63,8 @@ describe "Qt::VersionNumber" do
     Qt::VersionNumber.common_prefix(old, new).to_string.should eq("5")
     Qt::VersionNumber.new(1, 0, 0).normalized.segment_count.should eq(1)
 
-    suffix_index = 0
-    Qt::VersionNumber.from_string("2.1-beta", pointerof(suffix_index)).to_string.should eq("2.1")
+    version, suffix_index = Qt::VersionNumber.from_string("2.1-beta")
+    version.to_string.should eq("2.1")
     suffix_index.should eq(3)
     Qt::LibraryInfo.version.major_version.should eq(5)
   end
@@ -185,13 +185,11 @@ describe "Qt::LibraryInfo" do
 end
 
 describe Qt::Locale do
-  it "parses numbers, reporting the outcome through a bool pointer" do
+  it "parses numbers, reporting the outcome with the result" do
     locale = Qt::Locale.new("en_US")
-    locale.to_int("42").should eq(42) # The `bool *ok = nullptr` defaults to nil
-    ok = false
-    locale.to_int("42", pointerof(ok)).should eq(42)
-    ok.should be_true
-    locale.to_int("forty-two", pointerof(ok)).should eq(0)
+    locale.to_int("42").should eq({42, true}) # The `bool *ok` is returned
+    value, ok = locale.to_int("forty-two")
+    value.should eq(0)
     ok.should be_false
   end
 end

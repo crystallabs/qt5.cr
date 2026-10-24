@@ -42213,7 +42213,10 @@ struct BgInherit_QWindow : public QWindow {
     BgInherit_QWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QWindow *>(static_cast<const QWindow *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QWindow::nativeEvent(eventType, message, result);
     }
@@ -47329,7 +47332,10 @@ struct BgInherit_QPaintDeviceWindow : public QPaintDeviceWindow {
     BgInherit_QPaintDeviceWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QPaintDeviceWindow *>(static_cast<const QPaintDeviceWindow *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QPaintDeviceWindow::nativeEvent(eventType, message, result);
     }
@@ -50261,7 +50267,10 @@ struct BgInherit_QRasterWindow : public QRasterWindow {
     BgInherit_QRasterWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QRasterWindow *>(static_cast<const QRasterWindow *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWindow_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QRasterWindow::nativeEvent(eventType, message, result);
     }
@@ -55828,7 +55837,10 @@ struct BgInherit_QWidget : public QWidget {
     BgInherit_QWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QWidget *>(static_cast<const QWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QWidget::nativeEvent(eventType, message, result);
     }
@@ -57950,7 +57962,10 @@ struct BgInherit_QAbstractButton : public QAbstractButton {
     BgInherit_QAbstractButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractButton *>(static_cast<const QAbstractButton *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QAbstractButton::nativeEvent(eventType, message, result);
     }
@@ -58858,7 +58873,10 @@ struct BgInherit_QAbstractSpinBox : public QAbstractSpinBox {
     BgInherit_QAbstractSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractSpinBox *>(static_cast<const QAbstractSpinBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QAbstractSpinBox::nativeEvent(eventType, message, result);
     }
@@ -59785,7 +59803,10 @@ struct BgInherit_QAbstractSlider : public QAbstractSlider {
     BgInherit_QAbstractSlider *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractSlider *>(static_cast<const QAbstractSlider *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QAbstractSlider::nativeEvent(eventType, message, result);
     }
@@ -60586,7 +60607,10 @@ struct BgInherit_QSlider : public QSlider {
     BgInherit_QSlider *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSlider *>(static_cast<const QSlider *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSlider::nativeEvent(eventType, message, result);
     }
@@ -61901,7 +61925,10 @@ struct BgInherit_QTabBar : public QTabBar {
     BgInherit_QTabBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTabBar *>(static_cast<const QTabBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTabBar::nativeEvent(eventType, message, result);
     }
@@ -62906,7 +62933,10 @@ struct BgInherit_QTabWidget : public QTabWidget {
     BgInherit_QTabWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTabWidget *>(static_cast<const QTabWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTabWidget::nativeEvent(eventType, message, result);
     }
@@ -63803,7 +63833,10 @@ struct BgInherit_QRubberBand : public QRubberBand {
     BgInherit_QRubberBand *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QRubberBand *>(static_cast<const QRubberBand *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QRubberBand::nativeEvent(eventType, message, result);
     }
@@ -64460,7 +64493,10 @@ struct BgInherit_QFrame : public QFrame {
     BgInherit_QFrame *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QFrame *>(static_cast<const QFrame *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QFrame::nativeEvent(eventType, message, result);
     }
@@ -67237,7 +67273,10 @@ struct BgInherit_QAbstractScrollArea : public QAbstractScrollArea {
     BgInherit_QAbstractScrollArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractScrollArea *>(static_cast<const QAbstractScrollArea *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QAbstractScrollArea::nativeEvent(eventType, message, result);
     }
@@ -68609,7 +68648,10 @@ struct BgInherit_QAbstractItemView : public QAbstractItemView {
     BgInherit_QAbstractItemView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemView *>(static_cast<const QAbstractItemView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QAbstractItemView::nativeEvent(eventType, message, result);
     }
@@ -74892,7 +74934,10 @@ struct BgInherit_QCalendarWidget : public QCalendarWidget {
     BgInherit_QCalendarWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QCalendarWidget *>(static_cast<const QCalendarWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QCalendarWidget::nativeEvent(eventType, message, result);
     }
@@ -75780,7 +75825,10 @@ struct BgInherit_QCheckBox : public QCheckBox {
     BgInherit_QCheckBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QCheckBox *>(static_cast<const QCheckBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QCheckBox::nativeEvent(eventType, message, result);
     }
@@ -76498,7 +76546,10 @@ struct BgInherit_QDialog : public QDialog {
     BgInherit_QDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDialog *>(static_cast<const QDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDialog::nativeEvent(eventType, message, result);
     }
@@ -77326,7 +77377,10 @@ struct BgInherit_QColorDialog : public QColorDialog {
     BgInherit_QColorDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QColorDialog *>(static_cast<const QColorDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QColorDialog::nativeEvent(eventType, message, result);
     }
@@ -78537,7 +78591,10 @@ struct BgInherit_QColumnView : public QColumnView {
     BgInherit_QColumnView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QColumnView *>(static_cast<const QColumnView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QColumnView::nativeEvent(eventType, message, result);
     }
@@ -79298,7 +79355,10 @@ struct BgInherit_QComboBox : public QComboBox {
     BgInherit_QComboBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QComboBox *>(static_cast<const QComboBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QComboBox::nativeEvent(eventType, message, result);
     }
@@ -80401,7 +80461,10 @@ struct BgInherit_QPushButton : public QPushButton {
     BgInherit_QPushButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QPushButton *>(static_cast<const QPushButton *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QPushButton::nativeEvent(eventType, message, result);
     }
@@ -81134,7 +81197,10 @@ struct BgInherit_QCommandLinkButton : public QCommandLinkButton {
     BgInherit_QCommandLinkButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QCommandLinkButton *>(static_cast<const QCommandLinkButton *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QCommandLinkButton::nativeEvent(eventType, message, result);
     }
@@ -83072,7 +83138,10 @@ struct BgInherit_QDateTimeEdit : public QDateTimeEdit {
     BgInherit_QDateTimeEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDateTimeEdit *>(static_cast<const QDateTimeEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDateTimeEdit::nativeEvent(eventType, message, result);
     }
@@ -84103,7 +84172,10 @@ struct BgInherit_QTimeEdit : public QTimeEdit {
     BgInherit_QTimeEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTimeEdit *>(static_cast<const QTimeEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTimeEdit::nativeEvent(eventType, message, result);
     }
@@ -84776,7 +84848,10 @@ struct BgInherit_QDateEdit : public QDateEdit {
     BgInherit_QDateEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDateEdit *>(static_cast<const QDateEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDateEdit::nativeEvent(eventType, message, result);
     }
@@ -85325,7 +85400,10 @@ struct BgInherit_QDesktopWidget : public QDesktopWidget {
     BgInherit_QDesktopWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDesktopWidget *>(static_cast<const QDesktopWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDesktopWidget::nativeEvent(eventType, message, result);
     }
@@ -85953,7 +86031,10 @@ struct BgInherit_QDial : public QDial {
     BgInherit_QDial *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDial *>(static_cast<const QDial *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDial::nativeEvent(eventType, message, result);
     }
@@ -86624,7 +86705,10 @@ struct BgInherit_QDialogButtonBox : public QDialogButtonBox {
     BgInherit_QDialogButtonBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDialogButtonBox *>(static_cast<const QDialogButtonBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDialogButtonBox::nativeEvent(eventType, message, result);
     }
@@ -87400,7 +87484,10 @@ struct BgInherit_QDockWidget : public QDockWidget {
     BgInherit_QDockWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDockWidget *>(static_cast<const QDockWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDockWidget::nativeEvent(eventType, message, result);
     }
@@ -88178,7 +88265,10 @@ struct BgInherit_QErrorMessage : public QErrorMessage {
     BgInherit_QErrorMessage *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QErrorMessage *>(static_cast<const QErrorMessage *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QErrorMessage::nativeEvent(eventType, message, result);
     }
@@ -88838,7 +88928,10 @@ struct BgInherit_QFileDialog : public QFileDialog {
     BgInherit_QFileDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QFileDialog *>(static_cast<const QFileDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QFileDialog::nativeEvent(eventType, message, result);
     }
@@ -90821,7 +90914,10 @@ struct BgInherit_QFocusFrame : public QFocusFrame {
     BgInherit_QFocusFrame *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QFocusFrame *>(static_cast<const QFocusFrame *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QFocusFrame::nativeEvent(eventType, message, result);
     }
@@ -91476,7 +91572,10 @@ struct BgInherit_QFontComboBox : public QFontComboBox {
     BgInherit_QFontComboBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QFontComboBox *>(static_cast<const QFontComboBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QFontComboBox::nativeEvent(eventType, message, result);
     }
@@ -92146,7 +92245,10 @@ struct BgInherit_QFontDialog : public QFontDialog {
     BgInherit_QFontDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QFontDialog *>(static_cast<const QFontDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QFontDialog::nativeEvent(eventType, message, result);
     }
@@ -102643,7 +102745,15 @@ struct BgInherit_QGraphicsLayoutItem : public QGraphicsLayoutItem {
     const BgInherit_QGraphicsLayoutItem *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsLayoutItem_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsLayoutItem *>(static_cast<const QGraphicsLayoutItem *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsLayoutItem_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsLayoutItem_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsLayoutItem::getContentsMargins(left, top, right, bottom);
     }
@@ -102909,7 +103019,15 @@ struct BgInherit_QGraphicsLayout : public QGraphicsLayout {
     const BgInherit_QGraphicsLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsLayout *>(static_cast<const QGraphicsLayout *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsLayout::getContentsMargins(left, top, right, bottom);
     }
@@ -103336,7 +103454,15 @@ struct BgInherit_QGraphicsAnchorLayout : public QGraphicsAnchorLayout {
     const BgInherit_QGraphicsAnchorLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsAnchorLayout *>(static_cast<const QGraphicsAnchorLayout *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsAnchorLayout::getContentsMargins(left, top, right, bottom);
     }
@@ -104747,7 +104873,15 @@ struct BgInherit_QGraphicsGridLayout : public QGraphicsGridLayout {
     const BgInherit_QGraphicsGridLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsGridLayout *>(static_cast<const QGraphicsGridLayout *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsGridLayout::getContentsMargins(left, top, right, bottom);
     }
@@ -105363,7 +105497,15 @@ struct BgInherit_QGraphicsLinearLayout : public QGraphicsLinearLayout {
     const BgInherit_QGraphicsLinearLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsLinearLayout *>(static_cast<const QGraphicsLinearLayout *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsLayout_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsLinearLayout::getContentsMargins(left, top, right, bottom);
     }
@@ -105609,7 +105751,15 @@ struct BgInherit_QGraphicsWidget : public QGraphicsWidget {
     const BgInherit_QGraphicsWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsWidget *>(static_cast<const QGraphicsWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsWidget::getContentsMargins(left, top, right, bottom);
     }
@@ -107067,7 +107217,15 @@ struct BgInherit_QGraphicsProxyWidget : public QGraphicsProxyWidget {
     const BgInherit_QGraphicsProxyWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsProxyWidget *>(static_cast<const QGraphicsProxyWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, left, top, right, bottom);
+      qreal left_{};
+      qreal top_{};
+      qreal right_{};
+      qreal bottom_{};
+      _self_->bgJump.bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X(_crystal_, &left_, &top_, &right_, &bottom_);
+      if (left) *left = left_;
+      if (top) *top = top_;
+      if (right) *right = right_;
+      if (bottom) *bottom = bottom_;
     } else {
       QGraphicsProxyWidget::getContentsMargins(left, top, right, bottom);
     }
@@ -110189,7 +110347,10 @@ struct BgInherit_QScrollArea : public QScrollArea {
     BgInherit_QScrollArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QScrollArea *>(static_cast<const QScrollArea *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QScrollArea::nativeEvent(eventType, message, result);
     }
@@ -110959,7 +111120,10 @@ struct BgInherit_QGraphicsView : public QGraphicsView {
     BgInherit_QGraphicsView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsView *>(static_cast<const QGraphicsView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QGraphicsView::nativeEvent(eventType, message, result);
     }
@@ -112066,7 +112230,10 @@ struct BgInherit_QGroupBox : public QGroupBox {
     BgInherit_QGroupBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QGroupBox *>(static_cast<const QGroupBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QGroupBox::nativeEvent(eventType, message, result);
     }
@@ -113312,7 +113479,10 @@ struct BgInherit_QHeaderView : public QHeaderView {
     BgInherit_QHeaderView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QHeaderView *>(static_cast<const QHeaderView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QHeaderView::nativeEvent(eventType, message, result);
     }
@@ -114455,7 +114625,10 @@ struct BgInherit_QLineEdit : public QLineEdit {
     BgInherit_QLineEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QLineEdit *>(static_cast<const QLineEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QLineEdit::nativeEvent(eventType, message, result);
     }
@@ -115551,7 +115724,10 @@ struct BgInherit_QInputDialog : public QInputDialog {
     BgInherit_QInputDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QInputDialog *>(static_cast<const QInputDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QInputDialog::nativeEvent(eventType, message, result);
     }
@@ -117019,7 +117195,10 @@ struct BgInherit_QKeySequenceEdit : public QKeySequenceEdit {
     BgInherit_QKeySequenceEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QKeySequenceEdit *>(static_cast<const QKeySequenceEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QKeySequenceEdit::nativeEvent(eventType, message, result);
     }
@@ -117674,7 +117853,10 @@ struct BgInherit_QLabel : public QLabel {
     BgInherit_QLabel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QLabel *>(static_cast<const QLabel *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QLabel::nativeEvent(eventType, message, result);
     }
@@ -118513,7 +118695,10 @@ struct BgInherit_QLCDNumber : public QLCDNumber {
     BgInherit_QLCDNumber *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QLCDNumber *>(static_cast<const QLCDNumber *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QLCDNumber::nativeEvent(eventType, message, result);
     }
@@ -119715,7 +119900,10 @@ struct BgInherit_QListView : public QListView {
     BgInherit_QListView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QListView *>(static_cast<const QListView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QListView::nativeEvent(eventType, message, result);
     }
@@ -121463,7 +121651,10 @@ struct BgInherit_QListWidget : public QListWidget {
     BgInherit_QListWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QListWidget *>(static_cast<const QListWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QListWidget::nativeEvent(eventType, message, result);
     }
@@ -122279,7 +122470,10 @@ struct BgInherit_QMainWindow : public QMainWindow {
     BgInherit_QMainWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMainWindow *>(static_cast<const QMainWindow *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMainWindow::nativeEvent(eventType, message, result);
     }
@@ -123196,7 +123390,10 @@ struct BgInherit_QMdiArea : public QMdiArea {
     BgInherit_QMdiArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMdiArea *>(static_cast<const QMdiArea *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMdiArea::nativeEvent(eventType, message, result);
     }
@@ -124001,7 +124198,10 @@ struct BgInherit_QMdiSubWindow : public QMdiSubWindow {
     BgInherit_QMdiSubWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMdiSubWindow *>(static_cast<const QMdiSubWindow *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMdiSubWindow::nativeEvent(eventType, message, result);
     }
@@ -124828,7 +125028,10 @@ struct BgInherit_QMenu : public QMenu {
     BgInherit_QMenu *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMenu *>(static_cast<const QMenu *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMenu::nativeEvent(eventType, message, result);
     }
@@ -125765,7 +125968,10 @@ struct BgInherit_QMenuBar : public QMenuBar {
     BgInherit_QMenuBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMenuBar *>(static_cast<const QMenuBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMenuBar::nativeEvent(eventType, message, result);
     }
@@ -126635,7 +126841,10 @@ struct BgInherit_QMessageBox : public QMessageBox {
     BgInherit_QMessageBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QMessageBox *>(static_cast<const QMessageBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QMessageBox::nativeEvent(eventType, message, result);
     }
@@ -127715,7 +127924,10 @@ struct BgInherit_QTextEdit : public QTextEdit {
     BgInherit_QTextEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTextEdit *>(static_cast<const QTextEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTextEdit::nativeEvent(eventType, message, result);
     }
@@ -129094,7 +129306,10 @@ struct BgInherit_QPlainTextEdit : public QPlainTextEdit {
     BgInherit_QPlainTextEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QPlainTextEdit *>(static_cast<const QPlainTextEdit *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QPlainTextEdit::nativeEvent(eventType, message, result);
     }
@@ -130560,7 +130775,10 @@ struct BgInherit_QProgressBar : public QProgressBar {
     BgInherit_QProgressBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QProgressBar *>(static_cast<const QProgressBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QProgressBar::nativeEvent(eventType, message, result);
     }
@@ -131348,7 +131566,10 @@ struct BgInherit_QProgressDialog : public QProgressDialog {
     BgInherit_QProgressDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QProgressDialog *>(static_cast<const QProgressDialog *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QProgressDialog::nativeEvent(eventType, message, result);
     }
@@ -132727,7 +132948,10 @@ struct BgInherit_QRadioButton : public QRadioButton {
     BgInherit_QRadioButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QRadioButton *>(static_cast<const QRadioButton *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QRadioButton::nativeEvent(eventType, message, result);
     }
@@ -133371,7 +133595,10 @@ struct BgInherit_QScrollBar : public QScrollBar {
     BgInherit_QScrollBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QScrollBar *>(static_cast<const QScrollBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QScrollBar::nativeEvent(eventType, message, result);
     }
@@ -134434,7 +134661,10 @@ struct BgInherit_QSizeGrip : public QSizeGrip {
     BgInherit_QSizeGrip *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSizeGrip *>(static_cast<const QSizeGrip *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSizeGrip::nativeEvent(eventType, message, result);
     }
@@ -135203,7 +135433,10 @@ struct BgInherit_QSpinBox : public QSpinBox {
     BgInherit_QSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSpinBox *>(static_cast<const QSpinBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSpinBox::nativeEvent(eventType, message, result);
     }
@@ -136002,7 +136235,10 @@ struct BgInherit_QDoubleSpinBox : public QDoubleSpinBox {
     BgInherit_QDoubleSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QDoubleSpinBox *>(static_cast<const QDoubleSpinBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QDoubleSpinBox::nativeEvent(eventType, message, result);
     }
@@ -136690,7 +136926,10 @@ struct BgInherit_QSplashScreen : public QSplashScreen {
     BgInherit_QSplashScreen *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSplashScreen *>(static_cast<const QSplashScreen *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSplashScreen::nativeEvent(eventType, message, result);
     }
@@ -137382,7 +137621,10 @@ struct BgInherit_QSplitter : public QSplitter {
     BgInherit_QSplitter *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSplitter *>(static_cast<const QSplitter *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSplitter::nativeEvent(eventType, message, result);
     }
@@ -138115,7 +138357,10 @@ struct BgInherit_QSplitterHandle : public QSplitterHandle {
     BgInherit_QSplitterHandle *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QSplitterHandle *>(static_cast<const QSplitterHandle *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QSplitterHandle::nativeEvent(eventType, message, result);
     }
@@ -139268,7 +139513,10 @@ struct BgInherit_QStackedWidget : public QStackedWidget {
     BgInherit_QStackedWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QStackedWidget *>(static_cast<const QStackedWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QStackedWidget::nativeEvent(eventType, message, result);
     }
@@ -139899,7 +140147,10 @@ struct BgInherit_QStatusBar : public QStatusBar {
     BgInherit_QStatusBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QStatusBar *>(static_cast<const QStatusBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QStatusBar::nativeEvent(eventType, message, result);
     }
@@ -141707,7 +141958,10 @@ struct BgInherit_QTableView : public QTableView {
     BgInherit_QTableView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTableView *>(static_cast<const QTableView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTableView::nativeEvent(eventType, message, result);
     }
@@ -143489,7 +143743,10 @@ struct BgInherit_QTableWidget : public QTableWidget {
     BgInherit_QTableWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTableWidget *>(static_cast<const QTableWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTableWidget::nativeEvent(eventType, message, result);
     }
@@ -144620,7 +144877,10 @@ struct BgInherit_QTextBrowser : public QTextBrowser {
     BgInherit_QTextBrowser *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTextBrowser *>(static_cast<const QTextBrowser *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTextBrowser::nativeEvent(eventType, message, result);
     }
@@ -145375,7 +145635,10 @@ struct BgInherit_QToolBar : public QToolBar {
     BgInherit_QToolBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QToolBar *>(static_cast<const QToolBar *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QToolBar::nativeEvent(eventType, message, result);
     }
@@ -146194,7 +146457,10 @@ struct BgInherit_QToolBox : public QToolBox {
     BgInherit_QToolBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QToolBox *>(static_cast<const QToolBox *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QToolBox::nativeEvent(eventType, message, result);
     }
@@ -146946,7 +147212,10 @@ struct BgInherit_QToolButton : public QToolButton {
     BgInherit_QToolButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QToolButton *>(static_cast<const QToolButton *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QToolButton::nativeEvent(eventType, message, result);
     }
@@ -148260,7 +148529,10 @@ struct BgInherit_QTreeView : public QTreeView {
     BgInherit_QTreeView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTreeView *>(static_cast<const QTreeView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTreeView::nativeEvent(eventType, message, result);
     }
@@ -150336,7 +150608,10 @@ struct BgInherit_QTreeWidget : public QTreeWidget {
     BgInherit_QTreeWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QTreeWidget *>(static_cast<const QTreeWidget *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QTreeWidget::nativeEvent(eventType, message, result);
     }
@@ -152386,7 +152661,10 @@ struct BgInherit_QUndoView : public QUndoView {
     BgInherit_QUndoView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QUndoView *>(static_cast<const QUndoView *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QUndoView::nativeEvent(eventType, message, result);
     }
@@ -153302,7 +153580,10 @@ struct BgInherit_QWizard : public QWizard {
     BgInherit_QWizard *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QWizard *>(static_cast<const QWizard *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QWizard::nativeEvent(eventType, message, result);
     }
@@ -154192,7 +154473,10 @@ struct BgInherit_QWizardPage : public QWizardPage {
     BgInherit_QWizardPage *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X.isValid() ? bindgen_crystal_object(const_cast<QWizardPage *>(static_cast<const QWizardPage *>(_self_))) : nullptr;
     if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, result);
+      long result_{};
+      bool _result_ = _self_->bgJump.bg_QWidget_nativeEvent_const_QByteArray_R_void_X_long_X(_crystal_, bindgen_address(qbytearray_to_crystal(eventType)), message, &result_);
+      if (result) *result = result_;
+      return _result_;
     } else {
       return QWizardPage::nativeEvent(eventType, message, result);
     }

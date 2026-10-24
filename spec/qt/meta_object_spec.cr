@@ -78,7 +78,7 @@ describe Qt::MetaObject do
     String.new(shape.scope).should eq("QFrame")
     shape.flag?.should be_false
     shape.key_count.should eq(Qt::Frame::Shape.values.size)
-    shape.key_to_value("Box".to_unsafe).should eq(Qt::Frame::Shape::Box.to_i)
+    shape.key_to_value("Box".to_unsafe).should eq({Qt::Frame::Shape::Box.to_i, true}) # With the `bool *ok`
     String.new(shape.value_to_key(Qt::Frame::Shape::Panel.to_i)).should eq("Panel")
     (0...shape.key_count).map { |i| String.new(shape.key(i)) }.should contain("NoFrame")
     meta.class_info_count.should eq(0)
