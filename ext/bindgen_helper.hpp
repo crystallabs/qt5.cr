@@ -63,8 +63,12 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 #ifdef __cplusplus
 #include <gc/gc_cpp.h>
 #include <initializer_list>
+#include <mutex>
 #include <string>
 #include <type_traits>
+#include <typeindex>
+#include <typeinfo>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -75,17 +79,89 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 #endif
 
+#if defined(__GXX_RTTI) || defined(_CPPRTTI)
+#define BINDGEN_HAS_RTTI 1
+#define BINDGEN_TYPEID(T) (&typeid(T))
+#else
+#define BINDGEN_HAS_RTTI 0
+#define BINDGEN_TYPEID(T) (nullptr)
+#endif
+
 // Downcast used by `#to?` of the Crystal wrappers.  Without RTTI, like Qt's
 // `-fno-rtti` builds, the cast can't be checked: it fails at run-time instead.
 template <typename To, typename From>
 static To bindgen_dynamic_cast(From *from) {
-#if defined(__GXX_RTTI) || defined(_CPPRTTI)
+#if BINDGEN_HAS_RTTI
   return dynamic_cast<To>(from);
 #else
   (void)from;
   bindgen_fatal_panic("Downcasting with #to? needs C++ RTTI, which is disabled");
 #endif
 }
+
+/* Type discovery, see SPEC.md §2.3.7: finds the wrapped class of the object a
+ * `Base` pointer points to, so that the wrapper is of the most derived class
+ * the binding knows.  The generated `DISCOVER` function of a class holds the
+ * table of the wrapped classes inheriting from it in Crystal, the deepest
+ * first, each with the `id` the Crystal side maps to the wrapper class and a
+ * `dynamic_cast` to it.  The dynamic type is looked up by `typeid`; a type not
+ * in the table, like a private sub-class or the shadow class of a Crystal
+ * sub-class, is walked through the casts once, and the result remembered.
+ * Without RTTI, or for a null pointer, nothing is discovered: `id` is 0 and
+ * the pointer is returned as is, which the Crystal side wraps as the class
+ * declared.
+ */
+template <typename Base>
+struct BindgenTypeDiscovery {
+  struct Entry {
+    const std::type_info *type;
+    int id;
+    void *(*cast)(Base *);
+  };
+
+  const std::vector<Entry> entries;
+  std::unordered_map<std::type_index, const Entry *> known;
+  std::mutex mutex;
+
+  BindgenTypeDiscovery(std::initializer_list<Entry> list) : entries(list) {
+#if BINDGEN_HAS_RTTI
+    for (const Entry &entry : entries) {
+      known.emplace(std::type_index(*entry.type), &entry);
+    }
+    known.emplace(std::type_index(typeid(Base)), nullptr);
+#endif
+  }
+
+  void *discover(Base *self, int *id) {
+#if BINDGEN_HAS_RTTI
+    if (self) {
+      std::lock_guard<std::mutex> lock(mutex);
+      std::type_index type(typeid(*self));
+      auto it = known.find(type);
+
+      if (it == known.end()) {
+        const Entry *found = nullptr;
+        for (const Entry &entry : entries) {
+          if (entry.cast(self)) {
+            found = &entry;
+            break;
+          }
+        }
+
+        it = known.emplace(type, found).first;
+      }
+
+      if (const Entry *entry = it->second) {
+        *id = entry->id;
+        return entry->cast(self);
+      }
+    }
+#endif
+
+    *id = 0;
+    return self;
+  }
+};
 
 // Break C++'s encapsulation to allow easy wrapping of protected methods.
 #define protected public

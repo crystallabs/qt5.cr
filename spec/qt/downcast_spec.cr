@@ -21,10 +21,9 @@ describe "Downcasts" do
   it "cast to an abstract class" do
     parent = Qt::Widget.new
     Qt::PushButton.new("ok", parent)
-    # An abstract class can't be instantiated, so the cast wraps the pointer
-    # in its Impl class.
+    # The child is wrapped in its dynamic type, which is-a Qt::AbstractButton.
     cast = parent.children.first.to?(Qt::AbstractButton)
-    cast.should be_a(Qt::AbstractButtonImpl)
+    cast.should be_a(Qt::PushButton)
     cast.not_nil!.text.should eq("ok")
     parent.to?(Qt::AbstractButton).should be_nil
     # A wrapper of the class already (or of a subclass) is returned as is.

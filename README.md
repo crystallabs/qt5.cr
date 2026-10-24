@@ -306,9 +306,12 @@ declared (see `samples/virtual_override.cr`).  This is bindgen's
 
 ## Downcasts
 
-A wrapper is of the class a method declares, so `Qt::Layout#item_at` returns a
-`Qt::LayoutItem` and `Qt::Object#children` holds `Qt::Object`s.  `#to?`
-casts to a subclass, returning `nil` when the object isn't one:
+A pointer result or callback argument is wrapped in the class of the object's
+dynamic type, the most derived class the binding knows.  So
+`Qt::Object#children` holds `Qt::Label`s and `Qt::PushButton`s (typed as
+`Qt::Object`), `Qt::CoreApplication.instance` is a `Qt::Application`, and an
+override of `Qt::Widget#event` receives a `Qt::KeyEvent`.  `#to?` narrows the
+static type, returning `nil` when the object isn't one:
 
 ```crystal
 if button = widget.to?(Qt::PushButton)
@@ -316,9 +319,9 @@ if button = widget.to?(Qt::PushButton)
 end
 ```
 
-A cast to an abstract class, like `Qt::AbstractButton`, wraps the object in
-its `Impl` class.  The cast is C++'s `dynamic_cast`, so the binding is built
-with RTTI (`ext/Makefile`), as Qt itself is.
+An object of a Crystal subclass comes back as a wrapper of its wrapper class,
+not as the Crystal subclass.  Discovery and `#to?` use C++ RTTI, so the
+binding is built with RTTI (`ext/Makefile`), as Qt itself is.
 
 # Developer perspective
 
