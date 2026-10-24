@@ -179,6 +179,10 @@ view.model = Qt::StandardItemModel.new # Stays alive too
 button.menu = Qt::Menu.new             # And so does this
 ```
 
+Connecting a signal keeps the sender alive too, as Qt refers to it from the
+connection: `Qt::Timer.new.tap(&.on_timeout { puts "tick" }).start(1000)` keeps
+ticking.
+
 Objects created from Crystal are kept alive until Qt deletes them, like a
 parent deletes its children, or until the method handing them back without
 deleting them releases them, like `Qt::Layout#remove_widget` or `#take_at`,
@@ -279,6 +283,12 @@ class Canvas < Qt::Widget
   end
 end
 ```
+
+An instance of a Crystal subclass lives like any other object: the GC collects
+it once Crystal drops it, unless Qt owns it, as a parent does, a method keeping
+its argument alive was given it, or one of its signals is connected, see
+[Object lifetime](#object-lifetime).  Qt calls the overrides through the
+Crystal object as long as it lives.
 
 An exception raised in an override, or in the block of a signal, can't unwind
 through the Qt code calling it: it goes to `Qt::BindgenHelper.on_exception`,

@@ -514,6 +514,26 @@ private:
   } bindgen_finalizer{this};
 };
 
+/* The Crystal object which constructed the allocation *object* points into,
+ * see `bindgen_set_crystal_object`, or null: also for a pointer to a secondary
+ * base or a member object, unlike `bindgen_crystal_object`.
+ */
+static void *bindgen_crystal_object_of(const void *object) {
+  BindgenGCObject *gc_object = bindgen_gc_object(object);
+  if (gc_object == nullptr || gc_object->bindgen_crystal == nullptr) return nullptr;
+  return GC_REVEAL_POINTER(reinterpret_cast<GC_hidden_pointer>(gc_object->bindgen_crystal));
+}
+
+/* What *object* stores to depend on *dependency*: its Crystal object if it has
+ * one, which refers to the C++ object, so the GC keeps both: the C++ object
+ * doesn't keep its Crystal object alive by itself, and the overrides of a
+ * Crystal subclass live in the Crystal object.  Else the pointer itself.
+ */
+static void *bindgen_dependency(const void *dependency) {
+  if (void *crystal = bindgen_crystal_object_of(dependency)) return crystal;
+  return const_cast<void *>(dependency);
+}
+
 // Stores *dependencies* in *object*, replacing those it had.  Null pointers are
 // left out.
 static void bindgen_set_dependencies(BindgenGCObject *object, std::initializer_list<const void *> dependencies) {
@@ -527,12 +547,12 @@ static void bindgen_set_dependencies(BindgenGCObject *object, std::initializer_l
   }
 
   if (count <= 1) {
-    object->bindgen_dependencies = const_cast<void *>(last);
+    object->bindgen_dependencies = last ? bindgen_dependency(last) : nullptr;
   } else {
     void **list = static_cast<void **>(GC_MALLOC(sizeof(void *) * count));
     void **slot = list;
     for (const void *dependency : dependencies) {
-      if (dependency) *slot++ = const_cast<void *>(dependency);
+      if (dependency) *slot++ = bindgen_dependency(dependency);
     }
     object->bindgen_dependencies = list;
   }
