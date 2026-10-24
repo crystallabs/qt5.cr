@@ -40156,6 +40156,243 @@ module Qt
                   bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: ::Qt::Binding.bg_qt_meta_pack_QVariant(({{ a.var }}.to_unsafe)))
                 {% elsif t.name.stringify == "Time::Span" %}
                   bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: ::Qt::Binding.bg_qt_meta_pack_std__chrono__milliseconds({{ a.var }}))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Float64" || t.type_vars[0].name.stringify == "Float64") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_qreal_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Bytes" || t.type_vars[0].name.stringify == "Bytes") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QByteArray_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::FileInfo" || t.type_vars[0].name.stringify == "FileInfo") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QFileInfo_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ModelIndex" || t.type_vars[0].name.stringify == "ModelIndex") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QModelIndex_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::CommandLineOption" || t.type_vars[0].name.stringify == "CommandLineOption") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QCommandLineOption_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::MimeType" || t.type_vars[0].name.stringify == "MimeType") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QMimeType_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::InputMethodEventAttribute" || t.type_vars[0].name.stringify == "InputMethodEventAttribute") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QInputMethodEvent__Attribute_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::StringList, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Object" || t.type_vars[0].name.stringify == "Object") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QObject_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::EventDispatcherTimerInfo" || t.type_vars[0].name.stringify == "EventDispatcherTimerInfo") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractEventDispatcher__TimerInfo_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Variant" || t.type_vars[0].name.stringify == "Variant") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QVariant_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PersistentModelIndex" || t.type_vars[0].name.stringify == "PersistentModelIndex") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QPersistentModelIndex_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::DayOfWeek" || t.type_vars[0].name.stringify == "DayOfWeek") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_Qt__DayOfWeek_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Locale" || t.type_vars[0].name.stringify == "Locale") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QLocale_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Locale::Country" || t.type_vars[0].name.stringify == "Locale::Country") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QLocale__Country_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Url" || t.type_vars[0].name.stringify == "Url") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QUrl_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::AbstractItemModel" || t.type_vars[0].name.stringify == "AbstractItemModel") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractItemModel_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ItemSelectionRange" || t.type_vars[0].name.stringify == "ItemSelectionRange") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QItemSelectionRange_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::StorageInfo" || t.type_vars[0].name.stringify == "StorageInfo") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QStorageInfo_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_int_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::KeySequence" || t.type_vars[0].name.stringify == "KeySequence") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QKeySequence_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TouchDevice" || t.type_vars[0].name.stringify == "TouchDevice") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_const_QTouchDevice_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TouchPoint" || t.type_vars[0].name.stringify == "TouchPoint") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTouchEvent__TouchPoint_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextOptionTab" || t.type_vars[0].name.stringify == "TextOptionTab") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextOption__Tab_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::FontDatabase::WritingSystem" || t.type_vars[0].name.stringify == "FontDatabase::WritingSystem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QFontDatabase__WritingSystem_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GlyphRun" || t.type_vars[0].name.stringify == "GlyphRun") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGlyphRun_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Size" || t.type_vars[0].name.stringify == "Size") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QSize_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Window" || t.type_vars[0].name.stringify == "Window") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWindow_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Screen" || t.type_vars[0].name.stringify == "Screen") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QScreen_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PolygonF" || t.type_vars[0].name.stringify == "PolygonF") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QPolygonF_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::StandardItem" || t.type_vars[0].name.stringify == "StandardItem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QStandardItem_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextBlock" || t.type_vars[0].name.stringify == "TextBlock") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextBlock_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextFrame" || t.type_vars[0].name.stringify == "TextFrame") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextFrame_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Action" || t.type_vars[0].name.stringify == "Action") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAction_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Widget" || t.type_vars[0].name.stringify == "Widget") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWidget_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsWidget" || t.type_vars[0].name.stringify == "GraphicsWidget") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsWidget_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::AbstractButton" || t.type_vars[0].name.stringify == "AbstractButton") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractButton_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Gesture" || t.type_vars[0].name.stringify == "Gesture") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGesture_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsItem" || t.type_vars[0].name.stringify == "GraphicsItem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsItem_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsTransform" || t.type_vars[0].name.stringify == "GraphicsTransform") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsTransform_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsView" || t.type_vars[0].name.stringify == "GraphicsView") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsView_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::RectF" || t.type_vars[0].name.stringify == "RectF") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QRectF_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ListWidgetItem" || t.type_vars[0].name.stringify == "ListWidgetItem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QListWidgetItem_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::DockWidget" || t.type_vars[0].name.stringify == "DockWidget") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QDockWidget_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::MdiSubWindow" || t.type_vars[0].name.stringify == "MdiSubWindow") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QMdiSubWindow_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextEditExtraSelection" || t.type_vars[0].name.stringify == "TextEditExtraSelection") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextEdit__ExtraSelection_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Scroller" || t.type_vars[0].name.stringify == "Scroller") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QScroller_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TableWidgetSelectionRange" || t.type_vars[0].name.stringify == "TableWidgetSelectionRange") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTableWidgetSelectionRange_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TableWidgetItem" || t.type_vars[0].name.stringify == "TableWidgetItem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTableWidgetItem_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TreeWidgetItem" || t.type_vars[0].name.stringify == "TreeWidgetItem") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTreeWidgetItem_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UndoStack" || t.type_vars[0].name.stringify == "UndoStack") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QUndoStack_X_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Wizard::Button" || t.type_vars[0].name.stringify == "Wizard::Button") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWizard__WizardButton_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UInt32" || t.type_vars[0].name.stringify == "UInt32") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_unsigned_int_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_int_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TimeZoneOffsetData" || t.type_vars[0].name.stringify == "TimeZoneOffsetData") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTimeZone__OffsetData_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::CborValue" || t.type_vars[0].name.stringify == "CborValue") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QCborValue_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PointF" || t.type_vars[0].name.stringify == "PointF") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QPointF_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamAttribute" || t.type_vars[0].name.stringify == "XmlStreamAttribute") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamAttribute_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamNamespaceDeclaration" || t.type_vars[0].name.stringify == "XmlStreamNamespaceDeclaration") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamNamespaceDeclaration_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamNotationDeclaration" || t.type_vars[0].name.stringify == "XmlStreamNotationDeclaration") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamNotationDeclaration_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamEntityDeclaration" || t.type_vars[0].name.stringify == "XmlStreamEntityDeclaration") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamEntityDeclaration_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Point" || t.type_vars[0].name.stringify == "Point") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QPoint_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Float64" || t.type_vars[0].name.stringify == "Float64") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_qreal_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextLength" || t.type_vars[0].name.stringify == "TextLength") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextLength_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UInt32" || t.type_vars[0].name.stringify == "UInt32") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_quint32_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextLayoutFormatRange" || t.type_vars[0].name.stringify == "TextLayoutFormatRange") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextLayout__FormatRange_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextFormat" || t.type_vars[0].name.stringify == "TextFormat") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextFormat_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextDocumentLayoutSelection" || t.type_vars[0].name.stringify == "TextDocumentLayoutSelection") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QAbstractTextDocumentLayout__Selection_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::LineF" || t.type_vars[0].name.stringify == "LineF") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QLineF_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Line" || t.type_vars[0].name.stringify == "Line") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QLine_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::RectF" || t.type_vars[0].name.stringify == "RectF") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QRectF_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Rect" || t.type_vars[0].name.stringify == "Rect") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QRect_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_QString__QVariant_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_int__QVariant_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Date" || t.type_vars[0].name.stringify == "Date") && (t.type_vars[1].name.stringify == "Qt::TextCharFormat" || t.type_vars[1].name.stringify == "TextCharFormat") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_QDate__QTextCharFormat_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Set") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QSet_QString_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Set") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QSet_int_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QHash_QString__QVariant_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
+                {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") && (t.type_vars[1].name.stringify == "Qt::Bytes" || t.type_vars[1].name.stringify == "Bytes") %}
+                  bg_value{{ i }} = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QHash_int__QByteArray_, {{ a.var }})
+                  bg_args[{{ i }}] = ::Qt::Binding::BindgenQtArg.new(kind: 0, pointer: bg_value{{ i }}.to_unsafe.as(Void*))
     
                 {% elsif t < ::Enum && !t.annotation(::Qt::BindgenWrapper) %}
                   bg_value{{ i }} = {{ a.var }}.value.to_i32!
@@ -40222,6 +40459,7 @@ module Qt
                 return @@bg_meta_object unless @@bg_meta_object.null?
     
                 \{% class_name = @type.name.stringify.split("::").last %}
+                ::Qt::Binding.bg_qt_meta_register_types # The containers, before their names are looked up
                 meta = ::Qt::Binding.bindgen_qt_meta_new(\{{ class_name }}.to_unsafe)
     
                 # The Crystal enums the members use become the enumerators of the
@@ -264944,10 +265182,12 @@ module Qt
   annotation Slot
   end
   
-  # The conversions of the converted value types (SPEC.md §Q.4), generated by
-  # the `qt_meta_object` processor for the type rules with `to_cpp` and
-  # `from_cpp` templates, like `QVariant`.
+  # Generated by the `qt_meta_object` processor (SPEC.md §Q.4): the conversions
+  # of the converted value types, the type rules with `to_cpp` and `from_cpp`
+  # templates like `QVariant`, and the registration of the container
+  # instantiations with `QMetaType`.
   lib Binding
+    fun bg_qt_meta_register_types : Void
     fun bg_qt_meta_from_QChar(slot : Void*) : Int32
     fun bg_qt_meta_to_QChar(slot : Void*, value : Int32) : Void
     fun bg_qt_meta_pack_QChar(value : Int32) : Void*
@@ -265008,6 +265248,85 @@ module Qt
       {% elsif (t.name.stringify == "Qt::Char" || t.name.stringify == "Char") %}"QChar"
       {% elsif (t.name.stringify == "Qt::Variant" || t.name.stringify == "Variant") %}"QVariant"
       {% elsif t.name.stringify == "Time::Span" %}"std::chrono::milliseconds"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Float64" || t.type_vars[0].name.stringify == "Float64") %}"QList<qreal>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Bytes" || t.type_vars[0].name.stringify == "Bytes") %}"QList<QByteArray>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::FileInfo" || t.type_vars[0].name.stringify == "FileInfo") %}"QList<QFileInfo>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ModelIndex" || t.type_vars[0].name.stringify == "ModelIndex") %}"QList<QModelIndex>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::CommandLineOption" || t.type_vars[0].name.stringify == "CommandLineOption") %}"QList<QCommandLineOption>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::MimeType" || t.type_vars[0].name.stringify == "MimeType") %}"QList<QMimeType>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::InputMethodEventAttribute" || t.type_vars[0].name.stringify == "InputMethodEventAttribute") %}"QList<QInputMethodEvent::Attribute>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") %}"QList<QString>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Object" || t.type_vars[0].name.stringify == "Object") %}"QList<QObject *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::EventDispatcherTimerInfo" || t.type_vars[0].name.stringify == "EventDispatcherTimerInfo") %}"QList<QAbstractEventDispatcher::TimerInfo>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Variant" || t.type_vars[0].name.stringify == "Variant") %}"QList<QVariant>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PersistentModelIndex" || t.type_vars[0].name.stringify == "PersistentModelIndex") %}"QList<QPersistentModelIndex>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::DayOfWeek" || t.type_vars[0].name.stringify == "DayOfWeek") %}"QList<Qt::DayOfWeek>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Locale" || t.type_vars[0].name.stringify == "Locale") %}"QList<QLocale>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Locale::Country" || t.type_vars[0].name.stringify == "Locale::Country") %}"QList<QLocale::Country>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Url" || t.type_vars[0].name.stringify == "Url") %}"QList<QUrl>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::AbstractItemModel" || t.type_vars[0].name.stringify == "AbstractItemModel") %}"QList<QAbstractItemModel *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ItemSelectionRange" || t.type_vars[0].name.stringify == "ItemSelectionRange") %}"QList<QItemSelectionRange>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::StorageInfo" || t.type_vars[0].name.stringify == "StorageInfo") %}"QList<QStorageInfo>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}"QList<int>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::KeySequence" || t.type_vars[0].name.stringify == "KeySequence") %}"QList<QKeySequence>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TouchDevice" || t.type_vars[0].name.stringify == "TouchDevice") %}"QList<const QTouchDevice *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TouchPoint" || t.type_vars[0].name.stringify == "TouchPoint") %}"QList<QTouchEvent::TouchPoint>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextOptionTab" || t.type_vars[0].name.stringify == "TextOptionTab") %}"QList<QTextOption::Tab>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::FontDatabase::WritingSystem" || t.type_vars[0].name.stringify == "FontDatabase::WritingSystem") %}"QList<QFontDatabase::WritingSystem>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GlyphRun" || t.type_vars[0].name.stringify == "GlyphRun") %}"QList<QGlyphRun>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Size" || t.type_vars[0].name.stringify == "Size") %}"QList<QSize>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Window" || t.type_vars[0].name.stringify == "Window") %}"QList<QWindow *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Screen" || t.type_vars[0].name.stringify == "Screen") %}"QList<QScreen *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PolygonF" || t.type_vars[0].name.stringify == "PolygonF") %}"QList<QPolygonF>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::StandardItem" || t.type_vars[0].name.stringify == "StandardItem") %}"QList<QStandardItem *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextBlock" || t.type_vars[0].name.stringify == "TextBlock") %}"QList<QTextBlock>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextFrame" || t.type_vars[0].name.stringify == "TextFrame") %}"QList<QTextFrame *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Action" || t.type_vars[0].name.stringify == "Action") %}"QList<QAction *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Widget" || t.type_vars[0].name.stringify == "Widget") %}"QList<QWidget *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsWidget" || t.type_vars[0].name.stringify == "GraphicsWidget") %}"QList<QGraphicsWidget *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::AbstractButton" || t.type_vars[0].name.stringify == "AbstractButton") %}"QList<QAbstractButton *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Gesture" || t.type_vars[0].name.stringify == "Gesture") %}"QList<QGesture *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsItem" || t.type_vars[0].name.stringify == "GraphicsItem") %}"QList<QGraphicsItem *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsTransform" || t.type_vars[0].name.stringify == "GraphicsTransform") %}"QList<QGraphicsTransform *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::GraphicsView" || t.type_vars[0].name.stringify == "GraphicsView") %}"QList<QGraphicsView *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::RectF" || t.type_vars[0].name.stringify == "RectF") %}"QList<QRectF>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::ListWidgetItem" || t.type_vars[0].name.stringify == "ListWidgetItem") %}"QList<QListWidgetItem *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::DockWidget" || t.type_vars[0].name.stringify == "DockWidget") %}"QList<QDockWidget *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::MdiSubWindow" || t.type_vars[0].name.stringify == "MdiSubWindow") %}"QList<QMdiSubWindow *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextEditExtraSelection" || t.type_vars[0].name.stringify == "TextEditExtraSelection") %}"QList<QTextEdit::ExtraSelection>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Scroller" || t.type_vars[0].name.stringify == "Scroller") %}"QList<QScroller *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TableWidgetSelectionRange" || t.type_vars[0].name.stringify == "TableWidgetSelectionRange") %}"QList<QTableWidgetSelectionRange>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TableWidgetItem" || t.type_vars[0].name.stringify == "TableWidgetItem") %}"QList<QTableWidgetItem *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TreeWidgetItem" || t.type_vars[0].name.stringify == "TreeWidgetItem") %}"QList<QTreeWidgetItem *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UndoStack" || t.type_vars[0].name.stringify == "UndoStack") %}"QList<QUndoStack *>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Wizard::Button" || t.type_vars[0].name.stringify == "Wizard::Button") %}"QList<QWizard::WizardButton>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UInt32" || t.type_vars[0].name.stringify == "UInt32") %}"QVector<unsigned int>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}"QVector<int>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TimeZoneOffsetData" || t.type_vars[0].name.stringify == "TimeZoneOffsetData") %}"QVector<QTimeZone::OffsetData>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::CborValue" || t.type_vars[0].name.stringify == "CborValue") %}"QVector<QCborValue>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::PointF" || t.type_vars[0].name.stringify == "PointF") %}"QVector<QPointF>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamAttribute" || t.type_vars[0].name.stringify == "XmlStreamAttribute") %}"QVector<QXmlStreamAttribute>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamNamespaceDeclaration" || t.type_vars[0].name.stringify == "XmlStreamNamespaceDeclaration") %}"QVector<QXmlStreamNamespaceDeclaration>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamNotationDeclaration" || t.type_vars[0].name.stringify == "XmlStreamNotationDeclaration") %}"QVector<QXmlStreamNotationDeclaration>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::XmlStreamEntityDeclaration" || t.type_vars[0].name.stringify == "XmlStreamEntityDeclaration") %}"QVector<QXmlStreamEntityDeclaration>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Point" || t.type_vars[0].name.stringify == "Point") %}"QVector<QPoint>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Float64" || t.type_vars[0].name.stringify == "Float64") %}"QVector<qreal>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextLength" || t.type_vars[0].name.stringify == "TextLength") %}"QVector<QTextLength>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::UInt32" || t.type_vars[0].name.stringify == "UInt32") %}"QVector<quint32>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextLayoutFormatRange" || t.type_vars[0].name.stringify == "TextLayoutFormatRange") %}"QVector<QTextLayout::FormatRange>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextFormat" || t.type_vars[0].name.stringify == "TextFormat") %}"QVector<QTextFormat>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::TextDocumentLayoutSelection" || t.type_vars[0].name.stringify == "TextDocumentLayoutSelection") %}"QVector<QAbstractTextDocumentLayout::Selection>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::LineF" || t.type_vars[0].name.stringify == "LineF") %}"QVector<QLineF>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Line" || t.type_vars[0].name.stringify == "Line") %}"QVector<QLine>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::RectF" || t.type_vars[0].name.stringify == "RectF") %}"QVector<QRectF>"
+      {% elsif (t.name(generic_args: false).stringify == "Array" || t.name(generic_args: false).stringify == "Enumerable") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Rect" || t.type_vars[0].name.stringify == "Rect") %}"QVector<QRect>"
+      {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}"QMap<QString, QVariant>"
+      {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}"QMap<int, QVariant>"
+      {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Date" || t.type_vars[0].name.stringify == "Date") && (t.type_vars[1].name.stringify == "Qt::TextCharFormat" || t.type_vars[1].name.stringify == "TextCharFormat") %}"QMap<QDate, QTextCharFormat>"
+      {% elsif (t.name(generic_args: false).stringify == "Set") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") %}"QSet<QString>"
+      {% elsif (t.name(generic_args: false).stringify == "Set") && t.type_vars.size == 1 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") %}"QSet<int>"
+      {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::String" || t.type_vars[0].name.stringify == "String") && (t.type_vars[1].name.stringify == "Qt::Variant" || t.type_vars[1].name.stringify == "Variant") %}"QHash<QString, QVariant>"
+      {% elsif (t.name(generic_args: false).stringify == "Hash") && t.type_vars.size == 2 && (t.type_vars[0].name.stringify == "Qt::Int32" || t.type_vars[0].name.stringify == "Int32") && (t.type_vars[1].name.stringify == "Qt::Bytes" || t.type_vars[1].name.stringify == "Bytes") %}"QHash<int, QByteArray>"
   
       {% elsif t < ::Enum %}
         # A Crystal enum: registered as `Class::Name` with the class's enumerator.
@@ -265072,6 +265391,401 @@ module Qt
         Qt::Variant.new(::Qt::Binding.bg_qt_meta_from_QVariant(slot))
       {% elsif T.name.stringify == "Time::Span" %}
         ::Qt::Binding.bg_qt_meta_from_std__chrono__milliseconds(slot)
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Float64" || T.type_vars[0].name.stringify == "Float64") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<qreal>".to_unsafe, slot)
+        raise "Qt can't copy a QList<qreal>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_qreal_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Bytes" || T.type_vars[0].name.stringify == "Bytes") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QByteArray>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QByteArray>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QByteArray_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::FileInfo" || T.type_vars[0].name.stringify == "FileInfo") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QFileInfo>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QFileInfo>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QFileInfo_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ModelIndex" || T.type_vars[0].name.stringify == "ModelIndex") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QModelIndex>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QModelIndex>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QModelIndex_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::CommandLineOption" || T.type_vars[0].name.stringify == "CommandLineOption") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QCommandLineOption>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QCommandLineOption>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QCommandLineOption_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::MimeType" || T.type_vars[0].name.stringify == "MimeType") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QMimeType>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QMimeType>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QMimeType_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::InputMethodEventAttribute" || T.type_vars[0].name.stringify == "InputMethodEventAttribute") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QInputMethodEvent::Attribute>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QInputMethodEvent::Attribute>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QInputMethodEvent__Attribute_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QString>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QString>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::StringList, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Object" || T.type_vars[0].name.stringify == "Object") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QObject *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QObject *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QObject_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::EventDispatcherTimerInfo" || T.type_vars[0].name.stringify == "EventDispatcherTimerInfo") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QAbstractEventDispatcher::TimerInfo>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QAbstractEventDispatcher::TimerInfo>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QAbstractEventDispatcher__TimerInfo_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Variant" || T.type_vars[0].name.stringify == "Variant") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QVariant>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QVariant>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QVariant_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PersistentModelIndex" || T.type_vars[0].name.stringify == "PersistentModelIndex") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QPersistentModelIndex>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QPersistentModelIndex>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QPersistentModelIndex_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::DayOfWeek" || T.type_vars[0].name.stringify == "DayOfWeek") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<Qt::DayOfWeek>".to_unsafe, slot)
+        raise "Qt can't copy a QList<Qt::DayOfWeek>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_Qt__DayOfWeek_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Locale" || T.type_vars[0].name.stringify == "Locale") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QLocale>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QLocale>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QLocale_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Locale::Country" || T.type_vars[0].name.stringify == "Locale::Country") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QLocale::Country>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QLocale::Country>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QLocale__Country_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Url" || T.type_vars[0].name.stringify == "Url") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QUrl>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QUrl>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QUrl_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::AbstractItemModel" || T.type_vars[0].name.stringify == "AbstractItemModel") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QAbstractItemModel *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QAbstractItemModel *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QAbstractItemModel_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ItemSelectionRange" || T.type_vars[0].name.stringify == "ItemSelectionRange") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QItemSelectionRange>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QItemSelectionRange>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QItemSelectionRange_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::StorageInfo" || T.type_vars[0].name.stringify == "StorageInfo") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QStorageInfo>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QStorageInfo>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QStorageInfo_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<int>".to_unsafe, slot)
+        raise "Qt can't copy a QList<int>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_int_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::KeySequence" || T.type_vars[0].name.stringify == "KeySequence") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QKeySequence>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QKeySequence>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QKeySequence_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TouchDevice" || T.type_vars[0].name.stringify == "TouchDevice") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<const QTouchDevice *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<const QTouchDevice *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_const_QTouchDevice_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TouchPoint" || T.type_vars[0].name.stringify == "TouchPoint") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTouchEvent::TouchPoint>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTouchEvent::TouchPoint>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTouchEvent__TouchPoint_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextOptionTab" || T.type_vars[0].name.stringify == "TextOptionTab") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTextOption::Tab>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTextOption::Tab>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTextOption__Tab_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::FontDatabase::WritingSystem" || T.type_vars[0].name.stringify == "FontDatabase::WritingSystem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QFontDatabase::WritingSystem>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QFontDatabase::WritingSystem>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QFontDatabase__WritingSystem_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GlyphRun" || T.type_vars[0].name.stringify == "GlyphRun") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGlyphRun>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGlyphRun>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGlyphRun_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Size" || T.type_vars[0].name.stringify == "Size") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QSize>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QSize>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QSize_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Window" || T.type_vars[0].name.stringify == "Window") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QWindow *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QWindow *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QWindow_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Screen" || T.type_vars[0].name.stringify == "Screen") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QScreen *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QScreen *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QScreen_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PolygonF" || T.type_vars[0].name.stringify == "PolygonF") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QPolygonF>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QPolygonF>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QPolygonF_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::StandardItem" || T.type_vars[0].name.stringify == "StandardItem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QStandardItem *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QStandardItem *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QStandardItem_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextBlock" || T.type_vars[0].name.stringify == "TextBlock") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTextBlock>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTextBlock>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTextBlock_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextFrame" || T.type_vars[0].name.stringify == "TextFrame") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTextFrame *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTextFrame *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTextFrame_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Action" || T.type_vars[0].name.stringify == "Action") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QAction *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QAction *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QAction_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Widget" || T.type_vars[0].name.stringify == "Widget") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QWidget *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QWidget *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QWidget_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsWidget" || T.type_vars[0].name.stringify == "GraphicsWidget") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGraphicsWidget *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGraphicsWidget *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGraphicsWidget_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::AbstractButton" || T.type_vars[0].name.stringify == "AbstractButton") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QAbstractButton *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QAbstractButton *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QAbstractButton_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Gesture" || T.type_vars[0].name.stringify == "Gesture") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGesture *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGesture *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGesture_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsItem" || T.type_vars[0].name.stringify == "GraphicsItem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGraphicsItem *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGraphicsItem *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGraphicsItem_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsTransform" || T.type_vars[0].name.stringify == "GraphicsTransform") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGraphicsTransform *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGraphicsTransform *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGraphicsTransform_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsView" || T.type_vars[0].name.stringify == "GraphicsView") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QGraphicsView *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QGraphicsView *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QGraphicsView_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::RectF" || T.type_vars[0].name.stringify == "RectF") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QRectF>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QRectF>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QRectF_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ListWidgetItem" || T.type_vars[0].name.stringify == "ListWidgetItem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QListWidgetItem *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QListWidgetItem *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QListWidgetItem_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::DockWidget" || T.type_vars[0].name.stringify == "DockWidget") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QDockWidget *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QDockWidget *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QDockWidget_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::MdiSubWindow" || T.type_vars[0].name.stringify == "MdiSubWindow") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QMdiSubWindow *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QMdiSubWindow *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QMdiSubWindow_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextEditExtraSelection" || T.type_vars[0].name.stringify == "TextEditExtraSelection") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTextEdit::ExtraSelection>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTextEdit::ExtraSelection>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTextEdit__ExtraSelection_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Scroller" || T.type_vars[0].name.stringify == "Scroller") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QScroller *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QScroller *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QScroller_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TableWidgetSelectionRange" || T.type_vars[0].name.stringify == "TableWidgetSelectionRange") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTableWidgetSelectionRange>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTableWidgetSelectionRange>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTableWidgetSelectionRange_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TableWidgetItem" || T.type_vars[0].name.stringify == "TableWidgetItem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTableWidgetItem *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTableWidgetItem *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTableWidgetItem_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TreeWidgetItem" || T.type_vars[0].name.stringify == "TreeWidgetItem") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QTreeWidgetItem *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QTreeWidgetItem *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QTreeWidgetItem_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UndoStack" || T.type_vars[0].name.stringify == "UndoStack") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QUndoStack *>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QUndoStack *>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QUndoStack_X_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Wizard::Button" || T.type_vars[0].name.stringify == "Wizard::Button") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QList<QWizard::WizardButton>".to_unsafe, slot)
+        raise "Qt can't copy a QList<QWizard::WizardButton>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QList_QWizard__WizardButton_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UInt32" || T.type_vars[0].name.stringify == "UInt32") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<unsigned int>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<unsigned int>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_unsigned_int_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<int>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<int>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_int_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TimeZoneOffsetData" || T.type_vars[0].name.stringify == "TimeZoneOffsetData") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QTimeZone::OffsetData>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QTimeZone::OffsetData>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QTimeZone__OffsetData_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::CborValue" || T.type_vars[0].name.stringify == "CborValue") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QCborValue>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QCborValue>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QCborValue_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PointF" || T.type_vars[0].name.stringify == "PointF") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QPointF>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QPointF>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QPointF_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamAttribute" || T.type_vars[0].name.stringify == "XmlStreamAttribute") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QXmlStreamAttribute>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QXmlStreamAttribute>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QXmlStreamAttribute_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamNamespaceDeclaration" || T.type_vars[0].name.stringify == "XmlStreamNamespaceDeclaration") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QXmlStreamNamespaceDeclaration>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QXmlStreamNamespaceDeclaration>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QXmlStreamNamespaceDeclaration_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamNotationDeclaration" || T.type_vars[0].name.stringify == "XmlStreamNotationDeclaration") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QXmlStreamNotationDeclaration>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QXmlStreamNotationDeclaration>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QXmlStreamNotationDeclaration_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamEntityDeclaration" || T.type_vars[0].name.stringify == "XmlStreamEntityDeclaration") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QXmlStreamEntityDeclaration>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QXmlStreamEntityDeclaration>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QXmlStreamEntityDeclaration_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Point" || T.type_vars[0].name.stringify == "Point") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QPoint>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QPoint>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QPoint_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Float64" || T.type_vars[0].name.stringify == "Float64") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<qreal>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<qreal>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_qreal_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextLength" || T.type_vars[0].name.stringify == "TextLength") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QTextLength>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QTextLength>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QTextLength_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UInt32" || T.type_vars[0].name.stringify == "UInt32") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<quint32>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<quint32>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_quint32_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextLayoutFormatRange" || T.type_vars[0].name.stringify == "TextLayoutFormatRange") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QTextLayout::FormatRange>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QTextLayout::FormatRange>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QTextLayout__FormatRange_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextFormat" || T.type_vars[0].name.stringify == "TextFormat") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QTextFormat>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QTextFormat>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QTextFormat_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextDocumentLayoutSelection" || T.type_vars[0].name.stringify == "TextDocumentLayoutSelection") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QAbstractTextDocumentLayout::Selection>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QAbstractTextDocumentLayout::Selection>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QAbstractTextDocumentLayout__Selection_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::LineF" || T.type_vars[0].name.stringify == "LineF") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QLineF>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QLineF>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QLineF_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Line" || T.type_vars[0].name.stringify == "Line") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QLine>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QLine>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QLine_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::RectF" || T.type_vars[0].name.stringify == "RectF") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QRectF>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QRectF>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QRectF_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Rect" || T.type_vars[0].name.stringify == "Rect") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QVector<QRect>".to_unsafe, slot)
+        raise "Qt can't copy a QVector<QRect>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QVector_QRect_, bg_pointer)
+        {% if T.name(generic_args: false).stringify == "Array" %}bg_container.to_a{% else %}bg_container{% end %}
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QMap<QString, QVariant>".to_unsafe, slot)
+        raise "Qt can't copy a QMap<QString, QVariant>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QMap_QString__QVariant_, bg_pointer)
+        bg_container.to_h
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QMap<int, QVariant>".to_unsafe, slot)
+        raise "Qt can't copy a QMap<int, QVariant>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QMap_int__QVariant_, bg_pointer)
+        bg_container.to_h
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Date" || T.type_vars[0].name.stringify == "Date") && (T.type_vars[1].name.stringify == "Qt::TextCharFormat" || T.type_vars[1].name.stringify == "TextCharFormat") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QMap<QDate, QTextCharFormat>".to_unsafe, slot)
+        raise "Qt can't copy a QMap<QDate, QTextCharFormat>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QMap_QDate__QTextCharFormat_, bg_pointer)
+        bg_container.to_h
+      {% elsif (T.name(generic_args: false).stringify == "Set") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QSet<QString>".to_unsafe, slot)
+        raise "Qt can't copy a QSet<QString>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QSet_QString_, bg_pointer)
+        bg_container.to_set
+      {% elsif (T.name(generic_args: false).stringify == "Set") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QSet<int>".to_unsafe, slot)
+        raise "Qt can't copy a QSet<int>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QSet_int_, bg_pointer)
+        bg_container.to_set
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QHash<QString, QVariant>".to_unsafe, slot)
+        raise "Qt can't copy a QHash<QString, QVariant>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QHash_QString__QVariant_, bg_pointer)
+        bg_container.to_h
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") && (T.type_vars[1].name.stringify == "Qt::Bytes" || T.type_vars[1].name.stringify == "Bytes") %}
+        bg_pointer = Binding.bindgen_qt_copy_value("QHash<int, QByteArray>".to_unsafe, slot)
+        raise "Qt can't copy a QHash<int, QByteArray>: the type isn't registered with QMetaType" if bg_pointer.null?
+        bg_container = ::Qt::BindgenMeta.discover(::Qt::Container_QHash_int__QByteArray_, bg_pointer)
+        bg_container.to_h
   
       {% elsif T < ::Enum && !T.annotation(::Qt::BindgenWrapper) %}
         ::Qt::BindgenMeta.enum_from_int(T, slot.as(Int32*).value) # Registered as an int-sized type
@@ -265106,6 +265820,401 @@ module Qt
         ::Qt::Binding.bg_qt_meta_to_QVariant(slot, (value.to_unsafe))
       {% elsif T.name.stringify == "Time::Span" %}
         ::Qt::Binding.bg_qt_meta_to_std__chrono__milliseconds(slot, value)
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Float64" || T.type_vars[0].name.stringify == "Float64") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_qreal_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<qreal>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<qreal>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Bytes" || T.type_vars[0].name.stringify == "Bytes") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QByteArray_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QByteArray>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QByteArray>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::FileInfo" || T.type_vars[0].name.stringify == "FileInfo") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QFileInfo_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QFileInfo>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QFileInfo>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ModelIndex" || T.type_vars[0].name.stringify == "ModelIndex") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QModelIndex_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QModelIndex>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QModelIndex>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::CommandLineOption" || T.type_vars[0].name.stringify == "CommandLineOption") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QCommandLineOption_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QCommandLineOption>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QCommandLineOption>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::MimeType" || T.type_vars[0].name.stringify == "MimeType") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QMimeType_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QMimeType>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QMimeType>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::InputMethodEventAttribute" || T.type_vars[0].name.stringify == "InputMethodEventAttribute") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QInputMethodEvent__Attribute_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QInputMethodEvent::Attribute>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QInputMethodEvent::Attribute>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::StringList, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QString>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QString>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Object" || T.type_vars[0].name.stringify == "Object") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QObject_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QObject *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QObject *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::EventDispatcherTimerInfo" || T.type_vars[0].name.stringify == "EventDispatcherTimerInfo") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractEventDispatcher__TimerInfo_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QAbstractEventDispatcher::TimerInfo>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QAbstractEventDispatcher::TimerInfo>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Variant" || T.type_vars[0].name.stringify == "Variant") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QVariant_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QVariant>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QVariant>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PersistentModelIndex" || T.type_vars[0].name.stringify == "PersistentModelIndex") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QPersistentModelIndex_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QPersistentModelIndex>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QPersistentModelIndex>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::DayOfWeek" || T.type_vars[0].name.stringify == "DayOfWeek") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_Qt__DayOfWeek_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<Qt::DayOfWeek>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<Qt::DayOfWeek>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Locale" || T.type_vars[0].name.stringify == "Locale") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QLocale_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QLocale>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QLocale>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Locale::Country" || T.type_vars[0].name.stringify == "Locale::Country") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QLocale__Country_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QLocale::Country>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QLocale::Country>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Url" || T.type_vars[0].name.stringify == "Url") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QUrl_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QUrl>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QUrl>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::AbstractItemModel" || T.type_vars[0].name.stringify == "AbstractItemModel") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractItemModel_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QAbstractItemModel *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QAbstractItemModel *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ItemSelectionRange" || T.type_vars[0].name.stringify == "ItemSelectionRange") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QItemSelectionRange_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QItemSelectionRange>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QItemSelectionRange>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::StorageInfo" || T.type_vars[0].name.stringify == "StorageInfo") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QStorageInfo_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QStorageInfo>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QStorageInfo>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_int_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<int>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<int>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::KeySequence" || T.type_vars[0].name.stringify == "KeySequence") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QKeySequence_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QKeySequence>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QKeySequence>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TouchDevice" || T.type_vars[0].name.stringify == "TouchDevice") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_const_QTouchDevice_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<const QTouchDevice *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<const QTouchDevice *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TouchPoint" || T.type_vars[0].name.stringify == "TouchPoint") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTouchEvent__TouchPoint_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTouchEvent::TouchPoint>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTouchEvent::TouchPoint>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextOptionTab" || T.type_vars[0].name.stringify == "TextOptionTab") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextOption__Tab_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTextOption::Tab>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTextOption::Tab>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::FontDatabase::WritingSystem" || T.type_vars[0].name.stringify == "FontDatabase::WritingSystem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QFontDatabase__WritingSystem_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QFontDatabase::WritingSystem>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QFontDatabase::WritingSystem>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GlyphRun" || T.type_vars[0].name.stringify == "GlyphRun") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGlyphRun_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGlyphRun>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGlyphRun>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Size" || T.type_vars[0].name.stringify == "Size") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QSize_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QSize>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QSize>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Window" || T.type_vars[0].name.stringify == "Window") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWindow_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QWindow *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QWindow *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Screen" || T.type_vars[0].name.stringify == "Screen") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QScreen_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QScreen *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QScreen *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PolygonF" || T.type_vars[0].name.stringify == "PolygonF") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QPolygonF_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QPolygonF>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QPolygonF>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::StandardItem" || T.type_vars[0].name.stringify == "StandardItem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QStandardItem_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QStandardItem *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QStandardItem *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextBlock" || T.type_vars[0].name.stringify == "TextBlock") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextBlock_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTextBlock>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTextBlock>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextFrame" || T.type_vars[0].name.stringify == "TextFrame") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextFrame_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTextFrame *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTextFrame *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Action" || T.type_vars[0].name.stringify == "Action") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAction_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QAction *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QAction *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Widget" || T.type_vars[0].name.stringify == "Widget") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWidget_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QWidget *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QWidget *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsWidget" || T.type_vars[0].name.stringify == "GraphicsWidget") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsWidget_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGraphicsWidget *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGraphicsWidget *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::AbstractButton" || T.type_vars[0].name.stringify == "AbstractButton") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QAbstractButton_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QAbstractButton *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QAbstractButton *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Gesture" || T.type_vars[0].name.stringify == "Gesture") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGesture_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGesture *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGesture *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsItem" || T.type_vars[0].name.stringify == "GraphicsItem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsItem_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGraphicsItem *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGraphicsItem *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsTransform" || T.type_vars[0].name.stringify == "GraphicsTransform") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsTransform_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGraphicsTransform *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGraphicsTransform *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::GraphicsView" || T.type_vars[0].name.stringify == "GraphicsView") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QGraphicsView_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QGraphicsView *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QGraphicsView *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::RectF" || T.type_vars[0].name.stringify == "RectF") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QRectF_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QRectF>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QRectF>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::ListWidgetItem" || T.type_vars[0].name.stringify == "ListWidgetItem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QListWidgetItem_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QListWidgetItem *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QListWidgetItem *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::DockWidget" || T.type_vars[0].name.stringify == "DockWidget") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QDockWidget_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QDockWidget *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QDockWidget *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::MdiSubWindow" || T.type_vars[0].name.stringify == "MdiSubWindow") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QMdiSubWindow_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QMdiSubWindow *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QMdiSubWindow *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextEditExtraSelection" || T.type_vars[0].name.stringify == "TextEditExtraSelection") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTextEdit__ExtraSelection_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTextEdit::ExtraSelection>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTextEdit::ExtraSelection>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Scroller" || T.type_vars[0].name.stringify == "Scroller") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QScroller_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QScroller *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QScroller *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TableWidgetSelectionRange" || T.type_vars[0].name.stringify == "TableWidgetSelectionRange") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTableWidgetSelectionRange_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTableWidgetSelectionRange>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTableWidgetSelectionRange>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TableWidgetItem" || T.type_vars[0].name.stringify == "TableWidgetItem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTableWidgetItem_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTableWidgetItem *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTableWidgetItem *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TreeWidgetItem" || T.type_vars[0].name.stringify == "TreeWidgetItem") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QTreeWidgetItem_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QTreeWidgetItem *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QTreeWidgetItem *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UndoStack" || T.type_vars[0].name.stringify == "UndoStack") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QUndoStack_X_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QUndoStack *>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QUndoStack *>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Wizard::Button" || T.type_vars[0].name.stringify == "Wizard::Button") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QList_QWizard__WizardButton_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QList<QWizard::WizardButton>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QList<QWizard::WizardButton>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UInt32" || T.type_vars[0].name.stringify == "UInt32") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_unsigned_int_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<unsigned int>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<unsigned int>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_int_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<int>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<int>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TimeZoneOffsetData" || T.type_vars[0].name.stringify == "TimeZoneOffsetData") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTimeZone__OffsetData_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QTimeZone::OffsetData>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QTimeZone::OffsetData>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::CborValue" || T.type_vars[0].name.stringify == "CborValue") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QCborValue_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QCborValue>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QCborValue>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::PointF" || T.type_vars[0].name.stringify == "PointF") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QPointF_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QPointF>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QPointF>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamAttribute" || T.type_vars[0].name.stringify == "XmlStreamAttribute") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamAttribute_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QXmlStreamAttribute>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QXmlStreamAttribute>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamNamespaceDeclaration" || T.type_vars[0].name.stringify == "XmlStreamNamespaceDeclaration") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamNamespaceDeclaration_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QXmlStreamNamespaceDeclaration>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QXmlStreamNamespaceDeclaration>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamNotationDeclaration" || T.type_vars[0].name.stringify == "XmlStreamNotationDeclaration") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamNotationDeclaration_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QXmlStreamNotationDeclaration>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QXmlStreamNotationDeclaration>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::XmlStreamEntityDeclaration" || T.type_vars[0].name.stringify == "XmlStreamEntityDeclaration") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QXmlStreamEntityDeclaration_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QXmlStreamEntityDeclaration>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QXmlStreamEntityDeclaration>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Point" || T.type_vars[0].name.stringify == "Point") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QPoint_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QPoint>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QPoint>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Float64" || T.type_vars[0].name.stringify == "Float64") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_qreal_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<qreal>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<qreal>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextLength" || T.type_vars[0].name.stringify == "TextLength") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextLength_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QTextLength>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QTextLength>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::UInt32" || T.type_vars[0].name.stringify == "UInt32") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_quint32_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<quint32>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<quint32>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextLayoutFormatRange" || T.type_vars[0].name.stringify == "TextLayoutFormatRange") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextLayout__FormatRange_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QTextLayout::FormatRange>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QTextLayout::FormatRange>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextFormat" || T.type_vars[0].name.stringify == "TextFormat") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QTextFormat_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QTextFormat>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QTextFormat>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::TextDocumentLayoutSelection" || T.type_vars[0].name.stringify == "TextDocumentLayoutSelection") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QAbstractTextDocumentLayout__Selection_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QAbstractTextDocumentLayout::Selection>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QAbstractTextDocumentLayout::Selection>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::LineF" || T.type_vars[0].name.stringify == "LineF") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QLineF_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QLineF>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QLineF>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Line" || T.type_vars[0].name.stringify == "Line") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QLine_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QLine>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QLine>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::RectF" || T.type_vars[0].name.stringify == "RectF") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QRectF_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QRectF>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QRectF>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Array" || T.name(generic_args: false).stringify == "Enumerable") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Rect" || T.type_vars[0].name.stringify == "Rect") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QVector_QRect_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QVector<QRect>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QVector<QRect>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_QString__QVariant_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QMap<QString, QVariant>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QMap<QString, QVariant>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_int__QVariant_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QMap<int, QVariant>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QMap<int, QVariant>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Date" || T.type_vars[0].name.stringify == "Date") && (T.type_vars[1].name.stringify == "Qt::TextCharFormat" || T.type_vars[1].name.stringify == "TextCharFormat") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QMap_QDate__QTextCharFormat_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QMap<QDate, QTextCharFormat>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QMap<QDate, QTextCharFormat>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Set") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QSet_QString_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QSet<QString>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QSet<QString>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Set") && T.type_vars.size == 1 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QSet_int_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QSet<int>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QSet<int>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::String" || T.type_vars[0].name.stringify == "String") && (T.type_vars[1].name.stringify == "Qt::Variant" || T.type_vars[1].name.stringify == "Variant") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QHash_QString__QVariant_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QHash<QString, QVariant>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QHash<QString, QVariant>: the type isn't registered with QMetaType"
+        end
+      {% elsif (T.name(generic_args: false).stringify == "Hash") && T.type_vars.size == 2 && (T.type_vars[0].name.stringify == "Qt::Int32" || T.type_vars[0].name.stringify == "Int32") && (T.type_vars[1].name.stringify == "Qt::Bytes" || T.type_vars[1].name.stringify == "Bytes") %}
+        bg_container = ::Qt::BindgenHelper.wrap_container(::Qt::Container_QHash_int__QByteArray_, value)
+        unless Binding.bindgen_qt_set_value(slot, "QHash<int, QByteArray>".to_unsafe, bg_container.to_unsafe.as(Void*))
+          raise "Qt can't copy a QHash<int, QByteArray>: the type isn't registered with QMetaType"
+        end
   
       {% elsif T < ::Enum && !T.annotation(::Qt::BindgenWrapper) %}
         slot.as(Int32*).value = value.value.to_i32!
@@ -267772,8 +268881,8 @@ module Qt
     
     # Wraps the object at *unwrap*: in the Crystal object which constructed
     # it, or in the wrapper class of its dynamic type, see `#to?`.
-    def self.bg_discover(unwrap : Binding::ContainerQListQString*) : Enumerable(String)
-      BindgenHelper.crystal_object(unwrap, Enumerable(String)) || unwrap
+    def self.bg_discover(unwrap : Binding::ContainerQListQString*) : StringList
+      BindgenHelper.crystal_object(unwrap, StringList) || StringList.new(unwrap: unwrap)
     end
     
     def to_unsafe

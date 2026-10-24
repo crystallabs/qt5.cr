@@ -459,3 +459,106 @@ describe "a converted value type in a Crystal subclass's meta-object" do
     store.property("mark".to_unsafe).to(Char).should eq('z')
   end
 end
+
+# Containers: an `Array(T)` or `Enumerable(T)` is the first sequential
+# container of `T` the binding instantiates (`QList<int>`), a `Set(T)` the
+# `QSet<T>`, a `Hash(K, V)` the first associative container (`QMap<QString,
+# QVariant>`), registered with QMetaType by name.
+private class Bag < Qt::Object
+  signal items_changed(items : Array(Int32))
+  signal named(names : Enumerable(String))
+  signal tagged(tags : Set(Int32))
+  signal settings_changed(settings : Hash(String, Qt::Variant))
+
+  getter items = [] of Int32
+  getter settings = {} of String => Qt::Variant
+  getter counted = 0
+
+  @[Qt::Slot]
+  def set_items(items : Array(Int32)) : Nil
+    @items = items
+    items_changed(items)
+  end
+
+  @[Qt::Slot]
+  def set_settings(settings : Hash(String, Qt::Variant)) : Nil
+    @settings = settings
+    settings_changed(settings)
+  end
+
+  @[Qt::Slot]
+  def count_names(names : Enumerable(String)) : Int32
+    @counted = names.size
+  end
+
+  qt_property items : Array(Int32), write: :set_items, notify: :items_changed
+  qt_property settings : Hash(String, Qt::Variant), write: :set_settings
+end
+
+describe "a container in a Crystal subclass's meta-object" do
+  it "is the instantiated container, registered with Qt" do
+    bag = Bag.new
+    meta = bag.meta_object.not_nil!
+    list = String.new(meta.property(meta.index_of_property("items".to_unsafe)).type_name)
+    list.should match(/^Q(List|Vector)<int>$/)
+    String.new(meta.property(meta.index_of_property("settings".to_unsafe)).type_name).should eq("QVariantMap") # Qt's name of the builtin
+    meta.index_of_signal("itemsChanged(#{list})".to_unsafe).should eq(meta.method_offset)
+    meta.index_of_signal("named(QList<QString>)".to_unsafe).should eq(meta.method_offset + 1)
+    meta.index_of_signal("tagged(QSet<int>)".to_unsafe).should eq(meta.method_offset + 2)
+    meta.index_of_slot("countNames(QList<QString>)".to_unsafe).should eq(meta.method_offset + 6)
+  end
+
+  it "is emitted and received as the declared generic" do
+    bag = Bag.new
+    items = [] of Int32
+    bag.on_items_changed { |list| items = list }
+    bag.set_items([1, 2, 3])
+    items.should eq([1, 2, 3])
+
+    names = [] of String
+    bag.on_named { |list| names = list.to_a }
+    bag.named(["a", "b"])
+    names.should eq(["a", "b"])
+    bag.named(Qt::StringList.new.concat(["c"])) # The container itself is an Enumerable(String)
+    names.should eq(["c"])
+
+    tags = Set(Int32).new
+    bag.on_tagged { |set| tags = set }
+    bag.tagged(Set{3, 4})
+    tags.should eq(Set{3, 4})
+
+    settings = {} of String => Qt::Variant
+    bag.on_settings_changed { |hash| settings = hash }
+    bag.set_settings({"a" => Qt.variant(1), "b" => Qt.variant("two")})
+    settings.keys.sort.should eq(["a", "b"])
+    settings["b"].to(String).should eq("two")
+
+    # Connected by name, between Crystal objects, and queued: the types are
+    # registered, so Qt copies them.
+    other = Bag.new
+    list = String.new(bag.meta_object.not_nil!.property(bag.meta_object.not_nil!.index_of_property("items".to_unsafe)).type_name)
+    Qt::Object.connect(bag, "2itemsChanged(#{list})".to_unsafe, other, "1setItems(#{list})".to_unsafe)
+    Qt::Object.connect(bag, "2named(QList<QString>)".to_unsafe, other, "1countNames(QList<QString>)".to_unsafe)
+    bag.set_items([7])
+    other.items.should eq([7])
+    bag.named(["x", "y", "z"])
+    other.counted.should eq(3)
+    queued = [] of Array(Int32)
+    bag.on_items_changed(Qt::ConnectionType::QueuedConnection) { |list| queued << list }
+    bag.set_items([8, 9])
+    queued.should be_empty
+    Qt::CoreApplication.process_events
+    queued.should eq([[8, 9]])
+  end
+
+  it "goes through QVariants as the container type" do
+    bag = Bag.new
+    bag.set_items([1, 2])
+    bag.set_settings({"k" => Qt.variant(5)})
+    other = Bag.new
+    other.set_property("items".to_unsafe, bag.property("items".to_unsafe)).should be_true
+    other.items.should eq([1, 2])
+    other.set_property("settings".to_unsafe, bag.property("settings".to_unsafe)).should be_true
+    other.settings["k"].to(Int32).should eq(5)
+  end
+end
