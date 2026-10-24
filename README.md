@@ -148,6 +148,11 @@ which is an `Indexable(String)` with Qt's own methods: `#filter`,
 `#replace_in_strings`, `#remove_duplicates`, `#sort(cs)`, `#join`, `#contains`,
 `#index_of`, `#remove_all`, `#take_first` and the rest of `QList`.
 
+`QSet<T>` is an `Enumerable(T)` with `#includes?`, `#<<` (`#add`) and `#delete`,
+and methods taking one accept any `Enumerable`.  No Qt 5 method wrapped here
+uses one, so `Qt::QSet.of(String).from(["a", "b"])` builds a `QSet<QString>`
+(also instantiated for `int`).
+
 ```crystal
 combo_box.add_items(["one", "two"])
 names = Qt::Dir.new(".").entry_list(["*.cr"], Qt::Dir::Filters::Files)
@@ -600,8 +605,7 @@ see the comments there:
   `Qt::TextEncoder` and `Qt::TextDecoder` keep the conversion state between
   calls; the codec's own stateful conversions (`ConverterState`) aren't
   wrapped.
-* Types without a mapping yet, like `QSet`, are ignored, which drops the
-  methods using them.
+* Types without a mapping are ignored, which drops the methods using them.
 
 ## Future things to do
 

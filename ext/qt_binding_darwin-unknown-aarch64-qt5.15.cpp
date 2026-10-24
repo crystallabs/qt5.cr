@@ -12,6 +12,10 @@ typedef BindgenMapEntries<QHash<int, QByteArray>> Container_QHash_int__QByteArra
 typedef QHash<int, QByteArray> Container_QHash_int__QByteArray_;
 typedef BindgenMapEntries<QHash<QString, QVariant>> Container_QHash_QString__QVariant__Entries;
 typedef QHash<QString, QVariant> Container_QHash_QString__QVariant_;
+typedef BindgenSetElements<QSet<int>> Container_QSet_int__Elements;
+typedef QSet<int> Container_QSet_int_;
+typedef BindgenSetElements<QSet<QString>> Container_QSet_QString__Elements;
+typedef QSet<QString> Container_QSet_QString_;
 typedef BindgenMapEntries<QMap<QDate, QTextCharFormat>> Container_QMap_QDate__QTextCharFormat__Entries;
 typedef QMap<QDate, QTextCharFormat> Container_QMap_QDate__QTextCharFormat_;
 typedef BindgenMapEntries<QMap<int, QVariant>> Container_QMap_int__QVariant__Entries;
@@ -149034,6 +149038,70 @@ extern "C" QDate * bg_Container_QMap_QDate__QTextCharFormat__Entries_key_int(Con
 
 extern "C" QTextCharFormat * bg_Container_QMap_QDate__QTextCharFormat__Entries_value_int(Container_QMap_QDate__QTextCharFormat__Entries * _self_, int index) {
   return new (UseGC, bindgen_gc_finalizer<QTextCharFormat>()) QTextCharFormat (_self_->value(index));
+}
+
+extern "C" Container_QSet_QString_ * bg_Container_QSet_QString___CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<Container_QSet_QString_>();
+}
+
+extern "C" int bg_Container_QSet_QString__size_(Container_QSet_QString_ * _self_) {
+  return _self_->size();
+}
+
+extern "C" int bg_Container_QSet_QString__contains_QString(Container_QSet_QString_ * _self_, CrystalString value) {
+  return _self_->contains(([&]() { auto &&bg_value = (value); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+}
+
+extern "C" void bg_Container_QSet_QString__insert_QString(Container_QSet_QString_ * _self_, CrystalString value) {
+  _self_->insert(([&]() { auto &&bg_value = (value); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+}
+
+extern "C" void bg_Container_QSet_QString__remove_QString(Container_QSet_QString_ * _self_, CrystalString value) {
+  _self_->remove(([&]() { auto &&bg_value = (value); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()));
+}
+
+extern "C" Container_QSet_QString__Elements * bg_Container_QSet_QString__Elements__CONSTRUCT_const_QSet_QString__R(const Container_QSet_QString_ * set) {
+  return new (UseGC) CrystalGCWrapper<Container_QSet_QString__Elements>(*(set));
+}
+
+extern "C" int bg_Container_QSet_QString__Elements_size_(Container_QSet_QString__Elements * _self_) {
+  return _self_->size();
+}
+
+extern "C" CrystalString bg_Container_QSet_QString__Elements_at_int(Container_QSet_QString__Elements * _self_, int index) {
+  return qstring_to_crystal(_self_->at(index));
+}
+
+extern "C" Container_QSet_int_ * bg_Container_QSet_int___CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<Container_QSet_int_>();
+}
+
+extern "C" int bg_Container_QSet_int__size_(Container_QSet_int_ * _self_) {
+  return _self_->size();
+}
+
+extern "C" int bg_Container_QSet_int__contains_int(Container_QSet_int_ * _self_, int value) {
+  return _self_->contains(value);
+}
+
+extern "C" void bg_Container_QSet_int__insert_int(Container_QSet_int_ * _self_, int value) {
+  _self_->insert(value);
+}
+
+extern "C" void bg_Container_QSet_int__remove_int(Container_QSet_int_ * _self_, int value) {
+  _self_->remove(value);
+}
+
+extern "C" Container_QSet_int__Elements * bg_Container_QSet_int__Elements__CONSTRUCT_const_QSet_int__R(const Container_QSet_int_ * set) {
+  return new (UseGC) CrystalGCWrapper<Container_QSet_int__Elements>(*(set));
+}
+
+extern "C" int bg_Container_QSet_int__Elements_size_(Container_QSet_int__Elements * _self_) {
+  return _self_->size();
+}
+
+extern "C" int bg_Container_QSet_int__Elements_at_int(Container_QSet_int__Elements * _self_, int index) {
+  return _self_->at(index);
 }
 
 extern "C" Container_QHash_QString__QVariant_ * bg_Container_QHash_QString__QVariant___CONSTRUCT_() {

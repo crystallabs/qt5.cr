@@ -684,5 +684,20 @@ struct BindgenMapEntries {
   const mapped_type &value(int index) const { return entries[index].second; }
 };
 
+/* A copy of the elements of the set `S` by index, for the wrapper's `#each`,
+ * like `BindgenMapEntries` for an associative container.
+ */
+template <typename S>
+struct BindgenSetElements {
+  typedef typename S::value_type value_type;
+
+  std::vector<value_type> elements;
+
+  BindgenSetElements(const S &set) : elements(set.begin(), set.end()) { }
+
+  int size() const { return static_cast<int>(elements.size()); }
+  const value_type &at(int index) const { return elements[index]; }
+};
+
 #endif // __cplusplus
 #endif // BINDGEN_HELPER_HPP

@@ -491,6 +491,85 @@ module Qt
       end
     end
   
+    # Wrapper for an instantiated set type, like `std::set` or `QSet`.
+    #
+    # An `Enumerable` of the elements with `#includes?`, `#<<` and `#delete`, a
+    # subset of `Set`.  Like a sequential container, it's meant for data
+    # transmission between the C++ and Crystal worlds, not for storage.
+    module SetContainer(T)
+      include Enumerable(T)
+  
+      # `#size`, `#unsafe_count`, `#unsafe_insert` and `#unsafe_erase` will be
+      # implemented by the wrapper class.  The wrapper class also has an
+      # `Elements` class.
+  
+      # Returns if *value* is an element.
+      def includes?(value : T) : Bool
+        unsafe_count(value) > 0
+      end
+  
+      # Adds *value*.
+      def add(value : T) : self
+        unsafe_insert(value)
+        self
+      end
+  
+      # :ditto:
+      def <<(value : T) : self
+        add(value)
+      end
+  
+      # Adds all *values*.
+      def concat(values : Enumerable(T)) : self
+        values.each { |value| add(value) }
+        self
+      end
+  
+      # Removes *value*, returning if it was an element.
+      def delete(value : T) : Bool
+        return false unless includes?(value)
+  
+        unsafe_erase(value)
+        true
+      end
+  
+      def empty? : Bool
+        size == 0
+      end
+  
+      # Yields each element.  The elements are copied beforehand.
+      def each(& : T ->) : Nil
+        elements = {{ "#{@type}::Elements".id }}.new(self)
+        elements.size.times do |i|
+          yield elements.unsafe_at(i)
+        end
+      end
+  
+      def to_s(io)
+        to_set.to_s(io)
+      end
+  
+      def inspect(io)
+        io << "<Wrapped "
+        to_set.inspect(io)
+        io << ">"
+      end
+  
+      # Note: Crystal has no dependent types, so this module must refer to its own
+      # type parameter `T`.
+      private module ClassMethods(T)
+        # Wraps the *values* into a container of this type, if it's not already
+        # one.
+        def from(values : Enumerable(T)) : self
+          BindgenHelper.wrap_container(self, values)
+        end
+      end
+  
+      macro included
+        extend ClassMethods(T)
+      end
+    end
+  
     # Wrapper for an instantiated pair type, like `std::pair` or `QPair`.
     #
     # Pairs convert to and from a `Tuple` of the two values, so wrapped methods
@@ -1427,6 +1506,10 @@ module Qt
     alias Container_QMap_QString__QVariant__Entries = Void
     alias Container_QMap_int__QVariant__Entries = Void
     alias Container_QMap_QDate__QTextCharFormat__Entries = Void
+    alias ContainerQSetQString = Void
+    alias Container_QSet_QString__Elements = Void
+    alias ContainerQSetInt = Void
+    alias Container_QSet_int__Elements = Void
     alias Container_QHash_QString__QVariant__Entries = Void
     alias Container_QHash_int__QByteArray__Entries = Void
     struct QPoint
@@ -37484,6 +37567,22 @@ module Qt
     fun bg_Container_QMap_QDate__QTextCharFormat__Entries_size_(_self_ : Container_QMap_QDate__QTextCharFormat__Entries*) : Int32
     fun bg_Container_QMap_QDate__QTextCharFormat__Entries_key_int(_self_ : Container_QMap_QDate__QTextCharFormat__Entries*, index : Int32) : QDate*
     fun bg_Container_QMap_QDate__QTextCharFormat__Entries_value_int(_self_ : Container_QMap_QDate__QTextCharFormat__Entries*, index : Int32) : QTextCharFormat*
+    fun bg_Container_QSet_QString___CONSTRUCT_() : ContainerQSetQString*
+    fun bg_Container_QSet_QString__size_(_self_ : ContainerQSetQString*) : Int32
+    fun bg_Container_QSet_QString__contains_QString(_self_ : ContainerQSetQString*, value : CrystalString) : Int32
+    fun bg_Container_QSet_QString__insert_QString(_self_ : ContainerQSetQString*, value : CrystalString) : Void
+    fun bg_Container_QSet_QString__remove_QString(_self_ : ContainerQSetQString*, value : CrystalString) : Void
+    fun bg_Container_QSet_QString__Elements__CONSTRUCT_const_QSet_QString__R(set : ContainerQSetQString*) : Container_QSet_QString__Elements*
+    fun bg_Container_QSet_QString__Elements_size_(_self_ : Container_QSet_QString__Elements*) : Int32
+    fun bg_Container_QSet_QString__Elements_at_int(_self_ : Container_QSet_QString__Elements*, index : Int32) : CrystalString
+    fun bg_Container_QSet_int___CONSTRUCT_() : ContainerQSetInt*
+    fun bg_Container_QSet_int__size_(_self_ : ContainerQSetInt*) : Int32
+    fun bg_Container_QSet_int__contains_int(_self_ : ContainerQSetInt*, value : Int32) : Int32
+    fun bg_Container_QSet_int__insert_int(_self_ : ContainerQSetInt*, value : Int32) : Void
+    fun bg_Container_QSet_int__remove_int(_self_ : ContainerQSetInt*, value : Int32) : Void
+    fun bg_Container_QSet_int__Elements__CONSTRUCT_const_QSet_int__R(set : ContainerQSetInt*) : Container_QSet_int__Elements*
+    fun bg_Container_QSet_int__Elements_size_(_self_ : Container_QSet_int__Elements*) : Int32
+    fun bg_Container_QSet_int__Elements_at_int(_self_ : Container_QSet_int__Elements*, index : Int32) : Int32
     fun bg_Container_QHash_QString__QVariant___CONSTRUCT_() : ContainerQHashQStringQVariant*
     fun bg_Container_QHash_QString__QVariant__size_(_self_ : ContainerQHashQStringQVariant*) : Int32
     fun bg_Container_QHash_QString__QVariant__contains_QString(_self_ : ContainerQHashQStringQVariant*, key : CrystalString) : Int32
@@ -266253,6 +266352,15 @@ module Qt
       {% end %}
     end
   end
+  module QSet(T)
+    macro of(*type_args)
+      {% types = type_args.map(&.resolve) %}
+      {% if types == {String} %} {{ Container_QSet_QString_ }}
+      {% elsif types == {Int32} %} {{ Container_QSet_int_ }}
+      {% else %} {% raise "QSet(#{types.splat}) has not been instantiated" %}
+      {% end %}
+    end
+  end
   module QHash(T1, T2)
     macro of(*type_args)
       {% types = type_args.map(&.resolve) %}
@@ -270607,6 +270715,166 @@ module Qt
       @unwrap
     end
     def initialize(unwrap : Binding::ContainerQMapQDateQTextCharFormat*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Container_QSet_QString_
+    include BindgenHelper::SetContainer(String)
+    include QSet(String)
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::ContainerQSetQString*
+    
+    def initialize()
+      result = Binding.bg_Container_QSet_QString___CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def size() : Int32
+      Binding.bg_Container_QSet_QString__size_(self)
+    end
+    
+    def unsafe_count(value : String) : Int32
+      Binding.bg_Container_QSet_QString__contains_QString(self, Qt::Converter::QString.wrap(value))
+    end
+    
+    def unsafe_insert(value : String) : Void
+      Binding.bg_Container_QSet_QString__insert_QString(self, Qt::Converter::QString.wrap(value))
+    end
+    
+    def unsafe_erase(value : String) : Void
+      Binding.bg_Container_QSet_QString__remove_QString(self, Qt::Converter::QString.wrap(value))
+    end
+    
+    @[BindgenWrapper]
+    class Elements
+      include BindgenHelper::Wrapper
+      
+      @unwrap : Binding::Container_QSet_QString__Elements*
+      
+      def initialize(set : Enumerable(String))
+        result = Binding.bg_Container_QSet_QString__Elements__CONSTRUCT_const_QSet_QString__R(BindgenHelper.wrap_container(Container_QSet_QString_, set).to_unsafe)
+      @unwrap = result
+      BindgenHelper.set_crystal_object(result, self)
+      end
+      
+      def size() : Int32
+        Binding.bg_Container_QSet_QString__Elements_size_(self)
+      end
+      
+      def unsafe_at(index : Int32) : String
+        Qt::Converter::QString.unwrap(Binding.bg_Container_QSet_QString__Elements_at_int(self, index))
+      end
+      
+      # Wraps the object at *unwrap*: in the Crystal object which constructed
+      # it, or in the wrapper class of its dynamic type, see `#to?`.
+      def self.bg_discover(unwrap : Binding::Container_QSet_QString__Elements*) : Binding::Container_QSet_QString__Elements
+        BindgenHelper.crystal_object(unwrap, Binding::Container_QSet_QString__Elements) || unwrap
+      end
+      
+      def to_unsafe
+        @unwrap
+      end
+      def initialize(unwrap : Binding::Container_QSet_QString__Elements*)
+        result = unwrap
+      @unwrap = result
+      end
+      
+    end
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::ContainerQSetQString*) : Container_QSet_QString_
+      BindgenHelper.crystal_object(unwrap, Container_QSet_QString_) || Container_QSet_QString_.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::ContainerQSetQString*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Container_QSet_int_
+    include BindgenHelper::SetContainer(Int32)
+    include QSet(Int32)
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::ContainerQSetInt*
+    
+    def initialize()
+      result = Binding.bg_Container_QSet_int___CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def size() : Int32
+      Binding.bg_Container_QSet_int__size_(self)
+    end
+    
+    def unsafe_count(value : Int32) : Int32
+      Binding.bg_Container_QSet_int__contains_int(self, value)
+    end
+    
+    def unsafe_insert(value : Int32) : Void
+      Binding.bg_Container_QSet_int__insert_int(self, value)
+    end
+    
+    def unsafe_erase(value : Int32) : Void
+      Binding.bg_Container_QSet_int__remove_int(self, value)
+    end
+    
+    @[BindgenWrapper]
+    class Elements
+      include BindgenHelper::Wrapper
+      
+      @unwrap : Binding::Container_QSet_int__Elements*
+      
+      def initialize(set : Enumerable(Int32))
+        result = Binding.bg_Container_QSet_int__Elements__CONSTRUCT_const_QSet_int__R(BindgenHelper.wrap_container(Container_QSet_int_, set).to_unsafe)
+      @unwrap = result
+      BindgenHelper.set_crystal_object(result, self)
+      end
+      
+      def size() : Int32
+        Binding.bg_Container_QSet_int__Elements_size_(self)
+      end
+      
+      def unsafe_at(index : Int32) : Int32
+        Binding.bg_Container_QSet_int__Elements_at_int(self, index)
+      end
+      
+      # Wraps the object at *unwrap*: in the Crystal object which constructed
+      # it, or in the wrapper class of its dynamic type, see `#to?`.
+      def self.bg_discover(unwrap : Binding::Container_QSet_int__Elements*) : Binding::Container_QSet_int__Elements
+        BindgenHelper.crystal_object(unwrap, Binding::Container_QSet_int__Elements) || unwrap
+      end
+      
+      def to_unsafe
+        @unwrap
+      end
+      def initialize(unwrap : Binding::Container_QSet_int__Elements*)
+        result = unwrap
+      @unwrap = result
+      end
+      
+    end
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::ContainerQSetInt*) : Container_QSet_int_
+      BindgenHelper.crystal_object(unwrap, Container_QSet_int_) || Container_QSet_int_.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::ContainerQSetInt*)
       result = unwrap
     @unwrap = result
     end

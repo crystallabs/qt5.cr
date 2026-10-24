@@ -188,10 +188,6 @@ types: # Type rewrite rules
   QFileInfoPrivate: { ignore: true }
   QMimeTypePrivate: { ignore: true }
 
-  # QByteArray maps to Bytes; QList<QByteArray> is instantiated in
-  # containers.yml, QSet has no mapping yet.
-  "QSet<QByteArray>": { ignore: true }
-
   "Func1": { ignore: true } # Fake types used in QObject::connect().
   "Func2": { ignore: true }
   "QtPrivate::FunctionPointer<Func1>::Object": { ignore: true }
