@@ -19,6 +19,7 @@ processors:
   - crystal_wrapper # Create Crystal wrappers
   - block_overloads # Add type tags for block overloads
   - virtual_override # Allow overriding C++ virtual methods
+  - qt_meta_object # Signals, slots and properties declared in Crystal subclasses
   - cpp_wrapper # Create C++ <-> C wrappers
   - crystal_binding # Create `lib` bindings for the C wrapper
   - sanity_check # Shows issues, if any

@@ -16,6 +16,7 @@ Bindings for the Qt5 Framework using [bindgen](https://github.com/crystallabs/bi
       * [Object lifetime](#object-lifetime)
       * [Threads](#threads)
       * [Overriding virtual methods](#overriding-virtual-methods)
+      * [Signals, slots and properties in Crystal subclasses](#signals-slots-and-properties-in-crystal-subclasses)
       * [Null pointers](#null-pointers)
       * [Downcasts](#downcasts)
    * [Developer perspective](#developer-perspective)
@@ -299,6 +300,37 @@ the handler to log or collect them:
 ```crystal
 Qt::BindgenHelper.on_exception = ->(exception : Exception) { Log.error(exception: exception) { "In a Qt callback" } }
 ```
+
+## Signals, slots and properties in Crystal subclasses
+
+A Crystal subclass of a `Qt::Object` class declares its own signals, slots and
+properties, and Qt sees them like those of a C++ class with `Q_OBJECT`:
+bindgen builds a `QMetaObject` for the class (bindgen's SPEC.md §Q.4).
+
+```crystal
+class Counter < Qt::Object
+  signal value_changed(value : Int32)
+
+  @[Qt::Slot]
+  def increment : Nil
+    @value += 1
+    value_changed(@value) # Emits the signal
+  end
+
+  qt_property value : Int32, write: :set_value, notify: :value_changed
+end
+
+counter.on_value_changed { |value| puts value }   # Like a Qt signal
+Qt::Object.connect(counter, "2valueChanged(int)".to_unsafe, label, "1setNum(int)".to_unsafe)
+Qt::MetaObject.invoke_method(counter, "increment")
+counter.property("value".to_unsafe).to(Int32)
+```
+
+The argument, result and property types are the numbers, `Bool`, `String`,
+`Bytes`, and the `Qt::Object` classes (as pointers, nilable or not); the C++
+names are the camel-cased Crystal names.  A Crystal class deriving from another
+Crystal class with such members chains its meta-object to the parent's.  See
+`spec/qt/meta_subclass_spec.cr`.
 
 ## Null pointers
 

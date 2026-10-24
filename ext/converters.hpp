@@ -11,6 +11,7 @@
 #include <QtCore/qvariant.h>
 
 #include "bindgen_helper.hpp"
+#include "bindgen_qt_meta.hpp" // Meta-objects of Crystal subclasses, bindgen's asset
 
 // Converts a QString into a CrystalString, whose definition is mirrored in
 // Crystal and is then turned into a Crystal `String`.

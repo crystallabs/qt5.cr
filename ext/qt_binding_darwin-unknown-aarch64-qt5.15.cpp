@@ -1305,9 +1305,6 @@ extern "C" bool bg_QMetaType__OPERATOR_ne_const_QMetaType_R(QMetaType * _self_, 
 }
 
 struct BgJumptable_QObject {
-  CrystalProc<const QMetaObject *, void *> bg_QObject_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QObject_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QObject_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -1319,36 +1316,7 @@ struct BgJumptable_QObject {
 struct BgInherit_QObject : public QObject {
   using QObject::QObject;
   BgJumptable_QObject bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObject_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QObject *>(static_cast<const QObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObject_metaObject_(_crystal_);
-    } else {
-      return QObject::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObject_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QObject *>(static_cast<const QObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObject_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QObject::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObject_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QObject *>(static_cast<const QObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObject_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QObject::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QObject *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QObject *>(static_cast<const QObject *>(_self_))) : nullptr;
@@ -1419,6 +1387,18 @@ struct BgInherit_QObject : public QObject {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QObject::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QObject::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QObject::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QObject *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QObject_metaObject_(QObject * _self_) {
   return _self_->metaObject();
@@ -2586,6 +2566,10 @@ extern "C" void bg_BgInherit_QObject_JUMPTABLE_BgJumptable_QObject_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QObject_SET_META_BindgenQtMetaObject(BgInherit_QObject * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QObject::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QObject_CONNECT_destroyed_Qt__ConnectionType_CrystalProc_void__QObject_X_(QObject * _self_, Qt::ConnectionType type, CrystalProc<void, QObject *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QObject::*)(QObject *))&QObject::destroyed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QObject * unnamed_arg_0){ _proc_(unnamed_arg_0); }, type));
 }
@@ -2623,9 +2607,6 @@ extern "C" void bg_QObject_disconnectNotify_SUPER_const_QMetaMethod_R(QObject * 
 }
 
 struct BgJumptable_QAbstractAnimation {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractAnimation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractAnimation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractAnimation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QAbstractAnimation_duration_;
   CrystalProc<bool, void *, QEvent *> bg_QAbstractAnimation_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QAbstractAnimation_updateCurrentTime_int;
@@ -2641,36 +2622,7 @@ struct BgJumptable_QAbstractAnimation {
 struct BgInherit_QAbstractAnimation : public QAbstractAnimation {
   using QAbstractAnimation::QAbstractAnimation;
   BgJumptable_QAbstractAnimation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractAnimation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractAnimation *>(static_cast<const QAbstractAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractAnimation_metaObject_(_crystal_);
-    } else {
-      return QAbstractAnimation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractAnimation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractAnimation *>(static_cast<const QAbstractAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractAnimation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractAnimation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractAnimation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractAnimation *>(static_cast<const QAbstractAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractAnimation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractAnimation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int duration() const override {
     const BgInherit_QAbstractAnimation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractAnimation_duration_.isValid() ? bindgen_crystal_object(const_cast<QAbstractAnimation *>(static_cast<const QAbstractAnimation *>(_self_))) : nullptr;
@@ -2785,6 +2737,18 @@ struct BgInherit_QAbstractAnimation : public QAbstractAnimation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractAnimation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractAnimation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractAnimation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractAnimation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractAnimation_metaObject_(QAbstractAnimation * _self_) {
   return _self_->metaObject();
@@ -2934,6 +2898,10 @@ extern "C" void bg_BgInherit_QAbstractAnimation_JUMPTABLE_BgJumptable_QAbstractA
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractAnimation_SET_META_BindgenQtMetaObject(BgInherit_QAbstractAnimation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractAnimation::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractAnimation_CONNECT_finished_Qt__ConnectionType_CrystalProc_void_(QAbstractAnimation * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractAnimation::*)())&QAbstractAnimation::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -2963,9 +2931,6 @@ extern "C" void bg_QAbstractAnimation_updateDirection_SUPER_QAbstractAnimation__
 }
 
 struct BgJumptable_QAnimationDriver {
-  CrystalProc<const QMetaObject *, void *> bg_QAnimationDriver_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAnimationDriver_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAnimationDriver_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QAnimationDriver_advance_;
   CrystalProc<qint64, void *> bg_QAnimationDriver_elapsed_;
   CrystalProc<void, void *> bg_QAnimationDriver_start_;
@@ -2981,36 +2946,7 @@ struct BgJumptable_QAnimationDriver {
 struct BgInherit_QAnimationDriver : public QAnimationDriver {
   using QAnimationDriver::QAnimationDriver;
   BgJumptable_QAnimationDriver bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAnimationDriver *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationDriver_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAnimationDriver *>(static_cast<const QAnimationDriver *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationDriver_metaObject_(_crystal_);
-    } else {
-      return QAnimationDriver::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAnimationDriver *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationDriver_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAnimationDriver *>(static_cast<const QAnimationDriver *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationDriver_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAnimationDriver::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAnimationDriver *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationDriver_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAnimationDriver *>(static_cast<const QAnimationDriver *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationDriver_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAnimationDriver::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void advance() override {
     BgInherit_QAnimationDriver *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAnimationDriver_advance_.isValid() ? bindgen_crystal_object(const_cast<QAnimationDriver *>(static_cast<const QAnimationDriver *>(_self_))) : nullptr;
@@ -3121,6 +3057,18 @@ struct BgInherit_QAnimationDriver : public QAnimationDriver {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAnimationDriver::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAnimationDriver::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAnimationDriver::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAnimationDriver *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAnimationDriver_metaObject_(QAnimationDriver * _self_) {
   return _self_->metaObject();
@@ -3222,10 +3170,11 @@ extern "C" void bg_BgInherit_QAnimationDriver_JUMPTABLE_BgJumptable_QAnimationDr
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAnimationDriver_SET_META_BindgenQtMetaObject(BgInherit_QAnimationDriver * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAnimationDriver::staticMetaObject); };
+}
+
 struct BgJumptable_QEventLoop {
-  CrystalProc<const QMetaObject *, void *> bg_QEventLoop_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QEventLoop_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QEventLoop_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QEventLoop_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -3237,36 +3186,7 @@ struct BgJumptable_QEventLoop {
 struct BgInherit_QEventLoop : public QEventLoop {
   using QEventLoop::QEventLoop;
   BgJumptable_QEventLoop bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QEventLoop *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QEventLoop_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QEventLoop *>(static_cast<const QEventLoop *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QEventLoop_metaObject_(_crystal_);
-    } else {
-      return QEventLoop::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QEventLoop *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QEventLoop_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QEventLoop *>(static_cast<const QEventLoop *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QEventLoop_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QEventLoop::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QEventLoop *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QEventLoop_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QEventLoop *>(static_cast<const QEventLoop *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QEventLoop_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QEventLoop::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QEventLoop *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QEventLoop_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QEventLoop *>(static_cast<const QEventLoop *>(_self_))) : nullptr;
@@ -3337,6 +3257,18 @@ struct BgInherit_QEventLoop : public QEventLoop {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QEventLoop::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QEventLoop::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QEventLoop::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QEventLoop *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QEventLoop_metaObject_(QEventLoop * _self_) {
   return _self_->metaObject();
@@ -3414,10 +3346,11 @@ extern "C" void bg_BgInherit_QEventLoop_JUMPTABLE_BgJumptable_QEventLoop_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QEventLoop_SET_META_BindgenQtMetaObject(BgInherit_QEventLoop * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QEventLoop::staticMetaObject); };
+}
+
 struct BgJumptable_QAbstractEventDispatcher {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractEventDispatcher_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractEventDispatcher_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractEventDispatcher_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEventLoop::ProcessEventsFlags> bg_QAbstractEventDispatcher_processEvents_QEventLoop__ProcessEventsFlags;
   CrystalProc<bool, void *> bg_QAbstractEventDispatcher_hasPendingEvents_;
   CrystalProc<void, void *, QSocketNotifier *> bg_QAbstractEventDispatcher_registerSocketNotifier_QSocketNotifier_X;
@@ -3443,36 +3376,7 @@ struct BgJumptable_QAbstractEventDispatcher {
 struct BgInherit_QAbstractEventDispatcher : public QAbstractEventDispatcher {
   using QAbstractEventDispatcher::QAbstractEventDispatcher;
   BgJumptable_QAbstractEventDispatcher bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractEventDispatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractEventDispatcher_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractEventDispatcher *>(static_cast<const QAbstractEventDispatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractEventDispatcher_metaObject_(_crystal_);
-    } else {
-      return QAbstractEventDispatcher::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractEventDispatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractEventDispatcher_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractEventDispatcher *>(static_cast<const QAbstractEventDispatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractEventDispatcher_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractEventDispatcher::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractEventDispatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractEventDispatcher_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractEventDispatcher *>(static_cast<const QAbstractEventDispatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractEventDispatcher_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractEventDispatcher::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool processEvents(QEventLoop::ProcessEventsFlags flags) override {
     BgInherit_QAbstractEventDispatcher *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractEventDispatcher_processEvents_QEventLoop__ProcessEventsFlags.isValid() ? bindgen_crystal_object(const_cast<QAbstractEventDispatcher *>(static_cast<const QAbstractEventDispatcher *>(_self_))) : nullptr;
@@ -3707,6 +3611,18 @@ struct BgInherit_QAbstractEventDispatcher : public QAbstractEventDispatcher {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractEventDispatcher::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractEventDispatcher::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractEventDispatcher::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractEventDispatcher *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractEventDispatcher_metaObject_(QAbstractEventDispatcher * _self_) {
   return _self_->metaObject();
@@ -3842,6 +3758,10 @@ extern "C" void bg_QAbstractEventDispatcher_closingDown_SUPER_(QAbstractEventDis
 
 extern "C" void bg_BgInherit_QAbstractEventDispatcher_JUMPTABLE_BgJumptable_QAbstractEventDispatcher_R(BgInherit_QAbstractEventDispatcher * _self_, const BgJumptable_QAbstractEventDispatcher & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QAbstractEventDispatcher_SET_META_BindgenQtMetaObject(BgInherit_QAbstractEventDispatcher * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractEventDispatcher::staticMetaObject); };
 }
 
 extern "C" QAbstractEventDispatcher::TimerInfo * bg_QAbstractEventDispatcher__TimerInfo__CONSTRUCT_int_int_Qt__TimerType(int id, int i, Qt::TimerType t) {
@@ -4045,9 +3965,6 @@ extern "C" uint bg_QPersistentModelIndex_qHash_uint(QPersistentModelIndex * _sel
 }
 
 struct BgJumptable_QAbstractItemModel {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractItemModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractItemModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractItemModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, int, int> bg_QAbstractItemModel_index_int_int;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QAbstractItemModel_index_int_int_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QAbstractItemModel_parent_const_QModelIndex_R;
@@ -4102,36 +4019,7 @@ struct BgJumptable_QAbstractItemModel {
 struct BgInherit_QAbstractItemModel : public QAbstractItemModel {
   using QAbstractItemModel::QAbstractItemModel;
   BgJumptable_QAbstractItemModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemModel *>(static_cast<const QAbstractItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemModel_metaObject_(_crystal_);
-    } else {
-      return QAbstractItemModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemModel *>(static_cast<const QAbstractItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractItemModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemModel *>(static_cast<const QAbstractItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractItemModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex index(int row, int column, const QModelIndex & parent) const override {
     const BgInherit_QAbstractItemModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractItemModel_index_int_int_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemModel *>(static_cast<const QAbstractItemModel *>(_self_))) : nullptr;
@@ -4552,6 +4440,18 @@ struct BgInherit_QAbstractItemModel : public QAbstractItemModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractItemModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractItemModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractItemModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractItemModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractItemModel_metaObject_(QAbstractItemModel * _self_) {
   return _self_->metaObject();
@@ -4953,6 +4853,10 @@ extern "C" void bg_BgInherit_QAbstractItemModel_JUMPTABLE_BgJumptable_QAbstractI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractItemModel_SET_META_BindgenQtMetaObject(BgInherit_QAbstractItemModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractItemModel::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractItemModel_CONNECT_dataChanged_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R__const_QModelIndex_R_(QAbstractItemModel * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *, const QModelIndex *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemModel::*)(const QModelIndex &, const QModelIndex &))&QAbstractItemModel::dataChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & topLeft, const QModelIndex & bottomRight){ _proc_(&(topLeft), &(bottomRight)); }, type));
 }
@@ -5154,9 +5058,6 @@ extern "C" void bg_QAbstractItemModel_revert_SUPER_(QAbstractItemModel * _self_)
 }
 
 struct BgJumptable_QAbstractTableModel {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractTableModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractTableModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractTableModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, int, int> bg_QAbstractTableModel_index_int_int;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QAbstractTableModel_index_int_int_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QAbstractTableModel_sibling_int_int_const_QModelIndex_R;
@@ -5211,36 +5112,7 @@ struct BgJumptable_QAbstractTableModel {
 struct BgInherit_QAbstractTableModel : public QAbstractTableModel {
   using QAbstractTableModel::QAbstractTableModel;
   BgJumptable_QAbstractTableModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractTableModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTableModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractTableModel *>(static_cast<const QAbstractTableModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTableModel_metaObject_(_crystal_);
-    } else {
-      return QAbstractTableModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractTableModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTableModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractTableModel *>(static_cast<const QAbstractTableModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTableModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractTableModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractTableModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTableModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractTableModel *>(static_cast<const QAbstractTableModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTableModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractTableModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex index(int row, int column, const QModelIndex & parent) const override {
     const BgInherit_QAbstractTableModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractTableModel_index_int_int_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QAbstractTableModel *>(static_cast<const QAbstractTableModel *>(_self_))) : nullptr;
@@ -5637,6 +5509,18 @@ struct BgInherit_QAbstractTableModel : public QAbstractTableModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractTableModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractTableModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractTableModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractTableModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractTableModel_metaObject_(QAbstractTableModel * _self_) {
   return _self_->metaObject();
@@ -5714,10 +5598,11 @@ extern "C" void bg_BgInherit_QAbstractTableModel_JUMPTABLE_BgJumptable_QAbstract
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractTableModel_SET_META_BindgenQtMetaObject(BgInherit_QAbstractTableModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractTableModel::staticMetaObject); };
+}
+
 struct BgJumptable_QAbstractListModel {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractListModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractListModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractListModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, int, int> bg_QAbstractListModel_index_int_int;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QAbstractListModel_index_int_int_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QAbstractListModel_sibling_int_int_const_QModelIndex_R;
@@ -5772,36 +5657,7 @@ struct BgJumptable_QAbstractListModel {
 struct BgInherit_QAbstractListModel : public QAbstractListModel {
   using QAbstractListModel::QAbstractListModel;
   BgJumptable_QAbstractListModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractListModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractListModel *>(static_cast<const QAbstractListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractListModel_metaObject_(_crystal_);
-    } else {
-      return QAbstractListModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractListModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractListModel *>(static_cast<const QAbstractListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractListModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractListModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractListModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractListModel *>(static_cast<const QAbstractListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractListModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractListModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex index(int row, int column, const QModelIndex & parent) const override {
     const BgInherit_QAbstractListModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractListModel_index_int_int_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QAbstractListModel *>(static_cast<const QAbstractListModel *>(_self_))) : nullptr;
@@ -6186,6 +6042,18 @@ struct BgInherit_QAbstractListModel : public QAbstractListModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractListModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractListModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractListModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractListModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractListModel_metaObject_(QAbstractListModel * _self_) {
   return _self_->metaObject();
@@ -6254,6 +6122,10 @@ extern "C" void bg_BgInherit_QAbstractListModel_JUMPTABLE_BgJumptable_QAbstractL
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractListModel_SET_META_BindgenQtMetaObject(BgInherit_QAbstractListModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractListModel::staticMetaObject); };
+}
+
 extern "C" QModelIndex * bg_QAbstractListModel_index_SUPER_int_int_const_QModelIndex_R(QAbstractListModel * _self_, int row, int column, const QModelIndex & parent) {
   return new (UseGC, bindgen_gc_finalizer<QModelIndex>()) QModelIndex (_self_->QAbstractListModel::index(row, column, parent));
 }
@@ -6271,9 +6143,6 @@ extern "C" Qt::ItemFlags bg_QAbstractListModel_flags_SUPER_const_QModelIndex_R(Q
 }
 
 struct BgJumptable_QAbstractProxyModel {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractProxyModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractProxyModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractProxyModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QAbstractProxyModel_setSourceModel_QAbstractItemModel_X;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QAbstractProxyModel_mapToSource_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QAbstractProxyModel_mapFromSource_const_QModelIndex_R;
@@ -6333,36 +6202,7 @@ struct BgJumptable_QAbstractProxyModel {
 struct BgInherit_QAbstractProxyModel : public QAbstractProxyModel {
   using QAbstractProxyModel::QAbstractProxyModel;
   BgJumptable_QAbstractProxyModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractProxyModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractProxyModel *>(static_cast<const QAbstractProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractProxyModel_metaObject_(_crystal_);
-    } else {
-      return QAbstractProxyModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractProxyModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractProxyModel *>(static_cast<const QAbstractProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractProxyModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractProxyModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractProxyModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractProxyModel *>(static_cast<const QAbstractProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractProxyModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractProxyModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setSourceModel(QAbstractItemModel * sourceModel) override {
     BgInherit_QAbstractProxyModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractProxyModel_setSourceModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractProxyModel *>(static_cast<const QAbstractProxyModel *>(_self_))) : nullptr;
@@ -6835,6 +6675,18 @@ struct BgInherit_QAbstractProxyModel : public QAbstractProxyModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractProxyModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractProxyModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractProxyModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractProxyModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractProxyModel_metaObject_(QAbstractProxyModel * _self_) {
   return _self_->metaObject();
@@ -7001,6 +6853,10 @@ extern "C" void bg_BgInherit_QAbstractProxyModel_JUMPTABLE_BgJumptable_QAbstract
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractProxyModel_SET_META_BindgenQtMetaObject(BgInherit_QAbstractProxyModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractProxyModel::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractProxyModel_CONNECT_sourceModelChanged_Qt__ConnectionType_CrystalProc_void_(QAbstractProxyModel * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractProxyModel::*)())&QAbstractProxyModel::sourceModelChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -7106,9 +6962,6 @@ extern "C" Qt::DropActions bg_QAbstractProxyModel_supportedDropActions_SUPER_(QA
 }
 
 struct BgJumptable_QAnimationGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QAnimationGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAnimationGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QAnimationGroup_event_QEvent_X;
   CrystalProc<int, void *> bg_QAbstractAnimation_duration_;
   CrystalProc<void, void *, int> bg_QAbstractAnimation_updateCurrentTime_int;
@@ -7124,36 +6977,7 @@ struct BgJumptable_QAnimationGroup {
 struct BgInherit_QAnimationGroup : public QAnimationGroup {
   using QAnimationGroup::QAnimationGroup;
   BgJumptable_QAnimationGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAnimationGroup *>(static_cast<const QAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationGroup_metaObject_(_crystal_);
-    } else {
-      return QAnimationGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAnimationGroup *>(static_cast<const QAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAnimationGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAnimationGroup *>(static_cast<const QAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAnimationGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QAnimationGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAnimationGroup_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QAnimationGroup *>(static_cast<const QAnimationGroup *>(_self_))) : nullptr;
@@ -7268,6 +7092,18 @@ struct BgInherit_QAnimationGroup : public QAnimationGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAnimationGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAnimationGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAnimationGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAnimationGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAnimationGroup_metaObject_(QAnimationGroup * _self_) {
   return _self_->metaObject();
@@ -7347,6 +7183,10 @@ extern "C" void *bg_QAnimationGroup_DISCOVER_int_void(QAnimationGroup * _self_, 
 
 extern "C" void bg_BgInherit_QAnimationGroup_JUMPTABLE_BgJumptable_QAnimationGroup_R(BgInherit_QAnimationGroup * _self_, const BgJumptable_QAnimationGroup & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QAnimationGroup_SET_META_BindgenQtMetaObject(BgInherit_QAnimationGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAnimationGroup::staticMetaObject); };
 }
 
 extern "C" bool bg_QAnimationGroup_event_SUPER_QEvent_X(QAnimationGroup * _self_, QEvent * event) {
@@ -7522,9 +7362,6 @@ extern "C" QBitArray * bg_QBitArray__OPERATOR_bit_xor_const_QBitArray_R(QBitArra
 }
 
 struct BgJumptable_QIODevice {
-  CrystalProc<const QMetaObject *, void *> bg_QIODevice_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QIODevice_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QIODevice_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *> bg_QIODevice_isSequential_;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QIODevice_open_QIODevice__OpenMode;
   CrystalProc<void, void *> bg_QIODevice_close_;
@@ -7552,36 +7389,7 @@ struct BgJumptable_QIODevice {
 struct BgInherit_QIODevice : public QIODevice {
   using QIODevice::QIODevice;
   BgJumptable_QIODevice bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QIODevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIODevice_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QIODevice *>(static_cast<const QIODevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIODevice_metaObject_(_crystal_);
-    } else {
-      return QIODevice::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QIODevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIODevice_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QIODevice *>(static_cast<const QIODevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIODevice_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QIODevice::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QIODevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIODevice_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QIODevice *>(static_cast<const QIODevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIODevice_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QIODevice::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool isSequential() const override {
     const BgInherit_QIODevice *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QIODevice_isSequential_.isValid() ? bindgen_crystal_object(const_cast<QIODevice *>(static_cast<const QIODevice *>(_self_))) : nullptr;
@@ -7816,6 +7624,18 @@ struct BgInherit_QIODevice : public QIODevice {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QIODevice::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QIODevice::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QIODevice::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QIODevice *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QIODevice_metaObject_(QIODevice * _self_) {
   return _self_->metaObject();
@@ -8089,6 +7909,10 @@ extern "C" void bg_BgInherit_QIODevice_JUMPTABLE_BgJumptable_QIODevice_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QIODevice_SET_META_BindgenQtMetaObject(BgInherit_QIODevice * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QIODevice::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QIODevice_CONNECT_readyRead_Qt__ConnectionType_CrystalProc_void_(QIODevice * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QIODevice::*)())&QIODevice::readyRead, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -8170,9 +7994,6 @@ extern "C" qint64 bg_QIODevice_readLineData_SUPER_char_X_qint64(QIODevice * _sel
 }
 
 struct BgJumptable_QBuffer {
-  CrystalProc<const QMetaObject *, void *> bg_QBuffer_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QBuffer_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QBuffer_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QBuffer_open_QIODevice__OpenMode;
   CrystalProc<void, void *> bg_QBuffer_close_;
   CrystalProc<qint64, void *> bg_QBuffer_size_;
@@ -8200,36 +8021,7 @@ struct BgJumptable_QBuffer {
 struct BgInherit_QBuffer : public QBuffer {
   using QBuffer::QBuffer;
   BgJumptable_QBuffer bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QBuffer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBuffer_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QBuffer *>(static_cast<const QBuffer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBuffer_metaObject_(_crystal_);
-    } else {
-      return QBuffer::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QBuffer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBuffer_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QBuffer *>(static_cast<const QBuffer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBuffer_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QBuffer::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QBuffer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBuffer_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QBuffer *>(static_cast<const QBuffer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBuffer_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QBuffer::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool open(QIODevice::OpenMode mode) override {
     BgInherit_QBuffer *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QBuffer_open_QIODevice__OpenMode.isValid() ? bindgen_crystal_object(const_cast<QBuffer *>(static_cast<const QBuffer *>(_self_))) : nullptr;
@@ -8460,6 +8252,18 @@ struct BgInherit_QBuffer : public QBuffer {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QBuffer::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QBuffer::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QBuffer::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QBuffer *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QBuffer_metaObject_(QBuffer * _self_) {
   return _self_->metaObject();
@@ -8595,6 +8399,10 @@ extern "C" qint64 bg_QBuffer_writeData_SUPER_const_char_X_qint64(QBuffer * _self
 
 extern "C" void bg_BgInherit_QBuffer_JUMPTABLE_BgJumptable_QBuffer_R(BgInherit_QBuffer * _self_, const BgJumptable_QBuffer & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QBuffer_SET_META_BindgenQtMetaObject(BgInherit_QBuffer * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QBuffer::staticMetaObject); };
 }
 
 extern "C" QByteArrayMatcher * bg_QByteArrayMatcher__CONSTRUCT_() {
@@ -13019,9 +12827,6 @@ extern "C" QDeferredDeleteEvent * bg_QDeferredDeleteEvent__OPERATOR_assign_const
 }
 
 struct BgJumptable_QCoreApplication {
-  CrystalProc<const QMetaObject *, void *> bg_QCoreApplication_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCoreApplication_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCoreApplication_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QCoreApplication_notify_QObject_X_QEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QCoreApplication_event_QEvent_X;
   CrystalProc<bool, void *, QEvent *, QObject *, QPostEventList *> bg_QCoreApplication_compressEvent_QEvent_X_QObject_X_QPostEventList_X;
@@ -13035,36 +12840,7 @@ struct BgJumptable_QCoreApplication {
 struct BgInherit_QCoreApplication : public QCoreApplication {
   using QCoreApplication::QCoreApplication;
   BgJumptable_QCoreApplication bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCoreApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCoreApplication_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCoreApplication *>(static_cast<const QCoreApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCoreApplication_metaObject_(_crystal_);
-    } else {
-      return QCoreApplication::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCoreApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCoreApplication_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCoreApplication *>(static_cast<const QCoreApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCoreApplication_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCoreApplication::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCoreApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCoreApplication_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCoreApplication *>(static_cast<const QCoreApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCoreApplication_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCoreApplication::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool notify(QObject * unnamed_arg_0, QEvent * unnamed_arg_1) override {
     BgInherit_QCoreApplication *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCoreApplication_notify_QObject_X_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QCoreApplication *>(static_cast<const QCoreApplication *>(_self_))) : nullptr;
@@ -13155,6 +12931,18 @@ struct BgInherit_QCoreApplication : public QCoreApplication {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCoreApplication::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCoreApplication::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCoreApplication::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCoreApplication *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCoreApplication_metaObject_(QCoreApplication * _self_) {
   return _self_->metaObject();
@@ -13400,6 +13188,10 @@ extern "C" void bg_BgInherit_QCoreApplication_JUMPTABLE_BgJumptable_QCoreApplica
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCoreApplication_SET_META_BindgenQtMetaObject(BgInherit_QCoreApplication * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCoreApplication::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QCoreApplication_CONNECT_aboutToQuit_Qt__ConnectionType_CrystalProc_void_(QCoreApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QCoreApplication::*)())&QCoreApplication::aboutToQuit, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -13553,9 +13345,6 @@ extern "C" CrystalString bg_QCommandLineParser_helpText_(QCommandLineParser * _s
 }
 
 struct BgJumptable_QConcatenateTablesProxyModel {
-  CrystalProc<const QMetaObject *, void *> bg_QConcatenateTablesProxyModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QConcatenateTablesProxyModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QConcatenateTablesProxyModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalVariant *, void *, const QModelIndex *, int> bg_QConcatenateTablesProxyModel_data_const_QModelIndex_R_int;
   CrystalProc<bool, void *, const QModelIndex *, const CrystalVariant *, int> bg_QConcatenateTablesProxyModel_setData_const_QModelIndex_R_const_QVariant_R_int;
   CrystalProc<Container_QMap_int__QVariant_ *, void *, const QModelIndex *> bg_QConcatenateTablesProxyModel_itemData_const_QModelIndex_R;
@@ -13610,36 +13399,7 @@ struct BgJumptable_QConcatenateTablesProxyModel {
 struct BgInherit_QConcatenateTablesProxyModel : public QConcatenateTablesProxyModel {
   using QConcatenateTablesProxyModel::QConcatenateTablesProxyModel;
   BgJumptable_QConcatenateTablesProxyModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QConcatenateTablesProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QConcatenateTablesProxyModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QConcatenateTablesProxyModel *>(static_cast<const QConcatenateTablesProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QConcatenateTablesProxyModel_metaObject_(_crystal_);
-    } else {
-      return QConcatenateTablesProxyModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QConcatenateTablesProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QConcatenateTablesProxyModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QConcatenateTablesProxyModel *>(static_cast<const QConcatenateTablesProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QConcatenateTablesProxyModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QConcatenateTablesProxyModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QConcatenateTablesProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QConcatenateTablesProxyModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QConcatenateTablesProxyModel *>(static_cast<const QConcatenateTablesProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QConcatenateTablesProxyModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QConcatenateTablesProxyModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QVariant data(const QModelIndex & index, int role) const override {
     const BgInherit_QConcatenateTablesProxyModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QConcatenateTablesProxyModel_data_const_QModelIndex_R_int.isValid() ? bindgen_crystal_object(const_cast<QConcatenateTablesProxyModel *>(static_cast<const QConcatenateTablesProxyModel *>(_self_))) : nullptr;
@@ -14050,6 +13810,18 @@ struct BgInherit_QConcatenateTablesProxyModel : public QConcatenateTablesProxyMo
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QConcatenateTablesProxyModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QConcatenateTablesProxyModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QConcatenateTablesProxyModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QConcatenateTablesProxyModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QConcatenateTablesProxyModel_metaObject_(QConcatenateTablesProxyModel * _self_) {
   return _self_->metaObject();
@@ -14233,6 +14005,10 @@ extern "C" QSize bg_QConcatenateTablesProxyModel_span_SUPER_const_QModelIndex_R(
 
 extern "C" void bg_BgInherit_QConcatenateTablesProxyModel_JUMPTABLE_BgJumptable_QConcatenateTablesProxyModel_R(BgInherit_QConcatenateTablesProxyModel * _self_, const BgJumptable_QConcatenateTablesProxyModel & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QConcatenateTablesProxyModel_SET_META_BindgenQtMetaObject(BgInherit_QConcatenateTablesProxyModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QConcatenateTablesProxyModel::staticMetaObject); };
 }
 
 extern "C" QCryptographicHash * bg_QCryptographicHash__CONSTRUCT_QCryptographicHash__Algorithm(QCryptographicHash::Algorithm method) {
@@ -15160,9 +14936,6 @@ extern "C" qint64 bg_QDeadlineTimer__OPERATOR_sub_QDeadlineTimer(QDeadlineTimer 
 }
 
 struct BgJumptable_QFileDevice {
-  CrystalProc<const QMetaObject *, void *> bg_QFileDevice_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFileDevice_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFileDevice_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QFileDevice_close_;
   CrystalProc<bool, void *> bg_QFileDevice_isSequential_;
   CrystalProc<CrystalString *, void *> bg_QFileDevice_fileName_;
@@ -15194,36 +14967,7 @@ struct BgJumptable_QFileDevice {
 struct BgInherit_QFileDevice : public QFileDevice {
   using QFileDevice::QFileDevice;
   BgJumptable_QFileDevice bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFileDevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDevice_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFileDevice *>(static_cast<const QFileDevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDevice_metaObject_(_crystal_);
-    } else {
-      return QFileDevice::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFileDevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDevice_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFileDevice *>(static_cast<const QFileDevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDevice_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFileDevice::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFileDevice *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDevice_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFileDevice *>(static_cast<const QFileDevice *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDevice_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFileDevice::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void close() override {
     BgInherit_QFileDevice *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFileDevice_close_.isValid() ? bindgen_crystal_object(const_cast<QFileDevice *>(static_cast<const QFileDevice *>(_self_))) : nullptr;
@@ -15494,6 +15238,18 @@ struct BgInherit_QFileDevice : public QFileDevice {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFileDevice::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFileDevice::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFileDevice::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFileDevice *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFileDevice_metaObject_(QFileDevice * _self_) {
   return _self_->metaObject();
@@ -15628,6 +15384,10 @@ extern "C" void bg_BgInherit_QFileDevice_JUMPTABLE_BgJumptable_QFileDevice_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFileDevice_SET_META_BindgenQtMetaObject(BgInherit_QFileDevice * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFileDevice::staticMetaObject); };
+}
+
 extern "C" void bg_QFileDevice_close_SUPER_(QFileDevice * _self_) {
   _self_->QFileDevice::close();
 }
@@ -15681,9 +15441,6 @@ extern "C" qint64 bg_QFileDevice_readLineData_SUPER_char_X_qint64(QFileDevice * 
 }
 
 struct BgJumptable_QFile {
-  CrystalProc<const QMetaObject *, void *> bg_QFile_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFile_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFile_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *> bg_QFile_fileName_;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QFile_open_QIODevice__OpenMode;
   CrystalProc<qint64, void *> bg_QFile_size_;
@@ -15715,36 +15472,7 @@ struct BgJumptable_QFile {
 struct BgInherit_QFile : public QFile {
   using QFile::QFile;
   BgJumptable_QFile bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFile_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFile *>(static_cast<const QFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFile_metaObject_(_crystal_);
-    } else {
-      return QFile::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFile_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFile *>(static_cast<const QFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFile_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFile::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFile_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFile *>(static_cast<const QFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFile_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFile::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString fileName() const override {
     const BgInherit_QFile *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFile_fileName_.isValid() ? bindgen_crystal_object(const_cast<QFile *>(static_cast<const QFile *>(_self_))) : nullptr;
@@ -16015,6 +15743,18 @@ struct BgInherit_QFile : public QFile {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFile::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFile::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFile::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFile *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFile_metaObject_(QFile * _self_) {
   return _self_->metaObject();
@@ -16188,6 +15928,10 @@ extern "C" void *bg_QFile_DISCOVER_int_void(QFile * _self_, int * bg_class, void
 
 extern "C" void bg_BgInherit_QFile_JUMPTABLE_BgJumptable_QFile_R(BgInherit_QFile * _self_, const BgJumptable_QFile & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QFile_SET_META_BindgenQtMetaObject(BgInherit_QFile * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFile::staticMetaObject); };
 }
 
 extern "C" CrystalString bg_QFile_fileName_SUPER_(QFile * _self_) {
@@ -16915,9 +16659,6 @@ extern "C" const QMetaObject * bg_QEasingCurve_staticMetaObject_STATIC_GETTER_()
 }
 
 struct BgJumptable_QFileSelector {
-  CrystalProc<const QMetaObject *, void *> bg_QFileSelector_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFileSelector_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFileSelector_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -16929,36 +16670,7 @@ struct BgJumptable_QFileSelector {
 struct BgInherit_QFileSelector : public QFileSelector {
   using QFileSelector::QFileSelector;
   BgJumptable_QFileSelector bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFileSelector *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSelector_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFileSelector *>(static_cast<const QFileSelector *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSelector_metaObject_(_crystal_);
-    } else {
-      return QFileSelector::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFileSelector *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSelector_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFileSelector *>(static_cast<const QFileSelector *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSelector_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFileSelector::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFileSelector *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSelector_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFileSelector *>(static_cast<const QFileSelector *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSelector_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFileSelector::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QFileSelector *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QFileSelector *>(static_cast<const QFileSelector *>(_self_))) : nullptr;
@@ -17029,6 +16741,18 @@ struct BgInherit_QFileSelector : public QFileSelector {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFileSelector::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFileSelector::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFileSelector::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFileSelector *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFileSelector_metaObject_(QFileSelector * _self_) {
   return _self_->metaObject();
@@ -17082,10 +16806,11 @@ extern "C" void bg_BgInherit_QFileSelector_JUMPTABLE_BgJumptable_QFileSelector_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFileSelector_SET_META_BindgenQtMetaObject(BgInherit_QFileSelector * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFileSelector::staticMetaObject); };
+}
+
 struct BgJumptable_QFileSystemWatcher {
-  CrystalProc<const QMetaObject *, void *> bg_QFileSystemWatcher_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFileSystemWatcher_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFileSystemWatcher_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -17097,36 +16822,7 @@ struct BgJumptable_QFileSystemWatcher {
 struct BgInherit_QFileSystemWatcher : public QFileSystemWatcher {
   using QFileSystemWatcher::QFileSystemWatcher;
   BgJumptable_QFileSystemWatcher bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFileSystemWatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemWatcher_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFileSystemWatcher *>(static_cast<const QFileSystemWatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemWatcher_metaObject_(_crystal_);
-    } else {
-      return QFileSystemWatcher::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFileSystemWatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemWatcher_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFileSystemWatcher *>(static_cast<const QFileSystemWatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemWatcher_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFileSystemWatcher::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFileSystemWatcher *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemWatcher_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFileSystemWatcher *>(static_cast<const QFileSystemWatcher *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemWatcher_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFileSystemWatcher::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QFileSystemWatcher *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QFileSystemWatcher *>(static_cast<const QFileSystemWatcher *>(_self_))) : nullptr;
@@ -17197,6 +16893,18 @@ struct BgInherit_QFileSystemWatcher : public QFileSystemWatcher {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFileSystemWatcher::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFileSystemWatcher::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFileSystemWatcher::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFileSystemWatcher *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFileSystemWatcher_metaObject_(QFileSystemWatcher * _self_) {
   return _self_->metaObject();
@@ -17266,6 +16974,10 @@ extern "C" void bg_BgInherit_QFileSystemWatcher_JUMPTABLE_BgJumptable_QFileSyste
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFileSystemWatcher_SET_META_BindgenQtMetaObject(BgInherit_QFileSystemWatcher * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFileSystemWatcher::staticMetaObject); };
+}
+
 extern "C" void bg_QRunnable_run_(QRunnable * _self_) {
   _self_->run();
 }
@@ -17283,9 +16995,6 @@ extern "C" QRunnable * bg_QRunnable__OPERATOR_assign_const_QRunnable_R(QRunnable
 }
 
 struct BgJumptable_QIdentityProxyModel {
-  CrystalProc<const QMetaObject *, void *> bg_QIdentityProxyModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QIdentityProxyModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QIdentityProxyModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QIdentityProxyModel_columnCount_;
   CrystalProc<int, void *, const QModelIndex *> bg_QIdentityProxyModel_columnCount_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, int, int> bg_QIdentityProxyModel_index_int_int;
@@ -17345,36 +17054,7 @@ struct BgJumptable_QIdentityProxyModel {
 struct BgInherit_QIdentityProxyModel : public QIdentityProxyModel {
   using QIdentityProxyModel::QIdentityProxyModel;
   BgJumptable_QIdentityProxyModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QIdentityProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIdentityProxyModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QIdentityProxyModel *>(static_cast<const QIdentityProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIdentityProxyModel_metaObject_(_crystal_);
-    } else {
-      return QIdentityProxyModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QIdentityProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIdentityProxyModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QIdentityProxyModel *>(static_cast<const QIdentityProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIdentityProxyModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QIdentityProxyModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QIdentityProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIdentityProxyModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QIdentityProxyModel *>(static_cast<const QIdentityProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIdentityProxyModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QIdentityProxyModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int columnCount(const QModelIndex & parent) const override {
     const BgInherit_QIdentityProxyModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QIdentityProxyModel_columnCount_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QIdentityProxyModel *>(static_cast<const QIdentityProxyModel *>(_self_))) : nullptr;
@@ -17835,6 +17515,18 @@ struct BgInherit_QIdentityProxyModel : public QIdentityProxyModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QIdentityProxyModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QIdentityProxyModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QIdentityProxyModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QIdentityProxyModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QIdentityProxyModel_metaObject_(QIdentityProxyModel * _self_) {
   return _self_->metaObject();
@@ -18060,6 +17752,10 @@ extern "C" void bg_BgInherit_QIdentityProxyModel_JUMPTABLE_BgJumptable_QIdentity
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QIdentityProxyModel_SET_META_BindgenQtMetaObject(BgInherit_QIdentityProxyModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QIdentityProxyModel::staticMetaObject); };
+}
+
 extern "C" QItemSelectionRange * bg_QItemSelectionRange__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QItemSelectionRange>();
 }
@@ -18165,9 +17861,6 @@ extern "C" uint bg_QItemSelectionRange_qHash_(QItemSelectionRange * _self_) {
 }
 
 struct BgJumptable_QItemSelectionModel {
-  CrystalProc<const QMetaObject *, void *> bg_QItemSelectionModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QItemSelectionModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QItemSelectionModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const QModelIndex *, QItemSelectionModel::SelectionFlags> bg_QItemSelectionModel_setCurrentIndex_const_QModelIndex_R_QItemSelectionModel__SelectionFlags;
   CrystalProc<void, void *, const QModelIndex *, QItemSelectionModel::SelectionFlags> bg_QItemSelectionModel_select_const_QModelIndex_R_QItemSelectionModel__SelectionFlags;
   CrystalProc<void, void *, const QItemSelection *, QItemSelectionModel::SelectionFlags> bg_QItemSelectionModel_select_const_QItemSelection_R_QItemSelectionModel__SelectionFlags;
@@ -18185,36 +17878,7 @@ struct BgJumptable_QItemSelectionModel {
 struct BgInherit_QItemSelectionModel : public QItemSelectionModel {
   using QItemSelectionModel::QItemSelectionModel;
   BgJumptable_QItemSelectionModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QItemSelectionModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemSelectionModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QItemSelectionModel *>(static_cast<const QItemSelectionModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemSelectionModel_metaObject_(_crystal_);
-    } else {
-      return QItemSelectionModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QItemSelectionModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemSelectionModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QItemSelectionModel *>(static_cast<const QItemSelectionModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemSelectionModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QItemSelectionModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QItemSelectionModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemSelectionModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QItemSelectionModel *>(static_cast<const QItemSelectionModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemSelectionModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QItemSelectionModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setCurrentIndex(const QModelIndex & index, QItemSelectionModel::SelectionFlags command) override {
     BgInherit_QItemSelectionModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QItemSelectionModel_setCurrentIndex_const_QModelIndex_R_QItemSelectionModel__SelectionFlags.isValid() ? bindgen_crystal_object(const_cast<QItemSelectionModel *>(static_cast<const QItemSelectionModel *>(_self_))) : nullptr;
@@ -18345,6 +18009,18 @@ struct BgInherit_QItemSelectionModel : public QItemSelectionModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QItemSelectionModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QItemSelectionModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QItemSelectionModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QItemSelectionModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QItemSelectionModel_metaObject_(QItemSelectionModel * _self_) {
   return _self_->metaObject();
@@ -18548,6 +18224,10 @@ extern "C" void bg_QItemSelectionModel_clearCurrentIndex_SUPER_(QItemSelectionMo
 
 extern "C" void bg_BgInherit_QItemSelectionModel_JUMPTABLE_BgJumptable_QItemSelectionModel_R(BgInherit_QItemSelectionModel * _self_, const BgJumptable_QItemSelectionModel & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QItemSelectionModel_SET_META_BindgenQtMetaObject(BgInherit_QItemSelectionModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QItemSelectionModel::staticMetaObject); };
 }
 
 extern "C" QItemSelection * bg_QItemSelection__CONSTRUCT_() {
@@ -19303,9 +18983,6 @@ extern "C" QJsonObject::iterator * bg_QJsonObject__iterator__COPY_const_QJsonObj
 }
 
 struct BgJumptable_QLibrary {
-  CrystalProc<const QMetaObject *, void *> bg_QLibrary_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QLibrary_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QLibrary_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -19317,36 +18994,7 @@ struct BgJumptable_QLibrary {
 struct BgInherit_QLibrary : public QLibrary {
   using QLibrary::QLibrary;
   BgJumptable_QLibrary bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QLibrary *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLibrary_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QLibrary *>(static_cast<const QLibrary *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLibrary_metaObject_(_crystal_);
-    } else {
-      return QLibrary::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QLibrary *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLibrary_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QLibrary *>(static_cast<const QLibrary *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLibrary_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QLibrary::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QLibrary *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLibrary_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QLibrary *>(static_cast<const QLibrary *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLibrary_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QLibrary::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QLibrary *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QLibrary *>(static_cast<const QLibrary *>(_self_))) : nullptr;
@@ -19417,6 +19065,18 @@ struct BgInherit_QLibrary : public QLibrary {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QLibrary::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QLibrary::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QLibrary::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QLibrary *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QLibrary_metaObject_(QLibrary * _self_) {
   return _self_->metaObject();
@@ -19504,6 +19164,10 @@ extern "C" const QMetaObject * bg_QLibrary_staticMetaObject_STATIC_GETTER_() {
 
 extern "C" void bg_BgInherit_QLibrary_JUMPTABLE_BgJumptable_QLibrary_R(BgInherit_QLibrary * _self_, const BgJumptable_QLibrary & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QLibrary_SET_META_BindgenQtMetaObject(BgInherit_QLibrary * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QLibrary::staticMetaObject); };
 }
 
 extern "C" QVersionNumber * bg_QVersionNumber__CONSTRUCT_() {
@@ -20852,9 +20516,6 @@ extern "C" QMetaClassInfo * bg_QMetaClassInfo__COPY_const_QMetaClassInfo_R(const
 }
 
 struct BgJumptable_QMimeData {
-  CrystalProc<const QMetaObject *, void *> bg_QMimeData_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMimeData_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMimeData_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, const CrystalString *> bg_QMimeData_hasFormat_const_QString_R;
   CrystalProc<QList<QString> *, void *> bg_QMimeData_formats_;
   CrystalProc<CrystalVariant *, void *, const CrystalString *, QVariant::Type> bg_QMimeData_retrieveData_const_QString_R_QVariant__Type;
@@ -20869,36 +20530,7 @@ struct BgJumptable_QMimeData {
 struct BgInherit_QMimeData : public QMimeData {
   using QMimeData::QMimeData;
   BgJumptable_QMimeData bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMimeData *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMimeData_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMimeData *>(static_cast<const QMimeData *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMimeData_metaObject_(_crystal_);
-    } else {
-      return QMimeData::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMimeData *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMimeData_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMimeData *>(static_cast<const QMimeData *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMimeData_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMimeData::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMimeData *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMimeData_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMimeData *>(static_cast<const QMimeData *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMimeData_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMimeData::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool hasFormat(const QString & mimetype) const override {
     const BgInherit_QMimeData *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMimeData_hasFormat_const_QString_R.isValid() ? bindgen_crystal_object(const_cast<QMimeData *>(static_cast<const QMimeData *>(_self_))) : nullptr;
@@ -20999,6 +20631,18 @@ struct BgInherit_QMimeData : public QMimeData {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMimeData::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMimeData::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMimeData::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMimeData *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMimeData_metaObject_(QMimeData * _self_) {
   return _self_->metaObject();
@@ -21130,6 +20774,10 @@ extern "C" CrystalVariant bg_QMimeData_retrieveData_SUPER_const_QString_R_QVaria
 
 extern "C" void bg_BgInherit_QMimeData_JUMPTABLE_BgJumptable_QMimeData_R(BgInherit_QMimeData * _self_, const BgJumptable_QMimeData & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QMimeData_SET_META_BindgenQtMetaObject(BgInherit_QMimeData * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMimeData::staticMetaObject); };
 }
 
 extern "C" QMimeType * bg_QMimeType__CONSTRUCT_() {
@@ -21269,9 +20917,6 @@ extern "C" Container_QList_QMimeType_ * bg_QMimeDatabase_allMimeTypes_(QMimeData
 }
 
 struct BgJumptable_QObjectCleanupHandler {
-  CrystalProc<const QMetaObject *, void *> bg_QObjectCleanupHandler_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QObjectCleanupHandler_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QObjectCleanupHandler_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -21283,36 +20928,7 @@ struct BgJumptable_QObjectCleanupHandler {
 struct BgInherit_QObjectCleanupHandler : public QObjectCleanupHandler {
   using QObjectCleanupHandler::QObjectCleanupHandler;
   BgJumptable_QObjectCleanupHandler bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QObjectCleanupHandler *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObjectCleanupHandler_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QObjectCleanupHandler *>(static_cast<const QObjectCleanupHandler *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObjectCleanupHandler_metaObject_(_crystal_);
-    } else {
-      return QObjectCleanupHandler::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QObjectCleanupHandler *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObjectCleanupHandler_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QObjectCleanupHandler *>(static_cast<const QObjectCleanupHandler *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObjectCleanupHandler_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QObjectCleanupHandler::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QObjectCleanupHandler *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QObjectCleanupHandler_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QObjectCleanupHandler *>(static_cast<const QObjectCleanupHandler *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QObjectCleanupHandler_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QObjectCleanupHandler::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QObjectCleanupHandler *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QObjectCleanupHandler *>(static_cast<const QObjectCleanupHandler *>(_self_))) : nullptr;
@@ -21383,6 +20999,18 @@ struct BgInherit_QObjectCleanupHandler : public QObjectCleanupHandler {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QObjectCleanupHandler::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QObjectCleanupHandler::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QObjectCleanupHandler::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QObjectCleanupHandler *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QObjectCleanupHandler_metaObject_(QObjectCleanupHandler * _self_) {
   return _self_->metaObject();
@@ -21430,6 +21058,10 @@ extern "C" const QMetaObject * bg_QObjectCleanupHandler_staticMetaObject_STATIC_
 
 extern "C" void bg_BgInherit_QObjectCleanupHandler_JUMPTABLE_BgJumptable_QObjectCleanupHandler_R(BgInherit_QObjectCleanupHandler * _self_, const BgJumptable_QObjectCleanupHandler & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QObjectCleanupHandler_SET_META_BindgenQtMetaObject(BgInherit_QObjectCleanupHandler * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QObjectCleanupHandler::staticMetaObject); };
 }
 
 extern "C" QOperatingSystemVersion * bg_QOperatingSystemVersion__CONSTRUCT_QOperatingSystemVersion__OSType_int_int_int(QOperatingSystemVersion::OSType osType, int vmajor, int vminor, int vmicro) {
@@ -21577,9 +21209,6 @@ extern "C" const QOperatingSystemVersion * bg_QOperatingSystemVersion_AndroidOre
 }
 
 struct BgJumptable_QParallelAnimationGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QParallelAnimationGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QParallelAnimationGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QParallelAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QParallelAnimationGroup_duration_;
   CrystalProc<bool, void *, QEvent *> bg_QParallelAnimationGroup_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QParallelAnimationGroup_updateCurrentTime_int;
@@ -21595,36 +21224,7 @@ struct BgJumptable_QParallelAnimationGroup {
 struct BgInherit_QParallelAnimationGroup : public QParallelAnimationGroup {
   using QParallelAnimationGroup::QParallelAnimationGroup;
   BgJumptable_QParallelAnimationGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QParallelAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QParallelAnimationGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QParallelAnimationGroup *>(static_cast<const QParallelAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QParallelAnimationGroup_metaObject_(_crystal_);
-    } else {
-      return QParallelAnimationGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QParallelAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QParallelAnimationGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QParallelAnimationGroup *>(static_cast<const QParallelAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QParallelAnimationGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QParallelAnimationGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QParallelAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QParallelAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QParallelAnimationGroup *>(static_cast<const QParallelAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QParallelAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QParallelAnimationGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int duration() const override {
     const BgInherit_QParallelAnimationGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QParallelAnimationGroup_duration_.isValid() ? bindgen_crystal_object(const_cast<QParallelAnimationGroup *>(static_cast<const QParallelAnimationGroup *>(_self_))) : nullptr;
@@ -21735,6 +21335,18 @@ struct BgInherit_QParallelAnimationGroup : public QParallelAnimationGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QParallelAnimationGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QParallelAnimationGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QParallelAnimationGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QParallelAnimationGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QParallelAnimationGroup_metaObject_(QParallelAnimationGroup * _self_) {
   return _self_->metaObject();
@@ -21812,10 +21424,11 @@ extern "C" void bg_BgInherit_QParallelAnimationGroup_JUMPTABLE_BgJumptable_QPara
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QParallelAnimationGroup_SET_META_BindgenQtMetaObject(BgInherit_QParallelAnimationGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QParallelAnimationGroup::staticMetaObject); };
+}
+
 struct BgJumptable_QPauseAnimation {
-  CrystalProc<const QMetaObject *, void *> bg_QPauseAnimation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPauseAnimation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPauseAnimation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QPauseAnimation_duration_;
   CrystalProc<bool, void *, QEvent *> bg_QPauseAnimation_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QPauseAnimation_updateCurrentTime_int;
@@ -21831,36 +21444,7 @@ struct BgJumptable_QPauseAnimation {
 struct BgInherit_QPauseAnimation : public QPauseAnimation {
   using QPauseAnimation::QPauseAnimation;
   BgJumptable_QPauseAnimation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPauseAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPauseAnimation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPauseAnimation *>(static_cast<const QPauseAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPauseAnimation_metaObject_(_crystal_);
-    } else {
-      return QPauseAnimation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPauseAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPauseAnimation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPauseAnimation *>(static_cast<const QPauseAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPauseAnimation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPauseAnimation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPauseAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPauseAnimation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPauseAnimation *>(static_cast<const QPauseAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPauseAnimation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPauseAnimation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int duration() const override {
     const BgInherit_QPauseAnimation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPauseAnimation_duration_.isValid() ? bindgen_crystal_object(const_cast<QPauseAnimation *>(static_cast<const QPauseAnimation *>(_self_))) : nullptr;
@@ -21971,6 +21555,18 @@ struct BgInherit_QPauseAnimation : public QPauseAnimation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPauseAnimation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPauseAnimation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPauseAnimation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPauseAnimation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPauseAnimation_metaObject_(QPauseAnimation * _self_) {
   return _self_->metaObject();
@@ -22034,6 +21630,10 @@ extern "C" void bg_QPauseAnimation_updateCurrentTime_SUPER_int(QPauseAnimation *
 
 extern "C" void bg_BgInherit_QPauseAnimation_JUMPTABLE_BgJumptable_QPauseAnimation_R(BgInherit_QPauseAnimation * _self_, const BgJumptable_QPauseAnimation & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QPauseAnimation_SET_META_BindgenQtMetaObject(BgInherit_QPauseAnimation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPauseAnimation::staticMetaObject); };
 }
 
 extern "C" QProcessEnvironment * bg_QProcessEnvironment__CONSTRUCT_() {
@@ -22105,9 +21705,6 @@ extern "C" QProcessEnvironment * bg_QProcessEnvironment_systemEnvironment_STATIC
 }
 
 struct BgJumptable_QProcess {
-  CrystalProc<const QMetaObject *, void *> bg_QProcess_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QProcess_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QProcess_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *> bg_QProcess_open_;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QProcess_open_QIODevice__OpenMode;
   CrystalProc<bool, void *, int> bg_QProcess_waitForReadyRead_int;
@@ -22137,36 +21734,7 @@ struct BgJumptable_QProcess {
 struct BgInherit_QProcess : public QProcess {
   using QProcess::QProcess;
   BgJumptable_QProcess bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QProcess *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProcess_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QProcess *>(static_cast<const QProcess *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProcess_metaObject_(_crystal_);
-    } else {
-      return QProcess::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QProcess *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProcess_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QProcess *>(static_cast<const QProcess *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProcess_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QProcess::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QProcess *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProcess_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QProcess *>(static_cast<const QProcess *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProcess_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QProcess::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool open(QIODevice::OpenMode mode) override {
     BgInherit_QProcess *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QProcess_open_QIODevice__OpenMode.isValid() ? bindgen_crystal_object(const_cast<QProcess *>(static_cast<const QProcess *>(_self_))) : nullptr;
@@ -22407,6 +21975,18 @@ struct BgInherit_QProcess : public QProcess {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QProcess::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QProcess::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QProcess::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QProcess *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QProcess_metaObject_(QProcess * _self_) {
   return _self_->metaObject();
@@ -22760,10 +22340,11 @@ extern "C" void bg_BgInherit_QProcess_JUMPTABLE_BgJumptable_QProcess_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QProcess_SET_META_BindgenQtMetaObject(BgInherit_QProcess * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QProcess::staticMetaObject); };
+}
+
 struct BgJumptable_QVariantAnimation {
-  CrystalProc<const QMetaObject *, void *> bg_QVariantAnimation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QVariantAnimation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QVariantAnimation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QVariantAnimation_duration_;
   CrystalProc<bool, void *, QEvent *> bg_QVariantAnimation_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QVariantAnimation_updateCurrentTime_int;
@@ -22781,36 +22362,7 @@ struct BgJumptable_QVariantAnimation {
 struct BgInherit_QVariantAnimation : public QVariantAnimation {
   using QVariantAnimation::QVariantAnimation;
   BgJumptable_QVariantAnimation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QVariantAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVariantAnimation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QVariantAnimation *>(static_cast<const QVariantAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVariantAnimation_metaObject_(_crystal_);
-    } else {
-      return QVariantAnimation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QVariantAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVariantAnimation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QVariantAnimation *>(static_cast<const QVariantAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVariantAnimation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QVariantAnimation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QVariantAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVariantAnimation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QVariantAnimation *>(static_cast<const QVariantAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVariantAnimation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QVariantAnimation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int duration() const override {
     const BgInherit_QVariantAnimation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QVariantAnimation_duration_.isValid() ? bindgen_crystal_object(const_cast<QVariantAnimation *>(static_cast<const QVariantAnimation *>(_self_))) : nullptr;
@@ -22941,6 +22493,18 @@ struct BgInherit_QVariantAnimation : public QVariantAnimation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QVariantAnimation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QVariantAnimation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QVariantAnimation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QVariantAnimation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QVariantAnimation_metaObject_(QVariantAnimation * _self_) {
   return _self_->metaObject();
@@ -23061,6 +22625,10 @@ extern "C" void bg_BgInherit_QVariantAnimation_JUMPTABLE_BgJumptable_QVariantAni
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QVariantAnimation_SET_META_BindgenQtMetaObject(BgInherit_QVariantAnimation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QVariantAnimation::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QVariantAnimation_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__const_QVariant_R_(QVariantAnimation * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalVariant *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QVariantAnimation::*)(const QVariant &))&QVariantAnimation::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QVariant & value){ _proc_(bindgen_address(qvariant_to_crystal(value))); }, type));
 }
@@ -23090,9 +22658,6 @@ extern "C" CrystalVariant bg_QVariantAnimation_interpolated_SUPER_const_QVariant
 }
 
 struct BgJumptable_QPropertyAnimation {
-  CrystalProc<const QMetaObject *, void *> bg_QPropertyAnimation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPropertyAnimation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPropertyAnimation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QPropertyAnimation_event_QEvent_X;
   CrystalProc<void, void *, const CrystalVariant *> bg_QPropertyAnimation_updateCurrentValue_const_QVariant_R;
   CrystalProc<void, void *, QAbstractAnimation::State, QAbstractAnimation::State> bg_QPropertyAnimation_updateState_QAbstractAnimation__State_QAbstractAnimation__State;
@@ -23110,36 +22675,7 @@ struct BgJumptable_QPropertyAnimation {
 struct BgInherit_QPropertyAnimation : public QPropertyAnimation {
   using QPropertyAnimation::QPropertyAnimation;
   BgJumptable_QPropertyAnimation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPropertyAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPropertyAnimation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPropertyAnimation *>(static_cast<const QPropertyAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPropertyAnimation_metaObject_(_crystal_);
-    } else {
-      return QPropertyAnimation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPropertyAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPropertyAnimation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPropertyAnimation *>(static_cast<const QPropertyAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPropertyAnimation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPropertyAnimation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPropertyAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPropertyAnimation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPropertyAnimation *>(static_cast<const QPropertyAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPropertyAnimation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPropertyAnimation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QPropertyAnimation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPropertyAnimation_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QPropertyAnimation *>(static_cast<const QPropertyAnimation *>(_self_))) : nullptr;
@@ -23270,6 +22806,18 @@ struct BgInherit_QPropertyAnimation : public QPropertyAnimation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPropertyAnimation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPropertyAnimation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPropertyAnimation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPropertyAnimation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPropertyAnimation_metaObject_(QPropertyAnimation * _self_) {
   return _self_->metaObject();
@@ -23345,6 +22893,10 @@ extern "C" void bg_QPropertyAnimation_updateState_SUPER_QAbstractAnimation__Stat
 
 extern "C" void bg_BgInherit_QPropertyAnimation_JUMPTABLE_BgJumptable_QPropertyAnimation_R(BgInherit_QPropertyAnimation * _self_, const BgJumptable_QPropertyAnimation & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QPropertyAnimation_SET_META_BindgenQtMetaObject(BgInherit_QPropertyAnimation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPropertyAnimation::staticMetaObject); };
 }
 
 extern "C" QRandomGenerator * bg_QRandomGenerator__CONSTRUCT_quint32(quint32 seedValue) {
@@ -24576,9 +24128,6 @@ extern "C" QList<QString> * bg_QResource_children_(QResource * _self_) {
 }
 
 struct BgJumptable_QSaveFile {
-  CrystalProc<const QMetaObject *, void *> bg_QSaveFile_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSaveFile_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSaveFile_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *> bg_QSaveFile_fileName_;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QSaveFile_open_QIODevice__OpenMode;
   CrystalProc<qint64, void *, const char *, qint64> bg_QSaveFile_writeData_const_char_X_qint64;
@@ -24610,36 +24159,7 @@ struct BgJumptable_QSaveFile {
 struct BgInherit_QSaveFile : public QSaveFile {
   using QSaveFile::QSaveFile;
   BgJumptable_QSaveFile bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSaveFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSaveFile_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSaveFile *>(static_cast<const QSaveFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSaveFile_metaObject_(_crystal_);
-    } else {
-      return QSaveFile::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSaveFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSaveFile_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSaveFile *>(static_cast<const QSaveFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSaveFile_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSaveFile::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSaveFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSaveFile_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSaveFile *>(static_cast<const QSaveFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSaveFile_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSaveFile::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString fileName() const override {
     const BgInherit_QSaveFile *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSaveFile_fileName_.isValid() ? bindgen_crystal_object(const_cast<QSaveFile *>(static_cast<const QSaveFile *>(_self_))) : nullptr;
@@ -24900,6 +24420,18 @@ struct BgInherit_QSaveFile : public QSaveFile {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSaveFile::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSaveFile::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSaveFile::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSaveFile *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSaveFile_metaObject_(QSaveFile * _self_) {
   return _self_->metaObject();
@@ -24985,6 +24517,10 @@ extern "C" void bg_BgInherit_QSaveFile_JUMPTABLE_BgJumptable_QSaveFile_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSaveFile_SET_META_BindgenQtMetaObject(BgInherit_QSaveFile * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSaveFile::staticMetaObject); };
+}
+
 extern "C" QSemaphore * bg_QSemaphore__CONSTRUCT_int(int n) {
   return new (UseGC) CrystalGCWrapper<QSemaphore>(n);
 }
@@ -25034,9 +24570,6 @@ extern "C" QSemaphore * bg_QSemaphoreReleaser_cancel_(QSemaphoreReleaser * _self
 }
 
 struct BgJumptable_QSequentialAnimationGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QSequentialAnimationGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSequentialAnimationGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSequentialAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QSequentialAnimationGroup_duration_;
   CrystalProc<bool, void *, QEvent *> bg_QSequentialAnimationGroup_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QSequentialAnimationGroup_updateCurrentTime_int;
@@ -25052,36 +24585,7 @@ struct BgJumptable_QSequentialAnimationGroup {
 struct BgInherit_QSequentialAnimationGroup : public QSequentialAnimationGroup {
   using QSequentialAnimationGroup::QSequentialAnimationGroup;
   BgJumptable_QSequentialAnimationGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSequentialAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSequentialAnimationGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSequentialAnimationGroup *>(static_cast<const QSequentialAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSequentialAnimationGroup_metaObject_(_crystal_);
-    } else {
-      return QSequentialAnimationGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSequentialAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSequentialAnimationGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSequentialAnimationGroup *>(static_cast<const QSequentialAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSequentialAnimationGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSequentialAnimationGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSequentialAnimationGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSequentialAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSequentialAnimationGroup *>(static_cast<const QSequentialAnimationGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSequentialAnimationGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSequentialAnimationGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int duration() const override {
     const BgInherit_QSequentialAnimationGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSequentialAnimationGroup_duration_.isValid() ? bindgen_crystal_object(const_cast<QSequentialAnimationGroup *>(static_cast<const QSequentialAnimationGroup *>(_self_))) : nullptr;
@@ -25192,6 +24696,18 @@ struct BgInherit_QSequentialAnimationGroup : public QSequentialAnimationGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSequentialAnimationGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSequentialAnimationGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSequentialAnimationGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSequentialAnimationGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSequentialAnimationGroup_metaObject_(QSequentialAnimationGroup * _self_) {
   return _self_->metaObject();
@@ -25289,10 +24805,11 @@ extern "C" void bg_BgInherit_QSequentialAnimationGroup_JUMPTABLE_BgJumptable_QSe
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSequentialAnimationGroup_SET_META_BindgenQtMetaObject(BgInherit_QSequentialAnimationGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSequentialAnimationGroup::staticMetaObject); };
+}
+
 struct BgJumptable_QSettings {
-  CrystalProc<const QMetaObject *, void *> bg_QSettings_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSettings_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSettings_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QSettings_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -25304,36 +24821,7 @@ struct BgJumptable_QSettings {
 struct BgInherit_QSettings : public QSettings {
   using QSettings::QSettings;
   BgJumptable_QSettings bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSettings *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSettings_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSettings *>(static_cast<const QSettings *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSettings_metaObject_(_crystal_);
-    } else {
-      return QSettings::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSettings *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSettings_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSettings *>(static_cast<const QSettings *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSettings_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSettings::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSettings *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSettings_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSettings *>(static_cast<const QSettings *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSettings_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSettings::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSettings *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSettings_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSettings *>(static_cast<const QSettings *>(_self_))) : nullptr;
@@ -25404,6 +24892,18 @@ struct BgInherit_QSettings : public QSettings {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSettings::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSettings::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSettings::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSettings *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSettings_metaObject_(QSettings * _self_) {
   return _self_->metaObject();
@@ -25613,10 +25113,11 @@ extern "C" void bg_BgInherit_QSettings_JUMPTABLE_BgJumptable_QSettings_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSettings_SET_META_BindgenQtMetaObject(BgInherit_QSettings * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSettings::staticMetaObject); };
+}
+
 struct BgJumptable_QSharedMemory {
-  CrystalProc<const QMetaObject *, void *> bg_QSharedMemory_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSharedMemory_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSharedMemory_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -25628,36 +25129,7 @@ struct BgJumptable_QSharedMemory {
 struct BgInherit_QSharedMemory : public QSharedMemory {
   using QSharedMemory::QSharedMemory;
   BgJumptable_QSharedMemory bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSharedMemory *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSharedMemory_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSharedMemory *>(static_cast<const QSharedMemory *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSharedMemory_metaObject_(_crystal_);
-    } else {
-      return QSharedMemory::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSharedMemory *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSharedMemory_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSharedMemory *>(static_cast<const QSharedMemory *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSharedMemory_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSharedMemory::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSharedMemory *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSharedMemory_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSharedMemory *>(static_cast<const QSharedMemory *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSharedMemory_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSharedMemory::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSharedMemory *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSharedMemory *>(static_cast<const QSharedMemory *>(_self_))) : nullptr;
@@ -25728,6 +25200,18 @@ struct BgInherit_QSharedMemory : public QSharedMemory {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSharedMemory::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSharedMemory::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSharedMemory::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSharedMemory *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSharedMemory_metaObject_(QSharedMemory * _self_) {
   return _self_->metaObject();
@@ -25825,10 +25309,11 @@ extern "C" void bg_BgInherit_QSharedMemory_JUMPTABLE_BgJumptable_QSharedMemory_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSharedMemory_SET_META_BindgenQtMetaObject(BgInherit_QSharedMemory * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSharedMemory::staticMetaObject); };
+}
+
 struct BgJumptable_QSignalMapper {
-  CrystalProc<const QMetaObject *, void *> bg_QSignalMapper_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSignalMapper_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSignalMapper_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -25840,36 +25325,7 @@ struct BgJumptable_QSignalMapper {
 struct BgInherit_QSignalMapper : public QSignalMapper {
   using QSignalMapper::QSignalMapper;
   BgJumptable_QSignalMapper bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSignalMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSignalMapper_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSignalMapper *>(static_cast<const QSignalMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSignalMapper_metaObject_(_crystal_);
-    } else {
-      return QSignalMapper::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSignalMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSignalMapper_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSignalMapper *>(static_cast<const QSignalMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSignalMapper_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSignalMapper::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSignalMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSignalMapper_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSignalMapper *>(static_cast<const QSignalMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSignalMapper_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSignalMapper::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSignalMapper *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSignalMapper *>(static_cast<const QSignalMapper *>(_self_))) : nullptr;
@@ -25940,6 +25396,18 @@ struct BgInherit_QSignalMapper : public QSignalMapper {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSignalMapper::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSignalMapper::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSignalMapper::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSignalMapper *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSignalMapper_metaObject_(QSignalMapper * _self_) {
   return _self_->metaObject();
@@ -26049,10 +25517,11 @@ extern "C" void bg_BgInherit_QSignalMapper_JUMPTABLE_BgJumptable_QSignalMapper_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSignalMapper_SET_META_BindgenQtMetaObject(BgInherit_QSignalMapper * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSignalMapper::staticMetaObject); };
+}
+
 struct BgJumptable_QSocketNotifier {
-  CrystalProc<const QMetaObject *, void *> bg_QSocketNotifier_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSocketNotifier_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSocketNotifier_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QSocketNotifier_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -26064,36 +25533,7 @@ struct BgJumptable_QSocketNotifier {
 struct BgInherit_QSocketNotifier : public QSocketNotifier {
   using QSocketNotifier::QSocketNotifier;
   BgJumptable_QSocketNotifier bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSocketNotifier *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSocketNotifier_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSocketNotifier *>(static_cast<const QSocketNotifier *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSocketNotifier_metaObject_(_crystal_);
-    } else {
-      return QSocketNotifier::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSocketNotifier *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSocketNotifier_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSocketNotifier *>(static_cast<const QSocketNotifier *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSocketNotifier_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSocketNotifier::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSocketNotifier *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSocketNotifier_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSocketNotifier *>(static_cast<const QSocketNotifier *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSocketNotifier_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSocketNotifier::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSocketNotifier *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSocketNotifier_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSocketNotifier *>(static_cast<const QSocketNotifier *>(_self_))) : nullptr;
@@ -26164,6 +25604,18 @@ struct BgInherit_QSocketNotifier : public QSocketNotifier {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSocketNotifier::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSocketNotifier::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSocketNotifier::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSocketNotifier *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSocketNotifier_metaObject_(QSocketNotifier * _self_) {
   return _self_->metaObject();
@@ -26225,10 +25677,11 @@ extern "C" void bg_BgInherit_QSocketNotifier_JUMPTABLE_BgJumptable_QSocketNotifi
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSocketNotifier_SET_META_BindgenQtMetaObject(BgInherit_QSocketNotifier * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSocketNotifier::staticMetaObject); };
+}
+
 struct BgJumptable_QSortFilterProxyModel {
-  CrystalProc<const QMetaObject *, void *> bg_QSortFilterProxyModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSortFilterProxyModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSortFilterProxyModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QSortFilterProxyModel_setSourceModel_QAbstractItemModel_X;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QSortFilterProxyModel_mapToSource_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QSortFilterProxyModel_mapFromSource_const_QModelIndex_R;
@@ -26291,36 +25744,7 @@ struct BgJumptable_QSortFilterProxyModel {
 struct BgInherit_QSortFilterProxyModel : public QSortFilterProxyModel {
   using QSortFilterProxyModel::QSortFilterProxyModel;
   BgJumptable_QSortFilterProxyModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSortFilterProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSortFilterProxyModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSortFilterProxyModel *>(static_cast<const QSortFilterProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSortFilterProxyModel_metaObject_(_crystal_);
-    } else {
-      return QSortFilterProxyModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSortFilterProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSortFilterProxyModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSortFilterProxyModel *>(static_cast<const QSortFilterProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSortFilterProxyModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSortFilterProxyModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSortFilterProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSortFilterProxyModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSortFilterProxyModel *>(static_cast<const QSortFilterProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSortFilterProxyModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSortFilterProxyModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setSourceModel(QAbstractItemModel * sourceModel) override {
     BgInherit_QSortFilterProxyModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSortFilterProxyModel_setSourceModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QSortFilterProxyModel *>(static_cast<const QSortFilterProxyModel *>(_self_))) : nullptr;
@@ -26811,6 +26235,18 @@ struct BgInherit_QSortFilterProxyModel : public QSortFilterProxyModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSortFilterProxyModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSortFilterProxyModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSortFilterProxyModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSortFilterProxyModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSortFilterProxyModel_metaObject_(QSortFilterProxyModel * _self_) {
   return _self_->metaObject();
@@ -27308,6 +26744,10 @@ extern "C" void bg_BgInherit_QSortFilterProxyModel_JUMPTABLE_BgJumptable_QSortFi
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSortFilterProxyModel_SET_META_BindgenQtMetaObject(BgInherit_QSortFilterProxyModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSortFilterProxyModel::staticMetaObject); };
+}
+
 extern "C" CrystalString bg_QStandardPaths_writableLocation_STATIC_QStandardPaths__StandardLocation(QStandardPaths::StandardLocation type) {
   return qstring_to_crystal(QStandardPaths::writableLocation(type));
 }
@@ -27461,9 +26901,6 @@ extern "C" bool bg_QStorageInfo__OPERATOR_ne_const_QStorageInfo_R(QStorageInfo *
 }
 
 struct BgJumptable_QStringListModel {
-  CrystalProc<const QMetaObject *, void *> bg_QStringListModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStringListModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStringListModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QStringListModel_rowCount_;
   CrystalProc<int, void *, const QModelIndex *> bg_QStringListModel_rowCount_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QStringListModel_sibling_int_int_const_QModelIndex_R;
@@ -27518,36 +26955,7 @@ struct BgJumptable_QStringListModel {
 struct BgInherit_QStringListModel : public QStringListModel {
   using QStringListModel::QStringListModel;
   BgJumptable_QStringListModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStringListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStringListModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStringListModel *>(static_cast<const QStringListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStringListModel_metaObject_(_crystal_);
-    } else {
-      return QStringListModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStringListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStringListModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStringListModel *>(static_cast<const QStringListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStringListModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStringListModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStringListModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStringListModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStringListModel *>(static_cast<const QStringListModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStringListModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStringListModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int rowCount(const QModelIndex & parent) const override {
     const BgInherit_QStringListModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStringListModel_rowCount_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QStringListModel *>(static_cast<const QStringListModel *>(_self_))) : nullptr;
@@ -27928,6 +27336,18 @@ struct BgInherit_QStringListModel : public QStringListModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStringListModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStringListModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStringListModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStringListModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStringListModel_metaObject_(QStringListModel * _self_) {
   return _self_->metaObject();
@@ -28081,6 +27501,10 @@ extern "C" void bg_BgInherit_QStringListModel_JUMPTABLE_BgJumptable_QStringListM
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStringListModel_SET_META_BindgenQtMetaObject(BgInherit_QStringListModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStringListModel::staticMetaObject); };
+}
+
 extern "C" QSystemSemaphore * bg_QSystemSemaphore__CONSTRUCT_const_QString_R_int_QSystemSemaphore__AccessMode(const CrystalString key, int initialValue, QSystemSemaphore::AccessMode mode) {
   return new (UseGC) CrystalGCWrapper<QSystemSemaphore>(([&]() { auto &&bg_value = (key); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), initialValue, mode);
 }
@@ -28146,9 +27570,6 @@ extern "C" CrystalString bg_QTemporaryDir_filePath_const_QString_R(QTemporaryDir
 }
 
 struct BgJumptable_QTemporaryFile {
-  CrystalProc<const QMetaObject *, void *> bg_QTemporaryFile_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTemporaryFile_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTemporaryFile_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *> bg_QTemporaryFile_fileName_;
   CrystalProc<bool, void *, QIODevice::OpenMode> bg_QTemporaryFile_open_QIODevice__OpenMode;
   CrystalProc<qint64, void *> bg_QFile_size_;
@@ -28180,36 +27601,7 @@ struct BgJumptable_QTemporaryFile {
 struct BgInherit_QTemporaryFile : public QTemporaryFile {
   using QTemporaryFile::QTemporaryFile;
   BgJumptable_QTemporaryFile bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTemporaryFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTemporaryFile_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTemporaryFile *>(static_cast<const QTemporaryFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTemporaryFile_metaObject_(_crystal_);
-    } else {
-      return QTemporaryFile::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTemporaryFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTemporaryFile_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTemporaryFile *>(static_cast<const QTemporaryFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTemporaryFile_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTemporaryFile::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTemporaryFile *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTemporaryFile_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTemporaryFile *>(static_cast<const QTemporaryFile *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTemporaryFile_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTemporaryFile::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString fileName() const override {
     const BgInherit_QTemporaryFile *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTemporaryFile_fileName_.isValid() ? bindgen_crystal_object(const_cast<QTemporaryFile *>(static_cast<const QTemporaryFile *>(_self_))) : nullptr;
@@ -28480,6 +27872,18 @@ struct BgInherit_QTemporaryFile : public QTemporaryFile {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTemporaryFile::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTemporaryFile::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTemporaryFile::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTemporaryFile *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTemporaryFile_metaObject_(QTemporaryFile * _self_) {
   return _self_->metaObject();
@@ -28571,6 +27975,10 @@ extern "C" bool bg_QTemporaryFile_open_SUPER_QIODevice__OpenMode(QTemporaryFile 
 
 extern "C" void bg_BgInherit_QTemporaryFile_JUMPTABLE_BgJumptable_QTemporaryFile_R(BgInherit_QTemporaryFile * _self_, const BgJumptable_QTemporaryFile & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTemporaryFile_SET_META_BindgenQtMetaObject(BgInherit_QTemporaryFile * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTemporaryFile::staticMetaObject); };
 }
 
 extern "C" QTextBoundaryFinder * bg_QTextBoundaryFinder__CONSTRUCT_() {
@@ -28922,9 +28330,6 @@ extern "C" QMetaObject::Connection * bg_QThread_CONNECT_finished_Qt__ConnectionT
 }
 
 struct BgJumptable_QThreadPool {
-  CrystalProc<const QMetaObject *, void *> bg_QThreadPool_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QThreadPool_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QThreadPool_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -28936,36 +28341,7 @@ struct BgJumptable_QThreadPool {
 struct BgInherit_QThreadPool : public QThreadPool {
   using QThreadPool::QThreadPool;
   BgJumptable_QThreadPool bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QThreadPool *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QThreadPool_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QThreadPool *>(static_cast<const QThreadPool *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QThreadPool_metaObject_(_crystal_);
-    } else {
-      return QThreadPool::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QThreadPool *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QThreadPool_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QThreadPool *>(static_cast<const QThreadPool *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QThreadPool_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QThreadPool::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QThreadPool *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QThreadPool_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QThreadPool *>(static_cast<const QThreadPool *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QThreadPool_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QThreadPool::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QThreadPool *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QThreadPool *>(static_cast<const QThreadPool *>(_self_))) : nullptr;
@@ -29036,6 +28412,18 @@ struct BgInherit_QThreadPool : public QThreadPool {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QThreadPool::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QThreadPool::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QThreadPool::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QThreadPool *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QThreadPool_metaObject_(QThreadPool * _self_) {
   return _self_->metaObject();
@@ -29133,10 +28521,11 @@ extern "C" void bg_BgInherit_QThreadPool_JUMPTABLE_BgJumptable_QThreadPool_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QThreadPool_SET_META_BindgenQtMetaObject(BgInherit_QThreadPool * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QThreadPool::staticMetaObject); };
+}
+
 struct BgJumptable_QTimeLine {
-  CrystalProc<const QMetaObject *, void *> bg_QTimeLine_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTimeLine_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTimeLine_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<qreal, void *, int> bg_QTimeLine_valueForTime_int;
   CrystalProc<void, void *, QTimerEvent *> bg_QTimeLine_timerEvent_QTimerEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
@@ -29149,36 +28538,7 @@ struct BgJumptable_QTimeLine {
 struct BgInherit_QTimeLine : public QTimeLine {
   using QTimeLine::QTimeLine;
   BgJumptable_QTimeLine bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTimeLine *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeLine_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTimeLine *>(static_cast<const QTimeLine *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeLine_metaObject_(_crystal_);
-    } else {
-      return QTimeLine::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTimeLine *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeLine_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTimeLine *>(static_cast<const QTimeLine *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeLine_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTimeLine::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTimeLine *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeLine_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTimeLine *>(static_cast<const QTimeLine *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeLine_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTimeLine::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   qreal valueForTime(int msec) const override {
     const BgInherit_QTimeLine *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTimeLine_valueForTime_int.isValid() ? bindgen_crystal_object(const_cast<QTimeLine *>(static_cast<const QTimeLine *>(_self_))) : nullptr;
@@ -29259,6 +28619,18 @@ struct BgInherit_QTimeLine : public QTimeLine {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTimeLine::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTimeLine::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTimeLine::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTimeLine *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTimeLine_metaObject_(QTimeLine * _self_) {
   return _self_->metaObject();
@@ -29428,10 +28800,11 @@ extern "C" void bg_BgInherit_QTimeLine_JUMPTABLE_BgJumptable_QTimeLine_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTimeLine_SET_META_BindgenQtMetaObject(BgInherit_QTimeLine * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTimeLine::staticMetaObject); };
+}
+
 struct BgJumptable_QTimer {
-  CrystalProc<const QMetaObject *, void *> bg_QTimer_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTimer_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTimer_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QTimerEvent *> bg_QTimer_timerEvent_QTimerEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -29443,36 +28816,7 @@ struct BgJumptable_QTimer {
 struct BgInherit_QTimer : public QTimer {
   using QTimer::QTimer;
   BgJumptable_QTimer bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTimer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimer_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTimer *>(static_cast<const QTimer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimer_metaObject_(_crystal_);
-    } else {
-      return QTimer::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTimer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimer_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTimer *>(static_cast<const QTimer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimer_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTimer::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTimer *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimer_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTimer *>(static_cast<const QTimer *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimer_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTimer::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void timerEvent(QTimerEvent * event) override {
     BgInherit_QTimer *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTimer_timerEvent_QTimerEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTimer *>(static_cast<const QTimer *>(_self_))) : nullptr;
@@ -29543,6 +28887,18 @@ struct BgInherit_QTimer : public QTimer {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTimer::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTimer::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTimer::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTimer *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTimer_metaObject_(QTimer * _self_) {
   return _self_->metaObject();
@@ -29666,6 +29022,10 @@ extern "C" void bg_QTimer_timerEvent_SUPER_QTimerEvent_X(QTimer * _self_, QTimer
 
 extern "C" void bg_BgInherit_QTimer_JUMPTABLE_BgJumptable_QTimer_R(BgInherit_QTimer * _self_, const BgJumptable_QTimer & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTimer_SET_META_BindgenQtMetaObject(BgInherit_QTimer * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTimer::staticMetaObject); };
 }
 
 extern "C" QTimeZone * bg_QTimeZone__CONSTRUCT_() {
@@ -29889,9 +29249,6 @@ extern "C" void bg_QTimeZone__OffsetData_daylightTimeOffset_SETTER_int(QTimeZone
 }
 
 struct BgJumptable_QTranslator {
-  CrystalProc<const QMetaObject *, void *> bg_QTranslator_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTranslator_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTranslator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *, const char *, const char *> bg_QTranslator_translate_const_char_X_const_char_X;
   CrystalProc<CrystalString *, void *, const char *, const char *, const char *, int> bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int;
   CrystalProc<bool, void *> bg_QTranslator_isEmpty_;
@@ -29906,36 +29263,7 @@ struct BgJumptable_QTranslator {
 struct BgInherit_QTranslator : public QTranslator {
   using QTranslator::QTranslator;
   BgJumptable_QTranslator bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTranslator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTranslator_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTranslator *>(static_cast<const QTranslator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTranslator_metaObject_(_crystal_);
-    } else {
-      return QTranslator::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTranslator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTranslator_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTranslator *>(static_cast<const QTranslator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTranslator_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTranslator::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTranslator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTranslator_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTranslator *>(static_cast<const QTranslator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTranslator_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTranslator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString translate(const char * context, const char * sourceText, const char * disambiguation, int n) const override {
     const BgInherit_QTranslator *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTranslator_translate_const_char_X_const_char_X_const_char_X_int.isValid() ? bindgen_crystal_object(const_cast<QTranslator *>(static_cast<const QTranslator *>(_self_))) : nullptr;
@@ -30026,6 +29354,18 @@ struct BgInherit_QTranslator : public QTranslator {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTranslator::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTranslator::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTranslator::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTranslator *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTranslator_metaObject_(QTranslator * _self_) {
   return _self_->metaObject();
@@ -30127,10 +29467,11 @@ extern "C" void bg_BgInherit_QTranslator_JUMPTABLE_BgJumptable_QTranslator_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTranslator_SET_META_BindgenQtMetaObject(BgInherit_QTranslator * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTranslator::staticMetaObject); };
+}
+
 struct BgJumptable_QTransposeProxyModel {
-  CrystalProc<const QMetaObject *, void *> bg_QTransposeProxyModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTransposeProxyModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTransposeProxyModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QTransposeProxyModel_setSourceModel_QAbstractItemModel_X;
   CrystalProc<int, void *> bg_QTransposeProxyModel_rowCount_;
   CrystalProc<int, void *, const QModelIndex *> bg_QTransposeProxyModel_rowCount_const_QModelIndex_R;
@@ -30190,36 +29531,7 @@ struct BgJumptable_QTransposeProxyModel {
 struct BgInherit_QTransposeProxyModel : public QTransposeProxyModel {
   using QTransposeProxyModel::QTransposeProxyModel;
   BgJumptable_QTransposeProxyModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTransposeProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTransposeProxyModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTransposeProxyModel *>(static_cast<const QTransposeProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTransposeProxyModel_metaObject_(_crystal_);
-    } else {
-      return QTransposeProxyModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTransposeProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTransposeProxyModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTransposeProxyModel *>(static_cast<const QTransposeProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTransposeProxyModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTransposeProxyModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTransposeProxyModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTransposeProxyModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTransposeProxyModel *>(static_cast<const QTransposeProxyModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTransposeProxyModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTransposeProxyModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setSourceModel(QAbstractItemModel * sourceModel) override {
     BgInherit_QTransposeProxyModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTransposeProxyModel_setSourceModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QTransposeProxyModel *>(static_cast<const QTransposeProxyModel *>(_self_))) : nullptr;
@@ -30680,6 +29992,18 @@ struct BgInherit_QTransposeProxyModel : public QTransposeProxyModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTransposeProxyModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTransposeProxyModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTransposeProxyModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTransposeProxyModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTransposeProxyModel_metaObject_(QTransposeProxyModel * _self_) {
   return _self_->metaObject();
@@ -30895,6 +30219,10 @@ extern "C" void bg_QTransposeProxyModel_sort_SUPER_int_Qt__SortOrder(QTransposeP
 
 extern "C" void bg_BgInherit_QTransposeProxyModel_JUMPTABLE_BgJumptable_QTransposeProxyModel_R(BgInherit_QTransposeProxyModel * _self_, const BgJumptable_QTransposeProxyModel & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTransposeProxyModel_SET_META_BindgenQtMetaObject(BgInherit_QTransposeProxyModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTransposeProxyModel::staticMetaObject); };
 }
 
 extern "C" QUrlQuery * bg_QUrlQuery__CONSTRUCT_() {
@@ -40021,9 +39349,6 @@ extern "C" QTextLine * bg_QTextLine__COPY_const_QTextLine_R(const QTextLine & un
 }
 
 struct BgJumptable_QTextDocument {
-  CrystalProc<const QMetaObject *, void *> bg_QTextDocument_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextDocument_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextDocument_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QTextDocument_clear_;
   CrystalProc<QTextObject *, void *, const QTextFormat *> bg_QTextDocument_createObject_const_QTextFormat_R;
   CrystalProc<CrystalVariant *, void *, int, const QUrl *> bg_QTextDocument_loadResource_int_const_QUrl_R;
@@ -40038,36 +39363,7 @@ struct BgJumptable_QTextDocument {
 struct BgInherit_QTextDocument : public QTextDocument {
   using QTextDocument::QTextDocument;
   BgJumptable_QTextDocument bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextDocument *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextDocument_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextDocument *>(static_cast<const QTextDocument *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextDocument_metaObject_(_crystal_);
-    } else {
-      return QTextDocument::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextDocument *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextDocument_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextDocument *>(static_cast<const QTextDocument *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextDocument_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextDocument::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextDocument *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextDocument_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextDocument *>(static_cast<const QTextDocument *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextDocument_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextDocument::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void clear() override {
     BgInherit_QTextDocument *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTextDocument_clear_.isValid() ? bindgen_crystal_object(const_cast<QTextDocument *>(static_cast<const QTextDocument *>(_self_))) : nullptr;
@@ -40168,6 +39464,18 @@ struct BgInherit_QTextDocument : public QTextDocument {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextDocument::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextDocument::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextDocument::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextDocument *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextDocument_metaObject_(QTextDocument * _self_) {
   return _self_->metaObject();
@@ -40657,6 +39965,10 @@ extern "C" void bg_BgInherit_QTextDocument_JUMPTABLE_BgJumptable_QTextDocument_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextDocument_SET_META_BindgenQtMetaObject(BgInherit_QTextDocument * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextDocument::staticMetaObject); };
+}
+
 extern "C" QPalette * bg_QPalette__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QPalette>();
 }
@@ -40862,9 +40174,6 @@ extern "C" const QMetaObject * bg_QPalette_staticMetaObject_STATIC_GETTER_() {
 }
 
 struct BgJumptable_QAbstractTextDocumentLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractTextDocumentLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractTextDocumentLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *, const QAbstractTextDocumentLayout::PaintContext *> bg_QAbstractTextDocumentLayout_draw_QPainter_X_const_QAbstractTextDocumentLayout__PaintContext_R;
   CrystalProc<int, void *, const QPointF *, Qt::HitTestAccuracy> bg_QAbstractTextDocumentLayout_hitTest_const_QPointF_R_Qt__HitTestAccuracy;
   CrystalProc<int, void *> bg_QAbstractTextDocumentLayout_pageCount_;
@@ -40886,36 +40195,7 @@ struct BgJumptable_QAbstractTextDocumentLayout {
 struct BgInherit_QAbstractTextDocumentLayout : public QAbstractTextDocumentLayout {
   using QAbstractTextDocumentLayout::QAbstractTextDocumentLayout;
   BgJumptable_QAbstractTextDocumentLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTextDocumentLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractTextDocumentLayout *>(static_cast<const QAbstractTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTextDocumentLayout_metaObject_(_crystal_);
-    } else {
-      return QAbstractTextDocumentLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTextDocumentLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractTextDocumentLayout *>(static_cast<const QAbstractTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTextDocumentLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractTextDocumentLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractTextDocumentLayout *>(static_cast<const QAbstractTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractTextDocumentLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void draw(QPainter * painter, const QAbstractTextDocumentLayout::PaintContext & context) override {
     BgInherit_QAbstractTextDocumentLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractTextDocumentLayout_draw_QPainter_X_const_QAbstractTextDocumentLayout__PaintContext_R.isValid() ? bindgen_crystal_object(const_cast<QAbstractTextDocumentLayout *>(static_cast<const QAbstractTextDocumentLayout *>(_self_))) : nullptr;
@@ -41100,6 +40380,18 @@ struct BgInherit_QAbstractTextDocumentLayout : public QAbstractTextDocumentLayou
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractTextDocumentLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractTextDocumentLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractTextDocumentLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractTextDocumentLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractTextDocumentLayout_metaObject_(QAbstractTextDocumentLayout * _self_) {
   return _self_->metaObject();
@@ -41250,6 +40542,10 @@ extern "C" void *bg_QAbstractTextDocumentLayout_DISCOVER_int_void(QAbstractTextD
 
 extern "C" void bg_BgInherit_QAbstractTextDocumentLayout_JUMPTABLE_BgJumptable_QAbstractTextDocumentLayout_R(BgInherit_QAbstractTextDocumentLayout * _self_, const BgJumptable_QAbstractTextDocumentLayout & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QAbstractTextDocumentLayout_SET_META_BindgenQtMetaObject(BgInherit_QAbstractTextDocumentLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractTextDocumentLayout::staticMetaObject); };
 }
 
 extern "C" QMetaObject::Connection * bg_QAbstractTextDocumentLayout_CONNECT_update_Qt__ConnectionType_CrystalProc_void_(QAbstractTextDocumentLayout * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
@@ -41923,9 +41219,6 @@ extern "C" bool bg_QCursor__OPERATOR_ne_const_QCursor_R(QCursor * _self_, const 
 }
 
 struct BgJumptable_QWindow {
-  CrystalProc<const QMetaObject *, void *> bg_QWindow_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QWindow_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QWindow_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSurface::SurfaceType, void *> bg_QWindow_surfaceType_;
   CrystalProc<QSurfaceFormat &, void *> bg_QWindow_format_;
   CrystalProc<QSize *, void *> bg_QWindow_size_;
@@ -41959,36 +41252,7 @@ struct BgJumptable_QWindow {
 struct BgInherit_QWindow : public QWindow {
   using QWindow::QWindow;
   BgJumptable_QWindow bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWindow_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QWindow *>(static_cast<const QWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_metaObject_(_crystal_);
-    } else {
-      return QWindow::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWindow_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QWindow *>(static_cast<const QWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QWindow::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWindow_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QWindow *>(static_cast<const QWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWindow_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QWindow::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSurface::SurfaceType surfaceType() const override {
     const BgInherit_QWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWindow_surfaceType_.isValid() ? bindgen_crystal_object(const_cast<QWindow *>(static_cast<const QWindow *>(_self_))) : nullptr;
@@ -42282,6 +41546,18 @@ struct BgInherit_QWindow : public QWindow {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QWindow::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QWindow::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QWindow::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QWindow *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QWindow_metaObject_(QWindow * _self_) {
   return _self_->metaObject();
@@ -42927,6 +42203,10 @@ extern "C" void bg_BgInherit_QWindow_JUMPTABLE_BgJumptable_QWindow_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QWindow_SET_META_BindgenQtMetaObject(BgInherit_QWindow * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QWindow::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QWindow_CONNECT_screenChanged_Qt__ConnectionType_CrystalProc_void__QScreen_X_(QWindow * _self_, Qt::ConnectionType type, CrystalProc<void, QScreen *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWindow::*)(QScreen *))&QWindow::screenChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QScreen * screen){ _proc_(screen); }, type));
 }
@@ -43553,9 +42833,6 @@ extern "C" QDesktopServices * bg_QDesktopServices__COPY_const_QDesktopServices_R
 }
 
 struct BgJumptable_QDrag {
-  CrystalProc<const QMetaObject *, void *> bg_QDrag_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDrag_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDrag_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -43567,36 +42844,7 @@ struct BgJumptable_QDrag {
 struct BgInherit_QDrag : public QDrag {
   using QDrag::QDrag;
   BgJumptable_QDrag bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDrag *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDrag_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDrag *>(static_cast<const QDrag *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDrag_metaObject_(_crystal_);
-    } else {
-      return QDrag::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDrag *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDrag_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDrag *>(static_cast<const QDrag *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDrag_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDrag::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDrag *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDrag_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDrag *>(static_cast<const QDrag *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDrag_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDrag::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QDrag *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QDrag *>(static_cast<const QDrag *>(_self_))) : nullptr;
@@ -43667,6 +42915,18 @@ struct BgInherit_QDrag : public QDrag {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDrag::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDrag::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDrag::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDrag *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDrag_metaObject_(QDrag * _self_) {
   return _self_->metaObject();
@@ -43778,6 +43038,10 @@ extern "C" QMetaObject::Connection * bg_QDrag_CONNECT_targetChanged_Qt__Connecti
 
 extern "C" void bg_BgInherit_QDrag_JUMPTABLE_BgJumptable_QDrag_R(BgInherit_QDrag * _self_, const BgJumptable_QDrag & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QDrag_SET_META_BindgenQtMetaObject(BgInherit_QDrag * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDrag::staticMetaObject); };
 }
 
 extern "C" QFontInfo * bg_QFontInfo__CONSTRUCT_const_QFont_R(const QFont & unnamed_arg_0) {
@@ -44317,9 +43581,6 @@ extern "C" QMetaObject::Connection * bg_QInputMethod_CONNECT_inputDirectionChang
 }
 
 struct BgJumptable_QGuiApplication {
-  CrystalProc<const QMetaObject *, void *> bg_QGuiApplication_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGuiApplication_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGuiApplication_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QGuiApplication_notify_QObject_X_QEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QGuiApplication_event_QEvent_X;
   CrystalProc<bool, void *, QEvent *, QObject *, QPostEventList *> bg_QGuiApplication_compressEvent_QEvent_X_QObject_X_QPostEventList_X;
@@ -44333,36 +43594,7 @@ struct BgJumptable_QGuiApplication {
 struct BgInherit_QGuiApplication : public QGuiApplication {
   using QGuiApplication::QGuiApplication;
   BgJumptable_QGuiApplication bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGuiApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGuiApplication_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGuiApplication *>(static_cast<const QGuiApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGuiApplication_metaObject_(_crystal_);
-    } else {
-      return QGuiApplication::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGuiApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGuiApplication_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGuiApplication *>(static_cast<const QGuiApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGuiApplication_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGuiApplication::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGuiApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGuiApplication_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGuiApplication *>(static_cast<const QGuiApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGuiApplication_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGuiApplication::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool notify(QObject * unnamed_arg_0, QEvent * unnamed_arg_1) override {
     BgInherit_QGuiApplication *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGuiApplication_notify_QObject_X_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QGuiApplication *>(static_cast<const QGuiApplication *>(_self_))) : nullptr;
@@ -44453,6 +43685,18 @@ struct BgInherit_QGuiApplication : public QGuiApplication {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGuiApplication::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGuiApplication::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGuiApplication::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGuiApplication *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGuiApplication_metaObject_(QGuiApplication * _self_) {
   return _self_->metaObject();
@@ -44767,6 +44011,10 @@ extern "C" void *bg_QGuiApplication_DISCOVER_int_void(QGuiApplication * _self_, 
 
 extern "C" void bg_BgInherit_QGuiApplication_JUMPTABLE_BgJumptable_QGuiApplication_R(BgInherit_QGuiApplication * _self_, const BgJumptable_QGuiApplication & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGuiApplication_SET_META_BindgenQtMetaObject(BgInherit_QGuiApplication * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGuiApplication::staticMetaObject); };
 }
 
 extern "C" QMetaObject::Connection * bg_QGuiApplication_CONNECT_fontDatabaseChanged_Qt__ConnectionType_CrystalProc_void_(QGuiApplication * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
@@ -46404,9 +45652,6 @@ extern "C" QMatrix4x4 * bg_QMatrix4x4__OPERATOR_div_float(QMatrix4x4 * _self_, f
 }
 
 struct BgJumptable_QMovie {
-  CrystalProc<const QMetaObject *, void *> bg_QMovie_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMovie_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMovie_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -46418,36 +45663,7 @@ struct BgJumptable_QMovie {
 struct BgInherit_QMovie : public QMovie {
   using QMovie::QMovie;
   BgJumptable_QMovie bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMovie *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMovie_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMovie *>(static_cast<const QMovie *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMovie_metaObject_(_crystal_);
-    } else {
-      return QMovie::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMovie *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMovie_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMovie *>(static_cast<const QMovie *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMovie_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMovie::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMovie *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMovie_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMovie *>(static_cast<const QMovie *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMovie_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMovie::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QMovie *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QMovie *>(static_cast<const QMovie *>(_self_))) : nullptr;
@@ -46518,6 +45734,18 @@ struct BgInherit_QMovie : public QMovie {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMovie::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMovie::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMovie::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMovie *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMovie_metaObject_(QMovie * _self_) {
   return _self_->metaObject();
@@ -46747,10 +45975,11 @@ extern "C" void bg_BgInherit_QMovie_JUMPTABLE_BgJumptable_QMovie_R(BgInherit_QMo
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMovie_SET_META_BindgenQtMetaObject(BgInherit_QMovie * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMovie::staticMetaObject); };
+}
+
 struct BgJumptable_QOffscreenSurface {
-  CrystalProc<const QMetaObject *, void *> bg_QOffscreenSurface_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QOffscreenSurface_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QOffscreenSurface_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSurface::SurfaceType, void *> bg_QOffscreenSurface_surfaceType_;
   CrystalProc<QSurfaceFormat &, void *> bg_QOffscreenSurface_format_;
   CrystalProc<QSize *, void *> bg_QOffscreenSurface_size_;
@@ -46765,36 +45994,7 @@ struct BgJumptable_QOffscreenSurface {
 struct BgInherit_QOffscreenSurface : public QOffscreenSurface {
   using QOffscreenSurface::QOffscreenSurface;
   BgJumptable_QOffscreenSurface bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QOffscreenSurface *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QOffscreenSurface_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QOffscreenSurface *>(static_cast<const QOffscreenSurface *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QOffscreenSurface_metaObject_(_crystal_);
-    } else {
-      return QOffscreenSurface::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QOffscreenSurface *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QOffscreenSurface_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QOffscreenSurface *>(static_cast<const QOffscreenSurface *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QOffscreenSurface_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QOffscreenSurface::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QOffscreenSurface *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QOffscreenSurface_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QOffscreenSurface *>(static_cast<const QOffscreenSurface *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QOffscreenSurface_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QOffscreenSurface::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSurface::SurfaceType surfaceType() const override {
     const BgInherit_QOffscreenSurface *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QOffscreenSurface_surfaceType_.isValid() ? bindgen_crystal_object(const_cast<QOffscreenSurface *>(static_cast<const QOffscreenSurface *>(_self_))) : nullptr;
@@ -46895,6 +46095,18 @@ struct BgInherit_QOffscreenSurface : public QOffscreenSurface {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QOffscreenSurface::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QOffscreenSurface::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QOffscreenSurface::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QOffscreenSurface *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QOffscreenSurface_metaObject_(QOffscreenSurface * _self_) {
   return _self_->metaObject();
@@ -47016,10 +46228,11 @@ extern "C" void bg_BgInherit_QOffscreenSurface_JUMPTABLE_BgJumptable_QOffscreenS
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QOffscreenSurface_SET_META_BindgenQtMetaObject(BgInherit_QOffscreenSurface * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QOffscreenSurface::staticMetaObject); };
+}
+
 struct BgJumptable_QPaintDeviceWindow {
-  CrystalProc<const QMetaObject *, void *> bg_QPaintDeviceWindow_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPaintDeviceWindow_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPaintDeviceWindow_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPaintEvent *> bg_QPaintDeviceWindow_paintEvent_QPaintEvent_X;
   CrystalProc<int, void *, QPaintDevice::PaintDeviceMetric> bg_QPaintDeviceWindow_metric_QPaintDevice__PaintDeviceMetric;
   CrystalProc<void, void *, QExposeEvent *> bg_QPaintDeviceWindow_exposeEvent_QExposeEvent_X;
@@ -47058,36 +46271,7 @@ struct BgJumptable_QPaintDeviceWindow {
 struct BgInherit_QPaintDeviceWindow : public QPaintDeviceWindow {
   using QPaintDeviceWindow::QPaintDeviceWindow;
   BgJumptable_QPaintDeviceWindow bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPaintDeviceWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPaintDeviceWindow_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPaintDeviceWindow *>(static_cast<const QPaintDeviceWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPaintDeviceWindow_metaObject_(_crystal_);
-    } else {
-      return QPaintDeviceWindow::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPaintDeviceWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPaintDeviceWindow_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPaintDeviceWindow *>(static_cast<const QPaintDeviceWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPaintDeviceWindow_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPaintDeviceWindow::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPaintDeviceWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPaintDeviceWindow_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPaintDeviceWindow *>(static_cast<const QPaintDeviceWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPaintDeviceWindow_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPaintDeviceWindow::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void paintEvent(QPaintEvent * event) override {
     BgInherit_QPaintDeviceWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPaintDeviceWindow_paintEvent_QPaintEvent_X.isValid() ? bindgen_crystal_object(const_cast<QPaintDeviceWindow *>(static_cast<const QPaintDeviceWindow *>(_self_))) : nullptr;
@@ -47431,6 +46615,18 @@ struct BgInherit_QPaintDeviceWindow : public QPaintDeviceWindow {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPaintDeviceWindow::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPaintDeviceWindow::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPaintDeviceWindow::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPaintDeviceWindow *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPaintDeviceWindow_metaObject_(QPaintDeviceWindow * _self_) {
   return _self_->metaObject();
@@ -47565,6 +46761,10 @@ extern "C" void *bg_QPaintDeviceWindow_DISCOVER_int_void(QPaintDeviceWindow * _s
 
 extern "C" void bg_BgInherit_QPaintDeviceWindow_JUMPTABLE_BgJumptable_QPaintDeviceWindow_R(BgInherit_QPaintDeviceWindow * _self_, const BgJumptable_QPaintDeviceWindow & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QPaintDeviceWindow_SET_META_BindgenQtMetaObject(BgInherit_QPaintDeviceWindow * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPaintDeviceWindow::staticMetaObject); };
 }
 
 extern "C" void bg_QPaintDeviceWindow_paintEvent_SUPER_QPaintEvent_X(QPaintDeviceWindow * _self_, QPaintEvent * event) {
@@ -49340,9 +48540,6 @@ extern "C" QPainterPath * bg_QPainterPathStroker_createStroke_const_QPainterPath
 }
 
 struct BgJumptable_QPdfWriter {
-  CrystalProc<const QMetaObject *, void *> bg_QPdfWriter_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPdfWriter_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPdfWriter_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *> bg_QPdfWriter_newPage_;
   CrystalProc<QPaintEngine *, void *> bg_QPdfWriter_paintEngine_;
   CrystalProc<int, void *, QPaintDevice::PaintDeviceMetric> bg_QPdfWriter_metric_QPaintDevice__PaintDeviceMetric;
@@ -49360,36 +48557,7 @@ struct BgJumptable_QPdfWriter {
 struct BgInherit_QPdfWriter : public QPdfWriter {
   using QPdfWriter::QPdfWriter;
   BgJumptable_QPdfWriter bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPdfWriter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPdfWriter_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPdfWriter *>(static_cast<const QPdfWriter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPdfWriter_metaObject_(_crystal_);
-    } else {
-      return QPdfWriter::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPdfWriter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPdfWriter_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPdfWriter *>(static_cast<const QPdfWriter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPdfWriter_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPdfWriter::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPdfWriter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPdfWriter_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPdfWriter *>(static_cast<const QPdfWriter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPdfWriter_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPdfWriter::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool newPage() override {
     BgInherit_QPdfWriter *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPdfWriter_newPage_.isValid() ? bindgen_crystal_object(const_cast<QPdfWriter *>(static_cast<const QPdfWriter *>(_self_))) : nullptr;
@@ -49520,6 +48688,18 @@ struct BgInherit_QPdfWriter : public QPdfWriter {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPdfWriter::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPdfWriter::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPdfWriter::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPdfWriter *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPdfWriter_metaObject_(QPdfWriter * _self_) {
   return _self_->metaObject();
@@ -49683,6 +48863,10 @@ extern "C" QPainter * bg_QPdfWriter_sharedPainter_SUPER_(QPdfWriter * _self_) {
 
 extern "C" void bg_BgInherit_QPdfWriter_JUMPTABLE_BgJumptable_QPdfWriter_R(BgInherit_QPdfWriter * _self_, const BgJumptable_QPdfWriter & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QPdfWriter_SET_META_BindgenQtMetaObject(BgInherit_QPdfWriter * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPdfWriter::staticMetaObject); };
 }
 
 struct BgJumptable_QPicture {
@@ -49955,9 +49139,6 @@ extern "C" bool bg_QPixmapCache__Key_isValid_(QPixmapCache::Key * _self_) {
 }
 
 struct BgJumptable_QRasterWindow {
-  CrystalProc<const QMetaObject *, void *> bg_QRasterWindow_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QRasterWindow_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QRasterWindow_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *, QPaintDevice::PaintDeviceMetric> bg_QRasterWindow_metric_QPaintDevice__PaintDeviceMetric;
   CrystalProc<void, void *, QPaintEvent *> bg_QPaintDeviceWindow_paintEvent_QPaintEvent_X;
   CrystalProc<void, void *, QExposeEvent *> bg_QPaintDeviceWindow_exposeEvent_QExposeEvent_X;
@@ -49993,36 +49174,7 @@ struct BgJumptable_QRasterWindow {
 struct BgInherit_QRasterWindow : public QRasterWindow {
   using QRasterWindow::QRasterWindow;
   BgJumptable_QRasterWindow bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QRasterWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRasterWindow_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QRasterWindow *>(static_cast<const QRasterWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRasterWindow_metaObject_(_crystal_);
-    } else {
-      return QRasterWindow::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QRasterWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRasterWindow_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QRasterWindow *>(static_cast<const QRasterWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRasterWindow_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QRasterWindow::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QRasterWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRasterWindow_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QRasterWindow *>(static_cast<const QRasterWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRasterWindow_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QRasterWindow::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int metric(QPaintDevice::PaintDeviceMetric metric) const override {
     const BgInherit_QRasterWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QRasterWindow_metric_QPaintDevice__PaintDeviceMetric.isValid() ? bindgen_crystal_object(const_cast<QRasterWindow *>(static_cast<const QRasterWindow *>(_self_))) : nullptr;
@@ -50336,6 +49488,18 @@ struct BgInherit_QRasterWindow : public QRasterWindow {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QRasterWindow::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QRasterWindow::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QRasterWindow::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QRasterWindow *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QRasterWindow_metaObject_(QRasterWindow * _self_) {
   return _self_->metaObject();
@@ -50377,10 +49541,11 @@ extern "C" void bg_BgInherit_QRasterWindow_JUMPTABLE_BgJumptable_QRasterWindow_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QRasterWindow_SET_META_BindgenQtMetaObject(BgInherit_QRasterWindow * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QRasterWindow::staticMetaObject); };
+}
+
 struct BgJumptable_QScreen {
-  CrystalProc<const QMetaObject *, void *> bg_QScreen_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QScreen_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QScreen_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -50392,36 +49557,7 @@ struct BgJumptable_QScreen {
 struct BgInherit_QScreen : public QScreen {
   using QScreen::QScreen;
   BgJumptable_QScreen bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScreen_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QScreen *>(static_cast<const QScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScreen_metaObject_(_crystal_);
-    } else {
-      return QScreen::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScreen_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QScreen *>(static_cast<const QScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScreen_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QScreen::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScreen_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QScreen *>(static_cast<const QScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScreen_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QScreen::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QScreen *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QScreen *>(static_cast<const QScreen *>(_self_))) : nullptr;
@@ -50492,6 +49628,18 @@ struct BgInherit_QScreen : public QScreen {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QScreen::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QScreen::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QScreen::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QScreen *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QScreen_metaObject_(QScreen * _self_) {
   return _self_->metaObject();
@@ -50735,6 +49883,10 @@ extern "C" QMetaObject::Connection * bg_QScreen_CONNECT_refreshRateChanged_Qt__C
 
 extern "C" void bg_BgInherit_QScreen_JUMPTABLE_BgJumptable_QScreen_R(BgInherit_QScreen * _self_, const BgJumptable_QScreen & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QScreen_SET_META_BindgenQtMetaObject(BgInherit_QScreen * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QScreen::staticMetaObject); };
 }
 
 struct BgJumptable_QStandardItem {
@@ -51214,9 +50366,6 @@ extern "C" void bg_BgInherit_QStandardItem_JUMPTABLE_BgJumptable_QStandardItem_R
 }
 
 struct BgJumptable_QStandardItemModel {
-  CrystalProc<const QMetaObject *, void *> bg_QStandardItemModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStandardItemModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStandardItemModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, int, int> bg_QStandardItemModel_index_int_int;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QStandardItemModel_index_int_int_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QStandardItemModel_parent_const_QModelIndex_R;
@@ -51271,36 +50420,7 @@ struct BgJumptable_QStandardItemModel {
 struct BgInherit_QStandardItemModel : public QStandardItemModel {
   using QStandardItemModel::QStandardItemModel;
   BgJumptable_QStandardItemModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStandardItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStandardItemModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStandardItemModel *>(static_cast<const QStandardItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStandardItemModel_metaObject_(_crystal_);
-    } else {
-      return QStandardItemModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStandardItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStandardItemModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStandardItemModel *>(static_cast<const QStandardItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStandardItemModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStandardItemModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStandardItemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStandardItemModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStandardItemModel *>(static_cast<const QStandardItemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStandardItemModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStandardItemModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex index(int row, int column, const QModelIndex & parent) const override {
     const BgInherit_QStandardItemModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStandardItemModel_index_int_int_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QStandardItemModel *>(static_cast<const QStandardItemModel *>(_self_))) : nullptr;
@@ -51711,6 +50831,18 @@ struct BgInherit_QStandardItemModel : public QStandardItemModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStandardItemModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStandardItemModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStandardItemModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStandardItemModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStandardItemModel_metaObject_(QStandardItemModel * _self_) {
   return _self_->metaObject();
@@ -52124,6 +51256,10 @@ extern "C" void bg_BgInherit_QStandardItemModel_JUMPTABLE_BgJumptable_QStandardI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStandardItemModel_SET_META_BindgenQtMetaObject(BgInherit_QStandardItemModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStandardItemModel::staticMetaObject); };
+}
+
 extern "C" QStaticText * bg_QStaticText__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QStaticText>();
 }
@@ -52209,9 +51345,6 @@ extern "C" bool bg_QStaticText__OPERATOR_ne_const_QStaticText_R(QStaticText * _s
 }
 
 struct BgJumptable_QStyleHints {
-  CrystalProc<const QMetaObject *, void *> bg_QStyleHints_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStyleHints_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStyleHints_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -52223,36 +51356,7 @@ struct BgJumptable_QStyleHints {
 struct BgInherit_QStyleHints : public QStyleHints {
   using QStyleHints::QStyleHints;
   BgJumptable_QStyleHints bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStyleHints *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyleHints_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStyleHints *>(static_cast<const QStyleHints *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyleHints_metaObject_(_crystal_);
-    } else {
-      return QStyleHints::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStyleHints *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyleHints_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStyleHints *>(static_cast<const QStyleHints *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyleHints_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStyleHints::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStyleHints *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyleHints_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStyleHints *>(static_cast<const QStyleHints *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyleHints_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStyleHints::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QStyleHints *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QStyleHints *>(static_cast<const QStyleHints *>(_self_))) : nullptr;
@@ -52323,6 +51427,18 @@ struct BgInherit_QStyleHints : public QStyleHints {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStyleHints::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStyleHints::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStyleHints::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStyleHints *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStyleHints_metaObject_(QStyleHints * _self_) {
   return _self_->metaObject();
@@ -52576,10 +51692,11 @@ extern "C" void bg_BgInherit_QStyleHints_JUMPTABLE_BgJumptable_QStyleHints_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStyleHints_SET_META_BindgenQtMetaObject(BgInherit_QStyleHints * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStyleHints::staticMetaObject); };
+}
+
 struct BgJumptable_QTextObject {
-  CrystalProc<const QMetaObject *, void *> bg_QTextObject_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextObject_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextObject_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -52591,36 +51708,7 @@ struct BgJumptable_QTextObject {
 struct BgInherit_QTextObject : public QTextObject {
   using QTextObject::QTextObject;
   BgJumptable_QTextObject bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextObject_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextObject *>(static_cast<const QTextObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextObject_metaObject_(_crystal_);
-    } else {
-      return QTextObject::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextObject_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextObject *>(static_cast<const QTextObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextObject_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextObject::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextObject_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextObject *>(static_cast<const QTextObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextObject_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextObject::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTextObject *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTextObject *>(static_cast<const QTextObject *>(_self_))) : nullptr;
@@ -52691,6 +51779,18 @@ struct BgInherit_QTextObject : public QTextObject {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextObject::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextObject::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextObject::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextObject *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextObject_metaObject_(QTextObject * _self_) {
   return _self_->metaObject();
@@ -52758,10 +51858,11 @@ extern "C" void bg_BgInherit_QTextObject_JUMPTABLE_BgJumptable_QTextObject_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextObject_SET_META_BindgenQtMetaObject(BgInherit_QTextObject * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextObject::staticMetaObject); };
+}
+
 struct BgJumptable_QTextBlockGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QTextBlockGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextBlockGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextBlockGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockInserted_const_QTextBlock_R;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockRemoved_const_QTextBlock_R;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockFormatChanged_const_QTextBlock_R;
@@ -52776,36 +51877,7 @@ struct BgJumptable_QTextBlockGroup {
 struct BgInherit_QTextBlockGroup : public QTextBlockGroup {
   using QTextBlockGroup::QTextBlockGroup;
   BgJumptable_QTextBlockGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextBlockGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBlockGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextBlockGroup *>(static_cast<const QTextBlockGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBlockGroup_metaObject_(_crystal_);
-    } else {
-      return QTextBlockGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextBlockGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBlockGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextBlockGroup *>(static_cast<const QTextBlockGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBlockGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextBlockGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextBlockGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBlockGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextBlockGroup *>(static_cast<const QTextBlockGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBlockGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextBlockGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void blockInserted(const QTextBlock & block) override {
     BgInherit_QTextBlockGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTextBlockGroup_blockInserted_const_QTextBlock_R.isValid() ? bindgen_crystal_object(const_cast<QTextBlockGroup *>(static_cast<const QTextBlockGroup *>(_self_))) : nullptr;
@@ -52906,6 +51978,18 @@ struct BgInherit_QTextBlockGroup : public QTextBlockGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextBlockGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextBlockGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextBlockGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextBlockGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextBlockGroup_metaObject_(QTextBlockGroup * _self_) {
   return _self_->metaObject();
@@ -52966,6 +52050,10 @@ extern "C" void bg_BgInherit_QTextBlockGroup_JUMPTABLE_BgJumptable_QTextBlockGro
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextBlockGroup_SET_META_BindgenQtMetaObject(BgInherit_QTextBlockGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextBlockGroup::staticMetaObject); };
+}
+
 extern "C" void bg_QTextBlockGroup_blockInserted_SUPER_const_QTextBlock_R(QTextBlockGroup * _self_, const QTextBlock & block) {
   _self_->QTextBlockGroup::blockInserted(block);
 }
@@ -52979,9 +52067,6 @@ extern "C" void bg_QTextBlockGroup_blockFormatChanged_SUPER_const_QTextBlock_R(Q
 }
 
 struct BgJumptable_QTextFrame {
-  CrystalProc<const QMetaObject *, void *> bg_QTextFrame_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextFrame_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextFrame_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -52993,36 +52078,7 @@ struct BgJumptable_QTextFrame {
 struct BgInherit_QTextFrame : public QTextFrame {
   using QTextFrame::QTextFrame;
   BgJumptable_QTextFrame bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextFrame_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextFrame *>(static_cast<const QTextFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextFrame_metaObject_(_crystal_);
-    } else {
-      return QTextFrame::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextFrame_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextFrame *>(static_cast<const QTextFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextFrame_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextFrame::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextFrame_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextFrame *>(static_cast<const QTextFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextFrame_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextFrame::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTextFrame *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTextFrame *>(static_cast<const QTextFrame *>(_self_))) : nullptr;
@@ -53093,6 +52149,18 @@ struct BgInherit_QTextFrame : public QTextFrame {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextFrame::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextFrame::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextFrame::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextFrame *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextFrame_metaObject_(QTextFrame * _self_) {
   return _self_->metaObject();
@@ -53175,6 +52243,10 @@ extern "C" void *bg_QTextFrame_DISCOVER_int_void(QTextFrame * _self_, int * bg_c
 
 extern "C" void bg_BgInherit_QTextFrame_JUMPTABLE_BgJumptable_QTextFrame_R(BgInherit_QTextFrame * _self_, const BgJumptable_QTextFrame & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTextFrame_SET_META_BindgenQtMetaObject(BgInherit_QTextFrame * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextFrame::staticMetaObject); };
 }
 
 extern "C" QTextFrame::iterator * bg_QTextFrame__iterator__CONSTRUCT_() {
@@ -53494,9 +52566,6 @@ extern "C" Container_QList_QGlyphRun_ * bg_QTextFragment_glyphRuns_int_int(QText
 }
 
 struct BgJumptable_QSyntaxHighlighter {
-  CrystalProc<const QMetaObject *, void *> bg_QSyntaxHighlighter_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSyntaxHighlighter_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSyntaxHighlighter_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const CrystalString *> bg_QSyntaxHighlighter_highlightBlock_const_QString_R;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -53509,36 +52578,7 @@ struct BgJumptable_QSyntaxHighlighter {
 struct BgInherit_QSyntaxHighlighter : public QSyntaxHighlighter {
   using QSyntaxHighlighter::QSyntaxHighlighter;
   BgJumptable_QSyntaxHighlighter bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSyntaxHighlighter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSyntaxHighlighter_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSyntaxHighlighter *>(static_cast<const QSyntaxHighlighter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSyntaxHighlighter_metaObject_(_crystal_);
-    } else {
-      return QSyntaxHighlighter::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSyntaxHighlighter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSyntaxHighlighter_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSyntaxHighlighter *>(static_cast<const QSyntaxHighlighter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSyntaxHighlighter_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSyntaxHighlighter::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSyntaxHighlighter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSyntaxHighlighter_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSyntaxHighlighter *>(static_cast<const QSyntaxHighlighter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSyntaxHighlighter_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSyntaxHighlighter::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void highlightBlock(const QString & text) override {
     BgInherit_QSyntaxHighlighter *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSyntaxHighlighter_highlightBlock_const_QString_R.isValid() ? bindgen_crystal_object(const_cast<QSyntaxHighlighter *>(static_cast<const QSyntaxHighlighter *>(_self_))) : nullptr;
@@ -53621,6 +52661,18 @@ struct BgInherit_QSyntaxHighlighter : public QSyntaxHighlighter {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSyntaxHighlighter::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSyntaxHighlighter::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSyntaxHighlighter::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSyntaxHighlighter *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSyntaxHighlighter_metaObject_(QSyntaxHighlighter * _self_) {
   return _self_->metaObject();
@@ -53716,6 +52768,10 @@ extern "C" const QMetaObject * bg_QSyntaxHighlighter_staticMetaObject_STATIC_GET
 
 extern "C" void bg_BgInherit_QSyntaxHighlighter_JUMPTABLE_BgJumptable_QSyntaxHighlighter_R(BgInherit_QSyntaxHighlighter * _self_, const BgJumptable_QSyntaxHighlighter & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QSyntaxHighlighter_SET_META_BindgenQtMetaObject(BgInherit_QSyntaxHighlighter * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSyntaxHighlighter::staticMetaObject); };
 }
 
 extern "C" QTextDocumentFragment * bg_QTextDocumentFragment__CONSTRUCT_() {
@@ -53827,9 +52883,6 @@ extern "C" Container_QList_QByteArray_ * bg_QTextDocumentWriter_supportedDocumen
 }
 
 struct BgJumptable_QTextList {
-  CrystalProc<const QMetaObject *, void *> bg_QTextList_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextList_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextList_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockInserted_const_QTextBlock_R;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockRemoved_const_QTextBlock_R;
   CrystalProc<void, void *, const QTextBlock *> bg_QTextBlockGroup_blockFormatChanged_const_QTextBlock_R;
@@ -53844,36 +52897,7 @@ struct BgJumptable_QTextList {
 struct BgInherit_QTextList : public QTextList {
   using QTextList::QTextList;
   BgJumptable_QTextList bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextList *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextList_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextList *>(static_cast<const QTextList *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextList_metaObject_(_crystal_);
-    } else {
-      return QTextList::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextList *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextList_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextList *>(static_cast<const QTextList *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextList_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextList::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextList *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextList_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextList *>(static_cast<const QTextList *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextList_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextList::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void blockInserted(const QTextBlock & block) override {
     BgInherit_QTextList *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTextBlockGroup_blockInserted_const_QTextBlock_R.isValid() ? bindgen_crystal_object(const_cast<QTextList *>(static_cast<const QTextList *>(_self_))) : nullptr;
@@ -53974,6 +52998,18 @@ struct BgInherit_QTextList : public QTextList {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextList::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextList::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextList::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextList *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextList_metaObject_(QTextList * _self_) {
   return _self_->metaObject();
@@ -54041,6 +53077,10 @@ extern "C" const QMetaObject * bg_QTextList_staticMetaObject_STATIC_GETTER_() {
 
 extern "C" void bg_BgInherit_QTextList_JUMPTABLE_BgJumptable_QTextList_R(BgInherit_QTextList * _self_, const BgJumptable_QTextList & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTextList_SET_META_BindgenQtMetaObject(BgInherit_QTextList * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextList::staticMetaObject); };
 }
 
 extern "C" QTextTableCell * bg_QTextTableCell__CONSTRUCT_() {
@@ -54120,9 +53160,6 @@ extern "C" int bg_QTextTableCell_tableCellFormatIndex_(QTextTableCell * _self_) 
 }
 
 struct BgJumptable_QTextTable {
-  CrystalProc<const QMetaObject *, void *> bg_QTextTable_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextTable_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextTable_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -54134,36 +53171,7 @@ struct BgJumptable_QTextTable {
 struct BgInherit_QTextTable : public QTextTable {
   using QTextTable::QTextTable;
   BgJumptable_QTextTable bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextTable *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextTable_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextTable *>(static_cast<const QTextTable *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextTable_metaObject_(_crystal_);
-    } else {
-      return QTextTable::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextTable *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextTable_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextTable *>(static_cast<const QTextTable *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextTable_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextTable::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextTable *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextTable_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextTable *>(static_cast<const QTextTable *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextTable_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextTable::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTextTable *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTextTable *>(static_cast<const QTextTable *>(_self_))) : nullptr;
@@ -54234,6 +53242,18 @@ struct BgInherit_QTextTable : public QTextTable {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextTable::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextTable::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextTable::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextTable *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextTable_metaObject_(QTextTable * _self_) {
   return _self_->metaObject();
@@ -54343,10 +53363,11 @@ extern "C" void bg_BgInherit_QTextTable_JUMPTABLE_BgJumptable_QTextTable_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextTable_SET_META_BindgenQtMetaObject(BgInherit_QTextTable * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextTable::staticMetaObject); };
+}
+
 struct BgJumptable_QValidator {
-  CrystalProc<const QMetaObject *, void *> bg_QValidator_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QValidator_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QValidator_validate_QString_R_int_R;
   CrystalProc<void, void *, CrystalString *> bg_QValidator_fixup_QString_R;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
@@ -54360,36 +53381,7 @@ struct BgJumptable_QValidator {
 struct BgInherit_QValidator : public QValidator {
   using QValidator::QValidator;
   BgJumptable_QValidator bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QValidator_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QValidator *>(static_cast<const QValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QValidator_metaObject_(_crystal_);
-    } else {
-      return QValidator::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QValidator_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QValidator *>(static_cast<const QValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QValidator_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QValidator::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QValidator *>(static_cast<const QValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QValidator_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QValidator::State validate(QString & input, int & pos) const override {
     const BgInherit_QValidator *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QValidator_validate_QString_R_int_R.isValid() ? bindgen_crystal_object(const_cast<QValidator *>(static_cast<const QValidator *>(_self_))) : nullptr;
@@ -54489,6 +53481,18 @@ struct BgInherit_QValidator : public QValidator {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QValidator::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QValidator::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QValidator::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QValidator *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QValidator_metaObject_(QValidator * _self_) {
   return _self_->metaObject();
@@ -54560,6 +53564,10 @@ extern "C" void bg_BgInherit_QValidator_JUMPTABLE_BgJumptable_QValidator_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QValidator_SET_META_BindgenQtMetaObject(BgInherit_QValidator * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QValidator::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QValidator_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(QValidator * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QValidator::*)())&QValidator::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -54571,9 +53579,6 @@ extern "C" void bg_QValidator_fixup_SUPER_QString_R(QValidator * _self_, Crystal
 }
 
 struct BgJumptable_QIntValidator {
-  CrystalProc<const QMetaObject *, void *> bg_QIntValidator_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QIntValidator_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QIntValidator_validate_QString_R_int_R;
   CrystalProc<void, void *, CrystalString *> bg_QIntValidator_fixup_QString_R;
   CrystalProc<void, void *, int, int> bg_QIntValidator_setRange_int_int;
@@ -54588,36 +53593,7 @@ struct BgJumptable_QIntValidator {
 struct BgInherit_QIntValidator : public QIntValidator {
   using QIntValidator::QIntValidator;
   BgJumptable_QIntValidator bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QIntValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIntValidator_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QIntValidator *>(static_cast<const QIntValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIntValidator_metaObject_(_crystal_);
-    } else {
-      return QIntValidator::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QIntValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIntValidator_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QIntValidator *>(static_cast<const QIntValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIntValidator_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QIntValidator::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QIntValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QIntValidator *>(static_cast<const QIntValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QIntValidator_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QIntValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QValidator::State validate(QString & input, int & pos) const override {
     const BgInherit_QIntValidator *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QIntValidator_validate_QString_R_int_R.isValid() ? bindgen_crystal_object(const_cast<QIntValidator *>(static_cast<const QIntValidator *>(_self_))) : nullptr;
@@ -54725,6 +53701,18 @@ struct BgInherit_QIntValidator : public QIntValidator {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QIntValidator::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QIntValidator::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QIntValidator::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QIntValidator *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QIntValidator_metaObject_(QIntValidator * _self_) {
   return _self_->metaObject();
@@ -54828,10 +53816,11 @@ extern "C" void bg_BgInherit_QIntValidator_JUMPTABLE_BgJumptable_QIntValidator_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QIntValidator_SET_META_BindgenQtMetaObject(BgInherit_QIntValidator * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QIntValidator::staticMetaObject); };
+}
+
 struct BgJumptable_QDoubleValidator {
-  CrystalProc<const QMetaObject *, void *> bg_QDoubleValidator_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDoubleValidator_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDoubleValidator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QDoubleValidator_validate_QString_R_int_R;
   CrystalProc<void, void *, double, double, int> bg_QDoubleValidator_setRange_double_double_int;
   CrystalProc<void, void *, CrystalString *> bg_QValidator_fixup_QString_R;
@@ -54846,36 +53835,7 @@ struct BgJumptable_QDoubleValidator {
 struct BgInherit_QDoubleValidator : public QDoubleValidator {
   using QDoubleValidator::QDoubleValidator;
   BgJumptable_QDoubleValidator bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDoubleValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleValidator_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDoubleValidator *>(static_cast<const QDoubleValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleValidator_metaObject_(_crystal_);
-    } else {
-      return QDoubleValidator::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDoubleValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleValidator_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDoubleValidator *>(static_cast<const QDoubleValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleValidator_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDoubleValidator::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDoubleValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleValidator_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDoubleValidator *>(static_cast<const QDoubleValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleValidator_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDoubleValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QValidator::State validate(QString & input, int & pos) const override {
     const BgInherit_QDoubleValidator *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDoubleValidator_validate_QString_R_int_R.isValid() ? bindgen_crystal_object(const_cast<QDoubleValidator *>(static_cast<const QDoubleValidator *>(_self_))) : nullptr;
@@ -54983,6 +53943,18 @@ struct BgInherit_QDoubleValidator : public QDoubleValidator {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDoubleValidator::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDoubleValidator::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDoubleValidator::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDoubleValidator *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDoubleValidator_metaObject_(QDoubleValidator * _self_) {
   return _self_->metaObject();
@@ -55106,10 +54078,11 @@ extern "C" void bg_BgInherit_QDoubleValidator_JUMPTABLE_BgJumptable_QDoubleValid
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDoubleValidator_SET_META_BindgenQtMetaObject(BgInherit_QDoubleValidator * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDoubleValidator::staticMetaObject); };
+}
+
 struct BgJumptable_QRegularExpressionValidator {
-  CrystalProc<const QMetaObject *, void *> bg_QRegularExpressionValidator_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QRegularExpressionValidator_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QRegularExpressionValidator_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QRegularExpressionValidator_validate_QString_R_int_R;
   CrystalProc<void, void *, CrystalString *> bg_QValidator_fixup_QString_R;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
@@ -55123,36 +54096,7 @@ struct BgJumptable_QRegularExpressionValidator {
 struct BgInherit_QRegularExpressionValidator : public QRegularExpressionValidator {
   using QRegularExpressionValidator::QRegularExpressionValidator;
   BgJumptable_QRegularExpressionValidator bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QRegularExpressionValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRegularExpressionValidator_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QRegularExpressionValidator *>(static_cast<const QRegularExpressionValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRegularExpressionValidator_metaObject_(_crystal_);
-    } else {
-      return QRegularExpressionValidator::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QRegularExpressionValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRegularExpressionValidator_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QRegularExpressionValidator *>(static_cast<const QRegularExpressionValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRegularExpressionValidator_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QRegularExpressionValidator::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QRegularExpressionValidator *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRegularExpressionValidator_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QRegularExpressionValidator *>(static_cast<const QRegularExpressionValidator *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRegularExpressionValidator_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QRegularExpressionValidator::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QValidator::State validate(QString & input, int & pos) const override {
     const BgInherit_QRegularExpressionValidator *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QRegularExpressionValidator_validate_QString_R_int_R.isValid() ? bindgen_crystal_object(const_cast<QRegularExpressionValidator *>(static_cast<const QRegularExpressionValidator *>(_self_))) : nullptr;
@@ -55250,6 +54194,18 @@ struct BgInherit_QRegularExpressionValidator : public QRegularExpressionValidato
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QRegularExpressionValidator::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QRegularExpressionValidator::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QRegularExpressionValidator::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QRegularExpressionValidator *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QRegularExpressionValidator_metaObject_(QRegularExpressionValidator * _self_) {
   return _self_->metaObject();
@@ -55315,6 +54271,10 @@ extern "C" QValidator::State bg_QRegularExpressionValidator_validate_SUPER_QStri
 
 extern "C" void bg_BgInherit_QRegularExpressionValidator_JUMPTABLE_BgJumptable_QRegularExpressionValidator_R(BgInherit_QRegularExpressionValidator * _self_, const BgJumptable_QRegularExpressionValidator & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QRegularExpressionValidator_SET_META_BindgenQtMetaObject(BgInherit_QRegularExpressionValidator * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QRegularExpressionValidator::staticMetaObject); };
 }
 
 extern "C" QSizePolicy * bg_QSizePolicy__CONSTRUCT_() {
@@ -55430,9 +54390,6 @@ extern "C" const QMetaObject * bg_QSizePolicy_staticMetaObject_STATIC_GETTER_() 
 }
 
 struct BgJumptable_QWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<int, void *> bg_QWidget_devType_;
   CrystalProc<void, void *, bool> bg_QWidget_setVisible_bool;
   CrystalProc<QSize *, void *> bg_QWidget_sizeHint_;
@@ -55483,36 +54440,7 @@ struct BgJumptable_QWidget {
 struct BgInherit_QWidget : public QWidget {
   using QWidget::QWidget;
   BgJumptable_QWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QWidget *>(static_cast<const QWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_metaObject_(_crystal_);
-    } else {
-      return QWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QWidget *>(static_cast<const QWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QWidget *>(static_cast<const QWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   int devType() const override {
     const BgInherit_QWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidget_devType_.isValid() ? bindgen_crystal_object(const_cast<QWidget *>(static_cast<const QWidget *>(_self_))) : nullptr;
@@ -55976,6 +54904,18 @@ struct BgInherit_QWidget : public QWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QWidget_metaObject_(QWidget * _self_) {
   return _self_->metaObject();
@@ -57323,6 +56263,10 @@ extern "C" void bg_BgInherit_QWidget_JUMPTABLE_BgJumptable_QWidget_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QWidget_SET_META_BindgenQtMetaObject(BgInherit_QWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QWidget::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QWidget_CONNECT_windowTitleChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QWidget * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QWidget::*)(const QString &))&QWidget::windowTitleChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & title){ _proc_(bindgen_address(qstring_to_crystal(title))); }, type));
 }
@@ -57500,9 +56444,6 @@ extern "C" bool bg_QWidget_focusNextPrevChild_SUPER_bool(QWidget * _self_, bool 
 }
 
 struct BgJumptable_QAbstractButton {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractButton_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractButton_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractButton_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPaintEvent *> bg_QAbstractButton_paintEvent_QPaintEvent_X;
   CrystalProc<bool, void *, const QPoint *> bg_QAbstractButton_hitButton_const_QPoint_R;
   CrystalProc<void, void *> bg_QAbstractButton_checkStateSet_;
@@ -57556,36 +56497,7 @@ struct BgJumptable_QAbstractButton {
 struct BgInherit_QAbstractButton : public QAbstractButton {
   using QAbstractButton::QAbstractButton;
   BgJumptable_QAbstractButton bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractButton_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractButton *>(static_cast<const QAbstractButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractButton_metaObject_(_crystal_);
-    } else {
-      return QAbstractButton::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractButton_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractButton *>(static_cast<const QAbstractButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractButton_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractButton::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractButton_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractButton *>(static_cast<const QAbstractButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractButton_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractButton::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void paintEvent(QPaintEvent * event) override {
     BgInherit_QAbstractButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractButton_paintEvent_QPaintEvent_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractButton *>(static_cast<const QAbstractButton *>(_self_))) : nullptr;
@@ -58081,6 +56993,18 @@ struct BgInherit_QAbstractButton : public QAbstractButton {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractButton::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractButton::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractButton::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractButton *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractButton_metaObject_(QAbstractButton * _self_) {
   return _self_->metaObject();
@@ -58305,6 +57229,10 @@ extern "C" void bg_BgInherit_QAbstractButton_JUMPTABLE_BgJumptable_QAbstractButt
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractButton_SET_META_BindgenQtMetaObject(BgInherit_QAbstractButton * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractButton::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractButton_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void_(QAbstractButton * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractButton::*)())&QAbstractButton::pressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -58374,9 +57302,6 @@ extern "C" void bg_QAbstractButton_timerEvent_SUPER_QTimerEvent_X(QAbstractButto
 }
 
 struct BgJumptable_QAbstractSpinBox {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractSpinBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractSpinBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractSpinBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QAbstractSpinBox_sizeHint_;
   CrystalProc<QSize *, void *> bg_QAbstractSpinBox_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QAbstractSpinBox_event_QEvent_X;
@@ -58432,36 +57357,7 @@ struct BgJumptable_QAbstractSpinBox {
 struct BgInherit_QAbstractSpinBox : public QAbstractSpinBox {
   using QAbstractSpinBox::QAbstractSpinBox;
   BgJumptable_QAbstractSpinBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSpinBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractSpinBox *>(static_cast<const QAbstractSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSpinBox_metaObject_(_crystal_);
-    } else {
-      return QAbstractSpinBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSpinBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractSpinBox *>(static_cast<const QAbstractSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSpinBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractSpinBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSpinBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractSpinBox *>(static_cast<const QAbstractSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSpinBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractSpinBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QAbstractSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractSpinBox_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QAbstractSpinBox *>(static_cast<const QAbstractSpinBox *>(_self_))) : nullptr;
@@ -58982,6 +57878,18 @@ struct BgInherit_QAbstractSpinBox : public QAbstractSpinBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractSpinBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractSpinBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractSpinBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractSpinBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractSpinBox_metaObject_(QAbstractSpinBox * _self_) {
   return _self_->metaObject();
@@ -59255,6 +58163,10 @@ extern "C" void bg_BgInherit_QAbstractSpinBox_JUMPTABLE_BgJumptable_QAbstractSpi
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractSpinBox_SET_META_BindgenQtMetaObject(BgInherit_QAbstractSpinBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractSpinBox::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractSpinBox_CONNECT_editingFinished_Qt__ConnectionType_CrystalProc_void_(QAbstractSpinBox * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSpinBox::*)())&QAbstractSpinBox::editingFinished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -59365,9 +58277,6 @@ extern "C" QAbstractSpinBox::StepEnabled bg_QAbstractSpinBox_stepEnabled_SUPER_(
 }
 
 struct BgJumptable_QAbstractSlider {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractSlider_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractSlider_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractSlider_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QAbstractSlider_event_QEvent_X;
   CrystalProc<void, void *, QAbstractSlider::SliderChange> bg_QAbstractSlider_sliderChange_QAbstractSlider__SliderChange;
   CrystalProc<void, void *, QKeyEvent *> bg_QAbstractSlider_keyPressEvent_QKeyEvent_X;
@@ -59419,36 +58328,7 @@ struct BgJumptable_QAbstractSlider {
 struct BgInherit_QAbstractSlider : public QAbstractSlider {
   using QAbstractSlider::QAbstractSlider;
   BgJumptable_QAbstractSlider bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSlider_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractSlider *>(static_cast<const QAbstractSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSlider_metaObject_(_crystal_);
-    } else {
-      return QAbstractSlider::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSlider_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractSlider *>(static_cast<const QAbstractSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSlider_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractSlider::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractSlider_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractSlider *>(static_cast<const QAbstractSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractSlider_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractSlider::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QAbstractSlider *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractSlider_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractSlider *>(static_cast<const QAbstractSlider *>(_self_))) : nullptr;
@@ -59922,6 +58802,18 @@ struct BgInherit_QAbstractSlider : public QAbstractSlider {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractSlider::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractSlider::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractSlider::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractSlider *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractSlider_metaObject_(QAbstractSlider * _self_) {
   return _self_->metaObject();
@@ -60120,6 +59012,10 @@ extern "C" void bg_BgInherit_QAbstractSlider_JUMPTABLE_BgJumptable_QAbstractSlid
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractSlider_SET_META_BindgenQtMetaObject(BgInherit_QAbstractSlider * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractSlider::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractSlider_CONNECT_valueChanged_Qt__ConnectionType_CrystalProc_void__int_(QAbstractSlider * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractSlider::*)(int))&QAbstractSlider::valueChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int value){ _proc_(value); }, type));
 }
@@ -60169,9 +59065,6 @@ extern "C" void bg_QAbstractSlider_changeEvent_SUPER_QEvent_X(QAbstractSlider * 
 }
 
 struct BgJumptable_QSlider {
-  CrystalProc<const QMetaObject *, void *> bg_QSlider_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSlider_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSlider_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QSlider_sizeHint_;
   CrystalProc<QSize *, void *> bg_QSlider_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QSlider_event_QEvent_X;
@@ -60223,36 +59116,7 @@ struct BgJumptable_QSlider {
 struct BgInherit_QSlider : public QSlider {
   using QSlider::QSlider;
   BgJumptable_QSlider bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSlider_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSlider *>(static_cast<const QSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSlider_metaObject_(_crystal_);
-    } else {
-      return QSlider::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSlider_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSlider *>(static_cast<const QSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSlider_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSlider::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSlider *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSlider_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSlider *>(static_cast<const QSlider *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSlider_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSlider::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QSlider *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSlider_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QSlider *>(static_cast<const QSlider *>(_self_))) : nullptr;
@@ -60726,6 +59590,18 @@ struct BgInherit_QSlider : public QSlider {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSlider::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSlider::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSlider::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSlider *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSlider_metaObject_(QSlider * _self_) {
   return _self_->metaObject();
@@ -60839,10 +59715,11 @@ extern "C" void bg_BgInherit_QSlider_JUMPTABLE_BgJumptable_QSlider_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSlider_SET_META_BindgenQtMetaObject(BgInherit_QSlider * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSlider::staticMetaObject); };
+}
+
 struct BgJumptable_QStyle {
-  CrystalProc<const QMetaObject *, void *> bg_QStyle_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStyle_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStyle_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QWidget *> bg_QStyle_polish_QWidget_X;
   CrystalProc<void, void *, QWidget *> bg_QStyle_unpolish_QWidget_X;
   CrystalProc<void, void *, QApplication *> bg_QStyle_polish_QApplication_X;
@@ -60877,36 +59754,7 @@ struct BgJumptable_QStyle {
 struct BgInherit_QStyle : public QStyle {
   using QStyle::QStyle;
   BgJumptable_QStyle bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyle_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStyle *>(static_cast<const QStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyle_metaObject_(_crystal_);
-    } else {
-      return QStyle::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyle_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStyle *>(static_cast<const QStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyle_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStyle::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyle_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStyle *>(static_cast<const QStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyle_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStyle::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void polish(QWidget * widget) override {
     BgInherit_QStyle *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStyle_polish_QWidget_X.isValid() ? bindgen_crystal_object(const_cast<QStyle *>(static_cast<const QStyle *>(_self_))) : nullptr;
@@ -61233,6 +60081,18 @@ struct BgInherit_QStyle : public QStyle {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStyle::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStyle::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStyle::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStyle *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStyle_metaObject_(QStyle * _self_) {
   return _self_->metaObject();
@@ -61402,6 +60262,10 @@ extern "C" void bg_BgInherit_QStyle_JUMPTABLE_BgJumptable_QStyle_R(BgInherit_QSt
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStyle_SET_META_BindgenQtMetaObject(BgInherit_QStyle * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStyle::staticMetaObject); };
+}
+
 extern "C" void bg_QStyle_polish_SUPER_QWidget_X(QStyle * _self_, QWidget * widget) {
   _self_->QStyle::polish(widget);
 }
@@ -61443,9 +60307,6 @@ extern "C" QPalette * bg_QStyle_standardPalette_SUPER_(QStyle * _self_) {
 }
 
 struct BgJumptable_QTabBar {
-  CrystalProc<const QMetaObject *, void *> bg_QTabBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTabBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTabBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QTabBar_sizeHint_;
   CrystalProc<QSize *, void *> bg_QTabBar_minimumSizeHint_;
   CrystalProc<QSize *, void *, int> bg_QTabBar_tabSizeHint_int;
@@ -61501,36 +60362,7 @@ struct BgJumptable_QTabBar {
 struct BgInherit_QTabBar : public QTabBar {
   using QTabBar::QTabBar;
   BgJumptable_QTabBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTabBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTabBar *>(static_cast<const QTabBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabBar_metaObject_(_crystal_);
-    } else {
-      return QTabBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTabBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTabBar *>(static_cast<const QTabBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTabBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTabBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTabBar *>(static_cast<const QTabBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTabBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QTabBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTabBar_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QTabBar *>(static_cast<const QTabBar *>(_self_))) : nullptr;
@@ -62044,6 +60876,18 @@ struct BgInherit_QTabBar : public QTabBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTabBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTabBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTabBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTabBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTabBar_metaObject_(QTabBar * _self_) {
   return _self_->metaObject();
@@ -62493,10 +61337,11 @@ extern "C" void bg_BgInherit_QTabBar_JUMPTABLE_BgJumptable_QTabBar_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTabBar_SET_META_BindgenQtMetaObject(BgInherit_QTabBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTabBar::staticMetaObject); };
+}
+
 struct BgJumptable_QTabWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QTabWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTabWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTabWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QTabWidget_sizeHint_;
   CrystalProc<QSize *, void *> bg_QTabWidget_minimumSizeHint_;
   CrystalProc<int, void *, int> bg_QTabWidget_heightForWidth_int;
@@ -62549,36 +61394,7 @@ struct BgJumptable_QTabWidget {
 struct BgInherit_QTabWidget : public QTabWidget {
   using QTabWidget::QTabWidget;
   BgJumptable_QTabWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTabWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTabWidget *>(static_cast<const QTabWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabWidget_metaObject_(_crystal_);
-    } else {
-      return QTabWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTabWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTabWidget *>(static_cast<const QTabWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTabWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTabWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTabWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTabWidget *>(static_cast<const QTabWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTabWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTabWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QTabWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTabWidget_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QTabWidget *>(static_cast<const QTabWidget *>(_self_))) : nullptr;
@@ -63062,6 +61878,18 @@ struct BgInherit_QTabWidget : public QTabWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTabWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTabWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTabWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTabWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTabWidget_metaObject_(QTabWidget * _self_) {
   return _self_->metaObject();
@@ -63415,10 +62243,11 @@ extern "C" void bg_BgInherit_QTabWidget_JUMPTABLE_BgJumptable_QTabWidget_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTabWidget_SET_META_BindgenQtMetaObject(BgInherit_QTabWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTabWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QRubberBand {
-  CrystalProc<const QMetaObject *, void *> bg_QRubberBand_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QRubberBand_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QRubberBand_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QRubberBand_event_QEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QRubberBand_paintEvent_QPaintEvent_X;
   CrystalProc<void, void *, QEvent *> bg_QRubberBand_changeEvent_QEvent_X;
@@ -63469,36 +62298,7 @@ struct BgJumptable_QRubberBand {
 struct BgInherit_QRubberBand : public QRubberBand {
   using QRubberBand::QRubberBand;
   BgJumptable_QRubberBand bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QRubberBand *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRubberBand_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QRubberBand *>(static_cast<const QRubberBand *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRubberBand_metaObject_(_crystal_);
-    } else {
-      return QRubberBand::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QRubberBand *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRubberBand_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QRubberBand *>(static_cast<const QRubberBand *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRubberBand_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QRubberBand::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QRubberBand *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRubberBand_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QRubberBand *>(static_cast<const QRubberBand *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRubberBand_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QRubberBand::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QRubberBand *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QRubberBand_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QRubberBand *>(static_cast<const QRubberBand *>(_self_))) : nullptr;
@@ -63962,6 +62762,18 @@ struct BgInherit_QRubberBand : public QRubberBand {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QRubberBand::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QRubberBand::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QRubberBand::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QRubberBand *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QRubberBand_metaObject_(QRubberBand * _self_) {
   return _self_->metaObject();
@@ -64075,10 +62887,11 @@ extern "C" void bg_BgInherit_QRubberBand_JUMPTABLE_BgJumptable_QRubberBand_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QRubberBand_SET_META_BindgenQtMetaObject(BgInherit_QRubberBand * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QRubberBand::staticMetaObject); };
+}
+
 struct BgJumptable_QFrame {
-  CrystalProc<const QMetaObject *, void *> bg_QFrame_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFrame_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFrame_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QFrame_sizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QFrame_event_QEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QFrame_paintEvent_QPaintEvent_X;
@@ -64129,36 +62942,7 @@ struct BgJumptable_QFrame {
 struct BgInherit_QFrame : public QFrame {
   using QFrame::QFrame;
   BgJumptable_QFrame bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFrame_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFrame *>(static_cast<const QFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFrame_metaObject_(_crystal_);
-    } else {
-      return QFrame::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFrame_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFrame *>(static_cast<const QFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFrame_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFrame::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFrame_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFrame *>(static_cast<const QFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFrame_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFrame::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QFrame *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFrame_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QFrame *>(static_cast<const QFrame *>(_self_))) : nullptr;
@@ -64622,6 +63406,18 @@ struct BgInherit_QFrame : public QFrame {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFrame::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFrame::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFrame::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFrame *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFrame_metaObject_(QFrame * _self_) {
   return _self_->metaObject();
@@ -64769,6 +63565,10 @@ extern "C" void *bg_QFrame_DISCOVER_int_void(QFrame * _self_, int * bg_class, vo
 
 extern "C" void bg_BgInherit_QFrame_JUMPTABLE_BgJumptable_QFrame_R(BgInherit_QFrame * _self_, const BgJumptable_QFrame & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QFrame_SET_META_BindgenQtMetaObject(BgInherit_QFrame * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFrame::staticMetaObject); };
 }
 
 extern "C" QSize bg_QFrame_sizeHint_SUPER_(QFrame * _self_) {
@@ -66436,9 +65236,6 @@ extern "C" void bg_QStyleHintReturnVariant_variant_SETTER_QVariant(QStyleHintRet
 }
 
 struct BgJumptable_QAbstractItemDelegate {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractItemDelegate_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractItemDelegate_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *, const QStyleOptionViewItem *, const QModelIndex *> bg_QAbstractItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QSize *, void *, const QStyleOptionViewItem *, const QModelIndex *> bg_QAbstractItemDelegate_sizeHint_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QWidget *, void *, QWidget *, const QStyleOptionViewItem *, const QModelIndex *> bg_QAbstractItemDelegate_createEditor_QWidget_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
@@ -66460,36 +65257,7 @@ struct BgJumptable_QAbstractItemDelegate {
 struct BgInherit_QAbstractItemDelegate : public QAbstractItemDelegate {
   using QAbstractItemDelegate::QAbstractItemDelegate;
   BgJumptable_QAbstractItemDelegate bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemDelegate_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemDelegate *>(static_cast<const QAbstractItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemDelegate_metaObject_(_crystal_);
-    } else {
-      return QAbstractItemDelegate::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemDelegate_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemDelegate *>(static_cast<const QAbstractItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemDelegate_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractItemDelegate::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemDelegate *>(static_cast<const QAbstractItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractItemDelegate::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const override {
     const BgInherit_QAbstractItemDelegate *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemDelegate *>(static_cast<const QAbstractItemDelegate *>(_self_))) : nullptr;
@@ -66664,6 +65432,18 @@ struct BgInherit_QAbstractItemDelegate : public QAbstractItemDelegate {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractItemDelegate::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractItemDelegate::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractItemDelegate::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractItemDelegate *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractItemDelegate_metaObject_(QAbstractItemDelegate * _self_) {
   return _self_->metaObject();
@@ -66757,6 +65537,10 @@ extern "C" void bg_BgInherit_QAbstractItemDelegate_JUMPTABLE_BgJumptable_QAbstra
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractItemDelegate_SET_META_BindgenQtMetaObject(BgInherit_QAbstractItemDelegate * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractItemDelegate::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractItemDelegate_CONNECT_commitData_Qt__ConnectionType_CrystalProc_void__QWidget_X_(QAbstractItemDelegate * _self_, Qt::ConnectionType type, CrystalProc<void, QWidget *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemDelegate::*)(QWidget *))&QAbstractItemDelegate::commitData, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](QWidget * editor){ _proc_(editor); }, type));
 }
@@ -66802,9 +65586,6 @@ extern "C" Container_QVector_int_ * bg_QAbstractItemDelegate_paintingRoles_SUPER
 }
 
 struct BgJumptable_QAbstractScrollArea {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractScrollArea_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractScrollArea_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractScrollArea_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QAbstractScrollArea_minimumSizeHint_;
   CrystalProc<QSize *, void *> bg_QAbstractScrollArea_sizeHint_;
   CrystalProc<void, void *, QWidget *> bg_QAbstractScrollArea_setupViewport_QWidget_X;
@@ -66859,36 +65640,7 @@ struct BgJumptable_QAbstractScrollArea {
 struct BgInherit_QAbstractScrollArea : public QAbstractScrollArea {
   using QAbstractScrollArea::QAbstractScrollArea;
   BgJumptable_QAbstractScrollArea bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractScrollArea_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractScrollArea *>(static_cast<const QAbstractScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractScrollArea_metaObject_(_crystal_);
-    } else {
-      return QAbstractScrollArea::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractScrollArea_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractScrollArea *>(static_cast<const QAbstractScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractScrollArea_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractScrollArea::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractScrollArea_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractScrollArea *>(static_cast<const QAbstractScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractScrollArea_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractScrollArea::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize minimumSizeHint() const override {
     const BgInherit_QAbstractScrollArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractScrollArea_minimumSizeHint_.isValid() ? bindgen_crystal_object(const_cast<QAbstractScrollArea *>(static_cast<const QAbstractScrollArea *>(_self_))) : nullptr;
@@ -67392,6 +66144,18 @@ struct BgInherit_QAbstractScrollArea : public QAbstractScrollArea {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractScrollArea::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractScrollArea::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractScrollArea::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractScrollArea *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractScrollArea_metaObject_(QAbstractScrollArea * _self_) {
   return _self_->metaObject();
@@ -67615,6 +66379,10 @@ extern "C" void bg_BgInherit_QAbstractScrollArea_JUMPTABLE_BgJumptable_QAbstract
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractScrollArea_SET_META_BindgenQtMetaObject(BgInherit_QAbstractScrollArea * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractScrollArea::staticMetaObject); };
+}
+
 extern "C" QSize bg_QAbstractScrollArea_minimumSizeHint_SUPER_(QAbstractScrollArea * _self_) {
   return _self_->QAbstractScrollArea::minimumSizeHint();
 }
@@ -67700,9 +66468,6 @@ extern "C" QSize bg_QAbstractScrollArea_viewportSizeHint_SUPER_(QAbstractScrollA
 }
 
 struct BgJumptable_QAbstractItemView {
-  CrystalProc<const QMetaObject *, void *> bg_QAbstractItemView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAbstractItemView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAbstractItemView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QAbstractItemView_setModel_QAbstractItemModel_X;
   CrystalProc<void, void *, QItemSelectionModel *> bg_QAbstractItemView_setSelectionModel_QItemSelectionModel_X;
   CrystalProc<void, void *, const CrystalString *> bg_QAbstractItemView_keyboardSearch_const_QString_R;
@@ -67796,36 +66561,7 @@ struct BgJumptable_QAbstractItemView {
 struct BgInherit_QAbstractItemView : public QAbstractItemView {
   using QAbstractItemView::QAbstractItemView;
   BgJumptable_QAbstractItemView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAbstractItemView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemView *>(static_cast<const QAbstractItemView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemView_metaObject_(_crystal_);
-    } else {
-      return QAbstractItemView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAbstractItemView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemView *>(static_cast<const QAbstractItemView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAbstractItemView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAbstractItemView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAbstractItemView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemView *>(static_cast<const QAbstractItemView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAbstractItemView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAbstractItemView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setModel(QAbstractItemModel * model) override {
     BgInherit_QAbstractItemView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAbstractItemView_setModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QAbstractItemView *>(static_cast<const QAbstractItemView *>(_self_))) : nullptr;
@@ -68727,6 +67463,18 @@ struct BgInherit_QAbstractItemView : public QAbstractItemView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAbstractItemView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAbstractItemView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAbstractItemView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAbstractItemView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAbstractItemView_metaObject_(QAbstractItemView * _self_) {
   return _self_->metaObject();
@@ -69331,6 +68079,10 @@ extern "C" void bg_BgInherit_QAbstractItemView_JUMPTABLE_BgJumptable_QAbstractIt
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAbstractItemView_SET_META_BindgenQtMetaObject(BgInherit_QAbstractItemView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAbstractItemView::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAbstractItemView_CONNECT_pressed_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QAbstractItemView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAbstractItemView::*)(const QModelIndex &))&QAbstractItemView::pressed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QModelIndex & index){ _proc_(&(index)); }, type));
 }
@@ -69556,9 +68308,6 @@ extern "C" QSize bg_QAbstractItemView_viewportSizeHint_SUPER_(QAbstractItemView 
 }
 
 struct BgJumptable_QAction {
-  CrystalProc<const QMetaObject *, void *> bg_QAction_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QAction_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QAction_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QAction_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -69570,36 +68319,7 @@ struct BgJumptable_QAction {
 struct BgInherit_QAction : public QAction {
   using QAction::QAction;
   BgJumptable_QAction bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAction_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QAction *>(static_cast<const QAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAction_metaObject_(_crystal_);
-    } else {
-      return QAction::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAction_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QAction *>(static_cast<const QAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAction_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QAction::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QAction_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QAction *>(static_cast<const QAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QAction_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QAction::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QAction *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QAction_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QAction *>(static_cast<const QAction *>(_self_))) : nullptr;
@@ -69670,6 +68390,18 @@ struct BgInherit_QAction : public QAction {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QAction::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QAction::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QAction::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QAction *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QAction_metaObject_(QAction * _self_) {
   return _self_->metaObject();
@@ -69966,6 +68698,10 @@ extern "C" void bg_BgInherit_QAction_JUMPTABLE_BgJumptable_QAction_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QAction_SET_META_BindgenQtMetaObject(BgInherit_QAction * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QAction::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QAction_CONNECT_changed_Qt__ConnectionType_CrystalProc_void_(QAction * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QAction::*)())&QAction::changed, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -69987,9 +68723,6 @@ extern "C" bool bg_QAction_event_SUPER_QEvent_X(QAction * _self_, QEvent * event
 }
 
 struct BgJumptable_QActionGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QActionGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QActionGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QActionGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -70001,36 +68734,7 @@ struct BgJumptable_QActionGroup {
 struct BgInherit_QActionGroup : public QActionGroup {
   using QActionGroup::QActionGroup;
   BgJumptable_QActionGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QActionGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QActionGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QActionGroup *>(static_cast<const QActionGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QActionGroup_metaObject_(_crystal_);
-    } else {
-      return QActionGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QActionGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QActionGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QActionGroup *>(static_cast<const QActionGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QActionGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QActionGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QActionGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QActionGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QActionGroup *>(static_cast<const QActionGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QActionGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QActionGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QActionGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QActionGroup *>(static_cast<const QActionGroup *>(_self_))) : nullptr;
@@ -70101,6 +68805,18 @@ struct BgInherit_QActionGroup : public QActionGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QActionGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QActionGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QActionGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QActionGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QActionGroup_metaObject_(QActionGroup * _self_) {
   return _self_->metaObject();
@@ -70210,10 +68926,11 @@ extern "C" void bg_BgInherit_QActionGroup_JUMPTABLE_BgJumptable_QActionGroup_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QActionGroup_SET_META_BindgenQtMetaObject(BgInherit_QActionGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QActionGroup::staticMetaObject); };
+}
+
 struct BgJumptable_QApplication {
-  CrystalProc<const QMetaObject *, void *> bg_QApplication_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QApplication_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QApplication_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QApplication_notify_QObject_X_QEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QApplication_event_QEvent_X;
   CrystalProc<bool, void *, QEvent *, QObject *, QPostEventList *> bg_QApplication_compressEvent_QEvent_X_QObject_X_QPostEventList_X;
@@ -70227,36 +68944,7 @@ struct BgJumptable_QApplication {
 struct BgInherit_QApplication : public QApplication {
   using QApplication::QApplication;
   BgJumptable_QApplication bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QApplication_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QApplication *>(static_cast<const QApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QApplication_metaObject_(_crystal_);
-    } else {
-      return QApplication::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QApplication_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QApplication *>(static_cast<const QApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QApplication_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QApplication::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QApplication *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QApplication_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QApplication *>(static_cast<const QApplication *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QApplication_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QApplication::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool notify(QObject * unnamed_arg_0, QEvent * unnamed_arg_1) override {
     BgInherit_QApplication *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QApplication_notify_QObject_X_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QApplication *>(static_cast<const QApplication *>(_self_))) : nullptr;
@@ -70347,6 +69035,18 @@ struct BgInherit_QApplication : public QApplication {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QApplication::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QApplication::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QApplication::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QApplication *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QApplication_metaObject_(QApplication * _self_) {
   return _self_->metaObject();
@@ -70614,6 +69314,10 @@ extern "C" bool bg_QApplication_compressEvent_SUPER_QEvent_X_QObject_X_QPostEven
 
 extern "C" void bg_BgInherit_QApplication_JUMPTABLE_BgJumptable_QApplication_R(BgInherit_QApplication * _self_, const BgJumptable_QApplication & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QApplication_SET_META_BindgenQtMetaObject(BgInherit_QApplication * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QApplication::staticMetaObject); };
 }
 
 struct BgJumptable_QLayoutItem {
@@ -71728,9 +70432,6 @@ extern "C" void bg_BgInherit_QWidgetItemV2_JUMPTABLE_BgJumptable_QWidgetItemV2_R
 }
 
 struct BgJumptable_QLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QLayout_invalidate_;
   CrystalProc<QRect *, void *> bg_QLayout_geometry_;
   CrystalProc<void, void *, QLayoutItem *> bg_QLayout_addItem_QLayoutItem_X;
@@ -71762,36 +70463,7 @@ struct BgJumptable_QLayout {
 struct BgInherit_QLayout : public QLayout {
   using QLayout::QLayout;
   BgJumptable_QLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QLayout *>(static_cast<const QLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLayout_metaObject_(_crystal_);
-    } else {
-      return QLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QLayout *>(static_cast<const QLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QLayout *>(static_cast<const QLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void invalidate() override {
     BgInherit_QLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QLayout_invalidate_.isValid() ? bindgen_crystal_object(const_cast<QLayout *>(static_cast<const QLayout *>(_self_))) : nullptr;
@@ -72072,6 +70744,18 @@ struct BgInherit_QLayout : public QLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QLayout_metaObject_(QLayout * _self_) {
   return _self_->metaObject();
@@ -72357,6 +71041,10 @@ extern "C" void bg_BgInherit_QLayout_JUMPTABLE_BgJumptable_QLayout_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QLayout_SET_META_BindgenQtMetaObject(BgInherit_QLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QLayout::staticMetaObject); };
+}
+
 extern "C" void bg_QLayout_invalidate_SUPER_(QLayout * _self_) {
   _self_->QLayout::invalidate();
 }
@@ -72422,9 +71110,6 @@ extern "C" QSpacerItem * bg_QLayout_spacerItem_SUPER_(QLayout * _self_) {
 }
 
 struct BgJumptable_QGridLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QGridLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGridLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGridLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QGridLayout_sizeHint_;
   CrystalProc<QSize *, void *> bg_QGridLayout_minimumSize_;
   CrystalProc<QSize *, void *> bg_QGridLayout_maximumSize_;
@@ -72454,36 +71139,7 @@ struct BgJumptable_QGridLayout {
 struct BgInherit_QGridLayout : public QGridLayout {
   using QGridLayout::QGridLayout;
   BgJumptable_QGridLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGridLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGridLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGridLayout *>(static_cast<const QGridLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGridLayout_metaObject_(_crystal_);
-    } else {
-      return QGridLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGridLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGridLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGridLayout *>(static_cast<const QGridLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGridLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGridLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGridLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGridLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGridLayout *>(static_cast<const QGridLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGridLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGridLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QGridLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGridLayout_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QGridLayout *>(static_cast<const QGridLayout *>(_self_))) : nullptr;
@@ -72734,6 +71390,18 @@ struct BgInherit_QGridLayout : public QGridLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGridLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGridLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGridLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGridLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGridLayout_metaObject_(QGridLayout * _self_) {
   return _self_->metaObject();
@@ -73007,10 +71675,11 @@ extern "C" void bg_BgInherit_QGridLayout_JUMPTABLE_BgJumptable_QGridLayout_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGridLayout_SET_META_BindgenQtMetaObject(BgInherit_QGridLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGridLayout::staticMetaObject); };
+}
+
 struct BgJumptable_QBoxLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QBoxLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QBoxLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QLayoutItem *> bg_QBoxLayout_addItem_QLayoutItem_X;
   CrystalProc<QSize *, void *> bg_QBoxLayout_sizeHint_;
   CrystalProc<QSize *, void *> bg_QBoxLayout_minimumSize_;
@@ -73040,36 +71709,7 @@ struct BgJumptable_QBoxLayout {
 struct BgInherit_QBoxLayout : public QBoxLayout {
   using QBoxLayout::QBoxLayout;
   BgJumptable_QBoxLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBoxLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QBoxLayout *>(static_cast<const QBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBoxLayout_metaObject_(_crystal_);
-    } else {
-      return QBoxLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBoxLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QBoxLayout *>(static_cast<const QBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBoxLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QBoxLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QBoxLayout *>(static_cast<const QBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QBoxLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void addItem(QLayoutItem * item) override {
     BgInherit_QBoxLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QBoxLayout_addItem_QLayoutItem_X.isValid() ? bindgen_crystal_object(const_cast<QBoxLayout *>(static_cast<const QBoxLayout *>(_self_))) : nullptr;
@@ -73320,6 +71960,18 @@ struct BgInherit_QBoxLayout : public QBoxLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QBoxLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QBoxLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QBoxLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QBoxLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QBoxLayout_metaObject_(QBoxLayout * _self_) {
   return _self_->metaObject();
@@ -73501,6 +72153,10 @@ extern "C" void bg_BgInherit_QBoxLayout_JUMPTABLE_BgJumptable_QBoxLayout_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QBoxLayout_SET_META_BindgenQtMetaObject(BgInherit_QBoxLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QBoxLayout::staticMetaObject); };
+}
+
 extern "C" void bg_QBoxLayout_addItem_SUPER_QLayoutItem_X(QBoxLayout * _self_, QLayoutItem * item) {
   _self_->QBoxLayout::addItem(item);
 }
@@ -73554,9 +72210,6 @@ extern "C" void bg_QBoxLayout_setGeometry_SUPER_const_QRect_R(QBoxLayout * _self
 }
 
 struct BgJumptable_QHBoxLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QHBoxLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QHBoxLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QHBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QLayoutItem *> bg_QBoxLayout_addItem_QLayoutItem_X;
   CrystalProc<QSize *, void *> bg_QBoxLayout_sizeHint_;
   CrystalProc<QSize *, void *> bg_QBoxLayout_minimumSize_;
@@ -73586,36 +72239,7 @@ struct BgJumptable_QHBoxLayout {
 struct BgInherit_QHBoxLayout : public QHBoxLayout {
   using QHBoxLayout::QHBoxLayout;
   BgJumptable_QHBoxLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QHBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHBoxLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QHBoxLayout *>(static_cast<const QHBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHBoxLayout_metaObject_(_crystal_);
-    } else {
-      return QHBoxLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QHBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHBoxLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QHBoxLayout *>(static_cast<const QHBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHBoxLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QHBoxLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QHBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QHBoxLayout *>(static_cast<const QHBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QHBoxLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void addItem(QLayoutItem * item) override {
     BgInherit_QHBoxLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QBoxLayout_addItem_QLayoutItem_X.isValid() ? bindgen_crystal_object(const_cast<QHBoxLayout *>(static_cast<const QHBoxLayout *>(_self_))) : nullptr;
@@ -73866,6 +72490,18 @@ struct BgInherit_QHBoxLayout : public QHBoxLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QHBoxLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QHBoxLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QHBoxLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QHBoxLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QHBoxLayout_metaObject_(QHBoxLayout * _self_) {
   return _self_->metaObject();
@@ -73903,10 +72539,11 @@ extern "C" void bg_BgInherit_QHBoxLayout_JUMPTABLE_BgJumptable_QHBoxLayout_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QHBoxLayout_SET_META_BindgenQtMetaObject(BgInherit_QHBoxLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QHBoxLayout::staticMetaObject); };
+}
+
 struct BgJumptable_QVBoxLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QVBoxLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QVBoxLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QVBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QLayoutItem *> bg_QBoxLayout_addItem_QLayoutItem_X;
   CrystalProc<QSize *, void *> bg_QBoxLayout_sizeHint_;
   CrystalProc<QSize *, void *> bg_QBoxLayout_minimumSize_;
@@ -73936,36 +72573,7 @@ struct BgJumptable_QVBoxLayout {
 struct BgInherit_QVBoxLayout : public QVBoxLayout {
   using QVBoxLayout::QVBoxLayout;
   BgJumptable_QVBoxLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QVBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVBoxLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QVBoxLayout *>(static_cast<const QVBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVBoxLayout_metaObject_(_crystal_);
-    } else {
-      return QVBoxLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QVBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVBoxLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QVBoxLayout *>(static_cast<const QVBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVBoxLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QVBoxLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QVBoxLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QVBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QVBoxLayout *>(static_cast<const QVBoxLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QVBoxLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QVBoxLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void addItem(QLayoutItem * item) override {
     BgInherit_QVBoxLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QBoxLayout_addItem_QLayoutItem_X.isValid() ? bindgen_crystal_object(const_cast<QVBoxLayout *>(static_cast<const QVBoxLayout *>(_self_))) : nullptr;
@@ -74216,6 +72824,18 @@ struct BgInherit_QVBoxLayout : public QVBoxLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QVBoxLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QVBoxLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QVBoxLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QVBoxLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QVBoxLayout_metaObject_(QVBoxLayout * _self_) {
   return _self_->metaObject();
@@ -74253,10 +72873,11 @@ extern "C" void bg_BgInherit_QVBoxLayout_JUMPTABLE_BgJumptable_QVBoxLayout_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QVBoxLayout_SET_META_BindgenQtMetaObject(BgInherit_QVBoxLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QVBoxLayout::staticMetaObject); };
+}
+
 struct BgJumptable_QButtonGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QButtonGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QButtonGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QButtonGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -74268,36 +72889,7 @@ struct BgJumptable_QButtonGroup {
 struct BgInherit_QButtonGroup : public QButtonGroup {
   using QButtonGroup::QButtonGroup;
   BgJumptable_QButtonGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QButtonGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QButtonGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QButtonGroup *>(static_cast<const QButtonGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QButtonGroup_metaObject_(_crystal_);
-    } else {
-      return QButtonGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QButtonGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QButtonGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QButtonGroup *>(static_cast<const QButtonGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QButtonGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QButtonGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QButtonGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QButtonGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QButtonGroup *>(static_cast<const QButtonGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QButtonGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QButtonGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QButtonGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QButtonGroup *>(static_cast<const QButtonGroup *>(_self_))) : nullptr;
@@ -74368,6 +72960,18 @@ struct BgInherit_QButtonGroup : public QButtonGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QButtonGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QButtonGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QButtonGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QButtonGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QButtonGroup_metaObject_(QButtonGroup * _self_) {
   return _self_->metaObject();
@@ -74505,10 +73109,11 @@ extern "C" void bg_BgInherit_QButtonGroup_JUMPTABLE_BgJumptable_QButtonGroup_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QButtonGroup_SET_META_BindgenQtMetaObject(BgInherit_QButtonGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QButtonGroup::staticMetaObject); };
+}
+
 struct BgJumptable_QCalendarWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QCalendarWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCalendarWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCalendarWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QCalendarWidget_sizeHint_;
   CrystalProc<QSize *, void *> bg_QCalendarWidget_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QCalendarWidget_event_QEvent_X;
@@ -74560,36 +73165,7 @@ struct BgJumptable_QCalendarWidget {
 struct BgInherit_QCalendarWidget : public QCalendarWidget {
   using QCalendarWidget::QCalendarWidget;
   BgJumptable_QCalendarWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCalendarWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCalendarWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCalendarWidget *>(static_cast<const QCalendarWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCalendarWidget_metaObject_(_crystal_);
-    } else {
-      return QCalendarWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCalendarWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCalendarWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCalendarWidget *>(static_cast<const QCalendarWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCalendarWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCalendarWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCalendarWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCalendarWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCalendarWidget *>(static_cast<const QCalendarWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCalendarWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCalendarWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QCalendarWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCalendarWidget_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QCalendarWidget *>(static_cast<const QCalendarWidget *>(_self_))) : nullptr;
@@ -75063,6 +73639,18 @@ struct BgInherit_QCalendarWidget : public QCalendarWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCalendarWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCalendarWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCalendarWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCalendarWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCalendarWidget_metaObject_(QCalendarWidget * _self_) {
   return _self_->metaObject();
@@ -75364,10 +73952,11 @@ extern "C" void bg_BgInherit_QCalendarWidget_JUMPTABLE_BgJumptable_QCalendarWidg
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCalendarWidget_SET_META_BindgenQtMetaObject(BgInherit_QCalendarWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCalendarWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QCheckBox {
-  CrystalProc<const QMetaObject *, void *> bg_QCheckBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCheckBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCheckBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QCheckBox_sizeHint_;
   CrystalProc<QSize *, void *> bg_QCheckBox_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QCheckBox_event_QEvent_X;
@@ -75421,36 +74010,7 @@ struct BgJumptable_QCheckBox {
 struct BgInherit_QCheckBox : public QCheckBox {
   using QCheckBox::QCheckBox;
   BgJumptable_QCheckBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCheckBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCheckBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCheckBox *>(static_cast<const QCheckBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCheckBox_metaObject_(_crystal_);
-    } else {
-      return QCheckBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCheckBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCheckBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCheckBox *>(static_cast<const QCheckBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCheckBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCheckBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCheckBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCheckBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCheckBox *>(static_cast<const QCheckBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCheckBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCheckBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QCheckBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCheckBox_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QCheckBox *>(static_cast<const QCheckBox *>(_self_))) : nullptr;
@@ -75944,6 +74504,18 @@ struct BgInherit_QCheckBox : public QCheckBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCheckBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCheckBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCheckBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCheckBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCheckBox_metaObject_(QCheckBox * _self_) {
   return _self_->metaObject();
@@ -76073,10 +74645,11 @@ extern "C" void bg_BgInherit_QCheckBox_JUMPTABLE_BgJumptable_QCheckBox_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCheckBox_SET_META_BindgenQtMetaObject(BgInherit_QCheckBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCheckBox::staticMetaObject); };
+}
+
 struct BgJumptable_QDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, bool> bg_QDialog_setVisible_bool;
   CrystalProc<QSize *, void *> bg_QDialog_sizeHint_;
   CrystalProc<QSize *, void *> bg_QDialog_minimumSizeHint_;
@@ -76132,36 +74705,7 @@ struct BgJumptable_QDialog {
 struct BgInherit_QDialog : public QDialog {
   using QDialog::QDialog;
   BgJumptable_QDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDialog *>(static_cast<const QDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialog_metaObject_(_crystal_);
-    } else {
-      return QDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDialog *>(static_cast<const QDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDialog *>(static_cast<const QDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setVisible(bool visible) override {
     BgInherit_QDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDialog_setVisible_bool.isValid() ? bindgen_crystal_object(const_cast<QDialog *>(static_cast<const QDialog *>(_self_))) : nullptr;
@@ -76675,6 +75219,18 @@ struct BgInherit_QDialog : public QDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDialog_metaObject_(QDialog * _self_) {
   return _self_->metaObject();
@@ -76826,6 +75382,10 @@ extern "C" void bg_BgInherit_QDialog_JUMPTABLE_BgJumptable_QDialog_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDialog_SET_META_BindgenQtMetaObject(BgInherit_QDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDialog::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QDialog_CONNECT_finished_Qt__ConnectionType_CrystalProc_void__int_(QDialog * _self_, Qt::ConnectionType type, CrystalProc<void, int> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDialog::*)(int))&QDialog::finished, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](int result){ _proc_(result); }, type));
 }
@@ -76895,9 +75455,6 @@ extern "C" bool bg_QDialog_eventFilter_SUPER_QObject_X_QEvent_X(QDialog * _self_
 }
 
 struct BgJumptable_QColorDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QColorDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QColorDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QColorDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QColorDialog_open_;
   CrystalProc<void, void *, bool> bg_QColorDialog_setVisible_bool;
   CrystalProc<void, void *, QEvent *> bg_QColorDialog_changeEvent_QEvent_X;
@@ -76953,36 +75510,7 @@ struct BgJumptable_QColorDialog {
 struct BgInherit_QColorDialog : public QColorDialog {
   using QColorDialog::QColorDialog;
   BgJumptable_QColorDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QColorDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColorDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QColorDialog *>(static_cast<const QColorDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColorDialog_metaObject_(_crystal_);
-    } else {
-      return QColorDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QColorDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColorDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QColorDialog *>(static_cast<const QColorDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColorDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QColorDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QColorDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColorDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QColorDialog *>(static_cast<const QColorDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColorDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QColorDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void open() override {
     BgInherit_QColorDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QColorDialog_open_.isValid() ? bindgen_crystal_object(const_cast<QColorDialog *>(static_cast<const QColorDialog *>(_self_))) : nullptr;
@@ -77496,6 +76024,18 @@ struct BgInherit_QColorDialog : public QColorDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QColorDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QColorDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QColorDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QColorDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QColorDialog_metaObject_(QColorDialog * _self_) {
   return _self_->metaObject();
@@ -77649,10 +76189,11 @@ extern "C" void bg_BgInherit_QColorDialog_JUMPTABLE_BgJumptable_QColorDialog_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QColorDialog_SET_META_BindgenQtMetaObject(BgInherit_QColorDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QColorDialog::staticMetaObject); };
+}
+
 struct BgJumptable_QColumnView {
-  CrystalProc<const QMetaObject *, void *> bg_QColumnView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QColumnView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QColumnView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, const QPoint *> bg_QColumnView_indexAt_const_QPoint_R;
   CrystalProc<void, void *, const QModelIndex *, QAbstractItemView::ScrollHint> bg_QColumnView_scrollTo_const_QModelIndex_R_QAbstractItemView__ScrollHint;
   CrystalProc<QSize *, void *> bg_QColumnView_sizeHint_;
@@ -77747,36 +76288,7 @@ struct BgJumptable_QColumnView {
 struct BgInherit_QColumnView : public QColumnView {
   using QColumnView::QColumnView;
   BgJumptable_QColumnView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QColumnView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColumnView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QColumnView *>(static_cast<const QColumnView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColumnView_metaObject_(_crystal_);
-    } else {
-      return QColumnView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QColumnView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColumnView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QColumnView *>(static_cast<const QColumnView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColumnView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QColumnView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QColumnView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QColumnView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QColumnView *>(static_cast<const QColumnView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QColumnView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QColumnView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex indexAt(const QPoint & point) const override {
     const BgInherit_QColumnView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QColumnView_indexAt_const_QPoint_R.isValid() ? bindgen_crystal_object(const_cast<QColumnView *>(static_cast<const QColumnView *>(_self_))) : nullptr;
@@ -78670,6 +77182,18 @@ struct BgInherit_QColumnView : public QColumnView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QColumnView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QColumnView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QColumnView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QColumnView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QColumnView_metaObject_(QColumnView * _self_) {
   return _self_->metaObject();
@@ -78895,10 +77419,11 @@ extern "C" void bg_BgInherit_QColumnView_JUMPTABLE_BgJumptable_QColumnView_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QColumnView_SET_META_BindgenQtMetaObject(BgInherit_QColumnView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QColumnView::staticMetaObject); };
+}
+
 struct BgJumptable_QComboBox {
-  CrystalProc<const QMetaObject *, void *> bg_QComboBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QComboBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QComboBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QComboBox_sizeHint_;
   CrystalProc<QSize *, void *> bg_QComboBox_minimumSizeHint_;
   CrystalProc<void, void *> bg_QComboBox_showPopup_;
@@ -78951,36 +77476,7 @@ struct BgJumptable_QComboBox {
 struct BgInherit_QComboBox : public QComboBox {
   using QComboBox::QComboBox;
   BgJumptable_QComboBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QComboBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QComboBox *>(static_cast<const QComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QComboBox_metaObject_(_crystal_);
-    } else {
-      return QComboBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QComboBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QComboBox *>(static_cast<const QComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QComboBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QComboBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QComboBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QComboBox *>(static_cast<const QComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QComboBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QComboBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QComboBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QComboBox_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QComboBox *>(static_cast<const QComboBox *>(_self_))) : nullptr;
@@ -79464,6 +77960,18 @@ struct BgInherit_QComboBox : public QComboBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QComboBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QComboBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QComboBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QComboBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QComboBox_metaObject_(QComboBox * _self_) {
   return _self_->metaObject();
@@ -79892,6 +78400,10 @@ extern "C" void bg_BgInherit_QComboBox_JUMPTABLE_BgJumptable_QComboBox_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QComboBox_SET_META_BindgenQtMetaObject(BgInherit_QComboBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QComboBox::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QComboBox_CONNECT_editTextChanged_Qt__ConnectionType_CrystalProc_void__const_QString_R_(QComboBox * _self_, Qt::ConnectionType type, CrystalProc<void, const CrystalString *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QComboBox::*)(const QString &))&QComboBox::editTextChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QString & unnamed_arg_0){ _proc_(bindgen_address(qstring_to_crystal(unnamed_arg_0))); }, type));
 }
@@ -80001,9 +78513,6 @@ extern "C" void bg_QComboBox_inputMethodEvent_SUPER_QInputMethodEvent_X(QComboBo
 }
 
 struct BgJumptable_QPushButton {
-  CrystalProc<const QMetaObject *, void *> bg_QPushButton_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPushButton_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPushButton_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QPushButton_sizeHint_;
   CrystalProc<QSize *, void *> bg_QPushButton_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QPushButton_event_QEvent_X;
@@ -80057,36 +78566,7 @@ struct BgJumptable_QPushButton {
 struct BgInherit_QPushButton : public QPushButton {
   using QPushButton::QPushButton;
   BgJumptable_QPushButton bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPushButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPushButton_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPushButton *>(static_cast<const QPushButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPushButton_metaObject_(_crystal_);
-    } else {
-      return QPushButton::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPushButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPushButton_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPushButton *>(static_cast<const QPushButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPushButton_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPushButton::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPushButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPushButton_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPushButton *>(static_cast<const QPushButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPushButton_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPushButton::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QPushButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPushButton_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QPushButton *>(static_cast<const QPushButton *>(_self_))) : nullptr;
@@ -80580,6 +79060,18 @@ struct BgInherit_QPushButton : public QPushButton {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPushButton::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPushButton::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPushButton::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPushButton *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPushButton_metaObject_(QPushButton * _self_) {
   return _self_->metaObject();
@@ -80704,6 +79196,10 @@ extern "C" void bg_BgInherit_QPushButton_JUMPTABLE_BgJumptable_QPushButton_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QPushButton_SET_META_BindgenQtMetaObject(BgInherit_QPushButton * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPushButton::staticMetaObject); };
+}
+
 extern "C" QSize bg_QPushButton_sizeHint_SUPER_(QPushButton * _self_) {
   return _self_->QPushButton::sizeHint();
 }
@@ -80737,9 +79233,6 @@ extern "C" bool bg_QPushButton_hitButton_SUPER_const_QPoint_R(QPushButton * _sel
 }
 
 struct BgJumptable_QCommandLinkButton {
-  CrystalProc<const QMetaObject *, void *> bg_QCommandLinkButton_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCommandLinkButton_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCommandLinkButton_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QCommandLinkButton_sizeHint_;
   CrystalProc<int, void *, int> bg_QCommandLinkButton_heightForWidth_int;
   CrystalProc<QSize *, void *> bg_QCommandLinkButton_minimumSizeHint_;
@@ -80793,36 +79286,7 @@ struct BgJumptable_QCommandLinkButton {
 struct BgInherit_QCommandLinkButton : public QCommandLinkButton {
   using QCommandLinkButton::QCommandLinkButton;
   BgJumptable_QCommandLinkButton bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCommandLinkButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommandLinkButton_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCommandLinkButton *>(static_cast<const QCommandLinkButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommandLinkButton_metaObject_(_crystal_);
-    } else {
-      return QCommandLinkButton::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCommandLinkButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommandLinkButton_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCommandLinkButton *>(static_cast<const QCommandLinkButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommandLinkButton_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCommandLinkButton::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCommandLinkButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommandLinkButton_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCommandLinkButton *>(static_cast<const QCommandLinkButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommandLinkButton_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCommandLinkButton::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QCommandLinkButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCommandLinkButton_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QCommandLinkButton *>(static_cast<const QCommandLinkButton *>(_self_))) : nullptr;
@@ -81316,6 +79780,18 @@ struct BgInherit_QCommandLinkButton : public QCommandLinkButton {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCommandLinkButton::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCommandLinkButton::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCommandLinkButton::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCommandLinkButton *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCommandLinkButton_metaObject_(QCommandLinkButton * _self_) {
   return _self_->metaObject();
@@ -81405,10 +79881,11 @@ extern "C" void bg_BgInherit_QCommandLinkButton_JUMPTABLE_BgJumptable_QCommandLi
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCommandLinkButton_SET_META_BindgenQtMetaObject(BgInherit_QCommandLinkButton * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCommandLinkButton::staticMetaObject); };
+}
+
 struct BgJumptable_QCommonStyle {
-  CrystalProc<const QMetaObject *, void *> bg_QCommonStyle_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCommonStyle_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCommonStyle_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QStyle::PrimitiveElement, const QStyleOption *, QPainter *, const QWidget *> bg_QCommonStyle_drawPrimitive_QStyle__PrimitiveElement_const_QStyleOption_X_QPainter_X_const_QWidget_X;
   CrystalProc<void, void *, QStyle::ControlElement, const QStyleOption *, QPainter *, const QWidget *> bg_QCommonStyle_drawControl_QStyle__ControlElement_const_QStyleOption_X_QPainter_X_const_QWidget_X;
   CrystalProc<QRect *, void *, QStyle::SubElement, const QStyleOption *, const QWidget *> bg_QCommonStyle_subElementRect_QStyle__SubElement_const_QStyleOption_X_const_QWidget_X;
@@ -81443,36 +79920,7 @@ struct BgJumptable_QCommonStyle {
 struct BgInherit_QCommonStyle : public QCommonStyle {
   using QCommonStyle::QCommonStyle;
   BgJumptable_QCommonStyle bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCommonStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommonStyle_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCommonStyle *>(static_cast<const QCommonStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommonStyle_metaObject_(_crystal_);
-    } else {
-      return QCommonStyle::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCommonStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommonStyle_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCommonStyle *>(static_cast<const QCommonStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommonStyle_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCommonStyle::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCommonStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCommonStyle_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCommonStyle *>(static_cast<const QCommonStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCommonStyle_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCommonStyle::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void drawPrimitive(QStyle::PrimitiveElement pe, const QStyleOption * opt, QPainter * p, const QWidget * w) const override {
     const BgInherit_QCommonStyle *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCommonStyle_drawPrimitive_QStyle__PrimitiveElement_const_QStyleOption_X_QPainter_X_const_QWidget_X.isValid() ? bindgen_crystal_object(const_cast<QCommonStyle *>(static_cast<const QCommonStyle *>(_self_))) : nullptr;
@@ -81773,6 +80221,18 @@ struct BgInherit_QCommonStyle : public QCommonStyle {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCommonStyle::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCommonStyle::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCommonStyle::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCommonStyle *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCommonStyle_metaObject_(QCommonStyle * _self_) {
   return _self_->metaObject();
@@ -81889,6 +80349,10 @@ extern "C" void bg_BgInherit_QCommonStyle_JUMPTABLE_BgJumptable_QCommonStyle_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCommonStyle_SET_META_BindgenQtMetaObject(BgInherit_QCommonStyle * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCommonStyle::staticMetaObject); };
+}
+
 extern "C" void bg_QCommonStyle_drawPrimitive_SUPER_QStyle__PrimitiveElement_const_QStyleOption_X_QPainter_X_const_QWidget_X(QCommonStyle * _self_, QStyle::PrimitiveElement pe, const QStyleOption * opt, QPainter * p, const QWidget * w) {
   _self_->QCommonStyle::drawPrimitive(pe, opt, p, w);
 }
@@ -81962,9 +80426,6 @@ extern "C" void bg_QCommonStyle_unpolish_SUPER_QApplication_X(QCommonStyle * _se
 }
 
 struct BgJumptable_QCompleter {
-  CrystalProc<const QMetaObject *, void *> bg_QCompleter_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QCompleter_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QCompleter_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *, const QModelIndex *> bg_QCompleter_pathFromIndex_const_QModelIndex_R;
   CrystalProc<QList<QString> *, void *, const CrystalString *> bg_QCompleter_splitPath_const_QString_R;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QCompleter_eventFilter_QObject_X_QEvent_X;
@@ -81978,36 +80439,7 @@ struct BgJumptable_QCompleter {
 struct BgInherit_QCompleter : public QCompleter {
   using QCompleter::QCompleter;
   BgJumptable_QCompleter bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QCompleter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCompleter_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QCompleter *>(static_cast<const QCompleter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCompleter_metaObject_(_crystal_);
-    } else {
-      return QCompleter::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QCompleter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCompleter_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QCompleter *>(static_cast<const QCompleter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCompleter_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QCompleter::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QCompleter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QCompleter_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QCompleter *>(static_cast<const QCompleter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QCompleter_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QCompleter::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString pathFromIndex(const QModelIndex & index) const override {
     const BgInherit_QCompleter *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QCompleter_pathFromIndex_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QCompleter *>(static_cast<const QCompleter *>(_self_))) : nullptr;
@@ -82098,6 +80530,18 @@ struct BgInherit_QCompleter : public QCompleter {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QCompleter::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QCompleter::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QCompleter::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QCompleter *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QCompleter_metaObject_(QCompleter * _self_) {
   return _self_->metaObject();
@@ -82331,10 +80775,11 @@ extern "C" void bg_BgInherit_QCompleter_JUMPTABLE_BgJumptable_QCompleter_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QCompleter_SET_META_BindgenQtMetaObject(BgInherit_QCompleter * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QCompleter::staticMetaObject); };
+}
+
 struct BgJumptable_QDataWidgetMapper {
-  CrystalProc<const QMetaObject *, void *> bg_QDataWidgetMapper_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDataWidgetMapper_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDataWidgetMapper_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, int> bg_QDataWidgetMapper_setCurrentIndex_int;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -82347,36 +80792,7 @@ struct BgJumptable_QDataWidgetMapper {
 struct BgInherit_QDataWidgetMapper : public QDataWidgetMapper {
   using QDataWidgetMapper::QDataWidgetMapper;
   BgJumptable_QDataWidgetMapper bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDataWidgetMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDataWidgetMapper_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDataWidgetMapper *>(static_cast<const QDataWidgetMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDataWidgetMapper_metaObject_(_crystal_);
-    } else {
-      return QDataWidgetMapper::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDataWidgetMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDataWidgetMapper_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDataWidgetMapper *>(static_cast<const QDataWidgetMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDataWidgetMapper_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDataWidgetMapper::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDataWidgetMapper *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDataWidgetMapper_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDataWidgetMapper *>(static_cast<const QDataWidgetMapper *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDataWidgetMapper_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDataWidgetMapper::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setCurrentIndex(int index) override {
     BgInherit_QDataWidgetMapper *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDataWidgetMapper_setCurrentIndex_int.isValid() ? bindgen_crystal_object(const_cast<QDataWidgetMapper *>(static_cast<const QDataWidgetMapper *>(_self_))) : nullptr;
@@ -82457,6 +80873,18 @@ struct BgInherit_QDataWidgetMapper : public QDataWidgetMapper {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDataWidgetMapper::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDataWidgetMapper::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDataWidgetMapper::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDataWidgetMapper *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDataWidgetMapper_metaObject_(QDataWidgetMapper * _self_) {
   return _self_->metaObject();
@@ -82606,10 +81034,11 @@ extern "C" void bg_BgInherit_QDataWidgetMapper_JUMPTABLE_BgJumptable_QDataWidget
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDataWidgetMapper_SET_META_BindgenQtMetaObject(BgInherit_QDataWidgetMapper * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDataWidgetMapper::staticMetaObject); };
+}
+
 struct BgJumptable_QDateTimeEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QDateTimeEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDateTimeEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDateTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QDateTimeEdit_sizeHint_;
   CrystalProc<void, void *> bg_QDateTimeEdit_clear_;
   CrystalProc<void, void *, int> bg_QDateTimeEdit_stepBy_int;
@@ -82667,36 +81096,7 @@ struct BgJumptable_QDateTimeEdit {
 struct BgInherit_QDateTimeEdit : public QDateTimeEdit {
   using QDateTimeEdit::QDateTimeEdit;
   BgJumptable_QDateTimeEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDateTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDateTimeEdit *>(static_cast<const QDateTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateTimeEdit_metaObject_(_crystal_);
-    } else {
-      return QDateTimeEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDateTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDateTimeEdit *>(static_cast<const QDateTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateTimeEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDateTimeEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDateTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDateTimeEdit *>(static_cast<const QDateTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDateTimeEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QDateTimeEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QDateTimeEdit *>(static_cast<const QDateTimeEdit *>(_self_))) : nullptr;
@@ -83237,6 +81637,18 @@ struct BgInherit_QDateTimeEdit : public QDateTimeEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDateTimeEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDateTimeEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDateTimeEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDateTimeEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDateTimeEdit_metaObject_(QDateTimeEdit * _self_) {
   return _self_->metaObject();
@@ -83563,6 +81975,10 @@ extern "C" void bg_BgInherit_QDateTimeEdit_JUMPTABLE_BgJumptable_QDateTimeEdit_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDateTimeEdit_SET_META_BindgenQtMetaObject(BgInherit_QDateTimeEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDateTimeEdit::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QDateTimeEdit_CONNECT_dateTimeChanged_Qt__ConnectionType_CrystalProc_void__const_QDateTime_R_(QDateTimeEdit * _self_, Qt::ConnectionType type, CrystalProc<void, const QDateTime *> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QDateTimeEdit::*)(const QDateTime &))&QDateTimeEdit::dateTimeChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](const QDateTime & dateTime){ _proc_(&(dateTime)); }, type));
 }
@@ -83641,9 +82057,6 @@ extern "C" void bg_QDateTimeEdit_paintEvent_SUPER_QPaintEvent_X(QDateTimeEdit * 
 }
 
 struct BgJumptable_QTimeEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QTimeEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTimeEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QDateTimeEdit_sizeHint_;
   CrystalProc<void, void *> bg_QDateTimeEdit_clear_;
   CrystalProc<void, void *, int> bg_QDateTimeEdit_stepBy_int;
@@ -83701,36 +82114,7 @@ struct BgJumptable_QTimeEdit {
 struct BgInherit_QTimeEdit : public QTimeEdit {
   using QTimeEdit::QTimeEdit;
   BgJumptable_QTimeEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTimeEdit *>(static_cast<const QTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeEdit_metaObject_(_crystal_);
-    } else {
-      return QTimeEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTimeEdit *>(static_cast<const QTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTimeEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTimeEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTimeEdit *>(static_cast<const QTimeEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTimeEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTimeEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QTimeEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QTimeEdit *>(static_cast<const QTimeEdit *>(_self_))) : nullptr;
@@ -84271,6 +82655,18 @@ struct BgInherit_QTimeEdit : public QTimeEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTimeEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTimeEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTimeEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTimeEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTimeEdit_metaObject_(QTimeEdit * _self_) {
   return _self_->metaObject();
@@ -84316,10 +82712,11 @@ extern "C" void bg_BgInherit_QTimeEdit_JUMPTABLE_BgJumptable_QTimeEdit_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTimeEdit_SET_META_BindgenQtMetaObject(BgInherit_QTimeEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTimeEdit::staticMetaObject); };
+}
+
 struct BgJumptable_QDateEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QDateEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDateEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDateEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QDateTimeEdit_sizeHint_;
   CrystalProc<void, void *> bg_QDateTimeEdit_clear_;
   CrystalProc<void, void *, int> bg_QDateTimeEdit_stepBy_int;
@@ -84377,36 +82774,7 @@ struct BgJumptable_QDateEdit {
 struct BgInherit_QDateEdit : public QDateEdit {
   using QDateEdit::QDateEdit;
   BgJumptable_QDateEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDateEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDateEdit *>(static_cast<const QDateEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateEdit_metaObject_(_crystal_);
-    } else {
-      return QDateEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDateEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDateEdit *>(static_cast<const QDateEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDateEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDateEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDateEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDateEdit *>(static_cast<const QDateEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDateEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDateEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QDateEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDateTimeEdit_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QDateEdit *>(static_cast<const QDateEdit *>(_self_))) : nullptr;
@@ -84947,6 +83315,18 @@ struct BgInherit_QDateEdit : public QDateEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDateEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDateEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDateEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDateEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDateEdit_metaObject_(QDateEdit * _self_) {
   return _self_->metaObject();
@@ -84992,10 +83372,11 @@ extern "C" void bg_BgInherit_QDateEdit_JUMPTABLE_BgJumptable_QDateEdit_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDateEdit_SET_META_BindgenQtMetaObject(BgInherit_QDateEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDateEdit::staticMetaObject); };
+}
+
 struct BgJumptable_QDesktopWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QDesktopWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDesktopWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDesktopWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QResizeEvent *> bg_QDesktopWidget_resizeEvent_QResizeEvent_X;
   CrystalProc<int, void *> bg_QWidget_devType_;
   CrystalProc<void, void *, bool> bg_QWidget_setVisible_bool;
@@ -85046,36 +83427,7 @@ struct BgJumptable_QDesktopWidget {
 struct BgInherit_QDesktopWidget : public QDesktopWidget {
   using QDesktopWidget::QDesktopWidget;
   BgJumptable_QDesktopWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDesktopWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDesktopWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDesktopWidget *>(static_cast<const QDesktopWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDesktopWidget_metaObject_(_crystal_);
-    } else {
-      return QDesktopWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDesktopWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDesktopWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDesktopWidget *>(static_cast<const QDesktopWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDesktopWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDesktopWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDesktopWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDesktopWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDesktopWidget *>(static_cast<const QDesktopWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDesktopWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDesktopWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void resizeEvent(QResizeEvent * event) override {
     BgInherit_QDesktopWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDesktopWidget_resizeEvent_QResizeEvent_X.isValid() ? bindgen_crystal_object(const_cast<QDesktopWidget *>(static_cast<const QDesktopWidget *>(_self_))) : nullptr;
@@ -85539,6 +83891,18 @@ struct BgInherit_QDesktopWidget : public QDesktopWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDesktopWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDesktopWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDesktopWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDesktopWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDesktopWidget_metaObject_(QDesktopWidget * _self_) {
   return _self_->metaObject();
@@ -85592,10 +83956,11 @@ extern "C" void bg_BgInherit_QDesktopWidget_JUMPTABLE_BgJumptable_QDesktopWidget
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDesktopWidget_SET_META_BindgenQtMetaObject(BgInherit_QDesktopWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDesktopWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QDial {
-  CrystalProc<const QMetaObject *, void *> bg_QDial_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDial_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDial_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QDial_sizeHint_;
   CrystalProc<QSize *, void *> bg_QDial_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QDial_event_QEvent_X;
@@ -85647,36 +84012,7 @@ struct BgJumptable_QDial {
 struct BgInherit_QDial : public QDial {
   using QDial::QDial;
   BgJumptable_QDial bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDial *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDial_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDial *>(static_cast<const QDial *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDial_metaObject_(_crystal_);
-    } else {
-      return QDial::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDial *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDial_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDial *>(static_cast<const QDial *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDial_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDial::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDial *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDial_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDial *>(static_cast<const QDial *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDial_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDial::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QDial *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDial_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QDial *>(static_cast<const QDial *>(_self_))) : nullptr;
@@ -86150,6 +84486,18 @@ struct BgInherit_QDial : public QDial {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDial::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDial::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDial::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDial *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDial_metaObject_(QDial * _self_) {
   return _self_->metaObject();
@@ -86287,10 +84635,11 @@ extern "C" void bg_BgInherit_QDial_JUMPTABLE_BgJumptable_QDial_R(BgInherit_QDial
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDial_SET_META_BindgenQtMetaObject(BgInherit_QDial * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDial::staticMetaObject); };
+}
+
 struct BgJumptable_QDialogButtonBox {
-  CrystalProc<const QMetaObject *, void *> bg_QDialogButtonBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDialogButtonBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDialogButtonBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QEvent *> bg_QDialogButtonBox_changeEvent_QEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QDialogButtonBox_event_QEvent_X;
   CrystalProc<int, void *> bg_QWidget_devType_;
@@ -86341,36 +84690,7 @@ struct BgJumptable_QDialogButtonBox {
 struct BgInherit_QDialogButtonBox : public QDialogButtonBox {
   using QDialogButtonBox::QDialogButtonBox;
   BgJumptable_QDialogButtonBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDialogButtonBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialogButtonBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDialogButtonBox *>(static_cast<const QDialogButtonBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialogButtonBox_metaObject_(_crystal_);
-    } else {
-      return QDialogButtonBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDialogButtonBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialogButtonBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDialogButtonBox *>(static_cast<const QDialogButtonBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialogButtonBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDialogButtonBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDialogButtonBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDialogButtonBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDialogButtonBox *>(static_cast<const QDialogButtonBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDialogButtonBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDialogButtonBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void changeEvent(QEvent * e) override {
     BgInherit_QDialogButtonBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDialogButtonBox_changeEvent_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QDialogButtonBox *>(static_cast<const QDialogButtonBox *>(_self_))) : nullptr;
@@ -86834,6 +85154,18 @@ struct BgInherit_QDialogButtonBox : public QDialogButtonBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDialogButtonBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDialogButtonBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDialogButtonBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDialogButtonBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDialogButtonBox_metaObject_(QDialogButtonBox * _self_) {
   return _self_->metaObject();
@@ -86987,6 +85319,10 @@ extern "C" void bg_BgInherit_QDialogButtonBox_JUMPTABLE_BgJumptable_QDialogButto
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDialogButtonBox_SET_META_BindgenQtMetaObject(BgInherit_QDialogButtonBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDialogButtonBox::staticMetaObject); };
+}
+
 struct BgJumptable_QFileIconProvider {
   CrystalProc<QIcon &, void *, QFileIconProvider::IconType> bg_QFileIconProvider_icon_QFileIconProvider__IconType;
   CrystalProc<QIcon &, void *, const QFileInfo *> bg_QFileIconProvider_icon_const_QFileInfo_R;
@@ -87067,9 +85403,6 @@ extern "C" void bg_BgInherit_QFileIconProvider_JUMPTABLE_BgJumptable_QFileIconPr
 }
 
 struct BgJumptable_QDockWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QDockWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDockWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDockWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QEvent *> bg_QDockWidget_changeEvent_QEvent_X;
   CrystalProc<void, void *, QCloseEvent *> bg_QDockWidget_closeEvent_QCloseEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QDockWidget_paintEvent_QPaintEvent_X;
@@ -87120,36 +85453,7 @@ struct BgJumptable_QDockWidget {
 struct BgInherit_QDockWidget : public QDockWidget {
   using QDockWidget::QDockWidget;
   BgJumptable_QDockWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDockWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDockWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDockWidget *>(static_cast<const QDockWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDockWidget_metaObject_(_crystal_);
-    } else {
-      return QDockWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDockWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDockWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDockWidget *>(static_cast<const QDockWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDockWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDockWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDockWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDockWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDockWidget *>(static_cast<const QDockWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDockWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDockWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void changeEvent(QEvent * e) override {
     BgInherit_QDockWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDockWidget_changeEvent_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QDockWidget *>(static_cast<const QDockWidget *>(_self_))) : nullptr;
@@ -87613,6 +85917,18 @@ struct BgInherit_QDockWidget : public QDockWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDockWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDockWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDockWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDockWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDockWidget_metaObject_(QDockWidget * _self_) {
   return _self_->metaObject();
@@ -87782,10 +86098,11 @@ extern "C" void bg_BgInherit_QDockWidget_JUMPTABLE_BgJumptable_QDockWidget_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDockWidget_SET_META_BindgenQtMetaObject(BgInherit_QDockWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDockWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QErrorMessage {
-  CrystalProc<const QMetaObject *, void *> bg_QErrorMessage_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QErrorMessage_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QErrorMessage_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, int> bg_QErrorMessage_done_int;
   CrystalProc<void, void *, QEvent *> bg_QErrorMessage_changeEvent_QEvent_X;
   CrystalProc<void, void *, bool> bg_QDialog_setVisible_bool;
@@ -87841,36 +86158,7 @@ struct BgJumptable_QErrorMessage {
 struct BgInherit_QErrorMessage : public QErrorMessage {
   using QErrorMessage::QErrorMessage;
   BgJumptable_QErrorMessage bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QErrorMessage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QErrorMessage_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QErrorMessage *>(static_cast<const QErrorMessage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QErrorMessage_metaObject_(_crystal_);
-    } else {
-      return QErrorMessage::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QErrorMessage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QErrorMessage_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QErrorMessage *>(static_cast<const QErrorMessage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QErrorMessage_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QErrorMessage::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QErrorMessage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QErrorMessage_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QErrorMessage *>(static_cast<const QErrorMessage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QErrorMessage_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QErrorMessage::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void done(int result) override {
     BgInherit_QErrorMessage *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QErrorMessage_done_int.isValid() ? bindgen_crystal_object(const_cast<QErrorMessage *>(static_cast<const QErrorMessage *>(_self_))) : nullptr;
@@ -88384,6 +86672,18 @@ struct BgInherit_QErrorMessage : public QErrorMessage {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QErrorMessage::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QErrorMessage::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QErrorMessage::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QErrorMessage *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QErrorMessage_metaObject_(QErrorMessage * _self_) {
   return _self_->metaObject();
@@ -88445,10 +86745,11 @@ extern "C" void bg_BgInherit_QErrorMessage_JUMPTABLE_BgJumptable_QErrorMessage_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QErrorMessage_SET_META_BindgenQtMetaObject(BgInherit_QErrorMessage * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QErrorMessage::staticMetaObject); };
+}
+
 struct BgJumptable_QFileDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QFileDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFileDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFileDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QFileDialog_open_;
   CrystalProc<void, void *, bool> bg_QFileDialog_setVisible_bool;
   CrystalProc<void, void *, int> bg_QFileDialog_done_int;
@@ -88504,36 +86805,7 @@ struct BgJumptable_QFileDialog {
 struct BgInherit_QFileDialog : public QFileDialog {
   using QFileDialog::QFileDialog;
   BgJumptable_QFileDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFileDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFileDialog *>(static_cast<const QFileDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDialog_metaObject_(_crystal_);
-    } else {
-      return QFileDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFileDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFileDialog *>(static_cast<const QFileDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFileDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFileDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFileDialog *>(static_cast<const QFileDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFileDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void open() override {
     BgInherit_QFileDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFileDialog_open_.isValid() ? bindgen_crystal_object(const_cast<QFileDialog *>(static_cast<const QFileDialog *>(_self_))) : nullptr;
@@ -89047,6 +87319,18 @@ struct BgInherit_QFileDialog : public QFileDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFileDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFileDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFileDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFileDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFileDialog_metaObject_(QFileDialog * _self_) {
   return _self_->metaObject();
@@ -89633,10 +87917,11 @@ extern "C" void bg_BgInherit_QFileDialog_JUMPTABLE_BgJumptable_QFileDialog_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFileDialog_SET_META_BindgenQtMetaObject(BgInherit_QFileDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFileDialog::staticMetaObject); };
+}
+
 struct BgJumptable_QFileSystemModel {
-  CrystalProc<const QMetaObject *, void *> bg_QFileSystemModel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFileSystemModel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFileSystemModel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QModelIndex &, void *, int, int> bg_QFileSystemModel_index_int_int;
   CrystalProc<QModelIndex &, void *, int, int, const QModelIndex *> bg_QFileSystemModel_index_int_int_const_QModelIndex_R;
   CrystalProc<QModelIndex &, void *, const QModelIndex *> bg_QFileSystemModel_parent_const_QModelIndex_R;
@@ -89691,36 +87976,7 @@ struct BgJumptable_QFileSystemModel {
 struct BgInherit_QFileSystemModel : public QFileSystemModel {
   using QFileSystemModel::QFileSystemModel;
   BgJumptable_QFileSystemModel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFileSystemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemModel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFileSystemModel *>(static_cast<const QFileSystemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemModel_metaObject_(_crystal_);
-    } else {
-      return QFileSystemModel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFileSystemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemModel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFileSystemModel *>(static_cast<const QFileSystemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemModel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFileSystemModel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFileSystemModel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFileSystemModel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFileSystemModel *>(static_cast<const QFileSystemModel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFileSystemModel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFileSystemModel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QModelIndex index(int row, int column, const QModelIndex & parent) const override {
     const BgInherit_QFileSystemModel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFileSystemModel_index_int_int_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QFileSystemModel *>(static_cast<const QFileSystemModel *>(_self_))) : nullptr;
@@ -90131,6 +88387,18 @@ struct BgInherit_QFileSystemModel : public QFileSystemModel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFileSystemModel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFileSystemModel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFileSystemModel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFileSystemModel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFileSystemModel_metaObject_(QFileSystemModel * _self_) {
   return _self_->metaObject();
@@ -90496,10 +88764,11 @@ extern "C" void bg_BgInherit_QFileSystemModel_JUMPTABLE_BgJumptable_QFileSystemM
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFileSystemModel_SET_META_BindgenQtMetaObject(BgInherit_QFileSystemModel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFileSystemModel::staticMetaObject); };
+}
+
 struct BgJumptable_QFocusFrame {
-  CrystalProc<const QMetaObject *, void *> bg_QFocusFrame_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFocusFrame_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFocusFrame_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QFocusFrame_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QFocusFrame_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QFocusFrame_paintEvent_QPaintEvent_X;
@@ -90550,36 +88819,7 @@ struct BgJumptable_QFocusFrame {
 struct BgInherit_QFocusFrame : public QFocusFrame {
   using QFocusFrame::QFocusFrame;
   BgJumptable_QFocusFrame bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFocusFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFocusFrame_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFocusFrame *>(static_cast<const QFocusFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFocusFrame_metaObject_(_crystal_);
-    } else {
-      return QFocusFrame::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFocusFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFocusFrame_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFocusFrame *>(static_cast<const QFocusFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFocusFrame_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFocusFrame::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFocusFrame *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFocusFrame_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFocusFrame *>(static_cast<const QFocusFrame *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFocusFrame_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFocusFrame::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QFocusFrame *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFocusFrame_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QFocusFrame *>(static_cast<const QFocusFrame *>(_self_))) : nullptr;
@@ -91043,6 +89283,18 @@ struct BgInherit_QFocusFrame : public QFocusFrame {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFocusFrame::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFocusFrame::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFocusFrame::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFocusFrame *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFocusFrame_metaObject_(QFocusFrame * _self_) {
   return _self_->metaObject();
@@ -91112,10 +89364,11 @@ extern "C" void bg_BgInherit_QFocusFrame_JUMPTABLE_BgJumptable_QFocusFrame_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFocusFrame_SET_META_BindgenQtMetaObject(BgInherit_QFocusFrame * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFocusFrame::staticMetaObject); };
+}
+
 struct BgJumptable_QFontComboBox {
-  CrystalProc<const QMetaObject *, void *> bg_QFontComboBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFontComboBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFontComboBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QFontComboBox_sizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QFontComboBox_event_QEvent_X;
   CrystalProc<QSize *, void *> bg_QComboBox_minimumSizeHint_;
@@ -91168,36 +89421,7 @@ struct BgJumptable_QFontComboBox {
 struct BgInherit_QFontComboBox : public QFontComboBox {
   using QFontComboBox::QFontComboBox;
   BgJumptable_QFontComboBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFontComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontComboBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFontComboBox *>(static_cast<const QFontComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontComboBox_metaObject_(_crystal_);
-    } else {
-      return QFontComboBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFontComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontComboBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFontComboBox *>(static_cast<const QFontComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontComboBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFontComboBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFontComboBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontComboBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFontComboBox *>(static_cast<const QFontComboBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontComboBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFontComboBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QFontComboBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFontComboBox_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QFontComboBox *>(static_cast<const QFontComboBox *>(_self_))) : nullptr;
@@ -91681,6 +89905,18 @@ struct BgInherit_QFontComboBox : public QFontComboBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFontComboBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFontComboBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFontComboBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFontComboBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFontComboBox_metaObject_(QFontComboBox * _self_) {
   return _self_->metaObject();
@@ -91762,10 +89998,11 @@ extern "C" void bg_BgInherit_QFontComboBox_JUMPTABLE_BgJumptable_QFontComboBox_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFontComboBox_SET_META_BindgenQtMetaObject(BgInherit_QFontComboBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFontComboBox::staticMetaObject); };
+}
+
 struct BgJumptable_QFontDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QFontDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFontDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFontDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QFontDialog_open_;
   CrystalProc<void, void *, bool> bg_QFontDialog_setVisible_bool;
   CrystalProc<void, void *, QEvent *> bg_QFontDialog_changeEvent_QEvent_X;
@@ -91821,36 +90058,7 @@ struct BgJumptable_QFontDialog {
 struct BgInherit_QFontDialog : public QFontDialog {
   using QFontDialog::QFontDialog;
   BgJumptable_QFontDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFontDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFontDialog *>(static_cast<const QFontDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontDialog_metaObject_(_crystal_);
-    } else {
-      return QFontDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFontDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFontDialog *>(static_cast<const QFontDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFontDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFontDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFontDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFontDialog *>(static_cast<const QFontDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFontDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFontDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void open() override {
     BgInherit_QFontDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFontDialog_open_.isValid() ? bindgen_crystal_object(const_cast<QFontDialog *>(static_cast<const QFontDialog *>(_self_))) : nullptr;
@@ -92364,6 +90572,18 @@ struct BgInherit_QFontDialog : public QFontDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFontDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFontDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFontDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFontDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFontDialog_metaObject_(QFontDialog * _self_) {
   return _self_->metaObject();
@@ -92505,10 +90725,11 @@ extern "C" void bg_BgInherit_QFontDialog_JUMPTABLE_BgJumptable_QFontDialog_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFontDialog_SET_META_BindgenQtMetaObject(BgInherit_QFontDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFontDialog::staticMetaObject); };
+}
+
 struct BgJumptable_QFormLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QFormLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QFormLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QFormLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QLayoutItem *> bg_QFormLayout_addItem_QLayoutItem_X;
   CrystalProc<QLayoutItem *, void *, int> bg_QFormLayout_itemAt_int;
   CrystalProc<QLayoutItem *, void *, int> bg_QFormLayout_takeAt_int;
@@ -92537,36 +90758,7 @@ struct BgJumptable_QFormLayout {
 struct BgInherit_QFormLayout : public QFormLayout {
   using QFormLayout::QFormLayout;
   BgJumptable_QFormLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QFormLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFormLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QFormLayout *>(static_cast<const QFormLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFormLayout_metaObject_(_crystal_);
-    } else {
-      return QFormLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QFormLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFormLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QFormLayout *>(static_cast<const QFormLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFormLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QFormLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QFormLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QFormLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QFormLayout *>(static_cast<const QFormLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QFormLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QFormLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void addItem(QLayoutItem * item) override {
     BgInherit_QFormLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QFormLayout_addItem_QLayoutItem_X.isValid() ? bindgen_crystal_object(const_cast<QFormLayout *>(static_cast<const QFormLayout *>(_self_))) : nullptr;
@@ -92807,6 +90999,18 @@ struct BgInherit_QFormLayout : public QFormLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QFormLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QFormLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QFormLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QFormLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QFormLayout_metaObject_(QFormLayout * _self_) {
   return _self_->metaObject();
@@ -93096,6 +91300,10 @@ extern "C" void bg_BgInherit_QFormLayout_JUMPTABLE_BgJumptable_QFormLayout_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QFormLayout_SET_META_BindgenQtMetaObject(BgInherit_QFormLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QFormLayout::staticMetaObject); };
+}
+
 extern "C" QFormLayout::TakeRowResult * bg_QFormLayout__TakeRowResult__CONSTRUCT_() {
   return new (UseGC) CrystalGCWrapper<QFormLayout::TakeRowResult>();
 }
@@ -93125,9 +91333,6 @@ extern "C" void bg_QFormLayout__TakeRowResult_fieldItem_SETTER_QLayoutItem_X(QFo
 }
 
 struct BgJumptable_QGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -93139,36 +91344,7 @@ struct BgJumptable_QGesture {
 struct BgInherit_QGesture : public QGesture {
   using QGesture::QGesture;
   BgJumptable_QGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGesture *>(static_cast<const QGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGesture_metaObject_(_crystal_);
-    } else {
-      return QGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGesture *>(static_cast<const QGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGesture *>(static_cast<const QGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QGesture *>(static_cast<const QGesture *>(_self_))) : nullptr;
@@ -93239,6 +91415,18 @@ struct BgInherit_QGesture : public QGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGesture_metaObject_(QGesture * _self_) {
   return _self_->metaObject();
@@ -93319,10 +91507,11 @@ extern "C" void bg_BgInherit_QGesture_JUMPTABLE_BgJumptable_QGesture_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGesture_SET_META_BindgenQtMetaObject(BgInherit_QGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGesture::staticMetaObject); };
+}
+
 struct BgJumptable_QPanGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QPanGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPanGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPanGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -93334,36 +91523,7 @@ struct BgJumptable_QPanGesture {
 struct BgInherit_QPanGesture : public QPanGesture {
   using QPanGesture::QPanGesture;
   BgJumptable_QPanGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPanGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPanGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPanGesture *>(static_cast<const QPanGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPanGesture_metaObject_(_crystal_);
-    } else {
-      return QPanGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPanGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPanGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPanGesture *>(static_cast<const QPanGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPanGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPanGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPanGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPanGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPanGesture *>(static_cast<const QPanGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPanGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPanGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QPanGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QPanGesture *>(static_cast<const QPanGesture *>(_self_))) : nullptr;
@@ -93434,6 +91594,18 @@ struct BgInherit_QPanGesture : public QPanGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPanGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPanGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPanGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPanGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPanGesture_metaObject_(QPanGesture * _self_) {
   return _self_->metaObject();
@@ -93495,10 +91667,11 @@ extern "C" void bg_BgInherit_QPanGesture_JUMPTABLE_BgJumptable_QPanGesture_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QPanGesture_SET_META_BindgenQtMetaObject(BgInherit_QPanGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPanGesture::staticMetaObject); };
+}
+
 struct BgJumptable_QPinchGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QPinchGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPinchGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPinchGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -93510,36 +91683,7 @@ struct BgJumptable_QPinchGesture {
 struct BgInherit_QPinchGesture : public QPinchGesture {
   using QPinchGesture::QPinchGesture;
   BgJumptable_QPinchGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPinchGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPinchGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPinchGesture *>(static_cast<const QPinchGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPinchGesture_metaObject_(_crystal_);
-    } else {
-      return QPinchGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPinchGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPinchGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPinchGesture *>(static_cast<const QPinchGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPinchGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPinchGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPinchGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPinchGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPinchGesture *>(static_cast<const QPinchGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPinchGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPinchGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QPinchGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QPinchGesture *>(static_cast<const QPinchGesture *>(_self_))) : nullptr;
@@ -93610,6 +91754,18 @@ struct BgInherit_QPinchGesture : public QPinchGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPinchGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPinchGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPinchGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPinchGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPinchGesture_metaObject_(QPinchGesture * _self_) {
   return _self_->metaObject();
@@ -93731,10 +91887,11 @@ extern "C" void bg_BgInherit_QPinchGesture_JUMPTABLE_BgJumptable_QPinchGesture_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QPinchGesture_SET_META_BindgenQtMetaObject(BgInherit_QPinchGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPinchGesture::staticMetaObject); };
+}
+
 struct BgJumptable_QSwipeGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QSwipeGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSwipeGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSwipeGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -93746,36 +91903,7 @@ struct BgJumptable_QSwipeGesture {
 struct BgInherit_QSwipeGesture : public QSwipeGesture {
   using QSwipeGesture::QSwipeGesture;
   BgJumptable_QSwipeGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSwipeGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSwipeGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSwipeGesture *>(static_cast<const QSwipeGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSwipeGesture_metaObject_(_crystal_);
-    } else {
-      return QSwipeGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSwipeGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSwipeGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSwipeGesture *>(static_cast<const QSwipeGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSwipeGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSwipeGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSwipeGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSwipeGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSwipeGesture *>(static_cast<const QSwipeGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSwipeGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSwipeGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSwipeGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSwipeGesture *>(static_cast<const QSwipeGesture *>(_self_))) : nullptr;
@@ -93846,6 +91974,18 @@ struct BgInherit_QSwipeGesture : public QSwipeGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSwipeGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSwipeGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSwipeGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSwipeGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSwipeGesture_metaObject_(QSwipeGesture * _self_) {
   return _self_->metaObject();
@@ -93895,10 +92035,11 @@ extern "C" void bg_BgInherit_QSwipeGesture_JUMPTABLE_BgJumptable_QSwipeGesture_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSwipeGesture_SET_META_BindgenQtMetaObject(BgInherit_QSwipeGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSwipeGesture::staticMetaObject); };
+}
+
 struct BgJumptable_QTapGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QTapGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTapGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTapGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -93910,36 +92051,7 @@ struct BgJumptable_QTapGesture {
 struct BgInherit_QTapGesture : public QTapGesture {
   using QTapGesture::QTapGesture;
   BgJumptable_QTapGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTapGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTapGesture *>(static_cast<const QTapGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapGesture_metaObject_(_crystal_);
-    } else {
-      return QTapGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTapGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTapGesture *>(static_cast<const QTapGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTapGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTapGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTapGesture *>(static_cast<const QTapGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTapGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTapGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTapGesture *>(static_cast<const QTapGesture *>(_self_))) : nullptr;
@@ -94010,6 +92122,18 @@ struct BgInherit_QTapGesture : public QTapGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTapGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTapGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTapGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTapGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTapGesture_metaObject_(QTapGesture * _self_) {
   return _self_->metaObject();
@@ -94051,10 +92175,11 @@ extern "C" void bg_BgInherit_QTapGesture_JUMPTABLE_BgJumptable_QTapGesture_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTapGesture_SET_META_BindgenQtMetaObject(BgInherit_QTapGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTapGesture::staticMetaObject); };
+}
+
 struct BgJumptable_QTapAndHoldGesture {
-  CrystalProc<const QMetaObject *, void *> bg_QTapAndHoldGesture_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTapAndHoldGesture_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTapAndHoldGesture_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -94066,36 +92191,7 @@ struct BgJumptable_QTapAndHoldGesture {
 struct BgInherit_QTapAndHoldGesture : public QTapAndHoldGesture {
   using QTapAndHoldGesture::QTapAndHoldGesture;
   BgJumptable_QTapAndHoldGesture bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTapAndHoldGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapAndHoldGesture_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTapAndHoldGesture *>(static_cast<const QTapAndHoldGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapAndHoldGesture_metaObject_(_crystal_);
-    } else {
-      return QTapAndHoldGesture::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTapAndHoldGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapAndHoldGesture_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTapAndHoldGesture *>(static_cast<const QTapAndHoldGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapAndHoldGesture_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTapAndHoldGesture::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTapAndHoldGesture *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTapAndHoldGesture_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTapAndHoldGesture *>(static_cast<const QTapAndHoldGesture *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTapAndHoldGesture_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTapAndHoldGesture::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTapAndHoldGesture *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTapAndHoldGesture *>(static_cast<const QTapAndHoldGesture *>(_self_))) : nullptr;
@@ -94166,6 +92262,18 @@ struct BgInherit_QTapAndHoldGesture : public QTapAndHoldGesture {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTapAndHoldGesture::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTapAndHoldGesture::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTapAndHoldGesture::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTapAndHoldGesture *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTapAndHoldGesture_metaObject_(QTapAndHoldGesture * _self_) {
   return _self_->metaObject();
@@ -94213,6 +92321,10 @@ extern "C" const QMetaObject * bg_QTapAndHoldGesture_staticMetaObject_STATIC_GET
 
 extern "C" void bg_BgInherit_QTapAndHoldGesture_JUMPTABLE_BgJumptable_QTapAndHoldGesture_R(BgInherit_QTapAndHoldGesture * _self_, const BgJumptable_QTapAndHoldGesture & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTapAndHoldGesture_SET_META_BindgenQtMetaObject(BgInherit_QTapAndHoldGesture * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTapAndHoldGesture::staticMetaObject); };
 }
 
 extern "C" QGestureEvent * bg_QGestureEvent__CONSTRUCT_const_QList_QGesture_X__R(const Container_QList_QGesture_X_ * gestures) {
@@ -95839,9 +93951,6 @@ extern "C" CrystalVariant bg_QGraphicsItem_extension_SUPER_const_QVariant_R(QGra
 }
 
 struct BgJumptable_QGraphicsObject {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsObject_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsObject_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsObject_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QGraphicsObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -95888,36 +93997,7 @@ struct BgJumptable_QGraphicsObject {
 struct BgInherit_QGraphicsObject : public QGraphicsObject {
   using QGraphicsObject::QGraphicsObject;
   BgJumptable_QGraphicsObject bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsObject_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsObject *>(static_cast<const QGraphicsObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsObject_metaObject_(_crystal_);
-    } else {
-      return QGraphicsObject::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsObject_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsObject *>(static_cast<const QGraphicsObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsObject_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsObject::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsObject *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsObject_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsObject *>(static_cast<const QGraphicsObject *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsObject_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsObject::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QGraphicsObject *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsObject *>(static_cast<const QGraphicsObject *>(_self_))) : nullptr;
@@ -96342,6 +94422,18 @@ struct BgInherit_QGraphicsObject : public QGraphicsObject {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsObject::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsObject::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsObject::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsObject *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsObject_metaObject_(QGraphicsObject * _self_) {
   return _self_->metaObject();
@@ -97306,6 +95398,10 @@ extern "C" void *bg_QGraphicsObject_DISCOVER_int_void(QGraphicsObject * _self_, 
 
 extern "C" void bg_BgInherit_QGraphicsObject_JUMPTABLE_BgJumptable_QGraphicsObject_R(BgInherit_QGraphicsObject * _self_, const BgJumptable_QGraphicsObject & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGraphicsObject_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsObject * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsObject::staticMetaObject); };
 }
 
 extern "C" QMetaObject::Connection * bg_QGraphicsObject_CONNECT_parentChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsObject * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
@@ -100973,9 +99069,6 @@ extern "C" void bg_BgInherit_QGraphicsPixmapItem_JUMPTABLE_BgJumptable_QGraphics
 }
 
 struct BgJumptable_QGraphicsTextItem {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsTextItem_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsTextItem_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsTextItem_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRectF *, void *> bg_QGraphicsTextItem_boundingRect_;
   CrystalProc<QPainterPath &, void *> bg_QGraphicsTextItem_shape_;
   CrystalProc<bool, void *, const QPointF *> bg_QGraphicsTextItem_contains_const_QPointF_R;
@@ -101016,36 +99109,7 @@ struct BgJumptable_QGraphicsTextItem {
 struct BgInherit_QGraphicsTextItem : public QGraphicsTextItem {
   using QGraphicsTextItem::QGraphicsTextItem;
   BgJumptable_QGraphicsTextItem bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsTextItem *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTextItem_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTextItem *>(static_cast<const QGraphicsTextItem *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTextItem_metaObject_(_crystal_);
-    } else {
-      return QGraphicsTextItem::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsTextItem *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTextItem_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTextItem *>(static_cast<const QGraphicsTextItem *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTextItem_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsTextItem::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsTextItem *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTextItem_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTextItem *>(static_cast<const QGraphicsTextItem *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTextItem_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsTextItem::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRectF boundingRect() const override {
     const BgInherit_QGraphicsTextItem *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsTextItem_boundingRect_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTextItem *>(static_cast<const QGraphicsTextItem *>(_self_))) : nullptr;
@@ -101406,6 +99470,18 @@ struct BgInherit_QGraphicsTextItem : public QGraphicsTextItem {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsTextItem::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsTextItem::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsTextItem::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsTextItem *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsTextItem_metaObject_(QGraphicsTextItem * _self_) {
   return _self_->metaObject();
@@ -101773,6 +99849,10 @@ extern "C" CrystalVariant bg_QGraphicsTextItem_extension_SUPER_const_QVariant_R(
 
 extern "C" void bg_BgInherit_QGraphicsTextItem_JUMPTABLE_BgJumptable_QGraphicsTextItem_R(BgInherit_QGraphicsTextItem * _self_, const BgJumptable_QGraphicsTextItem & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGraphicsTextItem_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsTextItem * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsTextItem::staticMetaObject); };
 }
 
 struct BgJumptable_QGraphicsSimpleTextItem {
@@ -103212,9 +101292,6 @@ extern "C" void bg_QGraphicsLayout_widgetEvent_SUPER_QEvent_X(QGraphicsLayout * 
 }
 
 struct BgJumptable_QGraphicsAnchor {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsAnchor_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsAnchor_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsAnchor_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -103226,36 +101303,7 @@ struct BgJumptable_QGraphicsAnchor {
 struct BgInherit_QGraphicsAnchor : public QGraphicsAnchor {
   using QGraphicsAnchor::QGraphicsAnchor;
   BgJumptable_QGraphicsAnchor bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsAnchor *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsAnchor_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsAnchor *>(static_cast<const QGraphicsAnchor *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsAnchor_metaObject_(_crystal_);
-    } else {
-      return QGraphicsAnchor::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsAnchor *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsAnchor_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsAnchor *>(static_cast<const QGraphicsAnchor *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsAnchor_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsAnchor::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsAnchor *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsAnchor_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsAnchor *>(static_cast<const QGraphicsAnchor *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsAnchor_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsAnchor::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QGraphicsAnchor *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsAnchor *>(static_cast<const QGraphicsAnchor *>(_self_))) : nullptr;
@@ -103326,6 +101374,18 @@ struct BgInherit_QGraphicsAnchor : public QGraphicsAnchor {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsAnchor::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsAnchor::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsAnchor::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsAnchor *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsAnchor_metaObject_(QGraphicsAnchor * _self_) {
   return _self_->metaObject();
@@ -103373,6 +101433,10 @@ extern "C" const QMetaObject * bg_QGraphicsAnchor_staticMetaObject_STATIC_GETTER
 
 extern "C" void bg_BgInherit_QGraphicsAnchor_JUMPTABLE_BgJumptable_QGraphicsAnchor_R(BgInherit_QGraphicsAnchor * _self_, const BgJumptable_QGraphicsAnchor & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGraphicsAnchor_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsAnchor * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsAnchor::staticMetaObject); };
 }
 
 struct BgJumptable_QGraphicsAnchorLayout {
@@ -103590,9 +101654,6 @@ extern "C" void bg_BgInherit_QGraphicsAnchorLayout_JUMPTABLE_BgJumptable_QGraphi
 }
 
 struct BgJumptable_QGraphicsEffect {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsEffect_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsEffect_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsEffect_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRectF *, void *, const QRectF *> bg_QGraphicsEffect_boundingRectFor_const_QRectF_R;
   CrystalProc<void, void *, QPainter *> bg_QGraphicsEffect_draw_QPainter_X;
   CrystalProc<void, void *, QGraphicsEffect::ChangeFlags> bg_QGraphicsEffect_sourceChanged_QGraphicsEffect__ChangeFlags;
@@ -103607,36 +101668,7 @@ struct BgJumptable_QGraphicsEffect {
 struct BgInherit_QGraphicsEffect : public QGraphicsEffect {
   using QGraphicsEffect::QGraphicsEffect;
   BgJumptable_QGraphicsEffect bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsEffect_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsEffect *>(static_cast<const QGraphicsEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsEffect_metaObject_(_crystal_);
-    } else {
-      return QGraphicsEffect::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsEffect_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsEffect *>(static_cast<const QGraphicsEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsEffect_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsEffect::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsEffect_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsEffect *>(static_cast<const QGraphicsEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsEffect_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsEffect::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRectF boundingRectFor(const QRectF & sourceRect) const override {
     const BgInherit_QGraphicsEffect *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsEffect_boundingRectFor_const_QRectF_R.isValid() ? bindgen_crystal_object(const_cast<QGraphicsEffect *>(static_cast<const QGraphicsEffect *>(_self_))) : nullptr;
@@ -103739,6 +101771,18 @@ struct BgInherit_QGraphicsEffect : public QGraphicsEffect {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsEffect::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsEffect::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsEffect::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsEffect *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsEffect_metaObject_(QGraphicsEffect * _self_) {
   return _self_->metaObject();
@@ -103842,6 +101886,10 @@ extern "C" void bg_BgInherit_QGraphicsEffect_JUMPTABLE_BgJumptable_QGraphicsEffe
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsEffect_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsEffect * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsEffect::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QGraphicsEffect_CONNECT_enabledChanged_Qt__ConnectionType_CrystalProc_void__bool_(QGraphicsEffect * _self_, Qt::ConnectionType type, CrystalProc<void, bool> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsEffect::*)(bool))&QGraphicsEffect::enabledChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](bool enabled){ _proc_(enabled); }, type));
 }
@@ -103855,9 +101903,6 @@ extern "C" void bg_QGraphicsEffect_sourceChanged_SUPER_QGraphicsEffect__ChangeFl
 }
 
 struct BgJumptable_QGraphicsColorizeEffect {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsColorizeEffect_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsColorizeEffect_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsColorizeEffect_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *> bg_QGraphicsColorizeEffect_draw_QPainter_X;
   CrystalProc<QRectF *, void *, const QRectF *> bg_QGraphicsEffect_boundingRectFor_const_QRectF_R;
   CrystalProc<void, void *, QGraphicsEffect::ChangeFlags> bg_QGraphicsEffect_sourceChanged_QGraphicsEffect__ChangeFlags;
@@ -103872,36 +101917,7 @@ struct BgJumptable_QGraphicsColorizeEffect {
 struct BgInherit_QGraphicsColorizeEffect : public QGraphicsColorizeEffect {
   using QGraphicsColorizeEffect::QGraphicsColorizeEffect;
   BgJumptable_QGraphicsColorizeEffect bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsColorizeEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsColorizeEffect_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsColorizeEffect *>(static_cast<const QGraphicsColorizeEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsColorizeEffect_metaObject_(_crystal_);
-    } else {
-      return QGraphicsColorizeEffect::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsColorizeEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsColorizeEffect_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsColorizeEffect *>(static_cast<const QGraphicsColorizeEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsColorizeEffect_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsColorizeEffect::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsColorizeEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsColorizeEffect_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsColorizeEffect *>(static_cast<const QGraphicsColorizeEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsColorizeEffect_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsColorizeEffect::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void draw(QPainter * painter) override {
     BgInherit_QGraphicsColorizeEffect *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsColorizeEffect_draw_QPainter_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsColorizeEffect *>(static_cast<const QGraphicsColorizeEffect *>(_self_))) : nullptr;
@@ -104002,6 +102018,18 @@ struct BgInherit_QGraphicsColorizeEffect : public QGraphicsColorizeEffect {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsColorizeEffect::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsColorizeEffect::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsColorizeEffect::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsColorizeEffect *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsColorizeEffect_metaObject_(QGraphicsColorizeEffect * _self_) {
   return _self_->metaObject();
@@ -104075,10 +102103,11 @@ extern "C" void bg_BgInherit_QGraphicsColorizeEffect_JUMPTABLE_BgJumptable_QGrap
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsColorizeEffect_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsColorizeEffect * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsColorizeEffect::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsBlurEffect {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsBlurEffect_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsBlurEffect_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsBlurEffect_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRectF *, void *, const QRectF *> bg_QGraphicsBlurEffect_boundingRectFor_const_QRectF_R;
   CrystalProc<void, void *, QPainter *> bg_QGraphicsBlurEffect_draw_QPainter_X;
   CrystalProc<void, void *, QGraphicsEffect::ChangeFlags> bg_QGraphicsEffect_sourceChanged_QGraphicsEffect__ChangeFlags;
@@ -104093,36 +102122,7 @@ struct BgJumptable_QGraphicsBlurEffect {
 struct BgInherit_QGraphicsBlurEffect : public QGraphicsBlurEffect {
   using QGraphicsBlurEffect::QGraphicsBlurEffect;
   BgJumptable_QGraphicsBlurEffect bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsBlurEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsBlurEffect_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsBlurEffect *>(static_cast<const QGraphicsBlurEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsBlurEffect_metaObject_(_crystal_);
-    } else {
-      return QGraphicsBlurEffect::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsBlurEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsBlurEffect_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsBlurEffect *>(static_cast<const QGraphicsBlurEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsBlurEffect_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsBlurEffect::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsBlurEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsBlurEffect_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsBlurEffect *>(static_cast<const QGraphicsBlurEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsBlurEffect_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsBlurEffect::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRectF boundingRectFor(const QRectF & sourceRect) const override {
     const BgInherit_QGraphicsBlurEffect *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsBlurEffect_boundingRectFor_const_QRectF_R.isValid() ? bindgen_crystal_object(const_cast<QGraphicsBlurEffect *>(static_cast<const QGraphicsBlurEffect *>(_self_))) : nullptr;
@@ -104223,6 +102223,18 @@ struct BgInherit_QGraphicsBlurEffect : public QGraphicsBlurEffect {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsBlurEffect::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsBlurEffect::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsBlurEffect::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsBlurEffect *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsBlurEffect_metaObject_(QGraphicsBlurEffect * _self_) {
   return _self_->metaObject();
@@ -104304,10 +102316,11 @@ extern "C" void bg_BgInherit_QGraphicsBlurEffect_JUMPTABLE_BgJumptable_QGraphics
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsBlurEffect_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsBlurEffect * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsBlurEffect::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsDropShadowEffect {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsDropShadowEffect_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsDropShadowEffect_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsDropShadowEffect_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRectF *, void *, const QRectF *> bg_QGraphicsDropShadowEffect_boundingRectFor_const_QRectF_R;
   CrystalProc<void, void *, QPainter *> bg_QGraphicsDropShadowEffect_draw_QPainter_X;
   CrystalProc<void, void *, QGraphicsEffect::ChangeFlags> bg_QGraphicsEffect_sourceChanged_QGraphicsEffect__ChangeFlags;
@@ -104322,36 +102335,7 @@ struct BgJumptable_QGraphicsDropShadowEffect {
 struct BgInherit_QGraphicsDropShadowEffect : public QGraphicsDropShadowEffect {
   using QGraphicsDropShadowEffect::QGraphicsDropShadowEffect;
   BgJumptable_QGraphicsDropShadowEffect bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsDropShadowEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsDropShadowEffect_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsDropShadowEffect *>(static_cast<const QGraphicsDropShadowEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsDropShadowEffect_metaObject_(_crystal_);
-    } else {
-      return QGraphicsDropShadowEffect::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsDropShadowEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsDropShadowEffect_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsDropShadowEffect *>(static_cast<const QGraphicsDropShadowEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsDropShadowEffect_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsDropShadowEffect::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsDropShadowEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsDropShadowEffect_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsDropShadowEffect *>(static_cast<const QGraphicsDropShadowEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsDropShadowEffect_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsDropShadowEffect::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRectF boundingRectFor(const QRectF & sourceRect) const override {
     const BgInherit_QGraphicsDropShadowEffect *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsDropShadowEffect_boundingRectFor_const_QRectF_R.isValid() ? bindgen_crystal_object(const_cast<QGraphicsDropShadowEffect *>(static_cast<const QGraphicsDropShadowEffect *>(_self_))) : nullptr;
@@ -104452,6 +102436,18 @@ struct BgInherit_QGraphicsDropShadowEffect : public QGraphicsDropShadowEffect {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsDropShadowEffect::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsDropShadowEffect::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsDropShadowEffect::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsDropShadowEffect *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsDropShadowEffect_metaObject_(QGraphicsDropShadowEffect * _self_) {
   return _self_->metaObject();
@@ -104573,10 +102569,11 @@ extern "C" void bg_BgInherit_QGraphicsDropShadowEffect_JUMPTABLE_BgJumptable_QGr
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsDropShadowEffect_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsDropShadowEffect * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsDropShadowEffect::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsOpacityEffect {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsOpacityEffect_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsOpacityEffect_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsOpacityEffect_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *> bg_QGraphicsOpacityEffect_draw_QPainter_X;
   CrystalProc<QRectF *, void *, const QRectF *> bg_QGraphicsEffect_boundingRectFor_const_QRectF_R;
   CrystalProc<void, void *, QGraphicsEffect::ChangeFlags> bg_QGraphicsEffect_sourceChanged_QGraphicsEffect__ChangeFlags;
@@ -104591,36 +102588,7 @@ struct BgJumptable_QGraphicsOpacityEffect {
 struct BgInherit_QGraphicsOpacityEffect : public QGraphicsOpacityEffect {
   using QGraphicsOpacityEffect::QGraphicsOpacityEffect;
   BgJumptable_QGraphicsOpacityEffect bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsOpacityEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsOpacityEffect_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsOpacityEffect *>(static_cast<const QGraphicsOpacityEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsOpacityEffect_metaObject_(_crystal_);
-    } else {
-      return QGraphicsOpacityEffect::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsOpacityEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsOpacityEffect_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsOpacityEffect *>(static_cast<const QGraphicsOpacityEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsOpacityEffect_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsOpacityEffect::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsOpacityEffect *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsOpacityEffect_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsOpacityEffect *>(static_cast<const QGraphicsOpacityEffect *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsOpacityEffect_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsOpacityEffect::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void draw(QPainter * painter) override {
     BgInherit_QGraphicsOpacityEffect *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsOpacityEffect_draw_QPainter_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsOpacityEffect *>(static_cast<const QGraphicsOpacityEffect *>(_self_))) : nullptr;
@@ -104721,6 +102689,18 @@ struct BgInherit_QGraphicsOpacityEffect : public QGraphicsOpacityEffect {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsOpacityEffect::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsOpacityEffect::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsOpacityEffect::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsOpacityEffect *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsOpacityEffect_metaObject_(QGraphicsOpacityEffect * _self_) {
   return _self_->metaObject();
@@ -104792,6 +102772,10 @@ extern "C" void bg_QGraphicsOpacityEffect_draw_SUPER_QPainter_X(QGraphicsOpacity
 
 extern "C" void bg_BgInherit_QGraphicsOpacityEffect_JUMPTABLE_BgJumptable_QGraphicsOpacityEffect_R(BgInherit_QGraphicsOpacityEffect * _self_, const BgJumptable_QGraphicsOpacityEffect & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGraphicsOpacityEffect_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsOpacityEffect * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsOpacityEffect::staticMetaObject); };
 }
 
 struct BgJumptable_QGraphicsGridLayout {
@@ -105133,9 +103117,6 @@ extern "C" void bg_BgInherit_QGraphicsGridLayout_JUMPTABLE_BgJumptable_QGraphics
 }
 
 struct BgJumptable_QGraphicsItemAnimation {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsItemAnimation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsItemAnimation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsItemAnimation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, qreal> bg_QGraphicsItemAnimation_beforeAnimationStep_qreal;
   CrystalProc<void, void *, qreal> bg_QGraphicsItemAnimation_afterAnimationStep_qreal;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
@@ -105149,36 +103130,7 @@ struct BgJumptable_QGraphicsItemAnimation {
 struct BgInherit_QGraphicsItemAnimation : public QGraphicsItemAnimation {
   using QGraphicsItemAnimation::QGraphicsItemAnimation;
   BgJumptable_QGraphicsItemAnimation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsItemAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsItemAnimation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsItemAnimation *>(static_cast<const QGraphicsItemAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsItemAnimation_metaObject_(_crystal_);
-    } else {
-      return QGraphicsItemAnimation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsItemAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsItemAnimation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsItemAnimation *>(static_cast<const QGraphicsItemAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsItemAnimation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsItemAnimation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsItemAnimation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsItemAnimation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsItemAnimation *>(static_cast<const QGraphicsItemAnimation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsItemAnimation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsItemAnimation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void beforeAnimationStep(qreal step) override {
     BgInherit_QGraphicsItemAnimation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsItemAnimation_beforeAnimationStep_qreal.isValid() ? bindgen_crystal_object(const_cast<QGraphicsItemAnimation *>(static_cast<const QGraphicsItemAnimation *>(_self_))) : nullptr;
@@ -105269,6 +103221,18 @@ struct BgInherit_QGraphicsItemAnimation : public QGraphicsItemAnimation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsItemAnimation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsItemAnimation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsItemAnimation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsItemAnimation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsItemAnimation_metaObject_(QGraphicsItemAnimation * _self_) {
   return _self_->metaObject();
@@ -105416,6 +103380,10 @@ extern "C" void bg_QGraphicsItemAnimation_afterAnimationStep_SUPER_qreal(QGraphi
 
 extern "C" void bg_BgInherit_QGraphicsItemAnimation_JUMPTABLE_BgJumptable_QGraphicsItemAnimation_R(BgInherit_QGraphicsItemAnimation * _self_, const BgJumptable_QGraphicsItemAnimation & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QGraphicsItemAnimation_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsItemAnimation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsItemAnimation::staticMetaObject); };
 }
 
 struct BgJumptable_QGraphicsLinearLayout {
@@ -105661,9 +103629,6 @@ extern "C" void bg_BgInherit_QGraphicsLinearLayout_JUMPTABLE_BgJumptable_QGraphi
 }
 
 struct BgJumptable_QGraphicsWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const QRectF *> bg_QGraphicsWidget_setGeometry_const_QRectF_R;
   CrystalProc<void, void *, qreal *, qreal *, qreal *, qreal *> bg_QGraphicsWidget_getContentsMargins_qreal_X_qreal_X_qreal_X_qreal_X;
   CrystalProc<int, void *> bg_QGraphicsWidget_type_;
@@ -105707,36 +103672,7 @@ struct BgJumptable_QGraphicsWidget {
 struct BgInherit_QGraphicsWidget : public QGraphicsWidget {
   using QGraphicsWidget::QGraphicsWidget;
   BgJumptable_QGraphicsWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsWidget *>(static_cast<const QGraphicsWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsWidget_metaObject_(_crystal_);
-    } else {
-      return QGraphicsWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsWidget *>(static_cast<const QGraphicsWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsWidget *>(static_cast<const QGraphicsWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setGeometry(const QRectF & rect) override {
     BgInherit_QGraphicsWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsWidget_setGeometry_const_QRectF_R.isValid() ? bindgen_crystal_object(const_cast<QGraphicsWidget *>(static_cast<const QGraphicsWidget *>(_self_))) : nullptr;
@@ -106125,6 +104061,18 @@ struct BgInherit_QGraphicsWidget : public QGraphicsWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsWidget_metaObject_(QGraphicsWidget * _self_) {
   return _self_->metaObject();
@@ -106665,6 +104613,10 @@ extern "C" void bg_BgInherit_QGraphicsWidget_JUMPTABLE_BgJumptable_QGraphicsWidg
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsWidget_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsWidget::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QGraphicsWidget_CONNECT_geometryChanged_Qt__ConnectionType_CrystalProc_void_(QGraphicsWidget * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QGraphicsWidget::*)())&QGraphicsWidget::geometryChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -106802,9 +104754,6 @@ extern "C" void bg_QGraphicsWidget_ungrabKeyboardEvent_SUPER_QEvent_X(QGraphicsW
 }
 
 struct BgJumptable_QGraphicsProxyWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsProxyWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsProxyWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsProxyWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, const QRectF *> bg_QGraphicsProxyWidget_setGeometry_const_QRectF_R;
   CrystalProc<void, void *, QPainter *, const QStyleOptionGraphicsItem *, QWidget *> bg_QGraphicsProxyWidget_paint_QPainter_X_const_QStyleOptionGraphicsItem_X_QWidget_X;
   CrystalProc<int, void *> bg_QGraphicsProxyWidget_type_;
@@ -106863,36 +104812,7 @@ struct BgJumptable_QGraphicsProxyWidget {
 struct BgInherit_QGraphicsProxyWidget : public QGraphicsProxyWidget {
   using QGraphicsProxyWidget::QGraphicsProxyWidget;
   BgJumptable_QGraphicsProxyWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsProxyWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsProxyWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsProxyWidget *>(static_cast<const QGraphicsProxyWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsProxyWidget_metaObject_(_crystal_);
-    } else {
-      return QGraphicsProxyWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsProxyWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsProxyWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsProxyWidget *>(static_cast<const QGraphicsProxyWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsProxyWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsProxyWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsProxyWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsProxyWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsProxyWidget *>(static_cast<const QGraphicsProxyWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsProxyWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsProxyWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setGeometry(const QRectF & rect) override {
     BgInherit_QGraphicsProxyWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsProxyWidget_setGeometry_const_QRectF_R.isValid() ? bindgen_crystal_object(const_cast<QGraphicsProxyWidget *>(static_cast<const QGraphicsProxyWidget *>(_self_))) : nullptr;
@@ -107431,6 +105351,18 @@ struct BgInherit_QGraphicsProxyWidget : public QGraphicsProxyWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsProxyWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsProxyWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsProxyWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsProxyWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsProxyWidget_metaObject_(QGraphicsProxyWidget * _self_) {
   return _self_->metaObject();
@@ -107748,10 +105680,11 @@ extern "C" void bg_BgInherit_QGraphicsProxyWidget_JUMPTABLE_BgJumptable_QGraphic
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsProxyWidget_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsProxyWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsProxyWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsScene {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsScene_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsScene_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsScene_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalVariant *, void *, Qt::InputMethodQuery> bg_QGraphicsScene_inputMethodQuery_Qt__InputMethodQuery;
   CrystalProc<bool, void *, QEvent *> bg_QGraphicsScene_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QGraphicsScene_eventFilter_QObject_X_QEvent_X;
@@ -107783,36 +105716,7 @@ struct BgJumptable_QGraphicsScene {
 struct BgInherit_QGraphicsScene : public QGraphicsScene {
   using QGraphicsScene::QGraphicsScene;
   BgJumptable_QGraphicsScene bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsScene *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScene_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScene *>(static_cast<const QGraphicsScene *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScene_metaObject_(_crystal_);
-    } else {
-      return QGraphicsScene::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsScene *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScene_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScene *>(static_cast<const QGraphicsScene *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScene_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsScene::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsScene *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScene_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScene *>(static_cast<const QGraphicsScene *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScene_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsScene::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
     const BgInherit_QGraphicsScene *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsScene_inputMethodQuery_Qt__InputMethodQuery.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScene *>(static_cast<const QGraphicsScene *>(_self_))) : nullptr;
@@ -108083,6 +105987,18 @@ struct BgInherit_QGraphicsScene : public QGraphicsScene {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsScene::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsScene::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsScene::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsScene *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsScene_metaObject_(QGraphicsScene * _self_) {
   return _self_->metaObject();
@@ -108764,6 +106680,10 @@ extern "C" void bg_BgInherit_QGraphicsScene_JUMPTABLE_BgJumptable_QGraphicsScene
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsScene_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsScene * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsScene::staticMetaObject); };
+}
+
 extern "C" QGraphicsSceneEvent * bg_QGraphicsSceneEvent__CONSTRUCT_QEvent__Type(QEvent::Type type) {
   return new (UseGC) CrystalGCWrapper<QGraphicsSceneEvent>(type);
 }
@@ -109227,9 +107147,6 @@ extern "C" void bg_QGraphicsSceneMoveEvent_setNewPos_const_QPointF_R(QGraphicsSc
 }
 
 struct BgJumptable_QGraphicsTransform {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsTransform_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsTransform_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsTransform_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QMatrix4x4 *> bg_QGraphicsTransform_applyTo_QMatrix4x4_X;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -109242,36 +107159,7 @@ struct BgJumptable_QGraphicsTransform {
 struct BgInherit_QGraphicsTransform : public QGraphicsTransform {
   using QGraphicsTransform::QGraphicsTransform;
   BgJumptable_QGraphicsTransform bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsTransform *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTransform_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTransform *>(static_cast<const QGraphicsTransform *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTransform_metaObject_(_crystal_);
-    } else {
-      return QGraphicsTransform::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsTransform *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTransform_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTransform *>(static_cast<const QGraphicsTransform *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTransform_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsTransform::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsTransform *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsTransform_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTransform *>(static_cast<const QGraphicsTransform *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsTransform_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsTransform::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void applyTo(QMatrix4x4 * matrix) const override {
     const BgInherit_QGraphicsTransform *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsTransform_applyTo_QMatrix4x4_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsTransform *>(static_cast<const QGraphicsTransform *>(_self_))) : nullptr;
@@ -109354,6 +107242,18 @@ struct BgInherit_QGraphicsTransform : public QGraphicsTransform {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsTransform::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsTransform::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsTransform::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsTransform *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsTransform_metaObject_(QGraphicsTransform * _self_) {
   return _self_->metaObject();
@@ -109407,10 +107307,11 @@ extern "C" void bg_BgInherit_QGraphicsTransform_JUMPTABLE_BgJumptable_QGraphicsT
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsTransform_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsTransform * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsTransform::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsScale {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsScale_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsScale_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsScale_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QMatrix4x4 *> bg_QGraphicsScale_applyTo_QMatrix4x4_X;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -109423,36 +107324,7 @@ struct BgJumptable_QGraphicsScale {
 struct BgInherit_QGraphicsScale : public QGraphicsScale {
   using QGraphicsScale::QGraphicsScale;
   BgJumptable_QGraphicsScale bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsScale *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScale_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScale *>(static_cast<const QGraphicsScale *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScale_metaObject_(_crystal_);
-    } else {
-      return QGraphicsScale::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsScale *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScale_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScale *>(static_cast<const QGraphicsScale *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScale_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsScale::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsScale *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsScale_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScale *>(static_cast<const QGraphicsScale *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsScale_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsScale::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void applyTo(QMatrix4x4 * matrix) const override {
     const BgInherit_QGraphicsScale *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsScale_applyTo_QMatrix4x4_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsScale *>(static_cast<const QGraphicsScale *>(_self_))) : nullptr;
@@ -109533,6 +107405,18 @@ struct BgInherit_QGraphicsScale : public QGraphicsScale {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsScale::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsScale::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsScale::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsScale *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsScale_metaObject_(QGraphicsScale * _self_) {
   return _self_->metaObject();
@@ -109646,10 +107530,11 @@ extern "C" void bg_BgInherit_QGraphicsScale_JUMPTABLE_BgJumptable_QGraphicsScale
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsScale_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsScale * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsScale::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsRotation {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsRotation_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsRotation_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsRotation_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QMatrix4x4 *> bg_QGraphicsRotation_applyTo_QMatrix4x4_X;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
@@ -109662,36 +107547,7 @@ struct BgJumptable_QGraphicsRotation {
 struct BgInherit_QGraphicsRotation : public QGraphicsRotation {
   using QGraphicsRotation::QGraphicsRotation;
   BgJumptable_QGraphicsRotation bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsRotation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsRotation_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsRotation *>(static_cast<const QGraphicsRotation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsRotation_metaObject_(_crystal_);
-    } else {
-      return QGraphicsRotation::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsRotation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsRotation_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsRotation *>(static_cast<const QGraphicsRotation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsRotation_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsRotation::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsRotation *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsRotation_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsRotation *>(static_cast<const QGraphicsRotation *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsRotation_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsRotation::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void applyTo(QMatrix4x4 * matrix) const override {
     const BgInherit_QGraphicsRotation *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsRotation_applyTo_QMatrix4x4_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsRotation *>(static_cast<const QGraphicsRotation *>(_self_))) : nullptr;
@@ -109772,6 +107628,18 @@ struct BgInherit_QGraphicsRotation : public QGraphicsRotation {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsRotation::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsRotation::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsRotation::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsRotation *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsRotation_metaObject_(QGraphicsRotation * _self_) {
   return _self_->metaObject();
@@ -109865,10 +107733,11 @@ extern "C" void bg_BgInherit_QGraphicsRotation_JUMPTABLE_BgJumptable_QGraphicsRo
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsRotation_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsRotation * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsRotation::staticMetaObject); };
+}
+
 struct BgJumptable_QScrollArea {
-  CrystalProc<const QMetaObject *, void *> bg_QScrollArea_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QScrollArea_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QScrollArea_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QScrollArea_sizeHint_;
   CrystalProc<bool, void *, bool> bg_QScrollArea_focusNextPrevChild_bool;
   CrystalProc<bool, void *, QEvent *> bg_QScrollArea_event_QEvent_X;
@@ -109923,36 +107792,7 @@ struct BgJumptable_QScrollArea {
 struct BgInherit_QScrollArea : public QScrollArea {
   using QScrollArea::QScrollArea;
   BgJumptable_QScrollArea bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollArea_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QScrollArea *>(static_cast<const QScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollArea_metaObject_(_crystal_);
-    } else {
-      return QScrollArea::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollArea_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QScrollArea *>(static_cast<const QScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollArea_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QScrollArea::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QScrollArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollArea_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QScrollArea *>(static_cast<const QScrollArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollArea_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QScrollArea::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QScrollArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QScrollArea_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QScrollArea *>(static_cast<const QScrollArea *>(_self_))) : nullptr;
@@ -110456,6 +108296,18 @@ struct BgInherit_QScrollArea : public QScrollArea {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QScrollArea::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QScrollArea::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QScrollArea::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QScrollArea *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QScrollArea_metaObject_(QScrollArea * _self_) {
   return _self_->metaObject();
@@ -110585,10 +108437,11 @@ extern "C" void bg_BgInherit_QScrollArea_JUMPTABLE_BgJumptable_QScrollArea_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QScrollArea_SET_META_BindgenQtMetaObject(BgInherit_QScrollArea * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QScrollArea::staticMetaObject); };
+}
+
 struct BgJumptable_QGraphicsView {
-  CrystalProc<const QMetaObject *, void *> bg_QGraphicsView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGraphicsView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGraphicsView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QGraphicsView_sizeHint_;
   CrystalProc<CrystalVariant *, void *, Qt::InputMethodQuery> bg_QGraphicsView_inputMethodQuery_Qt__InputMethodQuery;
   CrystalProc<void, void *, QWidget *> bg_QGraphicsView_setupViewport_QWidget_X;
@@ -110646,36 +108499,7 @@ struct BgJumptable_QGraphicsView {
 struct BgInherit_QGraphicsView : public QGraphicsView {
   using QGraphicsView::QGraphicsView;
   BgJumptable_QGraphicsView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGraphicsView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsView *>(static_cast<const QGraphicsView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsView_metaObject_(_crystal_);
-    } else {
-      return QGraphicsView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGraphicsView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGraphicsView *>(static_cast<const QGraphicsView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGraphicsView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGraphicsView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGraphicsView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGraphicsView *>(static_cast<const QGraphicsView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGraphicsView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGraphicsView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QGraphicsView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGraphicsView_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QGraphicsView *>(static_cast<const QGraphicsView *>(_self_))) : nullptr;
@@ -111209,6 +109033,18 @@ struct BgInherit_QGraphicsView : public QGraphicsView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGraphicsView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGraphicsView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGraphicsView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGraphicsView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGraphicsView_metaObject_(QGraphicsView * _self_) {
   return _self_->metaObject();
@@ -111802,10 +109638,11 @@ extern "C" void bg_BgInherit_QGraphicsView_JUMPTABLE_BgJumptable_QGraphicsView_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGraphicsView_SET_META_BindgenQtMetaObject(BgInherit_QGraphicsView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGraphicsView::staticMetaObject); };
+}
+
 struct BgJumptable_QGroupBox {
-  CrystalProc<const QMetaObject *, void *> bg_QGroupBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QGroupBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QGroupBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QGroupBox_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QGroupBox_event_QEvent_X;
   CrystalProc<void, void *, QChildEvent *> bg_QGroupBox_childEvent_QChildEvent_X;
@@ -111856,36 +109693,7 @@ struct BgJumptable_QGroupBox {
 struct BgInherit_QGroupBox : public QGroupBox {
   using QGroupBox::QGroupBox;
   BgJumptable_QGroupBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QGroupBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGroupBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QGroupBox *>(static_cast<const QGroupBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGroupBox_metaObject_(_crystal_);
-    } else {
-      return QGroupBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QGroupBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGroupBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QGroupBox *>(static_cast<const QGroupBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGroupBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QGroupBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QGroupBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QGroupBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QGroupBox *>(static_cast<const QGroupBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QGroupBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QGroupBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize minimumSizeHint() const override {
     const BgInherit_QGroupBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QGroupBox_minimumSizeHint_.isValid() ? bindgen_crystal_object(const_cast<QGroupBox *>(static_cast<const QGroupBox *>(_self_))) : nullptr;
@@ -112349,6 +110157,18 @@ struct BgInherit_QGroupBox : public QGroupBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QGroupBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QGroupBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QGroupBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QGroupBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QGroupBox_metaObject_(QGroupBox * _self_) {
   return _self_->metaObject();
@@ -112526,10 +110346,11 @@ extern "C" void bg_BgInherit_QGroupBox_JUMPTABLE_BgJumptable_QGroupBox_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QGroupBox_SET_META_BindgenQtMetaObject(BgInherit_QGroupBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QGroupBox::staticMetaObject); };
+}
+
 struct BgJumptable_QHeaderView {
-  CrystalProc<const QMetaObject *, void *> bg_QHeaderView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QHeaderView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QHeaderView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QHeaderView_setModel_QAbstractItemModel_X;
   CrystalProc<QSize *, void *> bg_QHeaderView_sizeHint_;
   CrystalProc<void, void *, bool> bg_QHeaderView_setVisible_bool;
@@ -112625,36 +110446,7 @@ struct BgJumptable_QHeaderView {
 struct BgInherit_QHeaderView : public QHeaderView {
   using QHeaderView::QHeaderView;
   BgJumptable_QHeaderView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QHeaderView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHeaderView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QHeaderView *>(static_cast<const QHeaderView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHeaderView_metaObject_(_crystal_);
-    } else {
-      return QHeaderView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QHeaderView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHeaderView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QHeaderView *>(static_cast<const QHeaderView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHeaderView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QHeaderView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QHeaderView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QHeaderView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QHeaderView *>(static_cast<const QHeaderView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QHeaderView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QHeaderView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setModel(QAbstractItemModel * model) override {
     BgInherit_QHeaderView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QHeaderView_setModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QHeaderView *>(static_cast<const QHeaderView *>(_self_))) : nullptr;
@@ -113558,6 +111350,18 @@ struct BgInherit_QHeaderView : public QHeaderView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QHeaderView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QHeaderView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QHeaderView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QHeaderView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QHeaderView_metaObject_(QHeaderView * _self_) {
   return _self_->metaObject();
@@ -114187,10 +111991,11 @@ extern "C" void bg_BgInherit_QHeaderView_JUMPTABLE_BgJumptable_QHeaderView_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QHeaderView_SET_META_BindgenQtMetaObject(BgInherit_QHeaderView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QHeaderView::staticMetaObject); };
+}
+
 struct BgJumptable_QLineEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QLineEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QLineEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QLineEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QLineEdit_sizeHint_;
   CrystalProc<QSize *, void *> bg_QLineEdit_minimumSizeHint_;
   CrystalProc<void, void *, QMouseEvent *> bg_QLineEdit_mousePressEvent_QMouseEvent_X;
@@ -114241,36 +112046,7 @@ struct BgJumptable_QLineEdit {
 struct BgInherit_QLineEdit : public QLineEdit {
   using QLineEdit::QLineEdit;
   BgJumptable_QLineEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QLineEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLineEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QLineEdit *>(static_cast<const QLineEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLineEdit_metaObject_(_crystal_);
-    } else {
-      return QLineEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QLineEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLineEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QLineEdit *>(static_cast<const QLineEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLineEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QLineEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QLineEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLineEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QLineEdit *>(static_cast<const QLineEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLineEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QLineEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QLineEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QLineEdit_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QLineEdit *>(static_cast<const QLineEdit *>(_self_))) : nullptr;
@@ -114734,6 +112510,18 @@ struct BgInherit_QLineEdit : public QLineEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QLineEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QLineEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QLineEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QLineEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QLineEdit_metaObject_(QLineEdit * _self_) {
   return _self_->metaObject();
@@ -115251,10 +113039,11 @@ extern "C" void bg_BgInherit_QLineEdit_JUMPTABLE_BgJumptable_QLineEdit_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QLineEdit_SET_META_BindgenQtMetaObject(BgInherit_QLineEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QLineEdit::staticMetaObject); };
+}
+
 struct BgJumptable_QInputDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QInputDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QInputDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QInputDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QInputDialog_open_;
   CrystalProc<QSize *, void *> bg_QInputDialog_minimumSizeHint_;
   CrystalProc<QSize *, void *> bg_QInputDialog_sizeHint_;
@@ -115310,36 +113099,7 @@ struct BgJumptable_QInputDialog {
 struct BgInherit_QInputDialog : public QInputDialog {
   using QInputDialog::QInputDialog;
   BgJumptable_QInputDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QInputDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QInputDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QInputDialog *>(static_cast<const QInputDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QInputDialog_metaObject_(_crystal_);
-    } else {
-      return QInputDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QInputDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QInputDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QInputDialog *>(static_cast<const QInputDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QInputDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QInputDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QInputDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QInputDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QInputDialog *>(static_cast<const QInputDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QInputDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QInputDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void open() override {
     BgInherit_QInputDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QInputDialog_open_.isValid() ? bindgen_crystal_object(const_cast<QInputDialog *>(static_cast<const QInputDialog *>(_self_))) : nullptr;
@@ -115853,6 +113613,18 @@ struct BgInherit_QInputDialog : public QInputDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QInputDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QInputDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QInputDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QInputDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QInputDialog_metaObject_(QInputDialog * _self_) {
   return _self_->metaObject();
@@ -116206,10 +113978,11 @@ extern "C" void bg_BgInherit_QInputDialog_JUMPTABLE_BgJumptable_QInputDialog_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QInputDialog_SET_META_BindgenQtMetaObject(BgInherit_QInputDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QInputDialog::staticMetaObject); };
+}
+
 struct BgJumptable_QItemDelegate {
-  CrystalProc<const QMetaObject *, void *> bg_QItemDelegate_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QItemDelegate_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *, const QStyleOptionViewItem *, const QModelIndex *> bg_QItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QSize *, void *, const QStyleOptionViewItem *, const QModelIndex *> bg_QItemDelegate_sizeHint_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QWidget *, void *, QWidget *, const QStyleOptionViewItem *, const QModelIndex *> bg_QItemDelegate_createEditor_QWidget_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
@@ -116235,36 +114008,7 @@ struct BgJumptable_QItemDelegate {
 struct BgInherit_QItemDelegate : public QItemDelegate {
   using QItemDelegate::QItemDelegate;
   BgJumptable_QItemDelegate bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemDelegate_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QItemDelegate *>(static_cast<const QItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemDelegate_metaObject_(_crystal_);
-    } else {
-      return QItemDelegate::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemDelegate_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QItemDelegate *>(static_cast<const QItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemDelegate_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QItemDelegate::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QItemDelegate *>(static_cast<const QItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QItemDelegate::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const override {
     const BgInherit_QItemDelegate *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QItemDelegate *>(static_cast<const QItemDelegate *>(_self_))) : nullptr;
@@ -116475,6 +114219,18 @@ struct BgInherit_QItemDelegate : public QItemDelegate {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QItemDelegate::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QItemDelegate::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QItemDelegate::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QItemDelegate *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QItemDelegate_metaObject_(QItemDelegate * _self_) {
   return _self_->metaObject();
@@ -116652,6 +114408,10 @@ extern "C" void bg_BgInherit_QItemDelegate_JUMPTABLE_BgJumptable_QItemDelegate_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QItemDelegate_SET_META_BindgenQtMetaObject(BgInherit_QItemDelegate * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QItemDelegate::staticMetaObject); };
+}
+
 struct BgJumptable_QItemEditorCreatorBase {
   CrystalProc<QWidget *, void *, QWidget *> bg_QItemEditorCreatorBase_createWidget_QWidget_X;
   CrystalProc<CrystalString *, void *> bg_QItemEditorCreatorBase_valuePropertyName_;
@@ -116778,9 +114538,6 @@ extern "C" void bg_BgInherit_QItemEditorFactory_JUMPTABLE_BgJumptable_QItemEdito
 }
 
 struct BgJumptable_QKeySequenceEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QKeySequenceEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QKeySequenceEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QKeySequenceEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QKeySequenceEdit_event_QEvent_X;
   CrystalProc<void, void *, QKeyEvent *> bg_QKeySequenceEdit_keyPressEvent_QKeyEvent_X;
   CrystalProc<void, void *, QKeyEvent *> bg_QKeySequenceEdit_keyReleaseEvent_QKeyEvent_X;
@@ -116831,36 +114588,7 @@ struct BgJumptable_QKeySequenceEdit {
 struct BgInherit_QKeySequenceEdit : public QKeySequenceEdit {
   using QKeySequenceEdit::QKeySequenceEdit;
   BgJumptable_QKeySequenceEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QKeySequenceEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QKeySequenceEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QKeySequenceEdit *>(static_cast<const QKeySequenceEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QKeySequenceEdit_metaObject_(_crystal_);
-    } else {
-      return QKeySequenceEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QKeySequenceEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QKeySequenceEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QKeySequenceEdit *>(static_cast<const QKeySequenceEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QKeySequenceEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QKeySequenceEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QKeySequenceEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QKeySequenceEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QKeySequenceEdit *>(static_cast<const QKeySequenceEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QKeySequenceEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QKeySequenceEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QKeySequenceEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QKeySequenceEdit_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QKeySequenceEdit *>(static_cast<const QKeySequenceEdit *>(_self_))) : nullptr;
@@ -117324,6 +115052,18 @@ struct BgInherit_QKeySequenceEdit : public QKeySequenceEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QKeySequenceEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QKeySequenceEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QKeySequenceEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QKeySequenceEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QKeySequenceEdit_metaObject_(QKeySequenceEdit * _self_) {
   return _self_->metaObject();
@@ -117425,10 +115165,11 @@ extern "C" void bg_BgInherit_QKeySequenceEdit_JUMPTABLE_BgJumptable_QKeySequence
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QKeySequenceEdit_SET_META_BindgenQtMetaObject(BgInherit_QKeySequenceEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QKeySequenceEdit::staticMetaObject); };
+}
+
 struct BgJumptable_QLabel {
-  CrystalProc<const QMetaObject *, void *> bg_QLabel_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QLabel_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QLabel_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QLabel_sizeHint_;
   CrystalProc<QSize *, void *> bg_QLabel_minimumSizeHint_;
   CrystalProc<int, void *, int> bg_QLabel_heightForWidth_int;
@@ -117479,36 +115220,7 @@ struct BgJumptable_QLabel {
 struct BgInherit_QLabel : public QLabel {
   using QLabel::QLabel;
   BgJumptable_QLabel bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QLabel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLabel_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QLabel *>(static_cast<const QLabel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLabel_metaObject_(_crystal_);
-    } else {
-      return QLabel::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QLabel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLabel_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QLabel *>(static_cast<const QLabel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLabel_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QLabel::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QLabel *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLabel_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QLabel *>(static_cast<const QLabel *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLabel_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QLabel::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QLabel *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QLabel_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QLabel *>(static_cast<const QLabel *>(_self_))) : nullptr;
@@ -117972,6 +115684,18 @@ struct BgInherit_QLabel : public QLabel {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QLabel::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QLabel::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QLabel::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QLabel *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QLabel_metaObject_(QLabel * _self_) {
   return _self_->metaObject();
@@ -118277,10 +116001,11 @@ extern "C" void bg_BgInherit_QLabel_JUMPTABLE_BgJumptable_QLabel_R(BgInherit_QLa
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QLabel_SET_META_BindgenQtMetaObject(BgInherit_QLabel * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QLabel::staticMetaObject); };
+}
+
 struct BgJumptable_QLCDNumber {
-  CrystalProc<const QMetaObject *, void *> bg_QLCDNumber_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QLCDNumber_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QLCDNumber_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QLCDNumber_sizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QLCDNumber_event_QEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QLCDNumber_paintEvent_QPaintEvent_X;
@@ -118331,36 +116056,7 @@ struct BgJumptable_QLCDNumber {
 struct BgInherit_QLCDNumber : public QLCDNumber {
   using QLCDNumber::QLCDNumber;
   BgJumptable_QLCDNumber bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QLCDNumber *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLCDNumber_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QLCDNumber *>(static_cast<const QLCDNumber *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLCDNumber_metaObject_(_crystal_);
-    } else {
-      return QLCDNumber::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QLCDNumber *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLCDNumber_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QLCDNumber *>(static_cast<const QLCDNumber *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLCDNumber_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QLCDNumber::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QLCDNumber *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QLCDNumber_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QLCDNumber *>(static_cast<const QLCDNumber *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QLCDNumber_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QLCDNumber::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QLCDNumber *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QLCDNumber_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QLCDNumber *>(static_cast<const QLCDNumber *>(_self_))) : nullptr;
@@ -118824,6 +116520,18 @@ struct BgInherit_QLCDNumber : public QLCDNumber {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QLCDNumber::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QLCDNumber::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QLCDNumber::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QLCDNumber *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QLCDNumber_metaObject_(QLCDNumber * _self_) {
   return _self_->metaObject();
@@ -118969,10 +116677,11 @@ extern "C" void bg_BgInherit_QLCDNumber_JUMPTABLE_BgJumptable_QLCDNumber_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QLCDNumber_SET_META_BindgenQtMetaObject(BgInherit_QLCDNumber * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QLCDNumber::staticMetaObject); };
+}
+
 struct BgJumptable_QListView {
-  CrystalProc<const QMetaObject *, void *> bg_QListView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QListView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QListView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRect *, void *, const QModelIndex *> bg_QListView_visualRect_const_QModelIndex_R;
   CrystalProc<void, void *, const QModelIndex *, QAbstractItemView::ScrollHint> bg_QListView_scrollTo_const_QModelIndex_R_QAbstractItemView__ScrollHint;
   CrystalProc<QModelIndex &, void *, const QPoint *> bg_QListView_indexAt_const_QPoint_R;
@@ -119066,36 +116775,7 @@ struct BgJumptable_QListView {
 struct BgInherit_QListView : public QListView {
   using QListView::QListView;
   BgJumptable_QListView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QListView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QListView *>(static_cast<const QListView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListView_metaObject_(_crystal_);
-    } else {
-      return QListView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QListView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QListView *>(static_cast<const QListView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QListView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QListView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QListView *>(static_cast<const QListView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QListView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRect visualRect(const QModelIndex & index) const override {
     const BgInherit_QListView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QListView_visualRect_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QListView *>(static_cast<const QListView *>(_self_))) : nullptr;
@@ -119979,6 +117659,18 @@ struct BgInherit_QListView : public QListView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QListView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QListView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QListView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QListView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QListView_metaObject_(QListView * _self_) {
   return _self_->metaObject();
@@ -120302,6 +117994,10 @@ extern "C" void *bg_QListView_DISCOVER_int_void(QListView * _self_, int * bg_cla
 
 extern "C" void bg_BgInherit_QListView_JUMPTABLE_BgJumptable_QListView_R(BgInherit_QListView * _self_, const BgJumptable_QListView & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QListView_SET_META_BindgenQtMetaObject(BgInherit_QListView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QListView::staticMetaObject); };
 }
 
 extern "C" QMetaObject::Connection * bg_QListView_CONNECT_indexesMoved_Qt__ConnectionType_CrystalProc_void__const_QModelIndexList_R_(QListView * _self_, Qt::ConnectionType type, CrystalProc<void, const Container_QList_QModelIndex_ *> _proc_) {
@@ -120687,9 +118383,6 @@ extern "C" void bg_BgInherit_QListWidgetItem_JUMPTABLE_BgJumptable_QListWidgetIt
 }
 
 struct BgJumptable_QListWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QListWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QListWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QListWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QItemSelectionModel *> bg_QListWidget_setSelectionModel_QItemSelectionModel_X;
   CrystalProc<void, void *, QDropEvent *> bg_QListWidget_dropEvent_QDropEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QListWidget_event_QEvent_X;
@@ -120787,36 +118480,7 @@ struct BgJumptable_QListWidget {
 struct BgInherit_QListWidget : public QListWidget {
   using QListWidget::QListWidget;
   BgJumptable_QListWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QListWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QListWidget *>(static_cast<const QListWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListWidget_metaObject_(_crystal_);
-    } else {
-      return QListWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QListWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QListWidget *>(static_cast<const QListWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QListWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QListWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QListWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QListWidget *>(static_cast<const QListWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QListWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QListWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setSelectionModel(QItemSelectionModel * selectionModel) override {
     BgInherit_QListWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QListWidget_setSelectionModel_QItemSelectionModel_X.isValid() ? bindgen_crystal_object(const_cast<QListWidget *>(static_cast<const QListWidget *>(_self_))) : nullptr;
@@ -121730,6 +119394,18 @@ struct BgInherit_QListWidget : public QListWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QListWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QListWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QListWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QListWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QListWidget_metaObject_(QListWidget * _self_) {
   return _self_->metaObject();
@@ -122051,10 +119727,11 @@ extern "C" void bg_BgInherit_QListWidget_JUMPTABLE_BgJumptable_QListWidget_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QListWidget_SET_META_BindgenQtMetaObject(BgInherit_QListWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QListWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QMainWindow {
-  CrystalProc<const QMetaObject *, void *> bg_QMainWindow_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMainWindow_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMainWindow_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QMenu *, void *> bg_QMainWindow_createPopupMenu_;
   CrystalProc<void, void *, QContextMenuEvent *> bg_QMainWindow_contextMenuEvent_QContextMenuEvent_X;
   CrystalProc<bool, void *, QEvent *> bg_QMainWindow_event_QEvent_X;
@@ -122106,36 +119783,7 @@ struct BgJumptable_QMainWindow {
 struct BgInherit_QMainWindow : public QMainWindow {
   using QMainWindow::QMainWindow;
   BgJumptable_QMainWindow bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMainWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMainWindow_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMainWindow *>(static_cast<const QMainWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMainWindow_metaObject_(_crystal_);
-    } else {
-      return QMainWindow::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMainWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMainWindow_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMainWindow *>(static_cast<const QMainWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMainWindow_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMainWindow::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMainWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMainWindow_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMainWindow *>(static_cast<const QMainWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMainWindow_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMainWindow::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QMenu * createPopupMenu() override {
     BgInherit_QMainWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMainWindow_createPopupMenu_.isValid() ? bindgen_crystal_object(const_cast<QMainWindow *>(static_cast<const QMainWindow *>(_self_))) : nullptr;
@@ -122609,6 +120257,18 @@ struct BgInherit_QMainWindow : public QMainWindow {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMainWindow::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMainWindow::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMainWindow::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMainWindow *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMainWindow_metaObject_(QMainWindow * _self_) {
   return _self_->metaObject();
@@ -122898,10 +120558,11 @@ extern "C" void bg_BgInherit_QMainWindow_JUMPTABLE_BgJumptable_QMainWindow_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMainWindow_SET_META_BindgenQtMetaObject(BgInherit_QMainWindow * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMainWindow::staticMetaObject); };
+}
+
 struct BgJumptable_QMdiArea {
-  CrystalProc<const QMetaObject *, void *> bg_QMdiArea_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMdiArea_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMdiArea_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QMdiArea_sizeHint_;
   CrystalProc<QSize *, void *> bg_QMdiArea_minimumSizeHint_;
   CrystalProc<void, void *, QWidget *> bg_QMdiArea_setupViewport_QWidget_X;
@@ -122956,36 +120617,7 @@ struct BgJumptable_QMdiArea {
 struct BgInherit_QMdiArea : public QMdiArea {
   using QMdiArea::QMdiArea;
   BgJumptable_QMdiArea bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMdiArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiArea_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMdiArea *>(static_cast<const QMdiArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiArea_metaObject_(_crystal_);
-    } else {
-      return QMdiArea::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMdiArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiArea_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMdiArea *>(static_cast<const QMdiArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiArea_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMdiArea::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMdiArea *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiArea_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMdiArea *>(static_cast<const QMdiArea *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiArea_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMdiArea::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QMdiArea *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMdiArea_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QMdiArea *>(static_cast<const QMdiArea *>(_self_))) : nullptr;
@@ -123489,6 +121121,18 @@ struct BgInherit_QMdiArea : public QMdiArea {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMdiArea::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMdiArea::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMdiArea::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMdiArea *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMdiArea_metaObject_(QMdiArea * _self_) {
   return _self_->metaObject();
@@ -123750,10 +121394,11 @@ extern "C" void bg_BgInherit_QMdiArea_JUMPTABLE_BgJumptable_QMdiArea_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMdiArea_SET_META_BindgenQtMetaObject(BgInherit_QMdiArea * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMdiArea::staticMetaObject); };
+}
+
 struct BgJumptable_QMdiSubWindow {
-  CrystalProc<const QMetaObject *, void *> bg_QMdiSubWindow_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMdiSubWindow_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMdiSubWindow_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QMdiSubWindow_sizeHint_;
   CrystalProc<QSize *, void *> bg_QMdiSubWindow_minimumSizeHint_;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QMdiSubWindow_eventFilter_QObject_X_QEvent_X;
@@ -123804,36 +121449,7 @@ struct BgJumptable_QMdiSubWindow {
 struct BgInherit_QMdiSubWindow : public QMdiSubWindow {
   using QMdiSubWindow::QMdiSubWindow;
   BgJumptable_QMdiSubWindow bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMdiSubWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiSubWindow_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMdiSubWindow *>(static_cast<const QMdiSubWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiSubWindow_metaObject_(_crystal_);
-    } else {
-      return QMdiSubWindow::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMdiSubWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiSubWindow_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMdiSubWindow *>(static_cast<const QMdiSubWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiSubWindow_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMdiSubWindow::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMdiSubWindow *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMdiSubWindow_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMdiSubWindow *>(static_cast<const QMdiSubWindow *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMdiSubWindow_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMdiSubWindow::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QMdiSubWindow *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMdiSubWindow_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QMdiSubWindow *>(static_cast<const QMdiSubWindow *>(_self_))) : nullptr;
@@ -124297,6 +121913,18 @@ struct BgInherit_QMdiSubWindow : public QMdiSubWindow {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMdiSubWindow::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMdiSubWindow::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMdiSubWindow::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMdiSubWindow *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMdiSubWindow_metaObject_(QMdiSubWindow * _self_) {
   return _self_->metaObject();
@@ -124590,10 +122218,11 @@ extern "C" void bg_BgInherit_QMdiSubWindow_JUMPTABLE_BgJumptable_QMdiSubWindow_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMdiSubWindow_SET_META_BindgenQtMetaObject(BgInherit_QMdiSubWindow * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMdiSubWindow::staticMetaObject); };
+}
+
 struct BgJumptable_QMenu {
-  CrystalProc<const QMetaObject *, void *> bg_QMenu_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMenu_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMenu_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QMenu_sizeHint_;
   CrystalProc<void, void *, QEvent *> bg_QMenu_changeEvent_QEvent_X;
   CrystalProc<void, void *, QKeyEvent *> bg_QMenu_keyPressEvent_QKeyEvent_X;
@@ -124644,36 +122273,7 @@ struct BgJumptable_QMenu {
 struct BgInherit_QMenu : public QMenu {
   using QMenu::QMenu;
   BgJumptable_QMenu bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMenu *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenu_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMenu *>(static_cast<const QMenu *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenu_metaObject_(_crystal_);
-    } else {
-      return QMenu::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMenu *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenu_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMenu *>(static_cast<const QMenu *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenu_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMenu::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMenu *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenu_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMenu *>(static_cast<const QMenu *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenu_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMenu::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QMenu *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMenu_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QMenu *>(static_cast<const QMenu *>(_self_))) : nullptr;
@@ -125137,6 +122737,18 @@ struct BgInherit_QMenu : public QMenu {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMenu::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMenu::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMenu::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMenu *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMenu_metaObject_(QMenu * _self_) {
   return _self_->metaObject();
@@ -125530,10 +123142,11 @@ extern "C" void bg_BgInherit_QMenu_JUMPTABLE_BgJumptable_QMenu_R(BgInherit_QMenu
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMenu_SET_META_BindgenQtMetaObject(BgInherit_QMenu * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMenu::staticMetaObject); };
+}
+
 struct BgJumptable_QMenuBar {
-  CrystalProc<const QMetaObject *, void *> bg_QMenuBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMenuBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMenuBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QMenuBar_sizeHint_;
   CrystalProc<QSize *, void *> bg_QMenuBar_minimumSizeHint_;
   CrystalProc<int, void *, int> bg_QMenuBar_heightForWidth_int;
@@ -125584,36 +123197,7 @@ struct BgJumptable_QMenuBar {
 struct BgInherit_QMenuBar : public QMenuBar {
   using QMenuBar::QMenuBar;
   BgJumptable_QMenuBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMenuBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenuBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMenuBar *>(static_cast<const QMenuBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenuBar_metaObject_(_crystal_);
-    } else {
-      return QMenuBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMenuBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenuBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMenuBar *>(static_cast<const QMenuBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenuBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMenuBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMenuBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMenuBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMenuBar *>(static_cast<const QMenuBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMenuBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMenuBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QMenuBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMenuBar_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QMenuBar *>(static_cast<const QMenuBar *>(_self_))) : nullptr;
@@ -126077,6 +123661,18 @@ struct BgInherit_QMenuBar : public QMenuBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMenuBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMenuBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMenuBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMenuBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMenuBar_metaObject_(QMenuBar * _self_) {
   return _self_->metaObject();
@@ -126358,10 +123954,11 @@ extern "C" void bg_BgInherit_QMenuBar_JUMPTABLE_BgJumptable_QMenuBar_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMenuBar_SET_META_BindgenQtMetaObject(BgInherit_QMenuBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMenuBar::staticMetaObject); };
+}
+
 struct BgJumptable_QMessageBox {
-  CrystalProc<const QMetaObject *, void *> bg_QMessageBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QMessageBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QMessageBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QMessageBox_open_;
   CrystalProc<bool, void *, QEvent *> bg_QMessageBox_event_QEvent_X;
   CrystalProc<void, void *, QResizeEvent *> bg_QMessageBox_resizeEvent_QResizeEvent_X;
@@ -126417,36 +124014,7 @@ struct BgJumptable_QMessageBox {
 struct BgInherit_QMessageBox : public QMessageBox {
   using QMessageBox::QMessageBox;
   BgJumptable_QMessageBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QMessageBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMessageBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QMessageBox *>(static_cast<const QMessageBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMessageBox_metaObject_(_crystal_);
-    } else {
-      return QMessageBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QMessageBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMessageBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QMessageBox *>(static_cast<const QMessageBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMessageBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QMessageBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QMessageBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QMessageBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QMessageBox *>(static_cast<const QMessageBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QMessageBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QMessageBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void open() override {
     BgInherit_QMessageBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QMessageBox_open_.isValid() ? bindgen_crystal_object(const_cast<QMessageBox *>(static_cast<const QMessageBox *>(_self_))) : nullptr;
@@ -126960,6 +124528,18 @@ struct BgInherit_QMessageBox : public QMessageBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QMessageBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QMessageBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QMessageBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QMessageBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QMessageBox_metaObject_(QMessageBox * _self_) {
   return _self_->metaObject();
@@ -127357,10 +124937,11 @@ extern "C" void bg_BgInherit_QMessageBox_JUMPTABLE_BgJumptable_QMessageBox_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QMessageBox_SET_META_BindgenQtMetaObject(BgInherit_QMessageBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QMessageBox::staticMetaObject); };
+}
+
 struct BgJumptable_QTextEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QTextEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalVariant *, void *, int, const QUrl *> bg_QTextEdit_loadResource_int_const_QUrl_R;
   CrystalProc<CrystalVariant *, void *, Qt::InputMethodQuery> bg_QTextEdit_inputMethodQuery_Qt__InputMethodQuery;
   CrystalProc<bool, void *, QEvent *> bg_QTextEdit_event_QEvent_X;
@@ -127420,36 +125001,7 @@ struct BgJumptable_QTextEdit {
 struct BgInherit_QTextEdit : public QTextEdit {
   using QTextEdit::QTextEdit;
   BgJumptable_QTextEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextEdit *>(static_cast<const QTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextEdit_metaObject_(_crystal_);
-    } else {
-      return QTextEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextEdit *>(static_cast<const QTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextEdit *>(static_cast<const QTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QVariant loadResource(int type, const QUrl & name) override {
     BgInherit_QTextEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTextEdit_loadResource_int_const_QUrl_R.isValid() ? bindgen_crystal_object(const_cast<QTextEdit *>(static_cast<const QTextEdit *>(_self_))) : nullptr;
@@ -128003,6 +125555,18 @@ struct BgInherit_QTextEdit : public QTextEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextEdit_metaObject_(QTextEdit * _self_) {
   return _self_->metaObject();
@@ -128563,6 +126127,10 @@ extern "C" void bg_BgInherit_QTextEdit_JUMPTABLE_BgJumptable_QTextEdit_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextEdit_SET_META_BindgenQtMetaObject(BgInherit_QTextEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextEdit::staticMetaObject); };
+}
+
 extern "C" QMetaObject::Connection * bg_QTextEdit_CONNECT_textChanged_Qt__ConnectionType_CrystalProc_void_(QTextEdit * _self_, Qt::ConnectionType type, CrystalProc<void> _proc_) {
   return new (UseGC, bindgen_gc_finalizer<QMetaObject::Connection>()) QMetaObject::Connection (QObject::connect(_self_, (void(QTextEdit::*)())&QTextEdit::textChanged, QCoreApplication::instance() ? static_cast<QObject *>(QCoreApplication::instance()) : static_cast<QObject *>(_self_), [_proc_](){ _proc_(); }, type));
 }
@@ -128740,9 +126308,6 @@ extern "C" void bg_QTextEdit__ExtraSelection_format_SETTER_QTextCharFormat(QText
 }
 
 struct BgJumptable_QPlainTextEdit {
-  CrystalProc<const QMetaObject *, void *> bg_QPlainTextEdit_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPlainTextEdit_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPlainTextEdit_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalVariant *, void *, int, const QUrl *> bg_QPlainTextEdit_loadResource_int_const_QUrl_R;
   CrystalProc<CrystalVariant *, void *, Qt::InputMethodQuery> bg_QPlainTextEdit_inputMethodQuery_Qt__InputMethodQuery;
   CrystalProc<bool, void *, QEvent *> bg_QPlainTextEdit_event_QEvent_X;
@@ -128802,36 +126367,7 @@ struct BgJumptable_QPlainTextEdit {
 struct BgInherit_QPlainTextEdit : public QPlainTextEdit {
   using QPlainTextEdit::QPlainTextEdit;
   BgJumptable_QPlainTextEdit bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPlainTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextEdit_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPlainTextEdit *>(static_cast<const QPlainTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextEdit_metaObject_(_crystal_);
-    } else {
-      return QPlainTextEdit::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPlainTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextEdit_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPlainTextEdit *>(static_cast<const QPlainTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextEdit_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPlainTextEdit::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPlainTextEdit *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextEdit_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPlainTextEdit *>(static_cast<const QPlainTextEdit *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextEdit_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPlainTextEdit::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QVariant loadResource(int type, const QUrl & name) override {
     BgInherit_QPlainTextEdit *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPlainTextEdit_loadResource_int_const_QUrl_R.isValid() ? bindgen_crystal_object(const_cast<QPlainTextEdit *>(static_cast<const QPlainTextEdit *>(_self_))) : nullptr;
@@ -129385,6 +126921,18 @@ struct BgInherit_QPlainTextEdit : public QPlainTextEdit {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPlainTextEdit::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPlainTextEdit::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPlainTextEdit::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPlainTextEdit *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPlainTextEdit_metaObject_(QPlainTextEdit * _self_) {
   return _self_->metaObject();
@@ -130026,10 +127574,11 @@ extern "C" void bg_BgInherit_QPlainTextEdit_JUMPTABLE_BgJumptable_QPlainTextEdit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QPlainTextEdit_SET_META_BindgenQtMetaObject(BgInherit_QPlainTextEdit * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPlainTextEdit::staticMetaObject); };
+}
+
 struct BgJumptable_QPlainTextDocumentLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QPlainTextDocumentLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QPlainTextDocumentLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QPlainTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *, const QAbstractTextDocumentLayout::PaintContext *> bg_QPlainTextDocumentLayout_draw_QPainter_X_const_QAbstractTextDocumentLayout__PaintContext_R;
   CrystalProc<int, void *, const QPointF *, Qt::HitTestAccuracy> bg_QPlainTextDocumentLayout_hitTest_const_QPointF_R_Qt__HitTestAccuracy;
   CrystalProc<int, void *> bg_QPlainTextDocumentLayout_pageCount_;
@@ -130051,36 +127600,7 @@ struct BgJumptable_QPlainTextDocumentLayout {
 struct BgInherit_QPlainTextDocumentLayout : public QPlainTextDocumentLayout {
   using QPlainTextDocumentLayout::QPlainTextDocumentLayout;
   BgJumptable_QPlainTextDocumentLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QPlainTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextDocumentLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QPlainTextDocumentLayout *>(static_cast<const QPlainTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextDocumentLayout_metaObject_(_crystal_);
-    } else {
-      return QPlainTextDocumentLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QPlainTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextDocumentLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QPlainTextDocumentLayout *>(static_cast<const QPlainTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextDocumentLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QPlainTextDocumentLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QPlainTextDocumentLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QPlainTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QPlainTextDocumentLayout *>(static_cast<const QPlainTextDocumentLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QPlainTextDocumentLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QPlainTextDocumentLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void draw(QPainter * painter, const QAbstractTextDocumentLayout::PaintContext & context) override {
     BgInherit_QPlainTextDocumentLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QPlainTextDocumentLayout_draw_QPainter_X_const_QAbstractTextDocumentLayout__PaintContext_R.isValid() ? bindgen_crystal_object(const_cast<QPlainTextDocumentLayout *>(static_cast<const QPlainTextDocumentLayout *>(_self_))) : nullptr;
@@ -130251,6 +127771,18 @@ struct BgInherit_QPlainTextDocumentLayout : public QPlainTextDocumentLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QPlainTextDocumentLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QPlainTextDocumentLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QPlainTextDocumentLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QPlainTextDocumentLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QPlainTextDocumentLayout_metaObject_(QPlainTextDocumentLayout * _self_) {
   return _self_->metaObject();
@@ -130356,10 +127888,11 @@ extern "C" void bg_BgInherit_QPlainTextDocumentLayout_JUMPTABLE_BgJumptable_QPla
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QPlainTextDocumentLayout_SET_META_BindgenQtMetaObject(BgInherit_QPlainTextDocumentLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QPlainTextDocumentLayout::staticMetaObject); };
+}
+
 struct BgJumptable_QProgressBar {
-  CrystalProc<const QMetaObject *, void *> bg_QProgressBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QProgressBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QProgressBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalString *, void *> bg_QProgressBar_text_;
   CrystalProc<QSize *, void *> bg_QProgressBar_sizeHint_;
   CrystalProc<QSize *, void *> bg_QProgressBar_minimumSizeHint_;
@@ -130411,36 +127944,7 @@ struct BgJumptable_QProgressBar {
 struct BgInherit_QProgressBar : public QProgressBar {
   using QProgressBar::QProgressBar;
   BgJumptable_QProgressBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QProgressBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QProgressBar *>(static_cast<const QProgressBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressBar_metaObject_(_crystal_);
-    } else {
-      return QProgressBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QProgressBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QProgressBar *>(static_cast<const QProgressBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QProgressBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QProgressBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QProgressBar *>(static_cast<const QProgressBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QProgressBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QString text() const override {
     const BgInherit_QProgressBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QProgressBar_text_.isValid() ? bindgen_crystal_object(const_cast<QProgressBar *>(static_cast<const QProgressBar *>(_self_))) : nullptr;
@@ -130914,6 +128418,18 @@ struct BgInherit_QProgressBar : public QProgressBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QProgressBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QProgressBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QProgressBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QProgressBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QProgressBar_metaObject_(QProgressBar * _self_) {
   return _self_->metaObject();
@@ -131083,10 +128599,11 @@ extern "C" void bg_BgInherit_QProgressBar_JUMPTABLE_BgJumptable_QProgressBar_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QProgressBar_SET_META_BindgenQtMetaObject(BgInherit_QProgressBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QProgressBar::staticMetaObject); };
+}
+
 struct BgJumptable_QProgressDialog {
-  CrystalProc<const QMetaObject *, void *> bg_QProgressDialog_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QProgressDialog_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QProgressDialog_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QProgressDialog_sizeHint_;
   CrystalProc<void, void *> bg_QProgressDialog_open_;
   CrystalProc<void, void *, QResizeEvent *> bg_QProgressDialog_resizeEvent_QResizeEvent_X;
@@ -131142,36 +128659,7 @@ struct BgJumptable_QProgressDialog {
 struct BgInherit_QProgressDialog : public QProgressDialog {
   using QProgressDialog::QProgressDialog;
   BgJumptable_QProgressDialog bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QProgressDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressDialog_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QProgressDialog *>(static_cast<const QProgressDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressDialog_metaObject_(_crystal_);
-    } else {
-      return QProgressDialog::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QProgressDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressDialog_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QProgressDialog *>(static_cast<const QProgressDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressDialog_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QProgressDialog::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QProgressDialog *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProgressDialog_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QProgressDialog *>(static_cast<const QProgressDialog *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProgressDialog_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QProgressDialog::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QProgressDialog *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QProgressDialog_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QProgressDialog *>(static_cast<const QProgressDialog *>(_self_))) : nullptr;
@@ -131685,6 +129173,18 @@ struct BgInherit_QProgressDialog : public QProgressDialog {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QProgressDialog::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QProgressDialog::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QProgressDialog::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QProgressDialog *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QProgressDialog_metaObject_(QProgressDialog * _self_) {
   return _self_->metaObject();
@@ -131882,10 +129382,11 @@ extern "C" void bg_BgInherit_QProgressDialog_JUMPTABLE_BgJumptable_QProgressDial
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QProgressDialog_SET_META_BindgenQtMetaObject(BgInherit_QProgressDialog * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QProgressDialog::staticMetaObject); };
+}
+
 struct BgJumptable_QProxyStyle {
-  CrystalProc<const QMetaObject *, void *> bg_QProxyStyle_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QProxyStyle_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QProxyStyle_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QStyle::PrimitiveElement, const QStyleOption *, QPainter *, const QWidget *> bg_QProxyStyle_drawPrimitive_QStyle__PrimitiveElement_const_QStyleOption_X_QPainter_X_const_QWidget_X;
   CrystalProc<void, void *, QStyle::ControlElement, const QStyleOption *, QPainter *, const QWidget *> bg_QProxyStyle_drawControl_QStyle__ControlElement_const_QStyleOption_X_QPainter_X_const_QWidget_X;
   CrystalProc<void, void *, QStyle::ComplexControl, const QStyleOptionComplex *, QPainter *, const QWidget *> bg_QProxyStyle_drawComplexControl_QStyle__ComplexControl_const_QStyleOptionComplex_X_QPainter_X_const_QWidget_X;
@@ -131920,36 +129421,7 @@ struct BgJumptable_QProxyStyle {
 struct BgInherit_QProxyStyle : public QProxyStyle {
   using QProxyStyle::QProxyStyle;
   BgJumptable_QProxyStyle bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QProxyStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProxyStyle_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QProxyStyle *>(static_cast<const QProxyStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProxyStyle_metaObject_(_crystal_);
-    } else {
-      return QProxyStyle::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QProxyStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProxyStyle_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QProxyStyle *>(static_cast<const QProxyStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProxyStyle_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QProxyStyle::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QProxyStyle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QProxyStyle_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QProxyStyle *>(static_cast<const QProxyStyle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QProxyStyle_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QProxyStyle::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void drawPrimitive(QStyle::PrimitiveElement pe, const QStyleOption * opt, QPainter * p, const QWidget * w) const override {
     const BgInherit_QProxyStyle *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QProxyStyle_drawPrimitive_QStyle__PrimitiveElement_const_QStyleOption_X_QPainter_X_const_QWidget_X.isValid() ? bindgen_crystal_object(const_cast<QProxyStyle *>(static_cast<const QProxyStyle *>(_self_))) : nullptr;
@@ -132250,6 +129722,18 @@ struct BgInherit_QProxyStyle : public QProxyStyle {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QProxyStyle::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QProxyStyle::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QProxyStyle::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QProxyStyle *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QProxyStyle_metaObject_(QProxyStyle * _self_) {
   return _self_->metaObject();
@@ -132487,10 +129971,11 @@ extern "C" void bg_BgInherit_QProxyStyle_JUMPTABLE_BgJumptable_QProxyStyle_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QProxyStyle_SET_META_BindgenQtMetaObject(BgInherit_QProxyStyle * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QProxyStyle::staticMetaObject); };
+}
+
 struct BgJumptable_QRadioButton {
-  CrystalProc<const QMetaObject *, void *> bg_QRadioButton_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QRadioButton_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QRadioButton_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QRadioButton_sizeHint_;
   CrystalProc<QSize *, void *> bg_QRadioButton_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QRadioButton_event_QEvent_X;
@@ -132544,36 +130029,7 @@ struct BgJumptable_QRadioButton {
 struct BgInherit_QRadioButton : public QRadioButton {
   using QRadioButton::QRadioButton;
   BgJumptable_QRadioButton bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QRadioButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRadioButton_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QRadioButton *>(static_cast<const QRadioButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRadioButton_metaObject_(_crystal_);
-    } else {
-      return QRadioButton::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QRadioButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRadioButton_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QRadioButton *>(static_cast<const QRadioButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRadioButton_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QRadioButton::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QRadioButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QRadioButton_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QRadioButton *>(static_cast<const QRadioButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QRadioButton_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QRadioButton::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QRadioButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QRadioButton_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QRadioButton *>(static_cast<const QRadioButton *>(_self_))) : nullptr;
@@ -133067,6 +130523,18 @@ struct BgInherit_QRadioButton : public QRadioButton {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QRadioButton::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QRadioButton::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QRadioButton::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QRadioButton *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QRadioButton_metaObject_(QRadioButton * _self_) {
   return _self_->metaObject();
@@ -133156,10 +130624,11 @@ extern "C" void bg_BgInherit_QRadioButton_JUMPTABLE_BgJumptable_QRadioButton_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QRadioButton_SET_META_BindgenQtMetaObject(BgInherit_QRadioButton * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QRadioButton::staticMetaObject); };
+}
+
 struct BgJumptable_QScrollBar {
-  CrystalProc<const QMetaObject *, void *> bg_QScrollBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QScrollBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QScrollBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QScrollBar_sizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QScrollBar_event_QEvent_X;
   CrystalProc<void, void *, QWheelEvent *> bg_QScrollBar_wheelEvent_QWheelEvent_X;
@@ -133211,36 +130680,7 @@ struct BgJumptable_QScrollBar {
 struct BgInherit_QScrollBar : public QScrollBar {
   using QScrollBar::QScrollBar;
   BgJumptable_QScrollBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QScrollBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QScrollBar *>(static_cast<const QScrollBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollBar_metaObject_(_crystal_);
-    } else {
-      return QScrollBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QScrollBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QScrollBar *>(static_cast<const QScrollBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QScrollBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QScrollBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QScrollBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QScrollBar *>(static_cast<const QScrollBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QScrollBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QScrollBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QScrollBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QScrollBar_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QScrollBar *>(static_cast<const QScrollBar *>(_self_))) : nullptr;
@@ -133714,6 +131154,18 @@ struct BgInherit_QScrollBar : public QScrollBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QScrollBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QScrollBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QScrollBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QScrollBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QScrollBar_metaObject_(QScrollBar * _self_) {
   return _self_->metaObject();
@@ -133833,6 +131285,10 @@ extern "C" void bg_QScrollBar_contextMenuEvent_SUPER_QContextMenuEvent_X(QScroll
 
 extern "C" void bg_BgInherit_QScrollBar_JUMPTABLE_BgJumptable_QScrollBar_R(BgInherit_QScrollBar * _self_, const BgJumptable_QScrollBar & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QScrollBar_SET_META_BindgenQtMetaObject(BgInherit_QScrollBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QScrollBar::staticMetaObject); };
 }
 
 extern "C" QScrollerProperties * bg_QScrollerProperties__CONSTRUCT_() {
@@ -134012,9 +131468,6 @@ extern "C" QMetaObject::Connection * bg_QScroller_CONNECT_scrollerPropertiesChan
 }
 
 struct BgJumptable_QShortcut {
-  CrystalProc<const QMetaObject *, void *> bg_QShortcut_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QShortcut_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QShortcut_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QShortcut_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -134026,36 +131479,7 @@ struct BgJumptable_QShortcut {
 struct BgInherit_QShortcut : public QShortcut {
   using QShortcut::QShortcut;
   BgJumptable_QShortcut bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QShortcut *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QShortcut_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QShortcut *>(static_cast<const QShortcut *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QShortcut_metaObject_(_crystal_);
-    } else {
-      return QShortcut::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QShortcut *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QShortcut_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QShortcut *>(static_cast<const QShortcut *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QShortcut_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QShortcut::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QShortcut *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QShortcut_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QShortcut *>(static_cast<const QShortcut *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QShortcut_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QShortcut::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QShortcut *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QShortcut_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QShortcut *>(static_cast<const QShortcut *>(_self_))) : nullptr;
@@ -134126,6 +131550,18 @@ struct BgInherit_QShortcut : public QShortcut {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QShortcut::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QShortcut::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QShortcut::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QShortcut *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QShortcut_metaObject_(QShortcut * _self_) {
   return _self_->metaObject();
@@ -134243,10 +131679,11 @@ extern "C" void bg_BgInherit_QShortcut_JUMPTABLE_BgJumptable_QShortcut_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QShortcut_SET_META_BindgenQtMetaObject(BgInherit_QShortcut * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QShortcut::staticMetaObject); };
+}
+
 struct BgJumptable_QSizeGrip {
-  CrystalProc<const QMetaObject *, void *> bg_QSizeGrip_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSizeGrip_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSizeGrip_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QSizeGrip_sizeHint_;
   CrystalProc<void, void *, bool> bg_QSizeGrip_setVisible_bool;
   CrystalProc<void, void *, QPaintEvent *> bg_QSizeGrip_paintEvent_QPaintEvent_X;
@@ -134297,36 +131734,7 @@ struct BgJumptable_QSizeGrip {
 struct BgInherit_QSizeGrip : public QSizeGrip {
   using QSizeGrip::QSizeGrip;
   BgJumptable_QSizeGrip bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSizeGrip *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSizeGrip_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSizeGrip *>(static_cast<const QSizeGrip *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSizeGrip_metaObject_(_crystal_);
-    } else {
-      return QSizeGrip::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSizeGrip *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSizeGrip_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSizeGrip *>(static_cast<const QSizeGrip *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSizeGrip_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSizeGrip::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSizeGrip *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSizeGrip_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSizeGrip *>(static_cast<const QSizeGrip *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSizeGrip_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSizeGrip::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QSizeGrip *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSizeGrip_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QSizeGrip *>(static_cast<const QSizeGrip *>(_self_))) : nullptr;
@@ -134790,6 +132198,18 @@ struct BgInherit_QSizeGrip : public QSizeGrip {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSizeGrip::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSizeGrip::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSizeGrip::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSizeGrip *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSizeGrip_metaObject_(QSizeGrip * _self_) {
   return _self_->metaObject();
@@ -134911,10 +132331,11 @@ extern "C" void bg_BgInherit_QSizeGrip_JUMPTABLE_BgJumptable_QSizeGrip_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSizeGrip_SET_META_BindgenQtMetaObject(BgInherit_QSizeGrip * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSizeGrip::staticMetaObject); };
+}
+
 struct BgJumptable_QSpinBox {
-  CrystalProc<const QMetaObject *, void *> bg_QSpinBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSpinBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSpinBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QSpinBox_event_QEvent_X;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QSpinBox_validate_QString_R_int_R;
   CrystalProc<int, void *, const CrystalString *> bg_QSpinBox_valueFromText_const_QString_R;
@@ -134972,36 +132393,7 @@ struct BgJumptable_QSpinBox {
 struct BgInherit_QSpinBox : public QSpinBox {
   using QSpinBox::QSpinBox;
   BgJumptable_QSpinBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSpinBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSpinBox *>(static_cast<const QSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSpinBox_metaObject_(_crystal_);
-    } else {
-      return QSpinBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSpinBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSpinBox *>(static_cast<const QSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSpinBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSpinBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSpinBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSpinBox *>(static_cast<const QSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSpinBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSpinBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSpinBox_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSpinBox *>(static_cast<const QSpinBox *>(_self_))) : nullptr;
@@ -135542,6 +132934,18 @@ struct BgInherit_QSpinBox : public QSpinBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSpinBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSpinBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSpinBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSpinBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSpinBox_metaObject_(QSpinBox * _self_) {
   return _self_->metaObject();
@@ -135713,10 +133117,11 @@ extern "C" void bg_BgInherit_QSpinBox_JUMPTABLE_BgJumptable_QSpinBox_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSpinBox_SET_META_BindgenQtMetaObject(BgInherit_QSpinBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSpinBox::staticMetaObject); };
+}
+
 struct BgJumptable_QDoubleSpinBox {
-  CrystalProc<const QMetaObject *, void *> bg_QDoubleSpinBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QDoubleSpinBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QDoubleSpinBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QValidator::State, void *, CrystalString *, int *> bg_QDoubleSpinBox_validate_QString_R_int_R;
   CrystalProc<double, void *, const CrystalString *> bg_QDoubleSpinBox_valueFromText_const_QString_R;
   CrystalProc<CrystalString *, void *, double> bg_QDoubleSpinBox_textFromValue_double;
@@ -135774,36 +133179,7 @@ struct BgJumptable_QDoubleSpinBox {
 struct BgInherit_QDoubleSpinBox : public QDoubleSpinBox {
   using QDoubleSpinBox::QDoubleSpinBox;
   BgJumptable_QDoubleSpinBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QDoubleSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleSpinBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QDoubleSpinBox *>(static_cast<const QDoubleSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleSpinBox_metaObject_(_crystal_);
-    } else {
-      return QDoubleSpinBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QDoubleSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleSpinBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QDoubleSpinBox *>(static_cast<const QDoubleSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleSpinBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QDoubleSpinBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QDoubleSpinBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QDoubleSpinBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QDoubleSpinBox *>(static_cast<const QDoubleSpinBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QDoubleSpinBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QDoubleSpinBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QValidator::State validate(QString & input, int & pos) const override {
     const BgInherit_QDoubleSpinBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QDoubleSpinBox_validate_QString_R_int_R.isValid() ? bindgen_crystal_object(const_cast<QDoubleSpinBox *>(static_cast<const QDoubleSpinBox *>(_self_))) : nullptr;
@@ -136344,6 +133720,18 @@ struct BgInherit_QDoubleSpinBox : public QDoubleSpinBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QDoubleSpinBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QDoubleSpinBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QDoubleSpinBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QDoubleSpinBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QDoubleSpinBox_metaObject_(QDoubleSpinBox * _self_) {
   return _self_->metaObject();
@@ -136507,10 +133895,11 @@ extern "C" void bg_BgInherit_QDoubleSpinBox_JUMPTABLE_BgJumptable_QDoubleSpinBox
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QDoubleSpinBox_SET_META_BindgenQtMetaObject(BgInherit_QDoubleSpinBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QDoubleSpinBox::staticMetaObject); };
+}
+
 struct BgJumptable_QSplashScreen {
-  CrystalProc<const QMetaObject *, void *> bg_QSplashScreen_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSplashScreen_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSplashScreen_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QSplashScreen_event_QEvent_X;
   CrystalProc<void, void *, QPainter *> bg_QSplashScreen_drawContents_QPainter_X;
   CrystalProc<void, void *, QMouseEvent *> bg_QSplashScreen_mousePressEvent_QMouseEvent_X;
@@ -136562,36 +133951,7 @@ struct BgJumptable_QSplashScreen {
 struct BgInherit_QSplashScreen : public QSplashScreen {
   using QSplashScreen::QSplashScreen;
   BgJumptable_QSplashScreen bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSplashScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplashScreen_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSplashScreen *>(static_cast<const QSplashScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplashScreen_metaObject_(_crystal_);
-    } else {
-      return QSplashScreen::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSplashScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplashScreen_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSplashScreen *>(static_cast<const QSplashScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplashScreen_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSplashScreen::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSplashScreen *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplashScreen_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSplashScreen *>(static_cast<const QSplashScreen *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplashScreen_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSplashScreen::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSplashScreen *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSplashScreen_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSplashScreen *>(static_cast<const QSplashScreen *>(_self_))) : nullptr;
@@ -137065,6 +134425,18 @@ struct BgInherit_QSplashScreen : public QSplashScreen {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSplashScreen::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSplashScreen::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSplashScreen::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSplashScreen *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSplashScreen_metaObject_(QSplashScreen * _self_) {
   return _self_->metaObject();
@@ -137182,10 +134554,11 @@ extern "C" void bg_BgInherit_QSplashScreen_JUMPTABLE_BgJumptable_QSplashScreen_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSplashScreen_SET_META_BindgenQtMetaObject(BgInherit_QSplashScreen * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSplashScreen::staticMetaObject); };
+}
+
 struct BgJumptable_QSplitter {
-  CrystalProc<const QMetaObject *, void *> bg_QSplitter_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSplitter_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSplitter_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QSplitter_sizeHint_;
   CrystalProc<QSize *, void *> bg_QSplitter_minimumSizeHint_;
   CrystalProc<QSplitterHandle *, void *> bg_QSplitter_createHandle_;
@@ -137237,36 +134610,7 @@ struct BgJumptable_QSplitter {
 struct BgInherit_QSplitter : public QSplitter {
   using QSplitter::QSplitter;
   BgJumptable_QSplitter bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSplitter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitter_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSplitter *>(static_cast<const QSplitter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitter_metaObject_(_crystal_);
-    } else {
-      return QSplitter::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSplitter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitter_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSplitter *>(static_cast<const QSplitter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitter_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSplitter::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSplitter *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitter_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSplitter *>(static_cast<const QSplitter *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitter_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSplitter::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QSplitter *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSplitter_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QSplitter *>(static_cast<const QSplitter *>(_self_))) : nullptr;
@@ -137740,6 +135084,18 @@ struct BgInherit_QSplitter : public QSplitter {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSplitter::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSplitter::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSplitter::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSplitter *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSplitter_metaObject_(QSplitter * _self_) {
   return _self_->metaObject();
@@ -137949,10 +135305,11 @@ extern "C" void bg_BgInherit_QSplitter_JUMPTABLE_BgJumptable_QSplitter_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSplitter_SET_META_BindgenQtMetaObject(BgInherit_QSplitter * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSplitter::staticMetaObject); };
+}
+
 struct BgJumptable_QSplitterHandle {
-  CrystalProc<const QMetaObject *, void *> bg_QSplitterHandle_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSplitterHandle_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSplitterHandle_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QSplitterHandle_sizeHint_;
   CrystalProc<void, void *, QPaintEvent *> bg_QSplitterHandle_paintEvent_QPaintEvent_X;
   CrystalProc<void, void *, QMouseEvent *> bg_QSplitterHandle_mouseMoveEvent_QMouseEvent_X;
@@ -138003,36 +135360,7 @@ struct BgJumptable_QSplitterHandle {
 struct BgInherit_QSplitterHandle : public QSplitterHandle {
   using QSplitterHandle::QSplitterHandle;
   BgJumptable_QSplitterHandle bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSplitterHandle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitterHandle_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSplitterHandle *>(static_cast<const QSplitterHandle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitterHandle_metaObject_(_crystal_);
-    } else {
-      return QSplitterHandle::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSplitterHandle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitterHandle_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSplitterHandle *>(static_cast<const QSplitterHandle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitterHandle_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSplitterHandle::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSplitterHandle *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSplitterHandle_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSplitterHandle *>(static_cast<const QSplitterHandle *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSplitterHandle_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSplitterHandle::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QSplitterHandle *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSplitterHandle_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QSplitterHandle *>(static_cast<const QSplitterHandle *>(_self_))) : nullptr;
@@ -138496,6 +135824,18 @@ struct BgInherit_QSplitterHandle : public QSplitterHandle {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSplitterHandle::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSplitterHandle::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSplitterHandle::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSplitterHandle *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSplitterHandle_metaObject_(QSplitterHandle * _self_) {
   return _self_->metaObject();
@@ -138609,10 +135949,11 @@ extern "C" void bg_BgInherit_QSplitterHandle_JUMPTABLE_BgJumptable_QSplitterHand
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSplitterHandle_SET_META_BindgenQtMetaObject(BgInherit_QSplitterHandle * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSplitterHandle::staticMetaObject); };
+}
+
 struct BgJumptable_QStackedLayout {
-  CrystalProc<const QMetaObject *, void *> bg_QStackedLayout_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStackedLayout_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStackedLayout_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QWidget *, void *> bg_QStackedLayout_widget_;
   CrystalProc<int, void *> bg_QStackedLayout_count_;
   CrystalProc<void, void *, QLayoutItem *> bg_QStackedLayout_addItem_QLayoutItem_X;
@@ -138642,36 +135983,7 @@ struct BgJumptable_QStackedLayout {
 struct BgInherit_QStackedLayout : public QStackedLayout {
   using QStackedLayout::QStackedLayout;
   BgJumptable_QStackedLayout bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStackedLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedLayout_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStackedLayout *>(static_cast<const QStackedLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedLayout_metaObject_(_crystal_);
-    } else {
-      return QStackedLayout::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStackedLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedLayout_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStackedLayout *>(static_cast<const QStackedLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedLayout_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStackedLayout::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStackedLayout *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedLayout_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStackedLayout *>(static_cast<const QStackedLayout *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedLayout_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStackedLayout::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QWidget * widget() override {
     BgInherit_QStackedLayout *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStackedLayout_widget_.isValid() ? bindgen_crystal_object(const_cast<QStackedLayout *>(static_cast<const QStackedLayout *>(_self_))) : nullptr;
@@ -138922,6 +136234,18 @@ struct BgInherit_QStackedLayout : public QStackedLayout {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStackedLayout::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStackedLayout::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStackedLayout::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStackedLayout *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStackedLayout_metaObject_(QStackedLayout * _self_) {
   return _self_->metaObject();
@@ -139095,10 +136419,11 @@ extern "C" void bg_BgInherit_QStackedLayout_JUMPTABLE_BgJumptable_QStackedLayout
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStackedLayout_SET_META_BindgenQtMetaObject(BgInherit_QStackedLayout * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStackedLayout::staticMetaObject); };
+}
+
 struct BgJumptable_QStackedWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QStackedWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStackedWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStackedWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QStackedWidget_event_QEvent_X;
   CrystalProc<QSize *, void *> bg_QFrame_sizeHint_;
   CrystalProc<void, void *, QPaintEvent *> bg_QFrame_paintEvent_QPaintEvent_X;
@@ -139149,36 +136474,7 @@ struct BgJumptable_QStackedWidget {
 struct BgInherit_QStackedWidget : public QStackedWidget {
   using QStackedWidget::QStackedWidget;
   BgJumptable_QStackedWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStackedWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStackedWidget *>(static_cast<const QStackedWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedWidget_metaObject_(_crystal_);
-    } else {
-      return QStackedWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStackedWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStackedWidget *>(static_cast<const QStackedWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStackedWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStackedWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStackedWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStackedWidget *>(static_cast<const QStackedWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStackedWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStackedWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QStackedWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStackedWidget_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QStackedWidget *>(static_cast<const QStackedWidget *>(_self_))) : nullptr;
@@ -139642,6 +136938,18 @@ struct BgInherit_QStackedWidget : public QStackedWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStackedWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStackedWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStackedWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStackedWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStackedWidget_metaObject_(QStackedWidget * _self_) {
   return _self_->metaObject();
@@ -139739,10 +137047,11 @@ extern "C" void bg_BgInherit_QStackedWidget_JUMPTABLE_BgJumptable_QStackedWidget
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStackedWidget_SET_META_BindgenQtMetaObject(BgInherit_QStackedWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStackedWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QStatusBar {
-  CrystalProc<const QMetaObject *, void *> bg_QStatusBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStatusBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStatusBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QShowEvent *> bg_QStatusBar_showEvent_QShowEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QStatusBar_paintEvent_QPaintEvent_X;
   CrystalProc<void, void *, QResizeEvent *> bg_QStatusBar_resizeEvent_QResizeEvent_X;
@@ -139793,36 +137102,7 @@ struct BgJumptable_QStatusBar {
 struct BgInherit_QStatusBar : public QStatusBar {
   using QStatusBar::QStatusBar;
   BgJumptable_QStatusBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStatusBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStatusBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStatusBar *>(static_cast<const QStatusBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStatusBar_metaObject_(_crystal_);
-    } else {
-      return QStatusBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStatusBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStatusBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStatusBar *>(static_cast<const QStatusBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStatusBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStatusBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStatusBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStatusBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStatusBar *>(static_cast<const QStatusBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStatusBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStatusBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void showEvent(QShowEvent * event) override {
     BgInherit_QStatusBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStatusBar_showEvent_QShowEvent_X.isValid() ? bindgen_crystal_object(const_cast<QStatusBar *>(static_cast<const QStatusBar *>(_self_))) : nullptr;
@@ -140286,6 +137566,18 @@ struct BgInherit_QStatusBar : public QStatusBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStatusBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStatusBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStatusBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStatusBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStatusBar_metaObject_(QStatusBar * _self_) {
   return _self_->metaObject();
@@ -140407,10 +137699,11 @@ extern "C" void bg_BgInherit_QStatusBar_JUMPTABLE_BgJumptable_QStatusBar_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStatusBar_SET_META_BindgenQtMetaObject(BgInherit_QStatusBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStatusBar::staticMetaObject); };
+}
+
 struct BgJumptable_QStyledItemDelegate {
-  CrystalProc<const QMetaObject *, void *> bg_QStyledItemDelegate_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QStyledItemDelegate_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QStyledItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QPainter *, const QStyleOptionViewItem *, const QModelIndex *> bg_QStyledItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QSize *, void *, const QStyleOptionViewItem *, const QModelIndex *> bg_QStyledItemDelegate_sizeHint_const_QStyleOptionViewItem_R_const_QModelIndex_R;
   CrystalProc<QWidget *, void *, QWidget *, const QStyleOptionViewItem *, const QModelIndex *> bg_QStyledItemDelegate_createEditor_QWidget_X_const_QStyleOptionViewItem_R_const_QModelIndex_R;
@@ -140434,36 +137727,7 @@ struct BgJumptable_QStyledItemDelegate {
 struct BgInherit_QStyledItemDelegate : public QStyledItemDelegate {
   using QStyledItemDelegate::QStyledItemDelegate;
   BgJumptable_QStyledItemDelegate bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QStyledItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyledItemDelegate_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QStyledItemDelegate *>(static_cast<const QStyledItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyledItemDelegate_metaObject_(_crystal_);
-    } else {
-      return QStyledItemDelegate::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QStyledItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyledItemDelegate_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QStyledItemDelegate *>(static_cast<const QStyledItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyledItemDelegate_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QStyledItemDelegate::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QStyledItemDelegate *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QStyledItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QStyledItemDelegate *>(static_cast<const QStyledItemDelegate *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QStyledItemDelegate_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QStyledItemDelegate::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const override {
     const BgInherit_QStyledItemDelegate *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QStyledItemDelegate_paint_QPainter_X_const_QStyleOptionViewItem_R_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QStyledItemDelegate *>(static_cast<const QStyledItemDelegate *>(_self_))) : nullptr;
@@ -140654,6 +137918,18 @@ struct BgInherit_QStyledItemDelegate : public QStyledItemDelegate {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QStyledItemDelegate::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QStyledItemDelegate::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QStyledItemDelegate::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QStyledItemDelegate *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QStyledItemDelegate_metaObject_(QStyledItemDelegate * _self_) {
   return _self_->metaObject();
@@ -140775,6 +138051,10 @@ extern "C" void bg_BgInherit_QStyledItemDelegate_JUMPTABLE_BgJumptable_QStyledIt
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QStyledItemDelegate_SET_META_BindgenQtMetaObject(BgInherit_QStyledItemDelegate * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QStyledItemDelegate::staticMetaObject); };
+}
+
 extern "C" QList<QString> * bg_QStyleFactory_keys_STATIC_() {
   return new (UseGC, bindgen_gc_finalizer<Container_QList_QString_>()) Container_QList_QString_ (QStyleFactory::keys());
 }
@@ -140792,9 +138072,6 @@ extern "C" QStyleFactory * bg_QStyleFactory__COPY_const_QStyleFactory_R(const QS
 }
 
 struct BgJumptable_QSystemTrayIcon {
-  CrystalProc<const QMetaObject *, void *> bg_QSystemTrayIcon_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QSystemTrayIcon_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QSystemTrayIcon_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QSystemTrayIcon_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -140806,36 +138083,7 @@ struct BgJumptable_QSystemTrayIcon {
 struct BgInherit_QSystemTrayIcon : public QSystemTrayIcon {
   using QSystemTrayIcon::QSystemTrayIcon;
   BgJumptable_QSystemTrayIcon bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QSystemTrayIcon *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSystemTrayIcon_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QSystemTrayIcon *>(static_cast<const QSystemTrayIcon *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSystemTrayIcon_metaObject_(_crystal_);
-    } else {
-      return QSystemTrayIcon::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QSystemTrayIcon *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSystemTrayIcon_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QSystemTrayIcon *>(static_cast<const QSystemTrayIcon *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSystemTrayIcon_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QSystemTrayIcon::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QSystemTrayIcon *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QSystemTrayIcon_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QSystemTrayIcon *>(static_cast<const QSystemTrayIcon *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QSystemTrayIcon_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QSystemTrayIcon::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QSystemTrayIcon *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QSystemTrayIcon_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QSystemTrayIcon *>(static_cast<const QSystemTrayIcon *>(_self_))) : nullptr;
@@ -140906,6 +138154,18 @@ struct BgInherit_QSystemTrayIcon : public QSystemTrayIcon {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QSystemTrayIcon::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QSystemTrayIcon::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QSystemTrayIcon::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QSystemTrayIcon *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QSystemTrayIcon_metaObject_(QSystemTrayIcon * _self_) {
   return _self_->metaObject();
@@ -141027,10 +138287,11 @@ extern "C" void bg_BgInherit_QSystemTrayIcon_JUMPTABLE_BgJumptable_QSystemTrayIc
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QSystemTrayIcon_SET_META_BindgenQtMetaObject(BgInherit_QSystemTrayIcon * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QSystemTrayIcon::staticMetaObject); };
+}
+
 struct BgJumptable_QTableView {
-  CrystalProc<const QMetaObject *, void *> bg_QTableView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTableView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTableView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QTableView_setModel_QAbstractItemModel_X;
   CrystalProc<void, void *, const QModelIndex *> bg_QTableView_setRootIndex_const_QModelIndex_R;
   CrystalProc<void, void *, QItemSelectionModel *> bg_QTableView_setSelectionModel_QItemSelectionModel_X;
@@ -141124,36 +138385,7 @@ struct BgJumptable_QTableView {
 struct BgInherit_QTableView : public QTableView {
   using QTableView::QTableView;
   BgJumptable_QTableView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTableView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTableView *>(static_cast<const QTableView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableView_metaObject_(_crystal_);
-    } else {
-      return QTableView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTableView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTableView *>(static_cast<const QTableView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTableView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTableView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTableView *>(static_cast<const QTableView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTableView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setModel(QAbstractItemModel * model) override {
     BgInherit_QTableView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTableView_setModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QTableView *>(static_cast<const QTableView *>(_self_))) : nullptr;
@@ -142037,6 +139269,18 @@ struct BgInherit_QTableView : public QTableView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTableView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTableView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTableView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTableView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTableView_metaObject_(QTableView * _self_) {
   return _self_->metaObject();
@@ -142371,6 +139615,10 @@ extern "C" void *bg_QTableView_DISCOVER_int_void(QTableView * _self_, int * bg_c
 
 extern "C" void bg_BgInherit_QTableView_JUMPTABLE_BgJumptable_QTableView_R(BgInherit_QTableView * _self_, const BgJumptable_QTableView & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTableView_SET_META_BindgenQtMetaObject(BgInherit_QTableView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTableView::staticMetaObject); };
 }
 
 extern "C" void bg_QTableView_setModel_SUPER_QAbstractItemModel_X(QTableView * _self_, QAbstractItemModel * model) {
@@ -142779,9 +140027,6 @@ extern "C" void bg_BgInherit_QTableWidgetItem_JUMPTABLE_BgJumptable_QTableWidget
 }
 
 struct BgJumptable_QTableWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QTableWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTableWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTableWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QTableWidget_event_QEvent_X;
   CrystalProc<QList<QString> *, void *> bg_QTableWidget_mimeTypes_;
   CrystalProc<QMimeData *, void *, const Container_QList_QTableWidgetItem_X_ *> bg_QTableWidget_mimeData_const_QList_QTableWidgetItem_X_;
@@ -142879,36 +140124,7 @@ struct BgJumptable_QTableWidget {
 struct BgInherit_QTableWidget : public QTableWidget {
   using QTableWidget::QTableWidget;
   BgJumptable_QTableWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTableWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTableWidget *>(static_cast<const QTableWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableWidget_metaObject_(_crystal_);
-    } else {
-      return QTableWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTableWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTableWidget *>(static_cast<const QTableWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTableWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTableWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTableWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTableWidget *>(static_cast<const QTableWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTableWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTableWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QTableWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTableWidget_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QTableWidget *>(static_cast<const QTableWidget *>(_self_))) : nullptr;
@@ -143822,6 +141038,18 @@ struct BgInherit_QTableWidget : public QTableWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTableWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTableWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTableWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTableWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTableWidget_metaObject_(QTableWidget * _self_) {
   return _self_->metaObject();
@@ -144255,10 +141483,11 @@ extern "C" void bg_BgInherit_QTableWidget_JUMPTABLE_BgJumptable_QTableWidget_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTableWidget_SET_META_BindgenQtMetaObject(BgInherit_QTableWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTableWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QTextBrowser {
-  CrystalProc<const QMetaObject *, void *> bg_QTextBrowser_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTextBrowser_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTextBrowser_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<CrystalVariant *, void *, int, const QUrl *> bg_QTextBrowser_loadResource_int_const_QUrl_R;
   CrystalProc<void, void *, const QUrl *> bg_QTextBrowser_setSource_const_QUrl_R;
   CrystalProc<void, void *> bg_QTextBrowser_backward_;
@@ -144323,36 +141552,7 @@ struct BgJumptable_QTextBrowser {
 struct BgInherit_QTextBrowser : public QTextBrowser {
   using QTextBrowser::QTextBrowser;
   BgJumptable_QTextBrowser bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTextBrowser *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBrowser_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTextBrowser *>(static_cast<const QTextBrowser *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBrowser_metaObject_(_crystal_);
-    } else {
-      return QTextBrowser::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTextBrowser *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBrowser_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTextBrowser *>(static_cast<const QTextBrowser *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBrowser_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTextBrowser::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTextBrowser *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTextBrowser_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTextBrowser *>(static_cast<const QTextBrowser *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTextBrowser_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTextBrowser::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QVariant loadResource(int type, const QUrl & name) override {
     BgInherit_QTextBrowser *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTextBrowser_loadResource_int_const_QUrl_R.isValid() ? bindgen_crystal_object(const_cast<QTextBrowser *>(static_cast<const QTextBrowser *>(_self_))) : nullptr;
@@ -144956,6 +142156,18 @@ struct BgInherit_QTextBrowser : public QTextBrowser {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTextBrowser::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTextBrowser::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTextBrowser::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTextBrowser *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTextBrowser_metaObject_(QTextBrowser * _self_) {
   return _self_->metaObject();
@@ -145217,10 +142429,11 @@ extern "C" void bg_BgInherit_QTextBrowser_JUMPTABLE_BgJumptable_QTextBrowser_R(B
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTextBrowser_SET_META_BindgenQtMetaObject(BgInherit_QTextBrowser * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTextBrowser::staticMetaObject); };
+}
+
 struct BgJumptable_QToolBar {
-  CrystalProc<const QMetaObject *, void *> bg_QToolBar_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QToolBar_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QToolBar_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QActionEvent *> bg_QToolBar_actionEvent_QActionEvent_X;
   CrystalProc<void, void *, QEvent *> bg_QToolBar_changeEvent_QEvent_X;
   CrystalProc<void, void *, QPaintEvent *> bg_QToolBar_paintEvent_QPaintEvent_X;
@@ -145271,36 +142484,7 @@ struct BgJumptable_QToolBar {
 struct BgInherit_QToolBar : public QToolBar {
   using QToolBar::QToolBar;
   BgJumptable_QToolBar bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QToolBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBar_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QToolBar *>(static_cast<const QToolBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBar_metaObject_(_crystal_);
-    } else {
-      return QToolBar::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QToolBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBar_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QToolBar *>(static_cast<const QToolBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBar_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QToolBar::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QToolBar *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBar_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QToolBar *>(static_cast<const QToolBar *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBar_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QToolBar::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void actionEvent(QActionEvent * event) override {
     BgInherit_QToolBar *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QToolBar_actionEvent_QActionEvent_X.isValid() ? bindgen_crystal_object(const_cast<QToolBar *>(static_cast<const QToolBar *>(_self_))) : nullptr;
@@ -145764,6 +142948,18 @@ struct BgInherit_QToolBar : public QToolBar {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QToolBar::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QToolBar::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QToolBar::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QToolBar *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QToolBar_metaObject_(QToolBar * _self_) {
   return _self_->metaObject();
@@ -146017,10 +143213,11 @@ extern "C" void bg_BgInherit_QToolBar_JUMPTABLE_BgJumptable_QToolBar_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QToolBar_SET_META_BindgenQtMetaObject(BgInherit_QToolBar * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QToolBar::staticMetaObject); };
+}
+
 struct BgJumptable_QToolBox {
-  CrystalProc<const QMetaObject *, void *> bg_QToolBox_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QToolBox_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QToolBox_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QToolBox_event_QEvent_X;
   CrystalProc<void, void *, int> bg_QToolBox_itemInserted_int;
   CrystalProc<void, void *, int> bg_QToolBox_itemRemoved_int;
@@ -146073,36 +143270,7 @@ struct BgJumptable_QToolBox {
 struct BgInherit_QToolBox : public QToolBox {
   using QToolBox::QToolBox;
   BgJumptable_QToolBox bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QToolBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBox_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QToolBox *>(static_cast<const QToolBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBox_metaObject_(_crystal_);
-    } else {
-      return QToolBox::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QToolBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBox_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QToolBox *>(static_cast<const QToolBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBox_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QToolBox::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QToolBox *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolBox_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QToolBox *>(static_cast<const QToolBox *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolBox_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QToolBox::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QToolBox *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QToolBox_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QToolBox *>(static_cast<const QToolBox *>(_self_))) : nullptr;
@@ -146586,6 +143754,18 @@ struct BgInherit_QToolBox : public QToolBox {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QToolBox::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QToolBox::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QToolBox::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QToolBox *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QToolBox_metaObject_(QToolBox * _self_) {
   return _self_->metaObject();
@@ -146751,10 +143931,11 @@ extern "C" void bg_BgInherit_QToolBox_JUMPTABLE_BgJumptable_QToolBox_R(BgInherit
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QToolBox_SET_META_BindgenQtMetaObject(BgInherit_QToolBox * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QToolBox::staticMetaObject); };
+}
+
 struct BgJumptable_QToolButton {
-  CrystalProc<const QMetaObject *, void *> bg_QToolButton_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QToolButton_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QToolButton_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QSize *, void *> bg_QToolButton_sizeHint_;
   CrystalProc<QSize *, void *> bg_QToolButton_minimumSizeHint_;
   CrystalProc<bool, void *, QEvent *> bg_QToolButton_event_QEvent_X;
@@ -146808,36 +143989,7 @@ struct BgJumptable_QToolButton {
 struct BgInherit_QToolButton : public QToolButton {
   using QToolButton::QToolButton;
   BgJumptable_QToolButton bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QToolButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolButton_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QToolButton *>(static_cast<const QToolButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolButton_metaObject_(_crystal_);
-    } else {
-      return QToolButton::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QToolButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolButton_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QToolButton *>(static_cast<const QToolButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolButton_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QToolButton::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QToolButton *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QToolButton_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QToolButton *>(static_cast<const QToolButton *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QToolButton_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QToolButton::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QSize sizeHint() const override {
     const BgInherit_QToolButton *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QToolButton_sizeHint_.isValid() ? bindgen_crystal_object(const_cast<QToolButton *>(static_cast<const QToolButton *>(_self_))) : nullptr;
@@ -147331,6 +144483,18 @@ struct BgInherit_QToolButton : public QToolButton {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QToolButton::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QToolButton::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QToolButton::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QToolButton *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QToolButton_metaObject_(QToolButton * _self_) {
   return _self_->metaObject();
@@ -147532,6 +144696,10 @@ extern "C" void bg_BgInherit_QToolButton_JUMPTABLE_BgJumptable_QToolButton_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QToolButton_SET_META_BindgenQtMetaObject(BgInherit_QToolButton * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QToolButton::staticMetaObject); };
+}
+
 extern "C" void bg_QToolTip_showText_STATIC_const_QPoint_R_const_QString_R_QWidget_X(const QPoint pos, const CrystalString text, QWidget * w) {
   QToolTip::showText(pos, ([&]() { auto &&bg_value = (text); return QString::fromUtf8(bg_value.ptr, bg_value.size); }()), w);
 }
@@ -147577,9 +144745,6 @@ extern "C" QToolTip * bg_QToolTip__COPY_const_QToolTip_R(const QToolTip & unname
 }
 
 struct BgJumptable_QTreeView {
-  CrystalProc<const QMetaObject *, void *> bg_QTreeView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTreeView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTreeView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QAbstractItemModel *> bg_QTreeView_setModel_QAbstractItemModel_X;
   CrystalProc<void, void *, const QModelIndex *> bg_QTreeView_setRootIndex_const_QModelIndex_R;
   CrystalProc<void, void *, QItemSelectionModel *> bg_QTreeView_setSelectionModel_QItemSelectionModel_X;
@@ -147675,36 +144840,7 @@ struct BgJumptable_QTreeView {
 struct BgInherit_QTreeView : public QTreeView {
   using QTreeView::QTreeView;
   BgJumptable_QTreeView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTreeView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTreeView *>(static_cast<const QTreeView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeView_metaObject_(_crystal_);
-    } else {
-      return QTreeView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTreeView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTreeView *>(static_cast<const QTreeView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTreeView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTreeView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTreeView *>(static_cast<const QTreeView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTreeView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setModel(QAbstractItemModel * model) override {
     BgInherit_QTreeView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTreeView_setModel_QAbstractItemModel_X.isValid() ? bindgen_crystal_object(const_cast<QTreeView *>(static_cast<const QTreeView *>(_self_))) : nullptr;
@@ -148608,6 +145744,18 @@ struct BgInherit_QTreeView : public QTreeView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTreeView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTreeView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTreeView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTreeView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTreeView_metaObject_(QTreeView * _self_) {
   return _self_->metaObject();
@@ -149054,6 +146202,10 @@ extern "C" void *bg_QTreeView_DISCOVER_int_void(QTreeView * _self_, int * bg_cla
 
 extern "C" void bg_BgInherit_QTreeView_JUMPTABLE_BgJumptable_QTreeView_R(BgInherit_QTreeView * _self_, const BgJumptable_QTreeView & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QTreeView_SET_META_BindgenQtMetaObject(BgInherit_QTreeView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTreeView::staticMetaObject); };
 }
 
 extern "C" QMetaObject::Connection * bg_QTreeView_CONNECT_expanded_Qt__ConnectionType_CrystalProc_void__const_QModelIndex_R_(QTreeView * _self_, Qt::ConnectionType type, CrystalProc<void, const QModelIndex *> _proc_) {
@@ -149622,9 +146774,6 @@ extern "C" void bg_BgInherit_QTreeWidgetItem_JUMPTABLE_BgJumptable_QTreeWidgetIt
 }
 
 struct BgJumptable_QTreeWidget {
-  CrystalProc<const QMetaObject *, void *> bg_QTreeWidget_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QTreeWidget_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QTreeWidget_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *, QItemSelectionModel *> bg_QTreeWidget_setSelectionModel_QItemSelectionModel_X;
   CrystalProc<bool, void *, QEvent *> bg_QTreeWidget_event_QEvent_X;
   CrystalProc<QList<QString> *, void *> bg_QTreeWidget_mimeTypes_;
@@ -149724,36 +146873,7 @@ struct BgJumptable_QTreeWidget {
 struct BgInherit_QTreeWidget : public QTreeWidget {
   using QTreeWidget::QTreeWidget;
   BgJumptable_QTreeWidget bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QTreeWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeWidget_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QTreeWidget *>(static_cast<const QTreeWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeWidget_metaObject_(_crystal_);
-    } else {
-      return QTreeWidget::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QTreeWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeWidget_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QTreeWidget *>(static_cast<const QTreeWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeWidget_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QTreeWidget::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QTreeWidget *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QTreeWidget_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QTreeWidget *>(static_cast<const QTreeWidget *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QTreeWidget_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QTreeWidget::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void setSelectionModel(QItemSelectionModel * selectionModel) override {
     BgInherit_QTreeWidget *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QTreeWidget_setSelectionModel_QItemSelectionModel_X.isValid() ? bindgen_crystal_object(const_cast<QTreeWidget *>(static_cast<const QTreeWidget *>(_self_))) : nullptr;
@@ -150687,6 +147807,18 @@ struct BgInherit_QTreeWidget : public QTreeWidget {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QTreeWidget::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QTreeWidget::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QTreeWidget::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QTreeWidget *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QTreeWidget_metaObject_(QTreeWidget * _self_) {
   return _self_->metaObject();
@@ -151036,10 +148168,11 @@ extern "C" void bg_BgInherit_QTreeWidget_JUMPTABLE_BgJumptable_QTreeWidget_R(BgI
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QTreeWidget_SET_META_BindgenQtMetaObject(BgInherit_QTreeWidget * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QTreeWidget::staticMetaObject); };
+}
+
 struct BgJumptable_QUndoGroup {
-  CrystalProc<const QMetaObject *, void *> bg_QUndoGroup_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QUndoGroup_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QUndoGroup_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -151051,36 +148184,7 @@ struct BgJumptable_QUndoGroup {
 struct BgInherit_QUndoGroup : public QUndoGroup {
   using QUndoGroup::QUndoGroup;
   BgJumptable_QUndoGroup bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QUndoGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoGroup_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QUndoGroup *>(static_cast<const QUndoGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoGroup_metaObject_(_crystal_);
-    } else {
-      return QUndoGroup::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QUndoGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoGroup_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QUndoGroup *>(static_cast<const QUndoGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoGroup_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QUndoGroup::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QUndoGroup *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoGroup_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QUndoGroup *>(static_cast<const QUndoGroup *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoGroup_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QUndoGroup::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QUndoGroup *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QUndoGroup *>(static_cast<const QUndoGroup *>(_self_))) : nullptr;
@@ -151151,6 +148255,18 @@ struct BgInherit_QUndoGroup : public QUndoGroup {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QUndoGroup::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QUndoGroup::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QUndoGroup::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QUndoGroup *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QUndoGroup_metaObject_(QUndoGroup * _self_) {
   return _self_->metaObject();
@@ -151304,6 +148420,10 @@ extern "C" void bg_BgInherit_QUndoGroup_JUMPTABLE_BgJumptable_QUndoGroup_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QUndoGroup_SET_META_BindgenQtMetaObject(BgInherit_QUndoGroup * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QUndoGroup::staticMetaObject); };
+}
+
 struct BgJumptable_QUndoCommand {
   CrystalProc<void, void *> bg_QUndoCommand_undo_;
   CrystalProc<void, void *> bg_QUndoCommand_redo_;
@@ -151427,9 +148547,6 @@ extern "C" void bg_BgInherit_QUndoCommand_JUMPTABLE_BgJumptable_QUndoCommand_R(B
 }
 
 struct BgJumptable_QUndoStack {
-  CrystalProc<const QMetaObject *, void *> bg_QUndoStack_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QUndoStack_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QUndoStack_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QObject_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QObject_eventFilter_QObject_X_QEvent_X;
   CrystalProc<void, void *, QTimerEvent *> bg_QObject_timerEvent_QTimerEvent_X;
@@ -151441,36 +148558,7 @@ struct BgJumptable_QUndoStack {
 struct BgInherit_QUndoStack : public QUndoStack {
   using QUndoStack::QUndoStack;
   BgJumptable_QUndoStack bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QUndoStack *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoStack_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QUndoStack *>(static_cast<const QUndoStack *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoStack_metaObject_(_crystal_);
-    } else {
-      return QUndoStack::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QUndoStack *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoStack_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QUndoStack *>(static_cast<const QUndoStack *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoStack_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QUndoStack::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QUndoStack *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoStack_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QUndoStack *>(static_cast<const QUndoStack *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoStack_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QUndoStack::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QUndoStack *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QObject_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QUndoStack *>(static_cast<const QUndoStack *>(_self_))) : nullptr;
@@ -151541,6 +148629,18 @@ struct BgInherit_QUndoStack : public QUndoStack {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QUndoStack::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QUndoStack::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QUndoStack::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QUndoStack *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QUndoStack_metaObject_(QUndoStack * _self_) {
   return _self_->metaObject();
@@ -151730,10 +148830,11 @@ extern "C" void bg_BgInherit_QUndoStack_JUMPTABLE_BgJumptable_QUndoStack_R(BgInh
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QUndoStack_SET_META_BindgenQtMetaObject(BgInherit_QUndoStack * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QUndoStack::staticMetaObject); };
+}
+
 struct BgJumptable_QUndoView {
-  CrystalProc<const QMetaObject *, void *> bg_QUndoView_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QUndoView_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QUndoView_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<QRect *, void *, const QModelIndex *> bg_QListView_visualRect_const_QModelIndex_R;
   CrystalProc<void, void *, const QModelIndex *, QAbstractItemView::ScrollHint> bg_QListView_scrollTo_const_QModelIndex_R_QAbstractItemView__ScrollHint;
   CrystalProc<QModelIndex &, void *, const QPoint *> bg_QListView_indexAt_const_QPoint_R;
@@ -151827,36 +148928,7 @@ struct BgJumptable_QUndoView {
 struct BgInherit_QUndoView : public QUndoView {
   using QUndoView::QUndoView;
   BgJumptable_QUndoView bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QUndoView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoView_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QUndoView *>(static_cast<const QUndoView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoView_metaObject_(_crystal_);
-    } else {
-      return QUndoView::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QUndoView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoView_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QUndoView *>(static_cast<const QUndoView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoView_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QUndoView::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QUndoView *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QUndoView_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QUndoView *>(static_cast<const QUndoView *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QUndoView_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QUndoView::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   QRect visualRect(const QModelIndex & index) const override {
     const BgInherit_QUndoView *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QListView_visualRect_const_QModelIndex_R.isValid() ? bindgen_crystal_object(const_cast<QUndoView *>(static_cast<const QUndoView *>(_self_))) : nullptr;
@@ -152740,6 +149812,18 @@ struct BgInherit_QUndoView : public QUndoView {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QUndoView::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QUndoView::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QUndoView::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QUndoView *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QUndoView_metaObject_(QUndoView * _self_) {
   return _self_->metaObject();
@@ -152813,6 +149897,10 @@ extern "C" void bg_BgInherit_QUndoView_JUMPTABLE_BgJumptable_QUndoView_R(BgInher
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QUndoView_SET_META_BindgenQtMetaObject(BgInherit_QUndoView * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QUndoView::staticMetaObject); };
+}
+
 extern "C" void bg_QWhatsThis_enterWhatsThisMode_STATIC_() {
   QWhatsThis::enterWhatsThisMode();
 }
@@ -152842,9 +149930,6 @@ extern "C" QWhatsThis * bg_QWhatsThis__COPY_const_QWhatsThis_R(const QWhatsThis 
 }
 
 struct BgJumptable_QWidgetAction {
-  CrystalProc<const QMetaObject *, void *> bg_QWidgetAction_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QWidgetAction_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QWidgetAction_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *, QEvent *> bg_QWidgetAction_event_QEvent_X;
   CrystalProc<bool, void *, QObject *, QEvent *> bg_QWidgetAction_eventFilter_QObject_X_QEvent_X;
   CrystalProc<QWidget *, void *, QWidget *> bg_QWidgetAction_createWidget_QWidget_X;
@@ -152858,36 +149943,7 @@ struct BgJumptable_QWidgetAction {
 struct BgInherit_QWidgetAction : public QWidgetAction {
   using QWidgetAction::QWidgetAction;
   BgJumptable_QWidgetAction bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QWidgetAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidgetAction_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QWidgetAction *>(static_cast<const QWidgetAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidgetAction_metaObject_(_crystal_);
-    } else {
-      return QWidgetAction::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QWidgetAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidgetAction_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QWidgetAction *>(static_cast<const QWidgetAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidgetAction_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QWidgetAction::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QWidgetAction *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWidgetAction_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QWidgetAction *>(static_cast<const QWidgetAction *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWidgetAction_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QWidgetAction::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool event(QEvent * event) override {
     BgInherit_QWidgetAction *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWidgetAction_event_QEvent_X.isValid() ? bindgen_crystal_object(const_cast<QWidgetAction *>(static_cast<const QWidgetAction *>(_self_))) : nullptr;
@@ -152978,6 +150034,18 @@ struct BgInherit_QWidgetAction : public QWidgetAction {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QWidgetAction::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QWidgetAction::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QWidgetAction::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QWidgetAction *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QWidgetAction_metaObject_(QWidgetAction * _self_) {
   return _self_->metaObject();
@@ -153063,10 +150131,11 @@ extern "C" void bg_BgInherit_QWidgetAction_JUMPTABLE_BgJumptable_QWidgetAction_R
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QWidgetAction_SET_META_BindgenQtMetaObject(BgInherit_QWidgetAction * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QWidgetAction::staticMetaObject); };
+}
+
 struct BgJumptable_QWizard {
-  CrystalProc<const QMetaObject *, void *> bg_QWizard_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QWizard_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QWizard_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<bool, void *> bg_QWizard_validateCurrentPage_;
   CrystalProc<int, void *> bg_QWizard_nextId_;
   CrystalProc<void, void *, bool> bg_QWizard_setVisible_bool;
@@ -153126,36 +150195,7 @@ struct BgJumptable_QWizard {
 struct BgInherit_QWizard : public QWizard {
   using QWizard::QWizard;
   BgJumptable_QWizard bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QWizard *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizard_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QWizard *>(static_cast<const QWizard *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizard_metaObject_(_crystal_);
-    } else {
-      return QWizard::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QWizard *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizard_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QWizard *>(static_cast<const QWizard *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizard_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QWizard::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QWizard *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizard_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QWizard *>(static_cast<const QWizard *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizard_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QWizard::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   bool validateCurrentPage() override {
     BgInherit_QWizard *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWizard_validateCurrentPage_.isValid() ? bindgen_crystal_object(const_cast<QWizard *>(static_cast<const QWizard *>(_self_))) : nullptr;
@@ -153709,6 +150749,18 @@ struct BgInherit_QWizard : public QWizard {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QWizard::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QWizard::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QWizard::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QWizard *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QWizard_metaObject_(QWizard * _self_) {
   return _self_->metaObject();
@@ -154010,10 +151062,11 @@ extern "C" void bg_BgInherit_QWizard_JUMPTABLE_BgJumptable_QWizard_R(BgInherit_Q
   _self_->bgJump = (table);
 }
 
+extern "C" void bg_BgInherit_QWizard_SET_META_BindgenQtMetaObject(BgInherit_QWizard * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QWizard::staticMetaObject); };
+}
+
 struct BgJumptable_QWizardPage {
-  CrystalProc<const QMetaObject *, void *> bg_QWizardPage_metaObject_;
-  CrystalProc<void *, void *, const char *> bg_QWizardPage_qt_metacast_const_char_X;
-  CrystalProc<int, void *, QMetaObject::Call, int, void **> bg_QWizardPage_qt_metacall_QMetaObject__Call_int_void_XX;
   CrystalProc<void, void *> bg_QWizardPage_initializePage_;
   CrystalProc<void, void *> bg_QWizardPage_cleanupPage_;
   CrystalProc<bool, void *> bg_QWizardPage_validatePage_;
@@ -154069,36 +151122,7 @@ struct BgJumptable_QWizardPage {
 struct BgInherit_QWizardPage : public QWizardPage {
   using QWizardPage::QWizardPage;
   BgJumptable_QWizardPage bgJump;
-  const QMetaObject * metaObject() const override {
-    const BgInherit_QWizardPage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizardPage_metaObject_.isValid() ? bindgen_crystal_object(const_cast<QWizardPage *>(static_cast<const QWizardPage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizardPage_metaObject_(_crystal_);
-    } else {
-      return QWizardPage::metaObject();
-    }
-  }
-  
-  void * qt_metacast(const char * unnamed_arg_0) override {
-    BgInherit_QWizardPage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizardPage_qt_metacast_const_char_X.isValid() ? bindgen_crystal_object(const_cast<QWizardPage *>(static_cast<const QWizardPage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizardPage_qt_metacast_const_char_X(_crystal_, unnamed_arg_0);
-    } else {
-      return QWizardPage::qt_metacast(unnamed_arg_0);
-    }
-  }
-  
-  int qt_metacall(QMetaObject::Call unnamed_arg_0, int unnamed_arg_1, void ** unnamed_arg_2) override {
-    BgInherit_QWizardPage *_self_ = this;
-    void *_crystal_ = _self_->bgJump.bg_QWizardPage_qt_metacall_QMetaObject__Call_int_void_XX.isValid() ? bindgen_crystal_object(const_cast<QWizardPage *>(static_cast<const QWizardPage *>(_self_))) : nullptr;
-    if (_crystal_) {
-      return _self_->bgJump.bg_QWizardPage_qt_metacall_QMetaObject__Call_int_void_XX(_crystal_, unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    } else {
-      return QWizardPage::qt_metacall(unnamed_arg_0, unnamed_arg_1, unnamed_arg_2);
-    }
-  }
-  
+  BindgenQtMetaObject * bgMeta = nullptr;
   void initializePage() override {
     BgInherit_QWizardPage *_self_ = this;
     void *_crystal_ = _self_->bgJump.bg_QWizardPage_initializePage_.isValid() ? bindgen_crystal_object(const_cast<QWizardPage *>(static_cast<const QWizardPage *>(_self_))) : nullptr;
@@ -154612,6 +151636,18 @@ struct BgInherit_QWizardPage : public QWizardPage {
     }
   }
   
+  const QMetaObject *metaObject() const override {
+    return bgMeta ? bgMeta->metaObject() : QWizardPage::metaObject();
+  }
+  void *qt_metacast(const char *bg_name) override {
+    if (bgMeta && bg_name && bgMeta->isClassName(bg_name)) return static_cast<void *>(this);
+    return QWizardPage::qt_metacast(bg_name);
+  }
+  int qt_metacall(QMetaObject::Call bg_call, int bg_id, void **bg_argv) override {
+    bg_id = QWizardPage::qt_metacall(bg_call, bg_id, bg_argv);
+    if (bg_id < 0 || !bgMeta) return bg_id;
+    return bgMeta->metacall(this, bindgen_crystal_object(static_cast<QWizardPage *>(this)), bg_call, bg_id, bg_argv);
+  }
 };
 extern "C" const QMetaObject * bg_QWizardPage_metaObject_(QWizardPage * _self_) {
   return _self_->metaObject();
@@ -154763,6 +151799,10 @@ extern "C" int bg_QWizardPage_nextId_SUPER_(QWizardPage * _self_) {
 
 extern "C" void bg_BgInherit_QWizardPage_JUMPTABLE_BgJumptable_QWizardPage_R(BgInherit_QWizardPage * _self_, const BgJumptable_QWizardPage & table) {
   _self_->bgJump = (table);
+}
+
+extern "C" void bg_BgInherit_QWizardPage_SET_META_BindgenQtMetaObject(BgInherit_QWizardPage * _self_, BindgenQtMetaObject * meta) {
+  if (meta) { _self_->bgMeta = (meta); _self_->bgMeta->setSuperdata(&QWizardPage::staticMetaObject); };
 }
 
 extern "C" const char * bg____qVersion_STATIC_() {
