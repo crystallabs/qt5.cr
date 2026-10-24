@@ -513,8 +513,10 @@ see the comments there:
 * A `bool *ok = nullptr` argument is `ok : Bool*? = nil`:
   `locale.to_int("42")`, or `transform.inverted(pointerof(invertible))` to
   learn the outcome.
-* `QMatrix3x3` (a `QGenericMatrix` instantiation) has no mapping, which drops
-  `Matrix4x4#normal_matrix` and `Quaternion#to_rotation_matrix`.
+* The `QGenericMatrix` typedefs (`QMatrix2x2` ... `QMatrix4x3`) are
+  `Qt::Matrix2x2` ... `Qt::Matrix4x3`, so `Matrix4x4#normal_matrix` and
+  `Quaternion#to_rotation_matrix` return a `Matrix3x3`.  The free operators
+  (`+`, `-`, `*`) aren't wrapped; use `add!`, `sub!`, `mul!` and `div!`.
   `QGradientStops` is a `QVector<QPair<qreal, QColor>>`, so `Gradient#stops`
   is an `Enumerable({Float64, Color})` and the setter takes an array of tuples.
 * The QXmlStream classes return names, values and text as `QStringRef`,
@@ -541,11 +543,13 @@ see the comments there:
   `CborValue.new(Qt::CborKnownTags::Url, value).tag` is `32`, and
   `CborStreamWriter#append(UInt64)` appends a tag, so append integers as
   `Int64`.  `CborValue.new(Qt::CborValue::Type::Null)` replaces the `nullptr`
-  constructor.  `QCborStreamReader::readString` returns a `StringResult<T>`
-  bindgen doesn't instantiate, so `ext/cbor_helper.hpp` adds
-  `reader.read_all_string` and `#read_all_byte_array` (Qt 6's names).
+  constructor.  `QCborStreamReader::readString` returns a `CborStringResult`
+  (`result.status.ok?`, `result.data`) and `readByteArray` a
+  `CborByteArrayResult`; `reader.read_all_string` and `#read_all_byte_array`
+  (Qt 6's names) loop over the chunks in Crystal.
   Qt 5 declares the `QDataStream` operators of `QCborSimpleType` without
-  exporting them, so the helper defines them for the binding to link.
+  exporting them, so `ext/cbor_helper.hpp` defines them for the binding to
+  link.
 * `QStyleOptionTabV4` is the one V-suffixed style option still a class in
   Qt 5 (`option.tab_index`); the others are deprecated typedefs of the
   current classes.  `StyleHintReturnMask#region` and

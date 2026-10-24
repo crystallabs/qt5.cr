@@ -143,6 +143,606 @@ extern "C" QListSpecialMethods<QString> * bg_QListSpecialMethods_QString___COPY_
   return new (UseGC) CrystalGCWrapper<QListSpecialMethods<QString>>(unnamed_arg_0);
 }
 
+extern "C" QMatrix2x2 * bg_QMatrix2x2__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x2>();
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x2>(values);
+}
+
+extern "C" const float * bg_QMatrix2x2__OPERATOR_call_int_int(QMatrix2x2 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix2x2_isIdentity_(QMatrix2x2 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix2x2_setToIdentity_(QMatrix2x2 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix2x2_fill_float(QMatrix2x2 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2_transposed_(QMatrix2x2 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix2x2>()) QMatrix2x2 (_self_->transposed());
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__OPERATOR_add_assign_const_QGenericMatrix_2__2__float__R(QMatrix2x2 * _self_, const QMatrix2x2 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__OPERATOR_sub_assign_const_QGenericMatrix_2__2__float__R(QMatrix2x2 * _self_, const QMatrix2x2 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__OPERATOR_mul_assign_float(QMatrix2x2 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__OPERATOR_div_assign_float(QMatrix2x2 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix2x2__OPERATOR_eq_const_QGenericMatrix_2__2__float__R(QMatrix2x2 * _self_, const QMatrix2x2 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix2x2__OPERATOR_ne_const_QGenericMatrix_2__2__float__R(QMatrix2x2 * _self_, const QMatrix2x2 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix2x2_copyDataTo_float_X(QMatrix2x2 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix2x2_data_(QMatrix2x2 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix2x2_constData_(QMatrix2x2 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix2x2 * bg_QMatrix2x2__COPY_const_QGenericMatrix_2__2__float__R(const QMatrix2x2 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x2>(unnamed_arg_0);
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x3>();
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x3>(values);
+}
+
+extern "C" const float * bg_QMatrix2x3__OPERATOR_call_int_int(QMatrix2x3 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix2x3_isIdentity_(QMatrix2x3 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix2x3_setToIdentity_(QMatrix2x3 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix2x3_fill_float(QMatrix2x3 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix2x3_transposed_(QMatrix2x3 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix3x2>()) QMatrix3x2 (_self_->transposed());
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__OPERATOR_add_assign_const_QGenericMatrix_2__3__float__R(QMatrix2x3 * _self_, const QMatrix2x3 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__OPERATOR_sub_assign_const_QGenericMatrix_2__3__float__R(QMatrix2x3 * _self_, const QMatrix2x3 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__OPERATOR_mul_assign_float(QMatrix2x3 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__OPERATOR_div_assign_float(QMatrix2x3 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix2x3__OPERATOR_eq_const_QGenericMatrix_2__3__float__R(QMatrix2x3 * _self_, const QMatrix2x3 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix2x3__OPERATOR_ne_const_QGenericMatrix_2__3__float__R(QMatrix2x3 * _self_, const QMatrix2x3 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix2x3_copyDataTo_float_X(QMatrix2x3 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix2x3_data_(QMatrix2x3 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix2x3_constData_(QMatrix2x3 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix2x3__COPY_const_QGenericMatrix_2__3__float__R(const QMatrix2x3 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x3>(unnamed_arg_0);
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x4>();
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x4>(values);
+}
+
+extern "C" const float * bg_QMatrix2x4__OPERATOR_call_int_int(QMatrix2x4 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix2x4_isIdentity_(QMatrix2x4 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix2x4_setToIdentity_(QMatrix2x4 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix2x4_fill_float(QMatrix2x4 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix2x4_transposed_(QMatrix2x4 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix4x2>()) QMatrix4x2 (_self_->transposed());
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__OPERATOR_add_assign_const_QGenericMatrix_2__4__float__R(QMatrix2x4 * _self_, const QMatrix2x4 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__OPERATOR_sub_assign_const_QGenericMatrix_2__4__float__R(QMatrix2x4 * _self_, const QMatrix2x4 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__OPERATOR_mul_assign_float(QMatrix2x4 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__OPERATOR_div_assign_float(QMatrix2x4 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix2x4__OPERATOR_eq_const_QGenericMatrix_2__4__float__R(QMatrix2x4 * _self_, const QMatrix2x4 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix2x4__OPERATOR_ne_const_QGenericMatrix_2__4__float__R(QMatrix2x4 * _self_, const QMatrix2x4 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix2x4_copyDataTo_float_X(QMatrix2x4 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix2x4_data_(QMatrix2x4 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix2x4_constData_(QMatrix2x4 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix2x4__COPY_const_QGenericMatrix_2__4__float__R(const QMatrix2x4 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix2x4>(unnamed_arg_0);
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x2>();
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x2>(values);
+}
+
+extern "C" const float * bg_QMatrix3x2__OPERATOR_call_int_int(QMatrix3x2 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix3x2_isIdentity_(QMatrix3x2 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix3x2_setToIdentity_(QMatrix3x2 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix3x2_fill_float(QMatrix3x2 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix2x3 * bg_QMatrix3x2_transposed_(QMatrix3x2 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix2x3>()) QMatrix2x3 (_self_->transposed());
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__OPERATOR_add_assign_const_QGenericMatrix_3__2__float__R(QMatrix3x2 * _self_, const QMatrix3x2 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__OPERATOR_sub_assign_const_QGenericMatrix_3__2__float__R(QMatrix3x2 * _self_, const QMatrix3x2 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__OPERATOR_mul_assign_float(QMatrix3x2 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__OPERATOR_div_assign_float(QMatrix3x2 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix3x2__OPERATOR_eq_const_QGenericMatrix_3__2__float__R(QMatrix3x2 * _self_, const QMatrix3x2 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix3x2__OPERATOR_ne_const_QGenericMatrix_3__2__float__R(QMatrix3x2 * _self_, const QMatrix3x2 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix3x2_copyDataTo_float_X(QMatrix3x2 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix3x2_data_(QMatrix3x2 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix3x2_constData_(QMatrix3x2 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix3x2 * bg_QMatrix3x2__COPY_const_QGenericMatrix_3__2__float__R(const QMatrix3x2 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x2>(unnamed_arg_0);
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x3>();
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x3>(values);
+}
+
+extern "C" const float * bg_QMatrix3x3__OPERATOR_call_int_int(QMatrix3x3 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix3x3_isIdentity_(QMatrix3x3 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix3x3_setToIdentity_(QMatrix3x3 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix3x3_fill_float(QMatrix3x3 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3_transposed_(QMatrix3x3 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix3x3>()) QMatrix3x3 (_self_->transposed());
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__OPERATOR_add_assign_const_QGenericMatrix_3__3__float__R(QMatrix3x3 * _self_, const QMatrix3x3 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__OPERATOR_sub_assign_const_QGenericMatrix_3__3__float__R(QMatrix3x3 * _self_, const QMatrix3x3 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__OPERATOR_mul_assign_float(QMatrix3x3 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__OPERATOR_div_assign_float(QMatrix3x3 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix3x3__OPERATOR_eq_const_QGenericMatrix_3__3__float__R(QMatrix3x3 * _self_, const QMatrix3x3 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix3x3__OPERATOR_ne_const_QGenericMatrix_3__3__float__R(QMatrix3x3 * _self_, const QMatrix3x3 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix3x3_copyDataTo_float_X(QMatrix3x3 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix3x3_data_(QMatrix3x3 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix3x3_constData_(QMatrix3x3 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix3x3__COPY_const_QGenericMatrix_3__3__float__R(const QMatrix3x3 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x3>(unnamed_arg_0);
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x4>();
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x4>(values);
+}
+
+extern "C" const float * bg_QMatrix3x4__OPERATOR_call_int_int(QMatrix3x4 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix3x4_isIdentity_(QMatrix3x4 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix3x4_setToIdentity_(QMatrix3x4 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix3x4_fill_float(QMatrix3x4 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix3x4_transposed_(QMatrix3x4 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix4x3>()) QMatrix4x3 (_self_->transposed());
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__OPERATOR_add_assign_const_QGenericMatrix_3__4__float__R(QMatrix3x4 * _self_, const QMatrix3x4 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__OPERATOR_sub_assign_const_QGenericMatrix_3__4__float__R(QMatrix3x4 * _self_, const QMatrix3x4 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__OPERATOR_mul_assign_float(QMatrix3x4 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__OPERATOR_div_assign_float(QMatrix3x4 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix3x4__OPERATOR_eq_const_QGenericMatrix_3__4__float__R(QMatrix3x4 * _self_, const QMatrix3x4 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix3x4__OPERATOR_ne_const_QGenericMatrix_3__4__float__R(QMatrix3x4 * _self_, const QMatrix3x4 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix3x4_copyDataTo_float_X(QMatrix3x4 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix3x4_data_(QMatrix3x4 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix3x4_constData_(QMatrix3x4 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix3x4__COPY_const_QGenericMatrix_3__4__float__R(const QMatrix3x4 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix3x4>(unnamed_arg_0);
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x2>();
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x2>(values);
+}
+
+extern "C" const float * bg_QMatrix4x2__OPERATOR_call_int_int(QMatrix4x2 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix4x2_isIdentity_(QMatrix4x2 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix4x2_setToIdentity_(QMatrix4x2 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix4x2_fill_float(QMatrix4x2 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix2x4 * bg_QMatrix4x2_transposed_(QMatrix4x2 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix2x4>()) QMatrix2x4 (_self_->transposed());
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__OPERATOR_add_assign_const_QGenericMatrix_4__2__float__R(QMatrix4x2 * _self_, const QMatrix4x2 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__OPERATOR_sub_assign_const_QGenericMatrix_4__2__float__R(QMatrix4x2 * _self_, const QMatrix4x2 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__OPERATOR_mul_assign_float(QMatrix4x2 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__OPERATOR_div_assign_float(QMatrix4x2 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix4x2__OPERATOR_eq_const_QGenericMatrix_4__2__float__R(QMatrix4x2 * _self_, const QMatrix4x2 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix4x2__OPERATOR_ne_const_QGenericMatrix_4__2__float__R(QMatrix4x2 * _self_, const QMatrix4x2 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix4x2_copyDataTo_float_X(QMatrix4x2 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix4x2_data_(QMatrix4x2 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix4x2_constData_(QMatrix4x2 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix4x2 * bg_QMatrix4x2__COPY_const_QGenericMatrix_4__2__float__R(const QMatrix4x2 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x2>(unnamed_arg_0);
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x3>();
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__CONSTRUCT_const_float_X(const float * values) {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x3>(values);
+}
+
+extern "C" const float * bg_QMatrix4x3__OPERATOR_call_int_int(QMatrix4x3 * _self_, int row, int column) {
+  return &(((*_self_)(row, column)));
+}
+
+extern "C" bool bg_QMatrix4x3_isIdentity_(QMatrix4x3 * _self_) {
+  return _self_->isIdentity();
+}
+
+extern "C" void bg_QMatrix4x3_setToIdentity_(QMatrix4x3 * _self_) {
+  _self_->setToIdentity();
+}
+
+extern "C" void bg_QMatrix4x3_fill_float(QMatrix4x3 * _self_, float value) {
+  _self_->fill(value);
+}
+
+extern "C" QMatrix3x4 * bg_QMatrix4x3_transposed_(QMatrix4x3 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix3x4>()) QMatrix3x4 (_self_->transposed());
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__OPERATOR_add_assign_const_QGenericMatrix_4__3__float__R(QMatrix4x3 * _self_, const QMatrix4x3 & other) {
+  return &(((*_self_) += (other)));
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__OPERATOR_sub_assign_const_QGenericMatrix_4__3__float__R(QMatrix4x3 * _self_, const QMatrix4x3 & other) {
+  return &(((*_self_) -= (other)));
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__OPERATOR_mul_assign_float(QMatrix4x3 * _self_, float factor) {
+  return &(((*_self_) *= (factor)));
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__OPERATOR_div_assign_float(QMatrix4x3 * _self_, float divisor) {
+  return &(((*_self_) /= (divisor)));
+}
+
+extern "C" bool bg_QMatrix4x3__OPERATOR_eq_const_QGenericMatrix_4__3__float__R(QMatrix4x3 * _self_, const QMatrix4x3 & other) {
+  return ((*_self_) == (other));
+}
+
+extern "C" bool bg_QMatrix4x3__OPERATOR_ne_const_QGenericMatrix_4__3__float__R(QMatrix4x3 * _self_, const QMatrix4x3 & other) {
+  return ((*_self_) != (other));
+}
+
+extern "C" void bg_QMatrix4x3_copyDataTo_float_X(QMatrix4x3 * _self_, float * values) {
+  _self_->copyDataTo(values);
+}
+
+extern "C" float * bg_QMatrix4x3_data_(QMatrix4x3 * _self_) {
+  return _self_->data();
+}
+
+extern "C" const float * bg_QMatrix4x3_constData_(QMatrix4x3 * _self_) {
+  return _self_->constData();
+}
+
+extern "C" QMatrix4x3 * bg_QMatrix4x3__COPY_const_QGenericMatrix_4__3__float__R(const QMatrix4x3 & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QMatrix4x3>(unnamed_arg_0);
+}
+
+extern "C" QCborStreamReader::StringResult<QString> * bg_QCborStreamReader__StringResult_QString___COPY_const_QCborStreamReader__StringResult_QString__R(const QCborStreamReader::StringResult<QString> & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QCborStreamReader::StringResult<QString>>(unnamed_arg_0);
+}
+
+extern "C" QCborStreamReader::StringResult<QString> * bg_QCborStreamReader__StringResult_QString___OPERATOR_assign_const_QCborStreamReader__StringResult_QString__R(QCborStreamReader::StringResult<QString> * _self_, const QCborStreamReader::StringResult<QString> & unnamed_arg_0) {
+  return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" QCborStreamReader::StringResult<QString> * bg_QCborStreamReader__StringResult_QString___CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QCborStreamReader::StringResult<QString>>();
+}
+
+extern "C" CrystalString bg_QCborStreamReader__StringResult_QString__data_GETTER_(QCborStreamReader::StringResult<QString> * _self_) {
+  return qstring_to_crystal(_self_->data);
+}
+
+extern "C" void bg_QCborStreamReader__StringResult_QString__data_SETTER_QString(QCborStreamReader::StringResult<QString> * _self_, CrystalString data) {
+  _self_->data = ([&]() { auto &&bg_value = (data); return QString::fromUtf8(bg_value.ptr, bg_value.size); }());
+}
+
+extern "C" QCborStreamReader::StringResultCode bg_QCborStreamReader__StringResult_QString__status_GETTER_(QCborStreamReader::StringResult<QString> * _self_) {
+  return _self_->status;
+}
+
+extern "C" void bg_QCborStreamReader__StringResult_QString__status_SETTER_QCborStreamReader__StringResultCode(QCborStreamReader::StringResult<QString> * _self_, QCborStreamReader::StringResultCode status) {
+  _self_->status = status;
+}
+
+extern "C" QCborStreamReader::StringResult<QByteArray> * bg_QCborStreamReader__StringResult_QByteArray___COPY_const_QCborStreamReader__StringResult_QByteArray__R(const QCborStreamReader::StringResult<QByteArray> & unnamed_arg_0) {
+  return new (UseGC) CrystalGCWrapper<QCborStreamReader::StringResult<QByteArray>>(unnamed_arg_0);
+}
+
+extern "C" QCborStreamReader::StringResult<QByteArray> * bg_QCborStreamReader__StringResult_QByteArray___OPERATOR_assign_const_QCborStreamReader__StringResult_QByteArray__R(QCborStreamReader::StringResult<QByteArray> * _self_, const QCborStreamReader::StringResult<QByteArray> & unnamed_arg_0) {
+  return &(((*_self_) = (unnamed_arg_0)));
+}
+
+extern "C" QCborStreamReader::StringResult<QByteArray> * bg_QCborStreamReader__StringResult_QByteArray___CONSTRUCT_() {
+  return new (UseGC) CrystalGCWrapper<QCborStreamReader::StringResult<QByteArray>>();
+}
+
+extern "C" CrystalString bg_QCborStreamReader__StringResult_QByteArray__data_GETTER_(QCborStreamReader::StringResult<QByteArray> * _self_) {
+  return qbytearray_to_crystal(_self_->data);
+}
+
+extern "C" void bg_QCborStreamReader__StringResult_QByteArray__data_SETTER_QByteArray(QCborStreamReader::StringResult<QByteArray> * _self_, CrystalString data) {
+  _self_->data = ([&]() { auto &&bg_value = (data); return QByteArray(bg_value.ptr, bg_value.size); }());
+}
+
+extern "C" QCborStreamReader::StringResultCode bg_QCborStreamReader__StringResult_QByteArray__status_GETTER_(QCborStreamReader::StringResult<QByteArray> * _self_) {
+  return _self_->status;
+}
+
+extern "C" void bg_QCborStreamReader__StringResult_QByteArray__status_SETTER_QCborStreamReader__StringResultCode(QCborStreamReader::StringResult<QByteArray> * _self_, QCborStreamReader::StringResultCode status) {
+  _self_->status = status;
+}
+
 extern "C" CrystalString bg_QSysInfo_buildCpuArchitecture_STATIC_() {
   return qstring_to_crystal(QSysInfo::buildCpuArchitecture());
 }
@@ -11284,6 +11884,14 @@ extern "C" bool bg_QCborStreamReader_enterContainer_(QCborStreamReader * _self_)
 
 extern "C" bool bg_QCborStreamReader_leaveContainer_(QCborStreamReader * _self_) {
   return _self_->leaveContainer();
+}
+
+extern "C" QCborStreamReader::StringResult<QString> * bg_QCborStreamReader_readString_(QCborStreamReader * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QCborStreamReader::StringResult<QString>>()) QCborStreamReader::StringResult<QString> (_self_->readString());
+}
+
+extern "C" QCborStreamReader::StringResult<QByteArray> * bg_QCborStreamReader_readByteArray_(QCborStreamReader * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QCborStreamReader::StringResult<QByteArray>>()) QCborStreamReader::StringResult<QByteArray> (_self_->readByteArray());
 }
 
 extern "C" qsizetype bg_QCborStreamReader_currentStringChunkSize_(QCborStreamReader * _self_) {
@@ -44292,6 +44900,14 @@ extern "C" QQuaternion bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(f
   return QQuaternion::fromEulerAngles(pitch, yaw, roll);
 }
 
+extern "C" QMatrix3x3 * bg_QQuaternion_toRotationMatrix_(QQuaternion * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix3x3>()) QMatrix3x3 (_self_->toRotationMatrix());
+}
+
+extern "C" QQuaternion bg_QQuaternion_fromRotationMatrix_STATIC_const_QMatrix3x3_R(const QMatrix3x3 & rot3x3) {
+  return QQuaternion::fromRotationMatrix(rot3x3);
+}
+
 extern "C" void bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(QQuaternion * _self_, QVector3D * xAxis, QVector3D * yAxis, QVector3D * zAxis) {
   _self_->getAxes(xAxis, yAxis, zAxis);
 }
@@ -44426,6 +45042,10 @@ extern "C" QMatrix4x4 * bg_QMatrix4x4_inverted_bool_X(QMatrix4x4 * _self_, bool 
 
 extern "C" QMatrix4x4 * bg_QMatrix4x4_transposed_(QMatrix4x4 * _self_) {
   return new (UseGC, bindgen_gc_finalizer<QMatrix4x4>()) QMatrix4x4 (_self_->transposed());
+}
+
+extern "C" QMatrix3x3 * bg_QMatrix4x4_normalMatrix_(QMatrix4x4 * _self_) {
+  return new (UseGC, bindgen_gc_finalizer<QMatrix3x3>()) QMatrix3x3 (_self_->normalMatrix());
 }
 
 extern "C" QMatrix4x4 * bg_QMatrix4x4__OPERATOR_add_assign_const_QMatrix4x4_R(QMatrix4x4 * _self_, const QMatrix4x4 & other) {
@@ -146702,14 +147322,6 @@ extern "C" CrystalString bg____qt5cr_data_stream_read_bytes_STATIC_QDataStream_X
 
 extern "C" bool bg____qt5cr_invoke_method_STATIC_QObject_X_const_char_X_Qt__ConnectionType(QObject * object, const char * member, Qt::ConnectionType type) {
   return ::qt5cr_invoke_method(object, member, type);
-}
-
-extern "C" CrystalString bg____qt5cr_cbor_read_all_string_STATIC_QCborStreamReader_X(QCborStreamReader * reader) {
-  return qstring_to_crystal(::qt5cr_cbor_read_all_string(reader));
-}
-
-extern "C" CrystalString bg____qt5cr_cbor_read_all_byte_array_STATIC_QCborStreamReader_X(QCborStreamReader * reader) {
-  return qbytearray_to_crystal(::qt5cr_cbor_read_all_byte_array(reader));
 }
 
 extern "C" Container_QPair_QCborValue__QCborValue_ * bg_Container_QPair_QCborValue__QCborValue___CONSTRUCT_() {

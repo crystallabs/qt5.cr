@@ -113,7 +113,10 @@ describe Qt::CborValue do
     reader.length.should eq(2)
     reader.enter_container.should be_true
     reader.string?.should be_true
-    reader.read_all_string.should eq("n") # ext/cbor_helper.hpp
+    chunk = reader.read_string
+    chunk.status.ok?.should be_true
+    chunk.data.should eq("n")
+    reader.read_string.status.end_of_string?.should be_true
     reader.unsigned_integer?.should be_true
     reader.to_integer.should eq(7)
     reader.next.should be_true

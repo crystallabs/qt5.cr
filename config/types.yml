@@ -312,9 +312,6 @@ types: # Type rewrite rules
     pass_by: Value
     kind: Struct
   "Qt::Initialization": { ignore: true } # Qt::Uninitialized constructor tag
-  # A typedef of QGenericMatrix<3, 3, float>, a template bindgen can't
-  # instantiate; drops Matrix4x4#normal_matrix and Quaternion#to_rotation_matrix.
-  QMatrix3x3: { ignore: true }
   "QGradient::QGradientData": { ignore: true } # Private union
   "QRegion::QRegionData": { ignore: true } # Private
   "QRegion::const_iterator": { ignore: true } # Use #rect_count and #bounding_rect

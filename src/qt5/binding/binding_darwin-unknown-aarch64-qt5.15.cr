@@ -746,6 +746,16 @@ module Qt
     alias QListSpecialMethodsQString = Void
     alias ContainerQListQString = Void
     alias QRegularExpression = Void
+    alias QMatrix2x2 = Void
+    alias QMatrix2x3 = Void
+    alias QMatrix3x2 = Void
+    alias QMatrix2x4 = Void
+    alias QMatrix4x2 = Void
+    alias QMatrix3x3 = Void
+    alias QMatrix3x4 = Void
+    alias QMatrix4x3 = Void
+    alias QCborStreamReaderStringResultQString = Void
+    alias QCborStreamReaderStringResultQByteArray = Void
     alias QSysInfo = Void
     alias QBasicMutex = Void
     alias QMutex = Void
@@ -9032,6 +9042,156 @@ module Qt
     fun bg_QListSpecialMethods_QString__replaceInStrings_const_QRegularExpression_R_const_QString_R(_self_ : QListSpecialMethodsQString*, re : QRegularExpression*, after : CrystalString) : ContainerQListQString*
     fun bg_QListSpecialMethods_QString___CONSTRUCT_() : QListSpecialMethodsQString*
     fun bg_QListSpecialMethods_QString___COPY_const_QListSpecialMethods_QString__R(unnamed_arg_0 : QListSpecialMethodsQString*) : QListSpecialMethodsQString*
+    fun bg_QMatrix2x2__CONSTRUCT_() : QMatrix2x2*
+    fun bg_QMatrix2x2__CONSTRUCT_const_float_X(values : Float32*) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_call_int_int(_self_ : QMatrix2x2*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix2x2_isIdentity_(_self_ : QMatrix2x2*) : Bool
+    fun bg_QMatrix2x2_setToIdentity_(_self_ : QMatrix2x2*) : Void
+    fun bg_QMatrix2x2_fill_float(_self_ : QMatrix2x2*, value : Float32) : Void
+    fun bg_QMatrix2x2_transposed_(_self_ : QMatrix2x2*) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_add_assign_const_QGenericMatrix_2__2__float__R(_self_ : QMatrix2x2*, other : QMatrix2x2*) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_sub_assign_const_QGenericMatrix_2__2__float__R(_self_ : QMatrix2x2*, other : QMatrix2x2*) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_mul_assign_float(_self_ : QMatrix2x2*, factor : Float32) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_div_assign_float(_self_ : QMatrix2x2*, divisor : Float32) : QMatrix2x2*
+    fun bg_QMatrix2x2__OPERATOR_eq_const_QGenericMatrix_2__2__float__R(_self_ : QMatrix2x2*, other : QMatrix2x2*) : Bool
+    fun bg_QMatrix2x2__OPERATOR_ne_const_QGenericMatrix_2__2__float__R(_self_ : QMatrix2x2*, other : QMatrix2x2*) : Bool
+    fun bg_QMatrix2x2_copyDataTo_float_X(_self_ : QMatrix2x2*, values : Float32*) : Void
+    fun bg_QMatrix2x2_data_(_self_ : QMatrix2x2*) : Float32*
+    fun bg_QMatrix2x2_constData_(_self_ : QMatrix2x2*) : Float32*
+    fun bg_QMatrix2x2__COPY_const_QGenericMatrix_2__2__float__R(unnamed_arg_0 : QMatrix2x2*) : QMatrix2x2*
+    fun bg_QMatrix2x3__CONSTRUCT_() : QMatrix2x3*
+    fun bg_QMatrix2x3__CONSTRUCT_const_float_X(values : Float32*) : QMatrix2x3*
+    fun bg_QMatrix2x3__OPERATOR_call_int_int(_self_ : QMatrix2x3*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix2x3_isIdentity_(_self_ : QMatrix2x3*) : Bool
+    fun bg_QMatrix2x3_setToIdentity_(_self_ : QMatrix2x3*) : Void
+    fun bg_QMatrix2x3_fill_float(_self_ : QMatrix2x3*, value : Float32) : Void
+    fun bg_QMatrix2x3_transposed_(_self_ : QMatrix2x3*) : QMatrix3x2*
+    fun bg_QMatrix2x3__OPERATOR_add_assign_const_QGenericMatrix_2__3__float__R(_self_ : QMatrix2x3*, other : QMatrix2x3*) : QMatrix2x3*
+    fun bg_QMatrix2x3__OPERATOR_sub_assign_const_QGenericMatrix_2__3__float__R(_self_ : QMatrix2x3*, other : QMatrix2x3*) : QMatrix2x3*
+    fun bg_QMatrix2x3__OPERATOR_mul_assign_float(_self_ : QMatrix2x3*, factor : Float32) : QMatrix2x3*
+    fun bg_QMatrix2x3__OPERATOR_div_assign_float(_self_ : QMatrix2x3*, divisor : Float32) : QMatrix2x3*
+    fun bg_QMatrix2x3__OPERATOR_eq_const_QGenericMatrix_2__3__float__R(_self_ : QMatrix2x3*, other : QMatrix2x3*) : Bool
+    fun bg_QMatrix2x3__OPERATOR_ne_const_QGenericMatrix_2__3__float__R(_self_ : QMatrix2x3*, other : QMatrix2x3*) : Bool
+    fun bg_QMatrix2x3_copyDataTo_float_X(_self_ : QMatrix2x3*, values : Float32*) : Void
+    fun bg_QMatrix2x3_data_(_self_ : QMatrix2x3*) : Float32*
+    fun bg_QMatrix2x3_constData_(_self_ : QMatrix2x3*) : Float32*
+    fun bg_QMatrix2x3__COPY_const_QGenericMatrix_2__3__float__R(unnamed_arg_0 : QMatrix2x3*) : QMatrix2x3*
+    fun bg_QMatrix2x4__CONSTRUCT_() : QMatrix2x4*
+    fun bg_QMatrix2x4__CONSTRUCT_const_float_X(values : Float32*) : QMatrix2x4*
+    fun bg_QMatrix2x4__OPERATOR_call_int_int(_self_ : QMatrix2x4*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix2x4_isIdentity_(_self_ : QMatrix2x4*) : Bool
+    fun bg_QMatrix2x4_setToIdentity_(_self_ : QMatrix2x4*) : Void
+    fun bg_QMatrix2x4_fill_float(_self_ : QMatrix2x4*, value : Float32) : Void
+    fun bg_QMatrix2x4_transposed_(_self_ : QMatrix2x4*) : QMatrix4x2*
+    fun bg_QMatrix2x4__OPERATOR_add_assign_const_QGenericMatrix_2__4__float__R(_self_ : QMatrix2x4*, other : QMatrix2x4*) : QMatrix2x4*
+    fun bg_QMatrix2x4__OPERATOR_sub_assign_const_QGenericMatrix_2__4__float__R(_self_ : QMatrix2x4*, other : QMatrix2x4*) : QMatrix2x4*
+    fun bg_QMatrix2x4__OPERATOR_mul_assign_float(_self_ : QMatrix2x4*, factor : Float32) : QMatrix2x4*
+    fun bg_QMatrix2x4__OPERATOR_div_assign_float(_self_ : QMatrix2x4*, divisor : Float32) : QMatrix2x4*
+    fun bg_QMatrix2x4__OPERATOR_eq_const_QGenericMatrix_2__4__float__R(_self_ : QMatrix2x4*, other : QMatrix2x4*) : Bool
+    fun bg_QMatrix2x4__OPERATOR_ne_const_QGenericMatrix_2__4__float__R(_self_ : QMatrix2x4*, other : QMatrix2x4*) : Bool
+    fun bg_QMatrix2x4_copyDataTo_float_X(_self_ : QMatrix2x4*, values : Float32*) : Void
+    fun bg_QMatrix2x4_data_(_self_ : QMatrix2x4*) : Float32*
+    fun bg_QMatrix2x4_constData_(_self_ : QMatrix2x4*) : Float32*
+    fun bg_QMatrix2x4__COPY_const_QGenericMatrix_2__4__float__R(unnamed_arg_0 : QMatrix2x4*) : QMatrix2x4*
+    fun bg_QMatrix3x2__CONSTRUCT_() : QMatrix3x2*
+    fun bg_QMatrix3x2__CONSTRUCT_const_float_X(values : Float32*) : QMatrix3x2*
+    fun bg_QMatrix3x2__OPERATOR_call_int_int(_self_ : QMatrix3x2*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix3x2_isIdentity_(_self_ : QMatrix3x2*) : Bool
+    fun bg_QMatrix3x2_setToIdentity_(_self_ : QMatrix3x2*) : Void
+    fun bg_QMatrix3x2_fill_float(_self_ : QMatrix3x2*, value : Float32) : Void
+    fun bg_QMatrix3x2_transposed_(_self_ : QMatrix3x2*) : QMatrix2x3*
+    fun bg_QMatrix3x2__OPERATOR_add_assign_const_QGenericMatrix_3__2__float__R(_self_ : QMatrix3x2*, other : QMatrix3x2*) : QMatrix3x2*
+    fun bg_QMatrix3x2__OPERATOR_sub_assign_const_QGenericMatrix_3__2__float__R(_self_ : QMatrix3x2*, other : QMatrix3x2*) : QMatrix3x2*
+    fun bg_QMatrix3x2__OPERATOR_mul_assign_float(_self_ : QMatrix3x2*, factor : Float32) : QMatrix3x2*
+    fun bg_QMatrix3x2__OPERATOR_div_assign_float(_self_ : QMatrix3x2*, divisor : Float32) : QMatrix3x2*
+    fun bg_QMatrix3x2__OPERATOR_eq_const_QGenericMatrix_3__2__float__R(_self_ : QMatrix3x2*, other : QMatrix3x2*) : Bool
+    fun bg_QMatrix3x2__OPERATOR_ne_const_QGenericMatrix_3__2__float__R(_self_ : QMatrix3x2*, other : QMatrix3x2*) : Bool
+    fun bg_QMatrix3x2_copyDataTo_float_X(_self_ : QMatrix3x2*, values : Float32*) : Void
+    fun bg_QMatrix3x2_data_(_self_ : QMatrix3x2*) : Float32*
+    fun bg_QMatrix3x2_constData_(_self_ : QMatrix3x2*) : Float32*
+    fun bg_QMatrix3x2__COPY_const_QGenericMatrix_3__2__float__R(unnamed_arg_0 : QMatrix3x2*) : QMatrix3x2*
+    fun bg_QMatrix3x3__CONSTRUCT_() : QMatrix3x3*
+    fun bg_QMatrix3x3__CONSTRUCT_const_float_X(values : Float32*) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_call_int_int(_self_ : QMatrix3x3*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix3x3_isIdentity_(_self_ : QMatrix3x3*) : Bool
+    fun bg_QMatrix3x3_setToIdentity_(_self_ : QMatrix3x3*) : Void
+    fun bg_QMatrix3x3_fill_float(_self_ : QMatrix3x3*, value : Float32) : Void
+    fun bg_QMatrix3x3_transposed_(_self_ : QMatrix3x3*) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_add_assign_const_QGenericMatrix_3__3__float__R(_self_ : QMatrix3x3*, other : QMatrix3x3*) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_sub_assign_const_QGenericMatrix_3__3__float__R(_self_ : QMatrix3x3*, other : QMatrix3x3*) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_mul_assign_float(_self_ : QMatrix3x3*, factor : Float32) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_div_assign_float(_self_ : QMatrix3x3*, divisor : Float32) : QMatrix3x3*
+    fun bg_QMatrix3x3__OPERATOR_eq_const_QGenericMatrix_3__3__float__R(_self_ : QMatrix3x3*, other : QMatrix3x3*) : Bool
+    fun bg_QMatrix3x3__OPERATOR_ne_const_QGenericMatrix_3__3__float__R(_self_ : QMatrix3x3*, other : QMatrix3x3*) : Bool
+    fun bg_QMatrix3x3_copyDataTo_float_X(_self_ : QMatrix3x3*, values : Float32*) : Void
+    fun bg_QMatrix3x3_data_(_self_ : QMatrix3x3*) : Float32*
+    fun bg_QMatrix3x3_constData_(_self_ : QMatrix3x3*) : Float32*
+    fun bg_QMatrix3x3__COPY_const_QGenericMatrix_3__3__float__R(unnamed_arg_0 : QMatrix3x3*) : QMatrix3x3*
+    fun bg_QMatrix3x4__CONSTRUCT_() : QMatrix3x4*
+    fun bg_QMatrix3x4__CONSTRUCT_const_float_X(values : Float32*) : QMatrix3x4*
+    fun bg_QMatrix3x4__OPERATOR_call_int_int(_self_ : QMatrix3x4*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix3x4_isIdentity_(_self_ : QMatrix3x4*) : Bool
+    fun bg_QMatrix3x4_setToIdentity_(_self_ : QMatrix3x4*) : Void
+    fun bg_QMatrix3x4_fill_float(_self_ : QMatrix3x4*, value : Float32) : Void
+    fun bg_QMatrix3x4_transposed_(_self_ : QMatrix3x4*) : QMatrix4x3*
+    fun bg_QMatrix3x4__OPERATOR_add_assign_const_QGenericMatrix_3__4__float__R(_self_ : QMatrix3x4*, other : QMatrix3x4*) : QMatrix3x4*
+    fun bg_QMatrix3x4__OPERATOR_sub_assign_const_QGenericMatrix_3__4__float__R(_self_ : QMatrix3x4*, other : QMatrix3x4*) : QMatrix3x4*
+    fun bg_QMatrix3x4__OPERATOR_mul_assign_float(_self_ : QMatrix3x4*, factor : Float32) : QMatrix3x4*
+    fun bg_QMatrix3x4__OPERATOR_div_assign_float(_self_ : QMatrix3x4*, divisor : Float32) : QMatrix3x4*
+    fun bg_QMatrix3x4__OPERATOR_eq_const_QGenericMatrix_3__4__float__R(_self_ : QMatrix3x4*, other : QMatrix3x4*) : Bool
+    fun bg_QMatrix3x4__OPERATOR_ne_const_QGenericMatrix_3__4__float__R(_self_ : QMatrix3x4*, other : QMatrix3x4*) : Bool
+    fun bg_QMatrix3x4_copyDataTo_float_X(_self_ : QMatrix3x4*, values : Float32*) : Void
+    fun bg_QMatrix3x4_data_(_self_ : QMatrix3x4*) : Float32*
+    fun bg_QMatrix3x4_constData_(_self_ : QMatrix3x4*) : Float32*
+    fun bg_QMatrix3x4__COPY_const_QGenericMatrix_3__4__float__R(unnamed_arg_0 : QMatrix3x4*) : QMatrix3x4*
+    fun bg_QMatrix4x2__CONSTRUCT_() : QMatrix4x2*
+    fun bg_QMatrix4x2__CONSTRUCT_const_float_X(values : Float32*) : QMatrix4x2*
+    fun bg_QMatrix4x2__OPERATOR_call_int_int(_self_ : QMatrix4x2*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix4x2_isIdentity_(_self_ : QMatrix4x2*) : Bool
+    fun bg_QMatrix4x2_setToIdentity_(_self_ : QMatrix4x2*) : Void
+    fun bg_QMatrix4x2_fill_float(_self_ : QMatrix4x2*, value : Float32) : Void
+    fun bg_QMatrix4x2_transposed_(_self_ : QMatrix4x2*) : QMatrix2x4*
+    fun bg_QMatrix4x2__OPERATOR_add_assign_const_QGenericMatrix_4__2__float__R(_self_ : QMatrix4x2*, other : QMatrix4x2*) : QMatrix4x2*
+    fun bg_QMatrix4x2__OPERATOR_sub_assign_const_QGenericMatrix_4__2__float__R(_self_ : QMatrix4x2*, other : QMatrix4x2*) : QMatrix4x2*
+    fun bg_QMatrix4x2__OPERATOR_mul_assign_float(_self_ : QMatrix4x2*, factor : Float32) : QMatrix4x2*
+    fun bg_QMatrix4x2__OPERATOR_div_assign_float(_self_ : QMatrix4x2*, divisor : Float32) : QMatrix4x2*
+    fun bg_QMatrix4x2__OPERATOR_eq_const_QGenericMatrix_4__2__float__R(_self_ : QMatrix4x2*, other : QMatrix4x2*) : Bool
+    fun bg_QMatrix4x2__OPERATOR_ne_const_QGenericMatrix_4__2__float__R(_self_ : QMatrix4x2*, other : QMatrix4x2*) : Bool
+    fun bg_QMatrix4x2_copyDataTo_float_X(_self_ : QMatrix4x2*, values : Float32*) : Void
+    fun bg_QMatrix4x2_data_(_self_ : QMatrix4x2*) : Float32*
+    fun bg_QMatrix4x2_constData_(_self_ : QMatrix4x2*) : Float32*
+    fun bg_QMatrix4x2__COPY_const_QGenericMatrix_4__2__float__R(unnamed_arg_0 : QMatrix4x2*) : QMatrix4x2*
+    fun bg_QMatrix4x3__CONSTRUCT_() : QMatrix4x3*
+    fun bg_QMatrix4x3__CONSTRUCT_const_float_X(values : Float32*) : QMatrix4x3*
+    fun bg_QMatrix4x3__OPERATOR_call_int_int(_self_ : QMatrix4x3*, row : Int32, column : Int32) : Float32*
+    fun bg_QMatrix4x3_isIdentity_(_self_ : QMatrix4x3*) : Bool
+    fun bg_QMatrix4x3_setToIdentity_(_self_ : QMatrix4x3*) : Void
+    fun bg_QMatrix4x3_fill_float(_self_ : QMatrix4x3*, value : Float32) : Void
+    fun bg_QMatrix4x3_transposed_(_self_ : QMatrix4x3*) : QMatrix3x4*
+    fun bg_QMatrix4x3__OPERATOR_add_assign_const_QGenericMatrix_4__3__float__R(_self_ : QMatrix4x3*, other : QMatrix4x3*) : QMatrix4x3*
+    fun bg_QMatrix4x3__OPERATOR_sub_assign_const_QGenericMatrix_4__3__float__R(_self_ : QMatrix4x3*, other : QMatrix4x3*) : QMatrix4x3*
+    fun bg_QMatrix4x3__OPERATOR_mul_assign_float(_self_ : QMatrix4x3*, factor : Float32) : QMatrix4x3*
+    fun bg_QMatrix4x3__OPERATOR_div_assign_float(_self_ : QMatrix4x3*, divisor : Float32) : QMatrix4x3*
+    fun bg_QMatrix4x3__OPERATOR_eq_const_QGenericMatrix_4__3__float__R(_self_ : QMatrix4x3*, other : QMatrix4x3*) : Bool
+    fun bg_QMatrix4x3__OPERATOR_ne_const_QGenericMatrix_4__3__float__R(_self_ : QMatrix4x3*, other : QMatrix4x3*) : Bool
+    fun bg_QMatrix4x3_copyDataTo_float_X(_self_ : QMatrix4x3*, values : Float32*) : Void
+    fun bg_QMatrix4x3_data_(_self_ : QMatrix4x3*) : Float32*
+    fun bg_QMatrix4x3_constData_(_self_ : QMatrix4x3*) : Float32*
+    fun bg_QMatrix4x3__COPY_const_QGenericMatrix_4__3__float__R(unnamed_arg_0 : QMatrix4x3*) : QMatrix4x3*
+    fun bg_QCborStreamReader__StringResult_QString___COPY_const_QCborStreamReader__StringResult_QString__R(unnamed_arg_0 : QCborStreamReaderStringResultQString*) : QCborStreamReaderStringResultQString*
+    fun bg_QCborStreamReader__StringResult_QString___OPERATOR_assign_const_QCborStreamReader__StringResult_QString__R(_self_ : QCborStreamReaderStringResultQString*, unnamed_arg_0 : QCborStreamReaderStringResultQString*) : QCborStreamReaderStringResultQString*
+    fun bg_QCborStreamReader__StringResult_QString___CONSTRUCT_() : QCborStreamReaderStringResultQString*
+    fun bg_QCborStreamReader__StringResult_QString__data_GETTER_(_self_ : QCborStreamReaderStringResultQString*) : CrystalString
+    fun bg_QCborStreamReader__StringResult_QString__data_SETTER_QString(_self_ : QCborStreamReaderStringResultQString*, data : CrystalString) : Void
+    fun bg_QCborStreamReader__StringResult_QString__status_GETTER_(_self_ : QCborStreamReaderStringResultQString*) : ::Qt::CborStreamReader::StringResultCode
+    fun bg_QCborStreamReader__StringResult_QString__status_SETTER_QCborStreamReader__StringResultCode(_self_ : QCborStreamReaderStringResultQString*, status : ::Qt::CborStreamReader::StringResultCode) : Void
+    fun bg_QCborStreamReader__StringResult_QByteArray___COPY_const_QCborStreamReader__StringResult_QByteArray__R(unnamed_arg_0 : QCborStreamReaderStringResultQByteArray*) : QCborStreamReaderStringResultQByteArray*
+    fun bg_QCborStreamReader__StringResult_QByteArray___OPERATOR_assign_const_QCborStreamReader__StringResult_QByteArray__R(_self_ : QCborStreamReaderStringResultQByteArray*, unnamed_arg_0 : QCborStreamReaderStringResultQByteArray*) : QCborStreamReaderStringResultQByteArray*
+    fun bg_QCborStreamReader__StringResult_QByteArray___CONSTRUCT_() : QCborStreamReaderStringResultQByteArray*
+    fun bg_QCborStreamReader__StringResult_QByteArray__data_GETTER_(_self_ : QCborStreamReaderStringResultQByteArray*) : CrystalString
+    fun bg_QCborStreamReader__StringResult_QByteArray__data_SETTER_QByteArray(_self_ : QCborStreamReaderStringResultQByteArray*, data : CrystalString) : Void
+    fun bg_QCborStreamReader__StringResult_QByteArray__status_GETTER_(_self_ : QCborStreamReaderStringResultQByteArray*) : ::Qt::CborStreamReader::StringResultCode
+    fun bg_QCborStreamReader__StringResult_QByteArray__status_SETTER_QCborStreamReader__StringResultCode(_self_ : QCborStreamReaderStringResultQByteArray*, status : ::Qt::CborStreamReader::StringResultCode) : Void
     fun bg_QSysInfo_buildCpuArchitecture_STATIC_() : CrystalString
     fun bg_QSysInfo_currentCpuArchitecture_STATIC_() : CrystalString
     fun bg_QSysInfo_buildAbi_STATIC_() : CrystalString
@@ -11264,6 +11424,8 @@ module Qt
     fun bg_QCborStreamReader_isContainer_(_self_ : QCborStreamReader*) : Bool
     fun bg_QCborStreamReader_enterContainer_(_self_ : QCborStreamReader*) : Bool
     fun bg_QCborStreamReader_leaveContainer_(_self_ : QCborStreamReader*) : Bool
+    fun bg_QCborStreamReader_readString_(_self_ : QCborStreamReader*) : QCborStreamReaderStringResultQString*
+    fun bg_QCborStreamReader_readByteArray_(_self_ : QCborStreamReader*) : QCborStreamReaderStringResultQByteArray*
     fun bg_QCborStreamReader_currentStringChunkSize_(_self_ : QCborStreamReader*) : Int64
     fun bg_QCborStreamReader_toBool_(_self_ : QCborStreamReader*) : Bool
     fun bg_QCborStreamReader_toTag_(_self_ : QCborStreamReader*) : UInt64
@@ -18404,6 +18566,8 @@ module Qt
     fun bg_QQuaternion_fromEulerAngles_STATIC_const_QVector3D_R(euler_angles : Vector3D) : Quaternion
     fun bg_QQuaternion_getEulerAngles_float_X_float_X_float_X(_self_ : Quaternion*, pitch : Float32*, yaw : Float32*, roll : Float32*) : Void
     fun bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(pitch : Float32, yaw : Float32, roll : Float32) : Quaternion
+    fun bg_QQuaternion_toRotationMatrix_(_self_ : Quaternion*) : QMatrix3x3*
+    fun bg_QQuaternion_fromRotationMatrix_STATIC_const_QMatrix3x3_R(rot3x3 : QMatrix3x3*) : Quaternion
     fun bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(_self_ : Quaternion*, x_axis : Vector3D*, y_axis : Vector3D*, z_axis : Vector3D*) : Void
     fun bg_QQuaternion_fromAxes_STATIC_const_QVector3D_R_const_QVector3D_R_const_QVector3D_R(x_axis : Vector3D, y_axis : Vector3D, z_axis : Vector3D) : Quaternion
     fun bg_QQuaternion_fromDirection_STATIC_const_QVector3D_R_const_QVector3D_R(direction : Vector3D, up : Vector3D) : Quaternion
@@ -18438,6 +18602,7 @@ module Qt
     fun bg_QMatrix4x4_determinant_(_self_ : QMatrix4x4*) : Float64
     fun bg_QMatrix4x4_inverted_bool_X(_self_ : QMatrix4x4*, invertible : Bool*) : QMatrix4x4*
     fun bg_QMatrix4x4_transposed_(_self_ : QMatrix4x4*) : QMatrix4x4*
+    fun bg_QMatrix4x4_normalMatrix_(_self_ : QMatrix4x4*) : QMatrix3x3*
     fun bg_QMatrix4x4__OPERATOR_add_assign_const_QMatrix4x4_R(_self_ : QMatrix4x4*, other : QMatrix4x4*) : QMatrix4x4*
     fun bg_QMatrix4x4__OPERATOR_sub_assign_const_QMatrix4x4_R(_self_ : QMatrix4x4*, other : QMatrix4x4*) : QMatrix4x4*
     fun bg_QMatrix4x4__OPERATOR_mul_assign_const_QMatrix4x4_R(_self_ : QMatrix4x4*, other : QMatrix4x4*) : QMatrix4x4*
@@ -36891,8 +37056,6 @@ module Qt
     fun bg____qt5cr_data_stream_read_string_STATIC_QDataStream_X(stream : QDataStream*) : CrystalString
     fun bg____qt5cr_data_stream_read_bytes_STATIC_QDataStream_X(stream : QDataStream*) : CrystalString
     fun bg____qt5cr_invoke_method_STATIC_QObject_X_const_char_X_Qt__ConnectionType(object : QObject*, member : UInt8*, type : ::Qt::ConnectionType) : Bool
-    fun bg____qt5cr_cbor_read_all_string_STATIC_QCborStreamReader_X(reader : QCborStreamReader*) : CrystalString
-    fun bg____qt5cr_cbor_read_all_byte_array_STATIC_QCborStreamReader_X(reader : QCborStreamReader*) : CrystalString
     fun bg_Container_QPair_QCborValue__QCborValue___CONSTRUCT_() : ContainerQPairQCborValueQCborValue*
     fun bg____Container_QPair_QCborValue__QCborValue__first_Container_QPair_QCborValue__QCborValue__R(pair : ContainerQPairQCborValueQCborValue*) : QCborValue*
     fun bg____Container_QPair_QCborValue__QCborValue__second_Container_QPair_QCborValue__QCborValue__R(pair : ContainerQPairQCborValueQCborValue*) : QCborValue*
@@ -37401,6 +37564,872 @@ module Qt
       @unwrap
     end
     def initialize(unwrap : Binding::QListSpecialMethodsQString*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix2x2
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix2x2*
+    
+    def initialize()
+      result = Binding.bg_QMatrix2x2__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix2x2__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix2x2__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix2x2_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix2x2_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix2x2_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix2x2
+      Matrix2x2.new(unwrap: Binding.bg_QMatrix2x2_transposed_(self))
+    end
+    
+    def add!(other : Matrix2x2) : Matrix2x2
+      Matrix2x2.bg_discover(Binding.bg_QMatrix2x2__OPERATOR_add_assign_const_QGenericMatrix_2__2__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix2x2) : Matrix2x2
+      Matrix2x2.bg_discover(Binding.bg_QMatrix2x2__OPERATOR_sub_assign_const_QGenericMatrix_2__2__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix2x2
+      Matrix2x2.bg_discover(Binding.bg_QMatrix2x2__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix2x2
+      Matrix2x2.bg_discover(Binding.bg_QMatrix2x2__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix2x2) : Bool
+      Binding.bg_QMatrix2x2__OPERATOR_eq_const_QGenericMatrix_2__2__float__R(self, other)
+    end
+    
+    def !=(other : Matrix2x2) : Bool
+      Binding.bg_QMatrix2x2__OPERATOR_ne_const_QGenericMatrix_2__2__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix2x2_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix2x2_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix2x2_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix2x2)
+      result = Binding.bg_QMatrix2x2__COPY_const_QGenericMatrix_2__2__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix2x2*) : Matrix2x2
+      BindgenHelper.crystal_object(unwrap, Matrix2x2) || Matrix2x2.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix2x2*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix2x3
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix2x3*
+    
+    def initialize()
+      result = Binding.bg_QMatrix2x3__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix2x3__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix2x3__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix2x3_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix2x3_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix2x3_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix3x2
+      Matrix3x2.new(unwrap: Binding.bg_QMatrix2x3_transposed_(self))
+    end
+    
+    def add!(other : Matrix2x3) : Matrix2x3
+      Matrix2x3.bg_discover(Binding.bg_QMatrix2x3__OPERATOR_add_assign_const_QGenericMatrix_2__3__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix2x3) : Matrix2x3
+      Matrix2x3.bg_discover(Binding.bg_QMatrix2x3__OPERATOR_sub_assign_const_QGenericMatrix_2__3__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix2x3
+      Matrix2x3.bg_discover(Binding.bg_QMatrix2x3__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix2x3
+      Matrix2x3.bg_discover(Binding.bg_QMatrix2x3__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix2x3) : Bool
+      Binding.bg_QMatrix2x3__OPERATOR_eq_const_QGenericMatrix_2__3__float__R(self, other)
+    end
+    
+    def !=(other : Matrix2x3) : Bool
+      Binding.bg_QMatrix2x3__OPERATOR_ne_const_QGenericMatrix_2__3__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix2x3_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix2x3_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix2x3_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix2x3)
+      result = Binding.bg_QMatrix2x3__COPY_const_QGenericMatrix_2__3__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix2x3*) : Matrix2x3
+      BindgenHelper.crystal_object(unwrap, Matrix2x3) || Matrix2x3.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix2x3*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix2x4
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix2x4*
+    
+    def initialize()
+      result = Binding.bg_QMatrix2x4__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix2x4__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix2x4__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix2x4_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix2x4_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix2x4_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix4x2
+      Matrix4x2.new(unwrap: Binding.bg_QMatrix2x4_transposed_(self))
+    end
+    
+    def add!(other : Matrix2x4) : Matrix2x4
+      Matrix2x4.bg_discover(Binding.bg_QMatrix2x4__OPERATOR_add_assign_const_QGenericMatrix_2__4__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix2x4) : Matrix2x4
+      Matrix2x4.bg_discover(Binding.bg_QMatrix2x4__OPERATOR_sub_assign_const_QGenericMatrix_2__4__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix2x4
+      Matrix2x4.bg_discover(Binding.bg_QMatrix2x4__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix2x4
+      Matrix2x4.bg_discover(Binding.bg_QMatrix2x4__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix2x4) : Bool
+      Binding.bg_QMatrix2x4__OPERATOR_eq_const_QGenericMatrix_2__4__float__R(self, other)
+    end
+    
+    def !=(other : Matrix2x4) : Bool
+      Binding.bg_QMatrix2x4__OPERATOR_ne_const_QGenericMatrix_2__4__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix2x4_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix2x4_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix2x4_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix2x4)
+      result = Binding.bg_QMatrix2x4__COPY_const_QGenericMatrix_2__4__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix2x4*) : Matrix2x4
+      BindgenHelper.crystal_object(unwrap, Matrix2x4) || Matrix2x4.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix2x4*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix3x2
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix3x2*
+    
+    def initialize()
+      result = Binding.bg_QMatrix3x2__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix3x2__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix3x2__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix3x2_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix3x2_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix3x2_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix2x3
+      Matrix2x3.new(unwrap: Binding.bg_QMatrix3x2_transposed_(self))
+    end
+    
+    def add!(other : Matrix3x2) : Matrix3x2
+      Matrix3x2.bg_discover(Binding.bg_QMatrix3x2__OPERATOR_add_assign_const_QGenericMatrix_3__2__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix3x2) : Matrix3x2
+      Matrix3x2.bg_discover(Binding.bg_QMatrix3x2__OPERATOR_sub_assign_const_QGenericMatrix_3__2__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix3x2
+      Matrix3x2.bg_discover(Binding.bg_QMatrix3x2__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix3x2
+      Matrix3x2.bg_discover(Binding.bg_QMatrix3x2__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix3x2) : Bool
+      Binding.bg_QMatrix3x2__OPERATOR_eq_const_QGenericMatrix_3__2__float__R(self, other)
+    end
+    
+    def !=(other : Matrix3x2) : Bool
+      Binding.bg_QMatrix3x2__OPERATOR_ne_const_QGenericMatrix_3__2__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix3x2_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix3x2_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix3x2_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix3x2)
+      result = Binding.bg_QMatrix3x2__COPY_const_QGenericMatrix_3__2__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix3x2*) : Matrix3x2
+      BindgenHelper.crystal_object(unwrap, Matrix3x2) || Matrix3x2.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix3x2*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix3x3
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix3x3*
+    
+    def initialize()
+      result = Binding.bg_QMatrix3x3__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix3x3__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix3x3__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix3x3_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix3x3_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix3x3_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix3x3
+      Matrix3x3.new(unwrap: Binding.bg_QMatrix3x3_transposed_(self))
+    end
+    
+    def add!(other : Matrix3x3) : Matrix3x3
+      Matrix3x3.bg_discover(Binding.bg_QMatrix3x3__OPERATOR_add_assign_const_QGenericMatrix_3__3__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix3x3) : Matrix3x3
+      Matrix3x3.bg_discover(Binding.bg_QMatrix3x3__OPERATOR_sub_assign_const_QGenericMatrix_3__3__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix3x3
+      Matrix3x3.bg_discover(Binding.bg_QMatrix3x3__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix3x3
+      Matrix3x3.bg_discover(Binding.bg_QMatrix3x3__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix3x3) : Bool
+      Binding.bg_QMatrix3x3__OPERATOR_eq_const_QGenericMatrix_3__3__float__R(self, other)
+    end
+    
+    def !=(other : Matrix3x3) : Bool
+      Binding.bg_QMatrix3x3__OPERATOR_ne_const_QGenericMatrix_3__3__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix3x3_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix3x3_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix3x3_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix3x3)
+      result = Binding.bg_QMatrix3x3__COPY_const_QGenericMatrix_3__3__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix3x3*) : Matrix3x3
+      BindgenHelper.crystal_object(unwrap, Matrix3x3) || Matrix3x3.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix3x3*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix3x4
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix3x4*
+    
+    def initialize()
+      result = Binding.bg_QMatrix3x4__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix3x4__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix3x4__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix3x4_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix3x4_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix3x4_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix4x3
+      Matrix4x3.new(unwrap: Binding.bg_QMatrix3x4_transposed_(self))
+    end
+    
+    def add!(other : Matrix3x4) : Matrix3x4
+      Matrix3x4.bg_discover(Binding.bg_QMatrix3x4__OPERATOR_add_assign_const_QGenericMatrix_3__4__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix3x4) : Matrix3x4
+      Matrix3x4.bg_discover(Binding.bg_QMatrix3x4__OPERATOR_sub_assign_const_QGenericMatrix_3__4__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix3x4
+      Matrix3x4.bg_discover(Binding.bg_QMatrix3x4__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix3x4
+      Matrix3x4.bg_discover(Binding.bg_QMatrix3x4__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix3x4) : Bool
+      Binding.bg_QMatrix3x4__OPERATOR_eq_const_QGenericMatrix_3__4__float__R(self, other)
+    end
+    
+    def !=(other : Matrix3x4) : Bool
+      Binding.bg_QMatrix3x4__OPERATOR_ne_const_QGenericMatrix_3__4__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix3x4_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix3x4_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix3x4_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix3x4)
+      result = Binding.bg_QMatrix3x4__COPY_const_QGenericMatrix_3__4__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix3x4*) : Matrix3x4
+      BindgenHelper.crystal_object(unwrap, Matrix3x4) || Matrix3x4.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix3x4*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix4x2
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix4x2*
+    
+    def initialize()
+      result = Binding.bg_QMatrix4x2__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix4x2__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix4x2__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix4x2_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix4x2_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix4x2_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix2x4
+      Matrix2x4.new(unwrap: Binding.bg_QMatrix4x2_transposed_(self))
+    end
+    
+    def add!(other : Matrix4x2) : Matrix4x2
+      Matrix4x2.bg_discover(Binding.bg_QMatrix4x2__OPERATOR_add_assign_const_QGenericMatrix_4__2__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix4x2) : Matrix4x2
+      Matrix4x2.bg_discover(Binding.bg_QMatrix4x2__OPERATOR_sub_assign_const_QGenericMatrix_4__2__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix4x2
+      Matrix4x2.bg_discover(Binding.bg_QMatrix4x2__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix4x2
+      Matrix4x2.bg_discover(Binding.bg_QMatrix4x2__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix4x2) : Bool
+      Binding.bg_QMatrix4x2__OPERATOR_eq_const_QGenericMatrix_4__2__float__R(self, other)
+    end
+    
+    def !=(other : Matrix4x2) : Bool
+      Binding.bg_QMatrix4x2__OPERATOR_ne_const_QGenericMatrix_4__2__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix4x2_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix4x2_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix4x2_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix4x2)
+      result = Binding.bg_QMatrix4x2__COPY_const_QGenericMatrix_4__2__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix4x2*) : Matrix4x2
+      BindgenHelper.crystal_object(unwrap, Matrix4x2) || Matrix4x2.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix4x2*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class Matrix4x3
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QMatrix4x3*
+    
+    def initialize()
+      result = Binding.bg_QMatrix4x3__CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def initialize(values : Float32*)
+      result = Binding.bg_QMatrix4x3__CONSTRUCT_const_float_X(values)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def call(row : Int32, column : Int32) : Float32*
+      Binding.bg_QMatrix4x3__OPERATOR_call_int_int(self, row, column)
+    end
+    
+    def identity?() : Bool
+      Binding.bg_QMatrix4x3_isIdentity_(self)
+    end
+    
+    def set_to_identity() : Void
+      Binding.bg_QMatrix4x3_setToIdentity_(self)
+    end
+    
+    def fill(value : Float32) : Void
+      Binding.bg_QMatrix4x3_fill_float(self, value)
+    end
+    
+    def transposed() : Matrix3x4
+      Matrix3x4.new(unwrap: Binding.bg_QMatrix4x3_transposed_(self))
+    end
+    
+    def add!(other : Matrix4x3) : Matrix4x3
+      Matrix4x3.bg_discover(Binding.bg_QMatrix4x3__OPERATOR_add_assign_const_QGenericMatrix_4__3__float__R(self, other))
+    end
+    
+    def sub!(other : Matrix4x3) : Matrix4x3
+      Matrix4x3.bg_discover(Binding.bg_QMatrix4x3__OPERATOR_sub_assign_const_QGenericMatrix_4__3__float__R(self, other))
+    end
+    
+    def mul!(factor : Float32) : Matrix4x3
+      Matrix4x3.bg_discover(Binding.bg_QMatrix4x3__OPERATOR_mul_assign_float(self, factor))
+    end
+    
+    def div!(divisor : Float32) : Matrix4x3
+      Matrix4x3.bg_discover(Binding.bg_QMatrix4x3__OPERATOR_div_assign_float(self, divisor))
+    end
+    
+    def ==(other : Matrix4x3) : Bool
+      Binding.bg_QMatrix4x3__OPERATOR_eq_const_QGenericMatrix_4__3__float__R(self, other)
+    end
+    
+    def !=(other : Matrix4x3) : Bool
+      Binding.bg_QMatrix4x3__OPERATOR_ne_const_QGenericMatrix_4__3__float__R(self, other)
+    end
+    
+    def copy_data_to(values : Float32*) : Void
+      Binding.bg_QMatrix4x3_copyDataTo_float_X(self, values)
+    end
+    
+    def data() : Float32*
+      Binding.bg_QMatrix4x3_data_(self)
+    end
+    
+    def const_data() : Float32*
+      Binding.bg_QMatrix4x3_constData_(self)
+    end
+    
+    def initialize(unnamed_arg_0 : Matrix4x3)
+      result = Binding.bg_QMatrix4x3__COPY_const_QGenericMatrix_4__3__float__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QMatrix4x3*) : Matrix4x3
+      BindgenHelper.crystal_object(unwrap, Matrix4x3) || Matrix4x3.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QMatrix4x3*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class CborStringResult
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QCborStreamReaderStringResultQString*
+    
+    def initialize(unnamed_arg_0 : CborStringResult)
+      result = Binding.bg_QCborStreamReader__StringResult_QString___COPY_const_QCborStreamReader__StringResult_QString__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def assign!(unnamed_arg_0 : CborStringResult) : CborStringResult
+      CborStringResult.bg_discover(Binding.bg_QCborStreamReader__StringResult_QString___OPERATOR_assign_const_QCborStreamReader__StringResult_QString__R(self, unnamed_arg_0))
+    end
+    
+    def initialize()
+      result = Binding.bg_QCborStreamReader__StringResult_QString___CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def data() : String
+      Qt::Converter::QString.unwrap(Binding.bg_QCborStreamReader__StringResult_QString__data_GETTER_(self))
+    end
+    
+    def data=(data : String) : Void
+      Binding.bg_QCborStreamReader__StringResult_QString__data_SETTER_QString(self, Qt::Converter::QString.wrap(data))
+    end
+    
+    def status() : CborStreamReader::StringResultCode
+      Binding.bg_QCborStreamReader__StringResult_QString__status_GETTER_(self)
+    end
+    
+    def status=(status : CborStreamReader::StringResultCode) : Void
+      Binding.bg_QCborStreamReader__StringResult_QString__status_SETTER_QCborStreamReader__StringResultCode(self, status)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QCborStreamReaderStringResultQString*) : CborStringResult
+      BindgenHelper.crystal_object(unwrap, CborStringResult) || CborStringResult.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QCborStreamReaderStringResultQString*)
+      result = unwrap
+    @unwrap = result
+    end
+    
+  end
+  @[BindgenWrapper]
+  class CborByteArrayResult
+    include BindgenHelper::Wrapper
+    
+    @unwrap : Binding::QCborStreamReaderStringResultQByteArray*
+    
+    def initialize(unnamed_arg_0 : CborByteArrayResult)
+      result = Binding.bg_QCborStreamReader__StringResult_QByteArray___COPY_const_QCborStreamReader__StringResult_QByteArray__R(unnamed_arg_0)
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def assign!(unnamed_arg_0 : CborByteArrayResult) : CborByteArrayResult
+      CborByteArrayResult.bg_discover(Binding.bg_QCborStreamReader__StringResult_QByteArray___OPERATOR_assign_const_QCborStreamReader__StringResult_QByteArray__R(self, unnamed_arg_0))
+    end
+    
+    def initialize()
+      result = Binding.bg_QCborStreamReader__StringResult_QByteArray___CONSTRUCT_()
+    @unwrap = result
+    BindgenHelper.set_crystal_object(result, self)
+    end
+    
+    def data() : Bytes
+      Qt::Converter::QByteArray.unwrap(Binding.bg_QCborStreamReader__StringResult_QByteArray__data_GETTER_(self))
+    end
+    
+    def data=(data : Bytes) : Void
+      Binding.bg_QCborStreamReader__StringResult_QByteArray__data_SETTER_QByteArray(self, Qt::Converter::QByteArray.wrap(data))
+    end
+    
+    def status() : CborStreamReader::StringResultCode
+      Binding.bg_QCborStreamReader__StringResult_QByteArray__status_GETTER_(self)
+    end
+    
+    def status=(status : CborStreamReader::StringResultCode) : Void
+      Binding.bg_QCborStreamReader__StringResult_QByteArray__status_SETTER_QCborStreamReader__StringResultCode(self, status)
+    end
+    
+    # Wraps the object at *unwrap*: in the Crystal object which constructed
+    # it, or in the wrapper class of its dynamic type, see `#to?`.
+    def self.bg_discover(unwrap : Binding::QCborStreamReaderStringResultQByteArray*) : CborByteArrayResult
+      BindgenHelper.crystal_object(unwrap, CborByteArrayResult) || CborByteArrayResult.new(unwrap: unwrap)
+    end
+    
+    def to_unsafe
+      @unwrap
+    end
+    def initialize(unwrap : Binding::QCborStreamReaderStringResultQByteArray*)
       result = unwrap
     @unwrap = result
     end
@@ -52738,6 +53767,14 @@ module Qt
     
     def leave_container() : Bool
       Binding.bg_QCborStreamReader_leaveContainer_(self)
+    end
+    
+    def read_string() : CborStringResult
+      CborStringResult.new(unwrap: Binding.bg_QCborStreamReader_readString_(self))
+    end
+    
+    def read_byte_array() : CborByteArrayResult
+      CborByteArrayResult.new(unwrap: Binding.bg_QCborStreamReader_readByteArray_(self))
     end
     
     def current_string_chunk_size() : Int64
@@ -99546,6 +100583,14 @@ module Qt
       Quaternion.new(unwrap: Binding.bg_QQuaternion_fromEulerAngles_STATIC_float_float_float(pitch, yaw, roll))
     end
     
+    def to_rotation_matrix() : Matrix3x3
+      Matrix3x3.new(unwrap: Binding.bg_QQuaternion_toRotationMatrix_(pointerof(@unwrap)))
+    end
+    
+    def self.from_rotation_matrix(rot3x3 : Matrix3x3) : Quaternion
+      Quaternion.new(unwrap: Binding.bg_QQuaternion_fromRotationMatrix_STATIC_const_QMatrix3x3_R(rot3x3))
+    end
+    
     def get_axes(x_axis : Vector3D*, y_axis : Vector3D*, z_axis : Vector3D*) : Void
       Binding.bg_QQuaternion_getAxes_QVector3D_X_QVector3D_X_QVector3D_X(pointerof(@unwrap), x_axis.as(Pointer(Binding::Vector3D)), y_axis.as(Pointer(Binding::Vector3D)), z_axis.as(Pointer(Binding::Vector3D)))
     end
@@ -99706,6 +100751,10 @@ module Qt
     
     def transposed() : Matrix4x4
       Matrix4x4.new(unwrap: Binding.bg_QMatrix4x4_transposed_(self))
+    end
+    
+    def normal_matrix() : Matrix3x3
+      Matrix3x3.new(unwrap: Binding.bg_QMatrix4x4_normalMatrix_(self))
     end
     
     def add!(other : Matrix4x4) : Matrix4x4
@@ -263559,14 +264608,6 @@ module Qt
   
   def self.qt5cr_invoke_method(object : Object, member : UInt8*, type : ConnectionType) : Bool
     Binding.bg____qt5cr_invoke_method_STATIC_QObject_X_const_char_X_Qt__ConnectionType((object.try(&.to_unsafe) || Pointer(Binding::QObject).null), member, type)
-  end
-  
-  def self.qt5cr_cbor_read_all_string(reader : CborStreamReader) : String
-    Qt::Converter::QString.unwrap(Binding.bg____qt5cr_cbor_read_all_string_STATIC_QCborStreamReader_X((reader.try(&.to_unsafe) || Pointer(Binding::QCborStreamReader).null)))
-  end
-  
-  def self.qt5cr_cbor_read_all_byte_array(reader : CborStreamReader) : Bytes
-    Qt::Converter::QByteArray.unwrap(Binding.bg____qt5cr_cbor_read_all_byte_array_STATIC_QCborStreamReader_X((reader.try(&.to_unsafe) || Pointer(Binding::QCborStreamReader).null)))
   end
   
   enum MsgType : UInt32
