@@ -107,9 +107,11 @@ static To bindgen_dynamic_cast(From *from) {
  * `dynamic_cast` to it.  The dynamic type is looked up by `typeid`; a type not
  * in the table, like a private sub-class or the shadow class of a Crystal
  * sub-class, is walked through the casts once, and the result remembered.
- * Without RTTI, or for a null pointer, nothing is discovered: `id` is 0 and
- * the pointer is returned as is, which the Crystal side wraps as the class
- * declared.
+ * `crystal` receives the Crystal object which constructed the object, see
+ * `bindgen_crystal_object`, or null; the Crystal side checks its class and
+ * prefers it.  Without RTTI, or for a null pointer, nothing is discovered:
+ * `id` is 0 and the pointer is returned as is, which the Crystal side wraps as
+ * the class declared.
  */
 template <typename Base>
 struct BindgenTypeDiscovery {
@@ -132,7 +134,9 @@ struct BindgenTypeDiscovery {
 #endif
   }
 
-  void *discover(Base *self, int *id) {
+  void *discover(Base *self, int *id, void **crystal) {
+    *crystal = self ? bindgen_crystal_object(self) : nullptr;
+
 #if BINDGEN_HAS_RTTI
     if (self) {
       std::lock_guard<std::mutex> lock(mutex);
@@ -352,6 +356,21 @@ struct BindgenGCObject {
    */
   bool bindgen_destroyed = false;
 
+  /* The Crystal object which constructed this one, see
+   * `bindgen_set_crystal_object`: the type discovery hands it out again, so a
+   * pointer to the object coming back from C++ is wrapped by the same Crystal
+   * object (SPEC.md §2.3.7).  A weak reference: the pointer is hidden from the
+   * GC and registered as a disappearing link, which the GC clears once the
+   * Crystal object is unreachable.  A reference the GC saw would be a cycle
+   * through this object, which keeps the finalizer, the destructor, from ever
+   * running.  `bindgen_crystal_wrapped` is the address the Crystal object
+   * wraps, the `T *` of the `CrystalGCCleanupWrapper<T>`: a pointer to a
+   * secondary base, or to a member object, isn't wrapped by it.  A copy
+   * starts without one.
+   */
+  void *bindgen_crystal = nullptr;
+  void *bindgen_crystal_wrapped = nullptr;
+
   /* Tells a `BindgenGCObject` from other memory at the start of an allocation,
    * like a class allocated as it is or a Crystal object embedding a structure:
    * Its own address, scrambled so the GC doesn't take it for a pointer.
@@ -362,6 +381,16 @@ struct BindgenGCObject {
     return reinterpret_cast<uintptr_t>(object) ^ static_cast<uintptr_t>(0x5a17c0debe11a5edULL);
   }
 };
+
+/* Remembers *crystal*, the Crystal object which constructed the object at
+ * *object*, in its `BindgenGCObject`, if it has one.  Weak, like the hooks.
+ */
+extern "C" __attribute__((weak)) void bindgen_set_crystal_object(void *object, void *crystal);
+
+/* The Crystal object which constructed the object at *object*, if that is the
+ * address it wraps, else null.  Weak, like the hooks.
+ */
+extern "C" __attribute__((weak)) void *bindgen_crystal_object(void *object);
 
 /* The `BindgenGCObject` of the object at *self*, which may point into it, like
  * at the `T` of a `CrystalGCCleanupWrapper<T>`, or null if the object isn't one
@@ -375,6 +404,23 @@ static BindgenGCObject *bindgen_gc_object(const void *self) {
   auto *object = static_cast<BindgenGCObject *>(base);
   if (object->bindgen_check != BindgenGCObject::bindgen_check_for(object)) return nullptr;
   return object;
+}
+
+extern "C" __attribute__((weak)) void bindgen_set_crystal_object(void *object, void *crystal) {
+  BindgenGCObject *gc_object = bindgen_gc_object(object);
+  if (gc_object == nullptr) return;
+
+  gc_object->bindgen_crystal = reinterpret_cast<void *>(GC_HIDE_POINTER(crystal));
+  gc_object->bindgen_crystal_wrapped = object;
+  GC_general_register_disappearing_link(&gc_object->bindgen_crystal, crystal);
+}
+
+extern "C" __attribute__((weak)) void *bindgen_crystal_object(void *object) {
+  BindgenGCObject *gc_object = bindgen_gc_object(object);
+  if (gc_object == nullptr || gc_object->bindgen_crystal == nullptr) return nullptr;
+  if (gc_object->bindgen_crystal_wrapped != object) return nullptr;
+
+  return GC_REVEAL_POINTER(reinterpret_cast<GC_hidden_pointer>(gc_object->bindgen_crystal));
 }
 
 template <typename T>

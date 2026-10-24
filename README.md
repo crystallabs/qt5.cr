@@ -319,8 +319,12 @@ if button = widget.to?(Qt::PushButton)
 end
 ```
 
-An object of a Crystal subclass comes back as a wrapper of its wrapper class,
-not as the Crystal subclass.  Discovery and `#to?` use C++ RTTI, so the
+An object constructed from Crystal comes back as the Crystal object which
+constructed it, an instance of a Crystal subclass included, with its instance
+variables: `parent.children.first` is the very `label` you made with
+`Qt::Label.new(parent)`.  This holds while that object is alive, as the
+reference the C++ object keeps to it is weak.  An object Qt created gets a new
+wrapper each time it is retrieved.  Discovery and `#to?` use C++ RTTI, so the
 binding is built with RTTI (`ext/Makefile`), as Qt itself is.
 
 # Developer perspective
