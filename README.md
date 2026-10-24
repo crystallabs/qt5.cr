@@ -329,10 +329,10 @@ counter.property("value".to_unsafe).to(Int32)
 A `@[Qt::Invokable]` method is invokable by name without being a slot
 (`Q_INVOKABLE`), and `qt_class_info "QML.Element", "auto"` adds a class info
 (`Q_CLASSINFO`).  The argument, result and property types are the numbers,
-`Bool`, `String`, `Bytes`, the wrapped enums (`Qt::Orientation`), the
-`Qt::Object` classes (as pointers, nilable or not) and the other wrapper
-classes by value (`Qt::Color`, copied through its `QMetaType`); the C++ names
-are the camel-cased Crystal names.  A Crystal enum is an enumerator of the
+`Bool`, `String`, `Bytes`, `Char` (`QChar`), `Qt::Variant` (`QVariant`), the
+wrapped enums (`Qt::Orientation`), the `Qt::Object` classes (as pointers,
+nilable or not) and the other wrapper classes by value (`Qt::Color`, copied
+through its `QMetaType`); the C++ names are the camel-cased Crystal names.  A Crystal enum is an enumerator of the
 class, like `Q_ENUM`, registered with Qt as `Machine::Mode`: `property` returns
 it, unpacked by `Qt::Variant#to(Machine::Mode)`, and `set_property` takes an
 int, a key (`Qt.variant("Slow")`) or the enum; the values must fit an `Int32`.

@@ -372,3 +372,90 @@ describe "a Crystal enum in a Crystal subclass's meta-object" do
     Qt.variant("1").to?(Machine::Mode).should be_nil
   end
 end
+
+# The converted value types: `Qt::Variant` crosses as a `QVariant`, `Char` as a
+# `QChar`, through the conversions bindgen generates for the type rules.
+private class Store < Qt::Object
+  signal stored(value : Qt::Variant)
+  signal data_changed(key : String, value : Qt::Variant)
+  signal marked(mark : Char)
+
+  getter data = Qt::Variant.new(nil)
+  getter mark = 'a'
+
+  @[Qt::Slot]
+  def set_data(value : Qt::Variant) : Nil
+    @data = value
+    stored(value)
+    data_changed("data", value)
+  end
+
+  @[Qt::Slot]
+  def set_mark(mark : Char) : Nil
+    @mark = mark
+  end
+
+  @[Qt::Slot]
+  def describe(value : Qt::Variant) : Qt::Variant
+    Qt.variant("#{value.to?(Int32)}!")
+  end
+
+  qt_property data : Qt::Variant, write: :set_data, notify: :data_changed
+  qt_property mark : Char, write: :set_mark
+end
+
+describe "a converted value type in a Crystal subclass's meta-object" do
+  it "takes a Qt::Variant as a QVariant" do
+    store = Store.new
+    meta = store.meta_object.not_nil!
+    String.new(meta.property(meta.index_of_property("data".to_unsafe)).type_name).should eq("QVariant")
+    meta.index_of_signal("dataChanged(QString,QVariant)".to_unsafe).should eq(meta.method_offset + 1)
+    String.new(meta.method(meta.index_of_slot("describe(QVariant)".to_unsafe)).type_name).should eq("QVariant")
+
+    seen = [] of {String, Qt::Variant}
+    store.on_data_changed { |key, value| seen << {key, value} }
+    store.set_data(Qt.variant(42))
+    seen.size.should eq(1)
+    seen[0][0].should eq("data")
+    seen[0][1].to(Int32).should eq(42)
+
+    # Through QVariants Qt makes and reads: as they are.
+    store.set_property("data".to_unsafe, Qt.variant("text")).should be_true
+    store.data.to(String).should eq("text")
+    store.property("data".to_unsafe).to(String).should eq("text")
+    store.set_property("data".to_unsafe, Qt.variant([1, 2])).should be_true # A Crystal value, kept
+    store.data.to(Array(Int32)).should eq([1, 2])
+    store.property("data".to_unsafe).to(Array(Int32)).should eq([1, 2])
+    store.set_property("data".to_unsafe, Qt.variant(nil)).should be_true
+    store.data.is_nil?.should be_true
+
+    # Connected by name, and queued.
+    other = Store.new
+    Qt::Object.connect(store, "2stored(QVariant)".to_unsafe, other, "1setData(QVariant)".to_unsafe)
+    store.set_data(Qt.variant(1.5))
+    other.data.to(Float64).should eq(1.5)
+    queued = [] of Qt::Variant
+    store.on_stored(Qt::ConnectionType::QueuedConnection) { |value| queued << value }
+    store.set_data(Qt.variant("later"))
+    queued.should be_empty
+    Qt::CoreApplication.process_events
+    queued.map(&.to(String)).should eq(["later"])
+  end
+
+  it "takes a Char as a QChar" do
+    store = Store.new
+    meta = store.meta_object.not_nil!
+    String.new(meta.property(meta.index_of_property("mark".to_unsafe)).type_name).should eq("QChar")
+    meta.index_of_signal("marked(QChar)".to_unsafe).should eq(meta.method_offset + 2)
+
+    marks = [] of Char
+    store.on_marked { |mark| marks << mark }
+    store.marked('x')
+    store.marked('€')
+    marks.should eq(['x', '€'])
+
+    store.set_property("mark".to_unsafe, Qt.variant('z')).should be_true
+    store.mark.should eq('z')
+    store.property("mark".to_unsafe).to(Char).should eq('z')
+  end
+end

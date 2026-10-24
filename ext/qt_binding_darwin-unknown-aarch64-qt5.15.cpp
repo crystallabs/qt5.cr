@@ -9,6 +9,34 @@
 #include <cbor_helper.hpp>
 
 typedef BindgenMapEntries<QHash<int, QByteArray>> Container_QHash_int__QByteArray__Entries;
+// Meta-object conversions of the converted value types, see BindgenMeta of the Crystal glue.
+extern "C" int32_t bg_qt_meta_from_QChar(void *bg_slot) {
+  return static_cast<int32_t>((*static_cast<const QChar *>(bg_slot)).unicode());
+}
+extern "C" void bg_qt_meta_to_QChar(void *bg_slot, int32_t bg_value) {
+  *static_cast<QChar *>(bg_slot) = QChar(bg_value);
+}
+extern "C" void *bg_qt_meta_pack_QChar(int32_t bg_value) {
+  return new (UseGC, bindgen_gc_finalizer<QChar>()) QChar(QChar(bg_value));
+}
+extern "C" CrystalVariant bg_qt_meta_from_QVariant(void *bg_slot) {
+  return qvariant_to_crystal((*static_cast<const QVariant *>(bg_slot)));
+}
+extern "C" void bg_qt_meta_to_QVariant(void *bg_slot, CrystalVariant bg_value) {
+  *static_cast<QVariant *>(bg_slot) = crystal_to_qvariant(bg_value);
+}
+extern "C" void *bg_qt_meta_pack_QVariant(CrystalVariant bg_value) {
+  return new (UseGC, bindgen_gc_finalizer<QVariant>()) QVariant(crystal_to_qvariant(bg_value));
+}
+extern "C" int64_t bg_qt_meta_from_std__chrono__milliseconds(void *bg_slot) {
+  return ((*static_cast<const std::chrono::milliseconds *>(bg_slot)).count());
+}
+extern "C" void bg_qt_meta_to_std__chrono__milliseconds(void *bg_slot, int64_t bg_value) {
+  *static_cast<std::chrono::milliseconds *>(bg_slot) = std::chrono::milliseconds(bg_value);
+}
+extern "C" void *bg_qt_meta_pack_std__chrono__milliseconds(int64_t bg_value) {
+  return new (UseGC, bindgen_gc_finalizer<std::chrono::milliseconds>()) std::chrono::milliseconds(std::chrono::milliseconds(bg_value));
+}
 typedef QHash<int, QByteArray> Container_QHash_int__QByteArray_;
 typedef BindgenMapEntries<QHash<QString, QVariant>> Container_QHash_QString__QVariant__Entries;
 typedef QHash<QString, QVariant> Container_QHash_QString__QVariant_;
