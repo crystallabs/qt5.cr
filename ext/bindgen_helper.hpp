@@ -62,7 +62,9 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 
 #ifdef __cplusplus
 #include <gc/gc_cpp.h>
+#include <functional>
 #include <initializer_list>
+#include <memory>
 #include <mutex>
 #include <string>
 #include <type_traits>
@@ -97,6 +99,20 @@ static To bindgen_dynamic_cast(From *from) {
   (void)from;
   bindgen_fatal_panic("Downcasting with #to? needs C++ RTTI, which is disabled");
 #endif
+}
+
+/* Holds the `CrystalProc` *proc* for the lambda a `std::function` argument is
+ * built from, see SPEC.md §2.2.6.  The copy lives in memory the GC scans but
+ * doesn't collect, so the Crystal closure the proc refers to stays alive as
+ * long as the `std::function`, which C++ may store anywhere, and is freed
+ * with the last copy of the lambda.  A plain copy in the lambda wouldn't do:
+ * memory C++ allocates, like the `std::function`'s or that of the object
+ * storing it, isn't scanned.
+ */
+template <typename Proc>
+static std::shared_ptr<Proc> bindgen_hold_proc(const Proc &proc) {
+  Proc *held = new (NoGC) Proc(proc);
+  return std::shared_ptr<Proc>(held, [](Proc *p) { GC_FREE(p); });
 }
 
 /* Type discovery, see SPEC.md §2.3.7: finds the wrapped class of the object a

@@ -438,7 +438,13 @@ types: # Type rewrite rules
   # so QThread and QRunnable get no C++ subclass: a Crystal override of `run`
   # is never called from the thread.
   QThread: { sub_class: false }
-  QRunnable: { sub_class: false }
+  QRunnable:
+    sub_class: false
+    ignore_methods: # The thread pool calls the function on another thread
+      - "/^create\\(std::function/"
+  QThreadPool:
+    ignore_methods: # Run the function on a pool thread, which can't run Crystal
+      - "/^(start|tryStart)\\(std::function/"
   # Remaining models, styles and providers
   "QIconEngine::AvailableSizesArgument": { ignore: true }
   <<+: keep_alive.yml # Deep merge: adds `keep_alive` to classes listed above

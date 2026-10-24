@@ -246,6 +246,12 @@ Crystal's own `Thread` or fibers for Crystal work.  The locks exclude Qt
 threads from Qt data: `mutex.lock`, `semaphore.acquire(2)`,
 `condition.wait(mutex, Qt::DeadlineTimer.new(100))`.
 
+A `std::function` argument is taken as a block (or as a `Proc`, when it isn't
+the last argument), and Qt may keep the block for as long as it keeps the
+function.  The functions Qt runs on another thread, `Qt::ThreadPool#start`,
+`#try_start` and `Qt::Runnable.create`, are left out, as that thread can't run
+Crystal.
+
 ## Overriding virtual methods
 
 A Crystal subclass of a wrapped class overrides its virtual methods by
@@ -593,8 +599,8 @@ see the comments there:
   `Qt::TextEncoder` and `Qt::TextDecoder` keep the conversion state between
   calls; the codec's own stateful conversions (`ConverterState`) aren't
   wrapped.
-* Types without a mapping yet, like `std::function` callbacks or `QSet`,
-  are ignored, which drops the methods using them.
+* Types without a mapping yet, like `QSet`, are ignored, which drops the
+  methods using them.
 
 ## Future things to do
 
