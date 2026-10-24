@@ -81,6 +81,14 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 #endif
 
+// The glue calls the methods declared `[[deprecated]]` it wraps, which the
+// Crystal side marks `@[Deprecated]`, unless `ignore_deprecated` drops them.
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(__GNUC__)
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #if defined(__GXX_RTTI) || defined(_CPPRTTI)
 #define BINDGEN_HAS_RTTI 1
 #define BINDGEN_TYPEID(T) (&typeid(T))
