@@ -31,9 +31,9 @@ builtin_out_arguments: true
 # qHash(const QPoint &, size_t) is Point#q_hash, forwarded to #hash.
 member_functions: [qHash]
 if_os_is_darwin:
-  library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ `pkg-config --libs Qt5Widgets` -lgccpp"
+  library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ `pkg-config --libs Qt5Widgets`"
 else:
-  library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ -lQt5Core -lQt5Gui -lQt5Widgets -lgccpp"
+  library: "%/ext/binding_{BINDING_PLATFORM}.a -lstdc++ -lQt5Core -lQt5Gui -lQt5Widgets"
 
 <<: config/processors_and_generators.yml
 <<: config/find_paths.yml

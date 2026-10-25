@@ -64,10 +64,12 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 #ifdef __cplusplus
 #include <gc/gc_cpp.h>
 #include <atomic>
+#include <cstdlib>
 #include <functional>
 #include <initializer_list>
 #include <memory>
 #include <mutex>
+#include <new>
 #include <string>
 #include <thread>
 #include <type_traits>
@@ -313,6 +315,72 @@ struct CrystalProc {
   }
 };
 
+/* The global `operator new` and `operator delete` of a program with a binding,
+ * in place of those of libgccpp, which `-lgccpp` isn't needed for any more.
+ * In a thread the GC knows, one Crystal created, `new` allocates on the GC
+ * heap, uncollectable: memory the GC scans but never frees, so the Crystal
+ * objects C++ code stores there, like the `Proc` of a signal connection, live
+ * on with it, see SPEC.md.  In a thread the GC doesn't know, one the library
+ * created, like a Qt worker thread, `new` allocates with `malloc`: the GC
+ * can't collect from a thread it doesn't know, and it would run finalizers,
+ * Crystal code, there.  Only the main thread stores Crystal objects into C++
+ * memory anyway.  `delete` tells the two apart by the memory.
+ *
+ * The replacement of libgccpp allocated everything on the GC heap, in whichever
+ * thread: on Linux, where the library's own `new` didn't reach it, Crystal
+ * objects C++ stored were collectable; on macOS, where dyld makes every image
+ * share one `operator new`, Qt's threads allocated from the GC.  Weak, like
+ * the hooks: one definition serves all bindings of a program.  Aligned
+ * allocation keeps the ones of the C++ runtime.
+ */
+// Declared by gc.h with `GC_THREADS` only, which the generated code doesn't
+// define; the GC of a Crystal program has threads.
+extern "C" int GC_thread_is_registered(void);
+
+static bool bindgen_thread_allocates_from_gc() noexcept {
+  static thread_local signed char uses_gc = 0; // Not decided yet
+  if (uses_gc == 0) {
+    if (!GC_is_init_called()) return false; // Static initialization: before the GC
+    uses_gc = GC_thread_is_registered() ? 1 : -1;
+  }
+  return uses_gc > 0;
+}
+
+static void *bindgen_allocate(std::size_t size) noexcept {
+  if (size == 0) size = 1;
+  return bindgen_thread_allocates_from_gc() ? GC_MALLOC_UNCOLLECTABLE(size) : std::malloc(size);
+}
+
+static void bindgen_deallocate(void *memory) noexcept {
+  if (memory == nullptr) return;
+  if (GC_is_init_called() && GC_is_heap_ptr(memory)) {
+    GC_FREE(memory);
+  } else {
+    std::free(memory);
+  }
+}
+
+static void *bindgen_allocate_or_throw(std::size_t size) {
+  void *memory = bindgen_allocate(size);
+  if (memory == nullptr) throw std::bad_alloc();
+  return memory;
+}
+
+// Called by the placement `operator new` of gc_cpp.h when the GC is out of
+// memory; libgccpp defined it.
+__attribute__((weak)) void GC_throw_bad_alloc() { throw std::bad_alloc(); }
+
+__attribute__((weak)) void *operator new(std::size_t size) { return bindgen_allocate_or_throw(size); }
+__attribute__((weak)) void *operator new[](std::size_t size) { return bindgen_allocate_or_throw(size); }
+__attribute__((weak)) void *operator new(std::size_t size, const std::nothrow_t &) noexcept { return bindgen_allocate(size); }
+__attribute__((weak)) void *operator new[](std::size_t size, const std::nothrow_t &) noexcept { return bindgen_allocate(size); }
+__attribute__((weak)) void operator delete(void *memory) noexcept { bindgen_deallocate(memory); }
+__attribute__((weak)) void operator delete[](void *memory) noexcept { bindgen_deallocate(memory); }
+__attribute__((weak)) void operator delete(void *memory, std::size_t) noexcept { bindgen_deallocate(memory); }
+__attribute__((weak)) void operator delete[](void *memory, std::size_t) noexcept { bindgen_deallocate(memory); }
+__attribute__((weak)) void operator delete(void *memory, const std::nothrow_t &) noexcept { bindgen_deallocate(memory); }
+__attribute__((weak)) void operator delete[](void *memory, const std::nothrow_t &) noexcept { bindgen_deallocate(memory); }
+
 /* Functions called with the address of a wrapped object as C++ destroys it:
  * `delete` by C++ code owning it, like a Qt parent.  The generated module
  * registers `BindgenHelper.release`, so an object C++ deletes is released
@@ -350,8 +418,8 @@ static void bindgen_notify_destroyed(void *object) {
  * `BindgenHelper`: the start of its GC allocation, so a pointer to a secondary
  * base of it, like the `QPaintDevice` of a `QWidget`, finds the same entry as
  * the object and as the destroyed hooks.  Null for an object C++ created: one
- * off the GC heap, or one the replacement `operator new` of libgccpp allocated
- * uncollectable, which the GC never frees.  Keeping its wrapper would keep
+ * off the GC heap, or one the `operator new` above allocated uncollectable,
+ * which the GC never frees.  Keeping its wrapper would keep
  * nothing C++ uses, and the entry would outlive the object, as nothing tells of
  * its deletion.  Weak, like the hooks: one definition serves all bindings.
  */
@@ -361,7 +429,7 @@ extern "C" __attribute__((weak)) void *bindgen_kept_key(void *object) {
 
   // The uncollectable kinds of the GC, `UNCOLLECTABLE` and `AUNCOLLECTABLE` of
   // its private header, which only `GC_MALLOC_UNCOLLECTABLE` and the
-  // `operator new` of libgccpp allocate.
+  // `operator new` above allocate.
   int kind = GC_get_kind_and_size(base, nullptr);
   if (kind == 2 || kind == 3) return nullptr;
 
