@@ -258,7 +258,7 @@ button.on_clicked(Qt::ConnectionType::QueuedConnection) { } # Run by the event l
 `QThread` and `QRunnable` are the one place a Crystal override of a virtual
 method is unsupported: they get no C++ subclass, so a Crystal `run` is never
 called (and a Crystal `Qt::Runnable` subclass can't be instantiated).  Use
-Crystal's own `Thread` or fibers for Crystal work.  The locks exclude Qt
+Crystal's own `Thread` or fibers for Crystal work (see Fibers).  The locks exclude Qt
 threads from Qt data: `mutex.lock`, `semaphore.acquire(2)`,
 `condition.wait(mutex, Qt::DeadlineTimer.new(100))`.
 
@@ -268,6 +268,60 @@ function, like `Qt::FileDialog.get_open_file_content`.  The functions Qt runs on
 another thread, `Qt::ThreadPool#start`,
 `#try_start` and `Qt::Runnable.create`, are left out, as that thread can't run
 Crystal.
+
+## Fibers
+
+Crystal fibers run while Qt's event loop runs.  `Qt::Application.exec`, like
+`Qt::EventLoop#exec`, `Qt::Dialog#exec` or a waiting `process_events`, blocks
+the calling fiber in Qt's loop, but Qt's loop drives Crystal's scheduler, so
+`spawn`, `sleep`, `Channel`, sockets, `HTTP::Client` and the rest work in a Qt
+program as in any other, and a slot may `spawn` work and return at once:
+
+```crystal
+app = Qt::Application.new
+label = Qt::Label.new
+label.show
+
+spawn do
+  loop do
+    label.text = Time.local.to_s
+    sleep 1.second
+  end
+end
+
+button.on_clicked do
+  spawn do # The slot returns at once, the fiber runs as Qt's loop idles
+    label.text = HTTP::Client.get(url).body
+  end
+end
+
+Qt::Application.exec
+```
+
+Everything runs in the main thread, so a fiber updates widgets directly.
+Blocking the fiber that runs Qt's loop blocks Qt's loop, as in C++: a `sleep`
+or a blocking read in a slot freezes the window; `spawn` instead.  Fibers
+that never wait, a `Fiber.yield` loop or two fibers passing a channel back and
+forth, don't freeze it: after `Qt::Fibers.slice` (4 ms) of fiber time Qt's
+loop gets a turn.  `samples/fibers.cr` shows all of it.
+
+How it works, in `src/qt5/fibers.cr`: Crystal's event loop is a kqueue (macOS,
+BSD) or epoll (Linux) descriptor that becomes readable when a fiber's IO, timer
+or wakeup from another thread is ready.  `Qt::Application.new` (and the
+`Qt::CoreApplication.new` and `Qt::GuiApplication.new` without arguments) puts
+a `QSocketNotifier` on it, and Qt's loop runs the ready fibers; before Qt's
+loop blocks, fibers made runnable meanwhile, like one spawned from a slot, get
+their turn too.  `Qt::Fibers.pump` suspends the fiber that runs Qt's loop and
+resumes it when every other fiber waits (or after `slice`), so Qt's loop waits
+for both Qt's events and Crystal's.  A nested Qt loop started from a fiber, a
+modal dialog say, pumps the same way and returns first, like Qt's own nesting.
+An application created with `argc` and `argv` installs the integration on its
+first `exec`, or call `Qt::Fibers.install` after creating it.
+
+Crystal's kqueue and epoll event loops are needed (the defaults;
+`-Devloop=libevent` isn't supported), with the execution context runtime (the
+default) or `-Dwithout_mt`.  `-Dqt5_without_fibers` turns the integration off:
+fibers then wait while Qt's loop runs.
 
 ## Overriding virtual methods
 
@@ -675,7 +729,6 @@ see the comments there:
 
 ## Future things to do
 
-* Integration with **LibEvent**: Right now, Qt blocks the whole thread.
 * The rest of the billion Qt classes of interest
 * Integration for the `Qt Designer` UI designer
 * Integration for `Qt Linguist`

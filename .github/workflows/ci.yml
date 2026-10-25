@@ -120,6 +120,9 @@ jobs:
       - name: Run specs
         run: crystal spec
 
+      - name: Run the fiber spec without execution contexts
+        run: crystal spec -Dwithout_mt spec/qt/fibers_spec.cr
+
       - name: Build samples
         run: |
           mkdir -p bin
