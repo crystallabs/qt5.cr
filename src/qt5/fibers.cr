@@ -60,7 +60,7 @@ module Qt
       {% if flag?(:preview_mt) && !flag?(:execution_context) %}
         {% raise "qt5.cr runs fibers from Qt's event loop with the execution context runtime (the default) or with -Dwithout_mt, not with -Dpreview_mt: compile with -Dqt5_without_fibers to run Qt without fibers, see src/qt5/fibers.cr" %}
       {% end %}
-      {% unless Crystal::EventLoop::Polling.has_method?("run") && (flag?(:without_mt) ? (Crystal::Scheduler.class.has_method?("reschedule") && Crystal::Scheduler.has_method?("resume")) : (::Fiber::ExecutionContext.class.has_method?("reschedule") && ::Fiber::ExecutionContext::Parallel::Scheduler.has_method?("resume"))) %}
+      {% unless Crystal::EventLoop::Polling.has_method?("run") && (flag?(:without_mt) ? (Crystal::Scheduler.class.has_method?("reschedule") && Crystal::Scheduler.has_method?("resume")) : (::Fiber::ExecutionContext.class.has_method?("reschedule") && (::Fiber::ExecutionContext::Parallel::Scheduler.has_method?("try_resume") || ::Fiber::ExecutionContext::Parallel::Scheduler.has_method?("resume")))) %}
         {% raise "qt5.cr runs fibers from Qt's event loop by overriding Crystal::EventLoop::Polling#run and the scheduler's resume, which this Crystal doesn't have: compile with -Dqt5_without_fibers to run Qt without fibers, see src/qt5/fibers.cr" %}
       {% end %}
 
@@ -225,7 +225,8 @@ end
         end
         true
       end
-    {% else %}
+    {% elsif Crystal::EventLoop::Polling.methods.any? { |method| method.name == "run" && method.args.size == 2 } %}
+      # Crystal 1.21: the scheduler hands a list to fill.
       def run(queue : ::Fiber::List*, blocking : Bool) : Nil
         if blocking && (idle = @qt_fibers_idle.last?)
           # Hand back the idle fiber instead of blocking, once the ready events
@@ -240,6 +241,26 @@ end
           system_run(blocking) { |fiber| queue.value.push(fiber) }
         end
       end
+    {% else %}
+      # Crystal 1.22 and later: the scheduler takes the fibers from a block.
+      def run(blocking : Bool, & : ::Fiber ->) : Nil
+        if blocking && (idle = @qt_fibers_idle.last?)
+          # Hand back the idle fiber instead of blocking, once the ready events
+          # are processed and nothing came out of them.
+          ready = false
+          system_run(false) do |fiber|
+            ready = true
+            yield fiber
+          end
+          unless ready
+            @qt_fibers_idle.pop
+            @qt_fibers_resuming = idle[0]
+            yield idle[0]
+          end
+        else
+          system_run(blocking) { |fiber| yield fiber }
+        end
+      end
     {% end %}
   end
 
@@ -248,6 +269,18 @@ end
       protected def resume(fiber : ::Fiber) : Nil
         if idle = @event_loop.qt_fibers_turn?(fiber)
           enqueue(fiber)
+          fiber = idle
+        end
+        previous_def(fiber)
+      end
+    end
+  {% elsif ::Fiber::ExecutionContext::Parallel::Scheduler.has_method?("try_resume") %}
+    # Crystal 1.22 and later: the run loop and `reschedule` resume through
+    # `try_resume`, not `resume`.
+    class Fiber::ExecutionContext::Parallel::Scheduler
+      private def try_resume(fiber) : Bool # Unrestricted, like the definition this follows
+        if fiber != @main_fiber && (idle = @event_loop.qt_fibers_turn?(fiber))
+          @runnables.push(fiber)
           fiber = idle
         end
         previous_def(fiber)
