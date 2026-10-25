@@ -43,6 +43,11 @@ module Qt
     # in `bindgen_helper.hpp`.
     fun bindgen_kept_key(object : Void*) : Void*
   
+    # Destroys the objects the GC finalized in other threads, which wait for the
+    # main thread, see `BindgenHelper.destroy_pending`.  Defined in
+    # `bindgen_helper.hpp`.
+    fun bindgen_destroy_pending : Void
+  
     # Remembers the Crystal object which constructed the C++ object, and reads
     # it back, see `BindgenHelper.crystal_object`.  Defined in
     # `bindgen_helper.hpp`.
@@ -426,6 +431,18 @@ module Qt
     Binding.bindgen_add_destroyed_hook(->(pointer : Void*) {
       BindgenHelper.rescued(nil) { BindgenHelper.release(pointer) }
     })
+  
+    # Destroys the C++ objects the GC finalized in a thread other than the main
+    # one, which `CrystalGCCleanupWrapper` in `bindgen_helper.hpp` queued for the
+    # main thread: the GC runs a finalizer in whichever thread's allocation
+    # triggered the collection, Crystal's monitor thread included, and the objects
+    # of a library like Qt must be destroyed in the thread they live in.  Every
+    # finalizer running in the main thread destroys them too, so calling this is
+    # optional: a program whose main thread rarely leaves garbage behind may call
+    # it to reclaim them sooner, from the main thread.
+    def self.destroy_pending : Nil
+      Binding.bindgen_destroy_pending
+    end
   
   
     # Yields *value*.  Used by conversion templates using `%` more than once, so

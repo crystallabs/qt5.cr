@@ -63,11 +63,13 @@ static __attribute__((noreturn)) void bindgen_fatal_panic(const char *message) {
 
 #ifdef __cplusplus
 #include <gc/gc_cpp.h>
+#include <atomic>
 #include <functional>
 #include <initializer_list>
 #include <memory>
 #include <mutex>
 #include <string>
+#include <thread>
 #include <type_traits>
 #include <typeindex>
 #include <typeinfo>
@@ -459,6 +461,77 @@ extern "C" __attribute__((weak)) void *bindgen_crystal_object(void *object) {
   return GC_REVEAL_POINTER(reinterpret_cast<GC_hidden_pointer>(gc_object->bindgen_crystal));
 }
 
+/* The thread which destroys the objects the GC finalizes: the main thread,
+ * which runs the static initializers.  The GC runs a finalizer in the thread
+ * whose allocation triggered the collection, which may be any thread
+ * registered with it: Crystal's monitor thread allocates while it sleeps, as
+ * of Crystal 1.22.  The objects of a library like Qt must be destroyed in the
+ * thread they live in, the main thread as a rule, and a destructor telling the
+ * hooks calls into Crystal, which is at home there.  So a finalizer in another
+ * thread queues its object for the main thread instead, see
+ * `bindgen_defer_destruction`.
+ */
+static const std::thread::id bindgen_main_thread = std::this_thread::get_id();
+
+static bool bindgen_in_main_thread() {
+  return std::this_thread::get_id() == bindgen_main_thread;
+}
+
+/* An object finalized in another thread, waiting for the main thread to
+ * destroy it.  The nodes are in uncollectable memory, which the GC scans but
+ * never frees, so the object stays reachable, with everything it refers to,
+ * until it is destroyed.
+ */
+struct BindgenPendingDestruction {
+  void *object;
+  void (*destroy)(void *);
+  BindgenPendingDestruction *next;
+};
+
+// The objects waiting to be destroyed, most recent first.  One list serves all
+// bindings of a program, like the destroyed hooks.
+extern "C" __attribute__((weak)) std::atomic<BindgenPendingDestruction *> *bindgen_pending_destructions() {
+  static std::atomic<BindgenPendingDestruction *> first{nullptr};
+  return &first;
+}
+
+// Queues *object* for the main thread to destroy with *destroy*.
+static void bindgen_defer_destruction(void *object, void (*destroy)(void *)) {
+  auto *node = static_cast<BindgenPendingDestruction *>(GC_MALLOC_UNCOLLECTABLE(sizeof(BindgenPendingDestruction)));
+  if (node == nullptr) bindgen_fatal_panic("Out of memory queueing an object for destruction");
+  node->object = object;
+  node->destroy = destroy;
+
+  std::atomic<BindgenPendingDestruction *> *first = bindgen_pending_destructions();
+  node->next = first->load(std::memory_order_relaxed);
+  while (!first->compare_exchange_weak(node->next, node, std::memory_order_release, std::memory_order_relaxed)) { }
+}
+
+/* Destroys the objects the GC finalized in other threads, in the order it
+ * finalized them.  Called in the main thread: by every finalizer running
+ * there, so the objects follow the program's own garbage, and by
+ * `BindgenHelper.destroy_pending`.
+ */
+extern "C" __attribute__((weak)) void bindgen_destroy_pending() {
+  BindgenPendingDestruction *node = bindgen_pending_destructions()->exchange(nullptr, std::memory_order_acquire);
+  if (node == nullptr) return;
+
+  BindgenPendingDestruction *oldest_first = nullptr;
+  while (node) {
+    BindgenPendingDestruction *next = node->next;
+    node->next = oldest_first;
+    oldest_first = node;
+    node = next;
+  }
+
+  while (oldest_first) {
+    BindgenPendingDestruction *next = oldest_first->next;
+    oldest_first->destroy(oldest_first->object);
+    GC_FREE(oldest_first);
+    oldest_first = next;
+  }
+}
+
 template <typename T>
 struct CrystalGCCleanupWrapper: public BindgenGCObject, public T, public gc_cleanup
 {
@@ -494,10 +567,27 @@ struct CrystalGCCleanupWrapper: public BindgenGCObject, public T, public gc_clea
 
 private:
   /* The finalizer, replacing `gc_cleanup::cleanup`, which can't tell an object
-   * C++ destroyed from a live one.
+   * C++ destroyed from a live one.  In the main thread it destroys the object,
+   * after the objects finalized in other threads, which queued them for it,
+   * see `bindgen_defer_destruction`; in another thread it queues the object.
    */
   static void bindgen_cleanup(void *base, void *displacement) {
     auto *self = reinterpret_cast<CrystalGCCleanupWrapper *>(static_cast<char *>(base) + reinterpret_cast<ptrdiff_t>(displacement));
+    if (self->bindgen_destroyed) return;
+
+    if (!bindgen_in_main_thread()) {
+      bindgen_defer_destruction(self, bindgen_destroy);
+      return;
+    }
+
+    bindgen_destroy_pending();
+    bindgen_destroy(self);
+  }
+
+  // Destroys the object at *object*, unless C++ destroyed it meanwhile, as the
+  // owner of an object waiting for the main thread may have.
+  static void bindgen_destroy(void *object) {
+    auto *self = static_cast<CrystalGCCleanupWrapper *>(object);
     if (self->bindgen_destroyed) return;
     self->bindgen_destroyed = true;
     self->~CrystalGCCleanupWrapper();
