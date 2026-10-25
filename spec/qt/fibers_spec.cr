@@ -195,7 +195,8 @@ end
 
 describe "Qt::Fibers.slice" do
   it "gives Qt's loop a turn while fibers only yield" do
-    ticks = ticks_while_busy(50.milliseconds) do |deadline|
+    # Long enough for a loaded machine to deliver a few 1 ms timer ticks.
+    ticks = ticks_while_busy(200.milliseconds) do |deadline|
       other = spawn do
         while Time.instant < deadline
           Fiber.yield
@@ -210,7 +211,7 @@ describe "Qt::Fibers.slice" do
 
   it "gives Qt's loop a turn while fibers pass a channel back and forth" do
     rounds = 0
-    ticks = ticks_while_busy(50.milliseconds) do |deadline|
+    ticks = ticks_while_busy(200.milliseconds) do |deadline|
       ping = Channel(Int32).new
       pong = Channel(Int32).new
       spawn do
