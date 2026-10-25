@@ -155,13 +155,15 @@ describe Qt::Fibers do
 
   it "lets a slot block Qt's loop, as in C++, without losing fibers" do
     order = [] of Symbol
+    slot_started = Channel(Nil).new(1)
     spawn do
-      sleep 1.millisecond
+      slot_started.receive
       order << :fiber
     end
     timer = single_shot(0) do
       order << :slot
-      sleep 5.milliseconds # Blocks Qt's loop, the fiber's timer is still served
+      slot_started.send(nil)
+      sleep 5.milliseconds # Blocks Qt's loop, the fiber runs meanwhile
       order << :slot_done
       Qt::Application.quit
     end
