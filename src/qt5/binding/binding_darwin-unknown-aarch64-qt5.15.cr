@@ -177,7 +177,14 @@ module Qt
     def self.rescued(fallback, &)
       yield
     rescue exception : ::Exception
-      @@on_exception.call(exception)
+      begin
+        @@on_exception.call(exception)
+      rescue failure : ::Exception
+        # The handler failed too, like printing a backtrace on a thread without
+        # a scheduler does: report both without the runtime.
+        ::Crystal::System.print_error("Unhandled exception in a callback from C++: %s (%s), and its handler raised: %s (%s)\n",
+          exception.message || "", exception.class.name, failure.message || "", failure.class.name)
+      end
       fallback
     end
   
@@ -215,9 +222,35 @@ module Qt
     # the hash.
     @@kept_alive = {} of UInt64 => {Void*, KeptBy}
   
-    # Guards `@@kept_alive`.  Reentrant, as a GC finalizer may run C++ code
-    # releasing an object while this fiber changes `@@kept_alive`.
-    @@kept_alive_mutex = ::Mutex.new(:reentrant) # A wrapped class may be named `Mutex`
+    # Guards `@@kept_alive`.  Not a `Mutex`, which suspends a fiber finding it
+    # locked: the GC runs a finalizer, and the destroyed hook from it, on the
+    # thread allocating, which may run no scheduler, like the monitor thread of
+    # the execution contexts (Crystal 1.21), where suspending fails
+    # ("Fiber#execution_context cannot be nil").  A spin lock owned by a fiber
+    # instead, as the critical sections are short and never suspend.  Reentrant,
+    # as a GC finalizer may run C++ code releasing an object while this fiber
+    # changes `@@kept_alive`, inside an allocation.
+    @@kept_alive_owner = ::Atomic(UInt64).new(0_u64)
+    @@kept_alive_depth = 0
+  
+    # Runs the block holding the lock of `@@kept_alive`.
+    private def self.kept_alive_synchronize(&)
+      me = ::Fiber.current.object_id
+      if @@kept_alive_owner.get(:acquire) == me
+        @@kept_alive_depth += 1
+      else
+        until @@kept_alive_owner.compare_and_set(0_u64, me, :acquire, :relaxed)[1]
+        end
+        @@kept_alive_depth = 1
+      end
+  
+      begin
+        yield
+      ensure
+        @@kept_alive_depth -= 1
+        @@kept_alive_owner.set(0_u64, :release) if @@kept_alive_depth == 0
+      end
+    end
   
     # Set while `@@kept_alive` changes.  Releases meanwhile are queued in
     # `@@pending_releases` and done afterwards.
@@ -247,7 +280,7 @@ module Qt
     end
   
     # Changes `@@kept_alive` in the block, then does the queued releases.  Call
-    # with `@@kept_alive_mutex` locked.
+    # with the lock of `@@kept_alive` held.
     private def self.change_kept_alive(&)
       @@kept_alive_busy = true
       yield
@@ -261,7 +294,7 @@ module Qt
     end
   
     # Queues the release of *address* until `@@kept_alive` is free again.  Call
-    # with `@@kept_alive_mutex` locked.
+    # with the lock of `@@kept_alive` held.
     private def self.queue_release(address : UInt64, by : KeptBy) : Nil
       if @@pending_release_count == @@pending_release_capacity
         capacity = Math.max(64, @@pending_release_capacity * 2)
@@ -281,7 +314,7 @@ module Qt
       address = kept_key(object.to_unsafe)
       return if address == 0
   
-      @@kept_alive_mutex.synchronize do
+      kept_alive_synchronize do
         change_kept_alive do
           if entry = @@kept_alive[address]?
             @@kept_alive[address] = {entry[0], entry[1] | by}
@@ -294,7 +327,7 @@ module Qt
   
     # Drops the reasons *by* the object with the key *address* is kept for,
     # letting the GC collect it once none is left.  Call with
-    # `@@kept_alive_mutex` locked and `@@kept_alive` busy.
+    # the lock of `@@kept_alive` held and `@@kept_alive` busy.
     private def self.drop_reasons(address : UInt64, by : KeptBy) : Nil
       return unless entry = @@kept_alive[address]?
   
@@ -312,7 +345,7 @@ module Qt
       address = kept_key(pointer)
       return if address == 0
   
-      @@kept_alive_mutex.synchronize do
+      kept_alive_synchronize do
         if @@kept_alive_busy
           queue_release(address, by)
         else
@@ -380,15 +413,19 @@ module Qt
     # Returns if *object*, or another wrapper of its C++ object, is kept alive by
     # `.keep_alive` or `.owned_by`.
     def self.kept_alive?(object : Reference) : Bool
-      @@kept_alive_mutex.synchronize { @@kept_alive.has_key?(kept_key(object.to_unsafe)) }
+      kept_alive_synchronize { @@kept_alive.has_key?(kept_key(object.to_unsafe)) }
     end
   
     # C++ releases the objects it destroys: `CrystalGCCleanupWrapper` in
     # `bindgen_helper.hpp` calls the hook from its destructor, so an object its
     # owner deleted, like the child of a Qt parent, doesn't stay kept alive.  Not
-    # a closure, as C++ calls it without a context.  Only with C++ glue, which
-    # defines the hook list; a C library has neither.
-    Binding.bindgen_add_destroyed_hook(->(pointer : Void*) { BindgenHelper.release(pointer) })
+    # a closure, as C++ calls it without a context.  Rescued, like a callback: the
+    # caller is a destructor, which no exception may leave, so a Crystal exception
+    # unwinding into it would terminate the program without a word.  Only with
+    # C++ glue, which defines the hook list; a C library has neither.
+    Binding.bindgen_add_destroyed_hook(->(pointer : Void*) {
+      BindgenHelper.rescued(nil) { BindgenHelper.release(pointer) }
+    })
   
   
     # Yields *value*.  Used by conversion templates using `%` more than once, so
