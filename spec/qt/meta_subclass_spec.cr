@@ -368,7 +368,7 @@ describe "a Crystal enum in a Crystal subclass's meta-object" do
     slider = Qt::Slider.new(Qt::Orientation::Vertical)
     slider.property("orientation".to_unsafe).to(Qt::Orientation).should eq(Qt::Orientation::Vertical)
     slider.property("orientation".to_unsafe).to?(Machine::Mode).should eq(Machine::Mode::Slow) # Its value is 2: Qt's enums aren't told apart
-    Qt.variant(1).to(Machine::Mode).should eq(Machine::Mode::Fast) # An integer unpacks as an enum
+    Qt.variant(1).to(Machine::Mode).should eq(Machine::Mode::Fast)                             # An integer unpacks as an enum
     Qt.variant("1").to?(Machine::Mode).should be_nil
   end
 end
