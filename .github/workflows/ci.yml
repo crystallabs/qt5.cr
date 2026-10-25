@@ -117,10 +117,13 @@ jobs:
             src/qt5/binding/binding_${{ env.BINDING_PLATFORM }}.cr
             ext/qt_binding_${{ env.BINDING_PLATFORM }}.cpp
 
+      # A spec that hangs fails here instead of running into the job's limit.
       - name: Run specs
+        timeout-minutes: 15
         run: crystal spec
 
       - name: Run the fiber spec without execution contexts
+        timeout-minutes: 15
         run: crystal spec -Dwithout_mt spec/qt/fibers_spec.cr
 
       - name: Build samples
