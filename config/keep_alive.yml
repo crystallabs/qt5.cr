@@ -208,8 +208,7 @@ QGraphicsItem:
 QGraphicsItemGroup:
   keep_alive:
     "^addToGroup$": true
-  release:
-    "^removeFromGroup$": true
+  # No release of removeFromGroup: the item stays in the scene of the group
 QGraphicsProxyWidget:
   keep_alive:
     "^setWidget$": true
@@ -486,8 +485,6 @@ QGraphicsLayoutItem:
 QAbstractEventDispatcher:
   keep_alive:
     "^registerTimer$": true # Unlike QObject::startTimer, nothing unregisters the object
-  release:
-    "^unregisterTimers$": true
 QWidgetItem:
   depends_on:
     "^$": true # The item refers to its widget; QWidgetItemV2 inherits the rule

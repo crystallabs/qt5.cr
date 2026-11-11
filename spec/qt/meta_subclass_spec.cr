@@ -41,6 +41,10 @@ private class Child < Counter
   signal moved(x : Float64)
 end
 
+# A subclass without members of its own shares the parent's meta-object.
+private class Plain < Counter
+end
+
 describe "a Crystal subclass declaring signals, slots and properties" do
   it "describes them through its meta-object" do
     counter = Counter.new
@@ -106,7 +110,9 @@ describe "a Crystal subclass declaring signals, slots and properties" do
     value.writable?.should be_true
     value.notify_signal_index.should eq(meta.index_of_signal("valueChanged(int)".to_unsafe))
     String.new(value.type_name).should eq("int")
-    meta.property(meta.index_of_property("label".to_unsafe)).writable?.should be_false
+    label = meta.property(meta.index_of_property("label".to_unsafe))
+    label.writable?.should be_false
+    label.has_notify_signal?.should be_false
   end
 
   it "chains the meta-object of a Crystal subclass to its Crystal parent's" do
@@ -126,6 +132,19 @@ describe "a Crystal subclass declaring signals, slots and properties" do
     child.value.should eq(2)
     child.property("value".to_unsafe).to(Int32).should eq(2)
     child.inherits("Counter".to_unsafe).should be_true
+  end
+
+  it "shares the meta-object of a Crystal parent in a subclass without members" do
+    plain = Plain.new
+    meta = plain.meta_object.not_nil!
+    String.new(meta.class_name).should eq("Counter")
+    plain.inherits("QObject".to_unsafe).should be_true
+
+    seen = [] of Int32
+    plain.on_value_changed { |value| seen << value }
+    plain.value_changed(3)
+    plain.increment
+    seen.should eq([3, 1])
   end
 end
 

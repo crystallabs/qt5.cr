@@ -128,6 +128,11 @@ static std::shared_ptr<Proc> bindgen_hold_proc(const Proc &proc) {
   return std::shared_ptr<Proc>(held, [](Proc *p) { GC_FREE(p); });
 }
 
+/* Declared before its use in `BindgenTypeDiscovery`, which argument-dependent
+ * lookup only finds for a class with a base in the global namespace.
+ */
+extern "C" __attribute__((weak)) void *bindgen_crystal_object(void *object);
+
 /* Type discovery, see SPEC.md §2.3.7: finds the wrapped class of the object a
  * `Base` pointer points to, so that the wrapper is of the most derived class
  * the binding knows.  The generated `DISCOVER` function of a class holds the

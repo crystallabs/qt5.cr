@@ -274,7 +274,8 @@ struct BindgenQtMetaObject {
       data.push_back(typeData(p.type.c_str()));
       data.push_back(flags);
       if (Revision >= 9) {
-        data.push_back(p.notify >= 0 ? static_cast<unsigned>(p.notify) : 0);
+        // Qt 6 has no `Notify` flag: no signal is `uint(-1)`, as moc writes.
+        data.push_back(p.notify >= 0 ? static_cast<unsigned>(p.notify) : 0xFFFFFFFFu);
         data.push_back(0); // Revision
       }
     }
@@ -322,14 +323,20 @@ struct BindgenQtMetaObject {
 #else
     meta.d.stringdata = byteArrayData;
 #endif
-    if (parent) setSuperdata(parent->metaObject());
+    if (parent) assignSuperdata(parent->metaObject());
   }
 
-  // Sets the parent meta-object, once: the `SET_META` function of the C++
-  // class gives its `staticMetaObject`, unless a Crystal superclass's was set
-  // by `finish`.
+  // Sets the meta-object of the C++ class, once: the `SET_META` function gives
+  // its `staticMetaObject`, which the topmost Crystal class of the chain
+  // inherits.  That one may never be instantiated itself, so a subclass sets
+  // it too.
   void setSuperdata(const QMetaObject *superdata) {
-    if (meta.d.superdata) return;
+    BindgenQtMetaObject *root = this;
+    while (root->parent) root = root->parent;
+    if (!root->meta.d.superdata) root->assignSuperdata(superdata);
+  }
+
+  void assignSuperdata(const QMetaObject *superdata) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     meta.d.superdata.direct = superdata;
 #else
