@@ -11,8 +11,8 @@ module Qt
       pointer : Void*
     end
 
-    # Mirrored from ext/converters.hpp, "struct CrystalVariant"
-    @[Packed]
+    # Mirrored from ext/converters.hpp, "struct CrystalVariant".  Not packed:
+    # the GC only finds a pointer in an aligned word.
     struct CrystalVariant
       type_id : Int32           # Crystal type id
       data : CrystalVariantData # Data

@@ -23,6 +23,18 @@ raise "BigStruct is too small" if sizeof(BigStruct) <= Qt::Variant::INLINE_SIZE
 SIZE_MINUS_PTR = Qt::Variant::INLINE_SIZE - 8
 
 describe Qt::Variant do
+  it "keeps a referenced value alive" do
+    # The GC must see the pointer in the variant: an array holds nothing else.
+    variants = Array.new(200) { |i| Qt.variant("A string on the heap, number #{i}") }
+    big = Array.new(200) { |i| Qt.variant(BigStruct.new(i.to_i64, -i.to_i64, 7_i8)) }
+    GC.collect
+    garbage = Array.new(2000) { |i| "Another string on the heap, #{i}" }
+    garbage.size.should eq(2000)
+
+    variants.each_with_index { |variant, i| variant.to(String).should eq("A string on the heap, number #{i}") }
+    big.each_with_index { |variant, i| variant.to(BigStruct).a.should eq(i) }
+  end
+
   describe "#type_id" do
     it "returns the crystal type id" do
       Qt.variant(true).type_id.should eq(Bool.crystal_instance_type_id)

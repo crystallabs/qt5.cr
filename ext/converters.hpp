@@ -17,6 +17,8 @@
 // Crystal and is then turned into a Crystal `String`.
 static CrystalString qstring_to_crystal(const QString &str) {
   // FIXME: This is horrible.
+  if (str.isEmpty()) return CrystalString{ nullptr, 0 }; // The empty String, without allocating
+
   QByteArray utf8 = str.toUtf8();
   int size = utf8.size();
 
@@ -158,7 +160,7 @@ struct CrystalVariant {
   const T &referenced() const {
     return *static_cast<const T *>(this->reference);
   }
-} __attribute__((packed));
+};
 
 // Make Qt aware of our structures
 Q_DECLARE_METATYPE(CrystalVariant);
