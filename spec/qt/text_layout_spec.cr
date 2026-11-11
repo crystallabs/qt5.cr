@@ -42,7 +42,7 @@ describe Qt::FontDatabase do
     metrics.horizontal_advance('W').should be > metrics.horizontal_advance('i')
     metrics.bounding_rect("Hello").width.should be > 0
     metrics.elided_text("Hello world, a long line", Qt::TextElideMode::Right, width).should end_with("…")
-    metrics.size(0, "ab\ncd").height.should be >= metrics.height * 2
+    metrics.size(0, "ab\ncd").height.should be > metrics.height # The leading may be negative
     Qt::FontMetricsF.new(Qt::FontMetrics.new(font)).height.should eq(metrics.height)
   end
 end

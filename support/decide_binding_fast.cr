@@ -161,8 +161,13 @@ if chosen_binding.nil?
   end
 end
 
-# Build static library on first use.
-unless File.exists?("#{EXT_DIR}/binding_#{chosen_binding}.a")
+# Build static library on first use, and again when its sources changed, like
+# after an update of the shard.
+library = "#{EXT_DIR}/binding_#{chosen_binding}.a"
+sources = Dir.glob("#{EXT_DIR}/*.hpp") << "#{EXT_DIR}/qt_binding_#{chosen_binding}.cpp"
+built_at = File.info?(library).try(&.modification_time)
+
+unless built_at && sources.none? { |source| File.info?(source).try { |info| info.modification_time > built_at } }
   chosen_version = chosen_binding[/-qt([0-9.]+)$/, 1]
 
   STDERR.puts "Couldn't find built version of #{chosen_binding} for Qt#{chosen_version}"
